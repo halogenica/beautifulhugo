@@ -32,4 +32,13 @@ pygmentCodeFences = true
 [[menu.main]]
     name = "About"
     url = "/page/about/"
+    weight = 3
+
+[[menu.main]]
+    identifier = "tools"
+    name = "Tools"
     weight = 2
+
+[[menu.main]]
+    parent = "tools"
+    name = "Build scripts"
