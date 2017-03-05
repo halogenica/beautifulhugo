@@ -18,7 +18,7 @@
         {{ end }}
       </ul>
 
-      {{ if .Site.DisqusShortname }}
+      {{ if and .Site.DisqusShortname (not .Params.nocomments) }}
       <div class="disqus-comments">
         {{ template "_internal/disqus.html" . }}
       </div>

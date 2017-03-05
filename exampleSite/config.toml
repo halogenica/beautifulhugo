@@ -12,6 +12,16 @@ pygmentCodeFences = true
   logo = "img/avatar-icon.png"
   favicon = "img/favicon.ico"
   commit = false
+  dateFormat = "January 2, 2006"
+
+[[Params.bigimg]]
+  src = "img/path.jpg"
+  desc = "Path"
+
+# if you add more than one bigimg they will cycle through every 10 seconds
+#[[Params.bigimg]]
+#  src = "img/path.jpg"
+#  desc = "Another Path"
 
 [Author]
   name = "Some Person"

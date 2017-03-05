@@ -7,8 +7,12 @@
 
     {{ partial "nav.html" . }}
 
-    <header class="header-section ">
-      <div class="intro-header no-img">
+    {{ if .Site.Params.bigimg }}
+      <div id="header-big-imgs" data-num-img={{len .Site.Params.bigimg}} {{range $i, $img := .Site.Params.bigimg}}data-img-src-{{add $i 1}}="{{$img.src}}" data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}></div>
+    {{ end }}
+  
+    <header class="header-section {{ if .Site.Params.bigimg }}has-img{{ end }}">
+      <div class="intro-header {{ if .Site.Params.bigimg }}big-img{{ else }}no-img{{ end }}">
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -22,6 +26,7 @@
             </div>
           </div>
         </div>
+        <span class="img-desc" style="display: inline;"></span>
       </div>
     </header>
 
@@ -44,7 +49,7 @@
               </a>
 
               <p class="post-meta">
-                Posted on {{ .Date.Format "January 2, 2006" }}
+                Posted on {{ .Date.Format .Site.Params.dateFormat }}
               </p>
               <div class="post-entry">
               {{ if .Truncated }}

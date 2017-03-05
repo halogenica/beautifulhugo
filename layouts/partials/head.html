@@ -21,9 +21,71 @@
   <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/highlight.min.css">
   
   <!-- Facebook OpenGraph tags -->
+  {{ if .Site.Params.fb_app_id }}
+  <meta property="fb:app_id" content="{{ .Site.Params.fb_app_id }}" />
+  {{ end }}
+ 
+  {{ if .Params.meta_title }}
+  <meta property="og:title" content="{{ .Params.meta_title }}" />
+  {{ else if .Title }}
   <meta property="og:title" content="{{ .Title }}" />
+  {{ else }}
+  <meta property="og:title" content="{{ .Site.Title }}" />
+  {{ end }}
+
+  {{ if .Params.meta_description }}
+  <meta property="og:description" content="{{ .Params.meta_description }}">
+  {{ else if .Params.subtitle }}
+  <meta property="og:description" content="{{ .Params.subtitle }}">
+  {{ else }}
+  <meta property="og:description" content="{{ .Content | plainify | htmlEscape | truncate 200 }}">
+  {{ end }}
+
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ .URL }}" />
-  <meta property="og:image" content="/{{ .Site.Params.logo }}" />
+
+  {{ if .Params.id }}
+  <meta property="og:url" content="{{ .URL | absURL }}" />
+  <link rel="canonical" href="{{ .URL | absURL }}" />
+  {{ else }}
+  <meta property="og:url" content="{{ .URL | absURL }}" />
+  <link rel="canonical" href="{{ .URL | absURL }}" />
+  {{ end }}
+
+  {{ if .Params.share_img }}
+  <meta property="og:image" content="{{ .Params.share_img | absURL }}" />
+  {{ else if .Params.bigimg }}
+  <meta property="og:image" content="{{ .Params.bigimg | absURL }}" />
+  {{ else if .Site.Params.logo }}
+  <meta property="og:image" content="{{ .Site.Params.logo | absURL }}" />
+  {{ end }}
   
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@{{ .Site.Author.twitter }}" />
+  <meta name="twitter:creator" content="@{{ .Site.Author.twitter }}" />
+
+  {{ if .Params.meta_title }}
+  <meta name="twitter:title" content="{{ .Params.meta_title }}" />
+  {{ else if .Title }}
+  <meta name="twitter:title" content="{{ .Title }}" />
+  {{ else }}
+  <meta name="twitter:title" content="{{ .Site.Title }}" />
+  {{ end }}
+
+  {{ if .Params.meta_description }}
+  <meta name="twitter:description" content="{{ .Params.meta_description }}">
+  {{ else if .Params.subtitle }}
+  <meta name="twitter:description" content="{{ .Params.subtitle }}">
+  {{ else }}
+  <meta name="twitter:description" content="{{ .Content | plainify | htmlEscape | truncate 200 }}">
+  {{ end }}
+
+  {{ if .Params.share_img }}
+  <meta name="twitter:image" content="{{ .Params.share_img }}" />
+  {{ else if .Params.bigimg }}
+  <meta name="twitter:image" content="{{ .Params.bigimg | absURL }}" />
+  {{ else if .Site.Params.logo }}
+  <meta name="twitter:image" content="{{ .Site.Params.logo | absURL }}" />
+  {{ end }}  
+
 </head>

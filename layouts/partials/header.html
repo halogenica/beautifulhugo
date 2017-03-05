@@ -13,7 +13,7 @@
       {{ end }}
       
       {{ if eq .Type "post" }}
-      <span class="post-meta">Posted on {{ .Date.Format "January 2, 2006" }}</span>
+      <span class="post-meta">Posted on {{ .Date.Format .Site.Params.dateFormat }}</span>
       {{ end }}
         </div>
       </div>
