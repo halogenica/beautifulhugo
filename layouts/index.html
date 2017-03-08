@@ -7,12 +7,13 @@
 
     {{ partial "nav.html" . }}
 
-    {{ if isset .Site.Params.bigimg 1 }}
+    {{ if isset .Site.Params.bigimg 0 }}
       <div id="header-big-imgs" data-num-img={{len .Site.Params.bigimg}} {{range $i, $img := .Site.Params.bigimg}}data-img-src-{{add $i 1}}="{{$img.src}}" data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}></div>
     {{ end }}
 
-    <header class="header-section {{ if isset .Site.Params.bigimg 1 }}has-img{{ end }}">
-      <div class="intro-header {{ if isset .Site.Params.bigimg 1 }}big-img{{ else }}no-img{{ end }}">
+    <header class="header-section {{ if isset .Site.Params.bigimg 0 }}has-img{{ end }}">
+      {{ if isset .Site.Params.bigimg 0 }}
+      <div class="intro-header big-img">
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -27,6 +28,22 @@
           </div>
         </div>
         <span class="img-desc" style="display: inline;"></span>
+      </div>
+      {{end}}
+      <div class="intro-header no-img">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="page-heading">
+                <h1>{{.Site.Title}}</h1>
+                {{if .Site.Params.subtitle}}
+                  <hr class="small">
+                  <span class="page-subheading">{{.Site.Params.subtitle}}</span>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
 
