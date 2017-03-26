@@ -32,7 +32,7 @@
                     {{ end }}
                   {{ end }}
                   {{ if eq .Type "post" }}
-                    <span class="post-meta">Posted on {{ .Date.Format .Site.Params.dateFormat }}</span>
+                    <span class="post-meta">{{ partial "posted-on-date.html" . }}</span>
                   {{ end }}
               </div>
             </div>
@@ -57,7 +57,7 @@
                   {{ end }}
                 {{ end }}
                 {{ if eq .Type "post" }}
-                  <span class="post-meta">Posted on {{ .Date.Format .Site.Params.dateFormat }}</span>
+                  <span class="post-meta">{{ partial "posted-on-date.html" . }}</span>
                 {{ end }}
             </div>
           </div>

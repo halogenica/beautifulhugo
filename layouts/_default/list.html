@@ -39,7 +39,7 @@
                 </a>
       
                 <p class="post-meta">
-                  Posted on {{ .Date.Format .Site.Params.dateFormat }}
+                  {{ partial "posted-on-date.html" . }}
                 </p>
                 <div class="post-entry">
                   {{ if .Truncated }}
