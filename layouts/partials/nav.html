@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ "/" | absLangURL }}">{{ .Site.Title }}</a>
+      <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
@@ -65,7 +65,7 @@
     <div class="avatar-container">
       <div class="avatar-img-border">
         {{ if isset .Site.Params "logo" }}
-          <a title="{{ .Site.Title }}" href="{{ "/" | absLangURL }}">
+          <a title="{{ .Site.Title }}" href="{{ "" | absLangURL }}">
             <img class="avatar-img" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
           </a>
         {{ end }}
