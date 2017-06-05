@@ -34,11 +34,11 @@ var main = {
         }
       });
     });
-    
+
     // Ensure nested navbar menus are not longer than the menu header
     var menus = $(".navlinks-container");
     if (menus.length > 0) {
-      var navbar = $("#main-navbar ul");
+      var navbar = $("#main-navbar").find("ul");
       var fakeMenuHtml = "<li class='fake-menu' style='display:none;'><a></a></li>";
       navbar.append(fakeMenuHtml);
       var fakeMenu = $(".fake-menu");

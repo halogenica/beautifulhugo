@@ -1,5 +1,3 @@
-@import url("pygment_highlights.css");
-
 /* --- General --- */
 
 body {
@@ -81,6 +79,8 @@ img::-moz-selection {
 }
 
 img {
+  display: block;
+  margin: auto;
   max-width: 100%;
 }
 

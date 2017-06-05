@@ -94,3 +94,9 @@ url = "https://itch.io/profile/%s"
 title = "Itch.io"
 icon = "fa-gamepad"
 
+[[social_icons]]
+id = "keybase"
+url = "https://keybase.io/%s"
+title = "Keybase"
+icon = "fa-key"
+
