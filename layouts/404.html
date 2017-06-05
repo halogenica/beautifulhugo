@@ -1,11 +1,23 @@
-{{ define "header" }}<!-- No header on 404 pages -->{{ end }}
-{{ define "main" }}
-  <div role="main" class="container main-content">
-    <div class="text-center">
-      <h1>{{ i18n "pageNotFound" }}</h1>
-      <br/>
-      <img src="{{ .Site.BaseURL }}/img/404-southpark.jpg" />
-    </div>
-  </div>
-{{ end }}
+<!DOCTYPE html>
+<html lang="en">
 
+  {{ partial "head.html" . }}
+
+  <body>
+
+    {{ partial "nav.html" . }}
+
+      <div role="main" class="container main-content">
+
+  	    <div class="text-center">
+    	      <h1>Whoops, this page doesn't exist.</h1>
+    	      Please check my latest posts, find more <a href="http://esaezgil.com/page/enrique/">about me</a>, the <a href="http://esaezgil.com/page/books/">books I read</a> or the <a href="http://esaezgil.com/events/">events I attended</a>.
+    	      <br/>
+	    </div>
+
+	  </div>
+
+    {{ partial "footer.html" . }}
+
+  </body>
+</html>
