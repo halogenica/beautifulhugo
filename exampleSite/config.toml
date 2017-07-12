@@ -35,6 +35,7 @@ pygmentCodeFences = true
   facebook = "username"
   googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
   github = "username"
+  gitlab = "username"
   twitter = "username"
   reddit = "username"
   linkedin = "username"

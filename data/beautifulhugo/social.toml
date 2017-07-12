@@ -12,7 +12,7 @@ icon = "fa-facebook"
 
 [[social_icons]]
 id = "googleplus"
-url = "https://www.plus.google.com/%s"
+url = "https://plus.google.com/%s"
 title = "Google+"
 icon = "fa-google-plus"
 
@@ -21,6 +21,12 @@ id = "github"
 url = "https://github.com/%s"
 title = "GitHub"
 icon = "fa-github"
+
+[[social_icons]]
+id = "gitlab"
+url = "https://gitlab.com/%s"
+title = "GitLab"
+icon = "fa-gitlab"
 
 [[social_icons]]
 id = "twitter"
