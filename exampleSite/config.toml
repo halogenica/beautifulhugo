@@ -31,6 +31,7 @@ pygmentCodeFences = true
 
 [Author]
   name = "Some Person"
+  website = "yourwebsite.com"
   email = "youremail@domain.com"
   facebook = "username"
   googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
@@ -48,6 +49,9 @@ pygmentCodeFences = true
   spotify = "username"
   bandcamp = "username"
   itchio = "username"
+  vk = "username"
+  paypal = "username"
+  telegram = "username"
 
 [[menu.main]]
     name = "Blog"
@@ -86,4 +90,3 @@ pygmentCodeFences = true
     name = "Tags"
     url = "tags"
     weight = 3
-
