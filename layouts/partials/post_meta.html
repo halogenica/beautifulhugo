@@ -1,6 +1,14 @@
 <span class="post-meta">
-  <i class="fa fa-calendar-o"></i>&nbsp;{{ default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format | i18n "postedOnDate" }}
-  &nbsp;|&nbsp; <i class="fa fa-clock-o"></i>{{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }} ({{ .WordCount }} {{ i18n "words" }})
+  {{ $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format }}
+  {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
+  <i class="fa fa-calendar-o"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
+  {{ if ne $datestr $lastmodstr }}
+    &nbsp;{{ $lastmodstr | i18n "lastModified"  }}
+  {{ end }}
+  {{ if .Params.readingTime }}
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i>{{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }} ({{ .WordCount }} {{ i18n "words" }})
+  {{ end }}
   {{- if .Site.Params.staticman -}}
     &nbsp;|&nbsp;  <i class="fa fa-comment-o"></i>
     {{ $slug := replace .URL "/" "" }}
