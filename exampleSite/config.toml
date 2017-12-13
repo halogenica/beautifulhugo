@@ -25,6 +25,8 @@ pygmentCodeFences = true
 #[[Params.bigimg]]
 #  src = "img/sphere.jpg"
 #  desc = "Sphere"
+#  # position: see values of CSS background-position.
+#  position = "center top"
 #[[Params.bigimg]]
 #  src = "img/hexagon.jpg"
 #  desc = "Hexagon"

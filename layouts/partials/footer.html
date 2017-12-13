@@ -17,7 +17,7 @@
           {{ end }}
           {{ if .Site.Params.rss }}
           <li>
-            <a href="{{ "index.xml" | absLangURL }}" title="RSS">
+            <a href="{{ .RSSLink }}" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -32,9 +32,9 @@
               <a href="{{ .Site.Author.website }}">{{ .Site.Author.name }}</a>
             {{ else }}
               {{ .Site.Author.name }}
-            {{ end }}          
+            {{ end }}
           {{ end }}
-          
+
           &nbsp;&bull;&nbsp;
           {{ .Site.LastChange.Format "2006" }}
 
@@ -58,8 +58,13 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="{{ "js/main.js" | absURL }}"></script>
+{{- if .Site.Params.staticman }}
+<script src="{{ "js/staticman.js" | absURL }}"></script>
+{{- end }}
+{{- if (not ( .Site.Params.UseChroma )) }}
 <script src="{{ "js/highlight.min.js" | absURL }}"></script>
 <script> hljs.initHighlightingOnLoad(); </script>
+{{- end -}}
 <script> renderMathInElement(document.body); </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>

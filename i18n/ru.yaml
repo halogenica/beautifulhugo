@@ -1,6 +1,8 @@
 # Content
 - id: dateFormat
   translation: "Январь 2, 2006"
+- id: shortdateFormat
+  translation: "2 Jan, 2006 15:04:05"
 - id: postedOnDate
   translation: "Опубликовано {{ .Count }}"
 - id: translationsLabel
@@ -17,6 +19,11 @@
   translation: "Предыдущий"
 - id: nextPost
   translation: "Следующий"
+- id: readTime
+  translation: "min"
+- id: words
+  translation: "mots"
+
 
 # 404 page
 - id: pageNotFound
@@ -37,4 +44,23 @@
   translation: "Поиск по {{ .Site.Title }}"
 - id: gcseClose
   translation: "Закрыть"
+
+# Staticman
+- id: noComment
+  translation: "No comment"
+- id: oneComment
+  translation: "comment"
+- id: moreComment
+  translation: "comments"
+- id: useMarkdown
+  translation: "You can use Markdown syntax"
+- id: yourName
+  translation: "Your name"
+- id: yourEmail
+  translation: "Your email address"
+- id: yourWebsite
+  translation: "You website"
+
+
+
 

@@ -3,7 +3,7 @@ license = "MIT"
 licenselink = "https://github.com/halogenica/Hugo-BeautifulHugo/blob/master/LICENSE"
 description = "A port of Beautiful Jekyll theme"
 tags = ["blog", "company", "portfolio", "projects", "minimal", "responsive"]
-features = ["blog", "themes", "disqus", "minimal", "responsive"]
+features = ["blog", "themes", "disqus", "minimal", "responsive", "staticman"]
 min_version = 0.17
 
 [author]
@@ -15,4 +15,3 @@ min_version = 0.17
     author =  "dattali"
     homepage = "http://deanattali.com/beautiful-jekyll/"
     repo = "https://github.com/daattali/beautiful-jekyll"
-
