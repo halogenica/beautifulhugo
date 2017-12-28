@@ -22,7 +22,7 @@
 - id: readTime
   translation: "min"
 - id: words
-  translation: "mots"
+  translation: "palabras"
 
 
 # 404 page
@@ -60,6 +60,3 @@
   translation: "Your email address"
 - id: yourWebsite
   translation: "You website"
-
-
-
