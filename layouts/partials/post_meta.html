@@ -5,7 +5,7 @@
   {{ if ne $datestr $lastmodstr }}
     &nbsp;{{ $lastmodstr | i18n "lastModified"  }}
   {{ end }}
-  {{ if .Params.readingTime }}
+  {{ if .Site.Params.readingTime }}
   &nbsp;|&nbsp;
   <i class="fa fa-clock-o"></i>{{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }} ({{ .WordCount }} {{ i18n "words" }})
   {{ end }}
