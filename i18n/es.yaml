@@ -5,6 +5,8 @@
   translation: "2 Jan, 2006 15:04:05"
 - id: postedOnDate
   translation: "Publicado el {{ .Count }}"
+- id: lastModified
+  translation: "(Última modificación en {{ .Count }})"
 - id: translationsLabel
   translation: "Otros idiomas: "
 - id: translationsSeparator
@@ -20,9 +22,9 @@
 - id: nextPost
   translation: "Artículo siguiente"
 - id: readTime
-  translation: "min"
+  translation: "minutos"
 - id: words
-  translation: "mots"
+  translation: "palabras"
 
 
 # 404 page

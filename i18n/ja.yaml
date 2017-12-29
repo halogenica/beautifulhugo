@@ -5,6 +5,8 @@
   translation: "2 Jan, 2006 15:04:05"
 - id: postedOnDate
   translation: "{{ .Count }}に投稿"
+- id: lastModified
+  translation: "(最終更新日時{{ .Count }})"
 - id: translationsLabel
   translation: "翻訳："
 - id: translationsSeparator
@@ -20,9 +22,9 @@
 - id: nextPost
   translation: "次ページ"
 - id: readTime
-  translation: "min"
+  translation: "分間"
 - id: words
-  translation: "mots"
+  translation: "言葉"
 
 
 # 404 page

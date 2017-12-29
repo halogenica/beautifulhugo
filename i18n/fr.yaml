@@ -5,6 +5,8 @@
   translation: "2 Jan, 2006 15:04:05"
 - id: postedOnDate
   translation: "Posté le {{ .Count }}"
+- id: lastModified
+  translation: "(Dernière modification le {{ .Count }})"
 - id: translationsLabel
   translation: "Autres langues: "
 - id: translationsSeparator
@@ -20,7 +22,7 @@
 - id: nextPost
   translation: "Post suivant"
 - id: readTime
-  translation: "min"
+  translation: "minutes"
 - id: words
   translation: "mots"
 

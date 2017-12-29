@@ -5,6 +5,8 @@
   translation: "2 Jan, 2006 15:04:05"
 - id: postedOnDate
   translation: "发表于 {{ .Count }}"
+- id: lastModified
+  translation: "(上次修改时间 {{ .Count }})"
 - id: translationsLabel
   translation: "其它语言: "
 - id: translationsSeparator
@@ -20,9 +22,9 @@
 - id: nextPost
   translation: "后一篇"
 - id: readTime
-  translation: "min"
+  translation: "分钟"
 - id: words
-  translation: "mots"
+  translation: "个字"
 
 
 # 404 page
