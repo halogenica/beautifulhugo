@@ -27,8 +27,8 @@ To enable Chroma, add the following to your site parameters:
 ```
 pygmentsCodeFences = true
 pygmentsUseClasses = true
-[params]
-    useChroma = true
+[Params]
+    UseChroma = true
 ```
 
 Then, you can use a different style by running:
