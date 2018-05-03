@@ -39,8 +39,12 @@
             {{ end }}
           {{ end }}
 
-          &nbsp;&bull;&nbsp;
-          {{ .Site.LastChange.Format "2006" }}
+          &nbsp;&bull;&nbsp;&copy;
+          {{ if .Site.Params.since }}
+            {{ .Site.Params.since }}
+          {{ else }}
+            {{ .Site.LastChange.Format "2006" }}
+          {{ end }}
 
           {{ if .Site.Title }}
             &nbsp;&bull;&nbsp;

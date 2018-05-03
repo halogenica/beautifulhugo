@@ -62,3 +62,7 @@
   translation: "Votre addresse mail"
 - id: yourWebsite
   translation: "Votre site web"
+
+# Toc
+- id: toc
+  translation: "Contenu"
