@@ -5,7 +5,7 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <article role="main" class="blog-post">
           {{ if or .Params.toc (and .Site.Params.toc (ne .Params.toc false)) }}
-          <div class="post-toc" id="post-toc">
+          <div class="post-toc navbar-custom" id="post-toc">
             <h2 class="post-toc-title">{{ i18n "toc" . | safeHTML }}</h2>
             <div class="post-toc-content always-active">
               {{.TableOfContents}}
