@@ -24,7 +24,7 @@
             </div>
           {{ end }}
 
-          {{ if .Site.Params.socialShare }}
+          {{ if or .Params.socialShare (and .Site.Params.socialShare (ne .Params.socialShare false)) }}
               <hr/>
               <section id="social-share">
                 <ul class="list-inline footer-links">
