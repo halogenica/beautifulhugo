@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+      <label for="navbar-toggle-cbox" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
         <span class="sr-only">{{ i18n "toggleNavigation" }}</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
+      </label>
       <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
     </div>
 
@@ -15,7 +15,7 @@
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
             <li class="navlinks-container">
-              <a class="navlinks-parent" href="javascript:void(0)">{{ .Name }}</a>
+              <a class="navlinks-parent">{{ .Name }}</a>
               <div class="navlinks-children">
                 {{ range .Children }}
                   <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
@@ -32,7 +32,7 @@
         {{ if .Site.IsMultiLingual }}
           {{ if ge (len .Site.Languages) 3 }}
             <li class="navlinks-container">
-              <a class="navlinks-parent" href="javascript:void(0)">{{ i18n "languageSwitcherLabel" }}</a>
+              <a class="navlinks-parent">{{ i18n "languageSwitcherLabel" }}</a>
               <div class="navlinks-children">
                 {{ range .Site.Languages }}
                   {{ if not (eq .Lang $.Site.Language.Lang) }}
