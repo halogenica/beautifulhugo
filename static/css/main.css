@@ -780,3 +780,13 @@ input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus, .gs
         display:none
     }
 }
+
+.archive-post {
+    padding: 3px 20px;
+    border-left: 1px solid #cacaca;
+}
+
+.archive-post-time {
+    margin-right: 10px;
+    color: #8a8a8a;
+}
