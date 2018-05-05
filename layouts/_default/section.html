@@ -1,0 +1,62 @@
+{{ define "header" }}
+  <header class="header-section ">
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="page-heading">
+              <h1>{{ if .Data.Singular }}#{{ end }}{{ .Title }}</h1>
+              <hr class="small">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{{ end }}
+{{ define "main" }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{ with .Content }}
+          <div class="well">
+            {{.}}
+          </div>
+        {{ end }}
+        <div class="posts-list">
+          <article class="post-preview">
+          <ul>
+          {{- range $index, $element := .Paginator.Pages -}}
+            {{- $thisYear := $element.Date.Format "2006" }}
+            {{- $thisMonth := $element.Date.Format "01" }}
+            {{ if or (eq $index 0)  }}
+              <div class="collection-title">
+                <h1 class="archive-year">{{ $thisYear }}</h1>
+              </div>
+            {{- end }}
+              <a href="{{ .Permalink }}"><h2>{{ .Title }}</h2></a>
+              <p class="post-meta">
+                {{ partial "post_meta.html" . }}
+              </p>
+          {{ end }}
+          </ul>
+          </article>
+        </div>
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          <ul class="pager main-pager">
+            {{ if .Paginator.HasPrev }}
+              <li class="previous">
+                <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+              </li>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+              <li class="next">
+                <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
