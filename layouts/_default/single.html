@@ -1,58 +1,59 @@
 {{ define "main" }}
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        {{ .Content }}
-
-        {{ if .Params.tags }}
-          <div class="blog-tags">
-            {{ range .Params.tags }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+<article class="post">
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <article role="main" class="blog-post">
+          {{ if or .Params.toc (and .Site.Params.toc (ne .Params.toc false)) }}
+          <div class="post-toc navbar-custom" id="post-toc">
+            <h2 class="post-toc-title">{{ i18n "toc" . | safeHTML }}</h2>
+            <div class="post-toc-content always-active">
+              {{.TableOfContents}}
+            </div>
+          </div>
+          {{- end }}
+          <div class="post-content">
+            {{ .Content }}
+          </div>
+          {{ if or .Params.socialShare (and .Site.Params.socialShare (ne .Params.socialShare false)) }}
+              <hr/>
+              <section id="social-share">
+                <ul class="list-inline footer-links">
+                  {{ partial "share-links" . }}
+                </ul>
+              </section>
+          {{ end }}
+        </article>
+        {{ if ne .Type "page" }}
+          <ul class="pager blog-pager">
+            {{ if .PrevInSection }}
+              <li class="previous">
+                <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
+              </li>
             {{ end }}
-          </div>
+            {{ if .NextInSection }}
+              <li class="next">
+                <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
+              </li>
+            {{ end }}
+          </ul>
         {{ end }}
 
-        {{ if .Site.Params.socialShare }}
-            <hr/>
-            <section id="social-share">
-              <ul class="list-inline footer-links">
-                {{ partial "share-links" . }}
-              </ul>
-            </section>
-        {{ end }}
-      </article>
-
-      {{ if ne .Type "page" }}
-        <ul class="pager blog-pager">
-          {{ if .PrevInSection }}
-            <li class="previous">
-              <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
-            </li>
+        {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
+          {{ if .Site.DisqusShortname }}
+            <div class="disqus-comments">
+              {{ template "_internal/disqus.html" . }}
+            </div>
           {{ end }}
-          {{ if .NextInSection }}
-            <li class="next">
-              <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
-            </li>
+          {{ if .Site.Params.staticman }}
+            <div class="staticman-comments">
+              {{ partial "staticman-comments.html" . }}
+            </div>
           {{ end }}
-        </ul>
-      {{ end }}
-
-
-      {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
-        {{ if .Site.DisqusShortname }}
-          <div class="disqus-comments">
-            {{ template "_internal/disqus.html" . }}
-          </div>
         {{ end }}
-        {{ if .Site.Params.staticman }}
-          <div class="staticman-comments">
-            {{ partial "staticman-comments.html" . }}
-          </div>
-        {{ end }}
-      {{ end }}
 
+      </div>
     </div>
   </div>
-</div>
+</article>
 {{ end }}

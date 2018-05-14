@@ -1,7 +1,7 @@
 /* --- General --- */
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;
   font-size: 18px;
   color: #404040;
   position: relative;
@@ -34,7 +34,7 @@ p a {
   color: #008AFF;
 }
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Athelas,STHeiti,Microsoft Yahei,serif;
   font-weight: 800;
 }
 a {
@@ -718,4 +718,75 @@ table tr td :last-child {
 input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus, .gsc-search-button {
   box-sizing: content-box;
   line-height: normal;
+}
+
+/* --- TableOfContents --- */
+
+
+.post .post-toc {
+    position: absolute;
+    width: 200px;
+    margin-left: 785px;
+    padding: 10px;
+    font-family: Athelas,STHeiti,Microsoft Yahei,serif;
+    border-radius: 5px;
+    background: hsla(45,46%,95%,.6);
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.125);
+    box-shadow: 1px 1px 2px rgba(0,0,0,.125);
+    word-wrap: break-word;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.post .post-toc .post-toc-title {
+    margin: 0 10px;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase
+}
+
+.post .post-toc .post-toc-content {
+    font-size: 15px
+}
+
+.post .post-toc .post-toc-content.always-active ul {
+    display: block
+}
+
+.post .post-toc .post-toc-content>nav>ul {
+    margin: 10px 0
+}
+
+.post .post-toc .post-toc-content ul {
+    padding-left: 20px;
+    list-style: square
+}
+
+.post .post-toc .post-toc-content ul ul {
+    padding-left: 15px;
+    display: none
+}
+
+.post .post-toc .post-toc-content ul .has-active>ul {
+    display: block
+}
+
+.post .post-toc .post-toc-content .toc-link.active {
+    color: #c05b4d
+}
+
+@media screen and (max-width: 1185px) {
+    .post .post-toc {
+        display:none
+    }
+}
+
+.archive-post {
+    padding: 3px 20px;
+    border-left: 1px solid #cacaca;
+}
+
+.archive-post-time {
+    margin-right: 10px;
+    color: #8a8a8a;
 }

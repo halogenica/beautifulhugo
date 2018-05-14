@@ -20,45 +20,30 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         {{ with .Content }}
-          <div class="well">
-            {{.}}
-          </div>
+          <div class="well">{{.}}</div>
         {{ end }}
         <div class="posts-list">
-          {{ range .Paginator.Pages }}
             <article class="post-preview">
-              <a href="{{ .Permalink }}">
-                <h2 class="post-title">{{ .Title }}</h2>
-
-                {{ if .Params.subtitle }}
-                  <h3 class="post-subtitle">
-                    {{ .Params.subtitle }}
-                  </h3>
-                {{ end }}
-              </a>
-
-              <p class="post-meta">
-                {{ partial "post_meta.html" . }}
-              </p>
-              <div class="post-entry">
-                {{ if .Truncated }}
-                  {{ .Summary }}
-                  <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
-                {{ else }}
-                  {{ .Content }}
-                {{ end }}
-              </div>
-
-              {{ if .Params.tags }}
-                <div class="blog-tags">
-                  {{ range .Params.tags }}
-                    <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-                  {{ end }}
+                {{- range $index, $element := $paginator.Pages -}}
+                {{- $thisYear := $element.Date.Format "2006" }}
+                {{- $lastElement := $index | add -1 | index $paginator.Pages }}
+                {{ if or (eq $index 0) ( ne ($lastElement.Date.Format "2006") $thisYear ) }}
+                <div class="collection-title">
+                    <h2 class="archive-year">{{ $thisYear }}</h2>
                 </div>
-              {{ end }}
-
+                {{- end }}
+                <div class="archive-post">
+                    <span class="archive-post-time">
+                        {{ $element.Date.Format "01-02" }}
+                    </span>
+                    <span class="archive-post-title">
+                        <a href="{{ $element.URL }}" class="archive-post-link">
+                            {{ .Title }}
+                        </a>
+                    </span>
+                </div>
+                {{- end -}}
             </article>
-          {{ end }}
         </div>
         {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
           <ul class="pager main-pager">

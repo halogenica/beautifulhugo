@@ -15,3 +15,7 @@ min_version = 0.28
     author =  "dattali"
     homepage = "http://deanattali.com/beautiful-jekyll/"
     repo = "https://github.com/daattali/beautiful-jekyll"
+    
+# set Site.Params.since for overide Site.LastChange
+#[params]
+#  since = "2006"

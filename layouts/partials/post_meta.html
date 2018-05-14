@@ -5,6 +5,20 @@
   {{ if ne $datestr $lastmodstr }}
     &nbsp;{{ $lastmodstr | i18n "lastModified"  }}
   {{ end }}
+  {{ if .Params.categories }}
+    &nbsp;|&nbsp;
+    <i class="fa fa-folder-open"></i>
+    {{ range .Params.categories }}
+      #<a href="{{ $.Site.LanguagePrefix | absURL }}/categories/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+    {{ end }}
+  {{ end }}
+  {{ if .Params.tags }}
+  &nbsp;|&nbsp;
+    <i class="fa fa-tags"></i>
+    {{ range .Params.tags }}
+      #<a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+    {{ end }}
+  {{ end }}
   {{ if .Site.Params.readingTime }}
   &nbsp;|&nbsp;
   <i class="fa fa-clock-o"></i>{{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }} ({{ .WordCount }} {{ i18n "words" }})
@@ -33,4 +47,3 @@
     &nbsp;&bull;&nbsp; {{ i18n "translationsLabel" }}{{ $linksOutput }}
   {{- end }}
 </span>
-
