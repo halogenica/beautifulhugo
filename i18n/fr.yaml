@@ -29,7 +29,7 @@
 
 # 404 page
 - id: pageNotFound
-  translation: "Ourp, cette page n'existe pas. (erreur 404)"
+  translation: "Oups, cette page n'existe pas. (erreur 404)"
 
 # Footer
 - id: poweredBy # Accepts HTML
