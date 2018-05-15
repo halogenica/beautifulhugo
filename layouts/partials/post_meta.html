@@ -21,7 +21,11 @@
   {{ end }}
   {{ if .Site.Params.readingTime }}
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i>{{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }} ({{ .WordCount }} {{ i18n "words" }})
+  <i class="fa fa-clock-o"></i> {{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }}
+  {{ end }}
+  {{ if .Site.Params.WordCount }}
+  &nbsp;|&nbsp;
+  <i class="fa fa-book"></i> {{ .WordCount }} {{ i18n "words" }}
   {{ end }}
   {{- if .Site.Params.staticman -}}
     &nbsp;|&nbsp;  <i class="fa fa-comment-o"></i>

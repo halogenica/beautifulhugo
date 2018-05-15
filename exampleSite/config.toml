@@ -23,6 +23,7 @@ pygmentsCodefencesGuessSyntax = true
   rss = true
   comments = true
   readingTime = true
+  WordCount = true
   useHLJS = true
   socialShare = true
   toc = true
