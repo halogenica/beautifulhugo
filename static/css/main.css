@@ -420,16 +420,13 @@ footer .theme-by {
 
 /* --- Tags --- */
 
-.blog-tags {
+.blog-tags, .blog-autor {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #999;
   font-size: 15px;
   margin-bottom: 30px;
 }
 
-.blog-tags:before {
-  content: "Tags: ";
-}
 
 .blog-tags a {
   color: #008AFF;
@@ -447,13 +444,13 @@ footer .theme-by {
   background-color: #CCC;
 }
 
-.post-preview .blog-tags {
+.post-preview .blog-tags, .post-preview .blog-autor {
   margin-top: 5px;
   margin-bottom: 0;
 }
 
 @media only screen and (min-width: 768px) {
-  .post-preview .blog-tags {
+  .post-preview .blog-tags, .post-preview .blog-autor {
     margin-top: 10px;
   }
 }

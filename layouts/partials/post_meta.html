@@ -12,13 +12,6 @@
       #<a href="{{ $.Site.LanguagePrefix | absURL }}/categories/{{ . | urlize }}/">{{ . }}</a>&nbsp;
     {{ end }}
   {{ end }}
-  {{ if .Params.tags }}
-  &nbsp;|&nbsp;
-    <i class="fa fa-tags"></i>
-    {{ range .Params.tags }}
-      #<a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-    {{ end }}
-  {{ end }}
   {{ if .Site.Params.readingTime }}
   &nbsp;|&nbsp;
   <i class="fa fa-clock-o"></i> {{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }}
