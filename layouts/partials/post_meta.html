@@ -7,21 +7,22 @@
   {{ end }}
   {{ if .Params.categories }}
     &nbsp;|&nbsp;
-    <i class="fa fa-folder-open"></i>
+    <i class="fa fa-folder-open"></i>&nbsp;
     {{ range .Params.categories }}
       <a href="{{ $.Site.LanguagePrefix | absURL }}/categories/{{ . | urlize }}/">{{ . }}</a>&nbsp;
     {{ end }}
   {{ end }}
   {{ if .Site.Params.readingTime }}
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> {{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }}
+    &nbsp;|&nbsp;
+    <i class="fa fa-clock-o"></i>&nbsp;
+    {{ i18n "readingTime"}} {{ .ReadingTime }} {{ i18n "readTime" }}
   {{ end }}
   {{ if .Site.Params.WordCount }}
-  &nbsp;|&nbsp;
-  <i class="fa fa-book"></i> {{ .WordCount }} {{ i18n "words" }}
+    &nbsp;|&nbsp;
+    <i class="fa fa-book"></i> {{ .WordCount }} {{ i18n "words" }}
   {{ end }}
   {{- if .Site.Params.staticman -}}
-    &nbsp;|&nbsp;  <i class="fa fa-comment-o"></i>
+    &nbsp;|&nbsp;<i class="fa fa-comment-o"></i>&nbsp;
     {{ $slug := replace .URL "/" "" }}
     {{ if .Site.Data.comments }}
       {{ $comments := index $.Site.Data.comments $slug }}
