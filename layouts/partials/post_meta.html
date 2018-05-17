@@ -9,7 +9,7 @@
     &nbsp;|&nbsp;
     <i class="fa fa-folder-open"></i>
     {{ range .Params.categories }}
-      #<a href="{{ $.Site.LanguagePrefix | absURL }}/categories/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+      <a href="{{ $.Site.LanguagePrefix | absURL }}/categories/{{ . | urlize }}/">{{ . }}</a>&nbsp;
     {{ end }}
   {{ end }}
   {{ if .Site.Params.readingTime }}

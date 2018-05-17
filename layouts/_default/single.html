@@ -14,16 +14,20 @@
           {{- end }}
           <div class="post-content">
             {{ .Content }}
-            {{ if .Params.tags }}
               <hr/>
               <div class="blog-tags">
+                {{ if .Params.author }}<i class="fa fa-user"></i>
+                  {{ .Params.author | safeHTML }}{{ else }}{{ .Site.Author.name | safeHTML }}
+                {{ end }}
+                {{ if .Params.tags }}
+                <div class="blog-tags">
                 <i class="fa fa-tags"></i>
-                {{ range .Params.tags }}
-                  <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+                  {{ range .Params.tags }}
+                    <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;&nbsp;
+                  {{ end }}
+                  </div>
                 {{ end }}
               </div>
-            {{ end }}
-            <div class="blog-author"><i class="fa fa-user"></i> {{ if .Params.author }}{{ .Params.author | safeHTML }}{{ else }}{{ .Site.Author.name | safeHTML }}{{ end }}</div>
           </div>
           {{ if or .Params.socialShare (and .Site.Params.socialShare (ne .Params.socialShare false)) }}
               <hr/>
