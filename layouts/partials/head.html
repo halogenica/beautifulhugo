@@ -12,7 +12,7 @@
         "articleSection" : "{{ .Section }}",
         "name" : "{{ .Title | safeJS }}",
         "headline" : "{{ .Title | safeJS }}",
-        "description" : "{{ if .Description }}{{ .Description | safeJS }}{{ else }}{{if .IsPage}}{{ .Summary  }}{{ end }}{{ end }}",
+        "description" : "{{ if .Description }}{{ .Description | safeJS }}{{ else }}{{if .IsPage}}{{ .Summary | safeJS  }}{{ end }}{{ end }}",
         "inLanguage" : "fr-FR",
         "author" : "{{ .Params.author }}",
         "creator" : "{{ .Params.author }}",
