@@ -2,6 +2,34 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    {{ if .IsPage }}
+    {{ if eq .Type "post" }}
+    <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "articleSection" : "{{ .Section }}",
+        "name" : "{{ .Title | safeJS }}",
+        "headline" : "{{ .Title | safeJS }}",
+        "description" : "{{ if .Description }}{{ .Description | safeJS }}{{ else }}{{if .IsPage}}{{ .Summary  }}{{ end }}{{ end }}",
+        "inLanguage" : "fr-FR",
+        "author" : "{{ .Params.author }}",
+        "creator" : "{{ .Params.author }}",
+        "accountablePerson" : "{{ .Params.author }}",
+        "copyrightHolder" : "{{ .Params.author }}",
+        "copyrightYear" : "{{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}",
+        "datePublished" : "{{ .Date.Format "2006"}}",
+        "logo": "{{ if isset .Site.Params "favicon" }}{{ .Site.Params.favicon | absURL }}{{ end }}",
+        "url" : "{{ .Permalink }}",
+        "wordCount" : "{{ .WordCount }}",
+        "image" : "{{ if .Params.featured_image }} {{ .Params.featured_image | absURL }}{{ else }}{{ .Site.Params.logo | absURL }}{{ end }}",
+        "keywords" : [ "{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}" ]
+    }
+    </script>
+    {{ end }}
+    {{ end }}
+
 <!-- Site Title, Description, Author, and Favicon -->
 {{- with .Title | default .Site.Title }}
   <title>{{ . }}</title>
@@ -18,7 +46,7 @@
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
 <!-- Social Media Tags -->
-{{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
+{{- with .Params.share_img | default .Params.image | default .Params.featured_image | default .Site.Params.logo }}
   <meta property="og:image" content="{{ . | absURL }}" />
   <meta name="twitter:image" content="{{ . | absURL }}" />
 {{- end }}
