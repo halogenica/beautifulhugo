@@ -9,6 +9,7 @@ min_version = 0.28
 [author]
     name = "halogenica"
     homepage = "http://halogenica.net"
+    website = "https://notes.depad.fr"
 
 # If Porting existing theme
 [original]

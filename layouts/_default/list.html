@@ -3,7 +3,7 @@
     <div class="intro-header no-img">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
             <div class="page-heading">
               <h1>{{ if .Data.Singular }}#{{ end }}{{ .Title }}</h1>
               <hr class="small">
@@ -36,7 +36,6 @@
                   </h3>
                 {{ end }}
               </a>
-
               <p class="post-meta">
                 {{ partial "post_meta.html" . }}
               </p>
@@ -51,9 +50,9 @@
 
               {{ if .Params.tags }}
                 <div class="blog-tags">
-                  {{ range .Params.tags }}
-                    <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-                  {{ end }}
+                   {{ range .Params.tags }}
+                    <a href="{{ $.Site.LanguagePrefix | absURL }}tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+                   {{ end }}
                 </div>
               {{ end }}
 
@@ -64,12 +63,12 @@
           <ul class="pager main-pager">
             {{ if .Paginator.HasPrev }}
               <li class="previous">
-                <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+                <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}">&larr; {{ i18n "newerPosts" }}</a>
               </li>
             {{ end }}
             {{ if .Paginator.HasNext }}
               <li class="next">
-                <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+                <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}">{{ i18n "olderPosts" }} &rarr;</a>
               </li>
             {{ end }}
           </ul>

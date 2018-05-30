@@ -12,7 +12,7 @@
         "articleSection" : "{{ .Section }}",
         "name" : "{{ .Title | safeJS }}",
         "headline" : "{{ .Title | safeJS }}",
-        "description" : "{{ if .Description }}{{ .Description | safeJS }}{{ else }}{{if .IsPage}}{{ .Summary  }}{{ end }}{{ end }}",
+        "description" : "{{ if .Description }}{{ .Description | safeJS }}{{ else }}{{if .IsPage}}{{ .Summary | safeJS  }}{{ end }}{{ end }}",
         "inLanguage" : "fr-FR",
         "author" : "{{ .Params.author }}",
         "creator" : "{{ .Params.author }}",
@@ -32,7 +32,8 @@
 
 <!-- Site Title, Description, Author, and Favicon -->
 {{- with .Title | default .Site.Title }}
-  <title>{{ . }}</title>
+  <title> {{ . }} - {{ $.Site.Params.description }}</title>
+  <meta name="description" content="{{ $.Site.Params.description }}" />
   <meta property="og:title" content="{{ . }}" />
   <meta name="twitter:title" content="{{ . | truncate 70 }}" />
 {{- end }}
@@ -41,7 +42,9 @@
   <meta property="og:description" content="{{ . }}">
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
-  <meta name="author" content="{{ .Site.Author.name }}"/>
+{{- with .Site.Author.name }}
+  <meta name="author" content="{{ . }}"/>
+{{- end }}
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
@@ -65,11 +68,7 @@
   {{ .Hugo.Generator -}}
 <!-- Links and stylesheets -->
   <link rel="canonical" href="{{ .URL | absLangURL }}" />
-  {{- if .RSSLink }}
-  <link rel="alternate" href="{{ .RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
-  {{- else }}
-  <link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
-  {{- end }}
+  <link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

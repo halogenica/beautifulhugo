@@ -21,6 +21,19 @@
     &nbsp;|&nbsp;
     <i class="fa fa-book"></i> {{ .WordCount }} {{ i18n "words" }}
   {{ end }}
+  {{ if .Params.author }}
+    &nbsp;|&nbsp;
+    <i class="fa fa-user"></i>
+    {{ .Params.author | safeHTML }}{{ else }}{{ .Site.Author.name | safeHTML }}
+  {{ end }}
+  {{ if .Params.tags }}
+  <div class="blog-tags">
+      <i class="fa fa-tags"></i>
+      {{ range .Params.tags }}
+          <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;&nbsp;
+      {{ end }}
+  </div>
+  {{ end }}
   {{- if .Site.Params.staticman -}}
     &nbsp;|&nbsp;<i class="fa fa-comment-o"></i>&nbsp;
     {{ $slug := replace .URL "/" "" }}
