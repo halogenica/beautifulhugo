@@ -32,8 +32,7 @@
 
 <!-- Site Title, Description, Author, and Favicon -->
 {{- with .Title | default .Site.Title }}
-  <title> {{ . }} - {{ $.Site.Params.description }}</title>
-  <meta name="description" content="{{ $.Site.Params.description }}" />
+  <title>{{ . }}</title>
   <meta property="og:title" content="{{ . }}" />
   <meta name="twitter:title" content="{{ . | truncate 70 }}" />
 {{- end }}
