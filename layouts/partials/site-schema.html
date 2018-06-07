@@ -58,6 +58,16 @@
   "url" : "{{ .Permalink }}",
   "wordCount" : "{{ .WordCount }}",
   "image" : "{{ if .Params.featured_image }} {{ .Params.featured_image | absURL }}{{ else }}{{ .Site.Params.logo | absURL }}{{ end }}",
-  "keywords" : [ "{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}" ]
+  "keywords" : [ "{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}" ],
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "{{ .Site.BaseURL }}",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "{{ .Site.Params.logo | absURL }}",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
 } </script>
 {{ end }}
