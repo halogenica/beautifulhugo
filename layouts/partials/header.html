@@ -1,4 +1,6 @@
+{{- if .Site.Params.usePhotoswipe }}
 {{- partial "load-photoswipe-theme.html" . }}
+{{- end }}
 
 {{ if .IsHome }}
   {{ if .Site.Params.homeTitle }}{{ $.Scratch.Set "title" .Site.Params.homeTitle }}{{ else }}{{ $.Scratch.Set "title" .Site.Title }}{{ end }}
