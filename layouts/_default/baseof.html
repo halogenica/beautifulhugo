@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ .Lang }}">
-  {{ partial "head.html" . }}
+  <head>
+    {{ partial "head" . }}
+  </head>
   <body>
     {{ partial "nav.html" . }}
     {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
@@ -8,4 +10,3 @@
     {{ partial "footer.html" . }}
   </body>
 </html>
-

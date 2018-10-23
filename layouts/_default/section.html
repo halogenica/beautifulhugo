@@ -1,0 +1,62 @@
+{{ define "header" }}
+  <header class="header-section ">
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="page-heading">
+              <h1>archives</h1>
+              <hr class="small">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{{ end }}
+{{ define "main" }}
+{{- $paginator := .Paginate .Pages.ByDate.Reverse}}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="posts-list">
+            <section id="archive" class="archive">
+                {{- range $index, $element := $paginator.Pages -}}
+                  {{- $thisYear := $element.Date.Format "2006" }}
+                  {{- $lastElement := $index | add -1 | index $paginator.Pages }}
+                  {{ if or (eq $index 0) ( ne ($lastElement.Date.Format "2006") $thisYear ) }}
+                    <div class="collection-title">
+                        <h2 class="archive-year">{{ $thisYear }}</h2>
+                    </div>
+                  {{- end }}
+                  <div class="archive-post">
+                      <span class="archive-post-time">
+                          {{ $element.Date.Format "01-02" }}
+                      </span>
+                      <span class="archive-post-title">
+                          <a href="{{ $element.URL }}" class="archive-post-link">
+                              {{ .Title }}
+                          </a>
+                      </span>
+                  </div>
+                {{- end -}}
+            </section>
+        </div>
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          <ul class="pager main-pager">
+            {{ if .Paginator.HasPrev }}
+              <li class="previous">
+                <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+              </li>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+              <li class="next">
+                <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}

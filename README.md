@@ -1,17 +1,28 @@
 # Beautiful Hugo - A port of Beautiful Jekyll Theme
 
-![Beautiful Hugo Theme Screenshot](https://github.com/halogenica/beautifulhugo/blob/master/images/screenshot.png)
+![Beautiful Hugo Theme Screenshot](images/screenshot.png)
 
 ## Installation
 
     $ mkdir themes
     $ cd themes
     $ git submodule add https://github.com/halogenica/beautifulhugo.git beautifulhugo
-    
+
 
 See [the Hugo documentation](https://gohugo.io/themes/installing/) for more information.
 
-## Extra Features
+## Features
+
+ - SEO structured data
+ - Font Awesome v5
+   - Add docker into footer
+ - Table of contents
+ - Archives page ( from [Even theme](https://themes.gohugo.io/hugo-theme-even/) )
+ - Rewrite page header and footer
+ - Use post logo for top images
+ - Change 404 template
+ - Related post from tags
+ - Added support for mermaid diagrams
 
 ### Responsive
 
@@ -113,15 +124,15 @@ If the source of your site is in a Git repo, the SHA corresponding to the commit
 [Params]
   commit = "https://github.com/<username>/<siterepo>/tree/"
 ```
-  
+
 This can be achieved by running the next command prior to calling Hugo:
 
 ```
   GIT_COMMIT_SHA=`git rev-parse --verify HEAD` GIT_COMMIT_SHA_SHORT=`git rev-parse --short HEAD`
 ```
-  
+
 See at [xor-gate/xor-gate.org](https://github.com/xor-gate/xor-gate.org) an example of how to add it to a continuous integration system.
- 
+
 ### Extra shortcodes
 
 There are two extra shortcodes provided (along with the customized figure shortcode):

@@ -8,8 +8,8 @@
               <li>
                 <a href="{{ printf .url (index $.Site.Author .id) }}" title="{{ .title }}">
                   <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
               </li>
@@ -23,8 +23,8 @@
             <a href="{{ .Site.RSSLink }}" title="RSS">
             {{ end }}
               <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
               </span>
             </a>
           </li>
@@ -38,9 +38,12 @@
               {{ .Site.Author.name }}
             {{ end }}
           {{ end }}
-
-          &nbsp;&bull;&nbsp;
-          {{ .Site.LastChange.Format "2006" }}
+          &nbsp;&bull;&nbsp;&copy;
+          {{ if .Site.Params.since }}
+            {{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}
+          {{ else }}
+            {{ .Site.LastChange.Format "2006" }}
+          {{ end }}
 
           {{ if .Site.Title }}
             &nbsp;&bull;&nbsp;
@@ -56,11 +59,13 @@
     </div>
   </div>
 </footer>
+{{- if or .Params.Katex (and .Site.Params.Katex (ne .Params.Katex false)) -}}
+<script src="{{ "libs/katex/katex.js"| absURL }}"></script>
+<script src="{{ "libs/katex/contrib/auto-render.js"| absURL }}"></script>
+{{- end -}}
+<script src="{{ "js/jquery-3.3.1.min.js"| absURL }}"></script>
+<script src="{{ "libs/bootstrap/js/bootstrap.js"| absURL }}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="{{ "js/main.js" | absURL }}"></script>
 {{- if .Site.Params.staticman }}
 <script src="{{ "js/staticman.js" | absURL }}"></script>
@@ -70,10 +75,14 @@
 <script> hljs.initHighlightingOnLoad(); </script>
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script>
 {{- end -}}
+{{- if or .Params.Katex (and .Site.Params.Katex (ne .Params.Katex false)) -}}
 <script> renderMathInElement(document.body); </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+{{- end -}}
+{{- if or .Params.Photoswipe (and .Site.Params.Photoswipe (ne .Params.Photoswipe false)) -}}
+<script src="{{ "libs/PhotoSwipe/photoswipe.js"| absURL }}"></script>
+<script src="{{ "libs/PhotoSwipe/photoswipe-ui-default.js"| absURL }}"></script>
 <script src="{{ "js/load-photoswipe.js" | absURL }}"></script>
+{{- end -}}
 <!-- Google Custom Search Engine -->
 {{ if .Site.Params.gcse }}
 <script>

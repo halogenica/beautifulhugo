@@ -1,75 +1,55 @@
+{{ if or .Params.socialShare (and .Site.Params.socialShare (ne .Params.socialShare false)) }}
 <!-- Social Share Button HTML -->
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <!-- Twitter -->
+    <li>
+      <a href="//twitter.com/share?url={{ .Permalink }}&amp;text={{ .Title }}&amp;via={{ .Site.Author.twitter }}" target="_blank" title="Share on Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
 
-<!-- Twitter -->
-<li>
-    <a href="//twitter.com/share?url={{ .Permalink }}&amp;text={{ .Title }}&amp;via={{ .Site.Author.twitter }}"
-       target="_blank" alt="" title="Share on Twitter">
-        <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-    </a>
-</li>
+    <!-- Google Plus -->
+    <li>
+      <a href="//plus.google.com/share?url={{ .Permalink }}" target="_blank" title="Share on Google Plus">
+        <i class="fab fa-google-plus"></i>
+      </a>
+    </li>
 
-<!-- Google Plus -->
-<li>
-    <a href="//plus.google.com/share?url={{ .Permalink }}" target="_blank" title="Share on Google Plus">
-         <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
-              </span>
-    </a>
-</li>
+    <!-- Facebook -->
+    <li>
+      <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" title="Share on Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </li>
 
-<!-- Facebook -->
-<li>
-    <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" title="Share on Facebook">
-        <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-              </span>
-    </a>
-</li>
+    <!-- Reddit -->
+    <li>
+      <a href="//reddit.com/submit?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank" title="Share on Reddit">
+        <i class="fab fa-reddit"></i>
+      </a>
+    </li>
 
-<!-- Reddit -->
-<li>
-    <a href="//reddit.com/submit?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank" title="Share on Reddit">
-         <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-reddit fa-stack-1x fa-inverse"></i>
-              </span>
-    </a>
-</li>
+    <!-- LinkedIn -->
+    <li>
+      <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank" title="Share on LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
 
-<!-- LinkedIn -->
-<li>
-    <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank"
-       title="Share on LinkedIn">
-         <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-              </span>
-    </a>
-</li>
+    <!-- StumbleUpon -->
+    <li>
+      <a href="//www.stumbleupon.com/submit?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank" title="Share on StumbleUpon">
+        <i class="fab fa-stumbleupon"></i>
+      </a>
+    </li>
 
-<!-- StumbleUpon -->
-<li>
-    <a href="//www.stumbleupon.com/submit?url={{ .Permalink }}&amp;title={{ .Title }}" target="_blank"
-       title="Share on StumbleUpon">
-        <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-stumbleupon fa-stack-1x fa-inverse"></i>
-              </span>
-    </a>
-</li>
-
-<!-- Pinterest -->
-<li>
-    <a href="//www.pinterest.com/pin/create/button/?url={{ .Permalink }}&amp;description={{ .Title }}" target="_blank"
-       title="Share on Pinterest">
-         <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-              </span>
-    </a>
-</li>
+    <!-- Pinterest -->
+    <li>
+      <a href="//www.pinterest.com/pin/create/button/?url={{ .Permalink }}&amp;description={{ .Title }}" target="_blank" title="Share on Pinterest">
+        <i class="fab fa-pinterest"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+{{ end }}

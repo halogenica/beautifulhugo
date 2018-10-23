@@ -1,0 +1,84 @@
+<!doctype html>
+{{- $reveal_cdn := $.Param "reveal_hugo.reveal_cdn" | default "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0" -}}
+{{- $highlight_cdn := $.Param "reveal_hugo.highlight_cdn" | default "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0" -}}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ or .Page.Title .Site.Title }}</title>
+    {{ with $.Param "description" }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="{{ $reveal_cdn }}/css/reveal.min.css">
+    <!-- Theme used for presentation -->
+    {{- $theme := $.Param "reveal_hugo.theme" | default "black" -}}
+    {{- $custom_theme := $.Param "reveal_hugo.custom_theme" -}}
+    {{- if $custom_theme -}}
+    <link rel="stylesheet" href="{{ $custom_theme | relURL }}" id="theme">
+    {{ else -}}
+    <link rel="stylesheet" href="{{ $reveal_cdn }}/css/theme/{{ $theme }}.css" id="theme">
+    {{- end -}}
+    <!-- Theme used for syntax highlighting of code -->
+    {{- $highlight_theme := $.Param "reveal_hugo.highlight_theme" | default "default" -}}
+    <link rel="stylesheet" href="{{ $highlight_cdn }}/styles/{{ $highlight_theme }}.min.css">
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '{{ $reveal_cdn}}/css/print/pdf.css' : '{{ $reveal_cdn }}/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <!-- To insert markup before the closing head tag, create layouts/partials/reveal-hugo/head.html -->
+    {{- partial "reveal-hugo/head" . -}}
+  </head>
+  <body>
+    {{- block "main" . -}}{{- end -}}
+    <script type="application/json" id="reveal-hugo-site-params">{{ jsonify .Site.Params.reveal_hugo | safeJS }}</script>
+    <script type="application/json" id="reveal-hugo-page-params">{{ jsonify .Page.Params.reveal_hugo | safeJS }}</script>
+    <script type="text/javascript">
+      window.revealHugoDependencies = {
+        dependencies: [
+          { src: '{{ $reveal_cdn }}/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '{{ $reveal_cdn }}/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{{ $reveal_cdn }}/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{{ $reveal_cdn }}/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '{{ $reveal_cdn }}/plugin/zoom-js/zoom.js', async: true },
+          // the notes plugin can't run off the CDN b/c the HTML file isn't there
+          { src: '{{ "reveal-hugo/plugin/notes/notes.js" | relURL }}', async: true }
+      ]};
+    </script>
+    <script src="{{ $reveal_cdn }}/lib/js/head.min.js"></script>
+    <script src="{{ $reveal_cdn }}/js/reveal.js"></script>
+    <script type="text/javascript">
+      // Hugo lowercases all params and Reveal.js needs camelcase
+      // So params in Hugo must be stored in snakecase and we camelize them here
+      function camelize(map) {
+        if (map) {
+          Object.keys(map).forEach(function(k) {
+            newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+            if (newK != k) {
+              map[newK] = map[k];
+              delete map[k];
+            }
+          });
+        }
+        return map;
+      }
+      // pattern inspired by https://github.com/RealOrangeOne/hugo-theme-revealjs
+      var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+      var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+      var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+      // See all options - https://github.com/hakimel/reveal.js#configuration
+      var options = Object.assign({},
+        camelize(revealHugoDefaults),
+        camelize(revealHugoSiteParams),
+        camelize(revealHugoPageParams),
+        revealHugoDependencies);
+      Reveal.initialize(options);
+    </script>
+    <!-- To insert markup before the closing body tag, create layouts/partials/reveal-hugo/body.html -->
+    {{ partial "reveal-hugo/body" . }}
+  </body>
+</html>

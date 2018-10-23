@@ -1,0 +1,5 @@
+{{ if or .Params.toc (and .Site.Params.toc (ne .Params.toc false)) }}
+  <aside class="toc-article">
+    {{ .TableOfContents }}
+  </aside>
+{{- end }}

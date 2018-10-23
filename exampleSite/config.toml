@@ -1,31 +1,52 @@
 baseurl = "https://username.github.io"
 DefaultContentLanguage = "en"
-#DefaultContentLanguage = "ja"
 title = "Beautiful Hugo"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
-pygmentsStyle = "trac"
+pygmentsStyle = "native"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
-#pygmentsUseClassic = true
-#pygmentOptions = "linenos=inline"
-#disqusShortname = "XXX"
-#googleAnalytics = "XXX"
+pygmentsUseClassic = false
+# pygmentsOptions = "linenos=inline"
+# disqusShortname = ""
+eunableRobotsTXT = true
+enableEmoji = true
+canonifyURLs = true
+enableGitInfo = true
+#googleAnalytics = ""
 
-[Params]
+[permalinks]
+  post = "/:year/:month/:slug/"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
   subtitle = "Build a beautiful and simple website in minutes"
   logo = "img/avatar-icon.png"
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
+  comments = false
   commit = false
-  rss = true
-  comments = true
+#  gcse = ""
+#  keywords = ["your", "keywords"]
+  linkToMarkDown = false
+  moreMeta = true
+  postMetaInFooter = true
   readingTime = true
-  useHLJS = true
+  WordCount = false
+  rss = true
+#  since = "2006"
   socialShare = true
-#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+  showRelatedPosts = true
+  toc = false
+  Katex = false
+  Photoswipe = false
+  useHLJS = true
+  fancybox = true
 
 #[[Params.bigimg]]
 #  src = "img/triangle.jpg"
@@ -83,19 +104,19 @@ pygmentsCodefencesGuessSyntax = true
 [[menu.main]]
     parent = "samples"
     name = "Big Image Sample"
-    url = "post/2017-03-07-bigimg-sample"
+    url = "/2017/03/big-image-sample/"
     weight = 1
 
 [[menu.main]]
     parent = "samples"
     name = "Math Sample"
-    url = "post/2017-03-05-math-sample"
+    url = "/2017/03/math-sample/"
     weight = 2
 
 [[menu.main]]
     parent = "samples"
     name = "Code Sample"
-    url = "post/2016-03-08-code-sample"
+    url = "/2016/03/code-sample/"
     weight = 3
 
 [[menu.main]]

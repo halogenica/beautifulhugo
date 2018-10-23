@@ -62,3 +62,7 @@
   translation: "Votre addresse mail"
 - id: yourWebsite
   translation: "Votre site web"
+
+# Related
+- id: related
+  translation : "Sur le meme sujet"

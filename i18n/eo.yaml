@@ -62,3 +62,7 @@
   translation: "Via retpoŝtadreso"
 - id: yourWebsite
   translation: "Via retpaĝaro"
+
+# Related
+- id: related
+  translation : "Related Content"

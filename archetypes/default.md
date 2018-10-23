@@ -1,6 +1,10 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
-subtitle: ""
-tags: []
+Lastmod: {{ .Date }}
+type: post
+draft: true
+toc: false
+categories: ['']
+tags: ['']
 ---

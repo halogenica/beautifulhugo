@@ -2,27 +2,12 @@
 <div class="container" role="main">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      {{ partial "toc" . }}
       <article role="main" class="blog-post">
         {{ .Content }}
-
-        {{ if .Params.tags }}
-          <div class="blog-tags">
-            {{ range .Params.tags }}
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-            {{ end }}
-          </div>
-        {{ end }}
-
-        {{ if $.Param "socialShare" }}
-            <hr/>
-            <section id="social-share">
-              <ul class="list-inline footer-links">
-                {{ partial "share-links" . }}
-              </ul>
-            </section>
-        {{ end }}
+        {{ partial "tags" . }}
+        {{ partial "share-links" . }}
       </article>
-
       {{ if ne .Type "page" }}
         <ul class="pager blog-pager">
           {{ if .PrevInSection }}
@@ -37,8 +22,7 @@
           {{ end }}
         </ul>
       {{ end }}
-
-
+      {{ partial "related" . }}
       {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
         {{ if .Site.DisqusShortname }}
           <div class="disqus-comments">
@@ -51,7 +35,6 @@
           </div>
         {{ end }}
       {{ end }}
-
     </div>
   </div>
 </div>

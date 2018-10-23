@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "{{ .Site.BaseURL }}",
+          "name": "{{ .Site.Title }}"
+        }
+    }{{- if .Params.categories }}{{- range .Params.categories }}
+    ,{
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@id": "{{ "/categories/" | absURL }}{{ . | urlize }}/",
+          "name": "{{ . }}"
+        }
+    }{{- end }}{{- end }},{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "{{ .Permalink }}",
+          "name": "{{ .Title | humanize }}"
+        }
+    }]
+}
+</script>

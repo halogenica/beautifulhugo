@@ -63,5 +63,6 @@
 - id: yourWebsite
   translation: "You website"
 
-
-
+# Related
+- id: related
+  translation : "Related Content"

@@ -1,0 +1,51 @@
+{{- $scratch := .Scratch -}}
+{{- $scratch.Set "slides" slice -}}
+{{- $content := .Get "content" -}}
+{{- if $content -}}
+  {{- $lookup := split $content "." }}
+  {{- $html := index .Page.Site.Data (index $lookup 0) (index $lookup 1) | markdownify -}}
+  {{- $slides := split $html "<hr />" -}}
+  {{- range $slides -}}
+    {{- $scratch.Add "slides" . -}}
+  {{- end -}}
+{{- else -}}
+  {{- $scratch.Add "slides" "" -}}
+{{- end -}}
+{{- $params := . -}}
+{{- $noPrefix := slice "id" "class" -}}
+{{- $noOutput := slice "content" "template" -}}
+{{- $template := $params.Get "template" -}}
+{{- if $template -}}
+  {{- $scratch.Add "templateParams" (slice $.Site.Params.reveal_hugo.templates) -}}
+  {{- if ne $.Page.File.LogicalName "_index.md" -}}
+    {{- $scratch.Add "templateParams" (slice ($.Site.GetPage $.Page.Section).Params.reveal_hugo.templates) -}}
+  {{- end -}}
+  {{- $scratch.Add "templateParams" (slice $.Page.Params.reveal_hugo.templates) -}}
+  {{- range ($scratch.Get "templateParams") -}}
+    {{- if (ne . nil) -}}
+      {{- range $key, $value := (index . $template) -}}
+        {{- $scratch.SetInMap "template" $key $value | safeHTMLAttr -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- range $sindex, $svalue := $scratch.Get "slides" }}
+<section data-noprocess data-shortcode-slide
+{{- if $template -}}
+  {{- range $key, $value := ($scratch.Get "template") }}
+    {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
+    {{ $attrName | safeHTMLAttr }}="{{ $value }}"
+  {{- end }}
+    data-template="{{ $template }}"
+{{- end -}}
+  {{- range $key, $value := $.Params -}}
+    {{- if not (in $noOutput $key) -}}
+      {{- $attrName := cond (in $noPrefix $key) $key (delimit (slice "data" $key) "-") }}
+      {{ $attrName | safeHTMLAttr }}="{{ $value }}"
+    {{- end -}}
+  {{- end -}}>
+  {{ $svalue | safeHTML }}
+{{- if ne $sindex (sub (len ($scratch.Get "slides")) 1) -}}
+</section>
+{{- end -}}
+{{- end -}}

@@ -62,3 +62,7 @@
   translation: "Jouw e-mailadres"
 - id: yourWebsite
   translation: "Jouw website"
+
+# Related
+- id: related
+  translation : "Related Content"

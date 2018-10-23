@@ -3,9 +3,11 @@ title: Photoswipe Gallery Sample
 subtitle: Making a Gallery
 date: 2017-03-20
 tags: ["example", "photoswipe"]
+toc: true
+Photoswipe: true
 ---
 
-Beautiful Hugo adds a few custom shortcodes created by [Li-Wen Yip](https://www.liwen.id.au/heg/) and [Gert-Jan van den Berg](https://github.com/GjjvdBurg/HugoPhotoSwipe) for making galleries with [PhotoSwipe](http://photoswipe.com) . 
+Beautiful Hugo adds a few custom shortcodes created by [Li-Wen Yip](https://www.liwen.id.au/heg/) and [Gert-Jan van den Berg](https://github.com/GjjvdBurg/HugoPhotoSwipe) for making galleries with [PhotoSwipe](http://photoswipe.com) .
 
 {{< gallery caption-effect="fade" >}}
   {{< figure thumb="-thumb" link="/img/hexagon.jpg" >}}
@@ -14,7 +16,7 @@ Beautiful Hugo adds a few custom shortcodes created by [Li-Wen Yip](https://www.
 {{< /gallery >}}
 
 <!--more-->
-## Example
+# Example
 The above gallery was created using the following shortcodes:
 ```
 {{</* gallery caption-effect="fade" */>}}
@@ -24,7 +26,7 @@ The above gallery was created using the following shortcodes:
 {{</* /gallery */>}}
 ```
 
-## Usage
+# Usage
 For full details please see the [hugo-easy-gallery GitHub](https://github.com/liwenyip/hugo-easy-gallery/) page. Basic usages from above are:
 
 - Create a gallery with open and close tags `{{</* gallery */>}}` and `{{</* /gallery */>}}`

@@ -15,7 +15,7 @@
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
             <li class="navlinks-container">
-              <a class="navlinks-parent" href="javascript:void(0)">{{ .Name }}</a>
+              <a class="navlinks-parent">{{ .Name }}</a>
               <div class="navlinks-children">
                 {{ range .Children }}
                   <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
@@ -32,7 +32,7 @@
         {{ if .Site.IsMultiLingual }}
           {{ if ge (len .Site.Languages) 3 }}
             <li class="navlinks-container">
-              <a class="navlinks-parent" href="javascript:void(0)">{{ i18n "languageSwitcherLabel" }}</a>
+              <a class="navlinks-parent">{{ i18n "languageSwitcherLabel" }}</a>
               <div class="navlinks-children">
                 {{ range .Site.Languages }}
                   {{ if not (eq .Lang $.Site.Language.Lang) }}
@@ -62,11 +62,15 @@
       </ul>
     </div>
 
-    {{ if isset .Site.Params "logo" }}
-      <div class="avatar-container">
-        <div class="avatar-img-border">
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        {{ if or (isset .Site.Params "logo") (.Params.featured_image)  }}
           <a title="{{ .Site.Title }}" href="{{ "" | absLangURL }}">
+            {{ if .Params.featured_image }}
+            <img class="avatar-img"{{ with .Params.featured_image }} src="{{ . }}"{{ end }} alt="{{ .Title }}">
+            {{ else }}
             <img class="avatar-img" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
+            {{ end }}
           </a>
         </div>
       </div>
