@@ -47,6 +47,7 @@ enableGitInfo = true
   Photoswipe = false
   useHLJS = true
   fancybox = true
+  delayDisqus = true
 
 #[[Params.bigimg]]
 #  src = "img/triangle.jpg"

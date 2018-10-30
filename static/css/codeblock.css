@@ -46,7 +46,7 @@ td.gutter {
   border-radius: 4px;
 }
 
-.highlight td:first-child pre {
+.highlight td:first-child pre, .highlight pre {
   border-top-left-radius: 4px;
   border-top-right-radius: unset;
   border-bottom-left-radius: 4px;
@@ -54,10 +54,10 @@ td.gutter {
   overflow: hidden;
 }
 
-.highlight td:last-child pre {
+.highlight td:last-child pre, .highlight pre {
   border-radius: unset;
 }
 
-.highlight td:last-child pre code {
+.highlight td:last-child pre code, .highlight pre code {
   white-space: pre;
 }

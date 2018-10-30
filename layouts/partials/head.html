@@ -2,8 +2,13 @@
   {{- range $key, $value := .Data.Terms.ByCount }}
     {{- $.Scratch.Add "most_used" (slice $value.Name) }}
   {{- end }}
-  {{- $description := printf "A full overview of all pages with %s, ordered by %s, such as: %s" .Data.Plural .Data.Singular ( delimit ( $.Scratch.Get "most_used" ) ", " ", and " ) | truncate 180 }}
-  {{- $.Scratch.Set "Description" $description }}
+  {{- if not ($.Scratch.Get "most_used") }}
+    {{- $description := printf "A full overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular | truncate 180 }}
+    {{- $.Scratch.Set "Description" $description }}
+  {{- else }}
+    {{- $description := printf "A full overview of all pages with %s, ordered by %s, such as: %s" .Data.Plural .Data.Singular ( delimit ( $.Scratch.Get "most_used" ) ", " ", and " ) | truncate 180 }}
+    {{- $.Scratch.Set "Description" $description }}
+  {{- end }}
 
   {{- $title := printf "Overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular }}
   {{- $.Scratch.Set "Title" $title }}

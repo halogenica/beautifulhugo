@@ -66,3 +66,13 @@
 # Related
 - id: related
   translation : "Related Content"
+
+# Delayed Disqus
+- id: show
+  translation: "Laat"
+- id: comments
+  translation: "reacties zien" 
+
+# Related posts
+- id: seeAlso
+  translation: "Zie ook"

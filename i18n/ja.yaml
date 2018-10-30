@@ -66,3 +66,13 @@
 # Related
 - id: related
   translation : "Related Content"
+
+# Delayed Disqus
+- id: show
+  translation: "ショー"
+- id: comments
+  translation: "コメント" 
+
+# Related posts
+- id: seeAlso
+  translation: "も参照してください"

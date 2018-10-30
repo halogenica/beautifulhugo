@@ -49,20 +49,30 @@
 
 # Staticman
 - id: noComment
-  translation: "No comment"
+  translation: "Sin comentarios"
 - id: oneComment
-  translation: "comment"
+  translation: "comentario"
 - id: moreComment
-  translation: "comments"
+  translation: "comentarios"
 - id: useMarkdown
-  translation: "You can use Markdown syntax"
+  translation: "Puedes usar la sintaxis de Markdown"
 - id: yourName
-  translation: "Your name"
+  translation: "Tu nombre"
 - id: yourEmail
-  translation: "Your email address"
+  translation: "Tu correo electrónico"
 - id: yourWebsite
-  translation: "You website"
+  translation: "Tu sitio web"
 
 # Related
 - id: related
   translation : "Related Content"
+
+# Delayed Disqus
+- id: show
+  translation: "Mostrar"
+- id: comments
+  translation: "comentarios" 
+  
+# Related posts
+- id: seeAlso
+  translation: "Ver también"

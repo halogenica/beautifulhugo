@@ -66,3 +66,13 @@
 # Related
 - id: related
   translation : "Related Content"
+
+# Delayed Disqus
+- id: show
+  translation: "Montru"
+- id: comments
+  translation: "komentoj" 
+
+# Related posts
+- id: seeAlso
+  translation: "Vidu ankaŭ"

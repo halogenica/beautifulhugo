@@ -121,4 +121,28 @@
 <!-- End Piwik Code -->
 {{ end }}
 
+{{ if (.Site.Params.delayDisqus) (and .Site.DisqusShortname) }}
+<!-- Delayed Disqus -->
+<script type="text/javascript">
+$(function(){
+  $('#show-comments').on('click', function(){
+    var disqus_shortname = '{{ .Site.DisqusShortname }}';
+      
+    (function() {
+      var disqus = document.createElement('script'); 
+      disqus.type = 'text/javascript'; 
+      disqus.async = true;
+      disqus.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
+    })();
+      
+    $(this).hide(); 
+    });
+  });
+      
+</script>
+<script id="dsq-count-scr" src="//{{ .Site.DisqusShortname }}.disqus.com/count.js" async></script>
+<!-- End Delayed Disqus -->
+{{ end }}
+
 {{- partial "footer_custom.html" . }}
