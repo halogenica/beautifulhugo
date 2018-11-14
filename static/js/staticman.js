@@ -37,4 +37,9 @@
 
     $('body').addClass('show-modal');
   }
+
+  $('.comment-reply-btn :first-child').click(function (){
+    $('input[name="fields[replyThread]"]').value = this.id;
+    $('input[name="fields[replyTarget]"]').value = this.value;
+  });
 })(jQuery);
