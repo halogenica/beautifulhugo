@@ -39,8 +39,10 @@
   }
 
   $('.comment-reply-btn :first-child').click(function (){
-    $('input[name="fields[replyThread]"]').val(this.id);
-    $('input[name="fields[replyTarget]"]').val(this.value);
+    $('input[name="fields[replyThread]"]').val(this.value);
+    $('input[name="fields[replyID]"]').val(this.id);
+    authorTag = $(this).parents('.static-comment').children('h4.comment-author');
+    $('input[name="fields[replyName]"]').val(authorTag.text());
     $('html, body').scrollTop($(this).parents('.static-comment').offset().top - $('nav').height());
   });
 })(jQuery);
