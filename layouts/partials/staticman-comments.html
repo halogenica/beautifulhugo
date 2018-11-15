@@ -44,7 +44,7 @@
               {{ else }}
               <h4 class="comment-author">{{ .name }}</h4>
               {{ end }}
-              <p class="comment-reply-target">In reply to {{ .replyName }}</p>
+              <p class="comment-reply-target">In reply to <a href="#{{ .replyID }}">{{ .replyName }}</a></p>
               <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
               <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
               <div class="comment-reply-btn">
@@ -102,6 +102,9 @@
   <fieldset>
     <button class="button">
       Submit
+    </button>
+    <button type="reset" value="Reset">
+      Reset
     </button>
   </fieldset>
 </form>
