@@ -38,12 +38,11 @@
     $('body').addClass('show-modal');
   }
 
-  $('.comment-reply-btn button').click(function (){
-    $('input[name="fields[replyThread]"]').val(this.value);
+  $('.comment-reply-btn a').click(function (){
+    $('input[name="fields[replyThread]"]').val(this.title);
     $('input[name="fields[replyID]"]').val(this.id);
     authorTag = $(this).parents('.static-comment').children('h4.comment-author');
     $('input[name="fields[replyName]"]').val(authorTag.text());
-    $('html, body').scrollTop($('.js-form').offset().top - $('nav').height());
     $('.js-form fieldset button.button').text('Submit reply');
   });
 
@@ -52,5 +51,12 @@
     $('input[name="fields[replyID]"]').val("");
     $('input[name="fields[replyName]"]').val("");
     $('.js-form fieldset button.button').text('Submit');
+  });
+
+
+  $('.comment-reply-target a[href^="#"]').click(function (){
+    targetPostID = $(this).attr('href');
+    targetID = "#" + $(targetPostID).parents('.static-comment').attr('id');
+    $('html, body').animate({ scrollTop: $(targetID).offset().top-$('nav').height() }, 500);
   });
 })(jQuery);

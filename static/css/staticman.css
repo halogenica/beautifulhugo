@@ -4,12 +4,16 @@
 
 .staticman-comments .comment-content{
   border-top: 1px solid #EEEEEE;
-  padding: 4px 0px 30px 0px;
+  padding: 4px 0px 4px 0px;
 }
 
 .staticman-comments .comment-content p {
   padding: 5px 0px 5px 0px;
   margin: 5px 58px 0px 58px;
+}
+
+.staticman-comments .js-form {
+  padding-top: 30px;
 }
 
 .staticman-comments .textfield {
@@ -39,10 +43,19 @@
 }
 
 .staticman-comments .comment-avatar {
-  float:left;
+  float: left;
   width: 48;
   height: 48;
   margin-right: 10px;
+}
+
+.staticman-comments .static-comment-reply {
+  margin-left: 2em;
+}
+
+.staticman-comments .comment-reply-btn {
+  margin-top: 10px;
+  float: right;
 }
 
 .staticman-comments .show-modal {
