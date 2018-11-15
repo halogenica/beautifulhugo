@@ -39,7 +39,8 @@
   }
 
   $('.comment-reply-btn :first-child').click(function (){
-    $('input[name="fields[replyThread]"]').value = this.id;
-    $('input[name="fields[replyTarget]"]').value = this.value;
+    $('input[name="fields[replyThread]"]').val(this.id);
+    $('input[name="fields[replyTarget]"]').val(this.value);
+    $('html, body').scrollTop($(this).parents('.static-comment').offset().top - $('nav').height());
   });
 })(jQuery);
