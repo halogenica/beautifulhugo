@@ -30,7 +30,7 @@
           <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
           <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
           <div class="comment-reply-btn">
-            <a id="{{ ._id }}" class="btn btn-primary" href="#comment-form" title="{{ ._id }}">Reply to {{ .name }}</a>
+            <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ ._id }}">Reply to {{ .name }}</a>
           </div>
         </article>
 
@@ -44,11 +44,11 @@
               {{ else }}
               <h4 class="comment-author">{{ .name }}</h4>
               {{ end }}
-              <p class="comment-reply-target"><a href="#{{ .replyID }}"><i class="fas fa-reply"></i> {{ .replyName }}</a></p>
+              <h5 class="comment-reply-target"><a href="#{{ .replyID }}"><i class="fas fa-reply"></i> {{ .replyName }}</a></h5>
               <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
               <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
               <div class="comment-reply-btn">
-                <a id="{{ ._id }}" class="btn btn-primary" href="#comment-form" title="{{ $.Scratch.Get "threadID" }}">Reply to {{ .name }}</a>
+                <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ $.Scratch.Get "threadID" }}">Reply to {{ .name }}</a>
               </div>
             </article>
           {{ end }}

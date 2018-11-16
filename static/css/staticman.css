@@ -49,13 +49,17 @@
   margin-right: 10px;
 }
 
+.staticman-comments .comment-timestamp {
+  margin-left: 58px;
+}
+
+
 .staticman-comments .static-comment-reply {
   margin-left: 2em;
 }
 
-.staticman-comments .comment-reply-btn {
-  margin-top: 10px;
-  float: right;
+.staticman-comments .comment-reply-btn a {
+  margin: 0px 0px 14px 46px;
 }
 
 .staticman-comments .show-modal {
