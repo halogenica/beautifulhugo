@@ -2,12 +2,12 @@
   padding: 20px 0px 0px 0px;
 }
 
-.staticman-comments .comment-content{
+.staticman-comments .comment-content {
   border-top: 1px solid #EEEEEE;
   padding: 4px 0px 4px 0px;
 }
 
-.staticman-comments .comment-content p {
+.staticman-comments .comment-content > * {
   padding: 5px 0px 5px 0px;
   margin: 5px 58px 0px 58px;
 }
