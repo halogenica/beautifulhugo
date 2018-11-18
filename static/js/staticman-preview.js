@@ -10,7 +10,6 @@ $( document ).ready(function() {
     oldVal = currentVal;
     //action to be performed on textarea changed
     renderMD($(this), $("#comment-preview"));
-    myKaTeXOptions.throwOnError = false; // d
     renderMathInElement(comment-preview);
   });
 
