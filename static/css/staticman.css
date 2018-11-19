@@ -12,10 +12,6 @@
   margin: 5px 58px 0px 58px;
 }
 
-.staticman-comments .js-form {
-  padding-top: 30px;
-}
-
 .staticman-comments .textfield {
     width: 420px;
     max-width: 100%;
@@ -40,6 +36,10 @@
     vertical-align: top;
     height: 10em;
     width: 100%;
+}
+
+.staticman-comments .comment-preview {
+    margin-top: 20px;
 }
 
 .staticman-comments .comment-avatar {
