@@ -62,6 +62,8 @@
   translation: "Jouw e-mailadres"
 - id: yourWebsite
   translation: "Jouw website"
+- id: replyToMsg
+  translation: "Commentaar toevoegen aan deze commentaar"
 
 # Delayed Disqus
 - id: show

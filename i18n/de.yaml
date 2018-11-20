@@ -62,6 +62,8 @@
   translation: "Ihre Emailadresse"
 - id: yourWebsite
   translation: "Ihre Website"
+- id: replyToMsg
+  translation: "Auf diesen Kommentar antworten"
 
 # Delayed Disqus
 - id: show

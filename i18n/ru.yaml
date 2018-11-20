@@ -62,6 +62,8 @@
   translation: "Ваш адрес электронной почты"
 - id: yourWebsite
   translation: "Ваш сайт"
+- id: replyToMsg
+  translation: "Оветить на этот комментарий"
 
 # Delayed Disqus
 - id: show

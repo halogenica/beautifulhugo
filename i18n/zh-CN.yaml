@@ -62,6 +62,8 @@
   translation: "您的电子邮件地址"
 - id: yourWebsite
   translation: "你的网页"
+- id: replyToMsg
+  translation: "回覆该讯息"
 
 # Delayed Disqus
 - id: show

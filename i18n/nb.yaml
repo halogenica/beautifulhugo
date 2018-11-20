@@ -62,6 +62,8 @@
   translation: "Din e-postadresse"
 - id: yourWebsite
   translation: "Din webside"
+- id: replyToMsg
+  translation: "Svar på denne kommentaren"
 
 # Delayed Disqus
 - id: show

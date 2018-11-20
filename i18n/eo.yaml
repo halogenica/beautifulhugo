@@ -62,6 +62,8 @@
   translation: "Via retpoŝtadreso"
 - id: yourWebsite
   translation: "Via retpaĝaro"
+- id: replyToMsg
+  translation: "Aldoni komenton al ĉi tiu komento"
 
 # Delayed Disqus
 - id: show

@@ -30,7 +30,7 @@
           <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
           <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
           <div class="comment-reply-btn">
-            <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ ._id }}">Reply to {{ .name }}</a>
+            <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ ._id }}">{{ i18n "replyToMsg" }}</a>
           </div>
         </article>
 
@@ -48,7 +48,7 @@
               <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
               <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
               <div class="comment-reply-btn">
-                <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ $.Scratch.Get "threadID" }}">Reply to {{ .name }}</a>
+                <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ $.Scratch.Get "threadID" }}">{{ i18n "replyToMsg" }}</a>
               </div>
             </article>
           {{ end }}
