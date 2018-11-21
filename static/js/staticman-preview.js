@@ -9,7 +9,6 @@ $( document ).ready(function() {
     ],
     throwOnError: false
   };
-  renderMathInElement(document.body, myKaTeXOptions);
 
   // Showdown extension has to preceed object definition
   showdown.extension('unquote', function() {
