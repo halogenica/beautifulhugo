@@ -49,11 +49,11 @@
 
 # Staticman
 - id: noComment
-  translation: "没有意见"
+  translation: "没有评论"
 - id: oneComment
-  translation: "评论"
+  translation: "则评论"
 - id: moreComment
-  translation: "评论"
+  translation: "则评论"
 - id: useMarkdown
   translation: "您可以使用Markdown语法"
 - id: yourName
@@ -69,7 +69,7 @@
 - id: show
   translation: "显示"
 - id: comments
-  translation: "条评论" 
+  translation: "则评论"
 
 # Related posts
 - id: seeAlso

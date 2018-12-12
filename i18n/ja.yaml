@@ -49,19 +49,19 @@
 
 # Staticman
 - id: noComment
-  translation: "No comment"
+  translation: "0 件のコメント"
 - id: oneComment
-  translation: "comment"
+  translation: "件のコメント"
 - id: moreComment
-  translation: "comments"
+  translation: "件のコメント"
 - id: useMarkdown
-  translation: "You can use Markdown syntax"
+  translation: "Markdown を使用できます"
 - id: yourName
-  translation: "Your name"
+  translation: "名前"
 - id: yourEmail
-  translation: "Your email address"
+  translation: "メールアドレス"
 - id: yourWebsite
-  translation: "You website"
+  translation: "ウェブサイト"
 - id: replyToMsg
   translation: "コメントを返信"
 
