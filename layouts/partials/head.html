@@ -19,7 +19,7 @@
   {{- $title := printf "Overview of all pages with the %s #%s" .Data.Singular $.Title }}
   {{- $.Scratch.Set "Title" $title }}
 {{- else }}
-  {{- $.Scratch.Set "Description" ( .Description | default .Params.subtitle | default .Summary ) }}
+{{- $.Scratch.Set "Description" ( .Description | default .Params.subtitle | default .Summary | default .Site.Params.Description ) }}
   {{- $.Scratch.Set "Title" ( .Title | default .Site.Title ) }}
 {{- end }}
 
@@ -45,7 +45,7 @@
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
 <!-- Social Media Tags -->
-{{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
+{{- with .Params.featured_image | default .Params.share_img | default .Params.image| default .Site.Params.logo }}
   <meta property="og:image" content="{{ . | absURL }}" />
   <meta name="twitter:image" content="{{ . | absURL }}" />
 {{- end }}
