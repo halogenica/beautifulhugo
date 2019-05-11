@@ -67,8 +67,8 @@
 - id: show
   translation: "Mostrar"
 - id: comments
-  translation: "comentarios" 
-  
+  translation: "comentarios"
+
 # Related posts
 - id: seeAlso
   translation: "Ver también"

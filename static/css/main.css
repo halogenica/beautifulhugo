@@ -16,10 +16,10 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
-.container[role=main] {
+  .container[role=main] {
     margin-left: 0;
     margin-right: 0;
-}
+  }
 }
 
 p {
@@ -27,7 +27,7 @@ p {
   margin: 6px 0;
 }
 p + p {
-    margin: 24px 0 6px 0;
+  margin: 24px 0 6px 0;
 }
 p a {
   /* text-decoration: underline */
@@ -84,10 +84,10 @@ div.panel-body a.list-group-item {
   border: none;
 }
 div.panel-group .panel {
-    border-radius: 0;
+  border-radius: 0;
 }
 div.panel-group .panel+.panel {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 div.panel-body a.list-group-item.view-all {
@@ -756,7 +756,7 @@ div.splitbox div.right {
     padding: 15px 25px;
   }
 }
-.disqus-comments button:hover, 
+.disqus-comments button:hover,
 .disqus-comments button:focus {
   color: #FFF;
   background: #0085a1;

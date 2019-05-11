@@ -67,7 +67,7 @@
 - id: show
   translation: "ショー"
 - id: comments
-  translation: "コメント" 
+  translation: "コメント"
 
 # Related posts
 - id: seeAlso
