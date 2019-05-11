@@ -67,7 +67,7 @@
 - id: show
   translation: "Mostra"
 - id: comments
-  translation: "commenti" 
+  translation: "commenti"
 
 # Related posts
 - id: seeAlso

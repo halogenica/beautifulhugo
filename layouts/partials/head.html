@@ -40,7 +40,7 @@
 {{- with .Site.Author.name }}
   <meta name="author" content="{{ . }}"/>
 {{- end }}
-{{- partial "seo/main.html" . }}  
+{{- partial "seo/main.html" . }}
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
@@ -94,7 +94,7 @@
   <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
   {{- end -}}
   <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
-  
+
   {{- if .Site.Params.staticman.recaptcha -}}
   <script src='https://www.google.com/recaptcha/api.js'></script>
   {{- end -}}
