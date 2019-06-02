@@ -29,13 +29,9 @@
 <!-- Site Title, Description, Author, and Favicon -->
 {{- with ($.Scratch.Get "Title") }}
   <title>{{ . }} - {{ $.Site.Title }}</title>
-  <meta property="og:title" content="{{ . }}" />
-  <meta name="twitter:title" content="{{ . | truncate 70 }}" />
 {{- end }}
 {{- with ($.Scratch.Get "Description") }}
   <meta name="description" content="{{ . }}">
-  <meta property="og:description" content="{{ . }}">
-  <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
 {{- with .Site.Author.name }}
   <meta name="author" content="{{ . }}"/>
@@ -44,22 +40,6 @@
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
-<!-- Social Media Tags -->
-{{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
-  <meta property="og:image" content="{{ . | absURL }}" />
-  <meta name="twitter:image" content="{{ . | absURL }}" />
-{{- end }}
-  <meta name="twitter:card" content="summary" />
-{{- with .Site.Author.twitter }}
-  <meta name="twitter:site" content="@{{ . }}" />
-  <meta name="twitter:creator" content="@{{ . }}" />
-{{- end }}
-{{- with .Site.Params.fb_app_id }}
-  <meta property="fb:app_id" content="{{ . }}" />
-{{- end }}
-  <meta property="og:url" content="{{ .Permalink | absLangURL }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="{{ .Site.Title }}" />
 <!-- Hugo Version number -->
   {{ hugo.Generator -}}
 <!-- Links and stylesheets -->
