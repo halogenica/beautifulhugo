@@ -6,7 +6,8 @@
 - id: postedOnDate
   translation: "Posted on {{ .Count }}"
 - id: lastModified
-  translation: "(Last modified on {{ .Count }})"
+  #translation: "(Last modified on {{ .Count }})"
+  translation: ""
 - id: translationsLabel
   translation: "Other languages: "
 - id: translationsSeparator
@@ -67,7 +68,7 @@
 - id: show
   translation: "Show"
 - id: comments
-  translation: "comments" 
+  translation: "comments"
 
 # Related posts
 - id: seeAlso
