@@ -135,3 +135,9 @@ id = "500px"
 url = "https://500px.com/%s"
 title = "500px"
 icon = "fab fa-500px"
+
+[[social_icons]]
+id = "keybase"
+url = "https://keybase.io/%s"
+title = "Keybase"
+icon = "fab fa-keybase"
