@@ -66,6 +66,7 @@ pygmentsCodefencesGuessSyntax = true
   vk = "username"
   paypal = "username"
   telegram = "username"
+  keybase = "username"
   500px = "username"
 
 [[menu.main]]
