@@ -4,6 +4,8 @@ subtitle: Academic Production from FalaBrasil Group
 comments: false
 ---
 
+<!-- http://bib-it.sourceforge.net/help/fieldsAndEntryTypes.php#article -->
+
 [publication]
     type         = "1" # conference
     author       = ["Cassio Batista", "Ana Larissa Dias", "Nelson Neto"]
