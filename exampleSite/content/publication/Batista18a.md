@@ -23,7 +23,17 @@ date: "2018-01-01"
 ---
 
 ## Abstract
-unavailable :(
+In order to transmit data efficiently over an optical network, many routing and
+wavelength assignment (RWA) algorithms have been proposed. This work presents a
+genetic algorithm that aims at solving the RWA problem, which consists of
+choosing the most suitable lightpath (i.e., a combination of a route and a
+wavelength channel) between a source-destination pair of nodes in all-optical
+networks. A comparison to some already known approaches in terms of blocking
+probability per load over four network topologies was made. Simulation results
+show a good performance, since the average blocking probability achieved by the
+proposed genetic algorithm was relatively equivalent to the values yielded by
+the standard approaches over two network topologies; and way lower on the other
+two networks.
 
 ## BibTeX Citation
 ```bibtex
