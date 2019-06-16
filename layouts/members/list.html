@@ -1,6 +1,9 @@
 {{ define "main" }}
 
-<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"> <!-- put by @cassiobatista -->
+<!-- FIXME: this is breaking the footer layout -->
+<!-- put by @cassiobatista -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"> 
+
 <div class="container" role="main">
   <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> 
     <article class="post-preview">
@@ -18,6 +21,8 @@
             <div id="collapse{{ .File.TranslationBaseName }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ .File.TranslationBaseName }}">
               <div class="panel-body">
                 <div class="list-group">
+                  <h2>{{ .Params.full_name }}</h2>
+                  {{ partial "member-card.html" (dict "avatar" .Params.src_img "content" .Content) }}
                   {{ range $key, $value := .Params }}
                     {{ range where $.Site.Data.beautifulhugo.social.social_icons "id" $key }} 
                       <a href="{{ printf .url $value }}" target="_blank" title="{{ .title }}">
@@ -34,6 +39,5 @@
     </article>
   </div>
 </div>
-
 
 {{ end }}
