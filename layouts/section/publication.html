@@ -19,10 +19,8 @@
                 <div class="panel-heading" role="tab" id="header{{ .File.TranslationBaseName }}">
                   <!--<h4 class="panel-title">-->
                   <p>
-                      {{ range .Params.authors }} {{ . }}, {{ end }}
-                      <b>{{ .Params.title }}</b>
-                      {{ .Params.tailnote }}
                     <span class="badge">{{ .Params.year }}</span>
+                    {{ .Params.endnote | safeHTML }}
                   </p>
                 </div>
             </a>
