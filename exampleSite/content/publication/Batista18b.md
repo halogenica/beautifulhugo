@@ -4,7 +4,7 @@ authors:
 - Ana Larissa Dias
 - Nelson Sampaio Neto
 title:     "Baseline acoustic models for brazilian portuguese using kaldi tools"
-endnote:   "Cassio Batista, Ana Larissa Dias, and Nelson Sampaio Neto. '<b>Baseline acoustic models for brazilian portuguese using kaldi tools</b>'. In Proc. IberSPEECH 2018, 77–81. 2018."
+endnote:   "Cassio Batista, Ana Larissa Dias, and Nelson Sampaio Neto. <b>Baseline acoustic models for brazilian portuguese using kaldi tools</b>. In <i>Proc. IberSPEECH 2018</i>, 77–81. 2018. "
 pub_type:  "inproceedings"
 year:      "2018"
 booktitle: "Proc. IberSPEECH 2018"
@@ -26,5 +26,4 @@ Kaldi has become a very popular toolkit for automatic speech recognition, showin
     url       = {http://dx.doi.org/10.21437/IberSPEECH.2018-17},
     year      = {2018}
 }
-
 {{< /highlight >}}

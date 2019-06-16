@@ -5,7 +5,7 @@ authors:
 - Thiago Coelho
 - Josivaldo Araújo
 title:     "Static-traffic routing and wavelength assignment in transparent wdm networks using genetic algorithm"
-endnote:   "Cassio Batista, Diego Teixeira, Thiago Coelho, and Josivaldo Araújo. '<b>Static-traffic routing and wavelength assignment in transparent wdm networks using genetic algorithm</b>'. In Proceedings of the 10th Latin America Networking Conference, LANC '18, 56–63. New York, NY, USA, 2018. ACM."
+endnote:   "Cassio Batista, Diego Teixeira, Thiago Coelho, and Josivaldo Araújo. <b>Static-traffic routing and wavelength assignment in transparent wdm networks using genetic algorithm</b>. In <i>Proceedings of the 10th Latin America Networking Conference</i>, LANC '18, 56–63. New York, NY, USA, 2018. ACM. "
 pub_type:  "inproceedings"
 booktitle: "Proceedings of the 10th Latin America Networking Conference"
 year:      "2018"
@@ -35,5 +35,4 @@ In order to transmit data efficiently over an optical network, many routing and 
     url       = {http://doi.acm.org/10.1145/3277103.3277126},
     year      = {2018}
 }
-
 {{< /highlight >}}
