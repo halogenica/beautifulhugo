@@ -1,8 +1,8 @@
 ---
 short_name:     "Beautiful Hugo"
-full_name:      "The Most Beautiful in the Hugo World"
+full_name:      "The Most Beautiful in the World"
 role:           "Hugo Theme"
-src_img:        "/img/avatar.png"
+src_img:        "/img/member.png"
 google_scholar: "usercode"
 research_gate:  "username"
 orcid:          "usercode"
@@ -32,4 +32,4 @@ reddit:         "username"
 #paypal:         "username"
 ---
 
-My awesome description into 100 words.
+My beautiful description into 100 words.
