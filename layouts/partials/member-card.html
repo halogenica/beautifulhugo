@@ -36,7 +36,7 @@
     <img src="{{ .avatar }}" style="width:128px">
   </div>
   <div class="column right" >
-    <font size="2">{{ .content }}</font>
+    <font size="2">{{ .content | truncate 700 }}</font>
   </div>
 </div>
 
