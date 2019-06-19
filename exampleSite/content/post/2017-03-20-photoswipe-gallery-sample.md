@@ -2,6 +2,8 @@
 title: Photoswipe Gallery Sample
 subtitle: Making a Gallery
 date: 2017-03-20
+author: Cassio Batista
+author_link: https://cassota.gitlab.io/
 tags: ["example", "photoswipe"]
 ---
 
