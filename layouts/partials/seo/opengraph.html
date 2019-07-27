@@ -10,6 +10,6 @@
 {{- with .Site.Params.fb_app_id }}
 <meta property="fb:app_id" content="{{ . }}" />
 {{- end }}
-<meta property="og:url" content="{{ .URL | absLangURL }}" />
+<meta property="og:url" content="{{ .Permalink | absLangURL }}" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="{{ .Site.Title }}" />

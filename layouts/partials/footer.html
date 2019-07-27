@@ -17,11 +17,7 @@
           {{ end }}
           {{ if .Site.Params.rss }}
           <li>
-            {{ if .RSSLink }}
-            <a href="{{ .RSSLink }}" title="RSS">
-            {{ else }}
-            <a href="{{ .Site.RSSLink }}" title="RSS">
-            {{ end }}
+            <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -61,6 +57,12 @@
   </div>
 </footer>
 
+{{- if .Site.Params.selfHosted -}}
+<script src="{{ "js/katex.min.js" | absURL }}"></script>
+<script src="{{ "js/auto-render.min.js" | absURL }}"></script>
+<script src="{{ "js/jquery.min.js" | absURL }}"></script>
+<script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
+{{- else -}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -77,9 +79,16 @@
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script>
 {{- end -}}
 <script> renderMathInElement(document.body); </script>
+
+{{- if .Site.Params.selfHosted -}}
+<script src="{{ "js/photoswipe.min.js" | absURL }}"></script>
+<script src="{{ "js/photoswipe-ui-default.min.js" | absURL }}"></script>
+{{- else -}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+{{- end -}}
 <script src="{{ "js/load-photoswipe.js" | absURL }}"></script>
+
 <!-- Google Custom Search Engine -->
 {{ if .Site.Params.gcse }}
 <script>
@@ -124,19 +133,19 @@
 $(function(){
   $('#show-comments').on('click', function(){
     var disqus_shortname = '{{ .Site.DisqusShortname }}';
-      
+
     (function() {
-      var disqus = document.createElement('script'); 
-      disqus.type = 'text/javascript'; 
+      var disqus = document.createElement('script');
+      disqus.type = 'text/javascript';
       disqus.async = true;
       disqus.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
     })();
-      
-    $(this).hide(); 
+
+    $(this).hide();
     });
   });
-      
+
 </script>
 <script id="dsq-count-scr" src="//{{ .Site.DisqusShortname }}.disqus.com/count.js" async></script>
 <!-- End Delayed Disqus -->

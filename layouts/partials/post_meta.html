@@ -18,7 +18,7 @@
   {{ end }}
   {{- if .Site.Params.staticman -}}
     &nbsp;|&nbsp;<i class="fas fa-comment"></i>&nbsp;
-    {{ $slug := replace .URL "/" "" }}
+    {{ $slug := replace .RelPermalink "/" "" }}
     {{ if .Site.Data.comments }}
       {{ $comments := index $.Site.Data.comments $slug }}
       {{ if $comments }}

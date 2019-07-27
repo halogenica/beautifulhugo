@@ -57,22 +57,37 @@
 {{- with .Site.Params.fb_app_id }}
   <meta property="fb:app_id" content="{{ . }}" />
 {{- end }}
-  <meta property="og:url" content="{{ .URL | absLangURL }}" />
+  <meta property="og:url" content="{{ .Permalink | absLangURL }}" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
 <!-- Hugo Version number -->
-  {{ .Hugo.Generator -}}
+  {{ hugo.Generator -}}
 <!-- Links and stylesheets -->
   <link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
+
+  {{- if .Site.Params.selfHosted -}}
+  <link rel="stylesheet" href="{{ "css/katex.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/all.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
+  {{- else -}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  {{- end -}}
+
   <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
+
   {{- if .Site.Params.staticman -}}
   <link rel="stylesheet" href="{{ "css/staticman.css" | absURL }}" />
   {{- end -}}
+
+  {{- if .Site.Params.selfHosted -}}
+  <link rel="stylesheet" href="{{ "css/fonts.css" | absURL }}" />
+  {{- else -}}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  {{- end -}}
+
   {{- if .Site.Params.useHLJS }}
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
   {{- else -}}
@@ -84,8 +99,13 @@
   <script src='https://www.google.com/recaptcha/api.js'></script>
   {{- end -}}
 
+  {{- if .Site.Params.selfHosted -}}
+  <link rel="stylesheet" href="{{ "css/photoswipe.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/photoswipe.default-skin.min.css" | absURL }}" />
+  {{- else -}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+  {{- end -}}
 
 {{- partial "head_custom.html" . }}
 {{ template "_internal/google_analytics_async.html" . }}
