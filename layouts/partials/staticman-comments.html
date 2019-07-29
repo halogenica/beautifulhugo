@@ -5,10 +5,10 @@
   {{ if .Site.Data.comments }}
     {{ $comments := index $.Site.Data.comments $slug }}
     {{ if $comments }}
-      {{ if gt (len $comments) 1  }}
-        <h3>{{ len $comments  }} {{ i18n "moreComment" }}</h3>
+      {{ if gt (len $comments) 1 }}
+        <h3>{{ len $comments }} {{ i18n "moreComment" }}</h3>
       {{ else }}
-        <h3>{{ len $comments  }} {{ i18n "oneComment" }}</h3>
+        <h3>{{ len $comments }} {{ i18n "oneComment" }}</h3>
       {{ end }}
     {{ else }}
       <h3>{{ i18n "noComment" }}</h3>
