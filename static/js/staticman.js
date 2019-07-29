@@ -52,11 +52,4 @@
     $('input[name="fields[replyName]"]').val("");
     $('.js-form fieldset button.button').text('Submit');
   });
-
-
-  $('.comment-reply-target a[href^="#"]').click(function (){
-    targetPostID = $(this).attr('href');
-    targetID = "#" + $(targetPostID).parents('.static-comment').attr('id');
-    $('html, body').animate({ scrollTop: $(targetID).offset().top-$('nav').height() }, 500);
-  });
 })(jQuery);
