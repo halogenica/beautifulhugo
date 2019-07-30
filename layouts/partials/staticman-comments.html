@@ -51,7 +51,7 @@
                 {{- end }}
                 {{- $replyTargetIndex := (index ($.Scratch.Get "replyIndices") .replyID) -}}
                 {{- $replyLinkEnd := cond (eq $replyTargetIndex 0) "" (print "r" $replyTargetIndex) -}}
-                <a href='#comment-{{ $.Scratch.Get "hasComments" }}{{ $replyLinkEnd }}' class='comment-reply-target' title='{{ .replyID }}'><i class="fas fa-share"></i> {{ .replyName }}</a>
+                <a href='#comment-{{ $.Scratch.Get "hasComments" }}{{ $replyLinkEnd }}' class='comment-reply-target' title='{{ .replyID }}'> <i class="fas fa-share"></i> {{ .replyName }}</a>
                 <span class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></span>
               </h4>
               <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
@@ -69,6 +69,14 @@
 
 
 <form id="comment-form" class="js-form form" method="post" action="{{ .Site.Params.staticman.api }}">
+
+  <!-- Start comment form display reply target -->
+  <p class='reply-notice hidden'>
+    <strong class='reply-arrow'><i class="fas fa-share"></i></strong>
+    <strong class='reply-name'></strong>
+  </p>
+  <!-- End comment form display reply target -->
+
   <input type="hidden" name="options[slug]" value="{{ replace .RelPermalink "/" "" }}">
   <input type="hidden" name="options[parent]" value="">
   <input type="hidden" name="fields[replyThread]" value="">
