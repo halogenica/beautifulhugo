@@ -82,7 +82,7 @@ $( document ).ready(function() {
     // use clone to avoid removal of avatar in comments by resetReplyTarget()
     $('.js-form .reply-arrow').after(avatarTag.clone());
     // add button for removing reply target (static method would give error msg)
-    closeBtn = $("<a class='close-btn'>×</a>");
+    closeBtn = $("<a class='close-btn btn'>×</a>");
     $('.js-form .reply-notice').append(closeBtn);
   });
 

@@ -88,6 +88,7 @@
   <input type="hidden" name="options[reCaptcha][secret]"  value="{{ .secret }}">
   {{- end }}
 
+  <p class="small">{{ i18n "commentFormInfo" }} *.</p>
   <fieldset>
   <div class="textfield">
     <textarea name="fields[comment]" type="text" placeholder="{{ i18n "useMarkdown" }}*"></textarea>
