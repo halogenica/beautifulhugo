@@ -71,10 +71,10 @@
 <form id="comment-form" class="js-form form" method="post" action="{{ .Site.Params.staticman.api }}">
 
   <!-- Start comment form display reply target -->
-  <p class='reply-notice hidden'>
+  <h4 class='reply-notice hidden'>
     <strong class='reply-arrow'><i class="fas fa-share"></i></strong>
     <strong class='reply-name'></strong>
-  </p>
+  </h4>
   <!-- End comment form display reply target -->
 
   <input type="hidden" name="options[slug]" value="{{ replace .RelPermalink "/" "" }}">
@@ -88,7 +88,7 @@
   <input type="hidden" name="options[reCaptcha][secret]"  value="{{ .secret }}">
   {{- end }}
 
-  <p class="small">{{ i18n "commentFormInfo" }} *.</p>
+  <p>{{ i18n "commentFormInfo" }} *.</p>
   <fieldset>
   <div class="textfield">
     <textarea name="fields[comment]" type="text" placeholder="{{ i18n "useMarkdown" }}*"></textarea>
