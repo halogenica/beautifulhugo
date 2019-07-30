@@ -23,15 +23,17 @@
         {{ $.Scratch.SetInMap "replyIndices" ._id 0 }}
         <article id="comment-{{ $.Scratch.Get "hasComments" }}" class="static-comment">
           <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=48">
-          {{ if .website }}
-          <h4 class="comment-author"><a rel="external nofollow" href="{{ .website }}">{{ .name }}</a></h4>
-          {{ else }}
-          <h4 class="comment-author">{{ .name }}</h4>
-          {{ end }}
-          <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
+          <h4>
+            {{ if .website -}}
+            <span class='comment-author'><a rel='external nofollow' href='{{ .website }}'>{{ .name }}</a></span>
+            {{ else -}}
+            <span class='comment-author'>{{ .name }}</span>
+            {{- end }}
+            <span class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></span>
+          </h4>
           <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
           <div class="comment-reply-btn">
-            <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ ._id }}">{{ i18n "replyToMsg" }}</a>
+            <a id="{{ ._id }}" class="btn reply-btn" href="#comment-form" title="{{ ._id }}">{{ i18n "replyToMsg" }}</a>
           </div>
         </article>
 
@@ -41,18 +43,20 @@
             {{ $.Scratch.SetInMap "replyIndices" ._id ($.Scratch.Get "hasReplies") }}
             <article id="comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" class="static-comment static-comment-reply">
               <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=48">
-              {{ if .website }}
-              <h4 class="comment-author"><a rel="external nofollow" href="{{ .website }}">{{ .name }}</a></h4>
-              {{ else }}
-              <h4 class="comment-author">{{ .name }}</h4>
-              {{ end }}
-              {{- $replyTargetIndex := (index ($.Scratch.Get "replyIndices") .replyID) -}}
-              {{- $replyLinkEnd := cond (eq $replyTargetIndex 0) "" (print "r" $replyTargetIndex) -}}
-              <h5 class="comment-reply-target"><a href="#comment-{{ $.Scratch.Get "hasComments" }}{{ $replyLinkEnd }}" title="{{ .replyID }}"><i class="fas fa-reply"></i> {{ .replyName }}</a></h5>
-              <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
+              <h4>
+                {{ if .website -}}
+                <span class='comment-author'><a rel='external nofollow' href='{{ .website }}'>{{ .name }}</a></span>
+                {{ else -}}
+                <span class='comment-author'>{{ .name }}</span>
+                {{- end }}
+                {{- $replyTargetIndex := (index ($.Scratch.Get "replyIndices") .replyID) -}}
+                {{- $replyLinkEnd := cond (eq $replyTargetIndex 0) "" (print "r" $replyTargetIndex) -}}
+                <a href='#comment-{{ $.Scratch.Get "hasComments" }}{{ $replyLinkEnd }}' class='comment-reply-target' title='{{ .replyID }}'><i class="fas fa-share"></i> {{ .replyName }}</a>
+                <span class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></span>
+              </h4>
               <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
               <div class="comment-reply-btn">
-                <a id="{{ ._id }}" class="btn" href="#comment-form" title="{{ $.Scratch.Get "threadID" }}">{{ i18n "replyToMsg" }}</a>
+                <a id="{{ ._id }}" class="btn reply-btn" href="#comment-form" title="{{ $.Scratch.Get "threadID" }}">{{ i18n "replyToMsg" }}</a>
               </div>
             </article>
           {{ end }}
@@ -71,26 +75,26 @@
   <input type="hidden" name="fields[replyID]" value="">
   <input type="hidden" name="fields[replyName]" value="">
 
-  {{ if .Site.Params.staticman.recaptcha }}
-  <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ .Site.Params.staticman.recaptcha.sitekey }}">
-  <input type="hidden" name="options[reCaptcha][secret]"  value="{{ .Site.Params.staticman.recaptcha.secret }}">
-  {{ end }}
+  {{- with .Site.Params.staticman.recaptcha }}
+  <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ .sitekey }}">
+  <input type="hidden" name="options[reCaptcha][secret]"  value="{{ .secret }}">
+  {{- end }}
 
   <fieldset>
   <div class="textfield">
-    <textarea name="fields[comment]" type="text" placeholder="{{ i18n "useMarkdown" }}"></textarea>
+    <textarea name="fields[comment]" type="text" placeholder="{{ i18n "useMarkdown" }}*"></textarea>
   </div>
   </fieldset>
 
   <fieldset>
     <div class="textfield">
-      <input name="fields[name]" type="text" placeholder="{{ i18n "yourName" }}"/>
+      <input name="fields[name]" type="text" placeholder="{{ i18n "yourName" }}*"/>
     </div>
   </fieldset>
 
   <fieldset>
     <div class="textfield">
-      <input type="email" name="fields[email]"  placeholder="{{ i18n "yourEmail" }}"/>
+      <input type="email" name="fields[email]"  placeholder="{{ i18n "yourEmail" }}*"/>
     </div>
   </fieldset>
 
@@ -100,31 +104,25 @@
     </div>
   </fieldset>
 
-  {{ if .Site.Params.staticman.recaptcha }}
+  {{ with .Site.Params.staticman.recaptcha -}}
   <fieldset>
-    <div class="g-recaptcha" data-sitekey="{{ .Site.Params.staticman.recaptcha.sitekey }}"></div>
+    <div class="g-recaptcha" data-sitekey="{{ .sitekey }}"></div>
   </fieldset>
-  {{ end }}
+  {{- end }}
+
+  <!-- Start comment form alert messaging -->
+  <p class='js-notice'>
+    <strong class='js-notice-text submit-success hidden'>{{ i18n "successMsg" }}</strong>
+    <strong class='js-notice-text submit-failed hidden'>{{ i18n "errorMsg" }}</strong>
+  </p>
+  <!-- End comment form alert messaging -->
 
   <fieldset>
-    <button type="submit" class="button">
-      Submit
-    </button>
-    <button type="reset" value="Reset">
-      Reset
-    </button>
+    <button type="submit" class="btn">{{ i18n "btnSubmit" }}</button>
+    <button type="submit" class="btn hidden" disabled>{{ i18n "btnSubmitted" }}</button>
+    <button type="reset" class="btn" value="Reset">{{ i18n "btnReset" }}</button>
   </fieldset>
 </form>
 <!-- hyphen causes error in KaTeX's renderMathInElement -->
 <div id="commentPreview" class="comment-preview"></div>
 </section>
-
-<article class="modal">
-  <div class="title">
-    <h2 class="js-modal-title"></h2>
-  </div>
-  <div class="js-modal-text"></div>
-  <div>
-    <button class="js-close-modal">Close</button>
-  </div>
-</article>

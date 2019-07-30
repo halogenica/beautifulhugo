@@ -73,8 +73,10 @@
 
 <script src="{{ "js/main.js" | absURL }}"></script>
 {{- if .Site.Params.staticman }}
-<script src="{{ "js/staticman.js" | absURL }}"></script>
-<script src="{{ "js/staticman-preview.js" | absURL }}"></script>
+{{ $smjs := resources.Get "js/staticman.js" | resources.ExecuteAsTemplate "js/staticman.js" .Site.Params.staticman }}
+<script src="{{ $smjs.RelPermalink }}"></script>
+{{ $smpvjs := resources.Get "js/staticman-preview.js" }}
+<script src="{{ $smpvjs.RelPermalink }}"></script>
 {{- end }}
 {{- if  .Site.Params.useHLJS }}
 <script src="{{ "js/highlight.min.js" | absURL }}"></script>
