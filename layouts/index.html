@@ -37,7 +37,7 @@
               {{ if .Params.tags }}
                 <div class="blog-tags">
                   {{ range .Params.tags }}
-                    <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+                    <a href="{{ printf "tags/%s" (urlize .) | relLangURL }}">{{ . }}</a>&nbsp;
                   {{ end }}
                 </div>
               {{ end }}
@@ -49,12 +49,12 @@
           <ul class="pager main-pager">
             {{ if .Paginator.HasPrev }}
               <li class="previous">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+                <a href="{{ printf "page/%d" .Paginator.Prev.PageNumber | relLangURL }}">&larr; {{ i18n "newerPosts" }}</a>
               </li>
             {{ end }}
             {{ if .Paginator.HasNext }}
               <li class="next">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+                <a href="{{ printf "page/%d" .Paginator.Next.PageNumber | relLangURL }}">{{ i18n "olderPosts" }} &rarr;</a>
               </li>
             {{ end }}
           </ul>
