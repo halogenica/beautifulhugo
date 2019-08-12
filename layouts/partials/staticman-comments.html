@@ -31,7 +31,7 @@
             {{- end }}
             <span class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></span>
           </h4>
-          <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
+          <div class="comment-content">{{ .comment | markdownify }}</div>
           <div class="comment-reply-btn">
             <a id="{{ ._id }}" class="btn reply-btn" href="#comment-form" title="{{ ._id }}">{{ i18n "replyToMsg" }}</a>
           </div>
