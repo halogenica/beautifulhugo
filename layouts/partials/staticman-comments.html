@@ -22,7 +22,7 @@
         {{ $.Scratch.Set "threadID" ._id }}
         {{ $.Scratch.SetInMap "replyIndices" ._id 0 }}
         <article id="comment-{{ $.Scratch.Get "hasComments" }}" class="static-comment">
-          <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=48">
+          <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=48" alt="{{ .name }}'s gravatar">
           <h4>
             {{ if .website -}}
             <span class='comment-author'><a rel='external nofollow' href='{{ .website }}'>{{ .name }}</a></span>
@@ -42,7 +42,7 @@
             {{ $.Scratch.Add "hasReplies" 1 }}
             {{ $.Scratch.SetInMap "replyIndices" ._id ($.Scratch.Get "hasReplies") }}
             <article id="comment-{{ $.Scratch.Get "hasComments" }}r{{ $.Scratch.Get "hasReplies" }}" class="static-comment static-comment-reply">
-              <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=48">
+              <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=48" alt="{{ .name }}'s gravatar">
               <h4>
                 {{ if .website -}}
                 <span class='comment-author'><a rel='external nofollow' href='{{ .website }}'>{{ .name }}</a></span>
