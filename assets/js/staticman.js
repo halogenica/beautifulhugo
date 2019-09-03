@@ -70,7 +70,7 @@ $( document ).ready(function() {
     resetReplyTarget();
     var cmt = $(evt.delegateTarget);
     $('.js-form input[name="fields[replyThread]"]').val(this.title);
-    $('.js-form input[name="fields[replyID]"]').val(cmt.attr("id"));
+    $('.js-form input[name="fields[replyID]"]').val(this.id);
     authorTag = cmt.find('.comment-author');
     replyName = authorTag.text();
     $('.js-form input[name="fields[replyName]"]').val(replyName);
