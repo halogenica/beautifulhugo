@@ -54,6 +54,8 @@
   translation: "kommentar"
 - id: moreComment
   translation: "kommentarer"
+- id: commentFormInfo
+  translation: "Din e-postadresse vil ikke bli publisert. Obligatoriske felt er merket med"
 - id: useMarkdown
   translation: "Du kan bruke Markdown syntax"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "Din e-postadresse"
 - id: yourWebsite
   translation: "Din webside"
+- id: replyToMsg
+  translation: "Svar på denne kommentaren"
+- id: btnSubmit
+  translation: "Sende kommentar"
+- id: btnSubmitted
+  translation: "Sendt"
+- id: btnReset
+  translation: "Tilbakestill"
+- id: successMsg
+  translation: "Takk for kommentaren din!  Det vil vises på nettstedet når det er godkjent."
+- id: errorMsg
+  translation: "Beklager, det var en feil med innleveringen din.  Sørg for at alle nødvendige felt er fullført, og prøv igjen."
 
 # Delayed Disqus
 - id: show

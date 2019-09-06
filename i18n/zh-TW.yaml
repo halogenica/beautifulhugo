@@ -54,6 +54,8 @@
   translation: "則評論"
 - id: moreComment
   translation: "則評論"
+- id: commentFormInfo
+  translation: "您的電子信箱不會被公開. 必填部份已標記"
 - id: useMarkdown
   translation: "您可以使用Markdown語法"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "您的電子信箱"
 - id: yourWebsite
   translation: "您的網頁"
+- id: replyToMsg
+  translation: "回覆該訊息"
+- id: btnSubmit
+  translation: "送出留言"
+- id: btnSubmitted
+  translation: "已送出"
+- id: btnReset
+  translation: "重設"
+- id: successMsg
+  translation: "感謝您的留言！ 審核後將會顯示在站上。"
+- id: errorMsg
+  translation: "抱歉，部份資料輸入有問題。請確認資料填寫正確後再試一次。"
 
 # Delayed Disqus
 - id: show

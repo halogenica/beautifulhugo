@@ -1,0 +1,98 @@
+.staticman-comments {
+  padding: 20px 0px 0px 0px;
+}
+
+.staticman-comments .static-comment {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.staticman-comments .comment-content {
+  border-top: 1px solid #EEEEEE;
+  padding: 4px 0px 4px 0px;
+}
+
+.staticman-comments .comment-content > * {
+  padding: 5px 0px 5px 0px;
+  margin: 5px 58px 0px 58px;
+}
+
+.staticman-comments .textfield {
+  width: 420px;
+  max-width: 100%;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+.staticman-comments input {
+  border: 1px solid rgba(0,0,0,0.12);
+  padding: 4px 5px;
+  width: 100%;
+}
+
+
+.staticman-comments .g-recaptcha {
+  padding: 0.5rem 0;
+}
+
+.staticman-comments textarea {
+  border: 1px solid rgba(0,0,0,0.12);
+  padding: 4px 5px;
+  vertical-align: top;
+  height: 10em;
+  width: 100%;
+}
+
+.staticman-comments .comment-preview {
+    margin-top: 20px;
+}
+
+.staticman-comments .comment-avatar {
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+.staticman-comments .comment-timestamp {
+  float: right;
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+
+.staticman-comments .static-comment-reply {
+  margin-left: 2em;
+}
+
+.staticman-comments .btn {
+  background-color: #eee8d5;
+  color: #002B36;
+}
+
+.staticman-comments .comment-reply-btn a {
+  margin: 5px 0px 15px 58px;
+}
+
+.staticman-comments .reply-notice img.comment-avatar {
+  display: inline-block;
+  float: none;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 .6rem;
+}
+
+.staticman-comments a.close-btn {
+  margin: 0 .6rem;
+  padding: 3px 3px;
+}
+
+.staticman-comments a.close-btn:hover {
+  text-decoration: none;
+}
+
+.staticman-comments .js-form.form--loading {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

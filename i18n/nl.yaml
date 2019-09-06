@@ -54,6 +54,8 @@
   translation: "reactie"
 - id: moreComment
   translation: "reacties"
+- id: commentFormInfo
+  translation: "Uw e-mailadres wordt niet gepubliceerd. Verplichte velden zijn gemarkeerd"
 - id: useMarkdown
   translation: "Je kunt Markdown-syntax gebruiken"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "Jouw e-mailadres"
 - id: yourWebsite
   translation: "Jouw website"
+- id: replyToMsg
+  translation: "Commentaar toevoegen aan deze commentaar"
+- id: btnSubmit
+  translation: "Commentaar toevoegen"
+- id: btnSubmitted
+  translation: "Toegevoegd"
+- id: btnReset
+  translation: "Reset"
+- id: successMsg
+  translation: "Bedankt voor uw reactie! Het zal op de site worden weergegeven zodra het is goedgekeurd."
+- id: errorMsg
+  translation: "Sorry, er is een fout opgetreden bij uw inzending. Zorg ervoor dat alle vereiste velden zijn voltooid en probeer het opnieuw."
 
 # Delayed Disqus
 - id: show

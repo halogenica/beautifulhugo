@@ -62,22 +62,27 @@
 <script src="{{ "js/auto-render.min.js" | absURL }}"></script>
 <script src="{{ "js/jquery.min.js" | absURL }}"></script>
 <script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
+<script src="{{ "js/showdown.min.js" | absURL }}"></script>
 {{- else -}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 {{- end }}
 
 <script src="{{ "js/main.js" | absURL }}"></script>
 {{- if .Site.Params.staticman }}
-<script src="{{ "js/staticman.js" | absURL }}"></script>
+{{ $smjs := resources.Get "js/staticman.js" | resources.ExecuteAsTemplate "js/staticman.js" .Site.Params.staticman }}
+<script src="{{ $smjs.RelPermalink }}"></script>
+{{ $smpvjs := resources.Get "js/staticman-preview.js" }}
+<script src="{{ $smpvjs.RelPermalink }}"></script>
 {{- end }}
 {{- if  .Site.Params.useHLJS }}
 <script src="{{ "js/highlight.min.js" | absURL }}"></script>
 <script> hljs.initHighlightingOnLoad(); </script>
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script>
-{{- end -}}
+{{- end  }}
 <script> renderMathInElement(document.body); </script>
 
 {{- if .Site.Params.selfHosted -}}
@@ -133,19 +138,19 @@
 $(function(){
   $('#show-comments').on('click', function(){
     var disqus_shortname = '{{ .Site.DisqusShortname }}';
-      
+
     (function() {
-      var disqus = document.createElement('script'); 
-      disqus.type = 'text/javascript'; 
+      var disqus = document.createElement('script');
+      disqus.type = 'text/javascript';
       disqus.async = true;
       disqus.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
     })();
-      
-    $(this).hide(); 
+
+    $(this).hide();
     });
   });
-      
+
 </script>
 <script id="dsq-count-scr" src="//{{ .Site.DisqusShortname }}.disqus.com/count.js" async></script>
 <!-- End Delayed Disqus -->

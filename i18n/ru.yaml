@@ -54,6 +54,8 @@
   translation: "комментарий"
 - id: moreComment
   translation: "комментарии"
+- id: commentFormInfo
+  translation: "Ваш адрес электронной почты не будет опубликован. Обязательные поля помечены"
 - id: useMarkdown
   translation: "Вы можете использовать синтаксис Markdown"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "Ваш адрес электронной почты"
 - id: yourWebsite
   translation: "Ваш сайт"
+- id: replyToMsg
+  translation: "Оветить на этот комментарий"
+- id: btnSubmit
+  translation: "Оставить комментарий"
+- id: btnSubmitted
+  translation: "Отправлено"
+- id: btnReset
+  translation: "Сброс"
+- id: successMsg
+  translation: "Спасибо за Ваш комментарий! Он будет опубликован на сайте после проверки."
+- id: errorMsg
+  translation: "К сожалению, произошла ошибка с отправкой комментария. Пожалуйста, убедитесь, что все обязательные поля заполнены и попытайтесь снова."
 
 # Delayed Disqus
 - id: show

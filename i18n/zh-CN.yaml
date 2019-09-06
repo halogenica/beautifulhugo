@@ -54,6 +54,8 @@
   translation: "则评论"
 - id: moreComment
   translation: "则评论"
+- id: commentFormInfo
+  translation: "您的电子邮箱地址并不会被展示. 必填部份已标记"
 - id: useMarkdown
   translation: "您可以使用Markdown语法"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "您的电子邮件地址"
 - id: yourWebsite
   translation: "你的网页"
+- id: replyToMsg
+  translation: "回覆该讯息"
+- id: btnSubmit
+  translation: "提交评论"
+- id: btnSubmitted
+  translation: "已提交"
+- id: btnReset
+  translation: "重置"
+- id: successMsg
+  translation: "感谢您的评论！被批准后它会立即在此站点展示。"
+- id: errorMsg
+  translation: "很抱歉，您的提交存在错误。请确保所有必填字段都已填写正确，然后再试一次。"
 
 # Delayed Disqus
 - id: show

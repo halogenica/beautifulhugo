@@ -54,6 +54,8 @@
   translation: "komento"
 - id: moreComment
   translation: "komentoj"
+- id: commentFormInfo
+  translation: "Via retpoŝta adreso ne estos publikigita. Bezonata kampoj markitaj"
 - id: useMarkdown
   translation: "Vi povus uzi Markdown-sintakson"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "Via retpoŝtadreso"
 - id: yourWebsite
   translation: "Via retpaĝaro"
+- id: replyToMsg
+  translation: "Aldoni komenton al ĉi tiu komento"
+- id: btnSubmit
+  translation: "Sendi komenton"
+- id: btnSubmitted
+  translation: "Sendita"
+- id: btnReset
+  translation: "Rekomencigi"
+- id: successMsg
+  translation: "Dankon pro via komento! Ĝi montros en la retejo kiam gî estos aprobita."
+- id: errorMsg
+  translation: "Pardonu, estis eraro kun via sendado.  Bonvolu certigi vin ke ĉiuj bezonataj kampoj estas kompletigita kaj provu denove."
 
 # Delayed Disqus
 - id: show

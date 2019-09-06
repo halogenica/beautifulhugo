@@ -54,6 +54,8 @@
   translation: "件のコメント"
 - id: moreComment
   translation: "件のコメント"
+- id: commentFormInfo
+  translation: "メールアドレスが公開されることはありません。次の印のある項目は必ず入力してください:"
 - id: useMarkdown
   translation: "Markdown を使用できます"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "メールアドレス"
 - id: yourWebsite
   translation: "ウェブサイト"
+- id: replyToMsg
+  translation: "コメントを返信"
+- id: btnSubmit
+  translation: "コメントを送信する"
+- id: btnSubmitted
+  translation: "送信しました"
+- id: btnReset
+  translation: "リセット"
+- id: successMsg
+  translation: "コメントありがとうございます！　コメントは承認されるとページに表示されます。"
+- id: errorMsg
+  translation: "送信エラーです。必須項目がすべて入力されていることを確認して再送信してください。"
 
 # Delayed Disqus
 - id: show

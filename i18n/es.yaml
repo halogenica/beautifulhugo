@@ -54,6 +54,8 @@
   translation: "comentario"
 - id: moreComment
   translation: "comentarios"
+- id: commentFormInfo
+  translation: "Tu dirección de correo electrónico no se publicará. Los campos obligatorios están marcados"
 - id: useMarkdown
   translation: "Puedes usar la sintaxis de Markdown"
 - id: yourName
@@ -62,6 +64,18 @@
   translation: "Tu correo electrónico"
 - id: yourWebsite
   translation: "Tu sitio web"
+- id: replyToMsg
+  translation: "Contestar a este comentario"
+- id: btnSubmit
+  translation: "Enviar Commentario"
+- id: btnSubmitted
+  translation: "Enviado"
+- id: btnReset
+  translation: "Reiniciar"
+- id: successMsg
+  translation: "Gracias por su comentario!, Este se visualizará en el sitio una vez haya sido aprobado"
+- id: errorMsg
+  translation: "Lo sentimos, ha ocurrido un error al enviar su comentario. Por favor asegurese que todos los campos han sido diligenciados e intente de nuevo"
 
 # Delayed Disqus
 - id: show

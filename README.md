@@ -83,7 +83,7 @@ You must also configure the `staticman.yml` in you blog website.
 
 ```
 comments:
-  allowedFields: ["name", "email", "website", "comment"]
+  allowedFields: ["name", "email", "website", "comment", "replyThread", "replyName", "replyID"]
   branch            : "master"
   commitMessage     : "New comment in {options.slug}"
   path: "data/comments/{options.slug}"
