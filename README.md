@@ -106,6 +106,20 @@ comments:
 
 If you *don't* have the section `[Params.staticman]` in `config.toml`, you *won't* need the section `reCaptcha`  in `staticman.yml`
 
+### Utterances support
+
+Add *Utterances* configuration section in `config.toml` or `config.yaml`
+
+Sample `config.toml` configuration
+
+```
+[Params.Utteranc]
+  repo = "user/repo"
+  issue_term = "pathname"
+  label = "comment"
+  theme = "github-light"
+```
+
 ### Google Analytics
 
 To add Google Analytics, simply sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID, and add this tracking ID to the `googleAnalytics` parameter in `config.toml`.
