@@ -113,7 +113,7 @@ Add *Utterances* configuration section in `config.toml` or `config.yaml`
 Sample `config.toml` configuration
 
 ```
-[Params.Utteranc]
+[Params.Utterances]
   repo = "user/repo"
   issue_term = "pathname"
   label = "comment"
