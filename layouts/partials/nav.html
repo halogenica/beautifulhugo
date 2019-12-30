@@ -15,16 +15,16 @@
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
             <li class="navlinks-container">
-              <a class="navlinks-parent">{{ .Name }}</a>
+              <a class="navlinks-parent">{{ .Pre }}{{ .Name }}{{ .Post }}</a>
               <div class="navlinks-children">
                 {{ range .Children }}
-                  <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                  <a href="{{ .URL | relLangURL }}">{{ .Pre }}{{ .Name }}{{ .Post }}</a>
                 {{ end }}
               </div>
             </li>
           {{ else }}
             <li>
-              <a title="{{ .Name }}" href="{{ .URL  | relLangURL }}">{{ .Name }}</a>
+              <a title="{{ .Name }}" href="{{ .URL  | relLangURL }}">{{ .Pre }}{{ .Name }}{{ .Post }}</a>
             </li>
           {{ end }}
         {{ end }}
@@ -36,7 +36,7 @@
               <div class="navlinks-children">
                 {{ range .Site.Languages }}
                   {{ if not (eq .Lang $.Site.Language.Lang) }}
-                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ .Pre }}{{ default .Lang .LanguageName }} {{ .Post }}</a>
                   {{ end }}
                 {{ end }}
               </div>
@@ -45,7 +45,7 @@
             <li>
               {{ range .Site.Languages }}
                 {{ if not (eq .Lang $.Site.Language.Lang) }}
-                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ .Pre }}{{ default .Lang .LanguageName }} {{ .Post }}</a>
                 {{ end }}
               {{ end }}
             </li>
