@@ -40,7 +40,7 @@
         {{ end }}
       </article>
 
-      {{ if ne .Type "page" }}
+      {{ if in site.Params.mainSections .Type }}
         <ul class="pager blog-pager">
           {{ if .PrevInSection }}
             <li class="previous">
