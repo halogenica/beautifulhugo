@@ -7,7 +7,9 @@
         </h3>
         {{ end }}
         {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
+        <div class="post-image">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
+        </div>
         {{ end }}
         {{ if .Params.video }}
         <video loop autoplay muted playsinline class="img-title">
