@@ -13,7 +13,13 @@
   {{ end }}
   {{ if not .Site.Params.hideAuthor }}
     {{ if .Params.author }}
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+      {{ if reflect.IsSlice .Params.author }}
+        {{ range .Params.author }}
+          &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ . | safeHTML }}
+	{{ end }}
+      {{ else }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+      {{ end }}
     {{ else }}
       &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
     {{ end }}
