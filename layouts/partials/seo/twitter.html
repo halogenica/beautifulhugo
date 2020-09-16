@@ -4,7 +4,7 @@
 {{- with .Description | default .Params.subtitle | default .Summary }}
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
-{{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
+{{- with .Params.share_img | default .Params.image | default .Site.Params.share_img | default .Site.Params.logo }}
   <meta name="twitter:image" content="{{ . | absURL }}" />
 {{- end }}
   <meta name="twitter:card" content="summary" />
