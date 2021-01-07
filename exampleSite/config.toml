@@ -27,6 +27,7 @@ pygmentsCodefencesGuessSyntax = true
   wordCount = true
   useHLJS = true
   socialShare = true
+  toc = true
   delayDisqus = true
   showRelatedPosts = true
 #  hideAuthor = true
