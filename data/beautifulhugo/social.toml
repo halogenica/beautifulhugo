@@ -159,3 +159,9 @@ id = "weibo"
 url = "https://weibo.com/%s"
 title = "Weibo"
 icon = "fab fa-weibo"
+
+[[social_icons]]
+id = "medium"
+url = "https://medium.com/@%s"
+title = "Medium"
+icon = "fab fa-medium"
