@@ -1,4 +1,28 @@
 [[social_icons]]
+id = "lattes"
+url = "http://lattes.cnpq.br/%s"
+title = "Lattes"
+icon = "ai ai-lattes"
+
+[[social_icons]]
+id = "research_gate"
+url = "https://www.researchgate.net/profile/%s"
+title = "Research Gate"
+icon = "ai ai-researchgate"
+
+[[social_icons]]
+id = "orcid"
+url = "https://orcid.org/%s"
+title = "ORCID"
+icon = "ai ai-orcid"
+
+[[social_icons]]
+id = "google_scholar"
+url = "https://scholar.google.com.br/citations?user=%s"
+title = "Google Scholar"
+icon = "ai ai-google-scholar"
+
+[[social_icons]]
 id = "email"
 url = "mailto:%s"
 title = "Email me"
