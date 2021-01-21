@@ -1,4 +1,7 @@
-<link href="{{"css/mermaid.css" | relURL}}" type="text/css" rel="stylesheet"/>
+
+{{ $mermaidCss := resources.Get "css/mermaid.css" | minify }}
+<link rel="stylesheet" href="{{ $mermaidCss.Permalink }}">
+
 <script defer src="{{"js/mermaid.js" | relURL}}">
     mermaid.initialize({startOnLoad:true});
 </script>

@@ -3,7 +3,9 @@ Put this file in /layouts/shortcodes/gallery.html
 Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 -->
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
-{{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | absURL }}" />{{ end }}
+{{- if not ($.Page.Scratch.Get "figurecount") }}
+	{{ $hugoeasygalleryCss := resources.Get "css/hugo-easy-gallery.css" | minify }}
+	<link rel="stylesheet" href="{{ $hugoeasygalleryCss.Permalink }}">{{ end }}
 {{- $.Page.Scratch.Add "figurecount" 1 }}
 {{ $baseURL := .Site.BaseURL }}
 <div class="gallery caption-position-{{ with .Get "caption-position" | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}} hover-effect-{{ with .Get "hover-effect" | default "zoom" }}{{.}}{{end}} {{ if ne (.Get "hover-transition") "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">

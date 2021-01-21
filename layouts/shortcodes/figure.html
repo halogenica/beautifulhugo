@@ -4,7 +4,10 @@ NB this overrides Hugo's built-in "figure" shortcode but is backwards compatible
 Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 -->
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
-{{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | absURL}}" />{{ end }}
+{{- if not ($.Page.Scratch.Get "figurecount") }}
+  {{ $hugoeasygalleryCss := resources.Get "css/hugo-easy-gallery.css" | minify }}
+  <link rel="stylesheet" href="{{ $hugoeasygalleryCss.Permalink }}">
+{{ end }}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
 <!-- use either src or link-thumb for thumbnail image -->
 {{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
