@@ -61,16 +61,49 @@
 </footer>
 
 {{- if .Site.Params.selfHosted -}}
-<script src="{{ "js/katex.min.js" | absURL }}"></script>
-<script src="{{ "js/auto-render.min.js" | absURL }}"></script>
 <script src="{{ "js/jquery.min.js" | absURL }}"></script>
 <script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
 {{- else -}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-{{- end }}
+{{- end -}}
+
+{{- if not .Site.Params.disableMath -}}
+  {{- if .Site.Params.useMathJax -}}
+    <script>
+      var reg = new RegExp("^\\s*\\$.*\\$\\s*$");
+      $('code').each(function(i) {
+        var elem = $(this);
+        if(reg.test(elem.text())) {
+          var contents = elem.contents();
+          contents.unwrap();
+          if (contents.parent().is('pre')) contents.unwrap();
+        }
+      });
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$','$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        }
+      };
+    </script>
+    {{- if .Site.Params.selfHosted -}}
+    <script type="text/javascript" id="MathJax-script" src="js/tex-chtml.js"></script>
+    {{- else -}}
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    {{- end -}}
+  {{- else -}}
+    {{- if .Site.Params.selfHosted -}}
+    <script src="{{ "js/katex.min.js" | absURL }}"></script>
+    <script src="{{ "js/auto-render.min.js" | absURL }}"></script>
+    {{- else -}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
 <script src="{{ "js/main.js" | absURL }}"></script>
 {{- if .Site.Params.staticman }}
