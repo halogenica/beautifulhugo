@@ -108,6 +108,11 @@ pygmentsCodefencesGuessSyntax = true
     weight = 3
 
 [[menu.main]]
+    name = "Publications"
+    url = "publication"
+    weight = 3
+
+[[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 3
+    weight = 4
