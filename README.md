@@ -110,9 +110,9 @@ If you *don't* have the section `[Params.staticman]` in `config.toml`, you *won'
 
 If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
 
-* Ensure you have a GitHub public repository to use for comments.  Utterances adds "comments" on your hugo site as "issues" in the repository.
-* Add the utterances toml parameters to the `[Params]` section in **config.toml** (shown below)
-* Ensure you have the `layouts/partials/utterances.html` file included in your themes directory.  This file embeds the actual Utterances script to build the comments.
+* Ensure you have a GitHub public repository, which you've granted permissions to the [Utterances GitHub App](https://github.com/apps/utterances). 
+* Add the utterances toml parameters to the `[Params]` section in **config.toml** (shown below).
+* Ensure you have the `layouts/partials/utterances.html` file included in your themes directory.  This file embeds the actual Utterances script that gets output when you run through the configuration builder at [https://utteranc.es/](https://utteranc.es/).
 * Ensure you have the updated `layouts/_default/single.html` which has three lines (shown below) to insert Utterances in a specific location.   If you wish to put it somewhere else (or embed in additional pages), move those lines somewhere else.
 
 **config.toml**
