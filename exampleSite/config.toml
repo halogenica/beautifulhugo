@@ -31,6 +31,10 @@ pygmentsCodefencesGuessSyntax = true
   showRelatedPosts = true
 #  hideAuthor = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+#  utterances = true  #Run the utterances script in _default/single.html to load https://utteranc.es comments
+#  utterancesRepo = "GHUsername/Repository.Name" # Utterances is enabled when this param is set
+#  utterancesTheme = "github-light" # Default: github-dark
+#  utterancesIssueTerm = "pathname" # Default: pathname
 
 #[[Params.bigimg]]
 #  src = "img/triangle.jpg"

@@ -106,6 +106,31 @@ comments:
 
 If you *don't* have the section `[Params.staticman]` in `config.toml`, you *won't* need the section `reCaptcha`  in `staticman.yml`
 
+### Utterances Commenting Support
+
+If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
+
+* Ensure you have a GitHub public repository to use for comments.  Utterances adds "comments" on your hugo site as "issues" in the repository.
+* Add the utterances toml parameters to the `[Params]` section in **config.toml** (shown below)
+* Ensure you have the `layouts/partials/utterances.html` file included in your themes directory.  This file embeds the actual Utterances script to build the comments.
+* Ensure you have the updated `layouts/_default/single.html` which has three lines (shown below) to insert Utterances in a specific location.   If you wish to put it somewhere else (or embed in additional pages), move those lines somewhere else.
+
+**config.toml**
+```toml
+# Ensure the below 4 lines go within the [Params] section
+utterances = true  #Run the utterances script in _default/single.html to load https://utteranc.es comments
+utterancesRepo = "GHUsername/Repository.Name" # Utterances is enabled when this param is set
+utterancesTheme = "github-light" # Default: github-dark
+utterancesIssueTerm = "pathname" # Default: pathname
+```
+
+**single.html**
+```
+{{ if .Site.Params.utterances }}
+  {{ template "partials/utterances.html" . }}
+{{ end }}
+```
+
 ### Google Analytics
 
 To add Google Analytics, simply sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID, and add this tracking ID to the `googleAnalytics` parameter in `config.toml`.
