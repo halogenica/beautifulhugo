@@ -323,6 +323,20 @@ footer .theme-by {
   margin: 10px 0 0;
 }
 
+footer div.disclaimer {
+  padding: 15px 15px 15px 10px;
+  margin: 20px 20px 20px 5px;
+  border: 1px solid #eee;
+  border-left-width: 10px;
+  border-right-width: 10px;
+  border-radius: 5px 3px 3px 5px;
+  background-color: #fdf5d4;
+  border-left-color: #f1c40f;
+  border-right-color: #f1c40f;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
   footer {
     padding: 50px 0;

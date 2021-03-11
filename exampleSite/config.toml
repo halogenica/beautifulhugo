@@ -35,6 +35,7 @@ pygmentsCodefencesGuessSyntax = true
 #  utterancesRepo = "GHUsername/Repository.Name" # Utterances is enabled when this param is set
 #  utterancesTheme = "github-light" # Default: github-dark
 #  utterancesIssueTerm = "pathname" # Default: pathname
+#  disclaimerText = "The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way."
 
 #[[Params.bigimg]]
 #  src = "img/triangle.jpg"

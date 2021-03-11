@@ -131,6 +131,14 @@ utterancesIssueTerm = "pathname" # Default: pathname
 {{ end }}
 ```
 
+### Site Disclaimer
+
+If you need to put a Disclaimer on your website (e.g. "My views are my own and not my employer's"), you can do so via the following:
+
+* Uncomment and edit the `disclaimerText` parameter in `config.toml`
+* Adjust any styling you wish in `main.css` if you don't like the default styling.
+
+
 ### Google Analytics
 
 To add Google Analytics, simply sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID, and add this tracking ID to the `googleAnalytics` parameter in `config.toml`.
