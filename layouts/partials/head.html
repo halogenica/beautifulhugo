@@ -88,4 +88,6 @@
   {{- end -}}
 
 {{- partial "head_custom.html" . }}
-{{ template "_internal/google_analytics_async.html" . }}
+{{ if not (in (string .Site.BaseURL) "localhost") }}
+  {{ template "_internal/google_analytics_async.html" . }}
+{{ end }}
