@@ -30,14 +30,16 @@
             {{- end -}}
           {{ end }}
           {{ if .Site.Params.rss }}
+          {{ with .OutputFormats.Get "RSS" }}
           <li>
-            <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" title="RSS">
+            <a href="{{ .RelPermalink }}" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
               </span>
             </a>
           </li>
+          {{ end }}
           {{ end }}
         </ul>
         <p class="credits copyright text-muted">
