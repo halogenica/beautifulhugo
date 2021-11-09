@@ -73,3 +73,16 @@ showAvatar: false
 fullWidth: true
 ---
 ```
+
+## Hidden posts
+
+You can hide a post from the homepage and list pages by setting `hidden: true` in the page front matter. The page will still be built and accessible by direct URL, but it will not appear in any paginated view. Useful for a "draft" post that you also want to share via link.
+
+```yaml
+---
+title: Draft notes
+hidden: true
+---
+```
+
+That's not set on this page so you can find it. :)

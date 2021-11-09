@@ -250,6 +250,9 @@ To avoid this, set the following param in hugo.toml:
   showPageDates = false # disables the dates below pages, can be controlled in page frontmatter, too
 ```
 
+### Hidden posts
+Set `hidden: true` in a page's front matter to remove it from the homepage and list pages while still building the page (so it remains accessible by direct URL).
+
 ### Extra shortcodes
 
 There are two extra shortcodes provided (along with the customized figure shortcode):
