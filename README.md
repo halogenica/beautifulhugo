@@ -1,3 +1,6 @@
+- Forked at 2022/02/12
+- 自分のカスタマイズ用
+
 # Beautiful Hugo - An adaptation of the Beautiful Jekyll theme
 
 ![Beautiful Hugo Theme Screenshot](https://github.com/halogenica/beautifulhugo/blob/master/images/screenshot.png)
@@ -7,7 +10,7 @@
     $ mkdir themes
     $ cd themes
     $ git submodule add https://github.com/halogenica/beautifulhugo.git beautifulhugo
-    
+
 
 See [the Hugo documentation](https://gohugo.io/themes/installing/) for more information.
 
@@ -45,7 +48,7 @@ pygmentsStyle = "trac"
 pygmentsUseClassic = true
 ```
 
-Pygments is mostly compatable with the newer Chroma. It is slower but has some additional theme options. I recommend Chroma over Pygments. Pygments will use `syntax.css` for highlighting, unless you also set the config `pygmentsUseClasses = false` which will generate the style code directly in the HTML file. 
+Pygments is mostly compatable with the newer Chroma. It is slower but has some additional theme options. I recommend Chroma over Pygments. Pygments will use `syntax.css` for highlighting, unless you also set the config `pygmentsUseClasses = false` which will generate the style code directly in the HTML file.
 
 #### Highlight.js - Client side syntax highlighting
 ```
@@ -131,7 +134,7 @@ languages available.
 
 ```toml
 [languages]
-  [languages.en] 
+  [languages.en]
     contentDir = "content/en" # English
   [languages.ja]
     contentDir = "content/ja" # Japanese
@@ -142,13 +145,13 @@ languages available.
 Now you just need to create a subdir within the `content/` folder for each
 language and just put stuff inside `page/` and `post/` regular directories.
 ```
-content/      content/      content/  
-└── en/       └── br/       └── ja/ 
+content/      content/      content/
+└── en/       └── br/       └── ja/
     ├── page/     ├── page/     ├── page/
     └── post/     └── post/     └── post/
 
 ```
- 
+
 ### Extra shortcodes
 
 There are two extra shortcodes provided (along with the customized figure shortcode):
