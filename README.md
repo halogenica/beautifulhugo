@@ -13,6 +13,19 @@ See [the Hugo documentation](https://gohugo.io/themes/installing/) for more info
 
 ## Extra Features
 
+
+
+## [Add hugo contact form](https://fabform.io/a/hugo-contact-form)
+
+```
+<form action="https://fabform.io/f/{form-id}" method="post">
+ <label for="email">Your Email</label>
+ <input name="email" type="email">
+ <button type="submit">Submit</button> 
+</form>
+```
+
+
 ### Responsive
 
 This theme is designed to look great on both large-screen and small-screen (mobile) devices.
@@ -105,6 +118,19 @@ comments:
 ```
 
 If you *don't* have the section `[Params.staticman]` in `config.toml`, you *won't* need the section `reCaptcha`  in `staticman.yml`
+
+
+
+## [Add hugo contact form](https://fabform.io/a/hugo-contact-form)
+
+```
+<form action="https://fabform.io/f/{form-id}" method="post">
+ <label for="email">Your Email</label>
+ <input name="email" type="email">
+ <button type="submit">Submit</button> 
+</form>
+```
+
 
 ### Google Analytics
 
