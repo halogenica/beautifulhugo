@@ -8,12 +8,19 @@ See https://hugo-theme-beautifulhugo.netlify.app/
 
 ## Installation
 
-    $ mkdir themes
-    $ cd themes
-    $ git submodule add https://github.com/halogenica/beautifulhugo.git beautifulhugo
-    
+Install Hugo and create a new site. See [the Hugo documentation](https://gohugo.io/getting-started/quick-start/) for details.
 
-See [the Hugo documentation](https://gohugo.io/themes/installing/) for more information.
+Add Beautifulhugo:
+
+    $ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+
+Copy the content of `exampleSite` at the root of your project:
+
+    cp -r themes/beautifulhugo/exampleSite/* . -iv
+    
+Start Hugo:
+
+    hugo serve
 
 ## Extra Features
 
