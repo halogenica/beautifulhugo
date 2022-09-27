@@ -9,7 +9,11 @@
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
             {{- if isset $.Site.Author .id }}
               <li>
-                <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Author .id) }}" title="{{ .title }}">
+		{{ if hasPrefix ( index $.Site.Author .id ) "http" }}
+		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Author .id) }}" title="{{ .title }}">
+		{{ else }}
+		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Author .id) }}" title="{{ .title }}">
+		{{ end }}
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>

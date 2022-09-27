@@ -43,12 +43,13 @@ pygmentsCodefencesGuessSyntax = true
 #  desc = "Hexagon"
 
 [Author]
+  # Set only your "username" for default hosts and full URLs otherwise (e.g., "https://MyGitLab.org/username")
   name = "Some Person"
   website = "yourwebsite.com"
   email = "youremail@domain.com"
   facebook = "username"
   github = "username"
-  gitlab = "server/username" # Example: gitlab.com/username
+  gitlab = "username"
   bitbucket = "username"
   twitter = "username"
   reddit = "username"
