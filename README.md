@@ -1,4 +1,16 @@
-# Beautiful Hugo - An adaptation of the Beautiful Jekyll theme
+# F3 Peak City forked version of Beautiful Hugo
+
+## Differences from upstream theme
+
+### Backblast layout
+
+Added a `layout/backblast` subdir. The main change is to the `list.html` file to add custom AO and Pax tags.
+
+### CSS
+
+The `/static/css/main.css` file is mostly copied from the Beautiful Hugo repo. However, the `blog-AOs` and `blog-pax` properties were added to style the custom taxonomies for those.
+
+# Beautiful Hugo Readme
 
 ![Beautiful Hugo Theme Screenshot](https://github.com/halogenica/beautifulhugo/blob/master/images/screenshot.png)
 
