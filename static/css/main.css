@@ -493,6 +493,77 @@ footer .theme-by {
   }
 }
 
+/* --- AOs --- */
+
+.blog-AOs {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #999;
+  font-size: 15px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.blog-AOs:before {
+  content: "AO: ";
+}
+
+.blog-AOs a {
+  color: #008AFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0px 5px;
+}
+
+.blog-AOs a:before {
+  content: "#";
+}
+
+.blog-AOs a:hover {
+  border-radius: 2px;
+  color: #008AFF;
+  background-color: #CCC;
+}
+
+.post-preview .blog-AOs {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+/* --- Pax --- */
+
+.blog-pax {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #999;
+  font-size: 15px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.blog-pax:before {
+  content: "Pax: ";
+}
+
+.blog-pax a {
+  color: #008AFF;
+  text-decoration: none;
+  padding: 0px 5px;
+}
+
+.blog-pax a:before {
+  content: "#";
+}
+
+.blog-pax a:hover {
+  border-radius: 2px;
+  color: #008AFF;
+  background-color: #CCC;
+}
+
+.post-preview .blog-pax {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
 /* --- Tags --- */
 
 .blog-tags {

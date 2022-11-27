@@ -1,0 +1,46 @@
+{{ define "main" }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{ with .Content }}
+          <div class="well">
+            {{.}}
+          </div>
+        {{ end }}
+        <div class="posts-list">
+          {{ range .Paginator.Pages }}
+            {{ partial "post_preview.html" .}}
+          {{ end }}
+        </div>
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          <ul class="pager main-pager">
+            {{ if .Paginator.HasPrev }}
+              <li class="previous">
+                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+              </li>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+              <li class="next">
+                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </div>
+    <div class="row>">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      {{ $taxo := "pax" }} <!-- Use the plural form here -->
+      {{ with .Param $taxo }}
+      <strong>Pax{{ if gt (len .) 1 }}{{ end }}:</strong>
+      {{ range $index, $pax := . }}
+          {{- if gt $index 0 }}, {{ end -}}
+          {{ with $.Site.GetPage (printf "/%s/%s" $taxo $pax) -}}
+              <a href="{{ .Permalink }}">{{ $pax }}</a>
+          {{- end -}}
+      {{- end -}}
+      {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
