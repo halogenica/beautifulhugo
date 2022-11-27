@@ -18,6 +18,9 @@
       &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
     {{ end }}
   {{ end }}
+  {{ if .Params.AOs }}
+  &nbsp;|&nbsp;{{ .Params.AOs }}&nbsp;{{ i18n "AO" }}
+  {{ end }}
   {{- if .Site.Params.staticman -}}
     &nbsp;|&nbsp;<i class="fas fa-comment"></i>&nbsp;
     {{ $slug := replace .RelPermalink "/" "" }}
