@@ -1,0 +1,9 @@
+{{ $ref := .Get "href" }}
+{{ $target := "" }}
+{{ with $ref }}
+  {{ $target = "_blank" }}
+{{ end }}
+{{ with .Get "relref" }}
+  {{ $ref = relref $ . }}
+{{ end }}
+<a {{ with $ref }}href="{{.}}" {{ end }} {{ with $target }} target="{{.}}"{{ if eq $target "_blank" }} rel="noreferrer"{{ end }}{{ end }} class="markdown-btn{{ with .Get "class" }} {{ . }}{{ end }}">{{- .Inner | safeHTML -}}</a>
