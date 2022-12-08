@@ -6,9 +6,24 @@
 
 Added a `layout/backblast` subdir. The main change is to the `list.html` file to add custom AO and Pax tags.
 
-### CSS
+### Custom CSS
 
-The `/static/css/main.css` file is mostly copied from the Beautiful Hugo repo. However, the `blog-AOs` and `blog-pax` properties were added to style the custom taxonomies for those.
+The `/static/css/main.css` file is mostly copied from the Beautiful Hugo repo. 
+
+* Custom taxonomies: The `blog-AOs` and `blog-pax` properties were added to style the custom taxonomies for those.
+* Buttons: The `a.markdown-btn` property was added for styling the new button shortcode.
+
+### Custom shortcodes
+
+**Button shortcode**: See [PR 1 for details](https://github.com/f3peakcity/beautifulhugo/pull/1). You can use the button in the website code as follows:
+
+```
+# Link to a relative page within the website
+{{< button relref="/schedule" >}}Find workouts{{< /button >}}
+
+# Link to an external page on a different website
+{{< button href="https://f3nation.com/workouts/" >}}Find workouts{{< /button >}}
+```
 
 # Beautiful Hugo Readme
 
