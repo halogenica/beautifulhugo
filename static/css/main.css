@@ -1021,7 +1021,7 @@ a.markdown-btn {
   text-align: center;
   padding: 5px 1em 5px 1em;
   text-decoration: none;
-  border: 1px;
+  border: none;
   cursor: pointer;
 }
 
