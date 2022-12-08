@@ -1017,7 +1017,7 @@ a.markdown-btn {
   font-family: inherit;
   color: #404040;
   background-color: #FFFFFF;
-  border-radius: 5px;
+  border-radius: 25%;
   text-align: center;
   padding: 5px 1em 5px 1em;
   text-decoration: none;
