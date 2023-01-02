@@ -1023,6 +1023,8 @@ a.markdown-btn {
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  margin: 5px 0px;
 }
 
 a.markdown-btn:hover,
