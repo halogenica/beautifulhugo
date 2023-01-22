@@ -81,6 +81,16 @@
             {{ partial "staticman-comments.html" . }}
           </div>
         {{ end }}
+        {{ if .Site.Params.Utterances }}
+        <script src="https://utteranc.es/client.js"
+          repo="{{ .Site.Params.Utterances.repo }}"
+          issue-term="{{ .Site.Params.Utterances.issue_term }}"
+          label="{{ .Site.Params.Utterances.label }}"
+          theme="{{ .Site.Params.Utterances.theme }}"
+          crossorigin="anonymous"
+          async>
+        </script>
+      {{ end }}
       {{ end }}
 
     </div>
