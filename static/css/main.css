@@ -1033,3 +1033,9 @@ a.markdown-btn:active {
   background-color: #0085a1;
   color: #FFFFFF;
 }
+
+@media (prefers-color-scheme: light) {
+  a.markdown-btn {
+    background-color: #DDDDDD;
+  }
+}
