@@ -55,7 +55,9 @@
         </ul>
       {{ end }}
 
-
+      {{ if .Site.Params.utterances }}
+        {{ template "partials/utterances.html" . }}
+      {{ end }}
       {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
         {{ if .Site.DisqusShortname }}
           {{ if .Site.Params.delayDisqus }}
