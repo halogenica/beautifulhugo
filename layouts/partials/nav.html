@@ -34,19 +34,19 @@
             <li class="navlinks-container">
               <a class="navlinks-parent">{{ i18n "languageSwitcherLabel" }}</a>
               <div class="navlinks-children">
-                {{ range .Site.Languages }}
+                {{ range .Translations }}
                   {{ if not (eq .Lang $.Site.Language.Lang) }}
-                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+                  <a href="{{ .Permalink }}">{{ default .Lang .Site.Language.LanguageName }}</a>
                   {{ end }}
                 {{ end }}
               </div>
             </li>
           {{ else }}
             <li>
-              {{ range .Site.Languages }}
-                {{ if not (eq .Lang $.Site.Language.Lang) }}
-                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
-                {{ end }}
+              {{ if .IsTranslated }}
+                {{ range .Translations }}
+                  <a href="{{ .Permalink }}">{{ default .Lang .Site.Language.LanguageName }}</a>
+                {{ end}}
               {{ end }}
             </li>
           {{ end }}
