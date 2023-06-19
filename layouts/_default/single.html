@@ -41,7 +41,7 @@
       </article>
 
       {{ if ne .Type "page" }}
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mt-4">
         {{ if .PrevInSection }}
           <div class="pager-button btn btn-outline-primary">
             <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>

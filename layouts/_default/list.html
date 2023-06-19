@@ -13,7 +13,7 @@
           {{ end }}
         </div>
         {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between mt-4">
           {{ if .Paginator.HasPrev }}
             <div class="pager-button btn btn-outline-primary">
               <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
