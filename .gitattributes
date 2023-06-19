@@ -19,3 +19,6 @@
 # Ignore minimized files when diffing/grepping
 *.min.js -diff
 *.min.css -diff
+
+# And all the fonts
+*.svg -diff

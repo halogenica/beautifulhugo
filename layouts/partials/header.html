@@ -33,7 +33,7 @@
         {{ $subtitle := $.Scratch.Get "subtitle" }}
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="col-xl-8 offset-lg-2 col-lg-10 offset-md-1">
               <div class="{{ .Type }}-heading">
                 <h1>{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
                   {{ if $subtitle }}
@@ -58,7 +58,7 @@
     <div class="intro-header no-img">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="col-xl-8 offset-lg-2 col-lg-10 offset-md-1">
             <div class="{{ .Type }}-heading">
               {{ if eq .Type "list" }}
                 <h1>{{ if .Data.Singular }}#{{ end }}{{ .Title }}</h1>
