@@ -1,18 +1,18 @@
 # Content
 - id: dateFormat
-  translation: "January 2, 2006"
+  translation: "2·01·2006"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: "2·01·2006 - 15:04:05"
 - id: postedOnDate
-  translation: "Posté le {{ . }}"
+  translation: "Publié le {{ . }}"
 - id: lastModified
-  translation: "(Dernière modification le {{ . }})"
+  translation: "(Mise à jour le {{ . }})"
 - id: translationsLabel
-  translation: "Autres langues : "
+  translation: "Traductions : "
 - id: translationsSeparator
   translation: ", "
 - id: readMore
-  translation: "Voir plus"
+  translation: "Lire"
 - id: olderPosts
   translation: "Anciens posts"
 - id: newerPosts
@@ -37,7 +37,7 @@
 
 # Navigation
 - id: toggleNavigation
-  translation: "Toggle navigation"
+  translation: "Activer la navigation"
 - id: languageSwitcherLabel
   translation: "Langue"
 - id: gcseLabelShort
@@ -55,13 +55,15 @@
 - id: moreComment
   translation: "commentaires"
 - id: useMarkdown
-  translation: "Vous pouvez utiliser la syntaxe Markdown"
+  translation: "Rédigez votre commentaire ici. (Vous pouvez utiliser la syntaxe Markdown)"
 - id: yourName
   translation: "Votre nom"
 - id: yourEmail
-  translation: "Votre addresse mail"
+  translation: "Votre adresse mail"
 - id: yourWebsite
   translation: "Votre site web"
+- id: sendComment
+  translation: "Envoyer"
 
 # Delayed Disqus
 - id: show
@@ -71,4 +73,4 @@
 
 # Related posts
 - id: seeAlso
-  translation: "Voir également"
+  translation: "Suggestions de lecture :"

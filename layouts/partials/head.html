@@ -26,10 +26,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<!-- Site Title, Description, Author, and Favicon -->
-{{- with ($.Scratch.Get "Title") }}
-  <title>{{ . }} - {{ $.Site.Title }}</title>
-{{- end }}
+
+ <!-- Site Title, Description, Author, and Favicon -->
+
+{{ if .IsHome }}
+    {{- with .Site.Params.homeTitle }}
+      <title>{{ . }}</title>
+    {{- end }}
+  {{ else }}
+    {{- with ($.Scratch.Get "Title") }}
+      <title>{{ . }} - {{ $.Site.Params.homeTitle }}</title>
+    {{- end }}
+{{ end }}
+
 {{- with ($.Scratch.Get "Description") }}
   <meta name="description" content="{{ . }}">
 {{- end }}
@@ -50,7 +59,7 @@
   <link rel="stylesheet" href="{{ "fontawesome/css/all.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   {{- end -}}
@@ -88,4 +97,6 @@
   {{- end -}}
 
 {{- partial "head_custom.html" . }}
-{{ template "_internal/google_analytics_async.html" . }}
+{{- if not .Site.IsServer -}}
+  {{ template "_internal/google_analytics.html" . }}
+{{- end -}}

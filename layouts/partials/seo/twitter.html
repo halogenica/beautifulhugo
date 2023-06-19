@@ -7,7 +7,7 @@
 {{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
   <meta name="twitter:image" content="{{ . | absURL }}" />
 {{- end }}
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
 {{- with .Site.Author.twitter }}
   <meta name="twitter:site" content="@{{ . }}" />
   <meta name="twitter:creator" content="@{{ . }}" />

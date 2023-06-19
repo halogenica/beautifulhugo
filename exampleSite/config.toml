@@ -1,9 +1,7 @@
 baseurl = "https://username.github.io"
 DefaultContentLanguage = "en"
-#DefaultContentLanguage = "ja"
 title = "Beautiful Hugo"
 theme = "beautifulhugo"
-metaDataFormat = "yaml"
 pygmentsStyle = "trac"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
@@ -45,6 +43,7 @@ pygmentsCodefencesGuessSyntax = true
 #  desc = "Hexagon"
 
 [Author]
+  # Set only your "username" for default hosts and full URLs otherwise (e.g., "https://MyGitLab.org/username")
   name = "Some Person"
   website = "yourwebsite.com"
   email = "youremail@domain.com"
@@ -74,6 +73,8 @@ pygmentsCodefencesGuessSyntax = true
   weibo = "username"
   slack = "username"
   medium = "username"
+  discord = "invite code (https://discord.gg/XXXXXXX)"
+  strava = "userid"
 
 [[menu.main]]
     name = "Blog"

@@ -61,7 +61,7 @@
 - id: yourEmail
   translation: "Your email address"
 - id: yourWebsite
-  translation: "You website"
+  translation: "Your website"
 
 # Delayed Disqus
 - id: show

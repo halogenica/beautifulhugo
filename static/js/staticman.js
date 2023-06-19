@@ -5,24 +5,30 @@
 
   $('.js-form').submit(function () {
     var form = this;
+    let url = $(this).attr('action');
+    let data = $(this).serialize();
 
     $(form).addClass('form--loading');
 
-    $.ajax({
-      type: $(this).attr('method'),
-      url: $(this).attr('action'),
-      data: $(this).serialize(),
-      contentType: 'application/x-www-form-urlencoded',
-      success: function (data) {
-        showModal('Perfect !', 'Thanks for your comment! It will show on the site once it has been approved. .');
-        $(form).removeClass('form--loading');
-      },
-      error: function (err) {
-        console.log(err);
-        showModal('Error', 'Sorry, there was an error with the submission!');
-        $(form).removeClass('form--loading');
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState === XMLHttpRequest.DONE) {
+        var status = xhr.status;
+        if (status >= 200 && status < 400) {
+          showModal('Perfect !', 'Thanks for your comment! It will show on the site once it has been approved. .');
+          $(form).removeClass('form--loading');
+        } else {
+          console.error(xhr.statusText);
+          showModal('Error', 'Sorry, there was an error with the submission!');
+          $(form).removeClass('form--loading');
+        }
       }
-    });
+    };
+
+    xhr.send(data);
 
     return false;
   });
