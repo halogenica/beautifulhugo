@@ -1,9 +1,9 @@
 {{ define "main" }}
   <div class="container" role="main">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-xl-8 offset-lg-2 col-lg-10 offset-md-1">
         {{ with .Content }}
-          <div class="well">
+          <div class="card bg-light card-body mb-3">
             {{.}}
           </div>
         {{ end }}
@@ -13,18 +13,19 @@
           {{ end }}
         </div>
         {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-          <ul class="pager main-pager">
-            {{ if .Paginator.HasPrev }}
-              <li class="previous">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
-              </li>
-            {{ end }}
-            {{ if .Paginator.HasNext }}
-              <li class="next">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
-              </li>
-            {{ end }}
-          </ul>
+          <div class="d-flex justify-content-between mt-4">
+          {{ if .Paginator.HasPrev }}
+            <div class="pager-button btn btn-outline-primary">
+              <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+            </div>
+          {{ end }}
+          <div></div>
+          {{ if .Paginator.HasNext }}
+            <div class="pager-button btn btn-outline-primary">
+              <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+            </div>
+          {{ end }}
+          </div>
         {{ end }}
       </div>
     </div>
