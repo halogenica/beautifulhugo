@@ -41,19 +41,21 @@
       </article>
 
       {{ if ne .Type "page" }}
-        <ul class="pager blog-pager">
-          {{ if .PrevInSection }}
-            <li class="previous">
-              <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
-            </li>
-          {{ end }}
-          {{ if .NextInSection }}
-            <li class="next">
-              <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
-            </li>
-          {{ end }}
-        </ul>
+        <div class="d-flex justify-content-between">
+        {{ if .PrevInSection }}
+          <div class="pager-button btn btn-outline-primary">
+            <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
+          </div>
+        {{ end }}
+        <div></div>
+        {{ if .NextInSection }}
+          <div class="pager-button btn btn-outline-primary">
+            <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
+          </div>
+        {{ end }}
+        </div>
       {{ end }}
+
 
 
       {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
