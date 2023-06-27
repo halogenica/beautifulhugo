@@ -117,6 +117,15 @@ comments:
 
 If you *don't* have the section `[Params.staticman]` in `config.toml`, you *won't* need the section `reCaptcha`  in `staticman.yml`
 
+### Site Disclaimer
+
+If you need to put a Disclaimer on your website (e.g. "My views are my own and not my employer's"), you can do so via the following:
+
+* Uncomment and edit the `disclaimerText` parameter in `config.toml`.
+* If you need to adjust the disclaimer's styling, modify the declarations within the `footer div.disclaimer` selector in `static/css/main.css`.
+
+> The code for the disclaimer text is in `layouts/partials/footer.html`.  Moving this code block to another partial file (or relocating it within `footer.html`) will require changes to the css selector in `main.css` as well.
+
 ### Google Analytics
 
 To add Google Analytics, simply sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID, and add this tracking ID to the `googleAnalytics` parameter in `config.toml`.
@@ -197,6 +206,19 @@ This is column 1.
 {{< column >}}
 This is column 2.
 {{< endcolumns >}}
+```
+
+### Social Media Icons
+
+In order to show social media icons in the footer, add a section like this to your `config.yaml`.  You can see the full list of supported social media sites in `data/beautifulhugo/social.toml`.
+
+```yaml
+author: 
+  name: "Author Name"
+  website: "https://example.com"
+  github: halogenica/beautifulhugo
+  twitter: username
+  discord: 96VAXXvjCB
 ```
 
 ## About

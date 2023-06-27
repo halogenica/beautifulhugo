@@ -29,6 +29,7 @@ pygmentsCodefencesGuessSyntax = true
   showRelatedPosts = true
 #  hideAuthor = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+#  disclaimerText = "The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way."
 
 #[[Params.bigimg]]
 #  src = "img/triangle.jpg"
@@ -72,6 +73,7 @@ pygmentsCodefencesGuessSyntax = true
   kaggle = "username"
   weibo = "username"
   slack = "username"
+  medium = "username"
   discord = "invite code (https://discord.gg/XXXXXXX)"
   strava = "userid"
 

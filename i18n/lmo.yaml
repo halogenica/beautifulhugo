@@ -148,62 +148,6 @@
 
   translation: "Varda anca"
 
-# Content
-
-- id: dateFormat
-
-  translation: "2 January 2006"
-
-- id: shortdateFormat
-
-  translation: "2 Jan 2006 15:04:05"
-
-- id: postedOnDate
-
-  translation: "Publegaa il {{ .Count }}"
-
-- id: lastModified
-
-  translation: "(Darrera modifega ell {{ .Count }})"
-
-- id: translationsLabel
-
-  translation: "Alter lengov: "
-
-- id: translationsSeparator
-
-  translation: ", "
-
-- id: readMore
-
-  translation: "Lensg"
-
-- id: olderPosts
-
-  translation: "Articol pussee vegg"
-
-- id: newerPosts
-
-  translation: "Articoli pussee noeuv"
-
-- id: previousPost
-
-  translation: "Articolo de prima"
-
-- id: nextPost
-
-  translation: "Articolo dopo"
-
-- id: readTime
-
-  translation: "megnuu"
-
-- id: words
-
-  translation: "paroll"
-
-
-
 
 
 # 404 page
