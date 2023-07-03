@@ -11,7 +11,7 @@ $$
 \phi = \frac{(1+\sqrt{5})}{2} = 1.6180339887\cdots
 $$
 
-Additional details can be found on [GitHub](https://github.com/Khan/KaTeX) or on the [Wiki](http://tiddlywiki.com/plugins/tiddlywiki/katex/).
+Additional details can be found on [GitHub](https://github.com/KaTeX/KaTeX) or on the [project homepage](https://katex.org/).
 <!--more-->
 
 ### Example 1

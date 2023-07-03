@@ -10,14 +10,33 @@ See https://hugo-theme-beautifulhugo.netlify.app/
 
 Install Hugo and create a new site. See [the Hugo documentation](https://gohugo.io/getting-started/quick-start/) for details.
 
-Add Beautifulhugo:
+### Git Submodule
+
+Add Beautifulhugo as git submodule:
 
     $ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+
+### Hugo module
+
+Initialize your site as hugo module:
+
+    $ hugo mod init github.com/USERNAME/SITENAME
+
+Add Beautifulhugo module as a dependency of your site:
+
+    $ hugo mod get github.com/halogenica/beautifulhugo
+
+### Site preview
 
 Copy the content of `exampleSite` at the root of your project:
 
     cp -r themes/beautifulhugo/exampleSite/* . -iv
-    
+
+If you installed Beautifulhugo as hugo module, set your theme in your config file (hugo.toml):
+
+    [[module.imports]]
+      path = "github.com/halogenica/beautifulhugo"
+
 Start Hugo:
 
     hugo serve
@@ -56,7 +75,7 @@ pygmentsStyle = "trac"
 pygmentsUseClassic = true
 ```
 
-Pygments is mostly compatable with the newer Chroma. It is slower but has some additional theme options. I recommend Chroma over Pygments. Pygments will use `syntax.css` for highlighting, unless you also set the config `pygmentsUseClasses = false` which will generate the style code directly in the HTML file. 
+Pygments is mostly compatible with the newer Chroma. It is slower but has some additional theme options. I recommend Chroma over Pygments. Pygments will use `syntax.css` for highlighting, unless you also set the config `pygmentsUseClasses = false` which will generate the style code directly in the HTML file. 
 
 #### Highlight.js - Client side syntax highlighting
 ```

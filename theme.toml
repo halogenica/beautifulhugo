@@ -8,10 +8,10 @@ min_version = 0.48
 
 [author]
     name = "halogenica"
-    homepage = "http://halogenica.net"
+    homepage = "https://halogenica.net"
 
 # If Porting existing theme
 [original]
     author =  "dattali"
-    homepage = "http://deanattali.com/beautiful-jekyll/"
+    homepage = "https://beautifuljekyll.com"
     repo = "https://github.com/daattali/beautiful-jekyll"
