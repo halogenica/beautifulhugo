@@ -45,7 +45,7 @@
     {{- $links := apply $sortedTranslations "partial" "translation_link.html" "." -}}
     {{- $cleanLinks := apply $links "chomp" "." -}}
     {{- $linksOutput := delimit $cleanLinks (i18n "translationsSeparator") -}}
-    &nbsp;&bull;&nbsp;{{ i18n "translationsLabel" }}{{ $linksOutput }}
+    &nbsp;&bull;&nbsp;{{ i18n "translationsLabel" }}{{ $linksOutput | safeHTML }}
   {{- end }}
 </span>
 
