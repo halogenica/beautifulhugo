@@ -21,7 +21,7 @@
         &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
       {{ end }}
     {{ else }}
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Params.author.name | safeHTML }}
     {{ end }}
   {{ end }}
   {{- if .Site.Params.staticman -}}
