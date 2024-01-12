@@ -31,8 +31,12 @@
     {{ if .Params.tags }}
     <div class="blog-tags">
         {{ range .Params.tags }}
-        <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-        {{ end }}
+       <!-- Fix for "https://github.com/halogenica/beautifulhugo/issues/349".
+       From "https://github.com/dovidio/personalwebsite/commit/34762e94c29fd2c26c16c45f8ae2de21bdf9b46d".
+       <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+       -->
+       <a href="{{"tags" | absLangURL}}/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+        {{ end }} 
     </div>
     {{ end }}
 
