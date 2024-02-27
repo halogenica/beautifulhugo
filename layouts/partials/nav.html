@@ -15,7 +15,7 @@
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
             <li class="navlinks-container">
-              <a class="navlinks-parent">{{ .Name }}</a>
+              <a class="navlinks-parent" role="button" tabindex="0">{{ .Name }}</a>
               <div class="navlinks-children">
                 {{ range .Children }}
                   <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
@@ -32,7 +32,7 @@
         {{ if .Site.IsMultiLingual }}
           {{ if ge (len .Site.Languages) 3 }}
             <li class="navlinks-container">
-              <a class="navlinks-parent">{{ i18n "languageSwitcherLabel" }}</a>
+              <a class="navlinks-parent" role="button" tabindex="0">{{ i18n "languageSwitcherLabel" }}</a>
               <div class="navlinks-children">
                 {{ range .Translations }}
                   {{ if not (eq .Lang $.Site.Language.Lang) }}
