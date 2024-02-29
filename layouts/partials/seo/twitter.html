@@ -8,7 +8,7 @@
   <meta name="twitter:image" content="{{ . | absURL }}" />
 {{- end }}
   <meta name="twitter:card" content="summary_large_image" />
-{{- with .Site.Author.twitter }}
+{{- with .Site.Params.author.twitter }}
   <meta name="twitter:site" content="@{{ . }}" />
   <meta name="twitter:creator" content="@{{ . }}" />
 {{- end }}
