@@ -6,8 +6,15 @@
             {{ .Params.subtitle }}
         </h3>
         {{ end }}
-        {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
+        {{ $images := .Resources.Match "*_header.{png,jpg}" }}
+        {{ if or (.Params.image) ($images) }}
+            {{ with $images }}
+                {{ $image := index (.) 0 }}
+                {{ $image := $image.Resize "750x" }}
+                <img src="{{ $image.RelPermalink }}" title="{{ $.Page.Title }}" class="img-title" />
+            {{ else }}
+                <img src="{{ $.Page.Params.image }}" alt="{{ $.Page.Title }}" class="img-title" />
+            {{ end }}
         {{ end }}
         {{ if .Params.video }}
         <video loop autoplay muted playsinline class="img-title">
