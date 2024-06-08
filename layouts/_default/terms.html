@@ -18,7 +18,12 @@
             </a>
             <div id="collapse{{ $value.Name }}" class="panel-collapse collapse">
               <div class="panel-body">
+                <!-- Fix for "https://github.com/halogenica/beautifulhugo/issues/349".
+                Inspired by "https://github.com/halogenica/beautifulhugo/pull/354#issuecomment-2106454808".
+
                 <a href="{{ $.Site.LanguagePrefix | absURL }}/{{ $data.Plural }}/{{ $value.Name | urlize }}/" class="list-group-item view-all">
+                -->
+                <a href="{{ $data.Plural | absLangURL }}/{{ $value.Name | urlize }}/" class="list-group-item view-all">
                 View all</a>
                 <div class="list-group">
                   {{ range $item := $value.WeightedPages }}
