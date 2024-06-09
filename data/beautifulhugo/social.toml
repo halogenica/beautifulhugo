@@ -208,3 +208,9 @@ id = "angellist"
 url = "https://www.angel.co/p/%s"
 title = "AngelList"
 icon = "fab fa-angellist"
+
+[[social_icons]]
+id = "about"
+url = "%s"
+title = "About"
+icon = "fas fa-at"
