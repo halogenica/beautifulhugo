@@ -66,7 +66,12 @@
       <div class="avatar-container">
         <div class="avatar-img-border">
           <a title="{{ .Site.Title }}" href="{{ "" | absLangURL }}">
+          {{- $image := resources.Get ( $.Site.Params.logo) -}}
+          {{ if $image }}
+            <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ .Site.Title }}" />
+          {{else}}
             <img class="avatar-img" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
+           {{end}}
           </a>
         </div>
       </div>
