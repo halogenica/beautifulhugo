@@ -959,26 +959,3 @@ h4.see-also {
     overflow-x: auto;
     overflow-y: hidden;
   }
-
-
-/* copy code button  */
-.highlight {
-  position: relative;
-}
-
-.copyCodeButton {
-  background-color: #f5f5f5;
-  color: black;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 5px 10px;
-  position: absolute;
-  right: 3px;
-  top: 3px;
-  z-index: 10;
-}
-
-.copyCodeButton:hover {
-  background-color: #e0e0e0;
-}
