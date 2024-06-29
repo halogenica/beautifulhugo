@@ -180,3 +180,37 @@ var main = {
 // 2fc73a3a967e97599c9763d05e564189
 
 document.addEventListener('DOMContentLoaded', main.init);
+
+/**
+ * Add copy button to code block
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const highlights = document.querySelectorAll('.row div.highlight');
+  const copyText = 'Copy';
+  const copiedText = 'Copied!';
+
+  highlights.forEach((highlight) => {
+      const copyButton = document.createElement('button');
+      copyButton.innerHTML = copyText;
+      copyButton.classList.add('copyCodeButton');
+      highlight.appendChild(copyButton);
+
+      const codeBlock = highlight.querySelector('code[data-lang]');
+      if (!codeBlock) return;
+
+      copyButton.addEventListener('click', () => {
+          navigator.clipboard.writeText(codeBlock.textContent)
+              .then(() => {
+                  copyButton.textContent = copiedText;
+
+                  setTimeout(() => {
+                      copyButton.textContent = copyText;
+                  }, 1000);
+              })
+              .catch((err) => {
+                  alert('Failed to copy text');
+                  console.error('Something went wrong', err);
+              });
+      });
+  });
+});
