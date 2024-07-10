@@ -37,11 +37,11 @@ jobs:
           # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-        run: |
-          hugo \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            -s "./exampleSite/" \
+        run: >
+          hugo
+            --minify
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            -s "./exampleSite/"
             --themesDir "../../"
             -v
       - name: Upload artifact
