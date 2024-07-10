@@ -1,10 +1,8 @@
   {{ if eq .Type "page" }}
     {{ partial "page_meta.html" . }}
   {{ end }}
-  {{- if not (isset .Site.Params.author .id) -}}
-    {{- if isset .Site.author .id -}}
-       {{ errorf "Please move [author] to [params.author]; Hugo has deprecated the former." }}
-    {{- end -}}
+  {{- if not (.Site.Params.author) and (.Site.author) -}}
+     {{ errorf "Please move [author] to [params.author]; Hugo has deprecated the former." }}
   {{- end -}}
 <footer>
   <div class="container">
