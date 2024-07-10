@@ -39,11 +39,11 @@ jobs:
           HUGO_ENV: production
         run: >
           hugo
-            --minify
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
-            -s "./exampleSite/"
-            --themesDir "../../"
-            -v
+          --minify
+          --baseURL "${{ steps.pages.outputs.base_url }}/"
+          -s "./exampleSite/"
+          --themesDir "../../"
+          -v
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
