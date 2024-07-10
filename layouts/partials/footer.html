@@ -1,8 +1,8 @@
   {{ if eq .Type "page" }}
     {{ partial "page_meta.html" . }}
   {{ end }}
-  {{- if isset $.Site.Params.author .id | not -}}
-    {{- if isset $.Site.author .id -}}
+  {{- if not (isset .Site.Params.author .id) -}}
+    {{- if isset .Site.author .id -}}
        {{ errorf "Please move [author] to [params.author]; Hugo has deprecated the former." }}
     {{- end -}}
   {{- end -}}
