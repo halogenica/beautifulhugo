@@ -15,10 +15,10 @@
       "@type": "Person",
       "name": "{{ .Params.author }}"
   },
-  {{- else if .Site.Author.name -}}
+  {{- else if .Site.Params.author.name -}}
     "author": {
       "@type": "Person",
-      "name": "{{ .Site.Author.name }}"
+      "name": "{{ .Site.Params.author.name }}"
   },
   {{- end }}
   "copyrightYear" : "{{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}",
