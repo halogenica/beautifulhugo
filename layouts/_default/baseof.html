@@ -1,3 +1,12 @@
+{{ if le hugo.Version "0.120.0" }}
+	{{ errorf "Please use Hugo version 0.120.0 or higher!"}}
+{{ end }}
+
+{{ if not (eq .Site.DisqusShortname "") }}
+	{{ errorf "Your use of disqusShortname is deprecated by Hugo; Please reference the README.md for further instructions.
+	This error message will be removed in the future because we are also using .Site.DisqusShortname for checking this."}}
+{{ end }}
+
 <!DOCTYPE html>
 <html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
   <head>
