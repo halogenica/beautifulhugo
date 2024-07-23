@@ -155,7 +155,15 @@ If you need to put a Disclaimer on your website (e.g. "My views are my own and n
 
 ### Google Analytics
 
-To add Google Analytics, simply sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID, and add this tracking ID to the `googleAnalytics` parameter in `hugo.toml`.
+Sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID.
+
+To use this feature add your Google Analytics ID to the hugo.toml file like this:
+
+```
+[services]
+  [services.googleAnalytics]
+    id = ''
+```
 
 Note that the Google Analytics tracking code will only be inserted into the page when the site isn't served on Hugo's built-in server, to prevent tracking from local testing environments.
 
