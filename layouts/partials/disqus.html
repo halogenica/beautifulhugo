@@ -1,5 +1,5 @@
 {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (.Site.Params.comments)) }}
-  {{ if .Site.DisqusShortname }}
+  {{ if .Site.Config.Services.Disqus.Shortname }}
     <div class="comments">
       {{ template "_internal/disqus.html" . }}
     </div>

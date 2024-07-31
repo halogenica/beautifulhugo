@@ -21,7 +21,7 @@
       "name": "{{ .Site.Author.name }}"
   },
   {{- end }}
-  "copyrightYear" : "{{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}",
+  "copyrightYear" : "{{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}",
   {{ if not .PublishDate.IsZero -}}
     "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTML }}",
   {{- else if not .Date.IsZero -}}

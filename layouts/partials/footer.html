@@ -44,9 +44,9 @@
 
           &nbsp;&bull;&nbsp;&copy;
           {{ if .Site.Params.since }}
-            {{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}
+            {{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}
           {{ else }}
-            {{ .Site.LastChange.Format "2006" }}
+            {{ .Site.Lastmod.Format "2006" }}
           {{ end }}
 
           {{ if .Site.Title }}
@@ -134,12 +134,12 @@
 <!-- End Piwik Code -->
 {{ end }}
 
-{{ if and .Site.Params.delayDisqus .Site.DisqusShortname }}
+{{ if and .Site.Params.delayDisqus .Site.Config.Services.Disqus.Shortname }}
 <!-- Delayed Disqus -->
 <script type="text/javascript">
 $(function(){
   $('#show-comments').on('click', function(){
-    var disqus_shortname = '{{ .Site.DisqusShortname }}';
+    var disqus_shortname = '{{ .Site.Config.Services.Disqus.Shortname }}';
       
     (function() {
       var disqus = document.createElement('script'); 
@@ -154,7 +154,7 @@ $(function(){
   });
       
 </script>
-<script id="dsq-count-scr" src="//{{ .Site.DisqusShortname }}.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/count.js" async></script>
 <!-- End Delayed Disqus -->
 {{ end }}
 
