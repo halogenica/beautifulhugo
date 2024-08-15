@@ -963,3 +963,12 @@ h4.see-also {
     overflow-x: auto;
     overflow-y: hidden;
   }
+
+/* Figure Caption*/
+figcaption {
+  background-color: grey;
+  color: white;
+  font-style: italic;
+  padding: 2px;
+  text-align: center;
+}
