@@ -180,14 +180,13 @@ var main = {
 // 2fc73a3a967e97599c9763d05e564189
 
 document.addEventListener('DOMContentLoaded', main.init);
-
 /**
  * Add copy button to code block
  */
 document.addEventListener('DOMContentLoaded', () => {
   const highlights = document.querySelectorAll('.row div.highlight');
-  const copyText = 'Copy';
-  const copiedText = 'Copied!';
+  const copyText = '📋';
+  const copiedText = '✔️';
 
   highlights.forEach((highlight) => {
       const copyButton = document.createElement('button');
@@ -214,3 +213,4 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 });
+
