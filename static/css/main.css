@@ -961,30 +961,32 @@ h4.see-also {
   }
 
 
-/* copy code button  */
-.highlight {
-  position: relative;
-}
-
-.copyCodeButton {
-  background-color: #f5f5f5;
-  color: black;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 5px 10px;
-  position: absolute;
-  right: 3px;
-  top: 3px;
-  z-index: 10;
-  display: none;
-  transition: background-color 0.3s ease;
-}
-
-.highlight:hover .copyCodeButton {
-  display: block;
-}
-
-.copyCodeButton:hover {
-  background-color: #e0e0e0;
-}
+  .highlight {
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .copyCodeButton {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    color: black;
+    cursor: pointer;
+    display: none;
+    font-size: 14px;
+    padding: 5px 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+  }
+  
+  .highlight:hover .copyCodeButton {
+    display: block;
+  }
+  
+  .copyCodeButton:hover {
+    background-color: #e0e0e0;
+  }
+  
