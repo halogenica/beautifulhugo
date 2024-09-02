@@ -198,7 +198,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!codeBlock) return;
 
       copyButton.addEventListener('click', () => {
-          navigator.clipboard.writeText(codeBlock.textContent)
+          // Create a deep clone of the code block
+          const codeBlockClone = codeBlock.cloneNode(true);
+
+          // Remove line number elements from the clone
+          const lineNumbers = codeBlockClone.querySelectorAll('.ln');
+          lineNumbers.forEach(ln => ln.remove());
+
+          // Get the text content, splitting by lines, trimming each line, and joining back
+          const codeText = codeBlockClone.textContent
+              .split('\n')              // Split into lines
+              .map(line => line.trim()) // Trim each line
+              .join('\n');              // Join lines back with newline
+
+          navigator.clipboard.writeText(codeText)
               .then(() => {
                   copyButton.textContent = copiedText;
 
@@ -213,4 +226,3 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 });
-
