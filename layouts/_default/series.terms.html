@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <section id="archive" class="archive">
+
+        <ul id="all-series">
+            {{ range $name, $taxonomy := .Site.Taxonomies.series }}
+                {{ $series_name := $name }}
+                {{ $series_path := (printf "/series/%s" (urlize $name)) }}
+                {{ $series_page := site.GetPage $series_path }}
+
+                {{ if $series_page }}
+                    {{ $series_name = $series_page.Title }}
+                {{ end }}
+
+                <li>
+                    <i class="fa fa-list-alt fa-lg"></i> 
+                    <span class="archive-post-time">
+                        <a href="{{ $series_path }}">{{ $series_name }} ({{ $taxonomy.Count }})</a>
+                    </span>
+                    
+                    <ol>
+                        {{ range sort $taxonomy.Pages.ByPublishDate "PublishDate" "desc" }}
+                        <li class="archive-post">
+                            <span class="archive-post-time">
+                              {{ .PublishDate.Format "2006-01-02" }}
+                            </span>
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </li>
+                        {{ end }}
+                    </ol>
+                    <br />
+                </li>
+            {{ end }}
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+{{ end }}

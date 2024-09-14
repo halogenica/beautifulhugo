@@ -1,10 +1,10 @@
 {{- with .Title | default .Site.Title }}
-<meta property="og:title" content="{{ . }}" />
+<meta property="og:title" content="{{ $.Title }} | {{$.Site.Title }}" />
 {{- end }}
 {{- with .Description | default .Params.subtitle | default .Summary }}
 <meta property="og:description" content="{{ . }}">
 {{- end }}
-{{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
+{{- with .Params.share_img | default .Params.image | default .Site.Params.share_img | default .Site.Params.logo }}
 <meta property="og:image" content="{{ . | absURL }}" />
 {{- end }}
 {{- with .Site.Params.fb_app_id }}

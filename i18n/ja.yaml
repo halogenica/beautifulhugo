@@ -39,7 +39,7 @@
 - id: toggleNavigation
   translation: "メニューを切り替え"
 - id: languageSwitcherLabel
-  translation: "言語"
+  translation: "🌐 言語"
 - id: gcseLabelShort
   translation: "検索"
 - id: gcseLabelLong
@@ -72,3 +72,7 @@
 # Related posts
 - id: seeAlso
   translation: "も参照してください"
+
+# Series
+- id: series
+  translation: "シリーズ"

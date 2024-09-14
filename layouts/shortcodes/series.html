@@ -1,0 +1,16 @@
+{{ $series_name := .Get 0 | urlize }}
+
+{{ range $key, $taxonomy := .Site.Taxonomies.series }}
+    {{ if eq $key $series_name }}
+    <ol>
+        {{ range sort $taxonomy.Pages.ByPublishDate "PublishDate" "asc" }}
+        <li class="archive-post">
+            <span class="archive-post-time">
+              {{ .PublishDate.Format "2006-01-02" }}
+            </span>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ol>
+    {{ end }}
+{{ end }}

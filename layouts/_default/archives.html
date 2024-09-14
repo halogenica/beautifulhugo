@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <section id="archive" class="archive">
+      {{ range (.Site.RegularPages.GroupByDate "2006") }}
+        {{ $pages := where .Pages "Type" "post" }}
+        {{ $len := len $pages }}
+        <h2><i class="fas fa-tag" aria-hidden="true"></i> {{ .Key }} ({{ $len }})</h2>
+        <ul class="archive-list">
+        {{ range $index, $page := $pages }}
+            <li class="archive-post">
+              {{ sub $len (add $index 1) }}. 
+              <span class="archive-post-time">
+                {{ .PublishDate.Format "2006-01-02 Mon" }}.
+              </span>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+        {{ end }}
+        </ul>
+      {{ end }}
+      </section>
+    </div>
+  </div>
+</div>
+{{ end }}

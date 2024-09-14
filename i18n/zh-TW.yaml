@@ -39,7 +39,7 @@
 - id: toggleNavigation
   translation: "開關導覽"
 - id: languageSwitcherLabel
-  translation: "語言"
+  translation: "🌐 語言"
 - id: gcseLabelShort
   translation: "搜尋"
 - id: gcseLabelLong
@@ -72,3 +72,7 @@
 # Related posts
 - id: seeAlso
   translation: "其他相關"
+
+# Series
+- id: series
+  translation: "系列"
