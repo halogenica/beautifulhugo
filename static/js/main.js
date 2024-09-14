@@ -64,6 +64,42 @@ var main = {
 
     // show the big header image
     main.initImgs();
+
+    // feat ui: Add TOC (TableOfContents)
+    const SPACING = 100;
+    const $toc = $('#TableOfContents');
+    const $footer = $('.post-footer');
+
+    if ($toc.length) {
+      const minScrollTop = $toc.offset().top - SPACING;
+      const maxScrollTop = $footer.offset().top - $toc.height() - SPACING;
+
+      const tocState = {
+        start: {
+          'position': 'absolute',
+        },
+        process: {
+          'position': 'fixed',
+          'top': SPACING,
+        },
+        end: {
+          'position': 'absolute',
+          'top': maxScrollTop,
+        },
+      };
+
+      $(window).scroll(function() {
+        const scrollTop = $(window).scrollTop();
+
+        if (scrollTop < minScrollTop) {
+          $toc.css(tocState.start);
+        } else if (scrollTop > maxScrollTop) {
+          $toc.css(tocState.end);
+        } else {
+          $toc.css(tocState.process);
+        }
+      });
+    }
   },
 
   initImgs : function() {
