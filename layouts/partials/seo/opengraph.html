@@ -1,5 +1,5 @@
 {{- with .Title | default .Site.Title }}
-<meta property="og:title" content="{{ . }}" />
+<meta property="og:title" content="{{ $.Title }} | {{$.Site.Title }}" />
 {{- end }}
 {{- with .Description | default .Params.subtitle | default .Summary }}
 <meta property="og:description" content="{{ . }}">
