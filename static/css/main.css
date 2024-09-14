@@ -1124,3 +1124,22 @@ h4.see-also {
 .back-to-top:hover {
   transform: translateY(-5px);
 }
+
+/* feat ui: Tags page */
+
+.tag-btn {
+  margin: 0.3125rem;
+}
+
+/* feat ui: Archive page */
+
+.archive .archive-post {
+  padding: 3px 20px;
+  border-left: 1px solid #cacaca;
+  list-style: none;
+}
+
+.archive .archive-post .archive-post-time {
+  margin-right: 10px;
+  color: #8a8a8a;
+}
