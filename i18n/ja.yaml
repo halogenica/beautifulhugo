@@ -72,3 +72,7 @@
 # Related posts
 - id: seeAlso
   translation: "も参照してください"
+
+# Series
+- id: series
+  translation: "シリーズ"

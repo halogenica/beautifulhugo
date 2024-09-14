@@ -72,3 +72,7 @@
 # Related posts
 - id: seeAlso
   translation: "See also"
+
+# Series
+- id: series
+  translation: "Series"
