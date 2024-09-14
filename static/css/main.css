@@ -1104,7 +1104,6 @@ h4.see-also {
 /* feat ui: back to top */
 
 .back-to-top {
-  display: none;
   position: fixed;
   right: 20px;
   bottom: 20px;
