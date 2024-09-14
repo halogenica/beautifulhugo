@@ -15,6 +15,15 @@
     {{ end }}
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- feat ui: Add custom embed multiple language newsletter -->
+        {{ if .Site.Params.substack }}
+          <iframe src="{{ .Site.Params.substack }}" width="100%" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+          <div> <br /></div>
+        {{ else }}
+          <iframe src="https://programmur.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+          <div> <br /></div>
+        {{ end }}
+
         <ul class="list-inline text-center footer-links">
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
             {{- if isset $.Site.Params.author .id }}
