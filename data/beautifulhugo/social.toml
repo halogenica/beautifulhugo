@@ -214,3 +214,9 @@ id = "about"
 url = "%s"
 title = "About"
 icon = "fas fa-at"
+
+[[social_icons]]
+id = "lastfm"
+url = "https://www.last.fm/user/%s"
+title = "Last.fm"
+icon = "fab fa-lastfm"
