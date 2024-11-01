@@ -1,7 +1,7 @@
 baseurl = "https://username.github.io"
 DefaultContentLanguage = "en"
 title = "Beautiful Hugo"
-# Using theme as git submodule 
+# Using theme as git submodule
 theme = "beautifulhugo"
 # Or when using theme as hugo module
 # theme = "github.com/halogenica/beautifulhugo"
@@ -84,6 +84,7 @@ pygmentsCodefencesGuessSyntax = true
   medium = "username"
   discord = "invite code (https://discord.gg/XXXXXXX)"
   strava = "userid"
+  lastfm = "username"
 
 [[menu.main]]
     name = "Blog"
