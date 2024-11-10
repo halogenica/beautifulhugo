@@ -214,3 +214,9 @@ id = "about"
 url = "%s"
 title = "About"
 icon = "fas fa-at"
+
+[[social_icons]]
+id = "bluesky"
+url = "%s"
+title = "About"
+icon = "fas fa-at"
