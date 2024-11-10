@@ -32,7 +32,7 @@ icon = "fab fa-bitbucket"
 id = "twitter"
 url = "https://twitter.com/%s"
 title = "Twitter"
-icon = "fab fa-twitter"
+icon = "fab fa-x-twitter"
 
 [[social_icons]]
 id = "slack"
