@@ -32,7 +32,7 @@ icon = "fab fa-bitbucket"
 id = "twitter"
 url = "https://twitter.com/%s"
 title = "Twitter"
-icon = "fab fa-twitter"
+icon = "fab fa-x-twitter"
 
 [[social_icons]]
 id = "slack"
@@ -220,3 +220,9 @@ id = "lastfm"
 url = "https://www.last.fm/user/%s"
 title = "Last.fm"
 icon = "fab fa-lastfm"
+
+[[social_icons]]
+id = "bluesky"
+url = "%s"
+title = "About"
+icon = "fas fa-at"

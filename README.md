@@ -258,7 +258,7 @@ author:
 ```
 
 ```toml
-[Author]
+[Params.author]
     name = "Author Name"
     website = "https://example.com"
     github = "halogenica/beautifulhugo"
