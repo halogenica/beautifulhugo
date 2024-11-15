@@ -223,6 +223,6 @@ icon = "fab fa-lastfm"
 
 [[social_icons]]
 id = "bluesky"
-url = "%s"
-title = "About"
-icon = "fas fa-at"
+url = "https://bsky.app/profile/%s"
+title = "Bluesky"
+icon = "fab fa-bluesky"
