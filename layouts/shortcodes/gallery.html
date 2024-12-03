@@ -9,7 +9,8 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 <div class="gallery caption-position-{{ with .Get "caption-position" | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}} hover-effect-{{ with .Get "hover-effect" | default "zoom" }}{{.}}{{end}} {{ if ne (.Get "hover-transition") "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">
 	{{- with (.Get "dir") -}}
 		<!-- If a directory was specified, generate figures for all of the images in the directory -->
-		{{- $files := readDir (print "/static/" .) }}
+		{{- $dirPath := (print "/static/" .)}}
+		{{- $files := readDir $dirPath }}
 		{{- range $files -}}
 			<!-- skip files that aren't images, or that inlcude the thumb suffix in their name -->
 			{{- $thumbext := $.Get "thumb" | default "-thumb" }}
@@ -21,15 +22,17 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 				{{- $thumb := .Name | replaceRE "(\\.)" ($thumbext | printf "%s.") }}<!-- filename of thumbnail image -->
 				{{- $thumbexists := where $files "Name" $thumb }}<!-- does a thumbnail image exist? --> 
 				{{- $thumbURL := print $baseURL ($.Get "dir") "/" $thumb | absURL }}<!-- absolute URL to thumbnail image -->
+				{{- $imgData := imageConfig (print $dirPath "/" .Name) }}
 				<div class="box">
 				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
 				    <div class="img" style="background-image: url('{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}');" >
 				      <img itemprop="thumbnail" src="{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}" alt="{{ $caption }}" /><!-- <img> hidden if in .gallery -->
 				    </div>
-			      <figcaption>
-		          <p>{{ $caption }}</p>
-			      </figcaption>
-				    <a href="{{ $linkURL }}" itemprop="contentUrl"></a><!-- put <a> last so it is stacked on top -->
+                  <figcaption>
+		          	<p>{{ $caption }}</p>
+				  </figcaption>
+				  <!-- put <a> last so it is stacked on top -->
+				    <a href="{{ $linkURL }}" itemprop="contentUrl" data-size="{{ $imgData.Width }}x{{ $imgData.Height }}"></a>
 				  </figure>
 				</div>
 			{{- end }}
