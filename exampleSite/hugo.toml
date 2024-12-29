@@ -85,6 +85,7 @@ pygmentsCodefencesGuessSyntax = true
   discord = "invite code (https://discord.gg/XXXXXXX)"
   strava = "userid"
   lastfm = "username"
+  bluesky = "username"
 
 [[menu.main]]
     name = "Blog"
