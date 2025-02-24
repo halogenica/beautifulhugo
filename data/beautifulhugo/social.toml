@@ -226,3 +226,9 @@ id = "bluesky"
 url = "https://bsky.app/profile/%s"
 title = "Bluesky"
 icon = "fab fa-bluesky"
+
+[[social_icons]]
+id = "goodreads"
+url = "https://goodreads.com/%s"
+title = "Goodreads"
+icon = "fab fa-goodreads"
