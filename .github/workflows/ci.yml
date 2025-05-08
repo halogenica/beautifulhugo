@@ -24,8 +24,9 @@ jobs:
         hugo: [0.130.0, 0.147.2]
     steps:
       - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo }}/hugo_extended__${{ matrix.hugo }}linux-amd64.deb \
+        run: >
+          wget -O ${{ runner.temp }}/hugo.deb
+             https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo }}/hugo_extended_${{ matrix.hugo }}linux-amd64.deb
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout
