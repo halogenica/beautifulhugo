@@ -18,8 +18,13 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        hugo: [0.130.0, 0.147.2]
+
     env:
-      HUGO_VERSION: 0.130.0
+      HUGO_VERSION: ${{ matrix.hugo }}
     steps:
       - name: Install Hugo CLI
         run: |
@@ -33,19 +38,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with Hugo
-        env:
-          # For maximum backward compatibility with Hugo modules
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
         run: >
           hugo
           --minify
-          --baseURL "${{ steps.pages.outputs.base_url }}/"
           -s "./exampleSite/"
           --themesDir "../../"
           --logLevel info
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./exampleSite/public
-
