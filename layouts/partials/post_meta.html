@@ -1,6 +1,6 @@
 <span class="post-meta">
-  {{ $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format }}
-  {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
+  {{ $lastmodstr := .Lastmod | time.Format ":date_long" }}
+  {{ $datestr := .Date | time.Format ":date_long" }}
   <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
   {{ if ne $datestr $lastmodstr }}
     &nbsp;{{ $lastmodstr | i18n "lastModified"  }}
