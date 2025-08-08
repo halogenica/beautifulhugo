@@ -779,14 +779,6 @@ table tr {
 table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
-/* @media (prefers-color-scheme: dark) { */
-/* table tr { */
-  /* background-color: #181818; */
-/* } */
-table tr:nth-child(2n) {
-  background-color: #303030
-}
-}
 table tr th {
   font-weight: bold;
   border: 1px solid #cccccc;
