@@ -23,6 +23,12 @@ title = "GitLab"
 icon = "fab fa-gitlab"
 
 [[social_icons]]
+id = "git"
+url = "%s"
+title = "Git Forge"
+icon = "fab fa-git-alt"
+
+[[social_icons]]
 id = "bitbucket"
 url = "https://bitbucket.org/%s"
 title = "Bitbucket"
