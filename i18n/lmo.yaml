@@ -12,11 +12,11 @@
 
 - id: postedOnDate
 
-  translation: "Publegaa il {{ .Count }}"
+  translation: "Publegaa il {{ . }}"
 
 - id: lastModified
 
-  translation: "(Darrera modifega ell {{ .Count }})"
+  translation: "(Darrera modifega ell {{ . }})"
 
 - id: translationsLabel
 
