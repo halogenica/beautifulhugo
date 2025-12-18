@@ -20,7 +20,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
         {{- if or (.Get "caption") (.Get "attr")}}
           <p>
             {{- .Get "caption" -}}
-            {{- with .Get "attrlink"}}<a href="{{.}}">{{ .Get "attr" }}</a>{{ else }}{{ .Get "attr"}}{{ end -}}
+            {{- with .Get "attrlink"}}<a href="{{.}}">{{ $.Get "attr" }}</a>{{ else }}{{ .Get "attr"}}{{ end -}}
           </p>
         {{- end }}
       </figcaption>
