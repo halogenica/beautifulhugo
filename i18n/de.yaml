@@ -2,7 +2,7 @@
 - id: dateFormat
   translation: "02.01.2006"
 - id: shortdateFormat
-  translation: "2. Jan. 2006 15:04:05"
+  translation: "2. Jan. 2006 15:04:05 Uhr"
 - id: postedOnDate
   translation: "Gepostet am {{ . }}"
 - id: lastModified
