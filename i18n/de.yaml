@@ -22,7 +22,7 @@
 - id: nextPost
   translation: "Nächster Post"
 - id: readTime
-  translation: "Minuten"
+  translation: "min"
 - id: words
   translation: "Wörter"
 
