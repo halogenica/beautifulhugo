@@ -4,6 +4,8 @@
   {{ $lastmodstr := .Lastmod.Format $format }}
   {{ if ne $datestr $lastmodstr }}
     {{ $lastmodstr | i18n "lastModified"  }}
+  {{ else }}
+    {{ $datestr }}
   {{ end }}
 </div>
 
