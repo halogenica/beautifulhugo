@@ -19,3 +19,4 @@
 # Ignore minimized files when diffing/grepping
 *.min.js -diff
 *.min.css -diff
+static/js/mermaid.js -diff

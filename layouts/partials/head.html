@@ -114,5 +114,5 @@
 
 {{- partial "head_custom.html" . }}
 {{- if not hugo.IsServer -}}
-  {{ template "_internal/google_analytics.html" . }}
+  {{ partial "google_analytics.html" . }}
 {{- end -}}
