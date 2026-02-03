@@ -1,11 +1,14 @@
 <div class="page-meta">
-  {{ $format := default (i18n "dateFormat") .Site.Params.dateformat }}
-  {{ $datestr := .Date.Format $format }}
-  {{ $lastmodstr := .Lastmod.Format $format }}
-  {{ if ne $datestr $lastmodstr }}
-    {{ $lastmodstr | i18n "lastModified"  }}
-  {{ else }}
-    {{ $datestr }}
+  {{ $show := default .Site.Params.showPageDates .Params.showPageDates }}
+  {{ if $show }}
+    {{ $format := default (i18n "dateFormat") .Site.Params.dateformat }}
+    {{ $datestr := .Date.Format $format }}
+    {{ $lastmodstr := .Lastmod.Format $format }}
+    {{ if ne $datestr $lastmodstr }}
+      {{ $lastmodstr | i18n "lastModified"  }}
+    {{ else }}
+      {{ $datestr }}
+    {{ end }}
   {{ end }}
 </div>
 

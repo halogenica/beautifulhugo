@@ -16,3 +16,6 @@ min_version = "0.124.0"
     author =  "dattali"
     homepage = "https://beautifuljekyll.com"
     repo = "https://github.com/daattali/beautiful-jekyll"
+
+[params]
+  showPageDates = true

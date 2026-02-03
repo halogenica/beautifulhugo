@@ -217,6 +217,12 @@ To avoid this, set the following param in hugo.toml:
   selfHosted = true
 ```
 
+### Other parameters
+```toml
+[params]
+  showPageDates = False # disables the dates below pages, can be controlled in page frontmatter, too
+```
+
 ### Extra shortcodes
 
 There are two extra shortcodes provided (along with the customized figure shortcode):
