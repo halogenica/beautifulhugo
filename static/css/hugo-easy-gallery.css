@@ -107,6 +107,9 @@ figure a {
     top: 0;
     bottom: 0;
 }
+figure figcaption a {
+    position: static;
+}
 
 /*
 figcaption styles
