@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        hugo: [0.130.0, 0.147.2]
+        hugo: [0.130.0, 0.147.2, 0.155.2]
     steps:
       - name: Install Hugo CLI
         run: >
