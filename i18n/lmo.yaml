@@ -16,7 +16,7 @@
 
 - id: lastModified
 
-  translation: "(Darrera modifega ell {{ . }})"
+  translation: "Darrera modifega ell {{ . }}"
 
 - id: translationsLabel
 

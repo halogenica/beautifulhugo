@@ -6,7 +6,7 @@
 - id: postedOnDate
   translation: "{{ . }}에 게시됨"
 - id: lastModified
-  translation: "({{ . }}에 마지막으로 수정됨)"
+  translation: "{{ . }}에 마지막으로 수정됨"
 - id: translationsLabel
   translation: "다른 언어: "
 - id: translationsSeparator

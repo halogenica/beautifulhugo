@@ -6,7 +6,7 @@
 - id: postedOnDate
   translation: "Afiŝiĝis je {{ . }}"
 - id: lastModified
-  translation: "(Laste aliiĝis je {{ . }})"
+  translation: "Laste aliiĝis je {{ . }}"
 - id: translationsLabel
   translation: "Aliaj lingvoj: "
 - id: translationsSeparator

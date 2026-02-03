@@ -6,7 +6,7 @@
 - id: postedOnDate
   translation: "发表于 {{ . }}"
 - id: lastModified
-  translation: "(上次修改时间 {{ . }})"
+  translation: "上次修改时间 {{ . }}"
 - id: translationsLabel
   translation: "其它语言: "
 - id: translationsSeparator

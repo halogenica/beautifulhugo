@@ -4,7 +4,7 @@
   {{ $lastmodstr := .Lastmod.Format $format }}
   <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
   {{ if ne $datestr $lastmodstr }}
-    &nbsp;{{ $lastmodstr | i18n "lastModified"  }}
+    &nbsp;({{ $lastmodstr | i18n "lastModified"  }})
   {{ end }}
   {{ if .Site.Params.readingTime }}
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}

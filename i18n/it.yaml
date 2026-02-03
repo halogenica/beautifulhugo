@@ -6,7 +6,7 @@
 - id: postedOnDate
   translation: "Pubblicato il {{ . }}"
 - id: lastModified
-  translation: "(Ultima modifica il {{ . }})"
+  translation: "Ultima modifica il {{ . }}"
 - id: translationsLabel
   translation: "Altre lingue: "
 - id: translationsSeparator

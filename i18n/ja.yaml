@@ -6,7 +6,7 @@
 - id: postedOnDate
   translation: "{{ . }}に投稿"
 - id: lastModified
-  translation: "(最終更新日時{{ . }})"
+  translation: "最終更新日時{{ . }}"
 - id: translationsLabel
   translation: "翻訳："
 - id: translationsSeparator
