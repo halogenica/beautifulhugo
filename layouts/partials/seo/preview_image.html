@@ -1,0 +1,4 @@
+{{- $preview := .Page.Resources.Match "*_header.{png,jpg}" -}}
+{{- if $preview -}}
+  {{- return (index ($preview) 0).RelPermalink -}}
+{{- end -}}
