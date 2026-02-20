@@ -10,10 +10,15 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
 <div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
   <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="img"{{ if .Parent }} style="background-image: url('{{ print .Site.BaseURL $thumb }}');"{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>
-      <img itemprop="thumbnail" src="{{ $thumb }}" {{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
+    <div class="img"{{ if .Parent }} {{ with $.Page.Resources.GetMatch $thumb }} style="background-image: url('{{ .Permalink }}');"{{ end }}{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>
+      {{ $altText := .Get "caption" | default (.Get "alt") | default $thumb }}
+      {{ with $.Page.Resources.GetMatch $thumb }}
+      <img itemprop="thumbnail" src="{{ .Permalink }}" alt="{{$altText}}" /><!-- <img> hidden if in .gallery -->
+      {{ end }}
     </div>
-    {{ with .Get "link" | default (.Get "src") }}<a href="{{.}}" itemprop="contentUrl"></a>{{ end }}
+    {{ with $.Page.Resources.GetMatch (.Get "link") }}
+    <a href="{{ .Permalink }}" itemprop="contentUrl"></a>
+    {{ end }}
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
       <figcaption>
         {{- with .Get "title" }}<h4>{{.}}</h4>{{ end }}
