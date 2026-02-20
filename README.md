@@ -153,6 +153,20 @@ If you need to put a Disclaimer on your website (e.g. "My views are my own and n
 
 > The code for the disclaimer text is in `layouts/partials/footer.html`.  Moving this code block to another partial file (or relocating it within `footer.html`) will require changes to the css selector in `main.css` as well.
 
+### Utterances support
+
+Add *Utterances* configuration section in `config.toml` or `config.yaml`
+
+Sample `config.toml` configuration
+
+```
+[Params.Utterances]
+  repo = "user/repo"
+  issue_term = "pathname"
+  label = "comment"
+  theme = "github-light"
+```
+
 ### Google Analytics
 
 Sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID.
