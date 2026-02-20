@@ -1,3 +1,5 @@
+if you put in on a single folder and describe each with specials file name related with it than its really helpful for our.
+
 # Beautiful Hugo - An adaptation of the Beautiful Jekyll theme
 
 ![Beautiful Hugo Theme Screenshot](https://github.com/halogenica/beautifulhugo/blob/master/images/screenshot.png)
