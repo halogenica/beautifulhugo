@@ -1,0 +1,21 @@
+{{- if or (in site.Params.mainSections .Section) .Params.summaryLimits -}}
+  {{- $summaryLimit := "none" -}}
+  {{- $contents := "nosnippet" -}}
+  {{ range $key, $value := .Site.Params.AISearchSummary }}
+     {{- if and ($value) (ne $value "none") -}}
+      {{- $summaryLimit = $value.summaryLimit -}}
+     {{- end }}
+     {{- if $limit := index (index $.Page.Params.summarylimits $key) "summarylimit" -}}
+         {{- $summaryLimit = $limit -}}
+     {{- end -}}
+     {{- if and (not (findRE "^\\d+$" (string $summaryLimit))) ( and (ne $summaryLimit "none")  ( ne $summaryLimit "nosnippet" )) -}}
+        {{ errorf "summaryLimit is not an accepted value: \"%s. Please use \"none\", \"nosnippet\", 50, 150, or 300." $summaryLimit }}
+     {{ end }}
+     {{- if ne $summaryLimit "none" -}}
+       {{- if ne $summaryLimit $contents -}}
+         {{- $contents = print "max-snippet:" $summaryLimit -}}
+       {{ end }}
+  <meta name="{{- $key -}}" content="{{ $contents }}">
+     {{- end }}
+  {{- end -}}
+{{- end -}}
