@@ -959,37 +959,35 @@ h4.see-also {
 
 /* --- Make long KaTeX equations scrollable in the x-axis --- */
 .katex-display>.katex {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
+  overflow-x: auto;
+  overflow-y: hidden;
+}
 
+.highlight {
+  box-sizing: border-box;
+  padding: 10px;
+  position: relative;
+}
 
-  .highlight {
-    box-sizing: border-box;
-    padding: 10px;
-    position: relative;
-  }
-  
-  .copyCodeButton {
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    color: black;
-    cursor: pointer;
-    display: none;
-    font-size: 14px;
-    padding: 5px 10px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    transition: background-color 0.3s ease;
-    z-index: 10;
-  }
-  
-  .highlight:hover .copyCodeButton {
-    display: block;
-  }
-  
-  .copyCodeButton:hover {
-    background-color: #e0e0e0;
-  }
-  
+.copyCodeButton {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  color: black;
+  cursor: pointer;
+  display: none;
+  font-size: 14px;
+  padding: 5px 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.highlight:hover .copyCodeButton {
+  display: block;
+}
+
+.copyCodeButton:hover {
+  background-color: #e0e0e0;
+}
