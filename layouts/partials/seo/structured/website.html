@@ -2,8 +2,10 @@
 {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "{{ .Site.Title }}",
-    {{ with .Site.Params.alternatePageName }}"alternateName": "{{ . }}",{{ end }}
-    "url": "{{ .Site.BaseURL }}"
+    "name": {{ .Site.Title }},
+    {{- with .Site.Params.alternatePageName -}}
+    "alternateName": {{ . }},
+    {{- end }}
+    "url": {{ .Site.BaseURL }}
 }
 </script>
