@@ -112,7 +112,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
   {{- end -}}
 
-{{- partial "head_custom.html" . }}
+  {{- with .Page.ExpiryDate -}}
+  {{ partial "meta-robot-unavailable-after.html" . }}
+  {{- end }}
+  {{- partial "head_custom.html" . }}
 {{- if not hugo.IsServer -}}
   {{ template "_internal/google_analytics.html" . }}
 {{- end -}}
