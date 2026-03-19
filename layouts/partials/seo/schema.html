@@ -1,7 +1,5 @@
 {{- partial "seo/structured/website" . }}
-{{- if .Site.Params.organizationName -}}
 {{- partial "seo/structured/organization" . }}
-{{- end }}
 {{ if .IsPage }}
 {{- partial "seo/structured/breadcrumb" . }}
 {{- partial "seo/structured/article" . }}
