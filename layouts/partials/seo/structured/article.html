@@ -1,27 +1,41 @@
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
   "@type": "Article",
-  "author": {
-    "name" : "{{ if .Params.author -}}{{ .Params.author }}{{- else if .Site.Params.author.name -}}{{ .Site.Params.author.name }}{{- end }}"
+  "@id": {{ printf "%s#article" .Permalink }},
+  "isPartOf": {
+    "@id": {{ .Permalink }}
   },
-  "headline": "{{ .Title }}",
-  "description" : "{{ if .Description }}{{ .Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}",
-  "inLanguage" : "{{ .Lang }}",
+  "author": {
+    "name": "{{ .Params.author | default .Site.Params.author.name }}",
+    "url": {{ .Site.BaseURL }},
+    "@id": {{ printf "%s#author" .Site.BaseURL }}
+  },
+  "headline": {{ .Title }},
+  "description": "{{ if .Description }}{{ .Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}",
+  "inLanguage": {{ .Lang }},
   "wordCount": {{ .WordCount }},
-  "datePublished" : "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}",
-  "dateModified" : "{{ .Lastmod.Format "2006-01-02T15:04:05-07:00"  }}",
-  "image" : "{{ .Site.Params.logo | absURL }}",
-  "keywords" : [ "{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}" ],
-  "mainEntityOfPage" : "{{ .Permalink }}",
-  "publisher" : {
+  {{- if gt .ReadingTime 5 }}
+  "timeRequired": {{ printf "PT%dM" .ReadingTime }},
+  {{- end }}
+  "dateCreated": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00"  }},
+  {{- if .Site.Params.logo }}
+  "image": {{ .Site.Params.logo | absURL }},
+  {{- end }}
+  "keywords": [ "{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}" ],
+  "mainEntityOfPage": {
+    "@id": {{ .Permalink }}
+  },
+  "publisher": {
     "@type": "Organization",
-    "name" : "{{ .Site.BaseURL }}",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url" : "{{ .Site.Params.logo | absURL }}",
-        "height" :  60 ,
-        "width" :  60
+    "name": {{ .Site.BaseURL }},
+    "logo": {
+        "@type": "ImageObject",
+        "url": {{ .Site.Params.logo | absURL }},
+        "height": 60 ,
+        "width": 60
     }
   }
 }
