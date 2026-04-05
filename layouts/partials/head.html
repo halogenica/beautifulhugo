@@ -115,6 +115,10 @@
   {{- with .Page.ExpiryDate -}}
   {{ partial "meta-robot-unavailable-after.html" . }}
   {{- end }}
+  {{- if .Site.Params.AISearchSummary -}}
+    {{- partial "meta-ai-search-summary-limits.html" . }}
+  {{- end -}}
+
   {{- partial "head_custom.html" . }}
 {{- if not hugo.IsServer -}}
   {{ template "_internal/google_analytics.html" . }}
