@@ -2,7 +2,7 @@
 <meta property="og:title" content="{{ . }}" />
 {{- end }}
 {{- with .Description | default .Params.subtitle | default .Summary }}
-<meta property="og:description" content="{{ . }}">
+<meta property="og:description" content="{{ . }}" />
 {{- end }}
 {{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
 <meta property="og:image" content="{{ . | absURL }}" />
