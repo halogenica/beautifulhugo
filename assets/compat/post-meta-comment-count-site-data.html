@@ -1,0 +1,13 @@
+{{ $slug := replace .RelPermalink "/" "" }}
+{{ if .Site.Data.comments }}
+  {{ $comments := index $.Site.Data.comments $slug }}
+  {{ if $comments }}
+    {{ if gt (len $comments) 1  }}
+      {{ len $comments  }} {{ i18n "moreComment" }}
+    {{ else }}
+      {{ len $comments  }} {{ i18n "oneComment" }}
+    {{ end }}
+  {{ else }}
+    0 {{ i18n "oneComment" }}
+  {{ end }}
+{{ end }}
