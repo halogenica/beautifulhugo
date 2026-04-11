@@ -52,7 +52,7 @@
           {{ end }}
         {{ end }}
 
-        {{ if isset .Site.Params "gcse" }}
+        {{ with .Site.Params.gcse }}
           <li>
             <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
               <span class="hidden-sm hidden-md hidden-lg">{{ i18n "gcseLabelShort" }}</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
@@ -62,15 +62,16 @@
       </ul>
     </div>
 
-    {{ if isset .Site.Params "logo" }}
+    {{ $page := . }}
+    {{ with .Site.Params.logo }}
       <div class="avatar-container">
         <div class="avatar-img-border">
-          <a title="{{ .Site.Title }}" href="{{ "" | absLangURL }}">
-          {{- $image := resources.Get ( $.Site.Params.logo) -}}
+          <a title="{{ $page.Site.Title }}" href="{{ "" | absLangURL }}">
+          {{- $image := resources.Get . -}}
           {{ if $image }}
-            <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ .Site.Title }}" />
+            <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ $page.Site.Title }}" />
           {{else}}
-            <img class="avatar-img" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
+            <img class="avatar-img" src="{{ . | absURL }}" alt="{{ $page.Site.Title }}" />
            {{end}}
           </a>
         </div>
@@ -81,13 +82,14 @@
 </nav>
 
 <!-- Search Modal -->
-{{ if isset .Site.Params "gcse" }}
+{{ $page := . }}
+{{ with .Site.Params.gcse }}
   <div id="modalSearch" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{ i18n "gcseLabelLong" . }}</h4>
+          <h4 class="modal-title">{{ i18n "gcseLabelLong" $page }}</h4>
         </div>
         <div class="modal-body">
           <gcse:search></gcse:search>
