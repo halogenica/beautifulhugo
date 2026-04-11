@@ -1,20 +1,16 @@
 <article class="post-preview">
-    <a href="{{ .Permalink }}">
-        <h2 class="post-title">{{ .Title }}</h2>
-        {{ if .Params.subtitle }}
-        <h3 class="post-subtitle">
-            {{ .Params.subtitle }}
-        </h3>
-        {{ end }}
-        {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
-        {{ end }}
-        {{ if .Params.video }}
-        <video loop autoplay muted playsinline class="img-title">
-            <source src="{{ .Params.video }}">
-        </video>
-        {{ end }}
-    </a>
+    <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ if .Params.subtitle }}
+    <h3 class="post-subtitle"><a href="{{ .Permalink }}">{{ .Params.subTitle }}</a></h3>
+    {{ end }}
+    {{ if .Params.image }}
+    <a href="{{ .Permalink }}"><img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" /></a>
+    {{ end }}
+    {{ if .Params.video }}
+    <video loop autoplay muted playsinline class="img-title">
+        <source src="{{ .Params.video }}">
+    </video>
+    {{ end }}
 
     <p class="post-meta">
         {{ partial "post_meta.html" . }}
