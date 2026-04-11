@@ -2,6 +2,7 @@
   {{ $format := default (i18n "dateFormat") .Site.Params.dateformat }}
   {{ $datestr := .Date.Format $format }}
   {{ $lastmodstr := .Lastmod.Format $format }}
+  {{- $useHugoData := eq (partial "functions/hugo-version-gte-0.156.0.html" .) "true" -}}
   <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
   {{ if ne $datestr $lastmodstr }}
     &nbsp;({{ $lastmodstr | i18n "lastModified"  }})
@@ -27,19 +28,12 @@
   {{ end }}
   {{- if .Site.Params.staticman -}}
     &nbsp;|&nbsp;<i class="fas fa-comment"></i>&nbsp;
-    {{ $slug := replace .RelPermalink "/" "" }}
-    {{ if .Site.Data.comments }}
-      {{ $comments := index $.Site.Data.comments $slug }}
-      {{ if $comments }}
-        {{ if gt (len $comments) 1  }}
-          {{ len $comments  }} {{ i18n "moreComment" }}
-        {{ else }}
-          {{ len $comments  }} {{ i18n "oneComment" }}
-        {{ end }}
-      {{ else }}
-        0 {{ i18n "oneComment" }}
-      {{ end }}
-    {{ end }}
+    {{- $commentCountTemplate := cond $useHugoData "compat/post-meta-comment-count-hugo-data.html" "compat/post-meta-comment-count-site-data.html" -}}
+    {{- with resources.Get $commentCountTemplate -}}
+      {{- with . | resources.ExecuteAsTemplate $commentCountTemplate $ -}}
+        {{- .Content -}}
+      {{- end -}}
+    {{- end -}}
   {{ end }}
   {{ if .IsTranslated -}}
     {{- $sortedTranslations := sort .Translations "Site.Language.Weight" -}}
@@ -49,4 +43,3 @@
     &nbsp;&bull;&nbsp;{{ i18n "translationsLabel" }}{{ $linksOutput | safeHTML }}
   {{- end }}
 </span>
-

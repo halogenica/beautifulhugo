@@ -1,4 +1,7 @@
 <script type="application/ld+json">
+{{- $useHugoData := eq (partial "functions/hugo-version-gte-0.156.0.html" .) "true" -}}
+{{- $contactPointPartial := cond $useHugoData "functions/data/organization-contact-point-hugo-data.html" "functions/data/organization-contact-point-site-data.html" -}}
+{{- $contactPoint := trim (partial $contactPointPartial .) "\r\n\t " -}}
 {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -7,7 +10,7 @@
   {{- with .Site.Params.socialProfiles }}, "sameAs": {{ . }}{{ end }}
   {{- with .Site.Params.organizationLogo }}, "logo": {{ . }}{{ end }}
   {{- with .Site.Params.organizationAddress }}, "address": {{ . }}{{ end }}
-  {{- with .Site.Data.organization.contacts.contactPoint }}, "contactPoint": {{ . }}{{ end }}
+  {{- with $contactPoint }}{{ . | safeHTML }}{{ end }}
   "url": {{ .Site.BaseURL }}
 }
 </script>
