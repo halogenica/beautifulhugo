@@ -16,24 +16,13 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links">
-          {{ range .Site.Data.beautifulhugo.social.social_icons }}
-            {{- $social := . -}}
-            {{- with index $.Site.Params.author $social.id }}
-              <li>
-		{{- $authorValue := . -}}
-		{{ if or ( hasPrefix $authorValue "http://" ) ( hasPrefix $authorValue "https://" ) }}
-		  <a {{ if $social.rel }}rel="{{ $social.rel }}"{{- end -}} href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}">
-		{{ else }}
-		  <a {{ if $social.rel }}rel="{{ $social.rel }}"{{- end -}} href="{{ printf $social.url $authorValue }}" title="{{ $social.title }}">
-		{{ end }}
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="{{ $social.icon }} fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            {{- end }}
-          {{ end }}
+          {{- $useHugoData := eq (partial "functions/hugo-version-gte-0.156.0.html" .) "true" -}}
+          {{- $socialIconsTemplate := cond $useHugoData "compat/footer-social-icons-hugo-data.html" "compat/footer-social-icons-site-data.html" -}}
+          {{- with resources.Get $socialIconsTemplate -}}
+            {{- with . | resources.ExecuteAsTemplate $socialIconsTemplate $ -}}
+              {{- .Content | safeHTML -}}
+            {{- end -}}
+          {{- end -}}
           {{ if .Site.Params.rss }}
           {{ with .OutputFormats.Get "RSS" }}
           <li>

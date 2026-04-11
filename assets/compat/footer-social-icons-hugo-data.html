@@ -1,0 +1,16 @@
+{{ range hugo.Data.beautifulhugo.social.social_icons }}
+  {{- if isset $.Site.Params.author .id }}
+    <li>
+      {{ if or ( hasPrefix ( index $.Site.Params.author .id ) "http://" ) ( hasPrefix ( index $.Site.Params.author .id ) "https://" ) }}
+        <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Params.author .id) }}" title="{{ .title }}">
+      {{ else }}
+        <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Params.author .id) }}" title="{{ .title }}">
+      {{ end }}
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-circle fa-stack-2x"></i>
+          <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </li>
+  {{- end -}}
+{{ end }}
