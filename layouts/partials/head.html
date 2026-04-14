@@ -115,6 +115,9 @@
   {{- with .Page.ExpiryDate -}}
   {{ partial "meta-robot-unavailable-after.html" . }}
   {{- end }}
+
+  {{- partial "seo/meta/meta-robots.html" . }}
+
   {{- partial "head_custom.html" . }}
 {{- if not hugo.IsServer -}}
   {{ template "_internal/google_analytics.html" . }}
