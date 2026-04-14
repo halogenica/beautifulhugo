@@ -1,15 +1,19 @@
 ---
-title: Limit AI Overview From Using Page Contents
-date: 2026-03-02
-tags: ["example", "summary", "limits", "search"]
+title: Manage robot meta tags an limit AI Overview from using page contents
+date: 2026-04-14
+description: "This feature adds the ability to apply robot meta data on page
+through using custom page paramaters."
+tags: ["example", "summary", "limits", "search", "robots", "meta tags"]
 ---
 
 ## Purpose
 
-This adds the ability to limit the length of any page summary that a search
-engine might attempt to create based on your page content.
+This feature provides two main improvements.
+  
+- Allows the management of `<meta name="robots"....>` tags using front matter.
+- Allows the management of the meta tags related to SEO AI Summary creation.
 
-## Considerations when enabling this feature
+## Considerations when enabling this feature for AI Summary control
 
 Enabling this features may impact how your site or pages are indexed. This will
 depend on how the various search engines react to having the AI Overview denied
@@ -18,50 +22,88 @@ end of this post.
 
 ## Configuration
 
-This is a basic outline on how to configure this option.
-**NOTE:** Only text based items are covered, and Image size has not been
-implemented at this time.
+There are three areas where configuration is obtained.
+
+- hugo.toml  
+  Only loaded if the page is part of the `mainSection`
+- The page's parent if there is a `_index.md`
+- The page it self
+
+The loading order is hugo.toml -> _index.md -> page. This means that:
+
+- _index.md overrides hugo.toml if different values exist for the same key
+- page overrides _index.md if values exist the same key
 
 ### hugo.toml
 
 ```toml
-#[Params.AISearchSummary.Googlebot]
-#summaryLimit = 150
-#[Params.AISearchSummary.robots]
-#summaryLimit = 300
+[Params.seo.robots]
+ai-summary-limit = "nosnippet"
+noindex = true
+nofollow = true
+
+[Params.seo.GoogleBot]
+noindex = true
+ai-summary-limit = 50
 ```
 
-When the above lines are uncommented. All pages within the `.Site.mainSection`
-will have a new meta tag inserted in to their `<head></head>`.
+When the above configuration is used, pages that are part of `mainSection` will
+have the following meta tag inserted witin their `<head></head>`.
 
 ```html
-<meta name="robots" content="max-snippet:300">
-<meta name="Googlebot" content="max-snippet:150">
+<meta name="robots" content="nosnippet">
+<meta name="googlebot" content="noindex, max-snippet:50">
 ```
+
+Pages that are not part of `mainSection` will not have any tags, but you can
+set these tags or override them by setting the required params in the page's own
+front matter.
 
 **NOTE:** Additional search engine bots can be added. e.g. *DuckDuckbot*
 
 #### Options for summaryLimit
 
-- none # No Limit
+- none # No Limit: max-snippet will not be added to the robot tag
 - nosnippet # No snippet permitted equivalent to 0
-- Any numerical value, 0, 50, 150, 300 and more
+- Any positive numerical value, 0, 50, 150, 300 and more
 
 ### Page Overrides
 
-The AISearchSummary defaults that you define in *hugo.toml* can be overridden on
+The tag defaults that you define in *hugo.toml* can be overridden on
 a page by page bases. Within the *Front Matter* add the following.
 
 ```yaml
-summaryLimits:
+seo:
   robots:
-    summaryLimit: 100
-  Googlebot:
-    summaryLimit: 200
+    ai-summary-limit: none
+  GoogleBot:
+    noindex: false
 ```
 
-*NOTE:* If you add a search engine such as *Googlebot* to the page, but the bot
-is not listed in the *hugo.toml* configuration, it will be ignored.
+With the above settings:
+
+- robots will not be added as `no limit` is the default
+- GoogleBot will only contain the max-snippet value
+
+```html
+<meta name="googlebot" content="max-snippet:50">
+
+```
+
+#### List of supported meta tags
+
+- noindex
+- nofollow
+- none
+- nosnippet
+- notranslate
+- noimageinde
+- noarchive
+- nocache
+- noai
+- noimageai
+- ai-summary-limit  
+  Values: none, nosnippet, 0~300
 
 ### Selective application of nosnippet around selected test
 
@@ -77,5 +119,5 @@ a *div* pair.
 
 ## References
 
- - [PlayWire: How to block Google AI Overview from using your Content](https://www.playwire.com/blog/how-to-block-google-ai-overview-from-using-your-content)
- - [ASP Events: How to Stop Google's AI from Using Certain Content on Your Event Website](https://www.asp.events/blog/stop-googles-ai-using-certain-content-event-website)
+- [PlayWire: How to block Google AI Overview from using your Content](https://www.playwire.com/blog/how-to-block-google-ai-overview-from-using-your-content)
+- [ASP Events: How to Stop Google's AI from Using Certain Content on Your Event Website](https://www.asp.events/blog/stop-googles-ai-using-certain-content-event-website)
