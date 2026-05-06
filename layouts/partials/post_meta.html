@@ -30,7 +30,7 @@
     &nbsp;|&nbsp;<i class="fas fa-comment"></i>&nbsp;
     {{- $commentCountTemplate := cond $useHugoData "compat/post-meta-comment-count-hugo-data.html" "compat/post-meta-comment-count-site-data.html" -}}
     {{- with resources.Get $commentCountTemplate -}}
-      {{- $slug := replace .RelPermalink "/" "" -}}
+      {{- $slug := replace $.RelPermalink "/" "" -}}
       {{- with . | resources.ExecuteAsTemplate (printf "%s-%s" $commentCountTemplate $slug) $ -}}
         {{- .Content -}}
       {{- end -}}
