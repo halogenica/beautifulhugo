@@ -1,17 +1,17 @@
 {{- partial "load-photoswipe-theme.html" . }}
 
 {{ if .IsHome }}
-  {{ if .Site.Params.homeTitle }}{{ $.Scratch.Set "title" .Site.Params.homeTitle }}{{ else }}{{ $.Scratch.Set "title" .Site.Title }}{{ end }}
-  {{ if .Site.Params.subtitle }}{{ $.Scratch.Set "subtitle" .Site.Params.subtitle }}{{ end }}
-  {{ if .Site.Params.bigimg }}{{ $.Scratch.Set "bigimg" .Site.Params.bigimg }}{{ end }}
+  {{ if .Site.Params.homeTitle }}{{ $.Store.Set "title" .Site.Params.homeTitle }}{{ else }}{{ $.Store.Set "title" .Site.Title }}{{ end }}
+  {{ if .Site.Params.subtitle }}{{ $.Store.Set "subtitle" .Site.Params.subtitle }}{{ end }}
+  {{ if .Site.Params.bigimg }}{{ $.Store.Set "bigimg" .Site.Params.bigimg }}{{ end }}
 {{ else }}
-  {{ $.Scratch.Set "title" .Title }}
-  {{ if .Params.subtitle }}{{ $.Scratch.Set "subtitle" .Params.subtitle }}{{ end }}
-  {{ if .Params.bigimg }}{{ $.Scratch.Set "bigimg" .Params.bigimg }}{{ end }}
+  {{ $.Store.Set "title" .Title }}
+  {{ if .Params.subtitle }}{{ $.Store.Set "subtitle" .Params.subtitle }}{{ end }}
+  {{ if .Params.bigimg }}{{ $.Store.Set "bigimg" .Params.bigimg }}{{ end }}
 {{ end }}
-{{ $bigimg := $.Scratch.Get "bigimg" }}
-{{ $title := $.Scratch.Get "title" }}
-{{ $subtitle := $.Scratch.Get "subtitle" }}
+{{ $bigimg := $.Store.Get "bigimg" }}
+{{ $title := $.Store.Get "title" }}
+{{ $subtitle := $.Store.Get "subtitle" }}
 
 {{ if or $bigimg $title }}
   {{ if $bigimg }}
@@ -30,12 +30,12 @@
     {{ if $bigimg }}
       {{ $firstimg := index $bigimg 0 }}
       <div class="intro-header big-img" style="background-image: url('{{$firstimg.src}}');">
-        {{ $subtitle := $.Scratch.Get "subtitle" }}
+        {{ $subtitle := $.Store.Get "subtitle" }}
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="{{ .Type }}-heading">
-                <h1>{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
+                <h1>{{ with $.Store.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
                   {{ if $subtitle }}
                     {{ if eq .Type "page" }}
                       <hr class="small">
