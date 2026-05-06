@@ -1,7 +1,12 @@
 {{- $parts := split hugo.Version "." -}}
 {{- $major := int (index $parts 0) -}}
 {{- $minor := int (index $parts 1) -}}
-{{- $patchPart := default "0" (index $parts 2) -}}
+{{- $patchPart := "" -}}
+{{- if ge (len $parts) 3 -}}
+  {{- $patchPart = index $parts 2 -}}
+{{- else -}}
+  {{- $patchPart = "0" -}}
+{{- end -}}
 {{- $patch := int (index (split $patchPart "-") 0) -}}
 {{- if gt $major 0 -}}
 true
