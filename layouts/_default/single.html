@@ -28,10 +28,10 @@
 
         {{ if .Site.Params.showRelatedPosts }}
           {{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
-            {{ $.Scratch.Set "has_related" true }}
+            {{ $.Store.Set "has_related" true }}
           {{ end }}
 
-          {{ if $.Scratch.Get "has_related" }}
+          {{ if $.Store.Get "has_related" }}
                   <h4 class="see-also">{{ i18n "seeAlso" }}</h4>
                   <ul>
                 {{ $num_to_show := .Site.Params.related_content_limit | default 5 }}
