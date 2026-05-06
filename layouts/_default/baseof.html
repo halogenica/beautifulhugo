@@ -1,5 +1,5 @@
-{{ if le hugo.Version "0.124.0" }}
-	{{ errorf "Please use Hugo version 0.124.0 or higher!" }}
+{{ if lt hugo.Version "0.146.0" }}
+	{{ errorf "Please use Hugo version 0.146.0 or higher!" }}
 {{ end }}
 
 <!DOCTYPE html>
