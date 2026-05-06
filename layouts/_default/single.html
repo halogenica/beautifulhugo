@@ -60,7 +60,7 @@
       {{ end }}
 
 
-      {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
+      {{ if and (ne .Type "page") (.Param "comments") }}
       
       {{ if .Site.Params.cusdisID }}
 

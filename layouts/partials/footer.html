@@ -1,7 +1,7 @@
   {{ if eq .Type "page" }}
     {{ partial "page_meta.html" . }}
   {{ end }}
-  {{- if and (not (isset .Site.Params "author")) (isset .Site "author") -}}
+  {{- if and (not .Site.Params.author) .Site.Author -}}
      {{ errorf "Please move [author] to [params.author]; Hugo has deprecated the former." }}
   {{- end -}}
 <footer>
@@ -17,20 +17,22 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links">
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
-            {{- if isset $.Site.Params.author .id }}
+            {{- $social := . -}}
+            {{- with index $.Site.Params.author $social.id }}
               <li>
-		{{ if or ( hasPrefix ( index $.Site.Params.author .id ) "http://" ) ( hasPrefix ( index $.Site.Params.author .id ) "https://" ) }}
-		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Params.author .id) }}" title="{{ .title }}">
+		{{- $authorValue := . -}}
+		{{ if or ( hasPrefix $authorValue "http://" ) ( hasPrefix $authorValue "https://" ) }}
+		  <a {{ if $social.rel }}rel="{{ $social.rel }}"{{- end -}} href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}">
 		{{ else }}
-		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Params.author .id) }}" title="{{ .title }}">
+		  <a {{ if $social.rel }}rel="{{ $social.rel }}"{{- end -}} href="{{ printf $social.url $authorValue }}" title="{{ $social.title }}">
 		{{ end }}
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                    <i class="{{ $social.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
               </li>
-            {{- end -}}
+            {{- end }}
           {{ end }}
           {{ if .Site.Params.rss }}
           {{ with .OutputFormats.Get "RSS" }}
