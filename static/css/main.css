@@ -572,7 +572,7 @@ footer div.disclaimer {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-top: 54px; /* Match Bootstrap 4 fixed navbar height */
+  margin-top: 54px; /* Match Bootstrap 5 fixed navbar height */
   margin-bottom: 35px;
 }
 .intro-header.big-img  .big-img-transition {
@@ -650,7 +650,7 @@ footer div.disclaimer {
     margin-top: 130px;
   }
   .intro-header.big-img {
-    margin-top: 78px;  /* Match expanded Bootstrap 4 navbar height */
+    margin-top: 78px;  /* Match expanded Bootstrap 5 navbar height */
   }
   .intro-header.big-img .page-heading,
   .intro-header.big-img .post-heading  {

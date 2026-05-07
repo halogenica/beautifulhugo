@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-custom fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="{{ i18n "toggleNavigation" }}">
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="{{ i18n "toggleNavigation" }}">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ms-auto">
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
             <li class="nav-item navlinks-container">
@@ -51,7 +51,7 @@
 
         {{ with .Site.Params.gcse }}
           <li class="nav-item">
-            <a class="nav-link" href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+            <a class="nav-link" href="#modalSearch" data-bs-toggle="modal" data-bs-target="#modalSearch" style="outline: none;">
               <span class="d-md-none">{{ i18n "gcseLabelShort" }}</span> <span id="searchGlyph" class="fas fa-search"></span>
             </a>
           </li>
@@ -86,15 +86,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">{{ i18n "gcseLabelLong" $page }}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <gcse:search></gcse:search>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ i18n "gcseClose" }}</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ i18n "gcseClose" }}</button>
         </div>
       </div>
     </div>
