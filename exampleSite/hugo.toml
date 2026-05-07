@@ -5,12 +5,12 @@ title = "Beautiful Hugo"
 theme = "beautifulhugo"
 # Or when using theme as hugo module
 # theme = "github.com/halogenica/beautifulhugo"
-pygmentsStyle = "trac"
-pygmentsUseClasses = true
-pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
-#pygmentsUseClassic = true
-#pygmentOptions = "linenos=inline"
+[markup]
+  [markup.highlight]
+    style = "trac"
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
 
 [Services]
   [Services.Disqus]
