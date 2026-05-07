@@ -51,13 +51,17 @@ This theme is designed to look great on both large-screen and small-screen (mobi
 
 This theme has support for either Hugo's lightning fast Chroma, or both server side and client side highlighting. See [the Hugo docs for more](https://gohugo.io/content-management/syntax-highlighting/).
 
-#### Chroma - New server side syntax highlighting
+#### Chroma - Server side syntax highlighting
 
-To enable Chroma, add the following to your site parameters:
+Chroma is built into Hugo and enabled by default. To configure it, use the `[markup.highlight]` section (the legacy `pygments*` keys are deprecated):
 
-```
-pygmentsCodeFences = true
-pygmentsUseClasses = true
+```toml
+[markup]
+  [markup.highlight]
+    style = "trac"
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
 ```
 
 Then, you can generate a different style by running:
@@ -66,24 +70,16 @@ Then, you can generate a different style by running:
 hugo gen chromastyles --style=trac > static/css/syntax.css
 ```
 
-#### Pygments - Old server side syntax highlighting
-
-To use this feature install Pygments (`pip install Pygments`) and add the following to your site parameters:
-
-```
-pygmentsStyle = "trac"
-pygmentsUseClassic = true
-```
-
-Pygments is mostly compatible with the newer Chroma. It is slower but has some additional theme options. I recommend Chroma over Pygments. Pygments will use `syntax.css` for highlighting, unless you also set the config `pygmentsUseClasses = false` which will generate the style code directly in the HTML file. 
-
 #### Highlight.js - Client side syntax highlighting
-```
+
+Alternatively, you can enable client-side highlighting with Highlight.js. This bypasses Chroma and uses `highlight.min.css` instead of `syntax.css`.
+
+```toml
 [Params]
     useHLJS = true
 ```
 
-Client side highlighting does not require pygments to be installed. This will use `highlight.min.css` instead of `syntax.css` for highlighting (effectively disabling Chroma). Highlight.js has a wider range of support for languages and themes, and an alternative highlighting engine.
+Highlight.js has a wider range of support for languages and themes, and an alternative highlighting engine.
 
 ### Disqus support
 
