@@ -99,30 +99,35 @@ hr.small {
   display: none;
 }
 
-div.panel-body a.list-group-item {
+div.card-body a.list-group-item {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
   border-radius: 0;
   border: none;
   font-size: 16px;
 }
-div.panel-group .panel {
+div.accordion .card {
     border-radius: 0;
 }
-div.panel-group .panel+.panel {
+div.accordion .card+.card {
     margin-top: 0;
 }
 
-div.panel-body a.list-group-item.view-all {
+div.card-body a.list-group-item.view-all {
   font-weight: 600;
 }
 
-::-moz-selection, ::selection {
+::-moz-selection {
   color: white;
   text-shadow: none;
   background: #0085a1;
 }
-img::selection, img::-moz-selection {
+::selection {
+  color: white;
+  text-shadow: none;
+  background: #0085a1;
+}
+img::-moz-selection, img::selection {
   color: white;
   background: transparent;
 }
@@ -171,51 +176,47 @@ figure:not(.dark) img, img.white {
   }
 }
 
-.navbar-custom .nav li a {
+.navbar-custom .nav-link {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
 }
 
 .navbar-custom .navbar-brand,
-.navbar-custom .nav li a {
+.navbar-custom .nav-link {
   font-weight: 800;
   color: #404040;
 }
 
 @media (prefers-color-scheme: dark) {
   .navbar-custom .navbar-brand,
-  .navbar-custom .nav li a {
+  .navbar-custom .nav-link {
     color: #b0b0b0;
   }
 }
 
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus ,
-.navbar-custom .nav li a:hover,
-.navbar-custom .nav li a:focus {
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:focus {
   color: #0085a1;
 }
 
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus ,
-.navbar-custom .nav li a:hover,
-.navbar-custom .nav li a:focus {
-  @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
+  .navbar-custom .navbar-brand:hover,
+  .navbar-custom .navbar-brand:focus ,
+  .navbar-custom .nav-link:hover,
+  .navbar-custom .nav-link:focus {
     color: #b0e0ff;
   }
 }
 
 .navbar-custom .navbar-brand-logo {
   padding-top: 0;
-  -webkit-transition: padding .5s ease-in-out;
-  -moz-transition: padding .5s ease-in-out;
   transition: padding .5s ease-in-out;
 }
 .navbar-custom .navbar-brand-logo img {
   height: 50px;
-  -webkit-transition: height .5s ease-in-out;
-  -moz-transition: height .5s ease-in-out;
   transition: height .5s ease-in-out;
 }
 .navbar-custom.top-nav-short .navbar-brand-logo {
@@ -228,8 +229,6 @@ figure:not(.dark) img, img.white {
 @media only screen and (min-width: 768px) {
   .navbar-custom {
     padding: 20px 0;
-    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
     transition: background .5s ease-in-out,padding .5s ease-in-out;
   }
 
@@ -242,12 +241,10 @@ figure:not(.dark) img, img.white {
   opacity: 1;
   visibility: visible;
   position: absolute;
-  -webkit-transition: visibility 0.5s, opacity 0.5s ease-in-out;
-  -moz-transition: visibility 0.5s, opacity 0.5s ease-in-out;
   transition: visibility 0.5s, opacity 0.5s ease-in-out;
   left: 50%;
+  bottom: -25px;
   width: 50px;
-  margin-top: -25px;
 }
 .navbar-custom .avatar-container  .avatar-img-border {
   width: 100%;
@@ -255,8 +252,6 @@ figure:not(.dark) img, img.white {
   margin-left: -50%;
   display: inline-block;
   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
 .navbar-custom .avatar-container  .avatar-img {
   width: 100%;
@@ -276,14 +271,12 @@ figure:not(.dark) img, img.white {
 @media only screen and (min-width: 768px) {
   .navbar-custom .avatar-container {
     width: 100px;
-    margin-top: -50px;
+    bottom: -50px;
   }
 
   .navbar-custom .avatar-container  .avatar-img-border {
     width: 100%;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
-    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
-    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
   }
 
   .navbar-custom .avatar-container  .avatar-img {
@@ -292,18 +285,18 @@ figure:not(.dark) img, img.white {
 }
 
 /* Multi-level navigation links */
-.navbar-custom .nav .navlinks-container {
+.navbar-custom .nav-item.navlinks-container {
   position: relative;
 }
-.navbar-custom .nav .navlinks-parent:after {
+.navbar-custom .nav-link.navlinks-parent:after {
   content: " \25BC";
 }
-.navbar-custom .nav .navlinks-children {
+.navbar-custom .navlinks-children {
   width: 100%;
   display: none;
   word-break: break-word;
 }
-.navbar-custom .nav .navlinks-container .navlinks-children a {
+.navbar-custom .nav-item.navlinks-container .navlinks-children a {
   display: block;
   padding: 10px;
   padding-left: 30px;
@@ -313,40 +306,40 @@ figure:not(.dark) img, img.white {
   font-weight: normal;
 }
 @media only screen and (max-width: 767px) {
-  .navbar-custom .nav .navlinks-container.show-children {
+  .navbar-custom .nav-item.navlinks-container.show-children {
     background: #eee;
   }
-  .navbar-custom .nav .navlinks-container.show-children .navlinks-children {
+  .navbar-custom .nav-item.navlinks-container.show-children .navlinks-children {
     display: block;
   }
 }
 @media only screen and (min-width: 768px) {
-  .navbar-custom .nav .navlinks-container {
+  .navbar-custom .nav-item.navlinks-container {
     text-align: center;
   }
-  .navbar-custom .nav .navlinks-container:hover {
+  .navbar-custom .nav-item.navlinks-container:hover {
     background: #eee;
   }
-  .navbar-custom .nav .navlinks-container:hover .navlinks-children {
+  .navbar-custom .nav-item.navlinks-container:hover .navlinks-children {
     display: block;
   }
-  .navbar-custom .nav .navlinks-children {
+  .navbar-custom .navlinks-children {
     position: absolute;
   }
-  .navbar-custom .nav .navlinks-container .navlinks-children a {
+  .navbar-custom .nav-item.navlinks-container .navlinks-children a {
     padding-left: 10px;
     border: 1px solid #eaeaea;
     border-width: 0 1px 1px;
   }
 }
 @media (prefers-color-scheme: dark) {
-  .navbar-custom .nav .navlinks-container:hover {
+  .navbar-custom .nav-item.navlinks-container:hover {
     background: #666;
   }
-  .navbar-custom .nav .navlinks-container .navlinks-children a {
+  .navbar-custom .nav-item.navlinks-container .navlinks-children a {
     border: 1px solid #AAA;
   }
-  .navbar-custom .nav .navlinks-container .navlinks-children a {
+  .navbar-custom .nav-item.navlinks-container .navlinks-children a {
     background: #444;
   }
 }
@@ -369,6 +362,9 @@ footer a {
 footer .list-inline {
   margin: 0;
   padding: 0;
+}
+.list-inline > li {
+  display: inline-block;
 }
 footer .copyright {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -576,7 +572,7 @@ footer div.disclaimer {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-top: 51px; /* The small navbar is 50px tall + 1px border */
+  margin-top: 54px; /* Match Bootstrap 4 fixed navbar height */
   margin-bottom: 35px;
 }
 .intro-header.big-img  .big-img-transition {
@@ -654,7 +650,7 @@ footer div.disclaimer {
     margin-top: 130px;
   }
   .intro-header.big-img {
-    margin-top: 91px;  /* Full navbar is small navbar + 20px padding on each side when expanded */
+    margin-top: 78px;  /* Match expanded Bootstrap 4 navbar height */
   }
   .intro-header.big-img .page-heading,
   .intro-header.big-img .post-heading  {
@@ -718,6 +714,23 @@ footer div.disclaimer {
 
 /* --- Pager --- */
 
+.pager {
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+}
+.pager li {
+  display: inline;
+}
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+
 .pager li a {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
@@ -756,13 +769,30 @@ footer div.disclaimer {
   margin-top:10px;
 }
 
-h4.panel-title > span.badge {
+h2.mb-0 button span.badge {
     float: right;
 }
 
 @media only screen and (min-width: 768px) {
   .pager.blog-pager  {
     margin-top: 40px;
+  }
+}
+
+/* --- Well (Bootstrap 3 compatibility) --- */
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+@media (prefers-color-scheme: dark) {
+  .well {
+    background-color: #444;
+    border-color: #555;
   }
 }
 
@@ -929,7 +959,7 @@ h4.see-also {
   .well {
     background-color: #444;
   }
-  .panel {
+  .card {
     background-color: #222;
   }
   .list-group-item {
