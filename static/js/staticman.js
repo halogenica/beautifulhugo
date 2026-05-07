@@ -33,14 +33,41 @@
     return false;
   });
 
-  $('.js-close-modal').click(function () {
-    $('body').removeClass('show-modal');
+  $('.js-close-modal').click(closeModal);
+
+  // Close on Escape and trap focus inside modal
+  $(document).on('keydown', function (e) {
+    if (!$('body').hasClass('show-modal')) return;
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+    if (e.key === 'Tab') {
+      var $modal = $('.modal');
+      var focusable = $modal.find('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])').filter(':visible');
+      var first = focusable.first()[0];
+      var last = focusable.last()[0];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
+
+  function closeModal() {
+    $('body').removeClass('show-modal');
+  }
 
   function showModal(title, message) {
     $('.js-modal-title').text(title);
     $('.js-modal-text').html(message);
 
     $('body').addClass('show-modal');
+    // Move focus into modal for accessibility
+    setTimeout(function () {
+      $('.js-close-modal').focus();
+    }, 0);
   }
 })(jQuery);

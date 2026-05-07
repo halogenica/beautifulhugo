@@ -19,9 +19,9 @@
               <li>
 		{{- $authorValue := . -}}
 		{{ if or ( hasPrefix $authorValue "http://" ) ( hasPrefix $authorValue "https://" ) }}
-		  <a {{ if $social.rel }}rel="{{ $social.rel }}"{{- end -}} href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}">
+		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer"{{ else }}rel="noopener noreferrer"{{ end }} href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}">
 		{{ else }}
-		  <a {{ if $social.rel }}rel="{{ $social.rel }}"{{- end -}} href="{{ printf $social.url $authorValue }}" title="{{ $social.title }}">
+		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer"{{ else }}rel="noopener noreferrer"{{ end }} href="{{ printf $social.url $authorValue }}" title="{{ $social.title }}">
 		{{ end }}
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>

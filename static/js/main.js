@@ -24,15 +24,26 @@ var main = {
     });
 
     // On mobile, when clicking on a multi-level navbar menu, show the child links
-    $('#main-navbar').on("click", ".navlinks-parent", function(e) {
+    // Also handles keyboard (Enter and Space) for accessibility
+    $('#main-navbar').on("click keydown", ".navlinks-parent", function(e) {
+      if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
+        return;
+      }
+      if (e.type === 'keydown') {
+        e.preventDefault();
+      }
       var target = e.target;
+      var isExpanded = false;
       $.each($(".navlinks-parent"), function(key, value) {
         if (value == target) {
-          $(value).parent().toggleClass("show-children");
+          var showing = $(value).parent().toggleClass("show-children").hasClass("show-children");
+          isExpanded = showing;
         } else {
           $(value).parent().removeClass("show-children");
+          $(value).attr("aria-expanded", "false");
         }
       });
+      $(target).attr("aria-expanded", isExpanded ? "true" : "false");
     });
 
     // Ensure nested navbar menus are not longer than the menu header
@@ -85,6 +96,11 @@ var main = {
     var desc = imgInfo.desc;
     var position = imgInfo.position;
       main.setImg(src, desc, position);
+
+    // If the user prefers reduced motion, skip the cycling animation
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
 
     // For better UX, prefetch the next image so that it will already be loaded when we want to show it
       var getNextImg = function() {
