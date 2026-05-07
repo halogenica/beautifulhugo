@@ -105,11 +105,9 @@
   {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/photoswipe.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "css/photoswipe.default-skin.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/photoswipe.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
   {{- end -}}
 
   {{- with .Page.ExpiryDate -}}

@@ -101,11 +101,11 @@
 {{- end -}}
 
 {{- if .Site.Params.selfHosted -}}
-<script src="{{ "js/photoswipe.min.js" | absURL }}"></script>
-<script src="{{ "js/photoswipe-ui-default.min.js" | absURL }}"></script>
+<script src="{{ "js/photoswipe.umd.min.js" | absURL }}"></script>
+<script src="{{ "js/photoswipe-lightbox.umd.min.js" | absURL }}"></script>
 {{- else -}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script>
 {{- end -}}
 <script src="{{ "js/load-photoswipe.js" | absURL }}"></script>
 
