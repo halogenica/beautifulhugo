@@ -26,7 +26,7 @@ hugo serve -s exampleSite/ --themesDir ../..
 ## Architecture
 
 - `layouts/` — Go HTML templates, partials, shortcodes, and default page layouts.
-- `static/` — Vendored third-party assets (Bootstrap 3.4.1, jQuery 3.7.0, Font Awesome, KaTeX, PhotoSwipe, Highlight.js, Mermaid) plus `main.css` and `codeblock.css`.
+- `static/` — Vendored third-party assets (Bootstrap 5.3.5, jQuery 3.7.0, Font Awesome, KaTeX, PhotoSwipe, Highlight.js, Mermaid) plus `main.css` and `codeblock.css`.
 - `exampleSite/` — Demo content (`content/`, `hugo.toml`, and custom `layouts/partials/head_custom.html` / `footer_custom.html`).
 - `i18n/` — Translation strings in YAML.
 - `data/beautifulhugo/social.toml` — Social icon registry consumed by `layouts/partials/footer.html`.

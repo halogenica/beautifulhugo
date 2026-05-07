@@ -64,6 +64,12 @@ var main = {
 
     // show the big header image
     main.initImgs();
+
+    // Initialize Bootstrap 5 tooltips
+    var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    [...tooltipTriggerList].map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
   },
 
   initImgs : function() {
