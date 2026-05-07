@@ -1,7 +1,7 @@
 {{ if .Param "comments" }}
   {{ if .Site.Config.Services.Disqus.Shortname }}
     <div class="comments">
-      {{ partial "disqus.html" . }}
+      {{ template "_internal/disqus.html" . }}
     </div>
   {{ end }}
 {{ end }}

@@ -2,11 +2,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": {{ .Site.Title }},
-  {{ with .Site.Params.alternatePageName }},
-  "alternateName": {{ . }},
+  "name": {{ .Site.Title | jsonify }},
+  {{- with .Site.Params.alternatePageName -}}
+  "alternateName": {{ . | jsonify }},
   {{- end -}}
-  "url": {{ .Site.BaseURL }},
-  "@id": {{ printf "%s#website" .Site.BaseURL }}
+  "url": {{ .Site.BaseURL | jsonify }},
+  "@id": {{ printf "%s#website" .Site.BaseURL | jsonify }}
 }
 </script>
