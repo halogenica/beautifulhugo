@@ -18,8 +18,9 @@
         <ul class="list-inline text-center footer-links">
           {{- $useHugoData := eq (partial "functions/hugo-version-gte-0.156.0.html" .) "true" -}}
           {{- $socialIconsTemplate := cond $useHugoData "compat/footer-social-icons-hugo-data.html" "compat/footer-social-icons-site-data.html" -}}
+          {{- $socialIconsTarget := printf "%s-%s" $socialIconsTemplate (default "default" .Site.Language.Lang) -}}
           {{- with resources.Get $socialIconsTemplate -}}
-            {{- with . | resources.ExecuteAsTemplate $socialIconsTemplate $ -}}
+            {{- with . | resources.ExecuteAsTemplate $socialIconsTarget $ -}}
               {{- .Content | safeHTML -}}
             {{- end -}}
           {{- end -}}

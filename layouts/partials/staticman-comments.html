@@ -3,7 +3,7 @@
   {{- $useHugoData := eq (partial "functions/hugo-version-gte-0.156.0.html" .) "true" -}}
   {{- $commentsTemplate := cond $useHugoData "compat/staticman-comments-hugo-data.html" "compat/staticman-comments-site-data.html" -}}
   {{- with resources.Get $commentsTemplate -}}
-    {{- $slug := replace .RelPermalink "/" "" -}}
+    {{- $slug := replace $.RelPermalink "/" "" -}}
     {{- with . | resources.ExecuteAsTemplate (printf "%s-%s" $commentsTemplate $slug) $ -}}
       {{- .Content | safeHTML -}}
     {{- end -}}

@@ -1,14 +1,15 @@
 {{ range .Site.Data.beautifulhugo.social.social_icons }}
+  {{- $icon := . -}}
   {{- with index $.Site.Params.author .id }}
     <li>
       {{ if or ( hasPrefix . "http://" ) ( hasPrefix . "https://" ) }}
-        <a {{ if $.rel }}rel="{{ $.rel }}"{{- end -}} href="{{ printf "%s" . }}" title="{{ $.title }}">
+        <a {{ if $icon.rel }}rel="{{ $icon.rel }}"{{- end -}} href="{{ printf "%s" . }}" title="{{ $icon.title }}">
       {{ else }}
-        <a {{ if $.rel }}rel="{{ $.rel }}"{{- end -}} href="{{ printf $.url . }}" title="{{ $.title }}">
+        <a {{ if $icon.rel }}rel="{{ $icon.rel }}"{{- end -}} href="{{ printf $icon.url . }}" title="{{ $icon.title }}">
       {{ end }}
         <span class="fa-stack fa-lg">
           <i class="fas fa-circle fa-stack-2x"></i>
-          <i class="{{ $.icon }} fa-stack-1x fa-inverse"></i>
+          <i class="{{ $icon.icon }} fa-stack-1x fa-inverse"></i>
         </span>
       </a>
     </li>
