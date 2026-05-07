@@ -1,4 +1,4 @@
-{{- if eq .Kind "taxonomyTerm" }}
+{{- if eq .Kind "taxonomy" }}
   {{- range $key, $value := .Data.Terms.ByCount }}
     {{- $.Store.Set "most_used" (append $value.Name ($.Store.Get "most_used" | default slice)) }}
   {{- end }}
@@ -12,7 +12,7 @@
 
   {{- $title := printf "Overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular }}
   {{- $.Store.Set "Title" $title }}
-{{- else if eq .Kind "taxonomy" }}
+{{- else if eq .Kind "term" }}
   {{- $description := printf "Overview of all pages with the %s #%s, such as: %s" .Data.Singular $.Title ( index .Pages 0).Title | truncate 160 }}
   {{- $.Store.Set "Description" $description }}
 

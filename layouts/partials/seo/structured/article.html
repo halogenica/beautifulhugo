@@ -2,38 +2,38 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": {{ printf "%s#article" .Permalink }},
+  "@id": {{ printf "%s#article" .Permalink | jsonify }},
   "isPartOf": {
-    "@id": {{ .Permalink }}
+    "@id": {{ .Permalink | jsonify }}
   },
   "author": {
-    "name": "{{ .Params.author | default .Site.Params.author.name }}",
-    "url": {{ .Site.BaseURL }},
-    "@id": {{ printf "%s#author" .Site.BaseURL }}
+    "name": {{ .Params.author | default .Site.Params.author.name | jsonify }},
+    "url": {{ .Site.BaseURL | jsonify }},
+    "@id": {{ printf "%s#author" .Site.BaseURL | jsonify }}
   },
-  "headline": {{ .Title }},
-  "description": "{{ if .Description }}{{ .Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}",
-  "inLanguage": {{ .Lang }},
+  "headline": {{ .Title | jsonify }},
+  "description": {{ if .Description }}{{ .Description | plainify | jsonify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify | jsonify }}{{ else }}""{{ end }}{{ end }},
+  "inLanguage": {{ .Lang | jsonify }},
   "wordCount": {{ .WordCount }},
   {{- if gt .ReadingTime 5 }}
-  "timeRequired": {{ printf "PT%dM" .ReadingTime }},
+  "timeRequired": {{ printf "PT%dM" .ReadingTime | jsonify }},
   {{- end }}
-  "dateCreated": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
-  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
-  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00"  }},
+  "dateCreated": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | jsonify }},
+  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | jsonify }},
   {{- if .Site.Params.logo }}
-  "image": {{ .Site.Params.logo | absURL }},
+  "image": {{ .Site.Params.logo | absURL | jsonify }},
   {{- end }}
-  "keywords": [ "{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}" ],
+  "keywords": [ {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e | jsonify }}{{ end }} ],
   "mainEntityOfPage": {
-    "@id": {{ .Permalink }}
+    "@id": {{ .Permalink | jsonify }}
   },
   "publisher": {
     "@type": "Organization",
-    "name": {{ .Site.BaseURL }},
+    "name": {{ .Site.Title | jsonify }},
     "logo": {
         "@type": "ImageObject",
-        "url": {{ .Site.Params.logo | absURL }},
+        "url": {{ .Site.Params.logo | absURL | jsonify }},
         "height": 60 ,
         "width": 60
     }

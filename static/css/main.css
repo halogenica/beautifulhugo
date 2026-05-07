@@ -127,7 +127,11 @@ div.card-body a.list-group-item.view-all {
   text-shadow: none;
   background: #0085a1;
 }
-img::-moz-selection, img::selection {
+img::-moz-selection {
+  color: white;
+  background: transparent;
+}
+img::selection {
   color: white;
   background: transparent;
 }
@@ -806,8 +810,6 @@ table tr {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-}
-@media (prefers-color-scheme: dark) {
 }
 table tr:nth-child(2n) {
   background-color: #f8f8f8;

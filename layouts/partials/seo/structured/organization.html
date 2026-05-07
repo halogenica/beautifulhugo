@@ -2,12 +2,12 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": {{ .Site.Params.organizationName | default .Site.Params.Author.name }},
-  "@id": {{ printf "%s#organization" .Site.BaseURL }},
-  {{- with .Site.Params.socialProfiles }}, "sameAs": {{ . }}{{ end }}
-  {{- with .Site.Params.organizationLogo }}, "logo": {{ . }}{{ end }}
-  {{- with .Site.Params.organizationAddress }}, "address": {{ . }}{{ end }}
-  {{- with .Site.Data.organization.contacts.contactPoint }}, "contactPoint": {{ . }}{{ end }}
-  "url": {{ .Site.BaseURL }}
+  "name": {{ .Site.Params.organizationName | default .Site.Params.author.name | jsonify }},
+  "@id": {{ printf "%s#organization" .Site.BaseURL | jsonify }},
+  {{- with .Site.Params.socialProfiles }}, "sameAs": {{ . | jsonify }}{{ end }}
+  {{- with .Site.Params.organizationLogo }}, "logo": {{ . | jsonify }}{{ end }}
+  {{- with .Site.Params.organizationAddress }}, "address": {{ . | jsonify }}{{ end }}
+  {{- with .Site.Data.organization.contacts.contactPoint }}, "contactPoint": {{ . | jsonify }}{{ end }}
+  "url": {{ .Site.BaseURL | jsonify }}
 }
 </script>
