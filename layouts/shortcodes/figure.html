@@ -3,9 +3,22 @@ Put this file in /layouts/shortcodes/figure.html
 NB this overrides Hugo's built-in "figure" shortcode but is backwards compatible
 Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 -->
-<!-- count how many times we've called this shortcode; load the css if it's the first time -->
-{{- if not ($.Page.Store.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | absURL}}" />{{ end }}
-{{- $.Page.Store.Set "figurecount" (add ($.Page.Store.Get "figurecount" | default 0) 1) -}}
+{{- if not ($.Page.Store.Get "gallery_css_loaded") -}}
+{{- $galleryCSS := resources.Get "css/hugo-easy-gallery.css" }}
+{{- if not hugo.IsServer }}
+  {{- $galleryCSS = $galleryCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $galleryCSS.RelPermalink }}" integrity="{{ $galleryCSS.Data.Integrity }}" crossorigin="anonymous">
+{{- else }}
+  <link rel="stylesheet" href="{{ $galleryCSS.RelPermalink }}">
+{{- end }}
+{{- if $.Site.Params.selfHosted -}}
+<link rel="stylesheet" href="{{ "css/photoswipe.css" | absURL }}" />
+{{- else -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+{{- end -}}
+{{- $.Page.Store.Set "gallery_css_loaded" true -}}
+{{- end -}}
+{{- $.Page.Store.Set "hasGallery" true -}}
 <!-- use either src or link-thumb for thumbnail image -->
 {{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
 {{- $src := .Get "link" | default (.Get "src") }}

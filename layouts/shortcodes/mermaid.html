@@ -1,8 +1,18 @@
-<link href="{{"css/mermaid.css" | relURL}}" type="text/css" rel="stylesheet"/>
-<script defer src="{{"js/mermaid.js" | relURL}}"></script>
-<script>
-    mermaid.initialize({startOnLoad:true});
-</script>
+{{- if not ($.Page.Store.Get "mermaid_assets_loaded") }}
+{{- if $.Site.Params.selfHosted -}}
+{{- $mermaidCSS := resources.Get "css/mermaid.css" }}
+{{- if not hugo.IsServer }}
+  {{- $mermaidCSS = $mermaidCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $mermaidCSS.RelPermalink }}" integrity="{{ $mermaidCSS.Data.Integrity }}" crossorigin="anonymous">
+{{- else }}
+  <link rel="stylesheet" href="{{ $mermaidCSS.RelPermalink }}">
+{{- end }}
+{{- else -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.css" crossorigin="anonymous">
+{{- end -}}
+{{- $.Page.Store.Set "mermaid_assets_loaded" true }}
+{{- end }}
+{{- $.Page.Store.Set "hasMermaid" true }}
 <div class="mermaid" align="{{ if .Get "align" }}{{ .Get "align" }}{{ else }}center{{ end }}" >
     {{ safeHTML .Inner  }}
 </div>

@@ -23,6 +23,8 @@
   {{- $.Store.Set "Title" ( .Title | default .Site.Title ) }}
 {{- end }}
 
+{{- $hasMath := or .Params.math (gt (len (findRE `\$\$|\\\(|\\\[` .RawContent)) 0) }}
+{{- $.Page.Store.Set "hasMath" $hasMath }}
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -45,7 +47,7 @@
 {{- with .Site.Params.author.name }}
   <meta name="author" content="{{ . }}"/>
 {{- end }}
-{{- partial "seo/main.html" . }}  
+{{- partial "seo/main.html" . }}
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
@@ -55,7 +57,9 @@
   <link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
 
   {{- if .Site.Params.selfHosted -}}
+  {{- if $hasMath }}
   <link rel="stylesheet" href="{{ "css/katex.min.css" | absURL }}" />
+  {{- end }}
   <link rel="stylesheet" href="{{ "fontawesome/css/brands.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "fontawesome/css/fontawesome.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "fontawesome/css/regular.min.css" | absURL }}" />
@@ -67,7 +71,13 @@
   <link rel="stylesheet" href="{{ "fontawesome/css/v5-font-face.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
   {{- else -}}
+  {{- if $hasMath }}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  {{- end }}
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
+  <link rel="preconnect" href="https://use.fontawesome.com" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
@@ -80,10 +90,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   {{- end -}}
 
-  <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
+  {{- $mainCSS := resources.Get "css/main.css" }}
+  {{- if not hugo.IsServer }}
+    {{- $mainCSS = $mainCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $mainCSS.RelPermalink }}" integrity="{{ $mainCSS.Data.Integrity }}" crossorigin="anonymous">
+  {{- else }}
+    <link rel="stylesheet" href="{{ $mainCSS.RelPermalink }}">
+  {{- end }}
 
   {{- if .Site.Params.staticman -}}
-  <link rel="stylesheet" href="{{ "css/staticman.css" | absURL }}" />
+  {{- $staticmanCSS := resources.Get "css/staticman.css" }}
+  {{- if not hugo.IsServer }}
+    {{- $staticmanCSS = $staticmanCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $staticmanCSS.RelPermalink }}" integrity="{{ $staticmanCSS.Data.Integrity }}" crossorigin="anonymous">
+  {{- else }}
+    <link rel="stylesheet" href="{{ $staticmanCSS.RelPermalink }}">
+  {{- end }}
   {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
@@ -98,16 +120,16 @@
   {{- else -}}
   <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
   {{- end -}}
-  <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
-  
+  {{- $codeblockCSS := resources.Get "css/codeblock.css" }}
+  {{- if not hugo.IsServer }}
+    {{- $codeblockCSS = $codeblockCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $codeblockCSS.RelPermalink }}" integrity="{{ $codeblockCSS.Data.Integrity }}" crossorigin="anonymous">
+  {{- else }}
+    <link rel="stylesheet" href="{{ $codeblockCSS.RelPermalink }}">
+  {{- end }}
+
   {{- if .Site.Params.staticman.recaptcha -}}
   <script src='https://www.google.com/recaptcha/api.js'></script>
-  {{- end -}}
-
-  {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/photoswipe.css" | absURL }}" />
-  {{- else -}}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
   {{- end -}}
 
   {{- with .Page.ExpiryDate -}}

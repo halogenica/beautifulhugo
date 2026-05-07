@@ -75,28 +75,48 @@
   </div>
 </footer>
 
+{{- if $.Page.Store.Get "hasMath" }}
 {{- if .Site.Params.selfHosted -}}
 <script defer src="{{ "js/katex.min.js" | absURL }}"></script>
 <script defer src="{{ "js/auto-render.min.js" | absURL }}" onload="renderMathInElement(document.body);"></script>
-<script src="{{ "js/jquery-3.7.0.slim.min.js" | absURL }}"></script>
-<script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
 {{- else -}}
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+{{- end }}
+{{- end }}
+
+{{- if .Site.Params.selfHosted -}}
+<script src="{{ "js/jquery-3.7.0.slim.min.js" | absURL }}"></script>
+<script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
+{{- else -}}
 <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 {{- end }}
 
-<script src="{{ "js/main.js" | absURL }}"></script>
-{{- if .Site.Params.staticman }}
-<script src="{{ "js/staticman.js" | absURL }}"></script>
+{{- $mainJS := resources.Get "js/main.js" }}
+{{- if not hugo.IsServer }}
+  {{- $mainJS = $mainJS | minify | fingerprint }}
+  <script src="{{ $mainJS.RelPermalink }}" integrity="{{ $mainJS.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- else }}
+  <script src="{{ $mainJS.RelPermalink }}"></script>
 {{- end }}
-{{- if  .Site.Params.useHLJS }}
+
+{{- if .Site.Params.staticman }}
+{{- $staticmanJS := resources.Get "js/staticman.js" }}
+{{- if not hugo.IsServer }}
+  {{- $staticmanJS = $staticmanJS | minify | fingerprint }}
+  <script src="{{ $staticmanJS.RelPermalink }}" integrity="{{ $staticmanJS.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- else }}
+  <script src="{{ $staticmanJS.RelPermalink }}"></script>
+{{- end }}
+{{- end }}
+{{- if .Site.Params.useHLJS }}
 <script src="{{ "js/highlight.min.js" | absURL }}"></script>
 <script> hljs.initHighlightingOnLoad(); </script>
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script>
 {{- end -}}
 
+{{- if or (ne .Kind "page") ($.Page.Store.Get "hasGallery") }}
 {{- if .Site.Params.selfHosted -}}
 <script src="{{ "js/photoswipe.umd.min.js" | absURL }}"></script>
 <script src="{{ "js/photoswipe-lightbox.umd.min.js" | absURL }}"></script>
@@ -104,7 +124,14 @@
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script>
 {{- end -}}
-<script src="{{ "js/load-photoswipe.js" | absURL }}"></script>
+{{- $loadPhotoswipe := resources.Get "js/load-photoswipe.js" }}
+{{- if not hugo.IsServer }}
+  {{- $loadPhotoswipe = $loadPhotoswipe | minify | fingerprint }}
+  <script src="{{ $loadPhotoswipe.RelPermalink }}" integrity="{{ $loadPhotoswipe.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- else }}
+  <script src="{{ $loadPhotoswipe.RelPermalink }}"></script>
+{{- end }}
+{{- end }}
 
 <!-- Google Custom Search Engine -->
 {{ if .Site.Params.gcse }}
@@ -168,5 +195,16 @@ $(function(){
 <script id="dsq-count-scr" src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/count.js" async></script>
 <!-- End Delayed Disqus -->
 {{ end }}
+
+{{- if $.Page.Store.Get "hasMermaid" }}
+{{- if .Site.Params.selfHosted -}}
+<script src="{{ "js/mermaid.js" | absURL }}"></script>
+{{- else -}}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js" crossorigin="anonymous"></script>
+{{- end -}}
+<script>
+    mermaid.initialize({startOnLoad:true});
+</script>
+{{- end }}
 
 {{- partial "footer_custom.html" . }}
