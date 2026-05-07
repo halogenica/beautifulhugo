@@ -6,6 +6,7 @@
 }
 pre code.hljs {
   padding: 9.5px;
+  font-size: 13px;
 }
 
 .highlight tr, .highlight pre {

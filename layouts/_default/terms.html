@@ -3,26 +3,21 @@
 {{ $data := .Data }}
 
 <div class="container" role="main">
-  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+  <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
     <article class="post-preview">
-      <div class="panel-group" id="accordion">
+      <div class="accordion" id="accordion">
         {{ range $key, $value := .Data.Terms.ByCount }}
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapse{{ $value.Name | anchorize }}" data-parent="#accordion">
-                <div class="panel-heading" id="header{{ $value.Name | anchorize }}">
-                  <h4 class="panel-title">
-                      {{ $value.Name }}
-                    <span class="badge">{{ $value.Count }}</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapse{{ $value.Name | anchorize }}" class="panel-collapse collapse">
-              <div class="panel-body">
-                <!-- Fix for "https://github.com/halogenica/beautifulhugo/issues/349".
-                Inspired by "https://github.com/halogenica/beautifulhugo/pull/354#issuecomment-2106454808".
-
-                <a href="{{ $.Site.LanguagePrefix | absURL }}/{{ $data.Plural }}/{{ $value.Name | urlize }}/" class="list-group-item view-all">
-                -->
+          <div class="card">
+            <div class="card-header" id="header{{ $value.Name | anchorize }}">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ $value.Name | anchorize }}" aria-expanded="false" aria-controls="collapse{{ $value.Name | anchorize }}">
+                  {{ $value.Name }}
+                  <span class="badge badge-secondary float-right">{{ $value.Count }}</span>
+                </button>
+              </h2>
+            </div>
+            <div id="collapse{{ $value.Name | anchorize }}" class="collapse" aria-labelledby="header{{ $value.Name | anchorize }}" data-parent="#accordion">
+              <div class="card-body">
                 <a href="{{ $data.Plural | absLangURL }}/{{ $value.Name | urlize }}/" class="list-group-item view-all">
                 View all</a>
                 <div class="list-group">
