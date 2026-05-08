@@ -73,3 +73,21 @@ Source:
 {{</* /gallery */>}}
 ```
 
+
+## White background in dark mode
+
+If you need a white background in dark mode for an image with transparency, add the `white` class:
+
+```markdown
+{{</* figure src="/img/hexagon.jpg" class="white" */>}}
+
+![](/img/hexagon.jpg)
+{.white}
+```
+
+Remember to enable block attribuites in markdown:
+
+```toml
+[markup.goldmark.parser.attribute]
+  block = true
+```
