@@ -1,7 +1,7 @@
 {{- $title := "" }}
 {{- $subtitle := "" }}
 {{- $bigimg := slice }}
-{{- $contentColClass := cond .Params.fullWidth "col-12" "col-lg-8 offset-lg-2 col-md-10 offset-md-1" }}
+{{- $contentColClass := cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}
 {{ if .IsHome }}
   {{- $title = .Site.Params.homeTitle | default .Site.Title }}
   {{- $subtitle = .Site.Params.subtitle }}

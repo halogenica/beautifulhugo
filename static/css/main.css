@@ -15,13 +15,6 @@ body {
   flex: 1 0 auto;
 }
 
-@media only screen and (max-width: 767px) {
-.container[role=main] {
-    margin-left: 0;
-    margin-right: 0;
-}
-}
-
 p {
   line-height: 1.5;
   margin: 6px 0;
