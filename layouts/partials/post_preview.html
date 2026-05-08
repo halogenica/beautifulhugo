@@ -6,26 +6,32 @@
             {{ .Params.subtitle }}
         </h3>
         {{ end }}
+    </a>
+
+    <p class="post-meta">
+        {{ partial "post_meta.html" . }}
+    </p>
+    <div class="post-entry-container">
         {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
+        <div class="post-image">
+            <a href="{{ .Permalink }}" aria-label="{{ .Title }}">
+                <img src="{{ .Params.image }}" alt="{{ .Title }}" />
+            </a>
+        </div>
         {{ end }}
         {{ if .Params.video }}
         <video loop autoplay muted playsinline class="img-title">
             <source src="{{ .Params.video }}">
         </video>
         {{ end }}
-    </a>
-
-    <p class="post-meta">
-        {{ partial "post_meta.html" . }}
-    </p>
-    <div class="post-entry">
+        <div class="post-entry">
         {{ if or (.Truncated) (.Params.summary) }}
         {{ .Summary }}
         <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
         {{ else }}
         {{ .Content }}
         {{ end }}
+        </div>
     </div>
 
     {{ if .Params.tags }}
