@@ -90,7 +90,13 @@
   {{- end -}}
 
   {{- if .Site.Params.useHLJS }}
+  {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/highlight-dark.min.css" | absURL }}" media="(prefers-color-scheme: dark)" />
+  {{- else -}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/default.min.css" integrity="sha384-4Y0nObtF3CbKnh+lpzmAVdAMtQXl+ganWiiv73RcGVdRdfVIya8Cao1C8ZsVRRDz" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous" media="(prefers-color-scheme: dark)">
+  {{- end -}}
   {{- else -}}
   <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
   {{- end -}}
