@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}" role="main">
     <div class="row">
-      <div class="{{ cond .Params.fullWidth "col-12" "col-lg-8 offset-lg-2 col-md-10 offset-md-1" }}">
+      <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
         {{ with .Content }}
           <div class="well">
             {{.}}
