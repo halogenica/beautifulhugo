@@ -321,6 +321,25 @@ img {
 }
 
 
+/* --- GitHub Buttons --- */
+
+.gh-buttons {
+  margin-bottom: 20px;
+}
+
+.gh-buttons .github-button {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+  .gh-buttons .github-button {
+    display: block;
+    margin-right: 0;
+  }
+}
+
 /* --- Footer --- */
 
 footer {

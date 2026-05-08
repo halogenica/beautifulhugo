@@ -1,0 +1,34 @@
+{{- /*
+  Renders GitHub buttons (star, watch, fork, follow) from ghbtns.com.
+  
+  Usage in front matter:
+    ghRepo: "user/repo"
+    ghBadge: ["star", "watch", "fork"]
+    
+  Only the specified badges will be rendered.
+*/ -}}
+
+{{ if and .Params.ghRepo (or .Params.ghBadge (and .Site.Params.ghBadge)) }}
+  {{ $repo := .Params.ghRepo }}
+  {{ $badges := .Params.ghBadge | default .Site.Params.ghBadge }}
+  {{ if $badges }}
+    <div class="gh-buttons" style="margin-bottom: 20px;">
+      {{ range $badges }}
+        {{ if eq . "star" }}
+          <a class="github-button" href="https://github.com/{{ $repo }}" data-icon="octicon-star" data-size="large" aria-label="Star {{ $repo }} on GitHub">Star</a>
+        {{ end }}
+        {{ if eq . "watch" }}
+          <a class="github-button" href="https://github.com/{{ $repo }}/subscription" data-icon="octicon-eye" data-size="large" aria-label="Watch {{ $repo }} on GitHub">Watch</a>
+        {{ end }}
+        {{ if eq . "fork" }}
+          <a class="github-button" href="https://github.com/{{ $repo }}/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork {{ $repo }} on GitHub">Fork</a>
+        {{ end }}
+        {{ if eq . "follow" }}
+          {{ $user := (split $repo "/") | first }}
+          <a class="github-button" href="https://github.com/{{ $user }}" data-size="large" aria-label="Follow @{{ $user }} on GitHub">Follow @{{ $user }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  {{ end }}
+{{ end }}
