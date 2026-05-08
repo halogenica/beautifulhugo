@@ -20,24 +20,53 @@ This post demonstrates several new features:
 
 ## Utility classes
 
+{{< tabs groupId="utility-boxes" >}}
+{{< tab "Note" >}}
 This is a `.box-note` using the new content utility styles.
 {.box-note}
-
+{{< /tab >}}
+{{< tab "Warning" >}}
 This is a `.box-warning` to show the shared box styling.
 {.box-warning}
-
+{{< /tab >}}
+{{< tab "Error" >}}
 This is a `.box-error` to show the shared box styling.
 {.box-error}
-
+{{< /tab >}}
+{{< tab "Success" >}}
 This is a `.box-success` to show the shared box styling.
 {.box-success}
+{{< /tab >}}
+{{< /tabs >}}
 
 This is what it looks like:
 
+{{< tabs groupId="utility-boxes" >}}
+{{< tab "Note" >}}
 ```md
 This is a `.box-note` using the new content utility styles.
 {.box-note}
 ```
+{{< /tab >}}
+{{< tab "Warning" >}}
+```md
+This is a `.box-warning` to show the shared box styling.
+{.box-warning}
+```
+{{< /tab >}}
+{{< tab "Error" >}}
+```md
+This is a `.box-error` to show the shared box styling.
+{.box-error}
+```
+{{< /tab >}}
+{{< tab "Success" >}}
+```md
+This is a `.box-success` to show the shared box styling.
+{.box-success}
+```
+{{< /tab >}}
+{{< /tabs >}}
 
 Remember to enable block attribuites in markdown:
 
@@ -86,3 +115,20 @@ hidden: true
 ```
 
 That's not set on this page so you can find it. :)
+
+## Tabs example
+
+{{< tabs groupId="tabs-example" >}}
+{{< tab "One" >}}
+The first tab in a simple example.
+{{< /tab >}}
+{{< tab "Two" >}}
+The second tab in a simple example.
+{{< /tab >}}
+{{< tab "Three" >}}
+The third tab in a simple example.
+{{< /tab >}}
+{{< tab "Four" >}}
+The fourth tab in a simple example.
+{{< /tab >}}
+{{< /tabs >}}

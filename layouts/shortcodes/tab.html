@@ -1,0 +1,16 @@
+{{- if .Parent -}}
+  {{- $name := trim (.Get 0) " " -}}
+  {{- if eq $name "" -}}
+    {{- errorf "%q: tab shortcode missing a tab name" .Page.Path -}}
+  {{- end -}}
+  {{- with .Inner -}}
+    <div
+      class="tab-pane fade"
+      role="tabpanel"
+      data-tab-title="{{ $name | htmlEscape }}"
+      data-tab-key="{{ $name | anchorize }}"
+      tabindex="0">{{ . | markdownify }}</div>
+  {{- end -}}
+{{- else -}}
+  {{- errorf "%q: tab shortcode missing its parent" .Page.Path -}}
+{{- end -}}

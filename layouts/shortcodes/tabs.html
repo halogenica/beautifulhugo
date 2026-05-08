@@ -1,0 +1,73 @@
+{{- $tabsIndex := add (default 0 (.Page.Store.Get "tabsCounter")) 1 -}}
+{{- .Page.Store.Set "tabsCounter" $tabsIndex -}}
+{{- $instanceId := printf "tabs-%d" $tabsIndex -}}
+{{- $groupId := default $instanceId (.Get "groupId") -}}
+
+<div class="tabs-shortcode" id="{{ $instanceId }}" data-tabs-group="{{ $groupId }}">
+  <ul class="nav nav-tabs" id="{{ $instanceId }}-tablist" role="tablist"></ul>
+
+  <div class="tab-content" id="{{ $instanceId }}-content">
+    {{ .Inner }}
+  </div>
+
+  <script>
+    (() => {
+      const root = document.currentScript?.closest('.tabs-shortcode');
+      if (!root) return;
+
+      const nav = root.querySelector('.nav-tabs');
+      const panes = Array.from(root.querySelectorAll('.tab-content > .tab-pane'));
+      if (!nav || panes.length === 0) return;
+      const group = root.dataset.tabsGroup || root.id;
+
+      panes.forEach((pane, index) => {
+        const title = pane.dataset.tabTitle || `Tab ${index + 1}`;
+        const key = pane.dataset.tabKey || title.toLowerCase();
+        const paneId = pane.id || `${root.id}-pane-${index + 1}`;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `nav-link${index === 0 ? ' active' : ''}`;
+        button.id = `${paneId}-tab`;
+        button.setAttribute('data-bs-toggle', 'tab');
+        button.setAttribute('data-bs-target', `#${paneId}`);
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-controls', paneId);
+        button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+        button.dataset.tabGroup = group;
+        button.dataset.tabKey = key;
+        button.textContent = title;
+
+        pane.id = paneId;
+        pane.classList.toggle('show', index === 0);
+        pane.classList.toggle('active', index === 0);
+
+        const item = document.createElement('li');
+        item.className = 'nav-item';
+        item.setAttribute('role', 'presentation');
+        item.appendChild(button);
+        nav.appendChild(item);
+
+        pane.setAttribute('aria-labelledby', button.id);
+        pane.dataset.tabGroup = group;
+        pane.dataset.tabKey = key;
+      });
+
+      if (!window.__beautifulHugoTabsSync) {
+        document.addEventListener('shown.bs.tab', (event) => {
+          const button = event.target;
+          const syncGroup = button?.dataset?.tabGroup;
+          const syncKey = button?.dataset?.tabKey;
+          if (!syncGroup || !syncKey) return;
+
+          document.querySelectorAll('.tabs-shortcode .nav-link').forEach((candidate) => {
+            if (candidate === button) return;
+            if (candidate.dataset.tabGroup !== syncGroup || candidate.dataset.tabKey !== syncKey) return;
+            if (candidate.classList.contains('active')) return;
+            bootstrap.Tab.getOrCreateInstance(candidate).show();
+          });
+        });
+        window.__beautifulHugoTabsSync = true;
+      }
+    })();
+  </script>
+</div>
