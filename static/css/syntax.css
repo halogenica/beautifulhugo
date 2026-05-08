@@ -1,19 +1,19 @@
-/* Background */ .chroma { background-color: #ffffff }
+/* Background */ .chroma { background-color: var(--chroma-bg) }
 /* Error */ .chroma .err { color: #a61717; background-color: #e3d2d2 }
 /* LineTableTD */ .chroma .lntd { ; vertical-align: top; padding: 0; margin: 0; border: 0; }
 /* LineTable */ .chroma .lntable { ; border-spacing: 0; padding: 0; margin: 0; border: 0; width: 100%; overflow: auto; display: block; }
 /* LineHighlight */ .chroma .hl { background-color: #ffffcc; display: block; width: 100% }
 /* LineNumbersTable */ .chroma .lnt { ; margin-right: 0.4em; padding: 0 0.4em 0 0.4em; display: block; }
 /* LineNumbers */ .chroma .ln { ; margin-right: 0.4em; padding: 0 0.4em 0 0.4em; }
-/* Keyword */ .chroma .k { font-weight: bold }
+/* Keyword */ .chroma .k { font-weight: bold; color: var(--chroma-keyword) }
 /* KeywordConstant */ .chroma .kc { font-weight: bold }
 /* KeywordDeclaration */ .chroma .kd { font-weight: bold }
 /* KeywordNamespace */ .chroma .kn { font-weight: bold }
 /* KeywordPseudo */ .chroma .kp { font-weight: bold }
 /* KeywordReserved */ .chroma .kr { font-weight: bold }
-/* KeywordType */ .chroma .kt { color: #445588; font-weight: bold }
+/* KeywordType */ .chroma .kt { color: var(--chroma-keyword-type); font-weight: bold }
 /* NameAttribute */ .chroma .na { color: #008080 }
-/* NameBuiltin */ .chroma .nb { color: #999999 }
+/* NameBuiltin */ .chroma .nb { color: var(--chroma-name-builtin) }
 /* NameClass */ .chroma .nc { color: #445588; font-weight: bold }
 /* NameConstant */ .chroma .no { color: #008080 }
 /* NameEntity */ .chroma .ni { color: #800080 }
@@ -43,8 +43,8 @@
 /* LiteralNumberInteger */ .chroma .mi { color: #009999 }
 /* LiteralNumberIntegerLong */ .chroma .il { color: #009999 }
 /* LiteralNumberOct */ .chroma .mo { color: #009999 }
-/* Operator */ .chroma .o { font-weight: bold }
-/* OperatorWord */ .chroma .ow { font-weight: bold }
+/* Operator */ .chroma .o { font-weight: bold; color: var(--chroma-operator) }
+/* OperatorWord */ .chroma .ow { font-weight: bold; color: var(--chroma-operator-word) }
 /* Comment */ .chroma .c { color: #999988; font-style: italic }
 /* CommentHashbang */ .chroma .ch { color: #999988; font-style: italic }
 /* CommentMultiline */ .chroma .cm { color: #999988; font-style: italic }
