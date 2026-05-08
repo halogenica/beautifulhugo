@@ -1,0 +1,118 @@
+/* --- Dark Mode Overrides --- */
+
+@media (prefers-color-scheme: dark) {
+    body {
+      background: black;
+      color: white;
+    }
+
+    p a {
+      color: #66bfff;
+    }
+
+    a {
+      color: #66bfff;
+    }
+
+    blockquote {
+      border-left: 5px solid #444;
+    }
+
+  figure:not(.dark) img, img.white {
+    background-color: white;
+  }
+
+    .navbar-custom {
+      background: #505050;
+      border-bottom: 1px solid #AAA;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+      color: #b0b0b0;
+    }
+
+    .navbar-custom .navbar-brand:hover,
+    .navbar-custom .navbar-brand:focus ,
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .nav-link:focus {
+      color: #b0e0ff;
+    }
+
+    .navbar-custom .nav-item.navlinks-container:hover {
+      background: #666;
+    }
+    .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+      border: 1px solid #AAA;
+    }
+    .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+      background: #444;
+    }
+
+    footer {
+      background: #444;
+      border-top: 1px #AAA solid;
+    }
+    footer a {
+      color: #AAA;
+    }
+
+    .post-preview a {
+      color: #AAA;
+    }
+
+  .pager li a {
+    background: #444;
+    color: white;
+  }
+
+    .well {
+      background-color: #444;
+      border-color: #555;
+    }
+
+  table tr {
+    background-color: #181818;
+  }
+  table tr:nth-child(2n) {
+    background-color: #303030
+  }
+
+    code {
+      background-color: #222;
+      color: #fbb;
+    }
+    pre code {
+      color: #ccc;
+    }
+    .well {
+      background-color: #444;
+    }
+    .card {
+      background-color: #222;
+    }
+    .list-group-item {
+      background-color: #333;
+    }
+
+    pre.chroma {
+      color: white;
+      background-color: #444;
+    }
+    pre.chroma .k {
+      color: #44AACC;
+    }
+    pre.chroma .kt {
+      color: #33CCCC;
+    }
+    pre.chroma .o {
+      color: #AAA;
+    }
+    pre.chroma .nb {
+      color: #00fee9;
+    }
+    pre.chroma .ow {
+      color: #CC0;
+    }
+
+}
