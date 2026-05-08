@@ -2,7 +2,7 @@
 	{{ errorf "Please use Hugo version 0.146.2 or higher!" }}
 {{ end }}
 
-{{ $themeMode := .Site.Params.darkMode | default "auto" }}
+{{ $themeMode := .Site.Params.colorScheme | default "auto" }}
 {{- $themeAttr := "" -}}
 {{- if eq $themeMode "dark" -}}{{ $themeAttr = ` data-theme="dark"` }}{{ else if eq $themeMode "light" -}}{{ $themeAttr = ` data-theme="light"` }}{{ end -}}
 <!DOCTYPE html>

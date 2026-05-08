@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
     <div class="d-flex align-items-center">
-      {{ if eq (.Site.Params.darkMode | default "auto") "auto" }}
+      {{ if eq (.Site.Params.colorScheme | default "auto") "auto" }}
       <button class="theme-toggle" id="theme-toggle" aria-label="{{ i18n "themeToggleLabel" }}">
         <span class="fas fa-adjust" id="theme-icon-auto"></span>
         <span class="fas fa-sun" id="theme-icon-light" style="display: none;"></span>

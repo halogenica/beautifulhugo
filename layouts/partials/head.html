@@ -77,7 +77,7 @@
   {{- end -}}
 
   <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
-  {{- if ne (.Site.Params.darkMode | default "auto") "light" -}}
+  {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
   <link rel="stylesheet" href="{{ "css/dark.css" | absURL }}" />
   {{- end -}}
 
@@ -95,8 +95,8 @@
   {{- if .Site.Params.useHLJS }}
   {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
-  {{- if ne (.Site.Params.darkMode | default "auto") "light" -}}
-  {{- if eq .Site.Params.darkMode "dark" -}}
+  {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
+  {{- if eq .Site.Params.colorScheme "dark" -}}
   <link id="hljs-dark" rel="stylesheet" href="{{ "css/highlight-dark.min.css" | absURL }}" />
   {{- else -}}
   <link id="hljs-dark" rel="stylesheet" href="{{ "css/highlight-dark.min.css" | absURL }}" media="(prefers-color-scheme: dark)" />
@@ -104,8 +104,8 @@
   {{- end -}}
   {{- else -}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/default.min.css" integrity="sha384-4Y0nObtF3CbKnh+lpzmAVdAMtQXl+ganWiiv73RcGVdRdfVIya8Cao1C8ZsVRRDz" crossorigin="anonymous">
-  {{- if ne (.Site.Params.darkMode | default "auto") "light" -}}
-  {{- if eq .Site.Params.darkMode "dark" -}}
+  {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
+  {{- if eq .Site.Params.colorScheme "dark" -}}
   <link id="hljs-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous">
   {{- else -}}
   <link id="hljs-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous" media="(prefers-color-scheme: dark)">
