@@ -1,118 +1,268 @@
 /* --- Dark Mode Overrides --- */
 
 @media (prefers-color-scheme: dark) {
-    body {
+  :root:not([data-theme="light"]) body {
+        background: black;
+        color: white;
+      }
+
+  :root:not([data-theme="light"]) p a {
+        color: #66bfff;
+      }
+
+  :root:not([data-theme="light"]) a {
+        color: #66bfff;
+      }
+
+  :root:not([data-theme="light"]) blockquote {
+        border-left: 5px solid #444;
+      }
+
+  :root:not([data-theme="light"]) figure:not(.dark) img,
+  :root:not([data-theme="light"]) img.white {
+      background-color: white;
+    }
+
+  :root:not([data-theme="light"]) .navbar-custom {
+        background: #505050;
+        border-bottom: 1px solid #AAA;
+      }
+
+  :root:not([data-theme="light"]) .navbar-custom .navbar-brand ,
+
+  :root:not([data-theme="light"]) .navbar-custom .nav-link {
+        color: #b0b0b0;
+      }
+
+  :root:not([data-theme="light"]) .navbar-custom .navbar-brand:hover ,
+
+  :root:not([data-theme="light"]) .navbar-custom .navbar-brand:focus ,
+
+  :root:not([data-theme="light"]) .navbar-custom .nav-link:hover ,
+
+  :root:not([data-theme="light"]) .navbar-custom .nav-link:focus {
+        color: #b0e0ff;
+      }
+
+  :root:not([data-theme="light"]) .navbar-custom .nav-item.navlinks-container:hover {
+        background: #666;
+      }
+
+  :root:not([data-theme="light"]) .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+        border: 1px solid #AAA;
+      }
+
+  :root:not([data-theme="light"]) .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+        background: #444;
+      }
+
+  :root:not([data-theme="light"]) footer {
+        background: #444;
+        border-top: 1px #AAA solid;
+      }
+
+  :root:not([data-theme="light"]) footer a {
+        color: #AAA;
+      }
+
+  :root:not([data-theme="light"]) .post-preview a {
+        color: #AAA;
+      }
+
+  :root:not([data-theme="light"]) .pager li a {
+      background: #444;
+      color: white;
+    }
+
+  :root:not([data-theme="light"]) .well {
+        background-color: #444;
+        border-color: #555;
+      }
+
+  :root:not([data-theme="light"]) table tr {
+      background-color: #181818;
+    }
+
+  :root:not([data-theme="light"]) table tr:nth-child(2n) {
+      background-color: #303030
+    }
+
+  :root:not([data-theme="light"]) code {
+        background-color: #222;
+        color: #fbb;
+      }
+
+  :root:not([data-theme="light"]) pre code {
+        color: #ccc;
+      }
+
+  :root:not([data-theme="light"]) .well {
+        background-color: #444;
+      }
+
+  :root:not([data-theme="light"]) .card {
+        background-color: #222;
+      }
+
+  :root:not([data-theme="light"]) .list-group-item {
+        background-color: #333;
+      }
+
+  :root:not([data-theme="light"]) pre.chroma {
+        color: white;
+        background-color: #444;
+      }
+
+  :root:not([data-theme="light"]) pre.chroma .k {
+        color: #44AACC;
+      }
+
+  :root:not([data-theme="light"]) pre.chroma .kt {
+        color: #33CCCC;
+      }
+
+  :root:not([data-theme="light"]) pre.chroma .o {
+        color: #AAA;
+      }
+
+  :root:not([data-theme="light"]) pre.chroma .nb {
+        color: #00fee9;
+      }
+
+  :root:not([data-theme="light"]) pre.chroma .ow {
+        color: #CC0;
+      }
+}
+
+[data-theme="dark"] body {
       background: black;
       color: white;
     }
 
-    p a {
+[data-theme="dark"] p a {
       color: #66bfff;
     }
 
-    a {
+[data-theme="dark"] a {
       color: #66bfff;
     }
 
-    blockquote {
+[data-theme="dark"] blockquote {
       border-left: 5px solid #444;
     }
 
-  figure:not(.dark) img, img.white {
+[data-theme="dark"] figure:not(.dark) img,
+
+[data-theme="dark"] img.white {
     background-color: white;
   }
 
-    .navbar-custom {
+[data-theme="dark"] .navbar-custom {
       background: #505050;
       border-bottom: 1px solid #AAA;
     }
 
-    .navbar-custom .navbar-brand,
-    .navbar-custom .nav-link {
+[data-theme="dark"] .navbar-custom .navbar-brand,
+
+[data-theme="dark"] .navbar-custom .nav-link {
       color: #b0b0b0;
     }
 
-    .navbar-custom .navbar-brand:hover,
-    .navbar-custom .navbar-brand:focus ,
-    .navbar-custom .nav-link:hover,
-    .navbar-custom .nav-link:focus {
+[data-theme="dark"] .navbar-custom .navbar-brand:hover,
+
+[data-theme="dark"] .navbar-custom .navbar-brand:focus,
+
+[data-theme="dark"] .navbar-custom .nav-link:hover,
+
+[data-theme="dark"] .navbar-custom .nav-link:focus {
       color: #b0e0ff;
     }
 
-    .navbar-custom .nav-item.navlinks-container:hover {
+[data-theme="dark"] .navbar-custom .nav-item.navlinks-container:hover {
       background: #666;
     }
-    .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+
+[data-theme="dark"] .navbar-custom .nav-item.navlinks-container .navlinks-children a {
       border: 1px solid #AAA;
     }
-    .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+
+[data-theme="dark"] .navbar-custom .nav-item.navlinks-container .navlinks-children a {
       background: #444;
     }
 
-    footer {
+[data-theme="dark"] footer {
       background: #444;
       border-top: 1px #AAA solid;
     }
-    footer a {
+
+[data-theme="dark"] footer a {
       color: #AAA;
     }
 
-    .post-preview a {
+[data-theme="dark"] .post-preview a {
       color: #AAA;
     }
 
-  .pager li a {
+[data-theme="dark"] .pager li a {
     background: #444;
     color: white;
   }
 
-    .well {
+[data-theme="dark"] .well {
       background-color: #444;
       border-color: #555;
     }
 
-  table tr {
+[data-theme="dark"] table tr {
     background-color: #181818;
   }
-  table tr:nth-child(2n) {
+
+[data-theme="dark"] table tr:nth-child(2n) {
     background-color: #303030
   }
 
-    code {
+[data-theme="dark"] code {
       background-color: #222;
       color: #fbb;
     }
-    pre code {
+
+[data-theme="dark"] pre code {
       color: #ccc;
     }
-    .well {
+
+[data-theme="dark"] .well {
       background-color: #444;
     }
-    .card {
+
+[data-theme="dark"] .card {
       background-color: #222;
     }
-    .list-group-item {
+
+[data-theme="dark"] .list-group-item {
       background-color: #333;
     }
 
-    pre.chroma {
+[data-theme="dark"] pre.chroma {
       color: white;
       background-color: #444;
     }
-    pre.chroma .k {
+
+[data-theme="dark"] pre.chroma .k {
       color: #44AACC;
     }
-    pre.chroma .kt {
+
+[data-theme="dark"] pre.chroma .kt {
       color: #33CCCC;
     }
-    pre.chroma .o {
+
+[data-theme="dark"] pre.chroma .o {
       color: #AAA;
     }
-    pre.chroma .nb {
+
+[data-theme="dark"] pre.chroma .nb {
       color: #00fee9;
     }
-    pre.chroma .ow {
+
+[data-theme="dark"] pre.chroma .ow {
       color: #CC0;
     }
-
-}

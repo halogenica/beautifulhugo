@@ -1,9 +1,18 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-custom fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="{{ i18n "toggleNavigation" }}">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex align-items-center">
+      {{ if eq (.Site.Params.colorScheme | default "auto") "auto" }}
+      <button class="theme-toggle" id="theme-toggle" aria-label="{{ i18n "themeToggleLabel" }}">
+        <span class="fas fa-adjust" id="theme-icon-auto"></span>
+        <span class="fas fa-sun" id="theme-icon-light" style="display: none;"></span>
+        <span class="fas fa-moon" id="theme-icon-dark" style="display: none;"></span>
+      </button>
+      {{ end }}
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="{{ i18n "toggleNavigation" }}">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="navbar-nav ms-auto" role="list">

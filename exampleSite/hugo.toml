@@ -33,6 +33,7 @@ title = "Beautiful Hugo"
   readingTime = true
   wordCount = true
   useHLJS = true
+  colorScheme = "auto" # Options: "auto" (default), "dark", or "light"
   socialShare = true
   delayDisqus = true
   showRelatedPosts = true
