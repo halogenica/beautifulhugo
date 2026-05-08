@@ -255,7 +255,7 @@ Set `hidden: true` in a page's front matter to remove it from the homepage and l
 
 ### Extra shortcodes
 
-There are two extra shortcodes provided (along with the customized figure shortcode):
+There are three extra shortcodes provided (along with the customized `beautifulfigure` shortcode which remains backwards compatible with `figure`):
 
 #### Details
 

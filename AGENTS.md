@@ -36,6 +36,6 @@ hugo serve -s exampleSite
 - **`[Params.author]` is required; `[author]` is deprecated.** `layouts/partials/footer.html` emits an explicit `errorf` if the old top-level `[author]` key is still present.
 - **Asset loading is conditional on `selfHosted`.** When `Params.selfHosted = true`, the theme serves Bootstrap, Font Awesome, KaTeX, Google Fonts, and PhotoSwipe from `static/`. When `false` (default), it loads them from CDNs. If you add or bump a vendored asset, update both the `static/` copy and the CDN conditional in `layouts/partials/head.html` and `layouts/partials/footer.html`.
 - **Syntax highlighting is also conditional.** `useHLJS = true` switches to client-side Highlight.js (`static/js/highlight.min.js` + `static/css/highlight.min.css`). Otherwise it relies on Hugo's built-in Chroma and `static/css/syntax.css`.
-- **Shortcodes provided:** `details`, `columns` / `column` / `endcolumns`, `figure`, `gallery`, `mermaid`.
+- **Shortcodes provided:** `details`, `columns` / `column` / `endcolumns`, `beautifulfigure` (backwards-compatible `figure` alias), `gallery`, `mermaid`.
 - **Multilingual** is supported via the standard Hugo `languages` config with per-language `contentDir`.
 - **No unit tests exist.** The CI only confirms the example site builds cleanly across the Hugo version matrix. Run the build command above before opening a PR.
