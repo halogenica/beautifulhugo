@@ -31,6 +31,24 @@ theme = "beautifulhugo"
   delayDisqus = true
   showRelatedPosts = true
 #  cusdisID = "XXX" # Get your App id from cusdis.com
+#  [Params.utterances]
+#    repo = "owner/repo" # https://utteranc.es/
+#    issueTerm = "pathname"
+#    theme = "preferred-color-scheme"
+#    # label = "comment"
+#
+#  [Params.giscus]
+#    repo = "owner/repo" # https://giscus.app/
+#    repoId = "R_kgDO..."
+#    category = "Announcements"
+#    categoryId = "DIC_kwDO..."
+#    mapping = "pathname"
+#    reactionsEnabled = "1"
+#    emitMetadata = "0"
+#    inputPosition = "top"
+#    theme = "preferred_color_scheme"
+#    lang = "en"
+#    lazyLoading = true
 #  hideAuthor = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 #  disclaimerText = "The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way."
