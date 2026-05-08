@@ -18,8 +18,8 @@
         border-left: 5px solid #444;
       }
 
-  :root:not([data-theme="light"]) figure:not(.dark) img,
-  :root:not([data-theme="light"]) img.white {
+  :root:not([data-theme="light"]) figure.white img,
+  :root:not([data-theme="light"]) p.white img {
       background-color: white;
     }
 
@@ -177,9 +177,8 @@
       border-left: 5px solid #444;
     }
 
-[data-theme="dark"] figure:not(.dark) img,
-
-[data-theme="dark"] img.white {
+[data-theme="dark"] figure.white img,
+[data-theme="dark"] p.white img {
     background-color: white;
   }
 
