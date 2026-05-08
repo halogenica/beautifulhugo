@@ -18,9 +18,9 @@ hugo serve -s exampleSite/ --themesDir ../..
 
 ## Hugo Version
 
-- **Minimum Hugo version**: `0.146.0` (enforced at runtime in `layouts/_default/baseof.html`).
-- **CI matrix** tests against `0.146.0`, `0.147.2`, and `0.155.2`.
-- The deploy workflow pins `0.146.0`.
+- **Minimum Hugo version**: `0.146.2` (enforced at runtime in `layouts/_default/baseof.html`).
+- **CI matrix** tests against `0.146.2`, `0.147.2`, and `0.155.2`.
+- The deploy workflow pins `0.146.2`.
 - CI uses the **extended** Hugo binary.
 
 ## Architecture
