@@ -250,8 +250,20 @@ To avoid this, set the following param in hugo.toml:
   showPageDates = false # disables the dates below pages, can be controlled in page frontmatter, too
 ```
 
+<<<<<<< HEAD
 ### Hidden posts
 Set `hidden: true` in a page's front matter to remove it from the homepage and list pages while still building the page (so it remains accessible by direct URL).
+
+### Keep the built-in `figure` shortcode
+
+Beautiful Hugo overrides Hugo's built-in `figure` shortcode with `beautifulfigure`, which adds PhotoSwipe gallery support.
+You can restore the original Hugo behaviour by setting `disableFigureOverride = true` in your `hugo.toml`;
+the `beautifulfigure` shortcode will still be available for PhotoSwipe figures.
+
+```toml
+[params]
+  disableFigureOverride = true  # use Hugo's native <figure> for {{< figure >}} shortcodes
+```
 
 ### Extra shortcodes
 
