@@ -1,6 +1,7 @@
 /* --- Dark Mode Overrides --- */
 
 @media (prefers-color-scheme: dark) {
+
     body {
       background: black;
       color: white;
@@ -116,3 +117,131 @@
     }
 
 }
+
+[data-theme="dark"] body {
+      background: black;
+      color: white;
+    }
+
+[data-theme="dark"] p a {
+      color: #66bfff;
+    }
+
+[data-theme="dark"] a {
+      color: #66bfff;
+    }
+
+[data-theme="dark"] blockquote {
+      border-left: 5px solid #444;
+    }
+
+[data-theme="dark"] figure:not(.dark) img,
+[data-theme="dark"] img.white {
+    background-color: white;
+  }
+
+[data-theme="dark"] .navbar-custom {
+      background: #505050;
+      border-bottom: 1px solid #AAA;
+    }
+
+[data-theme="dark"] .navbar-custom .navbar-brand,
+[data-theme="dark"] .navbar-custom .nav-link {
+      color: #b0b0b0;
+    }
+
+[data-theme="dark"] .navbar-custom .navbar-brand:hover,
+[data-theme="dark"] .navbar-custom .navbar-brand:focus,
+[data-theme="dark"] .navbar-custom .nav-link:hover,
+[data-theme="dark"] .navbar-custom .nav-link:focus {
+      color: #b0e0ff;
+    }
+
+[data-theme="dark"] .navbar-custom .nav-item.navlinks-container:hover {
+      background: #666;
+    }
+
+[data-theme="dark"] .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+      border: 1px solid #AAA;
+    }
+
+[data-theme="dark"] .navbar-custom .nav-item.navlinks-container .navlinks-children a {
+      background: #444;
+    }
+
+[data-theme="dark"] footer {
+      background: #444;
+      border-top: 1px #AAA solid;
+    }
+
+[data-theme="dark"] footer a {
+      color: #AAA;
+    }
+
+[data-theme="dark"] .post-preview a {
+      color: #AAA;
+    }
+
+[data-theme="dark"] .pager li a {
+    background: #444;
+    color: white;
+  }
+
+[data-theme="dark"] .well {
+      background-color: #444;
+      border-color: #555;
+    }
+
+[data-theme="dark"] table tr {
+    background-color: #181818;
+  }
+
+[data-theme="dark"] table tr:nth-child(2n) {
+    background-color: #303030
+  }
+
+[data-theme="dark"] code {
+      background-color: #222;
+      color: #fbb;
+    }
+
+[data-theme="dark"] pre code {
+      color: #ccc;
+    }
+
+[data-theme="dark"] .well {
+      background-color: #444;
+    }
+
+[data-theme="dark"] .card {
+      background-color: #222;
+    }
+
+[data-theme="dark"] .list-group-item {
+      background-color: #333;
+    }
+
+[data-theme="dark"] pre.chroma {
+      color: white;
+      background-color: #444;
+    }
+
+[data-theme="dark"] pre.chroma .k {
+      color: #44AACC;
+    }
+
+[data-theme="dark"] pre.chroma .kt {
+      color: #33CCCC;
+    }
+
+[data-theme="dark"] pre.chroma .o {
+      color: #AAA;
+    }
+
+[data-theme="dark"] pre.chroma .nb {
+      color: #00fee9;
+    }
+
+[data-theme="dark"] pre.chroma .ow {
+      color: #CC0;
+    }
