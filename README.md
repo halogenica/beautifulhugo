@@ -4,7 +4,7 @@
 
 ## Live demo
 
-See https://hugo-theme-beautifulhugo.netlify.app/
+See <https://hugo-theme-beautifulhugo.netlify.app> or <https://halogenica.net/beautifulhugo>.
 
 ## Installation
 
