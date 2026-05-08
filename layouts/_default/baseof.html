@@ -3,7 +3,7 @@
 {{ end }}
 
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
+<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage"{{ if eq .Site.Params.darkMode "dark" }} data-theme="dark"{{ end }}>
   <head>
     {{ partial "head.html" . }}
   </head>
