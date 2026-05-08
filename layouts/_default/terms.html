@@ -2,8 +2,9 @@
 
 {{ $data := .Data }}
 
-<div class="container" role="main">
-  <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+<div class="container{{ if .Params.fullWidth }}-fluid{{ end }}" role="main">
+  <div class="row">
+    <div class="{{ cond .Params.fullWidth "col-12" "col-lg-8 offset-lg-2 col-md-10 offset-md-1" }}">
     <article class="post-preview">
       <div class="accordion" id="accordion">
         {{ range $key, $value := .Data.Terms.ByCount }}
@@ -31,6 +32,7 @@
         {{ end }}
       </div>
     </article>
+    </div>
   </div>
 </div>
 
