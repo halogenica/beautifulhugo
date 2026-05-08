@@ -7,13 +7,13 @@ This is a **Hugo theme**, not a standalone site. All changes are template-level 
 To preview changes locally, build the example site with the parent directory as the themes root:
 
 ```bash
-hugo --minify -s "./exampleSite/" --themesDir "../../"
+hugo --minify -s "./exampleSite/"
 ```
 
 If you want to see the site served, you can start a live server with:
 
 ```bash
-hugo serve -s exampleSite/ --themesDir ../..
+hugo serve -s exampleSite
 ```
 
 ## Hugo Version

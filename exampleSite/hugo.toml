@@ -1,8 +1,14 @@
-baseurl = "https://username.github.io"
+# This gets overridden when building for production
+baseurl = "http://localhost:1313/"
 DefaultContentLanguage = "en"
 title = "Beautiful Hugo"
-# Using theme as git submodule
-theme = "beautifulhugo"
+
+# If using theme as git submodule
+# theme = "beautifulhugo"
+#
+# If using modules (recommended):
+[[module.imports]]
+   path = "github.com/halogenica/beautifulhugo"
 
 [pagination]
   pagerSize = 5
