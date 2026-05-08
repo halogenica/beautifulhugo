@@ -147,3 +147,6 @@ title = "Beautiful Hugo"
     name = "Tags"
     url = "tags"
     weight = 4
+
+[markup.goldmark.renderer]
+  unsafe = true
