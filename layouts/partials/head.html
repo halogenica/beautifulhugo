@@ -90,7 +90,11 @@
   {{- end -}}
 
   {{- if .Site.Params.useHLJS }}
+  {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
+  {{- else -}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/default.min.css" integrity="sha384-4Y0nObtF3CbKnh+lpzmAVdAMtQXl+ganWiiv73RcGVdRdfVIya8Cao1C8ZsVRRDz" crossorigin="anonymous">
+  {{- end -}}
   {{- else -}}
   <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
   {{- end -}}
