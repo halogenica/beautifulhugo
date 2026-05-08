@@ -53,7 +53,14 @@
 
 
       {{ if and (ne .Type "page") (.Param "comments") }}
-      
+      {{ if .Site.Params.giscus }}
+        {{ partial "giscus-comments.html" . }}
+      {{ end }}
+
+      {{ if .Site.Params.utterances }}
+        {{ partial "utterances-comments.html" . }}
+      {{ end }}
+
       {{ if .Site.Params.cusdisID }}
 
         <div id="cusdis_thread"

@@ -140,6 +140,37 @@ comments:
 
 If you *don't* have the section `[Params.staticman]` in `hugo.toml`, you *won't* need the section `reCaptcha`  in `staticman.yml`
 
+### Utterances support
+
+Add this section in `hugo.toml`:
+
+```toml
+[Params.utterances]
+  repo = "owner/repo"
+  issueTerm = "pathname" # pathname, url, title, og:title
+  theme = "preferred-color-scheme"
+  # label = "comment"
+```
+
+### giscus support
+
+Add this section in `hugo.toml`:
+
+```toml
+[Params.giscus]
+  repo = "owner/repo"
+  repoId = "R_kgDO..."
+  category = "Announcements"
+  categoryId = "DIC_kwDO..."
+  mapping = "pathname"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "top"
+  theme = "preferred_color_scheme"
+  lang = "en"
+  lazyLoading = true
+```
+
 ### Site Disclaimer
 
 If you need to put a Disclaimer on your website (e.g. "My views are my own and not my employer's"), you can do so via the following:
