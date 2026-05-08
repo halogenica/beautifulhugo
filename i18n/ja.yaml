@@ -25,7 +25,8 @@
   translation: "分間"
 - id: words
   translation: "言葉"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -62,6 +63,10 @@
   translation: "メールアドレス"
 - id: yourWebsite
   translation: "ウェブサイト"
+- id: submit
+  translation: "送信"
+- id: close
+  translation: "閉じる"
 
 # Delayed Disqus
 - id: show

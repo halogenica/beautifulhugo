@@ -25,7 +25,8 @@
   translation: "minutoj"
 - id: words
   translation: "vortoj"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -62,6 +63,10 @@
   translation: "Via retpoŝtadreso"
 - id: yourWebsite
   translation: "Via retpaĝaro"
+- id: submit
+  translation: "Sendi"
+- id: close
+  translation: "Fermi"
 
 # Delayed Disqus
 - id: show

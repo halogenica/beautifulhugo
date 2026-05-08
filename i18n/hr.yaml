@@ -25,7 +25,8 @@
   translation: "minuta"
 - id: words
   translation: "riječi"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -62,6 +63,10 @@
   translation: "Vaša email adresa"
 - id: yourWebsite
   translation: "You web stranica"
+- id: submit
+  translation: "Pošalji"
+- id: close
+  translation: "Zatvori"
 
 # Delayed Disqus
 - id: show
