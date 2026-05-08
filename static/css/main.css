@@ -157,21 +157,22 @@ img {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding: .25rem .75rem;
+  font-size: 1.25rem;
+  line-height: 1;
   color: inherit;
-  line-height: 1.5;
+}
+@media only screen and (max-width: 767px) {
+  .theme-toggle {
+    padding: .5rem;
+  }
 }
 .theme-toggle:focus {
   outline: 2px solid #0085a1;
-  outline-offset: -2px;
+  outline-offset: 2px;
 }
 .theme-toggle .fas {
   pointer-events: none;
-  font-size: 1.2em;
 }
 
 .navbar-custom .navbar-brand,

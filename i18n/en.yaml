@@ -68,6 +68,10 @@
 - id: close
   translation: "Close"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Theme"
+
 # Delayed Disqus
 - id: show
   translation: "Show"
