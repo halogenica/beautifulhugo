@@ -1,26 +1,22 @@
+{{- $title := "" }}
+{{- $description := "" }}
 {{- if eq .Kind "taxonomy" }}
+  {{- $most_used := slice }}
   {{- range $key, $value := .Data.Terms.ByCount }}
-    {{- $.Store.Set "most_used" (append $value.Name ($.Store.Get "most_used" | default slice)) }}
+    {{- $most_used = $most_used | append $value.Name }}
   {{- end }}
-  {{- if not ($.Store.Get "most_used") }}
-    {{- $description := printf "A full overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular | truncate 180 }}
-    {{- $.Store.Set "Description" $description }}
+  {{- if not $most_used }}
+    {{- $description = printf "A full overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular | truncate 180 }}
   {{- else }}
-    {{- $description := printf "A full overview of all pages with %s, ordered by %s, such as: %s" .Data.Plural .Data.Singular ( delimit ( $.Store.Get "most_used" ) ", " ", and " ) | truncate 180 }}
-    {{- $.Store.Set "Description" $description }}
+    {{- $description = printf "A full overview of all pages with %s, ordered by %s, such as: %s" .Data.Plural .Data.Singular (delimit $most_used ", " ", and ") | truncate 180 }}
   {{- end }}
-
-  {{- $title := printf "Overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular }}
-  {{- $.Store.Set "Title" $title }}
+  {{- $title = printf "Overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular }}
 {{- else if eq .Kind "term" }}
-  {{- $description := printf "Overview of all pages with the %s #%s, such as: %s" .Data.Singular $.Title ( index .Pages 0).Title | truncate 160 }}
-  {{- $.Store.Set "Description" $description }}
-
-  {{- $title := printf "Overview of all pages with the %s #%s" .Data.Singular $.Title }}
-  {{- $.Store.Set "Title" $title }}
+  {{- $description = printf "Overview of all pages with the %s #%s, such as: %s" .Data.Singular $.Title (index .Pages 0).Title | truncate 160 }}
+  {{- $title = printf "Overview of all pages with the %s #%s" .Data.Singular $.Title }}
 {{- else }}
-  {{- $.Store.Set "Description" ( .Description | default .Params.subtitle | default .Summary ) }}
-  {{- $.Store.Set "Title" ( .Title | default .Site.Title ) }}
+  {{- $description = .Description | default .Params.subtitle | default .Summary }}
+  {{- $title = .Title | default .Site.Title }}
 {{- end }}
 
   <meta charset="utf-8" />
@@ -34,12 +30,12 @@
       <title>{{ . }}</title>
     {{- end }}
   {{ else }}
-    {{- with ($.Store.Get "Title") }}
+    {{- with $title }}
       <title>{{ . }} - {{ $.Site.Params.homeTitle }}</title>
     {{- end }}
 {{ end }}
 
-{{- with ($.Store.Get "Description") }}
+{{- with $description }}
   <meta name="description" content="{{ . }}">
 {{- end }}
 {{- with .Site.Params.author.name }}
