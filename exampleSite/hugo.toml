@@ -82,6 +82,8 @@ theme = "beautifulhugo"
   strava = "userid"
   lastfm = "username"
   bluesky = "username"
+  orcid = "0000-0000-0000-0000"
+  googlescholar = "XXXXXXXXXXXX"
 
 [[menu.main]]
     name = "Blog"
