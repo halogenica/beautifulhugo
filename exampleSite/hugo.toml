@@ -116,6 +116,10 @@ title = "Beautiful Hugo"
 [markup.goldmark.renderer]
   unsafe = true
 
+# Use hljs
+[markup.highlight]
+  codeFences = false
+
 [[menu.main]]
     name = "Blog"
     url = ""

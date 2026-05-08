@@ -76,7 +76,6 @@
 
   :root:not([data-theme="light"]) .well {
         background-color: #444;
-        border-color: #555;
       }
 
   :root:not([data-theme="light"]) table tr {
@@ -237,7 +236,6 @@
 
 [data-theme="dark"] .well {
       background-color: #444;
-      border-color: #555;
     }
 
 [data-theme="dark"] table tr {
