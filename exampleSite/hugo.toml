@@ -36,7 +36,8 @@ title = "Beautiful Hugo"
   colorScheme = "auto" # Options: "auto" (default), "dark", or "light"
   socialShare = true
   delayDisqus = true
-  showRelatedPosts = true
+   showRelatedPosts = true
+   disableFigureOverride = true
 #  cusdisID = "XXX" # Get your App id from cusdis.com
 #  [Params.utterances]
 #    repo = "owner/repo" # https://utteranc.es/
@@ -148,6 +149,12 @@ title = "Beautiful Hugo"
     name = "Code Sample"
     url = "post/2016-03-08-code-sample"
     weight = 3
+
+[[menu.main]]
+    parent = "samples"
+    name = "Figure Sample"
+    url = "post/2026-05-08-figure-sample"
+    weight = 4
 
 [[menu.main]]
     name = "Tags"
