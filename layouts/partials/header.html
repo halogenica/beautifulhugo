@@ -33,6 +33,9 @@
             <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
               <div class="{{ .Type }}-heading">
                 <h1>{{ with $title }}{{.}}{{ else }}<br/>{{ end }}</h1>
+                {{ if ne .Type "post" }}
+                  <hr class="small">
+                {{ end }}
                 {{ partial "header-subtitle.html" (dict "Context" . "Subtitle" $subtitle) }}
                 {{ if eq .Type "post" }}
                   {{ partial "post_meta.html" . }}
