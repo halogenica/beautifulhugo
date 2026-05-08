@@ -51,6 +51,16 @@
           {{ end }}
         {{ end }}
 
+        {{ if eq (.Site.Params.darkMode | default "auto") "auto" }}
+        <li class="nav-item">
+          <button class="nav-link theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <span class="fas fa-adjust" id="theme-icon-auto" title="Auto"></span>
+            <span class="fas fa-sun" id="theme-icon-light" title="Light" style="display: none;"></span>
+            <span class="fas fa-moon" id="theme-icon-dark" title="Dark" style="display: none;"></span>
+          </button>
+        </li>
+        {{ end }}
+
         {{ with .Site.Params.gcse }}
           <li class="nav-item" role="listitem">
             <a class="nav-link" href="#modalSearch" data-bs-toggle="modal" data-bs-target="#modalSearch" style="outline: none;">

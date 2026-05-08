@@ -153,6 +153,25 @@ img {
   letter-spacing: 1px;
 }
 
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  min-width: 40px;
+  justify-content: center;
+}
+.theme-toggle:focus {
+  outline: 2px solid #0085a1;
+  outline-offset: -2px;
+}
+.theme-toggle .fas {
+  pointer-events: none;
+}
+
 .navbar-custom .navbar-brand,
 .navbar-custom .nav-link {
   font-weight: 800;

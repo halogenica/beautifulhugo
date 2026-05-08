@@ -2,9 +2,26 @@
 	{{ errorf "Please use Hugo version 0.146.2 or higher!" }}
 {{ end }}
 
+{{ $themeMode := .Site.Params.darkMode | default "auto" }}
+{{- $themeAttr := "" -}}
+{{- if eq $themeMode "dark" -}}{{ $themeAttr = ` data-theme="dark"` }}{{ else if eq $themeMode "light" -}}{{ $themeAttr = ` data-theme="light"` }}{{ end -}}
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage"{{ if eq .Site.Params.darkMode "dark" }} data-theme="dark"{{ end }}>
+<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage"{{ $themeAttr | safeHTMLAttr }}>
   <head>
+    {{- if eq $themeMode "auto" -}}
+    <script>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      })();
+    </script>
+    {{- end -}}
     {{ partial "head.html" . }}
   </head>
   <body>
@@ -15,4 +32,3 @@
     {{ block "footer" . }}{{ end }}
   </body>
 </html>
-
