@@ -3,12 +3,23 @@
   {{- if eq $name "" -}}
     {{- errorf "%q: tab shortcode missing a tab name" .Page.Path -}}
   {{- end -}}
+  {{- $instanceId := .Parent.Store.Get "instanceId" -}}
+  {{- $paneId := printf "%s-pane-%d" $instanceId (add .Ordinal 1) -}}
+  {{- $buttonId := printf "%s-tab" $paneId -}}
+  {{- $tabs := default (slice) (.Parent.Store.Get "tabs") -}}
+  {{- .Parent.Store.Set "tabs" ($tabs | append (dict
+    "active" (eq .Ordinal 0)
+    "buttonId" $buttonId
+    "key" ($name | anchorize)
+    "paneId" $paneId
+    "title" $name
+  )) -}}
   {{- with .Inner -}}
     <div
-      class="tab-pane fade"
+      class="tab-pane fade{{ if eq $.Ordinal 0 }} show active{{ end }}"
+      id="{{ $paneId }}"
       role="tabpanel"
-      data-tab-title="{{ $name | htmlEscape }}"
-      data-tab-key="{{ $name | anchorize }}"
+      aria-labelledby="{{ $buttonId }}"
       tabindex="0">{{ . | markdownify }}</div>
   {{- end -}}
 {{- else -}}
