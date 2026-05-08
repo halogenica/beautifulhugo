@@ -18,13 +18,15 @@
       <ul class="navbar-nav ms-auto" role="list">
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
-            <li class="nav-item navlinks-container" role="listitem">
-              <a class="nav-link navlinks-parent" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ .Name }}</a>
-              <div class="navlinks-children">
+            <li class="nav-item dropdown" role="listitem">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ .Name }}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
                 {{ range .Children }}
-                  <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                  <li><a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                 {{ end }}
-              </div>
+              </ul>
             </li>
           {{ else }}
             <li class="nav-item" role="listitem">
@@ -38,15 +40,17 @@
             {{ $siteLanguages := .Site.Home.AllTranslations }}
             {{ if ge (len $siteLanguages) 3 }}
               {{ if .IsTranslated }}
-                <li class="nav-item navlinks-container" role="listitem">
-                  <a class="nav-link navlinks-parent" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ i18n "languageSwitcherLabel" }}</a>
-                  <div class="navlinks-children">
+                <li class="nav-item dropdown" role="listitem">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ i18n "languageSwitcherLabel" }}
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
                     {{ range $pageTranslations }}
                       {{ if not (eq .Lang $.Site.Language.Lang) }}
-                      <a href="{{ .Permalink }}">{{ default .Lang .Site.Language.LanguageName }}</a>
+                      <li><a class="dropdown-item" href="{{ .Permalink }}">{{ default .Lang .Site.Language.LanguageName }}</a></li>
                       {{ end }}
                     {{ end }}
-                  </div>
+                  </ul>
                 </li>
               {{ end }}
             {{ else }}
@@ -71,19 +75,21 @@
     </div>
 
     {{ $page := . }}
-    {{ with .Site.Params.logo }}
-      <div class="avatar-container">
-        <div class="avatar-img-border">
-          <a title="{{ $page.Site.Title }}" href="{{ "" | absLangURL }}">
-          {{- $image := resources.Get . -}}
-          {{ if $image }}
-            <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ $page.Site.Title }}" />
-          {{else}}
-            <img class="avatar-img" src="{{ . | absURL }}" alt="{{ $page.Site.Title }}" />
-           {{end}}
-          </a>
+    {{ if ne (.Params.showAvatar | default true) false }}
+      {{ with .Site.Params.logo }}
+        <div class="avatar-container">
+          <div class="avatar-img-border">
+            <a title="{{ $page.Site.Title }}" href="{{ "" | absLangURL }}">
+            {{- $image := resources.Get . -}}
+            {{ if $image }}
+              <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ $page.Site.Title }}" />
+            {{else}}
+              <img class="avatar-img" src="{{ . | absURL }}" alt="{{ $page.Site.Title }}" />
+             {{end}}
+            </a>
+          </div>
         </div>
-      </div>
+      {{ end }}
     {{ end }}
 
   </div>
