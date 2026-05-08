@@ -219,6 +219,10 @@ img {
   .navbar-custom.top-nav-short {
     padding: 0;
   }
+
+  body.nav-short-permanent .navbar-custom {
+    padding: 0;
+  }
 }
 
 @media only screen and (min-width: 768px) and (prefers-reduced-motion: reduce) {
@@ -954,4 +958,59 @@ h4.see-also {
 
 .copyCodeButton:hover {
   background-color: #e0e0e0;
+}
+
+/* --- Content Utilities --- */
+
+/* Center block element */
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Image / content caption */
+.caption {
+  text-align: center;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* --- Notification Boxes --- */
+
+.box-note,
+.box-warning,
+.box-error,
+.box-success {
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-left: 4px solid;
+  background-color: #f8f8f8;
+  border-radius: 2px;
+}
+
+.box-note {
+  border-left-color: #2196F3;
+}
+
+.box-warning {
+  border-left-color: #ffc107;
+}
+
+.box-error {
+  border-left-color: #f44336;
+}
+
+.box-success {
+  border-left-color: #4CAF50;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box-note,
+  .box-warning,
+  .box-error,
+  .box-success {
+    /* No animation/transition */
+  }
 }

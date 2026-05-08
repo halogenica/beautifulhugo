@@ -71,19 +71,21 @@
     </div>
 
     {{ $page := . }}
-    {{ with .Site.Params.logo }}
-      <div class="avatar-container">
-        <div class="avatar-img-border">
-          <a title="{{ $page.Site.Title }}" href="{{ "" | absLangURL }}">
-          {{- $image := resources.Get . -}}
-          {{ if $image }}
-            <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ $page.Site.Title }}" />
-          {{else}}
-            <img class="avatar-img" src="{{ . | absURL }}" alt="{{ $page.Site.Title }}" />
-           {{end}}
-          </a>
+    {{ if ne (.Params.showAvatar | default true) false }}
+      {{ with .Site.Params.logo }}
+        <div class="avatar-container">
+          <div class="avatar-img-border">
+            <a title="{{ $page.Site.Title }}" href="{{ "" | absLangURL }}">
+            {{- $image := resources.Get . -}}
+            {{ if $image }}
+              <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ $page.Site.Title }}" />
+            {{else}}
+              <img class="avatar-img" src="{{ . | absURL }}" alt="{{ $page.Site.Title }}" />
+             {{end}}
+            </a>
+          </div>
         </div>
-      </div>
+      {{ end }}
     {{ end }}
 
   </div>
