@@ -3,6 +3,9 @@ DefaultContentLanguage = "en"
 title = "Beautiful Hugo"
 # Using theme as git submodule
 theme = "beautifulhugo"
+
+[pagination]
+  pagerSize = 5
 # Or when using theme as hugo module
 # theme = "github.com/halogenica/beautifulhugo"
 [Services]
@@ -20,7 +23,7 @@ theme = "beautifulhugo"
   dateFormat = "January 2, 2006"
   commit = false
   rss = true
-  comments = true
+#  comments = true
   readingTime = true
   wordCount = true
   useHLJS = true
@@ -116,4 +119,4 @@ theme = "beautifulhugo"
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 3
+    weight = 4

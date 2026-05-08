@@ -25,7 +25,8 @@
   translation: "dakika"
 - id: words
   translation: "kelime"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -62,6 +63,10 @@
   translation: "E-posta adresiniz"
 - id: yourWebsite
   translation: "Web siteniz"
+- id: submit
+  translation: "Gönder"
+- id: close
+  translation: "Kapat"
 
 # Delayed Disqus
 - id: show

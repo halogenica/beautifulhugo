@@ -25,7 +25,8 @@
   translation: "минут"
 - id: words
   translation: "слова"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -62,6 +63,10 @@
   translation: "Ваш адрес электронной почты"
 - id: yourWebsite
   translation: "Ваш сайт"
+- id: submit
+  translation: "Отправить"
+- id: close
+  translation: "Закрыть"
 
 # Delayed Disqus
 - id: show

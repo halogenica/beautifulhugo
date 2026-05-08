@@ -25,7 +25,8 @@
   translation: "minutos"
 - id: words
   translation: "palavras"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -62,6 +63,10 @@
   translation: "Seu email"
 - id: yourWebsite
   translation: "Seu website"
+- id: submit
+  translation: "Enviar"
+- id: close
+  translation: "Fechar"
 
 # Delayed Disqus
 - id: show

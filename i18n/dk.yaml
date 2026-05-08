@@ -25,7 +25,8 @@
   translation: "Minutter"
 - id: words
   translation: "Ord"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -62,6 +63,10 @@
   translation: "Din emailadresse"
 - id: yourWebsite
   translation: "Din hjemmeside"
+- id: submit
+  translation: "Send"
+- id: close
+  translation: "Luk"
 
 # Delayed Disqus
 - id: show
