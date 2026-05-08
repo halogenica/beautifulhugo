@@ -24,7 +24,7 @@
     {{- end -}}
     {{ partial "head.html" . }}
   </head>
-  <body>
+  <body{{ if or .Params.navShort .Site.Params.navShort }} class="nav-short-permanent"{{ end }}>
     {{ partial "nav.html" . }}
     {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
     {{ block "main" . }}{{ end }}

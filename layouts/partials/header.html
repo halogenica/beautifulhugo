@@ -1,6 +1,7 @@
 {{- $title := "" }}
 {{- $subtitle := "" }}
 {{- $bigimg := slice }}
+{{- $contentColClass := cond .Params.fullWidth "col-12" "col-lg-8 offset-lg-2 col-md-10 offset-md-1" }}
 {{ if .IsHome }}
   {{- $title = .Site.Params.homeTitle | default .Site.Title }}
   {{- $subtitle = .Site.Params.subtitle }}
@@ -27,10 +28,10 @@
   <header class="header-section {{ if $bigimg }}has-img{{ end }}">
     {{ if $bigimg }}
       {{- $firstimg := index $bigimg 0 }}
-      <div class="intro-header big-img" style="background-image: url('{{$firstimg.src}}');">
+    <div class="intro-header big-img" style="background-image: url('{{$firstimg.src}}');">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+            <div class="{{$contentColClass}}">
               <div class="{{ .Type }}-heading">
                 <h1>{{ with $title }}{{.}}{{ else }}<br/>{{ end }}</h1>
                 {{ if ne .Type "post" }}
@@ -51,7 +52,7 @@
     <div class="intro-header no-img">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+          <div class="{{$contentColClass}}">
             <div class="{{ .Type }}-heading">
               {{ if eq .Type "list" }}
                 <h1>{{ if .Data.Singular }}#{{ end }}{{ .Title }}</h1>

@@ -110,6 +110,12 @@ title = "Beautiful Hugo"
   orcid = "0000-0000-0000-0000"
   googlescholar = "XXXXXXXXXXXX"
 
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
 [[menu.main]]
     name = "Blog"
     url = ""
