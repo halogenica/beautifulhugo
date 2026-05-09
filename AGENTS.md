@@ -13,7 +13,7 @@ hugo --minify -s "./exampleSite/"
 If you want to see the site served, you can start a live server with:
 
 ```bash
-hugo serve -s exampleSite
+hugo serve -s exampleSite --disableFastRender
 ```
 
 ## Hugo Version

@@ -21,7 +21,6 @@ p + p {
 }
 
 p a {
-  /* text-decoration: underline */
   color: #0066CC;
 }
 
@@ -32,6 +31,7 @@ h1,h2,h3,h4,h5,h6 {
 
 a {
   color: #0066CC;
+  text-decoration: none;
 }
 
 a:hover,
@@ -321,7 +321,6 @@ img::selection {
 }
 
 .post-preview a {
-  text-decoration: none;
   color: #404040;
 }
 
@@ -359,7 +358,6 @@ img::selection {
 .post-heading .post-meta a,
 .page-meta a {
   color: #404040;
-  text-decoration: none;
 }
 
 .post-preview .post-entry {
@@ -545,10 +543,10 @@ img::selection {
   .intro-header .page-heading h1,
   .intro-header .tags-heading h1,
   .intro-header .categories-heading h1 {
-    font-size: 60px;
+    font-size: 72px;
   }
   .intro-header .post-heading h1 {
-    font-size: 40px;
+    font-size: 46px;
   }
   .intro-header.big-img .img-desc {
     font-size: 14px;
@@ -605,7 +603,6 @@ img::selection {
 
 .blog-tags a {
   color: #0066CC;
-  text-decoration: none;
   padding: 0px 5px;
 }
 
@@ -833,10 +830,6 @@ table tr td :last-child {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.content-section a {
-  text-decoration: none;
-}
-
 /* --- Notification Boxes --- */
 
 .box-note,
@@ -969,7 +962,6 @@ ul.share li a {
   background-color: #b5c6ce;
   display: block;
   border-radius: 50%;
-  text-decoration: none !important;
   margin: 0;
 }
 
