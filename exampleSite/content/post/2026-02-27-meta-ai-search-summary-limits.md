@@ -1,6 +1,6 @@
 ---
 title: Manage robot meta tags an limit AI Overview from using page contents
-date: 2026-04-14
+date: 2026-05-10
 description: "This feature adds the ability to apply robot meta data on page
 through using custom page paramaters."
 tags: ["example", "summary", "limits", "search", "robots", "meta tags"]
