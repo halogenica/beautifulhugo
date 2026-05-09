@@ -81,7 +81,6 @@
   /* --- Content section --- */
   :root:not([data-theme="light"]) .content-section {
     background-color: #444;
-    border-color: #555;
   }
 
   /* --- Tables --- */
@@ -248,7 +247,6 @@
 /* --- Content section --- */
 [data-theme="dark"] .content-section {
   background-color: #444;
-  border-color: #555;
 }
 
 /* --- Tables --- */
