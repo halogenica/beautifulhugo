@@ -56,9 +56,16 @@
   }
 
   /* --- Pager --- */
-  :root:not([data-theme="light"]) .pager li a {
+  :root:not([data-theme="light"]) .post-pager li a {
     background: #444;
     color: white;
+    border-color: #555;
+  }
+
+  :root:not([data-theme="light"]) .post-pager li a:hover,
+  :root:not([data-theme="light"]) .post-pager li a:focus {
+    background: #0085a1;
+    border-color: #0085a1;
   }
 
   /* --- Footer --- */
@@ -71,8 +78,8 @@
     color: #AAA;
   }
 
-  /* --- Well --- */
-  :root:not([data-theme="light"]) .well {
+  /* --- Content section --- */
+  :root:not([data-theme="light"]) .content-section {
     background-color: #444;
   }
 
@@ -215,9 +222,16 @@
 }
 
 /* --- Pager --- */
-[data-theme="dark"] .pager li a {
+[data-theme="dark"] .post-pager li a {
   background: #444;
   color: white;
+  border-color: #555;
+}
+
+[data-theme="dark"] .post-pager li a:hover,
+[data-theme="dark"] .post-pager li a:focus {
+  background: #0085a1;
+  border-color: #0085a1;
 }
 
 /* --- Footer --- */
@@ -230,8 +244,8 @@
   color: #AAA;
 }
 
-/* --- Well --- */
-[data-theme="dark"] .well {
+/* --- Content section --- */
+[data-theme="dark"] .content-section {
   background-color: #444;
 }
 

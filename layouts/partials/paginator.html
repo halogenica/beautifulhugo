@@ -1,12 +1,12 @@
 {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-  <ul class="pager main-pager">
+  <ul class="post-pager">
     {{ if .Paginator.HasPrev }}
-      <li class="previous">
+      <li class="pager-prev">
         <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
       </li>
     {{ end }}
     {{ if .Paginator.HasNext }}
-      <li class="next">
+      <li class="pager-next">
         <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
       </li>
     {{ end }}

@@ -16,7 +16,7 @@
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
             {{- $social := . -}}
             {{- with index $.Site.Params.author $social.id }}
-              <li role="listitem">
+              <li class="list-inline-item" role="listitem">
 		{{- $authorValue := . -}}
 		{{ if or ( hasPrefix $authorValue "http://" ) ( hasPrefix $authorValue "https://" ) }}
 		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer"{{ else }}rel="noopener noreferrer"{{ end }} href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
@@ -33,7 +33,7 @@
           {{ end }}
           {{ if .Site.Params.rss }}
           {{ with .OutputFormats.Get "RSS" }}
-          <li>
+          <li class="list-inline-item">
             <a href="{{ .RelPermalink }}" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>

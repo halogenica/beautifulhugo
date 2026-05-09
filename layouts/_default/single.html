@@ -17,7 +17,7 @@
         {{ if $.Param "socialShare" }}
             <hr/>
             <section id="social-share">
-              <div class="list-inline footer-links">
+              <div class="footer-links">
                 {{ partial "share-links" . }}
               </div>
             </section>
@@ -38,14 +38,14 @@
       </article>
 
       {{ if ne .Type "page" }}
-        <ul class="pager blog-pager">
+        <ul class="post-pager blog-post-pager">
           {{ if .PrevInSection }}
-            <li class="previous">
+            <li class="pager-prev">
               <a href="{{ .PrevInSection.Permalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
             </li>
           {{ end }}
           {{ if .NextInSection }}
-            <li class="next">
+            <li class="pager-next">
               <a href="{{ .NextInSection.Permalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
             </li>
           {{ end }}
