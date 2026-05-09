@@ -4,7 +4,9 @@
 
 ## Live demo
 
-See <https://hugo-theme-beautifulhugo.netlify.app> or <https://halogenica.net/beautifulhugo>.
+Current: <https://halogenica.net/beautifulhugo>.
+
+Older: <https://hugo-theme-beautifulhugo.netlify.app>.
 
 ## Installation
 
@@ -25,6 +27,10 @@ Initialize your site as hugo module:
 Add Beautifulhugo module as a dependency of your site:
 
     $ hugo mod get github.com/halogenica/beautifulhugo
+
+You can stay up to date with:
+
+    $ hugo mod get
 
 ### Site preview
 
@@ -53,21 +59,11 @@ This theme has support for either Hugo's lightning fast Chroma, or both server s
 
 #### Chroma - Server side syntax highlighting
 
-Chroma is built into Hugo and enabled by default. To configure it, use the `[markup.highlight]` section (the legacy `pygments*` keys are deprecated):
+Chroma is built into Hugo and enabled by default. If you want it to guess syntax, you can (though it has much more limited language support for guessing compared to Highlight.js):
 
 ```toml
-[markup]
-  [markup.highlight]
-    style = "trac"
-    noClasses = false
-    codeFences = true
-    guessSyntax = true
-```
-
-Then, you can generate a different style by running:
-
-```
-hugo gen chromastyles --style=trac > static/css/syntax.css
+[markup.highlight]
+  guessSyntax = true
 ```
 
 #### Highlight.js - Client side syntax highlighting
@@ -76,10 +72,12 @@ Alternatively, you can enable client-side highlighting with Highlight.js. This b
 
 ```toml
 [Params]
-    useHLJS = true
+  useHLJS = true
+[markup.highlight]
+  codeFences = false
 ```
 
-Highlight.js has a wider range of support for languages and themes, and an alternative highlighting engine.
+This has better language autodetection support.
 
 ### Disqus support
 
