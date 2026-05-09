@@ -41,3 +41,4 @@ jobs:
           --gc
           -s exampleSite
           --logLevel info
+          --panicOnWarning
