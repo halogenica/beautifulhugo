@@ -102,6 +102,11 @@
     color: #ccc;
   }
 
+  :root:not([data-theme="light"]) pre:not(.chroma) > code:not(.hljs) {
+    background-color: #0d1117;
+    color: #e6edf3;
+  }
+
   :root:not([data-theme="light"]) .bg {
     background-color: #0d1117;
     color: #e6edf3;
