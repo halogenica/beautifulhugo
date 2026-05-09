@@ -769,7 +769,7 @@ footer div.disclaimer {
 }
 
 /* Image / figure caption */
-.caption {
+figcaption, .caption {
   text-align: center;
   font-size: 14px;
   padding: 10px;
