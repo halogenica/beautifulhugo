@@ -1,9 +1,15 @@
 <section class="js-comments staticman-comments">
+  {{- $data := dict -}}
+  {{- if ge hugo.Version "0.156.0" -}}
+    {{- $data = hugo.Data -}}
+  {{- else -}}
+    {{- $data = .Site.Data -}}
+  {{- end -}}
 
   {{ $slug := replace .RelPermalink "/" "" }}
 
-  {{ if .Site.Data.comments }}
-    {{ $comments := index $.Site.Data.comments $slug }}
+  {{ with $data.comments }}
+    {{ $comments := index . $slug }}
     {{ if $comments }}
       {{ if gt (len $comments) 1  }}
         <h3>{{ len $comments  }} {{ i18n "moreComment" }}</h3>
@@ -16,7 +22,7 @@
 
 
     {{ $.Store.Set "hasComments" 0 }}
-    {{ range $index, $comments := (index $.Site.Data.comments $slug ) }}
+    {{ range $index, $comments := $comments }}
       {{ if not .parent }}
         {{ $.Store.Set "hasComments" (add ($.Store.Get "hasComments") 1) }}
         <article id="comment-{{ $.Store.Get "hasComments" }}" class="static-comment">
