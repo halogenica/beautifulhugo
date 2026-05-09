@@ -1,5 +1,6 @@
 /* --- Dark Mode Overrides --- */
 
+/* Every item here needs to be duplicated below */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) body {
     background: black;
@@ -76,6 +77,10 @@
 
   :root:not([data-theme="light"]) footer a {
     color: #AAA;
+  }
+
+  :root:not([data-theme="light"]) footer .text-muted {
+    color: #888 !important;
   }
 
   /* --- Content section --- */
@@ -368,6 +373,10 @@
 [data-theme="dark"] footer {
   background: #444;
   border-top: 1px #AAA solid;
+}
+
+[data-theme="dark"] footer .text-muted {
+  color: #888 !important;
 }
 
 [data-theme="dark"] footer a {

@@ -39,6 +39,11 @@ a:focus {
   color: #0085a1;
 }
 
+p a:hover,
+p a:focus {
+  text-decoration: underline;
+ }
+
 blockquote {
   color: #666;
   font-style: italic;
@@ -326,7 +331,6 @@ img::selection {
 
 .post-preview a:focus,
 .post-preview a:hover {
-  text-decoration: none;
   color: #0085a1;
 }
 
@@ -700,7 +704,6 @@ footer {
 
 footer a {
   color: #404040;
-
 }
 
 footer .list-inline {
