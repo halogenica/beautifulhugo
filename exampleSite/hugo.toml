@@ -32,7 +32,6 @@ title = "Beautiful Hugo"
 #  comments = true
   readingTime = true
   wordCount = true
-  useHLJS = true
   colorScheme = "auto" # Options: "auto" (default), "dark", or "light"
   socialShare = true
   delayDisqus = true
@@ -116,10 +115,6 @@ title = "Beautiful Hugo"
 
 [markup.goldmark.renderer]
   unsafe = true
-
-# Use hljs
-[markup.highlight]
-  codeFences = false
 
 [[menu.main]]
     name = "Blog"
