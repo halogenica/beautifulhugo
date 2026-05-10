@@ -1,0 +1,93 @@
+/* --- Syntax Highlighting: Light Theme --- */
+/* Chroma (Hugo built-in) + Highlight.js share unified colors (Default / GitHub palette). */
+
+/* --- Chroma wrappers --- */
+.bg, .chroma { background-color:#f3f3f3; }
+.chroma { color:#444; -webkit-text-size-adjust:none; }
+.chroma .lnlinks { outline:none; text-decoration:none; color:inherit }
+.chroma .lntd { vertical-align:top; padding:0; margin:0; border:0; }
+.chroma .lntable { border-spacing:0; padding:0; margin:0; border:0; }
+.chroma .hl { background-color:#e8e8e8; }
+.chroma .lnt { white-space:pre; -webkit-user-select:none; user-select:none; margin-right:0.4em; padding:0 0.4em 0 0.4em; color:#7f7f7f }
+.chroma .ln { white-space:pre; -webkit-user-select:none; user-select:none; margin-right:0.4em; padding:0 0.4em 0 0.4em; color:#7f7f7f }
+.chroma .line { display:flex; }
+
+/* --- Chroma tokens --- */
+.chroma .k,
+.chroma .kd,
+.chroma .kn,
+.chroma .kr { color:#444; font-weight:bold }
+.chroma .kt { color:#800; font-weight:bold }
+
+.chroma .na { color:#ab5656 }
+.chroma .nc,
+.chroma .ne,
+.chroma .nn { color:#800; font-weight:bold }
+.chroma .nd,
+.chroma .nt { color:#444; font-weight:bold }
+.chroma .nf,
+.chroma .fm,
+.chroma .ni { color:#800; font-weight:bold }
+.chroma .nb,
+.chroma .bp { color:#397300 }
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
+.chroma .vm,
+.chroma .py { color:#ab5656 }
+.chroma .no,
+.chroma .nl,
+.chroma .kc,
+.chroma .kp { color:#695 }
+
+.chroma .s,
+.chroma .sb,
+.chroma .sc,
+.chroma .sd,
+.chroma .sh,
+.chroma .si,
+.chroma .s1,
+.chroma .s2,
+.chroma .sx,
+.chroma .ss,
+.chroma .sa,
+.chroma .dl { color:#800 }
+.chroma .se,
+.chroma .sr { color:#ab5656 }
+
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .il,
+.chroma .mo { color:#800 }
+
+.chroma .o,
+.chroma .ow { color:#ab5656 }
+
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs { color:#697070; font-style:italic }
+
+.chroma .cp,
+.chroma .cpf { color:#1f7199 }
+
+.chroma .gd { color:#800 }
+.chroma .ge { font-style:italic }
+.chroma .gr,
+.chroma .gt { color:#f00 }
+.chroma .gh,
+.chroma .gu { color:#444; font-weight:bold }
+.chroma .gi { color:#397300 }
+.chroma .go,
+.chroma .gp { color:#697070 }
+.chroma .gs { font-weight:bold }
+.chroma .gl { text-decoration:underline }
+.chroma .w { color:#bbb }
+
+/* --- Highlight.js Default theme (light) --- */
+pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#f3f3f3;color:#444}.hljs-comment{color:#697070}.hljs-punctuation,.hljs-tag{color:#444a}.hljs-tag .hljs-attr,.hljs-tag .hljs-name{color:#444}.hljs-attribute,.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-name,.hljs-selector-tag{font-weight:700}.hljs-deletion,.hljs-number,.hljs-quote,.hljs-selector-class,.hljs-selector-id,.hljs-string,.hljs-template-tag,.hljs-type{color:#800}.hljs-section,.hljs-title{color:#800;font-weight:700}.hljs-link,.hljs-operator,.hljs-regexp,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-symbol,.hljs-template-variable,.hljs-variable{color:#ab5656}.hljs-literal{color:#695}.hljs-addition,.hljs-built_in,.hljs-bullet,.hljs-code{color:#397300}.hljs-meta{color:#1f7199}.hljs-meta .hljs-string{color:#38a}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
