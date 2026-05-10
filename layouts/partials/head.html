@@ -104,7 +104,7 @@
   <script src='https://www.google.com/recaptcha/api.js'></script>
   {{- end -}}
 
-  {{ if .Site.Params.selfHosted }}
+  {{- if .Site.Params.selfHosted }}
   <link rel="stylesheet" href="{{ "css/photoswipe.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/photoswipe.default-skin.min.css" | absURL }}" />
   {{ else }}
