@@ -95,7 +95,7 @@
 
   {{ if .Site.Params.useHLJS }}
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
-  {{ else -}}
+  {{- else }}
   <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
   {{ end -}}
   <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
