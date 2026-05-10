@@ -5,15 +5,26 @@
   {{- $data = .Site.Data -}}
 {{- end -}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": {{ .Site.Params.organizationName | default .Site.Params.author.name | jsonify }},
-  "@id": {{ printf "%s#organization" .Site.BaseURL | jsonify }},
-  {{- with .Site.Params.socialProfiles }}, "sameAs": {{ . | jsonify }}{{ end }}
-  {{- with .Site.Params.organizationLogo }}, "logo": {{ . | jsonify }}{{ end }}
-  {{- with .Site.Params.organizationAddress }}, "address": {{ . | jsonify }}{{ end }}
-  {{- with index $data "organization" }}{{- with .contacts.contactPoint }}, "contactPoint": {{ . | jsonify }}{{ end }}{{- end }}
-  "url": {{ .Site.BaseURL | jsonify }}
-}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "Organization"
+  "name" (.Site.Params.organizationName | default .Site.Params.author.name)
+  "@id" (printf "%s#organization" .Site.BaseURL)
+  "url" .Site.BaseURL
+-}}
+{{- with .Site.Params.socialProfiles -}}
+  {{- $schema = merge $schema (dict "sameAs" .) -}}
+{{- end -}}
+{{- with .Site.Params.organizationLogo -}}
+  {{- $schema = merge $schema (dict "logo" .) -}}
+{{- end -}}
+{{- with .Site.Params.organizationAddress -}}
+  {{- $schema = merge $schema (dict "address" .) -}}
+{{- end -}}
+{{- with index $data "organization" -}}
+  {{- with .contacts.contactPoint -}}
+    {{- $schema = merge $schema (dict "contactPoint" .) -}}
+  {{- end -}}
+{{- end -}}
+{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
 </script>
