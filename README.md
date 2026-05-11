@@ -272,7 +272,7 @@ the `beautifulfigure` shortcode will still be available for PhotoSwipe figures.
 
 ### Extra shortcodes
 
-There are four extra shortcodes provided (along with the customized `beautifulfigure` shortcode which remains backwards compatible with `figure`):
+There are five extra shortcodes provided (along with the customized `beautifulfigure` shortcode which remains backwards compatible with `figure`):
 
 #### Details
 
@@ -302,6 +302,7 @@ This is column 2.
 
 This adds a bootstrap tab block, with support for synced groups.
 
+```
 {{< tabs groupId="utility-boxes" >}}
 {{< tab "Note" >}}
 This is a `.box-note` using the new content utility styles.
@@ -312,6 +313,7 @@ This is a `.box-warning` to show the shared box styling.
 {.box-warning}
 {{< /tab >}}
 {{< /tabs >}}
+```
 
 ### Social Media Icons
 

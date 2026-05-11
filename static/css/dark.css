@@ -338,6 +338,19 @@
     background-color: #142d14;
     border-left-color: #3CB371;
   }
+
+  /* --- Tabs shortcode --- */
+  :root:not([data-theme="light"]) .tabs-shortcode .nav-tabs .nav-link {
+    color: var(--dark-muted);
+  }
+
+  :root:not([data-theme="light"]) .tabs-shortcode .nav-tabs .nav-link.active {
+    background-color: var(--dark-surface);
+  }
+
+  :root:not([data-theme="light"]) .tabs-shortcode .tab-content {
+    border-color: var(--dark-surface);
+  }
 }
 
 /* --- Explicit dark theme (data attribute) --- */
@@ -704,4 +717,17 @@
 
 [data-theme="dark"] .theme-light {
   display: none;
+}
+
+/* --- Tabs shortcode --- */
+[data-theme="dark"] .tabs-shortcode .nav-tabs .nav-link {
+  color: var(--dark-muted);
+}
+
+[data-theme="dark"] .tabs-shortcode .nav-tabs .nav-link.active {
+  background-color: var(--dark-surface);
+}
+
+[data-theme="dark"] .tabs-shortcode .tab-content {
+  border-color: var(--dark-surface);
 }

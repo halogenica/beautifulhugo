@@ -1,12 +1,17 @@
 {{- $tabsIndex := add (default 0 (.Page.Store.Get "tabsCounter")) 1 -}}
 {{- .Page.Store.Set "tabsCounter" $tabsIndex -}}
 {{- $instanceId := printf "tabs-%d" $tabsIndex -}}
-{{- $groupId := default $instanceId (.Get "groupId") -}}
-{{- .Store.Set "instanceId" $instanceId -}}
-{{- .Store.Set "groupId" $groupId -}}
-{{- .Store.Set "tabs" (slice) -}}
+{{- $groupId := .Get "groupId" -}}
+{{- if not $groupId -}}
+  {{- $groupId = $instanceId -}}
+{{- end -}}
+{{- .Page.Store.Set (printf "tabs-instance-%s" $groupId) $instanceId -}}
 {{- $content := .Inner -}}
-{{- $tabs := .Store.Get "tabs" -}}
+{{- .Page.Store.Delete "tabs-auto-group" -}}
+{{- $tabsKey := printf "tabs-data-%s" $groupId -}}
+{{- $tabs := .Page.Store.Get $tabsKey -}}
+{{- .Page.Store.Delete $tabsKey -}}
+{{- .Page.Store.Delete (printf "tabs-ordinal-%s" $groupId) -}}
 
 <div class="tabs-shortcode" id="{{ $instanceId }}" data-tabs-group="{{ $groupId }}">
   <ul class="nav nav-tabs" id="{{ $instanceId }}-tablist" role="tablist">
