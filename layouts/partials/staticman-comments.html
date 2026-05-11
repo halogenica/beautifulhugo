@@ -32,7 +32,7 @@
           {{ else }}
           <h4 class="comment-author">{{ .name }}</h4>
           {{ end }}
-          <div class="comment-timestamp"><a href="#comment-{{ $.Store.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date}}</time></a></div>
+          <div class="comment-timestamp"><a href="#comment-{{ $.Store.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ time.Format (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
           <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
         </article>
       {{ end }}
