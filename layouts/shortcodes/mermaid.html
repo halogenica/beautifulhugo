@@ -1,6 +1,9 @@
 <link href="{{"css/mermaid.css" | relURL}}" type="text/css" rel="stylesheet"/>
-{{- if ne (.Page.Site.Params.colorScheme | default "auto") "light" -}}
+{{- $colorScheme := .Page.Site.Params.colorScheme | default "auto" -}}
+{{- if eq $colorScheme "dark" -}}
 <link href="{{"css/mermaid.dark.css" | relURL}}" type="text/css" rel="stylesheet"/>
+{{- else if eq $colorScheme "auto" -}}
+<link href="{{"css/mermaid.dark.css" | relURL}}" type="text/css" rel="stylesheet" media="(prefers-color-scheme: dark)"/>
 {{- end -}}
 <script defer src="{{"js/mermaid.js" | relURL}}"></script>
 <script>

@@ -95,9 +95,9 @@
   <link rel="stylesheet" href="{{ "css/syntax-light.css" | absURL }}" />
   {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
   {{- if eq .Site.Params.colorScheme "dark" -}}
-  <link rel="stylesheet" href="{{ "css/syntax-dark.css" | absURL }}" />
+  <link id="hljs-dark" rel="stylesheet" href="{{ "css/syntax-dark.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="{{ "css/syntax-dark.css" | absURL }}" media="(prefers-color-scheme: dark)" />
+  <link id="hljs-dark" rel="stylesheet" href="{{ "css/syntax-dark.css" | absURL }}" media="(prefers-color-scheme: dark)" />
   {{- end -}}
   {{- end -}}
   <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
