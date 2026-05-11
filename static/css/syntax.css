@@ -1,42 +1,42 @@
-/* Chroma syntax highlighting — colors matched to highlight.js Default theme */
+/* Chroma syntax highlighting — colors matched to highlight.js GitHub theme */
 
 :root {
-  --syn-bg: #f3f3f3;
-  --syn-fg: #444;
-  --syn-hl: #d8d8d8;
-  --syn-linenumber: #697070;
-  --syn-keyword: #700;
-  --syn-keyword-type: #800;
-  --syn-name-attr: #444;
-  --syn-name-class: #800;
-  --syn-name-const: #ab5656;
-  --syn-name-decorator: #700;
-  --syn-name-entity: #800;
-  --syn-name-exception: #700;
-  --syn-name-label: #800;
-  --syn-name-namespace: #800;
-  --syn-name-tag: #700;
-  --syn-name-builtin: #700;
-  --syn-name-variable: #ab5656;
-  --syn-name-function: #700;
-  --syn-string: #800;
-  --syn-string-interpol: #ab5656;
-  --syn-string-other: #397300;
-  --syn-string-regex: #ab5656;
-  --syn-number: #800;
-  --syn-operator: #ab5656;
-  --syn-comment: #697070;
-  --syn-preproc: #700;
-  --syn-deleted: #800;
-  --syn-error: #f00;
-  --syn-heading: #800;
-  --syn-inserted: #397300;
-  --syn-output: #697070;
-  --syn-prompt: #700;
-  --syn-traceback: #04d;
+  --syn-bg: #fff;
+  --syn-fg: #24292e;
+  --syn-hl: #f6f8fa;
+  --syn-linenumber: #6a737d;
+  --syn-keyword: #d73a49;
+  --syn-keyword-type: #d73a49;
+  --syn-name-attr: #005cc5;
+  --syn-name-class: #6f42c1;
+  --syn-name-const: #005cc5;
+  --syn-name-decorator: #6f42c1;
+  --syn-name-entity: #22863a;
+  --syn-name-exception: #d73a49;
+  --syn-name-label: #6f42c1;
+  --syn-name-namespace: #6f42c1;
+  --syn-name-tag: #22863a;
+  --syn-name-builtin: #e36209;
+  --syn-name-variable: #005cc5;
+  --syn-name-function: #6f42c1;
+  --syn-string: #032f62;
+  --syn-string-interpol: #032f62;
+  --syn-string-other: #032f62;
+  --syn-string-regex: #032f62;
+  --syn-number: #005cc5;
+  --syn-operator: #005cc5;
+  --syn-comment: #6a737d;
+  --syn-preproc: #d73a49;
+  --syn-deleted: #b31d28;
+  --syn-error: #b31d28;
+  --syn-heading: #005cc5;
+  --syn-inserted: #22863a;
+  --syn-output: #6a737d;
+  --syn-prompt: #6a737d;
+  --syn-traceback: #005cc5;
   --syn-whitespace: #bbb;
-  --syn-deleted-bg: inherit;
-  --syn-inserted-bg: inherit;
+  --syn-deleted-bg: #ffeef0;
+  --syn-inserted-bg: #f0fff4;
 }
 
 /* Background */ .bg { background-color:var(--syn-bg); }
