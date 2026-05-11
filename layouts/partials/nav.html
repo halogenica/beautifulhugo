@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
     <div class="d-flex align-items-center">
       {{ if ne ($.Param "toc") false }}
-      {{ if .TableOfContents }}
+      {{ if or .TableOfContents (and (or .IsSection .IsHome) .Pages) }}
       <button class="theme-toggle" id="toc-toggle" aria-label="Table of contents" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Table of contents">
         <span class="fas fa-list"></span>
       </button>
