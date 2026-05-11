@@ -256,7 +256,6 @@ To avoid this, set the following param in hugo.toml:
   showPageDates = false # disables the dates below pages, can be controlled in page frontmatter, too
 ```
 
-<<<<<<< HEAD
 ### Hidden posts
 Set `hidden: true` in a page's front matter to remove it from the homepage and list pages while still building the page (so it remains accessible by direct URL).
 
@@ -273,7 +272,7 @@ the `beautifulfigure` shortcode will still be available for PhotoSwipe figures.
 
 ### Extra shortcodes
 
-There are three extra shortcodes provided (along with the customized `beautifulfigure` shortcode which remains backwards compatible with `figure`):
+There are five extra shortcodes provided (along with the customized `beautifulfigure` shortcode which remains backwards compatible with `figure`):
 
 #### Details
 
@@ -295,6 +294,25 @@ This is column 1.
 {{< column >}}
 This is column 2.
 {{< endcolumns >}}
+```
+
+
+#### Tabs
+
+
+This adds a bootstrap tab block, with support for synced groups.
+
+```
+{{< tabs groupId="utility-boxes" >}}
+{{< tab "Note" >}}
+This is a `.box-note` using the new content utility styles.
+{.box-note}
+{{< /tab >}}
+{{< tab "Warning" >}}
+This is a `.box-warning` to show the shared box styling.
+{.box-warning}
+{{< /tab >}}
+{{< /tabs >}}
 ```
 
 ### Social Media Icons
