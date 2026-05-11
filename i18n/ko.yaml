@@ -74,6 +74,16 @@
 - id: comments
   translation: "댓글"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "테마"
+- id: themeTooltipAuto
+  translation: "자동 (시스템 따름)"
+- id: themeTooltipLight
+  translation: "라이트 모드"
+- id: themeTooltipDark
+  translation: "다크 모드"
+
 # Related posts
 - id: seeAlso
   translation: "더 보기"

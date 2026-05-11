@@ -74,6 +74,16 @@
 - id: comments
   translation: "reacties"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Thema"
+- id: themeTooltipAuto
+  translation: "Auto (volgt systeem)"
+- id: themeTooltipLight
+  translation: "Lichte modus"
+- id: themeTooltipDark
+  translation: "Donkere modus"
+
 # Related posts
 - id: seeAlso
   translation: "Zie ook"

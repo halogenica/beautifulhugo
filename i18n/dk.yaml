@@ -74,6 +74,16 @@
 - id: comments
   translation: "Kommentarer" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Tema"
+- id: themeTooltipAuto
+  translation: "Auto (følger systemet)"
+- id: themeTooltipLight
+  translation: "Lys tilstand"
+- id: themeTooltipDark
+  translation: "Mørk tilstand"
+
 # Related posts
 - id: seeAlso
   translation: "Se også"

@@ -71,6 +71,12 @@
 # Theme toggle
 - id: themeToggleLabel
   translation: "Theme"
+- id: themeTooltipAuto
+  translation: "Auto (follows system)"
+- id: themeTooltipLight
+  translation: "Light mode"
+- id: themeTooltipDark
+  translation: "Dark mode"
 
 # Delayed Disqus
 - id: show

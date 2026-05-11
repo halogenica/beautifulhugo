@@ -74,6 +74,16 @@
 - id: comments
   translation: "yorumlar" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Tema"
+- id: themeTooltipAuto
+  translation: "Otomatik (sistemi takip eder)"
+- id: themeTooltipLight
+  translation: "Açık mod"
+- id: themeTooltipDark
+  translation: "Koyu mod"
+
 # Related posts
 - id: seeAlso
   translation: "Ayrıca bakınız"

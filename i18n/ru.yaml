@@ -74,6 +74,16 @@
 - id: comments
   translation: "комментариев" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Тема"
+- id: themeTooltipAuto
+  translation: "Авто (по системе)"
+- id: themeTooltipLight
+  translation: "Светлый режим"
+- id: themeTooltipDark
+  translation: "Тёмный режим"
+
 # Related posts
 - id: seeAlso
   translation: "Смотрите также"

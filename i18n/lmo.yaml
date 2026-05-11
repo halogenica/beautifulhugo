@@ -150,6 +150,26 @@
 
 
 
+# Theme toggle
+
+- id: themeToggleLabel
+
+  translation: "Temma"
+
+- id: themeTooltipAuto
+
+  translation: "Auto (segonda el sistema)"
+
+- id: themeTooltipLight
+
+  translation: "Mod ciar"
+
+- id: themeTooltipDark
+
+  translation: "Mod scür"
+
+
+
 # Related posts
 
 - id: seeAlso
