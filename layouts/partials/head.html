@@ -26,13 +26,9 @@
  <!-- Site Title, Description, Author, and Favicon -->
 
 {{ if .IsHome }}
-    {{- with .Site.Params.homeTitle }}
-      <title>{{ . }}</title>
-    {{- end }}
+    <title>{{ .Site.Params.homeTitle | default .Site.Title }}</title>
   {{ else }}
-    {{- with $title }}
-      <title>{{ . }} - {{ $.Site.Params.homeTitle }}</title>
-    {{- end }}
+    <title>{{ $title }}{{ with .Site.Params.homeTitle }} - {{ . }}{{ end }}</title>
 {{ end }}
 
 {{- with $description }}

@@ -22,10 +22,10 @@
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="navbar-nav ms-auto" role="list">
+      <ul class="navbar-nav ms-auto">
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
-            <li class="nav-item dropdown" role="listitem">
+            <li class="nav-item dropdown" >
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ .Name }}
               </a>
@@ -36,7 +36,7 @@
               </ul>
             </li>
           {{ else }}
-            <li class="nav-item" role="listitem">
+            <li class="nav-item" >
               <a class="nav-link" title="{{ .Name }}" href="{{ .URL  | relLangURL }}">{{ .Name }}</a>
             </li>
           {{ end }}
@@ -47,7 +47,7 @@
             {{ $siteLanguages := .Site.Home.AllTranslations }}
             {{ if ge (len $siteLanguages) 3 }}
               {{ if .IsTranslated }}
-                <li class="nav-item dropdown" role="listitem">
+                <li class="nav-item dropdown" >
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ i18n "languageSwitcherLabel" }}
                   </a>
@@ -63,7 +63,7 @@
             {{ else }}
             {{ if .IsTranslated }}
               {{ range .Translations }}
-                <li class="nav-item" role="listitem">
+                <li class="nav-item" >
                   <a class="nav-link" href="{{ .Permalink }}">{{ default .Lang .Site.Language.LanguageName }}</a>
                 </li>
               {{ end}}
@@ -72,7 +72,7 @@
         {{ end }}
 
         {{ with .Site.Params.gcse }}
-          <li class="nav-item" role="listitem">
+          <li class="nav-item" >
             <a class="nav-link" href="#modalSearch" data-bs-toggle="modal" data-bs-target="#modalSearch" style="outline: none;">
               <span class="d-md-none">{{ i18n "gcseLabelShort" }}</span> <span id="searchGlyph" class="fas fa-search" aria-hidden="true"></span>
             </a>
