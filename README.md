@@ -59,7 +59,15 @@ This theme has support for either Hugo's lightning fast Chroma, or both server s
 
 #### Chroma - Server side syntax highlighting
 
-Chroma is built into Hugo and enabled by default. If you want it to guess syntax, you can (though it has much more limited language support for guessing compared to Highlight.js):
+Chroma is built into Hugo and enabled by default. To keep it from coliding with our colors, you need to turn off the hard-coded colors:
+
+```toml
+[markup.highlight]
+  noClasses = true
+```
+
+
+If you want it to guess syntax, you can (though it has much more limited language support for guessing compared to Highlight.js):
 
 ```toml
 [markup.highlight]

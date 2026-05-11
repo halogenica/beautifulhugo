@@ -110,6 +110,9 @@ title = "Beautiful Hugo"
   orcid = "0000-0000-0000-0000"
   googlescholar = "XXXXXXXXXXXX"
 
+[markup.highlight]
+  noClasses = false
+
 [markup.goldmark.parser.attribute]
   block = true
 
