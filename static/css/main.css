@@ -842,7 +842,7 @@ footer div.disclaimer {
 
 .tabs-shortcode {
   margin: .5rem 0 .5rem 0;
-  background-color: #f0f0f0;
+  background-color: #f8f8f8;
   border-radius: var(--bs-border-radius, 0.375rem);
   overflow: hidden;
 }
@@ -868,11 +868,11 @@ footer div.disclaimer {
 
 .tabs-shortcode .nav-tabs .nav-link.active {
   color: #0085a1;
-  background-color: #e0e0e0;
+  background-color: #efefef;
 }
 
 .tabs-shortcode .tab-content {
-  padding: 1rem 1.25rem;
+  padding: .5rem;
   border: none;
   border-radius: 0;
 }
@@ -1093,7 +1093,6 @@ ul.share li:hover .fab {
 
 .highlight {
   box-sizing: border-box;
-  padding: 10px;
   position: relative;
 }
 
