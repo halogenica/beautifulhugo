@@ -1,5 +1,5 @@
 {{ if .Inner }}<div class="splitbox"><div class="left">
-{{ .Inner }}
+{{ .Inner | markdownify }}
 </div><div style="clear:both"></div></div>
 {{ else }}{{ warnf "The unpaired {{< columns >}} / {{< endcolumns >}} syntax is deprecated. Use the paired {{< columns >}}...{{< /columns >}} syntax instead. See %s" .Position }}<div class="splitbox"><div class="left">
 {{ end }}

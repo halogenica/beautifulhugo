@@ -65,7 +65,7 @@ Use triple backticks with a language identifier, like this:
 ```
 
 
-{{< endcolumns >}}
+{{< /columns >}}
 
 
 ```python

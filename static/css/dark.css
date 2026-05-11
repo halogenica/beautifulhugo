@@ -171,10 +171,6 @@
     color: var(--dark-code-fg);
   }
 
-  :root:not([data-theme="light"]) pre code {
-    color: #ccc;
-  }
-
   :root:not([data-theme="light"]) pre:not(.chroma) > code:not(.hljs) {
     background-color: var(--dark-code-block-bg);
     color: var(--dark-code-block-fg);
@@ -419,9 +415,6 @@
   color: var(--dark-code-fg);
 }
 
-[data-theme="dark"] pre code {
-  color: #ccc;
-}
 
 [data-theme="dark"] pre:not(.chroma) > code:not(.hljs) {
   background-color: var(--dark-code-block-bg);
