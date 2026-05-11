@@ -28,11 +28,14 @@
           {{- $num_to_show := .Site.Params.related_content_limit | default 5 }}
           {{- with first $num_to_show $related }}
             <h4 class="see-also">{{ i18n "seeAlso" }}</h4>
-            <ul>
+            <div class="see-also-list">
               {{ range . }}
-                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                <a href="{{ .RelPermalink }}" class="see-also-item">
+                  <span class="see-also-item-title">{{ .Title }}</span>
+                  {{ with .Params.subtitle }}<span class="see-also-item-subtitle">{{ . }}</span>{{ end }}
+                </a>
               {{ end }}
-            </ul>
+            </div>
           {{ end }}
         {{ end }}
       </article>

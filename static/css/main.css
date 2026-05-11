@@ -1219,5 +1219,59 @@ div.splitbox div.right {
 /* --- Related posts --- */
 
 h4.see-also {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #404040;
+}
+
+.see-also-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.see-also-item {
+  display: block;
+  padding: 14px 18px;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-left: 3px solid #0085a1;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #404040;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.see-also-item:hover,
+.see-also-item:focus {
+  background: #f0f8fa;
+  border-color: #0085a1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #0085a1;
+}
+
+.see-also-item-title {
+  display: block;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.see-also-item-subtitle {
+  display: block;
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 14px;
+  color: #888;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.see-also-item:hover .see-also-item-subtitle,
+.see-also-item:focus .see-also-item-subtitle {
+  color: #006680;
 }

@@ -109,6 +109,34 @@
     border-color: var(--dark-accent);
   }
 
+  /* --- See Also --- */
+  :root:not([data-theme="light"]) h4.see-also {
+    color: var(--dark-fg);
+  }
+
+  :root:not([data-theme="light"]) .see-also-item {
+    background: var(--dark-card-bg);
+    border-color: var(--dark-surface-active);
+    border-left-color: var(--dark-accent);
+    color: var(--dark-fg);
+  }
+
+  :root:not([data-theme="light"]) .see-also-item:hover,
+  :root:not([data-theme="light"]) .see-also-item:focus {
+    background: var(--dark-surface-active);
+    border-color: var(--dark-accent);
+    color: var(--dark-link);
+  }
+
+  :root:not([data-theme="light"]) .see-also-item-subtitle {
+    color: var(--dark-muted);
+  }
+
+  :root:not([data-theme="light"]) .see-also-item:hover .see-also-item-subtitle,
+  :root:not([data-theme="light"]) .see-also-item:focus .see-also-item-subtitle {
+    color: var(--dark-link);
+  }
+
   /* --- Footer --- */
   :root:not([data-theme="light"]) footer {
     background: var(--dark-surface);
@@ -327,6 +355,34 @@
 [data-theme="dark"] .post-pager li a:focus {
   background: var(--dark-accent);
   border-color: var(--dark-accent);
+}
+
+/* --- See Also --- */
+[data-theme="dark"] h4.see-also {
+  color: var(--dark-fg);
+}
+
+[data-theme="dark"] .see-also-item {
+  background: var(--dark-card-bg);
+  border-color: var(--dark-surface-active);
+  border-left-color: var(--dark-accent);
+  color: var(--dark-fg);
+}
+
+[data-theme="dark"] .see-also-item:hover,
+[data-theme="dark"] .see-also-item:focus {
+  background: var(--dark-surface-active);
+  border-color: var(--dark-accent);
+  color: var(--dark-link);
+}
+
+[data-theme="dark"] .see-also-item-subtitle {
+  color: var(--dark-muted);
+}
+
+[data-theme="dark"] .see-also-item:hover .see-also-item-subtitle,
+[data-theme="dark"] .see-also-item:focus .see-also-item-subtitle {
+  color: var(--dark-link);
 }
 
 /* --- Footer --- */
