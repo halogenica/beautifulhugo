@@ -34,15 +34,15 @@ This content is hidden by default. You can use **Markdown** here.
 {{</* /details */>}}
 ```
 
-## columns / column / endcolumns
+## columns / column
 
-The `columns`, `column`, and `endcolumns` shortcodes create a two-column layout using the `splitbox` CSS class.
+The `columns` and `column` shortcodes create a two-column layout using the `splitbox` CSS class. `columns` is a paired shortcode; `column` marks the boundary between the left and right column.
 
 | Shortcode | Purpose |
 |-----------|---------|
 | `{{</* columns */>}}` | Opens the two-column wrapper and starts the left column |
 | `{{</* column */>}}` | Closes the left column and starts the right column |
-| `{{</* endcolumns */>}}` | Closes the right column and the wrapper |
+| `{{</* /columns */>}}` | Closes the right column and the wrapper |
 
 **Live example:**
 
@@ -60,7 +60,7 @@ Right column content. Each column takes roughly 48% of the available width.
 [Params]
   colorScheme = "auto"
 ```
-{{< endcolumns >}}
+{{< /columns >}}
 
 **Source:**
 
@@ -69,7 +69,7 @@ Right column content. Each column takes roughly 48% of the available width.
 Left column content here.
 {{</* column */>}}
 Right column content here.
-{{</* endcolumns */>}}
+{{</* /columns */>}}
 ```
 
 ## tabs / tab

@@ -20,7 +20,7 @@ title: Beautiful Hugo
 - Mermaid diagrams
 - PhotoSwipe image lightbox
 - Select Chroma or Highlight.js syntax highlighting
-{{< endcolumns >}}
+{{< /columns >}}
 
 {{< columns >}}
 **Shortcodes**
@@ -37,6 +37,6 @@ title: Beautiful Hugo
 - GitHub buttons
 - SEO (schema.org, Open Graph, Twitter Cards)
 - 19 languages
-{{< endcolumns >}}
+{{< /columns >}}
 
 Browse the **Features** menu above for detailed documentation with live examples!
