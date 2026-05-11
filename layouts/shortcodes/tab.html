@@ -7,6 +7,7 @@
       {{- $groupId = printf "tabs-auto-%d" (add 1 (default 0 (.Page.Store.Get "tabsAutoCounter"))) -}}
       {{- .Page.Store.Set "tabsAutoCounter" (add 1 (default 0 (.Page.Store.Get "tabsAutoCounter"))) -}}
       {{- .Page.Store.Set $autoKey $groupId -}}
+      {{- .Page.Store.Set "tabs-last-auto-group" $groupId -}}
     {{- end -}}
   {{- end -}}
   {{- $name := trim (.Get 0) " " -}}

@@ -46,6 +46,8 @@ This loads Highlight.js from CDN (or `static/js/highlight.min.js` if `selfHosted
 
 Use triple backticks with a language identifier, like this:
 
+{{< columns >}}
+
 ````
 ```json
 {
@@ -53,6 +55,17 @@ Use triple backticks with a language identifier, like this:
 }
 ```
 ````
+
+{{< column >}}
+
+```json
+{
+  "example": "code"
+}
+```
+
+
+{{< endcolumns >}}
 
 
 ```python
