@@ -94,6 +94,9 @@
 {{- end }}
 
 <script src="{{ "js/main.js" | absURL }}"></script>
+{{- if ne ($.Param "toc") false -}}
+<script src="{{ "js/toc.js" | absURL }}"></script>
+{{- end -}}
 {{- if .Site.Params.staticman }}
 <script src="{{ "js/staticman.js" | absURL }}"></script>
 {{- end }}
