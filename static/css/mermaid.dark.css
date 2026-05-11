@@ -1,264 +1,524 @@
 /* Flowchart variables */
 /* Sequence Diagram variables */
 /* Gantt chart variables */
-.mermaid .label {
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mermaid .label {
+    color: #323D47;
+  }
+  :root:not([data-theme="light"]) .node rect,
+  :root:not([data-theme="light"]) .node circle,
+  :root:not([data-theme="light"]) .node ellipse,
+  :root:not([data-theme="light"]) .node polygon {
+    fill: #BDD5EA;
+    stroke: #81B1DB;
+    stroke-width: 1px;
+  }
+  :root:not([data-theme="light"]) .edgePath .path {
+    stroke: lightgrey;
+  }
+  :root:not([data-theme="light"]) .edgeLabel {
+    background-color: #e8e8e8;
+  }
+  :root:not([data-theme="light"]) .cluster rect {
+    fill: #6D6D65 !important;
+    rx: 4 !important;
+    stroke: rgba(255, 255, 255, 0.25) !important;
+    stroke-width: 1px !important;
+  }
+  :root:not([data-theme="light"]) .cluster text {
+    fill: #F9FFFE;
+  }
+  :root:not([data-theme="light"]) .actor {
+    stroke: #81B1DB;
+    fill: #BDD5EA;
+  }
+  :root:not([data-theme="light"]) text.actor {
+    fill: black;
+    stroke: none;
+  }
+  :root:not([data-theme="light"]) .actor-line {
+    stroke: lightgrey;
+  }
+  :root:not([data-theme="light"]) .messageLine0 {
+    stroke-width: 1.5;
+    stroke-dasharray: "2 2";
+    marker-end: "url(#arrowhead)";
+    stroke: lightgrey;
+  }
+  :root:not([data-theme="light"]) .messageLine1 {
+    stroke-width: 1.5;
+    stroke-dasharray: "2 2";
+    stroke: lightgrey;
+  }
+  :root:not([data-theme="light"]) #arrowhead path {
+    fill: lightgrey !important;
+  }
+  :root:not([data-theme="light"]) #crosshead path {
+    fill: lightgrey !important;
+    stroke: lightgrey !important;
+  }
+  :root:not([data-theme="light"]) .mermaid marker path {
+    fill: lightgrey !important;
+    stroke: lightgrey !important;
+  }
+  :root:not([data-theme="light"]) .messageText {
+    fill: lightgrey;
+    stroke: none;
+  }
+  :root:not([data-theme="light"]) .labelBox {
+    stroke: #81B1DB;
+    fill: #BDD5EA;
+  }
+  :root:not([data-theme="light"]) .labelText {
+    fill: #323D47;
+    stroke: none;
+  }
+  :root:not([data-theme="light"]) .loopText {
+    fill: lightgrey;
+    stroke: none;
+  }
+  :root:not([data-theme="light"]) .loopLine {
+    stroke-width: 2;
+    stroke-dasharray: "2 2";
+    marker-end: "url(#arrowhead)";
+    stroke: #81B1DB;
+  }
+  :root:not([data-theme="light"]) .note {
+    stroke: rgba(255, 255, 255, 0.25);
+    fill: #fff5ad;
+  }
+  :root:not([data-theme="light"]) .noteText {
+    fill: black;
+    stroke: none;
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 14px;
+  }
+  :root:not([data-theme="light"]) .section {
+    stroke: none;
+    opacity: 0.2;
+  }
+  :root:not([data-theme="light"]) .section0 {
+    fill: rgba(255, 255, 255, 0.3);
+  }
+  :root:not([data-theme="light"]) .section2 {
+    fill: #EAE8B9;
+  }
+  :root:not([data-theme="light"]) .section1,
+  :root:not([data-theme="light"]) .section3 {
+    fill: white;
+    opacity: 0.2;
+  }
+  :root:not([data-theme="light"]) .sectionTitle0 {
+    fill: #F9FFFE;
+  }
+  :root:not([data-theme="light"]) .sectionTitle1 {
+    fill: #F9FFFE;
+  }
+  :root:not([data-theme="light"]) .sectionTitle2 {
+    fill: #F9FFFE;
+  }
+  :root:not([data-theme="light"]) .sectionTitle3 {
+    fill: #F9FFFE;
+  }
+  :root:not([data-theme="light"]) .sectionTitle {
+    text-anchor: start;
+    font-size: 11px;
+    text-height: 14px;
+  }
+  :root:not([data-theme="light"]) .grid .tick {
+    stroke: rgba(255, 255, 255, 0.3);
+    opacity: 0.3;
+    shape-rendering: crispEdges;
+  }
+  :root:not([data-theme="light"]) .grid .tick text {
+    fill: lightgrey;
+    opacity: 0.5;
+  }
+  :root:not([data-theme="light"]) .grid path {
+    stroke-width: 0;
+  }
+  :root:not([data-theme="light"]) .today {
+    fill: none;
+    stroke: #DB5757;
+    stroke-width: 2px;
+  }
+  :root:not([data-theme="light"]) .task {
+    stroke-width: 1;
+  }
+  :root:not([data-theme="light"]) .taskText {
+    text-anchor: middle;
+    font-size: 11px;
+  }
+  :root:not([data-theme="light"]) .taskTextOutsideRight {
+    fill: #323D47;
+    text-anchor: start;
+    font-size: 11px;
+  }
+  :root:not([data-theme="light"]) .taskTextOutsideLeft {
+    fill: #323D47;
+    text-anchor: end;
+    font-size: 11px;
+  }
+  :root:not([data-theme="light"]) .taskText0,
+  :root:not([data-theme="light"]) .taskText1,
+  :root:not([data-theme="light"]) .taskText2,
+  :root:not([data-theme="light"]) .taskText3 {
+    fill: #323D47;
+  }
+  :root:not([data-theme="light"]) .task0,
+  :root:not([data-theme="light"]) .task1,
+  :root:not([data-theme="light"]) .task2,
+  :root:not([data-theme="light"]) .task3 {
+    fill: #BDD5EA;
+    stroke: rgba(255, 255, 255, 0.5);
+  }
+  :root:not([data-theme="light"]) .taskTextOutside0,
+  :root:not([data-theme="light"]) .taskTextOutside2 {
+    fill: lightgrey;
+  }
+  :root:not([data-theme="light"]) .taskTextOutside1,
+  :root:not([data-theme="light"]) .taskTextOutside3 {
+    fill: lightgrey;
+  }
+  :root:not([data-theme="light"]) .active0,
+  :root:not([data-theme="light"]) .active1,
+  :root:not([data-theme="light"]) .active2,
+  :root:not([data-theme="light"]) .active3 {
+    fill: #81B1DB;
+    stroke: rgba(255, 255, 255, 0.5);
+  }
+  :root:not([data-theme="light"]) .activeText0,
+  :root:not([data-theme="light"]) .activeText1,
+  :root:not([data-theme="light"]) .activeText2,
+  :root:not([data-theme="light"]) .activeText3 {
+    fill: #323D47 !important;
+  }
+  :root:not([data-theme="light"]) .done0,
+  :root:not([data-theme="light"]) .done1,
+  :root:not([data-theme="light"]) .done2,
+  :root:not([data-theme="light"]) .done3 {
+    fill: lightgrey;
+  }
+  :root:not([data-theme="light"]) .doneText0,
+  :root:not([data-theme="light"]) .doneText1,
+  :root:not([data-theme="light"]) .doneText2,
+  :root:not([data-theme="light"]) .doneText3 {
+    fill: #323D47 !important;
+  }
+  :root:not([data-theme="light"]) .crit0,
+  :root:not([data-theme="light"]) .crit1,
+  :root:not([data-theme="light"]) .crit2,
+  :root:not([data-theme="light"]) .crit3 {
+    stroke: #E83737;
+    fill: #E83737;
+    stroke-width: 2;
+  }
+  :root:not([data-theme="light"]) .activeCrit0,
+  :root:not([data-theme="light"]) .activeCrit1,
+  :root:not([data-theme="light"]) .activeCrit2,
+  :root:not([data-theme="light"]) .activeCrit3 {
+    stroke: #E83737;
+    fill: #81B1DB;
+    stroke-width: 2;
+  }
+  :root:not([data-theme="light"]) .doneCrit0,
+  :root:not([data-theme="light"]) .doneCrit1,
+  :root:not([data-theme="light"]) .doneCrit2,
+  :root:not([data-theme="light"]) .doneCrit3 {
+    stroke: #E83737;
+    fill: lightgrey;
+    stroke-width: 1;
+    cursor: pointer;
+    shape-rendering: crispEdges;
+  }
+  :root:not([data-theme="light"]) .doneCritText0,
+  :root:not([data-theme="light"]) .doneCritText1,
+  :root:not([data-theme="light"]) .doneCritText2,
+  :root:not([data-theme="light"]) .doneCritText3 {
+    fill: lightgrey !important;
+  }
+  :root:not([data-theme="light"]) .activeCritText0,
+  :root:not([data-theme="light"]) .activeCritText1,
+  :root:not([data-theme="light"]) .activeCritText2,
+  :root:not([data-theme="light"]) .activeCritText3 {
+    fill: #323D47 !important;
+  }
+  :root:not([data-theme="light"]) .titleText {
+    text-anchor: middle;
+    font-size: 18px;
+    fill: lightgrey;
+  }
+  :root:not([data-theme="light"]) .node text {
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 14px;
+  }
+  :root:not([data-theme="light"]) div.mermaidTooltip {
+    position: absolute;
+    text-align: center;
+    max-width: 200px;
+    padding: 2px;
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 12px;
+    background: #6D6D65;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 100;
+  }
+}
+
+[data-theme="dark"] .mermaid .label {
   color: #323D47;
 }
-.node rect,
-.node circle,
-.node ellipse,
-.node polygon {
+[data-theme="dark"] .node rect,
+[data-theme="dark"] .node circle,
+[data-theme="dark"] .node ellipse,
+[data-theme="dark"] .node polygon {
   fill: #BDD5EA;
   stroke: #81B1DB;
   stroke-width: 1px;
 }
-.edgePath .path {
+[data-theme="dark"] .edgePath .path {
   stroke: lightgrey;
 }
-.edgeLabel {
+[data-theme="dark"] .edgeLabel {
   background-color: #e8e8e8;
 }
-.cluster rect {
+[data-theme="dark"] .cluster rect {
   fill: #6D6D65 !important;
   rx: 4 !important;
   stroke: rgba(255, 255, 255, 0.25) !important;
   stroke-width: 1px !important;
 }
-.cluster text {
+[data-theme="dark"] .cluster text {
   fill: #F9FFFE;
 }
-.actor {
+[data-theme="dark"] .actor {
   stroke: #81B1DB;
   fill: #BDD5EA;
 }
-text.actor {
+[data-theme="dark"] text.actor {
   fill: black;
   stroke: none;
 }
-.actor-line {
+[data-theme="dark"] .actor-line {
   stroke: lightgrey;
 }
-.messageLine0 {
+[data-theme="dark"] .messageLine0 {
   stroke-width: 1.5;
   stroke-dasharray: "2 2";
   marker-end: "url(#arrowhead)";
   stroke: lightgrey;
 }
-.messageLine1 {
+[data-theme="dark"] .messageLine1 {
   stroke-width: 1.5;
   stroke-dasharray: "2 2";
   stroke: lightgrey;
 }
-#arrowhead {
+[data-theme="dark"] #arrowhead path {
   fill: lightgrey !important;
 }
-#crosshead path {
+[data-theme="dark"] #crosshead path {
   fill: lightgrey !important;
   stroke: lightgrey !important;
 }
-.messageText {
+[data-theme="dark"] .mermaid marker path {
+  fill: lightgrey !important;
+  stroke: lightgrey !important;
+}
+[data-theme="dark"] .messageText {
   fill: lightgrey;
   stroke: none;
 }
-.labelBox {
+[data-theme="dark"] .labelBox {
   stroke: #81B1DB;
   fill: #BDD5EA;
 }
-.labelText {
+[data-theme="dark"] .labelText {
   fill: #323D47;
   stroke: none;
 }
-.loopText {
+[data-theme="dark"] .loopText {
   fill: lightgrey;
   stroke: none;
 }
-.loopLine {
+[data-theme="dark"] .loopLine {
   stroke-width: 2;
   stroke-dasharray: "2 2";
   marker-end: "url(#arrowhead)";
   stroke: #81B1DB;
 }
-.note {
+[data-theme="dark"] .note {
   stroke: rgba(255, 255, 255, 0.25);
   fill: #fff5ad;
 }
-.noteText {
+[data-theme="dark"] .noteText {
   fill: black;
   stroke: none;
   font-family: 'trebuchet ms', verdana, arial;
   font-size: 14px;
 }
-/** Section styling */
-.section {
+[data-theme="dark"] .section {
   stroke: none;
   opacity: 0.2;
 }
-.section0 {
+[data-theme="dark"] .section0 {
   fill: rgba(255, 255, 255, 0.3);
 }
-.section2 {
+[data-theme="dark"] .section2 {
   fill: #EAE8B9;
 }
-.section1,
-.section3 {
+[data-theme="dark"] .section1,
+[data-theme="dark"] .section3 {
   fill: white;
   opacity: 0.2;
 }
-.sectionTitle0 {
+[data-theme="dark"] .sectionTitle0 {
   fill: #F9FFFE;
 }
-.sectionTitle1 {
+[data-theme="dark"] .sectionTitle1 {
   fill: #F9FFFE;
 }
-.sectionTitle2 {
+[data-theme="dark"] .sectionTitle2 {
   fill: #F9FFFE;
 }
-.sectionTitle3 {
+[data-theme="dark"] .sectionTitle3 {
   fill: #F9FFFE;
 }
-.sectionTitle {
+[data-theme="dark"] .sectionTitle {
   text-anchor: start;
   font-size: 11px;
   text-height: 14px;
 }
-/* Grid and axis */
-.grid .tick {
+[data-theme="dark"] .grid .tick {
   stroke: rgba(255, 255, 255, 0.3);
   opacity: 0.3;
   shape-rendering: crispEdges;
 }
-.grid .tick text {
+[data-theme="dark"] .grid .tick text {
   fill: lightgrey;
   opacity: 0.5;
 }
-.grid path {
+[data-theme="dark"] .grid path {
   stroke-width: 0;
 }
-/* Today line */
-.today {
+[data-theme="dark"] .today {
   fill: none;
   stroke: #DB5757;
   stroke-width: 2px;
 }
-/* Task styling */
-/* Default task */
-.task {
+[data-theme="dark"] .task {
   stroke-width: 1;
 }
-.taskText {
+[data-theme="dark"] .taskText {
   text-anchor: middle;
   font-size: 11px;
 }
-.taskTextOutsideRight {
+[data-theme="dark"] .taskTextOutsideRight {
   fill: #323D47;
   text-anchor: start;
   font-size: 11px;
 }
-.taskTextOutsideLeft {
+[data-theme="dark"] .taskTextOutsideLeft {
   fill: #323D47;
   text-anchor: end;
   font-size: 11px;
 }
-/* Specific task settings for the sections*/
-.taskText0,
-.taskText1,
-.taskText2,
-.taskText3 {
+[data-theme="dark"] .taskText0,
+[data-theme="dark"] .taskText1,
+[data-theme="dark"] .taskText2,
+[data-theme="dark"] .taskText3 {
   fill: #323D47;
 }
-.task0,
-.task1,
-.task2,
-.task3 {
+[data-theme="dark"] .task0,
+[data-theme="dark"] .task1,
+[data-theme="dark"] .task2,
+[data-theme="dark"] .task3 {
   fill: #BDD5EA;
   stroke: rgba(255, 255, 255, 0.5);
 }
-.taskTextOutside0,
-.taskTextOutside2 {
+[data-theme="dark"] .taskTextOutside0,
+[data-theme="dark"] .taskTextOutside2 {
   fill: lightgrey;
 }
-.taskTextOutside1,
-.taskTextOutside3 {
+[data-theme="dark"] .taskTextOutside1,
+[data-theme="dark"] .taskTextOutside3 {
   fill: lightgrey;
 }
-/* Active task */
-.active0,
-.active1,
-.active2,
-.active3 {
+[data-theme="dark"] .active0,
+[data-theme="dark"] .active1,
+[data-theme="dark"] .active2,
+[data-theme="dark"] .active3 {
   fill: #81B1DB;
   stroke: rgba(255, 255, 255, 0.5);
 }
-.activeText0,
-.activeText1,
-.activeText2,
-.activeText3 {
+[data-theme="dark"] .activeText0,
+[data-theme="dark"] .activeText1,
+[data-theme="dark"] .activeText2,
+[data-theme="dark"] .activeText3 {
   fill: #323D47 !important;
 }
-/* Completed task */
-.done0,
-.done1,
-.done2,
-.done3 {
+[data-theme="dark"] .done0,
+[data-theme="dark"] .done1,
+[data-theme="dark"] .done2,
+[data-theme="dark"] .done3 {
   fill: lightgrey;
 }
-.doneText0,
-.doneText1,
-.doneText2,
-.doneText3 {
+[data-theme="dark"] .doneText0,
+[data-theme="dark"] .doneText1,
+[data-theme="dark"] .doneText2,
+[data-theme="dark"] .doneText3 {
   fill: #323D47 !important;
 }
-/* Tasks on the critical line */
-.crit0,
-.crit1,
-.crit2,
-.crit3 {
+[data-theme="dark"] .crit0,
+[data-theme="dark"] .crit1,
+[data-theme="dark"] .crit2,
+[data-theme="dark"] .crit3 {
   stroke: #E83737;
   fill: #E83737;
   stroke-width: 2;
 }
-.activeCrit0,
-.activeCrit1,
-.activeCrit2,
-.activeCrit3 {
+[data-theme="dark"] .activeCrit0,
+[data-theme="dark"] .activeCrit1,
+[data-theme="dark"] .activeCrit2,
+[data-theme="dark"] .activeCrit3 {
   stroke: #E83737;
   fill: #81B1DB;
   stroke-width: 2;
 }
-.doneCrit0,
-.doneCrit1,
-.doneCrit2,
-.doneCrit3 {
+[data-theme="dark"] .doneCrit0,
+[data-theme="dark"] .doneCrit1,
+[data-theme="dark"] .doneCrit2,
+[data-theme="dark"] .doneCrit3 {
   stroke: #E83737;
   fill: lightgrey;
   stroke-width: 1;
   cursor: pointer;
   shape-rendering: crispEdges;
 }
-.doneCritText0,
-.doneCritText1,
-.doneCritText2,
-.doneCritText3 {
+[data-theme="dark"] .doneCritText0,
+[data-theme="dark"] .doneCritText1,
+[data-theme="dark"] .doneCritText2,
+[data-theme="dark"] .doneCritText3 {
   fill: lightgrey !important;
 }
-.activeCritText0,
-.activeCritText1,
-.activeCritText2,
-.activeCritText3 {
+[data-theme="dark"] .activeCritText0,
+[data-theme="dark"] .activeCritText1,
+[data-theme="dark"] .activeCritText2,
+[data-theme="dark"] .activeCritText3 {
   fill: #323D47 !important;
 }
-.titleText {
+[data-theme="dark"] .titleText {
   text-anchor: middle;
   font-size: 18px;
   fill: lightgrey;
 }
-/*
-*/
-.node text {
+[data-theme="dark"] .node text {
   font-family: 'trebuchet ms', verdana, arial;
   font-size: 14px;
 }
-div.mermaidTooltip {
+[data-theme="dark"] div.mermaidTooltip {
   position: absolute;
   text-align: center;
   max-width: 200px;

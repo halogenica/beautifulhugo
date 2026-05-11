@@ -126,6 +126,19 @@ var main = {
           }
         }
         updateThemeTooltip(state);
+        var mermaidDarkLinks = document.querySelectorAll('.mermaid-dark');
+        for (var j = 0; j < mermaidDarkLinks.length; j++) {
+          var md = mermaidDarkLinks[j];
+          if (state === 'dark') {
+            md.disabled = false;
+            md.media = '';
+          } else if (state === 'light') {
+            md.disabled = true;
+          } else {
+            md.disabled = false;
+            md.media = '(prefers-color-scheme: dark)';
+          }
+        }
       }
 
       // Initialize from localStorage or system preference
