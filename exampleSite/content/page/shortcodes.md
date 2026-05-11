@@ -44,6 +44,11 @@ The `columns` and `column` shortcodes create a two-column layout using the `spli
 | `{{</* column */>}}` | Closes the left column and starts the right column |
 | `{{</* /columns */>}}` | Closes the right column and the wrapper |
 
+For historical reasons, you can also use
+`{{</* columns /*/>}} ... {{</* endcolumns */>}}`
+(note the required self-closing tag) as a backward compatibility shim.
+{.box-warning}
+
 **Live example:**
 
 {{< columns >}}
