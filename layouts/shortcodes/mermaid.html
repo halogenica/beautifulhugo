@@ -2,8 +2,14 @@
 <script defer src="{{"js/mermaid.js" | relURL}}"></script>
 <script defer src="{{"js/mermaid-render.js" | relURL}}"></script>
 <div class="mermaid-container" {{ with .Get "align" }}style="text-align:{{ . }}"{{ end }}>
-  <div class="mermaid-light"></div>
-  <div class="mermaid-dark"></div>
+{{- if eq $colorScheme "dark" -}}
+  <div class="theme-dark"></div>
+{{- else if eq $colorScheme "light" -}}
+  <div class="theme-light"></div>
+{{- else -}}
+  <div class="theme-light"></div>
+  <div class="theme-dark"></div>
+{{- end -}}
 </div>
 <pre class="mermaid-src" style="display:none">
 {{ safeHTML .Inner  }}
