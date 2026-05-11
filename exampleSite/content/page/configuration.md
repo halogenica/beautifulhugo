@@ -127,6 +127,13 @@ Add one or more full-width header images to the home page. Multiple images cycle
 | `desc` | string | Image description (supports Markdown links) |
 | `position` | string | CSS `background-position` value (e.g. `"center top"`) |
 
+| `headerImgStyle` | string | `"big"` | Header image height: `"big"` (default, 100–150px padding) or `"narrow"` (25px padding, crops image top and bottom) |
+
+```toml
+[Params]
+  headerImgStyle = "narrow"
+```
+
 See [Layout Options](../layout-options/) for per-page big image headers.
 
 ## Syntax Highlighting
@@ -277,6 +284,7 @@ These options can be set in the front matter of any page or post:
 |-------|------|-------------|
 | `subtitle` | string | Page/post subtitle |
 | `bigimg` | list | Per-page big header images (same format as site-level) |
+| `headerImgStyle` | string | Header image height: `"big"` or `"narrow"` |
 | `fullWidth` | bool | Full-width content layout (no sidebar offset) |
 | `socialShare` | bool | Override site-level social sharing for this page |
 | `showAvatar` | bool | Show/hide navbar avatar (default: `true`) |
