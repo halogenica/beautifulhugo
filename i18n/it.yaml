@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "2 January 2006"
+  translation: "2 gennaio 2006"
 - id: shortdateFormat
-  translation: "2 Jan 2006 15:04:05"
+  translation: "2 gen 2006 15:04:05"
 - id: postedOnDate
   translation: "Pubblicato il {{ . }}"
 - id: lastModified
@@ -62,7 +62,7 @@
 - id: yourEmail
   translation: "Il tuo indirizzo mail"
 - id: yourWebsite
-  translation: "Il tuo website"
+  translation: "Il tuo sito web"
 - id: submit
   translation: "Invia"
 - id: close

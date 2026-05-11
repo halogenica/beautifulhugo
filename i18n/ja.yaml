@@ -70,7 +70,7 @@
 
 # Delayed Disqus
 - id: show
-  translation: "ショー"
+  translation: "表示"
 - id: comments
   translation: "コメント" 
 

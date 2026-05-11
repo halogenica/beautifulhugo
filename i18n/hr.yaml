@@ -4,7 +4,7 @@
 - id: shortdateFormat
   translation: "Sij 2, 2006 15:04:05"
 - id: postedOnDate
-  translation: "Obajvljeno na {{ . }}"
+  translation: "Objavljeno na {{ . }}"
 - id: lastModified
   translation: "Zadnja promjena na {{ . }}"
 - id: translationsLabel
@@ -50,11 +50,11 @@
 
 # Staticman
 - id: noComment
-  translation: "Nema komenatara"
+  translation: "Nema komentara"
 - id: oneComment
   translation: "komentar"
 - id: moreComment
-  translation: "komenatari"
+  translation: "komentari"
 - id: useMarkdown
   translation: "Možete koristiti Markdown sintaksu"
 - id: yourName
@@ -62,7 +62,7 @@
 - id: yourEmail
   translation: "Vaša email adresa"
 - id: yourWebsite
-  translation: "You web stranica"
+  translation: "Vaša web stranica"
 - id: submit
   translation: "Pošalji"
 - id: close
