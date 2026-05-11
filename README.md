@@ -1,12 +1,18 @@
-# Beautiful Hugo - An adaptation of the Beautiful Jekyll theme
+# Beautiful Hugo
 
-![Beautiful Hugo Theme Screenshot](https://github.com/halogenica/beautifulhugo/blob/master/images/screenshot.png)
+An adaptation of the [Beautiful Jekyll](https://deanattali.com/beautiful-jekyll/) theme by [Dean Attali](https://deanattali.com/aboutme#contact), with years of community updates and many new features.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/screenshot-dark.jpg">
+  <img alt="Beautiful Hugo Theme Screenshot" src="images/screenshot.jpg">
+</picture>
 
 ## Live demo
 
-Current: <https://halogenica.net/beautifulhugo>.
+- **Current:** <https://halogenica.net/beautifulhugo>
+- **Legacy:** <https://hugo-theme-beautifulhugo.netlify.app>
 
-Older: <https://hugo-theme-beautifulhugo.netlify.app>.
+The example site includes detailed feature pages with live examples — see [Features](#features) below.
 
 ## Installation
 
@@ -14,334 +20,105 @@ Install Hugo and create a new site. See [the Hugo documentation](https://gohugo.
 
 ### Git Submodule
 
-Add Beautifulhugo as git submodule:
-
-    $ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
-
-### Hugo module
-
-Initialize your site as hugo module:
-
-    $ hugo mod init github.com/USERNAME/SITENAME
-
-Add Beautifulhugo module as a dependency of your site:
-
-    $ hugo mod get github.com/halogenica/beautifulhugo
-
-You can stay up to date with:
-
-    $ hugo mod get
-
-### Site preview
-
-Copy the content of `exampleSite` at the root of your project:
-
-    cp -riv themes/beautifulhugo/exampleSite/* .
-
-If you installed Beautifulhugo as hugo module, set your theme in your config file (hugo.toml):
-
-    [[module.imports]]
-      path = "github.com/halogenica/beautifulhugo"
-
-Start Hugo:
-
-    hugo serve
-
-## Extra Features
-
-### Responsive
-
-This theme is designed to look great on both large-screen and small-screen (mobile) devices.
-
-### Syntax highlighting
-
-This theme has support for either Hugo's lightning fast Chroma, or both server side and client side highlighting. See [the Hugo docs for more](https://gohugo.io/content-management/syntax-highlighting/).
-
-#### Chroma - Server side syntax highlighting
-
-Chroma is built into Hugo and enabled by default. To keep it from coliding with our colors, you need to turn off the hard-coded colors:
-
-```toml
-[markup.highlight]
-  noClasses = true
+```sh
+git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
 ```
 
+### Hugo Module
 
-If you want it to guess syntax, you can (though it has much more limited language support for guessing compared to Highlight.js):
-
-```toml
-[markup.highlight]
-  guessSyntax = true
+```sh
+hugo mod init github.com/USERNAME/SITENAME
+hugo mod get github.com/halogenica/beautifulhugo
 ```
 
-#### Highlight.js - Client side syntax highlighting
+Stay up to date with `hugo mod get`.
 
-Alternatively, you can enable client-side highlighting with Highlight.js. This bypasses Chroma and uses `highlight.min.css` instead of `syntax.css`.
+If using Hugo modules, add this to your `hugo.toml`:
 
 ```toml
+[[module.imports]]
+  path = "github.com/halogenica/beautifulhugo"
+```
+
+### Preview
+
+Copy the example site content and start Hugo:
+
+```sh
+cp -riv themes/beautifulhugo/exampleSite/* .
+hugo serve
+```
+
+## Features
+
+| Feature | Details |
+|---------|---------|
+| **Responsive design** | Looks great on desktop and mobile |
+| **Light/dark/auto color scheme** | Navbar toggle with `localStorage` persistence |
+| **Syntax highlighting** | Chroma (server-side, default) or Highlight.js (client-side) |
+| **KaTeX math** | Inline `$...$` and display `$$...$$` — no config needed |
+| **Mermaid diagrams** | Flowcharts, sequence diagrams, Gantt charts via shortcode |
+| **PhotoSwipe galleries** | `beautifulfigure` and `gallery` shortcodes with lightbox |
+| **Shortcodes** | `details`, `columns`/`column`, `tabs`/`tab`, `mermaid`, `gallery`, `beautifulfigure` |
+| **Markdown extensions** | Callout boxes (note/warning/error/success), theme-dependent content, utility classes |
+| **Comment systems** | Disqus, Giscus, Utterances, Cusdis, Staticman |
+| **SEO** | Schema.org JSON-LD, Open Graph, Twitter Cards — automatic |
+| **Multilingual** | 19 languages with navbar language switcher |
+| **Social icons** | 42 platforms in the footer via `[Params.author]` |
+| **Self-hosted assets** | `selfHosted = true` for GDPR/EU-DSGVO compliance |
+| **Big image headers** | Full-width hero images with fade cycling |
+| **Social sharing** | Share buttons on posts (Twitter, Facebook, Reddit, LinkedIn, etc.) |
+| **GitHub buttons** | Star/watch/fork badges via front matter |
+| **Google Analytics** | Standard Hugo integration (production only) |
+| **RSS** | Built-in, enabled with `rss = true` |
+
+For complete configuration reference, shortcode documentation, and live examples, see the [example site feature pages](https://halogenica.net/beautifulhugo/page/configuration/):
+
+- [Configuration](https://halogenica.net/beautifulhugo/page/configuration/) — every `hugo.toml` parameter
+- [Shortcodes](https://halogenica.net/beautifulhugo/page/shortcodes/) — `details`, `columns`, `tabs`, `gallery`, `mermaid`
+- [Code Blocks](https://halogenica.net/beautifulhugo/page/code-blocks/) — Chroma vs Highlight.js, line numbers, copy button
+- [Markdown Extensions](https://halogenica.net/beautifulhugo/page/markdown-extensions/) — callout boxes, theme-dependent content
+- [Figures & Galleries](https://halogenica.net/beautifulhugo/page/figures-and-galleries/) — PhotoSwipe integration
+- [Math & Diagrams](https://halogenica.net/beautifulhugo/page/math-and-diagrams/) — KaTeX and Mermaid examples
+- [Layout Options](https://halogenica.net/beautifulhugo/page/layout-options/) — big images, full-width, hidden pages
+- [Comments & Social](https://halogenica.net/beautifulhugo/page/comments-and-social/) — comment systems, social sharing, footer icons
+- [SEO & i18n](https://halogenica.net/beautifulhugo/page/seo-and-i18n/) — structured data, Open Graph, multilingual
+
+## Quick Start Config
+
+```toml
+baseurl = "https://example.com/"
+title = "My Site"
+
 [Params]
-  useHLJS = true
-[markup.highlight]
-  codeFences = false
-```
+  subtitle = "Build a beautiful and simple website in minutes"
+  mainSections = ["post", "posts"]
+  logo = "/img/avatar-icon.png"
+  favicon = "/img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  colorScheme = "auto"
+  readingTime = true
+  socialShare = true
+  showRelatedPosts = true
+  rss = true
 
-This has better language autodetection support.
-
-### Disqus support
-
-To use this feature add your disqus shortname to the hugo.toml file like this:
-
-```toml
-[services]
-  [services.disqus]
-    shortname = ''
-```
-
-For further reference see [hugo config](https://gohugo.io/methods/site/config/)
-
-### Staticman support
-
-Add *Staticman* configuration section in `hugo.toml` or `hugo.yaml`
-
-Sample `hugo.toml` configuration
-
-```
-[Params.staticman]
-  api = "https://<API-ENDPOINT>/v3/entry/{GIT-HOST}/<USERNAME>/<REPOSITORY-BLOGNAME>/master/comments"
-[Params.staticman.recaptcha]
-      sitekey: "6LeGeTgUAAAAAAqVrfTwox1kJQFdWl-mLzKasV0v"
-      secret: "hsGjWtWHR4HK4pT7cUsWTArJdZDxxE2pkdg/ArwCguqYQrhuubjj3RS9C5qa8xu4cx/Y9EwHwAMEeXPCZbLR9eW1K9LshissvNcYFfC/b8KKb4deH4V1+oqJEk/JcoK6jp6Rr2nZV4rjDP9M7nunC3WR5UGwMIYb8kKhur9pAic="
-```
-
-Note: The public `API-ENDPOINT` https://staticman.net is currently hitting its API limit, so one may use other API instances to provide Staticman comment service.
-
-The section `[Params.staticman.recaptcha]` is *optional*.  To add reCAPTCHA to your site, you have to replace the default values with your own ones (to be obtained from Google.)  The site `secret` has to be encrypted with
-
-    https://<API-ENDPOINT>/v3/encrypt/<SITE-SECRET>
-
-You must also configure the `staticman.yml` in you blog website.
-
-```
-comments:
-  allowedFields: ["name", "email", "website", "comment"]
-  branch            : "master"
-  commitMessage     : "New comment in {options.slug}"
-  path: "data/comments/{options.slug}"
-  filename          : "comment-{@timestamp}"
-  format            : "yaml"
-  moderation        : true
-  requiredFields    : ['name', 'email', 'comment']
-  transforms:
-    email           : md5
-  generatedFields:
-    date:
-      type          : "date"
-      options:
-        format      : "iso8601"
-  reCaptcha:
-    enabled: true
-    siteKey: "6LeGeTgUAAAAAAqVrfTwox1kJQFdWl-mLzKasV0v"
-    secret: "hsGjWtWHR4HK4pT7cUsWTArJdZDxxE2pkdg/ArwCguqYQrhuubjj3RS9C5qa8xu4cx/Y9EwHwAMEeXPCZbLR9eW1K9LshissvNcYFfC/b8KKb4deH4V1+oqJEk/JcoK6jp6Rr2nZV4rjDP9M7nunC3WR5UGwMIYb8kKhur9pAic="
-```
-
-If you *don't* have the section `[Params.staticman]` in `hugo.toml`, you *won't* need the section `reCaptcha`  in `staticman.yml`
-
-### Utterances support
-
-Add this section in `hugo.toml`:
-
-```toml
-[Params.utterances]
-  repo = "owner/repo"
-  issueTerm = "pathname" # pathname, url, title, og:title
-  theme = "preferred-color-scheme"
-  # label = "comment"
-```
-
-### giscus support
-
-Add this section in `hugo.toml`:
-
-```toml
-[Params.giscus]
-  repo = "owner/repo"
-  repoId = "R_kgDO..."
-  category = "Announcements"
-  categoryId = "DIC_kwDO..."
-  mapping = "pathname"
-  reactionsEnabled = "1"
-  emitMetadata = "0"
-  inputPosition = "top"
-  theme = "preferred_color_scheme"
-  lang = "en"
-  lazyLoading = true
-```
-
-### Site Disclaimer
-
-If you need to put a Disclaimer on your website (e.g. "My views are my own and not my employer's"), you can do so via the following:
-
-* Uncomment and edit the `disclaimerText` parameter in `hugo.toml`.
-* If you need to adjust the disclaimer's styling, modify the declarations within the `footer div.disclaimer` selector in `static/css/main.css`.
-
-> The code for the disclaimer text is in `layouts/partials/footer.html`.  Moving this code block to another partial file (or relocating it within `footer.html`) will require changes to the css selector in `main.css` as well.
-
-### Google Analytics
-
-Sign up to [Google Analytics](https://www.google.com/analytics/) to obtain your Google Tracking ID.
-
-To use this feature add your Google Analytics ID to the hugo.toml file like this:
-
-```
-[services]
-  [services.googleAnalytics]
-    id = ''
-```
-
-Note that the Google Analytics tracking code will only be inserted into the page when the site isn't served on Hugo's built-in server, to prevent tracking from local testing environments.
-
-### Commit SHA on the footer
-
-If the source of your site is in a Git repo, the SHA corresponding to the commit the site is built from can be shown on the footer. To do so, two site parameters `commit` has to be defined in the config file `hugo.toml`:
-
-```
-enableGitInfo = true
-[Params]
-  commit = "https://github.com/<username>/<siterepo>/tree/"
-```
-
-See at [vincenttam/vincenttam.gitlab.io](https://gitlab.com/vincenttam/vincenttam.gitlab.io) for an example of how to add it to a continuous integration system.
-
-### Multilingual
-
-To allow Beautiful Hugo to go multilingual, you need to define the languages
-you want to use inside the `languages` parameter on `hugo.toml` file, also
-redefining the content dir for each one. Check the `i18n/` folder to see all
-languages available.
-
-```toml
-[languages]
-  [languages.en] 
-    contentDir = "content/en" # English
-  [languages.ja]
-    contentDir = "content/ja" # Japanese
-  [languages.br]
-    contentDir = "content/br" # Brazilian Portuguese
-```
-
-Now you just need to create a subdir within the `content/` folder for each
-language and just put stuff inside `page/` and `post/` regular directories.
-```
-content/      content/      content/  
-└── en/       └── br/       └── ja/ 
-    ├── page/     ├── page/     ├── page/
-    └── post/     └── post/     └── post/
-
-```
-
-### Self Hosted assets for GDPR / EU-DSGVO compliance
-
-With default settings, visiting to a website using Beautifulhugo connects also to remote services like google fonts or jsdelivr to embed fonts, js and other assets.
-
-To avoid this, set the following param in hugo.toml:
-
-```
-[Params]
-  selfHosted = true
-```
-
-### Other parameters
-```toml
-[params]
-  showPageDates = false # disables the dates below pages, can be controlled in page frontmatter, too
-```
-
-### Hidden posts
-Set `hidden: true` in a page's front matter to remove it from the homepage and list pages while still building the page (so it remains accessible by direct URL).
-
-### Keep the built-in `figure` shortcode
-
-Beautiful Hugo overrides Hugo's built-in `figure` shortcode with `beautifulfigure`, which adds PhotoSwipe gallery support.
-You can restore the original Hugo behaviour by setting `disableFigureOverride = true` in your `hugo.toml`;
-the `beautifulfigure` shortcode will still be available for PhotoSwipe figures.
-
-```toml
-[params]
-  disableFigureOverride = true  # use Hugo's native <figure> for {{< figure >}} shortcodes
-```
-
-### Extra shortcodes
-
-There are five extra shortcodes provided (along with the customized `beautifulfigure` shortcode which remains backwards compatible with `figure`):
-
-#### Details
-
-This simply adds the html5 detail attribute, supported on all *modern* browsers. Use it like this:
-
-```
-{{< details "This is the details title (click to expand)" >}}
-This is the content (hidden until clicked).
-{{< /details >}}
-```
-
-#### Split
-
-This adds a two column side-by-side environment (will turn into 1 col for narrow devices):
-
-```
-{{< columns >}}
-This is column 1.
-{{< column >}}
-This is column 2.
-{{< endcolumns >}}
-```
-
-
-#### Tabs
-
-
-This adds a bootstrap tab block, with support for synced groups.
-
-```
-{{< tabs groupId="utility-boxes" >}}
-{{< tab "Note" >}}
-This is a `.box-note` using the new content utility styles.
-{.box-note}
-{{< /tab >}}
-{{< tab "Warning" >}}
-This is a `.box-warning` to show the shared box styling.
-{.box-warning}
-{{< /tab >}}
-{{< /tabs >}}
-```
-
-### Social Media Icons
-
-In order to show social media icons in the footer, add a section like this to your `hugo.yaml` or `hugo.toml`.  You can see the full list of supported social media sites in `data/beautifulhugo/social.toml`.
-
-```yaml
-author: 
-  name: "Author Name"
-  website: "https://example.com"
-  github: halogenica/beautifulhugo
-  twitter: username
-  discord: 96VAXXvjCB
-  ...
-```
-
-```toml
 [Params.author]
-    name = "Author Name"
-    website = "https://example.com"
-    github = "halogenica/beautifulhugo"
-    twitter = "username"
-    discord = "96VAXXvjCB"
-    ...
+  name = "Your Name"
+  website = "yourwebsite.com"
+  email = "youremail@domain.com"
+  github = "username"
+
+[markup.highlight]
+  noClasses = false
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.goldmark.renderer]
+  unsafe = true
 ```
 
-## About
-
-This is an adaptation of the Jekyll theme [Beautiful Jekyll](https://deanattali.com/beautiful-jekyll/) by [Dean Attali](https://deanattali.com/aboutme#contact). It supports most of the features of the original theme, and many new features. It has diverged from the Jekyll theme over time, with years of community updates.
+> **Note:** `[Params.author]` is required. The old top-level `[author]` key is deprecated and will produce a build error.
 
 ## License
 

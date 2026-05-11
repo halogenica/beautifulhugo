@@ -30,6 +30,7 @@ title = "Beautiful Hugo"
   delayDisqus = true
   showRelatedPosts = true
   disableFigureOverride = true
+  headerImgStyle = "narrow"
 
 [[Params.bigimg]]
   src = "/img/triangle.jpg"

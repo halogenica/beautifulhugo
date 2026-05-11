@@ -599,6 +599,11 @@ img::selection {
   color: #EEE;
 }
 
+.intro-header.big-img.narrow-img .page-heading,
+.intro-header.big-img.narrow-img .post-heading {
+  padding: 50px 0;
+}
+
 .intro-header.big-img .img-desc {
   background: rgba(30, 30, 30, 0.6);
   position: absolute;
@@ -629,6 +634,10 @@ img::selection {
   }
   .intro-header .post-heading h1 {
     font-size: 46px;
+  }
+  .intro-header.big-img.narrow-img .page-heading,
+  .intro-header.big-img.narrow-img .post-heading {
+    padding: 50px 0;
   }
   .intro-header.big-img .img-desc {
     font-size: 14px;

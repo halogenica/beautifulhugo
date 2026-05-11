@@ -1,15 +1,18 @@
 {{- $title := "" }}
 {{- $subtitle := "" }}
 {{- $bigimg := slice }}
+{{- $headerImgStyle := "big" }}
 {{- $contentColClass := cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}
 {{ if .IsHome }}
   {{- $title = .Site.Params.homeTitle | default .Site.Title }}
   {{- $subtitle = .Site.Params.subtitle }}
   {{- $bigimg = .Site.Params.bigimg }}
+  {{- $headerImgStyle = .Site.Params.headerImgStyle | default "big" }}
 {{ else }}
   {{- $title = .Title }}
   {{- $subtitle = .Params.subtitle }}
   {{- $bigimg = .Params.bigimg }}
+  {{- $headerImgStyle = .Params.headerImgStyle | default "big" }}
 {{ end }}
 
 {{ if or $bigimg $title }}
@@ -28,7 +31,7 @@
   <header class="header-section {{ if $bigimg }}has-img{{ end }}">
     {{ if $bigimg }}
       {{- $firstimg := index $bigimg 0 }}
-    <div class="intro-header big-img" style="background-image: url('{{$firstimg.src}}');">
+    <div class="intro-header big-img{{ if eq $headerImgStyle "narrow" }} narrow-img{{ end }}" style="background-image: url('{{$firstimg.src}}');">
         <div class="container">
           <div class="row">
             <div class="{{$contentColClass}}">
