@@ -9,7 +9,7 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 {{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
 {{- $src := .Get "link" | default (.Get "src") }}
 {{- $size := .Get "size" }}
-<div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
+<div class="box fancy-figure caption-position-{{ .Get "caption-position" | default "bottom" }}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}{{ with .Get "class" }} {{ . }}{{ end }}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
   <figure {{- with .Get "class" }} class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ print .Site.BaseURL $thumb }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
       <img itemprop="thumbnail" src="{{ $thumb }}" {{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
@@ -28,12 +28,8 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
       <figcaption>
         {{- with .Get "title" }}<h4>{{.}}</h4>{{ end }}
-        {{- if or (.Get "caption") (.Get "attr")}}
-          <p>
-            {{- .Get "caption" -}}
-            {{- with .Get "attrlink"}}<a href="{{.}}">{{ .Get "attr" }}</a>{{ else }}{{ .Get "attr" }}{{ end -}}
-          </p>
-        {{- end }}
+        {{- with .Get "caption" }}<p>{{.}}</p>{{ end }}
+        {{- with .Get "attr" }}<p class="attr">{{- with $.Get "attrlink" }}<a href="{{.}}">{{ $.Get "attr" }}</a>{{ else }}{{.}}{{ end }}</p>{{ end }}
       </figcaption>
     {{- end }}
   </figure>
