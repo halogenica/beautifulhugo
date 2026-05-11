@@ -134,19 +134,9 @@ img::selection {
   display: none;
 }
 
-.img-title {
-  width: 100%;
-}
-
-/* --- Layout --- */
-
-.container[role=main] {
-  margin-bottom:50px;
-  flex: 1 0 auto;
-}
-
-.main-content {
-  padding-top: 80px;
+.intro-header .h1 {
+  display: block;
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 768px) {
@@ -560,6 +550,7 @@ img::selection {
 }
 
 .intro-header .page-heading h1,
+.intro-header .page-heading .h1,
 .intro-header .tags-heading h1,
 .intro-header .categories-heading h1 {
   margin-top: 0;
@@ -629,11 +620,13 @@ img::selection {
     padding: 150px 0;
   }
   .intro-header .page-heading h1,
+  .intro-header .page-heading .h1,
   .intro-header .tags-heading h1,
   .intro-header .categories-heading h1 {
     font-size: 72px;
   }
-  .intro-header .post-heading h1 {
+.intro-header .post-heading h1,
+.intro-header .post-heading .h1 {
     font-size: 46px;
   }
   .intro-header.big-img.narrow-img .page-heading,

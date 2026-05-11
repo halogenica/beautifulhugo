@@ -57,10 +57,14 @@
         <div class="row">
           <div class="{{$contentColClass}}">
             <div class="{{ .Type }}-heading">
+              {{ if $bigimg }}
+              <span class="h1">{{ with $title }}{{.}}{{ else }}<br/>{{ end }}</span>
+              {{ else }}
               {{ if eq .Type "list" }}
                 <h1>{{ if .Data.Singular }}#{{ end }}{{ .Title }}</h1>
               {{ else }}
                 <h1>{{ with $title }}{{.}}{{ else }}<br/>{{ end }}</h1>
+              {{ end }}
               {{ end }}
               {{ if ne .Type "post" }}
                 <hr class="small">
