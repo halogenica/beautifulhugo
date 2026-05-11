@@ -18,11 +18,11 @@
     {{ end }}
     <div class="row">
       <div class="col-md-10 offset-md-1">
-        <ul class="list-inline text-center footer-links" role="list">
+        <ul class="list-inline text-center footer-links">
           {{ range $data.beautifulhugo.social.social_icons }}
             {{- $social := . -}}
             {{- with index $.Site.Params.author $social.id }}
-              <li class="list-inline-item" role="listitem">
+              <li class="list-inline-item" >
 		{{- $authorValue := . -}}
 		{{ if or ( hasPrefix $authorValue "http://" ) ( hasPrefix $authorValue "https://" ) }}
 		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer"{{ else }}rel="noopener noreferrer"{{ end }} href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
