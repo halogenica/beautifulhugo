@@ -678,3 +678,30 @@
   background-color: #142d14;
   border-left-color: #3CB371;
 }
+
+/* Mermaid diagram light/dark visibility */
+.mermaid-dark {
+  display: none;
+}
+
+.mermaid-light {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mermaid-dark {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .mermaid-light {
+    display: none;
+  }
+}
+
+[data-theme="dark"] .mermaid-dark {
+  display: block;
+}
+
+[data-theme="dark"] .mermaid-light {
+  display: none;
+}
