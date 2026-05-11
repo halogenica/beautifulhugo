@@ -54,7 +54,7 @@
 - id: oneComment
   translation: "yorum"
 - id: moreComment
-  translation: "yorum"
+  translation: "yorumlar"
 - id: useMarkdown
   translation: "Markdown söz dizimini kullanabilirsiniz"
 - id: yourName
