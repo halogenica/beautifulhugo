@@ -123,6 +123,10 @@
   {{- end -}}
   {{- end -}}
   <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
+
+  {{- if ne ($.Param "toc") false -}}
+  <link rel="stylesheet" href="{{ "css/toc.css" | absURL }}" />
+  {{- end -}}
   
   {{- if .Site.Params.staticman.recaptcha -}}
   <script src='https://www.google.com/recaptcha/api.js'></script>

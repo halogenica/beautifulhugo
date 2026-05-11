@@ -1,0 +1,16 @@
+{{- if ne ($.Param "toc") false -}}
+{{- if .TableOfContents -}}
+<div class="toc-wrapper" id="toc-wrapper">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body">
+      {{ .TableOfContents }}
+    </nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
+{{- end -}}
+{{- end -}}
