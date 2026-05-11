@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "2006年1月2日"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2006年1月2日 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "發表於 {{ . }}"
 - id: lastModified

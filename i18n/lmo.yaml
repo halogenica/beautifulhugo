@@ -4,11 +4,11 @@
 
 - id: dateFormat
 
-  translation: "2 January 2006"
+  translation: ":date_long"
 
 - id: shortdateFormat
 
-  translation: "2 Jan 2006 15:04:05"
+  translation: ":date_medium"
 
 - id: postedOnDate
 

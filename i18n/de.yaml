@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "02.01.2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "02. Jan. 2006 15:04:05 Uhr"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Gepostet am {{ . }}"
 - id: lastModified

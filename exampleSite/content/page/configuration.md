@@ -15,7 +15,7 @@ This page is a complete reference for every configuration option in Beautiful Hu
 | `mainSections` | list | — | Content sections treated as "posts" (e.g. `["post","posts"]`) |
 | `logo` | string | — | Path to a square avatar/logo image |
 | `favicon` | string | — | Path to favicon |
-| `dateFormat` | string | i18n default | Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. |
+| `dateFormat` | string | i18n default | Date format string. Accepts Hugo locale tokens (e.g. `":date_long"`, `":date_medium"`, `":date_short"`) for automatic localization, or a Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. Locale tokens are recommended for multilingual sites. |
 | `since` | int | — | Start year for copyright range (e.g. `2015 - 2026`) |
 
 ```toml
@@ -24,7 +24,7 @@ This page is a complete reference for every configuration option in Beautiful Hu
   mainSections = ["post", "posts"]
   logo = "/img/avatar-icon.png"
   favicon = "/img/favicon.ico"
-  dateFormat = "January 2, 2006"
+  dateFormat = ":date_long"
   since = 2015
 ```
 
