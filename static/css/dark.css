@@ -678,3 +678,30 @@
   background-color: #142d14;
   border-left-color: #3CB371;
 }
+
+/* Theme-dependent visibility (usable for mermaid diagrams, image pairs, etc.) */
+.theme-dark {
+  display: none;
+}
+
+.theme-light {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-dark {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .theme-light {
+    display: none;
+  }
+}
+
+[data-theme="dark"] .theme-dark {
+  display: block;
+}
+
+[data-theme="dark"] .theme-light {
+  display: none;
+}

@@ -1,14 +1,16 @@
-<link href="{{"css/mermaid.css" | relURL}}" type="text/css" rel="stylesheet"/>
 {{- $colorScheme := .Page.Site.Params.colorScheme | default "auto" -}}
-{{- if eq $colorScheme "dark" -}}
-    <link class="mermaid-dark" href="{{"css/mermaid.dark.css" | relURL}}" type="text/css" rel="stylesheet"/>
-{{- else if eq $colorScheme "auto" -}}
-    <link class="mermaid-dark" href="{{"css/mermaid.dark.css" | relURL}}" type="text/css" rel="stylesheet" media="(prefers-color-scheme: dark)"/>
-{{- end -}}
 <script defer src="{{"js/mermaid.js" | relURL}}"></script>
-<script>
-    mermaid.initialize({startOnLoad:true});
-</script>
-<div class="mermaid" align="{{ if .Get "align" }}{{ .Get "align" }}{{ else }}center{{ end }}" >
-    {{ safeHTML .Inner  }}
+<script defer src="{{"js/mermaid-render.js" | relURL}}"></script>
+<div class="mermaid-container" {{ with .Get "align" }}style="text-align:{{ . }}"{{ end }}>
+{{- if eq $colorScheme "dark" -}}
+  <div class="theme-dark"></div>
+{{- else if eq $colorScheme "light" -}}
+  <div class="theme-light"></div>
+{{- else -}}
+  <div class="theme-light"></div>
+  <div class="theme-dark"></div>
+{{- end -}}
 </div>
+<pre class="mermaid-src" style="display:none">
+{{ safeHTML .Inner  }}
+</pre>
