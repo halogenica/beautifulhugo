@@ -355,6 +355,18 @@
   :root:not([data-theme="light"]) .tabs-shortcode .nav-tabs .nav-link.active {
     background-color: var(--dark-surface-active);
   }
+
+  /* --- Copy button --- */
+  :root:not([data-theme="light"]) .copyCodeButton {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-surface-active);
+    color: #ccc;
+  }
+
+  :root:not([data-theme="light"]) .copyCodeButton:hover {
+    background-color: var(--dark-surface-active);
+    color: #fff;
+  }
 }
 
 /* --- Explicit dark theme (data attribute) --- */
@@ -738,4 +750,16 @@
 
 [data-theme="dark"] .tabs-shortcode .nav-tabs .nav-link.active {
   background-color: var(--dark-surface-active);
+}
+
+/* --- Copy button --- */
+[data-theme="dark"] .copyCodeButton {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-surface-active);
+  color: #ccc;
+}
+
+[data-theme="dark"] .copyCodeButton:hover {
+  background-color: var(--dark-surface-active);
+  color: #fff;
 }
