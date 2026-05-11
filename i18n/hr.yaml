@@ -74,6 +74,16 @@
 - id: comments
   translation: "komentari" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Tema"
+- id: themeTooltipAuto
+  translation: "Auto (slijedi sustav)"
+- id: themeTooltipLight
+  translation: "Svijetli način"
+- id: themeTooltipDark
+  translation: "Tamni način"
+
 # Related posts
 - id: seeAlso
   translation: "Također vidi"

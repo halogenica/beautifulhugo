@@ -74,6 +74,16 @@
 - id: comments
   translation: "komentoj" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Temo"
+- id: themeTooltipAuto
+  translation: "Aŭto (sekvas sistemon)"
+- id: themeTooltipLight
+  translation: "Hela reĝimo"
+- id: themeTooltipDark
+  translation: "Malhela reĝimo"
+
 # Related posts
 - id: seeAlso
   translation: "Vidu ankaŭ"

@@ -74,6 +74,16 @@
 - id: comments
   translation: "コメント" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "テーマ"
+- id: themeTooltipAuto
+  translation: "自動（システムに従う）"
+- id: themeTooltipLight
+  translation: "ライトモード"
+- id: themeTooltipDark
+  translation: "ダークモード"
+
 # Related posts
 - id: seeAlso
   translation: "も参照してください"

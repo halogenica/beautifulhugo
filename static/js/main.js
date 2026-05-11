@@ -92,6 +92,20 @@ var main = {
         dark: document.getElementById('theme-icon-dark')
       };
 
+      function updateThemeTooltip(state) {
+        var tooltipText = themeToggle.getAttribute('data-tooltip-' + state) || '';
+        themeToggle.setAttribute('title', tooltipText);
+        themeToggle.setAttribute('data-bs-original-title', tooltipText);
+        var bsTooltip = bootstrap.Tooltip.getInstance(themeToggle);
+        if (bsTooltip) {
+          bsTooltip.dispose();
+          new bootstrap.Tooltip(themeToggle);
+          if (themeToggle.matches(':hover')) {
+            bootstrap.Tooltip.getOrCreateInstance(themeToggle).show();
+          }
+        }
+      }
+
       function updateThemeUI(state) {
         document.documentElement.setAttribute('data-theme', state);
         for (var key in themeIcons) {
@@ -111,6 +125,7 @@ var main = {
             hljsDark.media = '(prefers-color-scheme: dark)';
           }
         }
+        updateThemeTooltip(state);
       }
 
       // Initialize from localStorage or system preference

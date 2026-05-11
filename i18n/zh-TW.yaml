@@ -74,6 +74,16 @@
 - id: comments
   translation: "則評論"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "主題"
+- id: themeTooltipAuto
+  translation: "自動（跟隨系統）"
+- id: themeTooltipLight
+  translation: "淺色模式"
+- id: themeTooltipDark
+  translation: "深色模式"
+
 # Related posts
 - id: seeAlso
   translation: "其他相關"

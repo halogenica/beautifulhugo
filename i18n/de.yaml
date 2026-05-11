@@ -74,6 +74,16 @@
 - id: comments
   translation: "Kommentare" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Thema"
+- id: themeTooltipAuto
+  translation: "Auto (folgt dem System)"
+- id: themeTooltipLight
+  translation: "Heller Modus"
+- id: themeTooltipDark
+  translation: "Dunkler Modus"
+
 # Related posts
 - id: seeAlso
   translation: "Siehe auch"
