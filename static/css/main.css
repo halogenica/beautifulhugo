@@ -219,9 +219,12 @@ img::selection {
   color: inherit;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .theme-toggle {
     padding: .5rem;
+  }
+  .container {
+    max-width: 95%;
   }
 }
 
