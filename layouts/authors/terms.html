@@ -8,14 +8,16 @@
           </div>
         {{ end }}
         <div class="authors-list">
-          {{ range .Data.Terms.ByCount }}
-            {{ $authorData := partial "get_author.html" (dict "Site" $.Site "key" .Name) }}
+          {{ $authorPages := where .Site.RegularPages "Section" "authors" }}
+          {{ range $authorPages }}
+            {{ $key := .File.ContentBaseName }}
+            {{ $authorData := partial "get_author.html" (dict "Site" $.Site "key" $key) }}
             {{ if $authorData }}
-              {{ partial "author_card.html" (dict "author" $authorData "site" $.Site "key" .Name) }}
+              {{ partial "author_card.html" (dict "author" $authorData "site" $.Site "key" $key) }}
             {{ else }}
               <div class="author-card">
                 <div class="author-card-info">
-                  <a href="{{ .Page.Permalink }}" class="author-card-name">{{ .Name }}</a>
+                  <a href="{{ .Permalink }}" class="author-card-name">{{ .Title }}</a>
                 </div>
               </div>
             {{ end }}

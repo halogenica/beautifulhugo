@@ -1,12 +1,18 @@
+{{- $author := .author -}}
+{{- $site := .site -}}
+{{- $authorKey := .key | default "" -}}
 {{- $data := dict -}}
 {{- if ge hugo.Version "0.156.0" -}}
   {{- $data = hugo.Data -}}
 {{- else -}}
-  {{- $data = .site.Data -}}
+  {{- $data = $site.Data -}}
 {{- end -}}
-{{- $author := .author -}}
-{{- $site := .site -}}
-{{- $authorKey := .key | default "" -}}
+{{- $authorPage := false -}}
+{{- if $authorKey -}}
+  {{- with $site.GetPage (printf "/authors/%s" $authorKey) -}}
+    {{- $authorPage = . -}}
+  {{- end -}}
+{{- end -}}
 <div class="author-card">
   {{- with $author.avatar -}}
     <div class="author-card-avatar">
@@ -14,7 +20,9 @@
     </div>
   {{- end -}}
   <div class="author-card-info">
-    {{- if $authorKey -}}
+    {{- if $authorPage -}}
+      <a href="{{ $authorPage.Permalink }}" class="author-card-name">{{ $author.name }}</a>
+    {{- else if $authorKey -}}
       <a href="{{ "authors" | absLangURL }}/{{ $authorKey | urlize }}/" class="author-card-name">{{ $author.name }}</a>
     {{- else -}}
       <span class="author-card-name">{{ $author.name }}</span>

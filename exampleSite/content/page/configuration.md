@@ -53,26 +53,34 @@ If a social value starts with `http://` or `https://`, it is used as-is. Otherwi
 
 ### Multi-Author Support
 
-For sites with multiple authors, you can define author profiles in `data/authors/` and reference them in post front matter. This enables clickable author names, author profile pages with bios and social links, and proper structured data for multi-author posts.
+For sites with multiple authors, create author profile pages in `content/authors/` and reference them in post front matter. This enables clickable author names, full author profile pages with bios and social links, and proper structured data for multi-author posts.
 
-#### 1. Define author data files
+#### 1. Create author content pages
 
-Create one TOML file per author in `data/authors/`. The filename (without extension) is the author key used in front matter:
+Create one `.md` file per author under `content/authors/` with front matter and an optional markdown body:
 
-```toml
-# data/authors/alice-smith.toml
-name = "Alice Smith"
-bio = "Cloud infrastructure lead and open-source contributor."
-avatar = "/img/alice.jpg"
-website = "https://alice.dev"
-github = "alicesmith"
-twitter = "alicesmith"
+```yaml
+---
+# content/authors/alice-smith.md
+title: Alice Smith
+name: Alice Smith
+bio: Cloud infrastructure lead and open-source contributor.
+avatar: /img/alice.jpg
+website: https://alice.dev
+github: alicesmith
+twitter: alicesmith
+---
+
+Alice is a cloud infrastructure lead and long-time open-source contributor.
+She specializes in Kubernetes, CI/CD pipelines, and developer tooling.
 ```
+
+The filename (e.g. `alice-smith`) is the author key used in front matter. The markdown body appears on the author's profile page below their card.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `name` | string | Display name (required) |
-| `bio` | string | Short biography shown on author profile page |
+| `name` | string | Display name (defaults to `title`) |
+| `bio` | string | Short biography shown on author card |
 | `avatar` | string | Path to author avatar image |
 | `website` | string | Author website URL |
 | `email` | string | Email address |
@@ -89,7 +97,7 @@ Add to your `hugo.toml`:
 
 #### 3. Reference authors in front matter
 
-Use the `authors` front matter key (matching the filenames in `data/authors/`):
+Use the `authors` front matter key (matching the filenames in `content/authors/`):
 
 ```yaml
 ---
@@ -107,9 +115,9 @@ authors: ["alice-smith"]
 ---
 ```
 
-Author names in post meta become clickable links to `/authors/alice-smith/`, which shows the author's profile card (avatar, bio, social links) followed by their posts.
+Author names in post meta become clickable links to the author's profile page, which shows their card (avatar, bio, social links), the body content from their `.md` file, and a list of their posts.
 
-The existing `author` front matter key (plain string or list of strings) still works for backward compatibility — those names render as plain text without links. To get the full author profile experience, use `authors` with data file keys instead.
+The existing `author` front matter key (plain string or list of strings) still works for backward compatibility — those names render as plain text without links. To get the full author profile experience, use `authors` with content page keys instead.
 
 ## Color Scheme
 

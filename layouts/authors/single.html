@@ -1,0 +1,33 @@
+{{ define "main" }}
+  {{ $key := .File.ContentBaseName }}
+  {{ $authorData := partial "get_author.html" (dict "Site" .Site "key" $key) }}
+  {{ $authorPosts := where .Site.RegularPages "Params.authors" "intersect" (slice $key) }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        {{ if $authorData }}
+          {{ partial "author_card.html" (dict "author" $authorData "site" .Site "key" $key) }}
+        {{ else }}
+          <h2>{{ .Title }}</h2>
+        {{ end }}
+
+        {{ with .Content }}
+          <div class="content-section">
+            {{ . }}
+          </div>
+        {{ end }}
+
+        {{ if $authorPosts }}
+          <div class="posts-list">
+            {{ range $authorPosts }}
+              {{ if ne .Params.hidden true }}
+                {{ partial "post_preview.html" . }}
+              {{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ partial "toc.html" . }}
+  </div>
+{{ end }}

@@ -31,17 +31,23 @@
     {{ if .Params.authors }}
       {{ range .Params.authors }}
         {{ $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) }}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}<a href="{{ "authors" | absLangURL }}/{{ . | urlize }}/">{{ $authorData.name | safeHTML }}</a>{{ else }}{{ . | safeHTML }}{{ end }}
+        {{ $authorPage := false }}
+        {{ with $.Site.GetPage (printf "/authors/%s" .) }}{{ $authorPage = . }}{{ end }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}{{ if $authorPage }}<a href="{{ $authorPage.Permalink }}">{{ else }}<a href="{{ "authors" | absLangURL }}/{{ . | urlize }}/">{{ end }}{{ $authorData.name | safeHTML }}</a>{{ else }}{{ . | safeHTML }}{{ end }}
       {{ end }}
     {{ else if .Params.author }}
       {{ if reflect.IsSlice .Params.author }}
         {{ range .Params.author }}
           {{ $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) }}
-          &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}<a href="{{ "authors" | absLangURL }}/{{ . | urlize }}/">{{ $authorData.name | safeHTML }}</a>{{ else }}{{ . | safeHTML }}{{ end }}
+          {{ $authorPage := false }}
+          {{ with $.Site.GetPage (printf "/authors/%s" .) }}{{ $authorPage = . }}{{ end }}
+          &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}{{ if $authorPage }}<a href="{{ $authorPage.Permalink }}">{{ else }}<a href="{{ "authors" | absLangURL }}/{{ . | urlize }}/">{{ end }}{{ $authorData.name | safeHTML }}</a>{{ else }}{{ . | safeHTML }}{{ end }}
         {{ end }}
       {{ else }}
         {{ $authorData := partial "get_author.html" (dict "Site" .Site "key" .Params.author) }}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}<a href="{{ "authors" | absLangURL }}/{{ .Params.author | urlize }}/">{{ $authorData.name | safeHTML }}</a>{{ else }}{{ .Params.author | safeHTML }}{{ end }}
+        {{ $authorPage := false }}
+        {{ with .Site.GetPage (printf "/authors/%s" .Params.author) }}{{ $authorPage = . }}{{ end }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}{{ if $authorPage }}<a href="{{ $authorPage.Permalink }}">{{ else }}<a href="{{ "authors" | absLangURL }}/{{ .Params.author | urlize }}/">{{ end }}{{ $authorData.name | safeHTML }}</a>{{ else }}{{ .Params.author | safeHTML }}{{ end }}
       {{ end }}
     {{ else }}
       &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Params.author.name | safeHTML }}

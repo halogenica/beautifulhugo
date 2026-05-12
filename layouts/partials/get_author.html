@@ -1,20 +1,30 @@
-{{- $data := dict -}}
-{{- if ge hugo.Version "0.156.0" -}}
-  {{- $data = hugo.Data -}}
-{{- else -}}
-  {{- $data = .Site.Data -}}
-{{- end -}}
 {{- $key := .key -}}
 {{- $author := dict -}}
-{{- with index $data "authors" -}}
-  {{- $author = index . $key -}}
-{{- end -}}
-{{- if not $author -}}
+{{- $authorPage := false -}}
+{{- with .Site.GetPage (printf "/authors/%s" $key) -}}
+  {{- $authorPage = . -}}
+{{- else -}}
   {{- $lower := lower $key -}}
-  {{- with index $data "authors" -}}
-    {{- range $k, $v := . -}}
-      {{- if eq (lower $k) $lower -}}
-        {{- $author = $v -}}
+  {{- range where .Site.Pages "Section" "authors" -}}
+    {{- if eq (lower .File.ContentBaseName) $lower -}}
+      {{- $authorPage = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $authorPage -}}
+  {{- $p := .Params -}}
+  {{- $author = dict
+    "name"    ($p.name | default .Title)
+    "bio"     ($p.bio | default "")
+    "avatar"  ($p.avatar | default "")
+    "website" ($p.website | default "")
+    "email"   ($p.email | default "")
+  -}}
+  {{- $reserved := slice "name" "bio" "avatar" "website" "email" "title" "date" "lastmod" "publishdate" "draft" "description" "slug" "url" "type" "layout" "weight" "aliases" "outputs" "categories" "tags" "authors" "mainSections" -}}
+  {{- range $k, $v := $p -}}
+    {{- if not (in $reserved $k) -}}
+      {{- if and (eq (printf "%T" $v) "string") -}}
+        {{- $author = merge $author (dict $k $v) -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
