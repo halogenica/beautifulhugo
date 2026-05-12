@@ -140,6 +140,8 @@ This creates `/series/` (taxonomy listing) and `/series/getting-started/` (term 
 
 The archive layout shows a chronological list of **all** regular pages (newest first) with title, optional subtitle, and date. It is not paginated. Hidden pages are excluded.
 
+A horizontal **year selector** at the top lets visitors filter posts by year. An "All" button shows every post with year heading dividers between groups. Selecting a specific year shows only that year's posts. The selected year is stored in the URL hash (e.g. `#2025`), so year views are deep-linkable. Without JavaScript, all posts remain visible.
+
 Create a content page with `layout: archive`:
 
 ```yaml

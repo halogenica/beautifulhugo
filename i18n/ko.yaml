@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "더 보기"
+
+# Archive
+- id: all
+  translation: "전체"
+- id: archiveYearFilter
+  translation: "연도별 필터"

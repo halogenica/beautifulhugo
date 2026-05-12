@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "也可以看看"
+
+# Archive
+- id: all
+  translation: "全部"
+- id: archiveYearFilter
+  translation: "按年份筛选"

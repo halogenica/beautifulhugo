@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "Ayrıca bakınız"
+
+# Archive
+- id: all
+  translation: "Tümü"
+- id: archiveYearFilter
+  translation: "Yıla göre filtrele"

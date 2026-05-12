@@ -1348,6 +1348,60 @@ h4.see-also {
   color: #006680;
 }
 
+/* --- Archive year selector --- */
+
+.archive-year-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.archive-year-btn {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 16px;
+  border: 1px solid #d0d0d0;
+  border-radius: 20px;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.archive-year-btn:hover {
+  background: #f0f8fa;
+  border-color: #0085a1;
+  color: #0085a1;
+}
+
+.archive-year-btn.active {
+  background: #0085a1;
+  border-color: #0085a1;
+  color: #fff;
+}
+
+.archive-year-btn:focus-visible {
+  outline: 2px solid #0085a1;
+  outline-offset: 2px;
+}
+
+.archive-year-heading {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #555;
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+  letter-spacing: 0.05em;
+}
+
+.archive-group:first-child .archive-year-heading {
+  margin-top: 0;
+}
+
 /* --- Archive list --- */
 
 .archive-list {

@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "其他相關"
+
+# Archive
+- id: all
+  translation: "全部"
+- id: archiveYearFilter
+  translation: "依年份篩選"

@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "Također vidi"
+
+# Archive
+- id: all
+  translation: "Sve"
+- id: archiveYearFilter
+  translation: "Filtriraj po godini"

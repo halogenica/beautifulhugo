@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "Vidu ankaŭ"
+
+# Archive
+- id: all
+  translation: "Ĉiuj"
+- id: archiveYearFilter
+  translation: "Filtri laŭ jaro"
