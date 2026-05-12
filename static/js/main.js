@@ -107,35 +107,48 @@ var main = {
       }
 
       function updateThemeUI(state) {
-        document.documentElement.setAttribute('data-theme', state);
         for (var key in themeIcons) {
           if (themeIcons[key]) {
             themeIcons[key].style.display = (key === state) ? '' : 'none';
           }
         }
+        if (state === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (state === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+        }
         var hljsDark = document.getElementById('hljs-dark');
         if (hljsDark) {
-          if (state === 'dark') {
-            hljsDark.disabled = false;
-            hljsDark.media = '';
-          } else if (state === 'light') {
-            hljsDark.disabled = true;
-          } else {
-            hljsDark.disabled = false;
-            hljsDark.media = '(prefers-color-scheme: dark)';
-          }
+          hljsDark.disabled = (state === 'light');
         }
         updateThemeTooltip(state);
       }
 
-      // Initialize from localStorage or system preference
+      // Initialize from localStorage
       var savedTheme = localStorage.getItem('theme');
       if (themeStates.indexOf(savedTheme) !== -1) {
         updateThemeUI(savedTheme);
       }
 
+      // Listen for system color-scheme changes
+      var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      if (darkModeQuery.addEventListener) {
+        darkModeQuery.addEventListener('change', function() {
+          var current = localStorage.getItem('theme') || 'auto';
+          if (current === 'auto') {
+            updateThemeUI('auto');
+          }
+        });
+      }
+
       themeToggle.addEventListener('click', function() {
-        var current = document.documentElement.getAttribute('data-theme') || 'auto';
+        var current = localStorage.getItem('theme') || 'auto';
         var next = themeStates[(themeStates.indexOf(current) + 1) % themeStates.length];
         updateThemeUI(next);
         localStorage.setItem('theme', next);
