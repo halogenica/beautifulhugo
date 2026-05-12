@@ -28,7 +28,10 @@
     {{ partial "nav.html" . }}
     {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
     {{ block "main" . }}{{ end }}
-    {{ partial "footer.html" . }}
-    {{ block "footer" . }}{{ end }}
+    {{ block "footer" . }}
+      {{ partial "footer.html" . }}
+      {{ partial "footer_custom.html" . }}
+      {{ partial "scripts.html" . }}
+    {{ end }}
   </body>
 </html>
