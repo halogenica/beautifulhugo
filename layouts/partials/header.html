@@ -3,6 +3,8 @@
 {{- $bigimg := slice }}
 {{- $headerImgStyle := "big" }}
 {{- $contentColClass := cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}
+{{- $mainSections := default (slice "post" "posts") site.Params.mainSections }}
+{{- $isMainContent := in $mainSections .Type }}
 {{ if .IsHome }}
   {{- $title = .Site.Params.homeTitle | default .Site.Title }}
   {{- $subtitle = .Site.Params.subtitle }}
@@ -37,11 +39,11 @@
             <div class="{{$contentColClass}}">
               <div class="{{ .Type }}-heading">
                 <h1>{{ with $title }}{{.}}{{ else }}<br/>{{ end }}</h1>
-                {{ if ne .Type "post" }}
+                {{ if not $isMainContent }}
                   <hr class="small">
                 {{ end }}
                 {{ partial "header-subtitle.html" (dict "Context" . "Subtitle" $subtitle) }}
-                {{ if eq .Type "post" }}
+                {{ if $isMainContent }}
                   {{ partial "post_meta.html" . }}
                 {{ end }}
               </div>
@@ -66,11 +68,11 @@
                 <h1>{{ with $title }}{{.}}{{ else }}<br/>{{ end }}</h1>
               {{ end }}
               {{ end }}
-              {{ if ne .Type "post" }}
+              {{ if not $isMainContent }}
                 <hr class="small">
               {{ end }}
               {{ partial "header-subtitle.html" (dict "Context" . "Subtitle" $subtitle) }}
-              {{ if eq .Type "post" }}
+              {{ if $isMainContent }}
                 {{ partial "post_meta.html" . }}
               {{ end }}
             </div>
