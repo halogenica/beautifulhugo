@@ -283,6 +283,27 @@ Staticman adds comments as static data files via pull requests, with optional re
 
 When `gcse` is set, a search icon appears in the navbar that opens a search modal.
 
+## SEO Robot Meta Tags
+
+Control `<meta name="robots">` tags from `hugo.toml`. These settings only apply to pages in `mainSections`; other pages can set tags via front matter.
+
+```toml
+[Params.seo.robots]
+  ai-summary-limit = "nosnippet"
+  noindex = true
+  nofollow = true
+
+[Params.seo.GoogleBot]
+  noindex = true
+  ai-summary-limit = 50
+```
+
+Supported boolean tags: `noindex`, `nofollow`, `none`, `nosnippet`, `notranslate`, `noimageindex`, `noarchive`, `nocache`, `noai`, `noimageai`.
+
+Supported `ai-summary-limit` values: `none` (no limit), `nosnippet` (block all), or a positive integer (character limit, e.g. `50`, `150`, `300`).
+
+See [SEO & i18n](../seo-and-i18n/) for the full reference including per-page overrides.
+
 ## Custom HTML Hooks
 
 Beautiful Hugo provides partial "hooks" that let you inject custom HTML at specific points in the layout without forking the theme. To use a hook, create the corresponding file in your site's `layouts/partials/` directory — the theme's own copy is an empty stub.
@@ -337,6 +358,7 @@ These options can be set in the front matter of any page or post:
 | `tags` | list | Tags for categorization |
 | `share_img` | string | Social sharing image (falls back to `image` then `logo`) |
 | `ExpiryDate` | date | Adds `<meta name="robots" content="unavailable_after: ...">` |
+| `seo` | map | Per-page robot meta tag overrides (see [SEO & i18n](../seo-and-i18n/)) |
 | `ghRepo` | string | GitHub repo for buttons (`"user/repo"`) |
 | `ghBadge` | list | Which badges to show: `["star","watch","fork","follow"]` |
 | `ghCount` | bool | Show count on GitHub buttons (default: `true`) |
