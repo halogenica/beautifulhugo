@@ -11,7 +11,10 @@
         {{ if .Params.tags }}
           <div class="blog-tags">
             {{ range .Params.tags }}
-              <a href="{{"tags" | absLangURL}}/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+              {{- $tagName := . -}}
+              {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}
+              <a href="{{ .Permalink }}">{{ $tagName }}</a>&nbsp;
+              {{- end -}}
             {{ end }}
           </div>
         {{ end }}
