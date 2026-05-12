@@ -283,6 +283,32 @@ Staticman adds comments as static data files via pull requests, with optional re
 
 When `gcse` is set, a search icon appears in the navbar that opens a search modal.
 
+## Custom HTML Hooks
+
+Beautiful Hugo provides partial "hooks" that let you inject custom HTML at specific points in the layout without forking the theme. To use a hook, create the corresponding file in your site's `layouts/partials/` directory — the theme's own copy is an empty stub.
+
+| Partial | Injects Near | Example Use |
+|---------|-------------|-------------|
+| `head_custom.html` | End of `<head>`, before `</head>` | Extra CSS, preconnect hints, meta tags |
+| `nav_custom.html` | Inside the navbar, after menu items | CTA button, search box, custom nav link |
+| `header_custom.html` | Inside the page header, after title/subtitle | Hero CTA button, banner |
+| `before_content.html` | Before `.Content` on single pages | Affiliate disclosure, reading-time banner |
+| `after_content.html` | After `.Content`, before tags/share/related | Newsletter signup, author bio, ad unit |
+| `footer_custom.html` | After `</footer>`, before scripts | Custom analytics, chat widget |
+| `scripts_custom.html` | After all theme JS, before `</body>` | Custom JS that depends on jQuery/Bootstrap |
+
+```text
+your-site/
+├── layouts/
+│   └── partials/
+│       ├── head_custom.html      ← your override
+│       ├── nav_custom.html       ← your override
+│       ├── header_custom.html    ← your override
+│       ├── before_content.html   ← your override
+│       ├── after_content.html    ← your override
+│       └── footer_custom.html    ← your override
+```
+
 ## Miscellaneous
 
 | Param | Type | Description |
