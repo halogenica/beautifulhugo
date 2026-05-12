@@ -125,7 +125,8 @@ var main = {
         }
         var hljsDark = document.getElementById('hljs-dark');
         if (hljsDark) {
-          hljsDark.disabled = (state === 'light');
+          var isDark = (state === 'dark') || (state === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          hljsDark.disabled = !isDark;
         }
         updateThemeTooltip(state);
       }

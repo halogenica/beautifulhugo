@@ -12,12 +12,19 @@
     <script>
       (function() {
         var saved = localStorage.getItem('theme');
+        var dark = false;
         if (saved === 'dark') {
           document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
         } else if (saved === 'light') {
           document.documentElement.setAttribute('data-theme', 'light');
         } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = !dark;
         }
       })();
     </script>
