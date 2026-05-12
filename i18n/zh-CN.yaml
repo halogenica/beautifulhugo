@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "查看源文件"
+# Recipe / 食谱
+- id: recipePrepTime
+  translation: "准备时间"
+- id: recipeCookTime
+  translation: "烹饪时间"
+- id: recipeTotalTime
+  translation: "总计时间"
+- id: recipeYield
+  translation: "份量"
+- id: recipeCategory
+  translation: "分类"
+- id: recipeCuisine
+  translation: "菜系"
+- id: recipeCalories
+  translation: "热量"
+- id: recipeIngredients
+  translation: "食材"
+- id: recipeInstructions
+  translation: "做法"

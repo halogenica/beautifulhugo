@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "Bron bekijken"
+# Recipe / Recept
+- id: recipePrepTime
+  translation: "Voorbereidingstijd"
+- id: recipeCookTime
+  translation: "Kooktijd"
+- id: recipeTotalTime
+  translation: "Totale tijd"
+- id: recipeYield
+  translation: "Porties"
+- id: recipeCategory
+  translation: "Categorie"
+- id: recipeCuisine
+  translation: "Keuken"
+- id: recipeCalories
+  translation: "Calorieën"
+- id: recipeIngredients
+  translation: "Ingrediënten"
+- id: recipeInstructions
+  translation: "Instructies"

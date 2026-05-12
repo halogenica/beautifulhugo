@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "Vidi fonton"
+# Recipe / Recepto
+- id: recipePrepTime
+  translation: "Prepara tempo"
+- id: recipeCookTime
+  translation: "Kuira tempo"
+- id: recipeTotalTime
+  translation: "Totala tempo"
+- id: recipeYield
+  translation: "Porcioj"
+- id: recipeCategory
+  translation: "Kategorio"
+- id: recipeCuisine
+  translation: "Kuirarto"
+- id: recipeCalories
+  translation: "Kalorioj"
+- id: recipeIngredients
+  translation: "Sastojkringrediencoj"
+- id: recipeInstructions
+  translation: "Instrukcioj"

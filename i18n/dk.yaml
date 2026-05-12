@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "Vis kilde"
+# Recipe / Opskrift
+- id: recipePrepTime
+  translation: "Forberedelsestid"
+- id: recipeCookTime
+  translation: "Tilberedningstid"
+- id: recipeTotalTime
+  translation: "Total tid"
+- id: recipeYield
+  translation: "Portioner"
+- id: recipeCategory
+  translation: "Kategori"
+- id: recipeCuisine
+  translation: "Køkken"
+- id: recipeCalories
+  translation: "Kalorier"
+- id: recipeIngredients
+  translation: "Ingredienser"
+- id: recipeInstructions
+  translation: "Fremgangsmåde"

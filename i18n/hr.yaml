@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "Prikaži izvor"
+# Recipe / Recept
+- id: recipePrepTime
+  translation: "Vrijeme pripreme"
+- id: recipeCookTime
+  translation: "Vrijeme kuhanja"
+- id: recipeTotalTime
+  translation: "Ukupno vrijeme"
+- id: recipeYield
+  translation: "Porcije"
+- id: recipeCategory
+  translation: "Kategorija"
+- id: recipeCuisine
+  translation: "Kuhinja"
+- id: recipeCalories
+  translation: "Kalorije"
+- id: recipeIngredients
+  translation: "Sastojci"
+- id: recipeInstructions
+  translation: "Upute"

@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "소스 보기"
+# Recipe / 레시피
+- id: recipePrepTime
+  translation: "준비 시간"
+- id: recipeCookTime
+  translation: "조리 시간"
+- id: recipeTotalTime
+  translation: "총 시간"
+- id: recipeYield
+  translation: "분량"
+- id: recipeCategory
+  translation: "카테고리"
+- id: recipeCuisine
+  translation: "요리"
+- id: recipeCalories
+  translation: "칼로리"
+- id: recipeIngredients
+  translation: "재료"
+- id: recipeInstructions
+  translation: "조리법"

@@ -1,0 +1,82 @@
+{{- $r := .Params.recipe -}}
+{{- if not $r }}{{ errorf "recipe.html partial called on a page with no .Params.recipe: %s" .File.Path }}{{ end -}}
+
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description | plainify -}}
+{{- else -}}
+  {{- $description = .Summary | plainify -}}
+{{- end -}}
+
+{{- $ingredients := slice -}}
+{{- range $r.ingredients -}}
+  {{- $ingredients = $ingredients | append . -}}
+{{- end -}}
+
+{{- $instructions := slice -}}
+{{- range $i, $step := $r.instructions -}}
+  {{- $s := dict "@type" "HowToStep" "position" (add $i 1) -}}
+  {{- if reflect.IsMap $step -}}
+    {{- $s = merge $s (dict "text" ($step.text | plainify)) -}}
+    {{- with $step.name }}{{ $s = merge $s (dict "name" .) }}{{ end -}}
+    {{- with $step.url }}{{ $s = merge $s (dict "url" .) }}{{ end -}}
+    {{- with $step.image }}{{ $s = merge $s (dict "image" .) }}{{ end -}}
+  {{- else -}}
+    {{- $s = merge $s (dict "text" ($step | plainify)) -}}
+  {{- end -}}
+  {{- $instructions = $instructions | append $s -}}
+{{- end -}}
+
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" (slice "Article" "Recipe")
+  "@id" (printf "%s#recipe" .Permalink)
+  "isPartOf" (dict "@id" .Permalink)
+  "author" (dict
+    "name" (.Params.author | default .Site.Params.author.name)
+    "url" .Site.BaseURL
+    "@id" (printf "%s#author" .Site.BaseURL)
+  )
+  "headline" .Title
+  "description" $description
+  "inLanguage" .Lang
+  "wordCount" .WordCount
+  "dateCreated" (.PublishDate.Format "2006-01-02T15:04:05-07:00")
+  "datePublished" (.PublishDate.Format "2006-01-02T15:04:05-07:00")
+  "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00")
+  "keywords" (.Params.tags | default slice)
+  "mainEntityOfPage" (dict "@id" .Permalink)
+  "publisher" (dict
+    "@type" "Organization"
+    "name" .Site.Title
+    "logo" (dict
+      "@type" "ImageObject"
+      "url" (.Site.Params.logo | absURL)
+      "height" 60
+      "width" 60
+    )
+  )
+  "name" .Title
+  "recipeIngredient" $ingredients
+  "recipeInstructions" $instructions
+-}}
+
+{{- with $r.prepTime }}{{ $schema = merge $schema (dict "prepTime" .) }}{{ end -}}
+{{- with $r.cookTime }}{{ $schema = merge $schema (dict "cookTime" .) }}{{ end -}}
+{{- with $r.totalTime }}{{ $schema = merge $schema (dict "totalTime" .) }}{{ end -}}
+{{- with $r.yield }}{{ $schema = merge $schema (dict "recipeYield" .) }}{{ end -}}
+{{- with $r.category }}{{ $schema = merge $schema (dict "recipeCategory" .) }}{{ end -}}
+{{- with $r.cuisine }}{{ $schema = merge $schema (dict "recipeCuisine" .) }}{{ end -}}
+{{- with $r.calories }}{{ $schema = merge $schema (dict "nutrition" (dict "@type" "NutritionInformation" "calories" .)) }}{{ end -}}
+
+{{- if gt .ReadingTime 5 -}}
+  {{- $schema = merge $schema (dict "timeRequired" (printf "PT%dM" .ReadingTime)) -}}
+{{- end -}}
+
+{{- $image := "" -}}
+{{- with .Params.share_img }}{{ $image = . }}{{ else with .Params.image }}{{ $image = . }}{{ else with .Site.Params.logo }}{{ $image = . }}{{ end -}}
+{{- with $image }}{{ $schema = merge $schema (dict "image" (absURL .)) }}{{ end -}}
+
+<script type="application/ld+json">
+{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
+</script>

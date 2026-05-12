@@ -197,3 +197,22 @@
 # View source
 - id: viewSource
   translation: "Varda surgaent"
+# Recipe / Ricetta
+- id: recipePrepTime
+  translation: "Temp de preparazzion"
+- id: recipeCookTime
+  translation: "Temp de cusina"
+- id: recipeTotalTime
+  translation: "Temp total"
+- id: recipeYield
+  translation: "Porzion"
+- id: recipeCategory
+  translation: "Categoria"
+- id: recipeCuisine
+  translation: "Cusina"
+- id: recipeCalories
+  translation: "Calorii"
+- id: recipeIngredients
+  translation: "Ingredient"
+- id: recipeInstructions
+  translation: "Istruzzion"
