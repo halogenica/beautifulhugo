@@ -19,7 +19,7 @@
           </div>
         {{ end }}
 
-        {{ if $.Param "socialShare" }}
+        {{ if and (ne .Type "page") ($.Param "socialShare") }}
             <hr/>
             <section id="social-share">
               <div class="footer-links">
