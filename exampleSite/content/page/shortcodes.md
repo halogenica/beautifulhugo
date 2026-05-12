@@ -304,3 +304,23 @@ sequenceDiagram
 ```
 
 See [Math & Diagrams](../math-and-diagrams/) for more Mermaid and KaTeX examples.
+
+## no-ai-summary
+
+The `no-ai-summary` shortcode wraps content in a `<div data-nosnippet>` element, telling search engines not to use that content for AI-generated summaries or snippets.
+
+**Live example:**
+
+{{< no-ai-summary >}}
+This text is wrapped in `data-nosnippet` and should not appear in search engine AI summaries.
+{{< /no-ai-summary >}}
+
+**Source:**
+
+```markdown
+{{</* no-ai-summary */>}}
+This text is wrapped in `data-nosnippet` and should not appear in search engine AI summaries.
+{{</* /no-ai-summary */>}}
+```
+
+See [SEO & i18n](../seo-and-i18n/) for the full robot meta tags and AI summary limit configuration.
