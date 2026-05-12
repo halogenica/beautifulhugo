@@ -9,7 +9,8 @@
         {{ end }}
 
         <div class="posts-list">
-          {{ $pag := .Paginate (where (where site.RegularPages "Type" "in" site.Params.mainSections) "Params.hidden" "!=" true) }}
+          {{ $mainSections := default (slice "post" "posts") site.Params.mainSections }}
+          {{ $pag := .Paginate (where (where site.RegularPages "Type" "in" $mainSections) "Params.hidden" "!=" true) }}
           {{ range $pag.Pages }}
             {{ partial "post_preview" . }}
           {{ end }}

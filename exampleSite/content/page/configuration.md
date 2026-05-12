@@ -12,7 +12,7 @@ This page is a complete reference for every configuration option in Beautiful Hu
 |-------|------|---------|-------------|
 | `homeTitle` | string | site title | Separate title for the home page header |
 | `subtitle` | string | `""` | Site subtitle shown under the home page title |
-| `mainSections` | list | — | Content sections treated as "posts" (e.g. `["post","posts"]`) |
+| `mainSections` | list | `["post", "posts"]` | Content sections treated as "posts" on the home page and archive page |
 | `logo` | string | — | Path to a square avatar/logo image |
 | `favicon` | string | — | Path to favicon |
 | `dateFormat` | string | i18n default | Date format string. Accepts Hugo locale tokens (e.g. `":date_long"`, `":date_medium"`, `":date_short"`) for automatic localization, or a Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. Locale tokens are recommended for multilingual sites. |

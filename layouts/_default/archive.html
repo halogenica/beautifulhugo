@@ -8,7 +8,8 @@
           </div>
         {{ end }}
 
-{{ $pages := where (where site.RegularPages.ByDate.Reverse "Section" "post") "Params.hidden" "!=" true }}
+{{ $mainSections := default (slice "post" "posts") site.Params.mainSections }}
+{{ $pages := where (where site.RegularPages.ByDate.Reverse "Section" "in" $mainSections) "Params.hidden" "!=" true }}
 {{ $groups := $pages.GroupByDate "2006" }}
         {{ $years := slice }}
         {{ range $groups }}
