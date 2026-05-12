@@ -281,38 +281,37 @@ document.addEventListener('DOMContentLoaded', main.init);
  */
 document.addEventListener('DOMContentLoaded', () => {
   const highlights = document.querySelectorAll('.row div.highlight');
-  const copyText = '📋';
-  const copiedText = '✔️';
-
   highlights.forEach((highlight) => {
       const copyButton = document.createElement('button');
-      copyButton.innerHTML = copyText;
-      copyButton.classList.add('copyCodeButton');
+      copyButton.classList.add('copyCodeButton', 'btn', 'btn-sm', 'btn-outline-secondary');
+      copyButton.setAttribute('title', 'Copy to clipboard');
+      copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
       highlight.appendChild(copyButton);
 
       const codeBlock = highlight.querySelector('code[data-lang]');
       if (!codeBlock) return;
 
       copyButton.addEventListener('click', () => {
-          // Create a deep clone of the code block
           const codeBlockClone = codeBlock.cloneNode(true);
 
-          // Remove line number elements from the clone
           const lineNumbers = codeBlockClone.querySelectorAll('.ln');
           lineNumbers.forEach(ln => ln.remove());
 
-          // Get the text content, splitting by lines, trimming each line, and joining back
           const codeText = codeBlockClone.textContent
-              .split('\n')              // Split into lines
-              .map(line => line.trim()) // Trim each line
-              .join('\n');              // Join lines back with newline
+              .split('\n')
+              .map(line => line.trim())
+              .join('\n');
 
           navigator.clipboard.writeText(codeText)
               .then(() => {
-                  copyButton.textContent = copiedText;
+                  copyButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+                  copyButton.classList.remove('btn-outline-secondary');
+                  copyButton.classList.add('btn-success');
 
                   setTimeout(() => {
-                      copyButton.textContent = copyText;
+                      copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                      copyButton.classList.remove('btn-success');
+                      copyButton.classList.add('btn-outline-secondary');
                   }, 1000);
               })
               .catch((err) => {

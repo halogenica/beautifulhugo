@@ -1270,17 +1270,13 @@ ul.share li:hover .fab {
 }
 
 .copyCodeButton {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  color: black;
-  cursor: pointer;
   display: none;
-  font-size: 14px;
-  padding: 5px 10px;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
   position: absolute;
   right: 10px;
   top: 10px;
-  transition: background-color 0.3s ease;
   z-index: 10;
 }
 
@@ -1292,11 +1288,7 @@ ul.share li:hover .fab {
 
 .highlight:hover .copyCodeButton,
 .highlight:focus-within .copyCodeButton {
-  display: block;
-}
-
-.copyCodeButton:hover {
-  background-color: #e0e0e0;
+  display: inline-flex;
 }
 
 /* --- Third-party overrides --- */
