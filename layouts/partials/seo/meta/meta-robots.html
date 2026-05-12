@@ -1,0 +1,53 @@
+{{/* 
+      List of standard meta tags related to robots 
+      This list only contains tags which are either true or false
+      For tags which take values, a seperate partial will need to be created
+*/}}
+{{- $robots_boolean_tags := slice "noindex" "nofollow" "none" "nosnippet" "notranslate" -}}
+{{- $robots_boolean_tags = $robots_boolean_tags | append "noimageinde" "noarchive" "nocache" "noai" "noimageai" -}}
+
+{{- $site_seo := dict -}}
+{{/* Only get this value is the pae is part of a mainSection */}}
+{{- if in site.Params.mainSections .Section -}}
+  {{- $site_seo = site.Params.seo -}}
+{{- end -}}
+
+{{/* Load the .seo from _index.md if it exists and override .Site.Param.seo settings. */}}
+{{- if .IsPage -}}
+  {{- if $site_seo -}}
+    {{- $site_seo = merge $site_seo (.Parent.Params.seo | default dict ) -}}
+  {{- else -}}
+    {{- $site_seo = .Params.seo | default dict -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Load current page seo settings and override any matching prevous settings. */}}
+{{- $page_seo := .Params.seo | default dict -}}
+{{- $seo := merge $site_seo $page_seo -}}
+
+{{- with $seo -}}
+  {{- range $name, $content := . -}}
+  {{- $tags := slice -}}
+    {{- if reflect.IsMap $content -}}
+      {{- $meta_tags := slice -}}
+      {{- range $key, $value := $content -}}
+        {{- if eq $key "ai-summary-limit" -}}
+          {{- $ai_summary_value := partial "seo/meta/get-ai-summary-limit.html" $value -}}
+          {{/* ai_summary_value may be an empty string if $value was set to "none" */}}
+          {{- with $ai_summary_value -}}
+            {{- $meta_tags = $meta_tags | append $ai_summary_value -}}
+          {{- end -}}
+        {{- else if in $robots_boolean_tags $key -}}
+          {{- if $value -}}
+            {{- $meta_tags = $meta_tags | append $key -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $tags = $tags | append $meta_tags -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $tags }}
+  <meta name="{{ $name }}" content="{{ delimit ( $tags | uniq ) ", " }}">
+    {{- end }}
+  {{- end -}}
+{{- end -}}
+

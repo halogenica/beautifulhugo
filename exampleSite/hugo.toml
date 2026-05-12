@@ -21,8 +21,8 @@ title = "Beautiful Hugo"
 
 [Params]
   subtitle = "Build a beautiful and simple website in minutes"
-  mainSections = ["post","posts"]
-  logo = "/img/avatar-icon.png"
+  mainSections = ["post", "posts"]
+  logo = "/img/avatar-icon.png" # Expecting square dimensions
   favicon = "/img/favicon.ico"
   dateFormat = ":date_long"
   commit = false
@@ -46,6 +46,12 @@ title = "Beautiful Hugo"
 [[Params.bigimg]]
   src = "/img/hexagon.jpg"
   desc = "Hexagon"
+
+#[Params.AISearchSummary.Googlebot]
+#summaryLimit = 150
+#[Params.AISearchSummary.robots]
+#summaryLimit = 300
+
 
 [Params.author]
   name = "Some Person"
