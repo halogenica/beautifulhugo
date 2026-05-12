@@ -8,7 +8,11 @@
         {{ if .Params.tags }}
           <div class="blog-tags">
             {{ range .Params.tags }}
+              <!-- Fix for "https://github.com/halogenica/beautifulhugo/issues/349".
+              Inspired by "https://github.com/dovidio/personalwebsite/commit/34762e94c29fd2c26c16c45f8ae2de21bdf9b46d".
               <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+              -->
+              <a href="{{"tags" | absLangURL}}/{{ . | urlize }}/">{{ . }}</a>&nbsp;
             {{ end }}
           </div>
         {{ end }}
@@ -57,7 +61,22 @@
 
 
       {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
-        {{ if .Site.DisqusShortname }}
+      
+      {{ if .Site.Params.cusdisID }}
+
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="{{ .Site.Params.cusdisID }}"
+          data-page-id="{{ .Permalink }}"
+          data-page-url="{{ .Permalink }}"
+          data-page-title="{{ .Title }}"
+          data-theme="auto"
+        ></div>
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+      {{ end }}
+      
+      {{ if .Site.Config.Services.Disqus.Shortname }}
           {{ if .Site.Params.delayDisqus }}
           <div class="disqus-comments">                  
             <button id="show-comments" class="btn btn-default" type="button">{{ i18n "show" }} <span class="disqus-comment-count" data-disqus-url="{{ trim .Permalink "/" }}">{{ i18n "comments" }}</span></button>
@@ -72,7 +91,7 @@
           </div>
           {{ else }}
           <div class="disqus-comments">
-            {{ template "_internal/disqus.html" . }}
+            {{ partial "disqus-wrapper.html" . }}
           </div>
           {{ end }}
         {{ end }}

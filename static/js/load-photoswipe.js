@@ -16,11 +16,11 @@ $( document ).ready(function() {
 		var $figure = $(this),
 			$a 		= $figure.find('a'),
 			$img 	= $figure.find('img'),
-			$src	= $a.attr('href'),
 			$title  = $img.attr('alt'),
 			$msrc	= $img.attr('src');
 		// if data-size on <a> tag is set, read it and create an item
 		if ($a.data('size')) {
+			$src	= $a.attr('href');
 			var $size 	= $a.data('size').split('x');
 			var item = {
 				src		: $src,
@@ -33,17 +33,17 @@ $( document ).ready(function() {
 		// if not, set temp default size then load the image to check actual size
 		} else {
 			var item = {
-				src		: $src,
+				src		: $msrc,
 				w		: 800, // temp default size
 				h 		: 600, // temp default size
 				title 	: $title,
 				msrc	: $msrc
 			};
-			//console.log("Using default dimensions for " + $src);
+			//console.log("Using default dimensions for " + $msrc);
 			// load the image to check its dimensions
 			// update the item as soon as w and h are known (check every 30ms)
 			var img = new Image(); 
-			img.src = $src;
+			img.src = $msrc;
 			var wait = setInterval(function() {
 				var w = img.naturalWidth,
 					h = img.naturalHeight;

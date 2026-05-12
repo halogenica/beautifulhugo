@@ -15,12 +15,12 @@
 
 {{ if or $bigimg $title }}
   {{ if $bigimg }}
-    <div id="header-big-imgs" data-num-img={{len $bigimg}} 
+    <div id="header-big-imgs" data-num-img={{len $bigimg}}
       {{range $i, $img := $bigimg}}
-         {{ if (fileExists $img.src)}} 
-          data-img-src-{{add $i 1}}="{{$img.src | absURL }}" 
+         {{ if (fileExists $img.src)}}
+          data-img-src-{{add $i 1}}="{{$img.src | absURL }}"
          {{else}}
-          data-img-src-{{add $i 1}}="{{$img.src}}" 
+          data-img-src-{{add $i 1}}="{{$img.src}}"
          {{end}}
          {{ if $img.desc}}data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}
       {{end}}></div>
@@ -28,7 +28,8 @@
 
   <header class="header-section {{ if $bigimg }}has-img{{ end }}">
     {{ if $bigimg }}
-      <div class="intro-header big-img">
+      {{ $firstimg := index $bigimg 0 }}
+      <div class="intro-header big-img" style="background-image: url('{{$firstimg.src}}');">
         {{ $subtitle := $.Scratch.Get "subtitle" }}
         <div class="container">
           <div class="row">
@@ -50,9 +51,10 @@
             </div>
           </div>
         </div>
-        <span class="img-desc" style="display: inline;"></span>
+        <span class="img-desc" style="display: {{ cond (isset $firstimg "desc") "inline" "none"}};">{{$firstimg.desc}}</span>
       </div>
     {{end}}
+    {{ if $title }}
     <div class="intro-header no-img">
       <div class="container">
         <div class="row">
@@ -81,6 +83,7 @@
         </div>
       </div>
     </div>
+  {{ end }}
   </header>
 {{ else }}
   <div class="intro-header"></div>

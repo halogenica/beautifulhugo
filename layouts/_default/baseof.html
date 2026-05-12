@@ -1,3 +1,7 @@
+{{ if le hugo.Version "0.124.0" }}
+	{{ errorf "Please use Hugo version 0.124.0 or higher!" }}
+{{ end }}
+
 <!DOCTYPE html>
 <html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
   <head>

@@ -26,14 +26,23 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<!-- Site Title, Description, Author, and Favicon -->
-{{- with ($.Scratch.Get "Title") }}
-  <title>{{ . }} - {{ $.Site.Title }}</title>
-{{- end }}
+
+ <!-- Site Title, Description, Author, and Favicon -->
+
+{{ if .IsHome }}
+    {{- with .Site.Params.homeTitle }}
+      <title>{{ . }}</title>
+    {{- end }}
+  {{ else }}
+    {{- with ($.Scratch.Get "Title") }}
+      <title>{{ . }} - {{ $.Site.Params.homeTitle }}</title>
+    {{- end }}
+{{ end }}
+
 {{- with ($.Scratch.Get "Description") }}
   <meta name="description" content="{{ . }}">
 {{- end }}
-{{- with .Site.Author.name }}
+{{- with .Site.Params.author.name }}
   <meta name="author" content="{{ . }}"/>
 {{- end }}
 {{- partial "seo/main.html" . }}  
@@ -47,12 +56,28 @@
 
   {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/katex.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/all.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/brands.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/fontawesome.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/regular.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/solid.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/svg.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/svg-with-js.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/v4-font-face.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/v4-shims.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/v5-font-face.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/solid.css" integrity="sha384-1IIShlrK5iYgvS7OAgIH3prz4RAFP7hHZ2MaLIb9l3+trFwwnw/NdCWcUHlymZDU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg.css" integrity="sha384-iBa7uugTOHXqQ2ngvDYJyKrPPQbd9n2P3EQe+o/0+HZe5TNvV+LO5X0lLLUrXLHP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg-with-js.css" integrity="sha384-STWnS5AGz6M2YxsnGAd536EqcE2y+ktGovMMuhtXLsCBtl7lujeQj2eN4eDxa57x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-font-face.css" integrity="sha384-fH83IkgQi7kturzlxpXfNdsR8aUOcqj5HUORRVnSvJgObZkIw6aqKAaQx20IWyB/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-shims.css" integrity="sha384-cCODJHSivNBsaHei/8LC0HUD58kToSbDU+xT7Rs51BO1v/IvgT/uM0W6xMoUqKfn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v5-font-face.css" integrity="sha384-atSdF89mIn15dv+o2LKkDM6mCh3hwh6A7mwZ6F2it/kenqZbMu+QW/ye1OG4XSWV" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   {{- end -}}
 
   <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
@@ -88,4 +113,6 @@
   {{- end -}}
 
 {{- partial "head_custom.html" . }}
-{{ template "_internal/google_analytics_async.html" . }}
+{{- if not hugo.IsServer -}}
+  {{ template "_internal/google_analytics.html" . }}
+{{- end -}}

@@ -1,15 +1,29 @@
   {{ if eq .Type "page" }}
     {{ partial "page_meta.html" . }}
   {{ end }}
+  {{- if and (not (isset .Site.Params "author")) (isset .Site "author") -}}
+     {{ errorf "Please move [author] to [params.author]; Hugo has deprecated the former." }}
+  {{- end -}}
 <footer>
   <div class="container">
+    {{ if .Site.Params.disclaimerText }}
+    <div class="row">
+      <div class="disclaimer">
+        <b>Disclaimer:</b> {{ .Site.Params.disclaimerText }}
+      </div>
+    </div>
+    {{ end }}
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links">
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
-            {{- if isset $.Site.Author .id }}
+            {{- if isset $.Site.Params.author .id }}
               <li>
-                <a href="{{ printf .url (index $.Site.Author .id) }}" title="{{ .title }}">
+		{{ if or ( hasPrefix ( index $.Site.Params.author .id ) "http://" ) ( hasPrefix ( index $.Site.Params.author .id ) "https://" ) }}
+		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Params.author .id) }}" title="{{ .title }}">
+		{{ else }}
+		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Params.author .id) }}" title="{{ .title }}">
+		{{ end }}
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
@@ -19,8 +33,9 @@
             {{- end -}}
           {{ end }}
           {{ if .Site.Params.rss }}
+          {{ with .OutputFormats.Get "RSS" }}
           <li>
-            <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" title="RSS">
+            <a href="{{ .RelPermalink }}" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -28,21 +43,22 @@
             </a>
           </li>
           {{ end }}
+          {{ end }}
         </ul>
         <p class="credits copyright text-muted">
-          {{ if .Site.Author.name }}
-            {{ if .Site.Author.website }}
-              <a href="{{ .Site.Author.website }}">{{ .Site.Author.name }}</a>
+          {{ if .Site.Params.author.name }}
+            {{ if .Site.Params.author.website }}
+              <a href="{{ .Site.Params.author.website }}">{{ .Site.Params.author.name }}</a>
             {{ else }}
-              {{ .Site.Author.name }}
+              {{ .Site.Params.author.name }}
             {{ end }}
           {{ end }}
 
           &nbsp;&bull;&nbsp;&copy;
           {{ if .Site.Params.since }}
-            {{ .Site.Params.since }} - {{ .Site.LastChange.Format "2006" }}
+            {{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}
           {{ else }}
-            {{ .Site.LastChange.Format "2006" }}
+            {{ .Site.Lastmod.Format "2006" }}
           {{ end }}
 
           {{ if .Site.Title }}
@@ -61,15 +77,15 @@
 </footer>
 
 {{- if .Site.Params.selfHosted -}}
-<script src="{{ "js/katex.min.js" | absURL }}"></script>
-<script src="{{ "js/auto-render.min.js" | absURL }}"></script>
-<script src="{{ "js/jquery.min.js" | absURL }}"></script>
+<script defer src="{{ "js/katex.min.js" | absURL }}"></script>
+<script defer src="{{ "js/auto-render.min.js" | absURL }}" onload="renderMathInElement(document.body);"></script>
+<script src="{{ "js/jquery-3.7.0.slim.min.js" | absURL }}"></script>
 <script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
 {{- else -}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 {{- end }}
 
 <script src="{{ "js/main.js" | absURL }}"></script>
@@ -81,7 +97,6 @@
 <script> hljs.initHighlightingOnLoad(); </script>
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script>
 {{- end -}}
-<script> renderMathInElement(document.body); </script>
 
 {{- if .Site.Params.selfHosted -}}
 <script src="{{ "js/photoswipe.min.js" | absURL }}"></script>
@@ -130,12 +145,13 @@
 <!-- End Piwik Code -->
 {{ end }}
 
-{{ if and .Site.Params.delayDisqus .Site.DisqusShortname }}
+
+{{ if and .Site.Params.delayDisqus .Site.Config.Services.Disqus.Shortname }}
 <!-- Delayed Disqus -->
 <script type="text/javascript">
 $(function(){
   $('#show-comments').on('click', function(){
-    var disqus_shortname = '{{ .Site.DisqusShortname }}';
+    var disqus_shortname = '{{ .Site.Config.Services.Disqus.Shortname }}';
       
     (function() {
       var disqus = document.createElement('script'); 
@@ -150,7 +166,7 @@ $(function(){
   });
       
 </script>
-<script id="dsq-count-scr" src="//{{ .Site.DisqusShortname }}.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/count.js" async></script>
 <!-- End Delayed Disqus -->
 {{ end }}
 

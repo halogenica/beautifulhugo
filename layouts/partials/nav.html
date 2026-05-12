@@ -15,7 +15,7 @@
         {{ range .Site.Menus.main.ByWeight }}
           {{ if .HasChildren }}
             <li class="navlinks-container">
-              <a class="navlinks-parent">{{ .Name }}</a>
+              <a class="navlinks-parent" role="button" tabindex="0">{{ .Name }}</a>
               <div class="navlinks-children">
                 {{ range .Children }}
                   <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
@@ -29,24 +29,24 @@
           {{ end }}
         {{ end }}
 
-        {{ if .Site.IsMultiLingual }}
+        {{ if hugo.IsMultilingual }}
           {{ if ge (len .Site.Languages) 3 }}
             <li class="navlinks-container">
-              <a class="navlinks-parent">{{ i18n "languageSwitcherLabel" }}</a>
+              <a class="navlinks-parent" role="button" tabindex="0">{{ i18n "languageSwitcherLabel" }}</a>
               <div class="navlinks-children">
-                {{ range .Site.Languages }}
+                {{ range .Translations }}
                   {{ if not (eq .Lang $.Site.Language.Lang) }}
-                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+                  <a href="{{ .Permalink }}">{{ default .Lang .Site.Language.LanguageName }}</a>
                   {{ end }}
                 {{ end }}
               </div>
             </li>
           {{ else }}
             <li>
-              {{ range .Site.Languages }}
-                {{ if not (eq .Lang $.Site.Language.Lang) }}
-                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
-                {{ end }}
+              {{ if .IsTranslated }}
+                {{ range .Translations }}
+                  <a href="{{ .Permalink }}">{{ default .Lang .Site.Language.LanguageName }}</a>
+                {{ end}}
               {{ end }}
             </li>
           {{ end }}
@@ -66,7 +66,12 @@
       <div class="avatar-container">
         <div class="avatar-img-border">
           <a title="{{ .Site.Title }}" href="{{ "" | absLangURL }}">
+          {{- $image := resources.Get ( $.Site.Params.logo) -}}
+          {{ if $image }}
+            <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ .Site.Title }}" />
+          {{else}}
             <img class="avatar-img" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
+           {{end}}
           </a>
         </div>
       </div>

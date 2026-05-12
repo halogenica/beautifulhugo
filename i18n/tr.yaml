@@ -4,9 +4,9 @@
 - id: shortdateFormat
   translation: "2 Oca 2006 15.04.05"
 - id: postedOnDate
-  translation: "{{ .Count }} tarihinde paylaşıldı"
+  translation: "{{ . }} tarihinde paylaşıldı"
 - id: lastModified
-  translation: "({{ .Count }} tarihinde güncellendi)"
+  translation: "({{ . }} tarihinde güncellendi)"
 - id: translationsLabel
   translation: "Diğer diller: "
 - id: translationsSeparator

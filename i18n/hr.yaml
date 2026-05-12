@@ -4,9 +4,9 @@
 - id: shortdateFormat
   translation: "Sij 2, 2006 15:04:05"
 - id: postedOnDate
-  translation: "Obajvljeno na {{ .Count }}"
+  translation: "Obajvljeno na {{ . }}"
 - id: lastModified
-  translation: "(Zadnja promjena na {{ .Count }})"
+  translation: "(Zadnja promjena na {{ . }})"
 - id: translationsLabel
   translation: "Ostali jezici: "
 - id: translationsSeparator

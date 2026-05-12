@@ -23,6 +23,12 @@ title = "GitLab"
 icon = "fab fa-gitlab"
 
 [[social_icons]]
+id = "git"
+url = "%s"
+title = "Git Forge"
+icon = "fab fa-git-alt"
+
+[[social_icons]]
 id = "bitbucket"
 url = "https://bitbucket.org/%s"
 title = "Bitbucket"
@@ -32,7 +38,7 @@ icon = "fab fa-bitbucket"
 id = "twitter"
 url = "https://twitter.com/%s"
 title = "Twitter"
-icon = "fab fa-twitter"
+icon = "fab fa-x-twitter"
 
 [[social_icons]]
 id = "slack"
@@ -153,9 +159,82 @@ id = "mastodon"
 url = "https://%s"
 title = "Mastodon"
 icon = "fab fa-mastodon"
+rel = "me"
 
 [[social_icons]]
 id = "weibo"
 url = "https://weibo.com/%s"
 title = "Weibo"
 icon = "fab fa-weibo"
+
+[[social_icons]]
+id = "medium"
+url = "https://medium.com/@%s"
+title = "Medium"
+icon = "fab fa-medium"
+
+[[social_icons]]
+id = "discord"
+url = "https://discord.gg/%s"
+title = "Discord"
+icon = "fab fa-discord"
+
+[[social_icons]]
+id = "strava"
+url = "https://www.strava.com/athletes/%s"
+title = "Strava"
+icon = "fab fa-strava"
+
+[[social_icons]]
+id = "steam"
+url = "https://steamcommunity.com/id/%s"
+title = "Steam"
+icon = "fab fa-steam"
+
+[[social_icons]]
+id = "quora"
+url = "https://www.quora.com/profile/%s"
+title = "Quora"
+icon = "fab fa-quora"
+
+[[social_icons]]
+id = "amazonwishlist"
+url = "https://amzn.com/w/%s"
+title = "Amazon Wishlist"
+icon = "fab fa-amazon"
+
+[[social_icons]]
+id = "slideshare"
+url = "https://www.slideshare.net/%s"
+title = "Slideshare"
+icon = "fab fa-slideshare"
+
+[[social_icons]]
+id = "angellist"
+url = "https://www.angel.co/p/%s"
+title = "AngelList"
+icon = "fab fa-angellist"
+
+[[social_icons]]
+id = "about"
+url = "%s"
+title = "About"
+icon = "fas fa-at"
+
+[[social_icons]]
+id = "lastfm"
+url = "https://www.last.fm/user/%s"
+title = "Last.fm"
+icon = "fab fa-lastfm"
+
+[[social_icons]]
+id = "bluesky"
+url = "https://bsky.app/profile/%s"
+title = "Bluesky"
+icon = "fab fa-bluesky"
+
+[[social_icons]]
+id = "goodreads"
+url = "https://goodreads.com/%s"
+title = "Goodreads"
+icon = "fab fa-goodreads"

@@ -1,6 +1,6 @@
 <span class="post-meta">
-  {{ $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format }}
-  {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
+  {{ $lastmodstr := .Lastmod | time.Format ":date_long" }}
+  {{ $datestr := .Date | time.Format ":date_long" }}
   <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
   {{ if ne $datestr $lastmodstr }}
     &nbsp;{{ $lastmodstr | i18n "lastModified"  }}
@@ -13,9 +13,15 @@
   {{ end }}
   {{ if not .Site.Params.hideAuthor }}
     {{ if .Params.author }}
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+      {{ if reflect.IsSlice .Params.author }}
+        {{ range .Params.author }}
+          &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ . | safeHTML }}
+	{{ end }}
+      {{ else }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+      {{ end }}
     {{ else }}
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Params.author.name | safeHTML }}
     {{ end }}
   {{ end }}
   {{- if .Site.Params.staticman -}}
@@ -39,7 +45,7 @@
     {{- $links := apply $sortedTranslations "partial" "translation_link.html" "." -}}
     {{- $cleanLinks := apply $links "chomp" "." -}}
     {{- $linksOutput := delimit $cleanLinks (i18n "translationsSeparator") -}}
-    &nbsp;&bull;&nbsp;{{ i18n "translationsLabel" }}{{ $linksOutput }}
+    &nbsp;&bull;&nbsp;{{ i18n "translationsLabel" }}{{ $linksOutput | safeHTML }}
   {{- end }}
 </span>
 

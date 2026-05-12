@@ -4,9 +4,9 @@
 - id: shortdateFormat
   translation: "2006. 1. 2. 15:04:05"
 - id: postedOnDate
-  translation: "{{ .Count }}에 게시됨"
+  translation: "{{ . }}에 게시됨"
 - id: lastModified
-  translation: "({{ .Count }}에 마지막으로 수정됨)"
+  translation: "({{ . }}에 마지막으로 수정됨)"
 - id: translationsLabel
   translation: "다른 언어: "
 - id: translationsSeparator
@@ -14,9 +14,9 @@
 - id: readMore
   translation: "더 읽기"
 - id: olderPosts
-  translation: "이전 페이지"
+  translation: "이전 게시물"
 - id: newerPosts
-  translation: "다음 페이지"
+  translation: "다음 게시물"
 - id: previousPost
   translation: "이전 글"
 - id: nextPost
@@ -53,7 +53,7 @@
 - id: oneComment
   translation: "개의 댓글"
 - id: moreComment
-  translation: "개의 댓글들"
+  translation: "개의 댓글"
 - id: useMarkdown
   translation: "마크다운 문법을 쓸 수 있습니다."
 - id: yourName
@@ -67,8 +67,8 @@
 - id: show
   translation: "표시"
 - id: comments
-  translation: "댓글들"
+  translation: "댓글"
 
 # Related posts
 - id: seeAlso
-  translation: "더 보면 좋을 글들"
+  translation: "더 보기"
