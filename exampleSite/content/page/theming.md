@@ -8,12 +8,29 @@ Beautiful Hugo uses CSS custom properties for dark mode and provides several hoo
 
 ## Custom Stylesheets
 
-The theme provides two partials for adding custom CSS:
+The theme provides three extension points for custom HTML, CSS, and scripts:
 
 - **`layouts/partials/head_custom.html`** — loaded in `<head>`, use for `<style>` blocks or `<link>` tags
-- **`layouts/partials/footer_custom.html`** — loaded before `</body>`, use for late-loading styles or scripts
+- **`layouts/partials/footer_custom.html`** — loaded after the `<footer>` element and before page scripts, use for additional markup or late-loading styles
+- **`layouts/partials/footer.html`** — can be overridden to customize the footer content (links, copyright, etc.)
 
 Create these files in your site's `layouts/` directory (not the theme's) to override them.
+
+### Overriding the footer
+
+The theme separates footer **content** from page **scripts**. The render order in the `footer` block of `baseof.html` is:
+
+1. `footer.html` — the `<footer>` HTML block (social icons, copyright, credits)
+2. `footer_custom.html` — your custom additions
+3. `scripts.html` — jQuery, Bootstrap, `main.js`, KaTeX, PhotoSwipe, and other JS
+
+Because scripts are in a separate `scripts.html` partial, overriding `footer.html` in your site **will not break** bigimg, syntax highlighting, or any other JavaScript feature. Simply create `layouts/partials/footer.html` with your custom footer markup.
+
+For advanced use, a content template can `{{ define "footer" }}` to replace the entire footer section (content + scripts).
+
+### Adding scripts without touching the footer
+
+If you only need to add extra scripts (analytics, custom widgets, etc.) and are happy with the default footer, use `footer_custom.html` — your code runs after the footer content but before the theme scripts.
 
 ## Dark Mode Color Variables
 
