@@ -1,6 +1,8 @@
 {{- if ne ($.Param "toc") false -}}
 {{- $isListPage := or .IsSection .IsHome -}}
-{{- if or .TableOfContents (and $isListPage .Pages) -}}
+{{- $hasToc := and .TableOfContents (findRE `<li>` .TableOfContents) -}}
+{{- $hasListPages := and $isListPage (gt (len .Paginator.Pages) 0) -}}
+{{- if or $hasToc $hasListPages -}}
 <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="{{ if $isListPage }}posts{{ else }}headings{{ end }}">
   <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
     <div class="toc-header">
