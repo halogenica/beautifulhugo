@@ -10,16 +10,27 @@
   {{- $keywords = $keywords | append . -}}
 {{- end -}}
 
+{{- $authors := partial "author_list.html" . -}}
+{{- $authorSchema := slice -}}
+{{- range $authors -}}
+  {{- $a := dict
+    "@type" "Person"
+    "name" .name
+    "url" (or .url $.Site.BaseURL)
+    "@id" (printf "%s#author" $.Site.BaseURL)
+  -}}
+  {{- $authorSchema = $authorSchema | append $a -}}
+{{- end -}}
+{{- if eq (len $authorSchema) 1 -}}
+  {{- $authorSchema = index $authorSchema 0 -}}
+{{- end -}}
+
 {{- $schema := dict
   "@context" "https://schema.org"
   "@type" "Article"
   "@id" (printf "%s#article" .Permalink)
   "isPartOf" (dict "@id" .Permalink)
-  "author" (dict
-    "name" (.Params.author | default .Site.Params.author.name)
-    "url" .Site.BaseURL
-    "@id" (printf "%s#author" .Site.BaseURL)
-  )
+  "author" $authorSchema
   "headline" .Title
   "description" $description
   "inLanguage" .Lang

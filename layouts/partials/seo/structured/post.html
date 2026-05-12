@@ -10,17 +10,31 @@
   },
   "description" : "{{ if .Description }}{{ .Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}",
   "inLanguage" : "{{ .Lang }}",
-  {{ if .Params.author -}}
-    "author": {
-      "@type": "Person",
-      "name": "{{ .Params.author }}"
-  },
-  {{- else if .Site.Params.author.name -}}
-    "author": {
-      "@type": "Person",
-      "name": "{{ .Site.Params.author.name }}"
-  },
-  {{- end }}
+  {{- $authors := partial "author_list.html" . -}}
+  {{- if $authors -}}
+    {{- if gt (len $authors) 1 -}}
+      "author": [
+        {{- range $i, $a := $authors -}}
+          {{- if gt $i 0 }},{{ end -}}
+          {
+            "@type": "Person",
+            "name": "{{ $a.name | safeJS }}"
+            {{- with $a.url -}},
+            "url": "{{ . | safeJS }}"
+            {{- end -}}
+          }
+        {{- end -}}
+      ],
+    {{- else -}}
+      "author": {
+        "@type": "Person",
+        "name": "{{ (index $authors 0).name | safeJS }}"
+        {{- with (index $authors 0).url -}},
+        "url": "{{ . | safeJS }}"
+        {{- end -}}
+      },
+    {{- end -}}
+  {{- end -}}
   "copyrightYear" : "{{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}",
   {{ if not .PublishDate.IsZero -}}
     "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTML }}",

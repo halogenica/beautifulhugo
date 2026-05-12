@@ -1,6 +1,9 @@
 ---
 title: Test markdown
 subtitle: Each post also has a subtitle
+author:
+  - "[Michael Henderson](https://example.com)"
+  - "[Jane Doe](https://example.com)"
 date: 2015-02-20
 categories: ["tutorial"]
 tags: ["example", "markdown", "tutorial"]
