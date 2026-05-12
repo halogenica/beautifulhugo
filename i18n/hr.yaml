@@ -93,3 +93,7 @@
   translation: "Sve"
 - id: archiveYearFilter
   translation: "Filtriraj po godini"
+
+# Categories
+- id: categoriesLabel
+  translation: "Kategorije: "

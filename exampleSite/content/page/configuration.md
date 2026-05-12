@@ -356,6 +356,7 @@ These options can be set in the front matter of any page or post:
 | `summary` | string | Custom summary text |
 | `author` | string/list | Per-page author(s) (string or list of strings) |
 | `tags` | list | Tags for categorization |
+| `categories` | list | Categories for grouping posts |
 | `share_img` | string | Social sharing image (falls back to `image` then `logo`) |
 | `ExpiryDate` | date | Adds `<meta name="robots" content="unavailable_after: ...">` |
 | `seo` | map | Per-page robot meta tag overrides (see [SEO & i18n](../seo-and-i18n/)) |

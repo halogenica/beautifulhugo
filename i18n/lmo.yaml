@@ -187,3 +187,9 @@
 - id: archiveYearFilter
 
   translation: "Filtra per ann"
+
+# Categories
+
+- id: categoriesLabel
+
+  translation: "Categurij: "

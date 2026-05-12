@@ -682,10 +682,6 @@ img::selection {
   margin-bottom: 30px;
 }
 
-.blog-tags:before {
-  content: "Tags: ";
-}
-
 .blog-tags a {
   color: #0066CC;
   padding: 0px 5px;
@@ -695,7 +691,29 @@ img::selection {
   content: "#";
 }
 
+.blog-tags-category:before {
+  content: none !important;
+}
+
 .blog-tags a:hover {
+  border-radius: 2px;
+  color: #004C99;
+  background-color: #CCC;
+}
+
+.blog-categories {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.blog-categories a {
+  color: #0066CC;
+  padding: 0px 5px;
+}
+
+.blog-categories a:hover {
   border-radius: 2px;
   color: #004C99;
   background-color: #CCC;

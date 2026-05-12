@@ -93,3 +93,7 @@
   translation: "全部"
 - id: archiveYearFilter
   translation: "按年份筛选"
+
+# Categories
+- id: categoriesLabel
+  translation: "分类: "
