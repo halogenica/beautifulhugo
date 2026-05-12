@@ -135,6 +135,33 @@
   color: var(--dark-link);
 }
 
+/* --- Archive year selector --- */
+
+[data-theme="dark"] .archive-year-btn {
+  border-color: var(--dark-surface-active);
+  color: var(--dark-muted);
+}
+
+[data-theme="dark"] .archive-year-btn:hover {
+  background: var(--dark-surface-active);
+  border-color: var(--dark-accent);
+  color: var(--dark-link);
+}
+
+[data-theme="dark"] .archive-year-btn.active {
+  background: var(--dark-accent);
+  border-color: var(--dark-accent);
+  color: #fff;
+}
+
+[data-theme="dark"] .archive-year-btn:focus-visible {
+  outline-color: var(--dark-accent);
+}
+
+[data-theme="dark"] .archive-year-heading {
+  color: var(--dark-muted);
+}
+
 /* --- Archive list --- */
 
 [data-theme="dark"] .archive-item {

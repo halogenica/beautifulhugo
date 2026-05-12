@@ -175,3 +175,15 @@
 - id: seeAlso
 
   translation: "Varda anca"
+
+
+
+# Archive
+
+- id: all
+
+  translation: "Tucc"
+
+- id: archiveYearFilter
+
+  translation: "Filtra per ann"

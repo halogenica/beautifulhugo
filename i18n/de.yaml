@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "Siehe auch"
+
+# Archive
+- id: all
+  translation: "Alle"
+- id: archiveYearFilter
+  translation: "Nach Jahr filtern"

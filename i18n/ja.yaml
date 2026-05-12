@@ -87,3 +87,9 @@
 # Related posts
 - id: seeAlso
   translation: "も参照してください"
+
+# Archive
+- id: all
+  translation: "すべて"
+- id: archiveYearFilter
+  translation: "年で絞り込む"
