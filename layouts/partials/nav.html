@@ -5,7 +5,16 @@
       {{ if ne ($.Param "toc") false }}
       {{ $hasToc := and .TableOfContents (findRE `<li>` .TableOfContents) }}
       {{ $isListPage := or .IsSection .IsHome }}
-      {{ $hasListPages := and $isListPage (gt (len .Paginator.Pages) 0) }}
+      {{ $hasListPages := false }}
+      {{ if $isListPage }}
+        {{ if .IsHome }}
+          {{ $mainSections := default (slice "post" "posts") site.Params.mainSections }}
+          {{ $filtered := where (where site.RegularPages "Type" "in" $mainSections) "Params.hidden" "!=" true }}
+          {{ $hasListPages = gt (len $filtered) 0 }}
+        {{ else }}
+          {{ $hasListPages = gt (len .Paginator.Pages) 0 }}
+        {{ end }}
+      {{ end }}
       {{ if or $hasToc $hasListPages }}
       <button class="theme-toggle" id="toc-toggle" aria-label="Table of contents" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Table of contents">
         <span class="fas fa-list"></span>
