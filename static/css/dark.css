@@ -403,14 +403,23 @@
 
 /* --- Copy button --- */
 [data-theme="dark"] .copyCodeButton {
-  background-color: var(--dark-surface);
-  border-color: var(--dark-surface-active);
-  color: #ccc;
+  --bs-btn-color: #adb5bd;
+  --bs-btn-border-color: #6c757d;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #6c757d;
+  --bs-btn-hover-border-color: #6c757d;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #5c636a;
+  --bs-btn-active-border-color: #565e64;
 }
 
-[data-theme="dark"] .copyCodeButton:hover {
-  background-color: var(--dark-surface-active);
-  color: #fff;
+[data-theme="dark"] .copyCodeButton.btn-success {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #198754;
+  --bs-btn-border-color: #198754;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #157347;
+  --bs-btn-hover-border-color: #146c43;
 }
 
 /* --- View source --- */
