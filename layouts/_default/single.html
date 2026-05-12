@@ -8,8 +8,20 @@
           {{ .Content }}
           {{ partial "after_content.html" . }}
 
+        {{ if .Params.categories }}
+          <div class="blog-categories">
+            <span>{{ i18n "categoriesLabel" }}</span>
+            {{ range .Params.categories }}
+              {{- $catName := . -}}
+              {{- with $.Site.GetPage (printf "/%s/%s" "categories" ($catName | urlize)) -}}
+              <a href="{{ .Permalink }}">{{ $catName }}</a>&nbsp;
+              {{- end -}}
+            {{ end }}
+          </div>
+        {{ end }}
         {{ if .Params.tags }}
           <div class="blog-tags">
+            <span>Tags: </span>
             {{ range .Params.tags }}
               {{- $tagName := . -}}
               {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}

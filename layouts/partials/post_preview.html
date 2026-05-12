@@ -28,14 +28,26 @@
         {{ end }}
     </div>
 
-    {{ if .Params.tags }}
+    {{ if or .Params.categories .Params.tags }}
     <div class="blog-tags">
+        {{ if .Params.categories }}
+        <span class="blog-tags-label">{{ i18n "categoriesLabel" }}</span>
+        {{ range .Params.categories }}
+        {{- $catName := . -}}
+        {{- with $.Site.GetPage (printf "/%s/%s" "categories" ($catName | urlize)) -}}
+        <a href="{{ .Permalink }}" class="blog-tags-category">{{ $catName }}</a>&nbsp;
+        {{- end -}}
+        {{ end }}
+        {{ end }}
+        {{ if .Params.tags }}
+        <span class="blog-tags-label">Tags: </span>
         {{ range .Params.tags }}
         {{- $tagName := . -}}
         {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}
         <a href="{{ .Permalink }}">{{ $tagName }}</a>&nbsp;
         {{- end -}}
-        {{ end }} 
+        {{ end }}
+        {{ end }}
     </div>
     {{ end }}
 

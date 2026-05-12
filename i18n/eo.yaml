@@ -93,3 +93,7 @@
   translation: "Ĉiuj"
 - id: archiveYearFilter
   translation: "Filtri laŭ jaro"
+
+# Categories
+- id: categoriesLabel
+  translation: "Kategorioj: "

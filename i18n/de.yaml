@@ -93,3 +93,7 @@
   translation: "Alle"
 - id: archiveYearFilter
   translation: "Nach Jahr filtern"
+
+# Categories
+- id: categoriesLabel
+  translation: "Kategorien: "

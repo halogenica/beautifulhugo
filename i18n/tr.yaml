@@ -93,3 +93,7 @@
   translation: "Tümü"
 - id: archiveYearFilter
   translation: "Yıla göre filtrele"
+
+# Categories
+- id: categoriesLabel
+  translation: "Kategoriler: "

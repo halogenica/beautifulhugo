@@ -93,3 +93,7 @@
   translation: "Tutto"
 - id: archiveYearFilter
   translation: "Filtra per anno"
+
+# Categories
+- id: categoriesLabel
+  translation: "Categorie: "

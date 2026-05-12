@@ -115,6 +115,10 @@ The `terms.html` template renders an alphabetical list of all terms, each with a
 
 Individual term pages use `list.html` and show a paginated list of posts with that term.
 
+### Display on posts
+
+Categories and tags are displayed below each post's content on both single post pages and post preview cards. Categories appear first with a "Categories:" label, followed by tags with a "Tags:" label. Both link to their respective taxonomy term pages.
+
 ### Adding a custom taxonomy
 
 Add it to both `[taxonomies]` and your posts' front matter:

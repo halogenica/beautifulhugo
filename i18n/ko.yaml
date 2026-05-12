@@ -93,3 +93,7 @@
   translation: "전체"
 - id: archiveYearFilter
   translation: "연도별 필터"
+
+# Categories
+- id: categoriesLabel
+  translation: "카테고리: "
