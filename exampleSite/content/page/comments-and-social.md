@@ -151,7 +151,7 @@ Add social links under `[Params.author]` and they appear as icons in the footer.
 | `twitter` | Twitter / X | `https://twitter.com/%s` |
 | `slack` | Slack | `https://%s.slack.com/` |
 | `reddit` | Reddit | `https://reddit.com/u/%s` |
-| `linkedin` | LinkedIn | `https://linkedin.com/in/%s` |
+| `linkedin` | LinkedIn | `https://linkedin.com/%s` |
 | `xing` | Xing | `https://www.xing.com/profile/%s` |
 | `stackoverflow` | Stack Overflow | `https://stackoverflow.com/%s` |
 | `snapchat` | Snapchat | `https://www.snapchat.com/add/%s` |
@@ -193,8 +193,6 @@ For **LinkedIn**, the value should include the path prefix (e.g. `in/username` f
 [Params.author]
   name = "Some Person"
   github = "username"
-  linkedin = "in/username"     # personal profile
-  # linkedin = "company/acme"  # company page
-  # linkedin = "username"      # bare username — "in/" is added automatically
+  linkedin = "in/username"
   mastodon = "https://mastodon.social/@username"
 ```
