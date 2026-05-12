@@ -4,7 +4,9 @@
       <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
         <article role="main" class="blog-post">
           {{ partial "github-buttons" . }}
+          {{ partial "before_content.html" . }}
           {{ .Content }}
+          {{ partial "after_content.html" . }}
 
         {{ if .Params.tags }}
           <div class="blog-tags">
