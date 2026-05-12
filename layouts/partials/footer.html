@@ -38,7 +38,7 @@
             {{- end }}
           {{ end }}
           {{ if .Site.Params.rss }}
-          {{ with .OutputFormats.Get "RSS" }}
+          {{ with .Site.Home.OutputFormats.Get "RSS" }}
           <li class="list-inline-item">
             <a href="{{ .RelPermalink }}" title="RSS">
               <span class="fa-stack fa-lg">
