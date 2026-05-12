@@ -1,6 +1,7 @@
 ---
 title: Dear diary
 date: 2015-01-27
+categories: ["personal"]
 tags: ["personal", "humor"]
 ---
 

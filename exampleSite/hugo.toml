@@ -15,6 +15,10 @@ title = "Beautiful Hugo"
   [Services.googleAnalytics]
     # id = "XXX"
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
 [Params]
   subtitle = "Build a beautiful and simple website in minutes"
   mainSections = ["post","posts"]
@@ -61,75 +65,100 @@ title = "Beautiful Hugo"
   unsafe = true
 
 [[menu.main]]
-    name = "Home"
-    url = "/"
+    identifier = "features"
+    name = "Features"
     weight = 1
 
 [[menu.main]]
-    identifier = "features"
-    name = "Features"
-    weight = 2
+    parent = "features"
+    name = "Pages & Layouts"
+    url = "page/pages-and-layouts/"
+    weight = 1
 
 [[menu.main]]
     parent = "features"
     name = "Configuration"
     url = "page/configuration/"
-    weight = 1
+    weight = 2
 
 [[menu.main]]
     parent = "features"
     name = "Shortcodes"
     url = "page/shortcodes/"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     parent = "features"
     name = "Code Blocks"
     url = "page/code-blocks/"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     parent = "features"
     name = "Markdown Extensions"
     url = "page/markdown-extensions/"
-    weight = 4
+    weight = 5
 
 [[menu.main]]
     parent = "features"
     name = "Figures & Galleries"
     url = "page/figures-and-galleries/"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     parent = "features"
     name = "Math & Diagrams"
     url = "page/math-and-diagrams/"
-    weight = 6
+    weight = 7
 
 [[menu.main]]
     parent = "features"
     name = "Layout Options"
     url = "page/layout-options/"
-    weight = 7
+    weight = 8
 
 [[menu.main]]
     parent = "features"
     name = "Comments & Social"
     url = "page/comments-and-social/"
-    weight = 8
+    weight = 9
 
 [[menu.main]]
     parent = "features"
     name = "SEO & i18n"
     url = "page/seo-and-i18n/"
-    weight = 9
+    weight = 10
 
 [[menu.main]]
+    identifier = "blog"
     name = "Blog"
+    weight = 2
+
+[[menu.main]]
+    parent = "blog"
+    name = "Posts"
     url = "post/"
+    weight = 1
+
+[[menu.main]]
+    parent = "blog"
+    name = "Tags"
+    url = "tags/"
+    weight = 2
+
+[[menu.main]]
+    parent = "blog"
+    name = "Categories"
+    url = "categories/"
     weight = 3
+
+[[menu.main]]
+    parent = "blog"
+    name = "Archives"
+    url = "archives/"
+    weight = 4
 
 [[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 4
+    weight = 3
