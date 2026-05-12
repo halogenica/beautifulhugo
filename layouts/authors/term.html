@@ -1,0 +1,28 @@
+{{ define "main" }}
+  {{ $authorData := partial "get_author.html" (dict "Site" .Site "key" .Title) }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        {{ if $authorData }}
+          {{ partial "author_card.html" (dict "author" $authorData "site" .Site "key" .Title) }}
+        {{ else }}
+          <h2>{{ .Title }}</h2>
+        {{ end }}
+
+        {{ with .Content }}
+          <div class="content-section">
+            {{ . }}
+          </div>
+        {{ end }}
+
+        <div class="posts-list">
+          {{ range where .Paginator.Pages "Params.hidden" "!=" true }}
+            {{ partial "post_preview.html" . }}
+          {{ end }}
+        </div>
+        {{ partial "paginator.html" . }}
+      </div>
+    </div>
+    {{ partial "toc.html" . }}
+  </div>
+{{ end }}

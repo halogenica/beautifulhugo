@@ -30,7 +30,7 @@ This page is a complete reference for every configuration option in Beautiful Hu
 
 ## Author
 
-`[Params.author]` is **required**. The old top-level `[author]` key is deprecated and will produce a build error.
+`[Params.author]` is **required** for the footer copyright line and social icons. The old top-level `[author]` key is deprecated and will produce a build error.
 
 | Param | Type | Description |
 |-------|------|-------------|
@@ -50,6 +50,66 @@ You can also add any social platform key here — see [Comments & Social](../com
 ```
 
 If a social value starts with `http://` or `https://`, it is used as-is. Otherwise it is interpolated into the platform's default URL pattern.
+
+### Multi-Author Support
+
+For sites with multiple authors, you can define author profiles in `data/authors/` and reference them in post front matter. This enables clickable author names, author profile pages with bios and social links, and proper structured data for multi-author posts.
+
+#### 1. Define author data files
+
+Create one TOML file per author in `data/authors/`. The filename (without extension) is the author key used in front matter:
+
+```toml
+# data/authors/alice-smith.toml
+name = "Alice Smith"
+bio = "Cloud infrastructure lead and open-source contributor."
+avatar = "/img/alice.jpg"
+website = "https://alice.dev"
+github = "alicesmith"
+twitter = "alicesmith"
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | string | Display name (required) |
+| `bio` | string | Short biography shown on author profile page |
+| `avatar` | string | Path to author avatar image |
+| `website` | string | Author website URL |
+| `email` | string | Email address |
+| Any social key | string | Same social platform keys as `[Params.author]` |
+
+#### 2. Add the authors taxonomy
+
+Add to your `hugo.toml`:
+
+```toml
+[taxonomies]
+  authors = "authors"
+```
+
+#### 3. Reference authors in front matter
+
+Use the `authors` front matter key (matching the filenames in `data/authors/`):
+
+```yaml
+---
+title: Multi-Author Post
+authors: ["alice-smith", "bob-jones"]
+---
+```
+
+Or a single author:
+
+```yaml
+---
+title: Single Author Post
+authors: ["alice-smith"]
+---
+```
+
+Author names in post meta become clickable links to `/authors/alice-smith/`, which shows the author's profile card (avatar, bio, social links) followed by their posts.
+
+The existing `author` front matter key (plain string or list of strings) still works for backward compatibility — those names render as plain text without links. To get the full author profile experience, use `authors` with data file keys instead.
 
 ## Color Scheme
 
@@ -358,7 +418,8 @@ These options can be set in the front matter of any page or post:
 | `image` | string | Post preview image (circular, shown in list pages) |
 | `video` | string | Post preview video (loop, autoplay, muted) |
 | `summary` | string | Custom summary text |
-| `author` | string/list | Per-page author(s) (string or list of strings) |
+| `author` | string/list | Per-page author(s) (string or list of strings, rendered as plain text) |
+| `authors` | list | Per-page author keys referencing `data/authors/` files (renders as clickable links with profile pages) |
 | `tags` | list | Tags for categorization |
 | `categories` | list | Categories for grouping posts |
 | `share_img` | string | Social sharing image (falls back to `image` then `logo`) |

@@ -34,9 +34,38 @@
 {{- with $description }}
   <meta name="description" content="{{ . }}">
 {{- end }}
-{{- with .Site.Params.author.name }}
+{{- if .Params.authors -}}
+  {{- $names := slice -}}
+  {{- range .Params.authors -}}
+    {{- $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) -}}
+    {{- if $authorData -}}
+      {{- $names = $names | append $authorData.name -}}
+    {{- else -}}
+      {{- $names = $names | append . -}}
+    {{- end -}}
+  {{- end -}}
+  <meta name="author" content="{{ delimit $names ", " }}"/>
+{{- else if .Params.author -}}
+  {{- if reflect.IsSlice .Params.author -}}
+    {{- $names := slice -}}
+    {{- range .Params.author -}}
+      {{- $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) -}}
+      {{- if $authorData -}}
+        {{- $names = $names | append $authorData.name -}}
+      {{- else -}}
+        {{- $names = $names | append . -}}
+      {{- end -}}
+    {{- end -}}
+  <meta name="author" content="{{ delimit $names ", " }}"/>
+  {{- else -}}
+    {{- $authorData := partial "get_author.html" (dict "Site" .Site "key" .Params.author) -}}
+  <meta name="author" content="{{ if $authorData }}{{ $authorData.name }}{{ else }}{{ .Params.author }}{{ end }}"/>
+  {{- end -}}
+{{- else -}}
+  {{- with .Site.Params.author.name -}}
   <meta name="author" content="{{ . }}"/>
-{{- end }}
+  {{- end -}}
+{{- end -}}
 {{- partial "seo/main.html" . }}  
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>

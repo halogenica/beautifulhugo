@@ -435,3 +435,22 @@
   border-color: var(--dark-accent);
   color: #fff;
 }
+
+/* --- Author Card --- */
+[data-theme="dark"] .author-card {
+  background: var(--dark-surface);
+  border-color: var(--dark-surface-active);
+}
+
+[data-theme="dark"] .author-card-name {
+  color: var(--dark-fg);
+}
+
+[data-theme="dark"] a.author-card-name:hover,
+[data-theme="dark"] a.author-card-name:focus {
+  color: var(--dark-accent);
+}
+
+[data-theme="dark"] .author-card-bio {
+  color: var(--dark-muted);
+}

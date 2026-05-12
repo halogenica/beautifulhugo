@@ -28,13 +28,20 @@
     &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
   {{ end }}
   {{ if not .Site.Params.hideAuthor }}
-    {{ if .Params.author }}
+    {{ if .Params.authors }}
+      {{ range .Params.authors }}
+        {{ $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}<a href="{{ "authors" | absLangURL }}/{{ . | urlize }}/">{{ $authorData.name | safeHTML }}</a>{{ else }}{{ . | safeHTML }}{{ end }}
+      {{ end }}
+    {{ else if .Params.author }}
       {{ if reflect.IsSlice .Params.author }}
         {{ range .Params.author }}
-          &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ . | safeHTML }}
-	{{ end }}
+          {{ $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) }}
+          &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}<a href="{{ "authors" | absLangURL }}/{{ . | urlize }}/">{{ $authorData.name | safeHTML }}</a>{{ else }}{{ . | safeHTML }}{{ end }}
+        {{ end }}
       {{ else }}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+        {{ $authorData := partial "get_author.html" (dict "Site" .Site "key" .Params.author) }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if $authorData }}<a href="{{ "authors" | absLangURL }}/{{ .Params.author | urlize }}/">{{ $authorData.name | safeHTML }}</a>{{ else }}{{ .Params.author | safeHTML }}{{ end }}
       {{ end }}
     {{ else }}
       &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Params.author.name | safeHTML }}

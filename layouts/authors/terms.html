@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        {{ with .Content }}
+          <div class="content-section">
+            {{ . }}
+          </div>
+        {{ end }}
+        <div class="authors-list">
+          {{ range .Data.Terms.ByCount }}
+            {{ $authorData := partial "get_author.html" (dict "Site" $.Site "key" .Name) }}
+            {{ if $authorData }}
+              {{ partial "author_card.html" (dict "author" $authorData "site" $.Site "key" .Name) }}
+            {{ else }}
+              <div class="author-card">
+                <div class="author-card-info">
+                  <a href="{{ .Page.Permalink }}" class="author-card-name">{{ .Name }}</a>
+                </div>
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

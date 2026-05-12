@@ -1,0 +1,48 @@
+{{- $data := dict -}}
+{{- if ge hugo.Version "0.156.0" -}}
+  {{- $data = hugo.Data -}}
+{{- else -}}
+  {{- $data = .site.Data -}}
+{{- end -}}
+{{- $author := .author -}}
+{{- $site := .site -}}
+{{- $authorKey := .key | default "" -}}
+<div class="author-card">
+  {{- with $author.avatar -}}
+    <div class="author-card-avatar">
+      <img src="{{ . | relURL }}" alt="{{ $author.name }}" loading="lazy" />
+    </div>
+  {{- end -}}
+  <div class="author-card-info">
+    {{- if $authorKey -}}
+      <a href="{{ "authors" | absLangURL }}/{{ $authorKey | urlize }}/" class="author-card-name">{{ $author.name }}</a>
+    {{- else -}}
+      <span class="author-card-name">{{ $author.name }}</span>
+    {{- end -}}
+    {{- with $author.bio -}}
+      <p class="author-card-bio">{{ . }}</p>
+    {{- end -}}
+    {{- if $authorKey -}}
+      <ul class="list-inline author-card-social">
+        {{- range $data.beautifulhugo.social.social_icons -}}
+          {{- $social := . -}}
+          {{- with index $author $social.id -}}
+            {{- $authorValue := . -}}
+            <li class="list-inline-item">
+              {{- if or (hasPrefix $authorValue "http://") (hasPrefix $authorValue "https://") -}}
+                <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer" {{ else }}rel="noopener noreferrer" {{ end }}href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
+              {{- else -}}
+                <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer" {{ else }}rel="noopener noreferrer" {{ end }}href="{{ printf $social.url $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
+              {{- end -}}
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="{{ $social.icon }} fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                </span>
+              </a>
+            </li>
+          {{- end -}}
+        {{- end -}}
+      </ul>
+    {{- end -}}
+  </div>
+</div>

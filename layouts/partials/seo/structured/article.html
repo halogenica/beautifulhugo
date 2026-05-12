@@ -10,16 +10,43 @@
   {{- $keywords = $keywords | append . -}}
 {{- end -}}
 
+{{- $authors := slice -}}
+{{- if .Params.authors -}}
+  {{- range .Params.authors -}}
+    {{- $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) -}}
+    {{- if $authorData -}}
+      {{- $authors = $authors | append (dict "name" $authorData.name "@type" "Person") -}}
+    {{- else -}}
+      {{- $authors = $authors | append (dict "name" . "@type" "Person") -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if .Params.author -}}
+  {{- if reflect.IsSlice .Params.author -}}
+    {{- range .Params.author -}}
+      {{- $authorData := partial "get_author.html" (dict "Site" $.Site "key" .) -}}
+      {{- if $authorData -}}
+        {{- $authors = $authors | append (dict "name" $authorData.name "@type" "Person") -}}
+      {{- else -}}
+        {{- $authors = $authors | append (dict "name" . "@type" "Person") -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $authorData := partial "get_author.html" (dict "Site" .Site "key" .Params.author) -}}
+    {{- if $authorData -}}
+      {{- $authors = $authors | append (dict "name" $authorData.name "@type" "Person") -}}
+    {{- else -}}
+      {{- $authors = $authors | append (dict "name" .Params.author "@type" "Person") -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if .Site.Params.author.name -}}
+  {{- $authors = $authors | append (dict "name" .Site.Params.author.name "@type" "Person" "url" .Site.BaseURL "@id" (printf "%s#author" .Site.BaseURL)) -}}
+{{- end -}}
 {{- $schema := dict
   "@context" "https://schema.org"
   "@type" "Article"
   "@id" (printf "%s#article" .Permalink)
   "isPartOf" (dict "@id" .Permalink)
-  "author" (dict
-    "name" (.Params.author | default .Site.Params.author.name)
-    "url" .Site.BaseURL
-    "@id" (printf "%s#author" .Site.BaseURL)
-  )
+  "author" $authors
   "headline" .Title
   "description" $description
   "inLanguage" .Lang

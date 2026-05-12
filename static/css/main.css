@@ -1785,3 +1785,83 @@ h4.see-also {
 [data-theme="dark"] .recipe-ingredients li {
   border-bottom-color: #444;
 }
+
+/* --- Author Card --- */
+
+.author-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: var(--bs-border-radius, 0.375rem);
+}
+
+.author-card-avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-card-name {
+  display: block;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #404040;
+  margin-bottom: 0.25rem;
+}
+
+a.author-card-name:hover,
+a.author-card-name:focus {
+  color: #0085a1;
+  text-decoration: none;
+}
+
+.author-card-bio {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0.25rem 0 0.5rem;
+  line-height: 1.5;
+}
+
+.author-card-social {
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.author-card-social .list-inline-item {
+  padding-right: 0.25rem;
+}
+
+.authors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .author-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .author-card-social {
+    justify-content: center;
+  }
+
+  .author-card-social .list-inline {
+    display: flex;
+    justify-content: center;
+  }
+}
+}

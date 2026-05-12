@@ -10,16 +10,35 @@
   },
   "description" : "{{ if .Description }}{{ .Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}",
   "inLanguage" : "{{ .Lang }}",
-  {{ if .Params.author -}}
-    "author": {
-      "@type": "Person",
-      "name": "{{ .Params.author }}"
-  },
+  {{ if .Params.authors -}}
+    "author": [
+      {{- range $i, $a := .Params.authors -}}
+        {{- $authorData := partial "get_author.html" (dict "Site" $.Site "key" $a) -}}
+        {{- if $i }}, {{ end -}}
+        { "@type": "Person", "name": "{{ if $authorData }}{{ $authorData.name | safeJS }}{{ else }}{{ $a | safeJS }}{{ end }}" }
+      {{- end -}}
+    ],
+  {{- else if .Params.author -}}
+    {{- if reflect.IsSlice .Params.author -}}
+      "author": [
+        {{- range $i, $a := .Params.author -}}
+          {{- $authorData := partial "get_author.html" (dict "Site" $.Site "key" $a) -}}
+          {{- if $i }}, {{ end -}}
+          { "@type": "Person", "name": "{{ if $authorData }}{{ $authorData.name | safeJS }}{{ else }}{{ $a | safeJS }}{{ end }}" }
+        {{- end -}}
+      ],
+    {{- else -}}
+      {{- $authorData := partial "get_author.html" (dict "Site" .Site "key" .Params.author) -}}
+      "author": {
+        "@type": "Person",
+        "name": "{{ if $authorData }}{{ $authorData.name | safeJS }}{{ else }}{{ .Params.author | safeJS }}{{ end }}"
+      },
+    {{- end -}}
   {{- else if .Site.Params.author.name -}}
     "author": {
       "@type": "Person",
       "name": "{{ .Site.Params.author.name }}"
-  },
+    },
   {{- end }}
   "copyrightYear" : "{{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}",
   {{ if not .PublishDate.IsZero -}}

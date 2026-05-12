@@ -1,0 +1,22 @@
+{{- $data := dict -}}
+{{- if ge hugo.Version "0.156.0" -}}
+  {{- $data = hugo.Data -}}
+{{- else -}}
+  {{- $data = .Site.Data -}}
+{{- end -}}
+{{- $key := .key -}}
+{{- $author := dict -}}
+{{- with index $data "authors" -}}
+  {{- $author = index . $key -}}
+{{- end -}}
+{{- if not $author -}}
+  {{- $lower := lower $key -}}
+  {{- with index $data "authors" -}}
+    {{- range $k, $v := . -}}
+      {{- if eq (lower $k) $lower -}}
+        {{- $author = $v -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $author -}}

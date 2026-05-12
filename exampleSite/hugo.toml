@@ -19,6 +19,7 @@ enableGitInfo = true
 [taxonomies]
   category = "categories"
   tag = "tags"
+  authors = "authors"
 
 [Params]
   subtitle = "Build a beautiful and simple website in minutes"
@@ -54,7 +55,6 @@ enableGitInfo = true
 #summaryLimit = 150
 #[Params.AISearchSummary.robots]
 #summaryLimit = 300
-
 
 [Params.author]
   name = "Some Person"
