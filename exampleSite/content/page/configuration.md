@@ -374,7 +374,7 @@ These options can be set in the front matter of any page or post:
 
 ## Recipe Pages
 
-Beautiful Hugo supports recipe content with automatic [schema.org/Recipe](https://schema.org/Recipe) structured data (JSON-LD) and a rendered recipe card below the page body. This provides SEO benefits — search engines can display rich recipe results with cook times, ingredients, and ratings.
+Beautiful Hugo supports recipe content with automatic [schema.org/Recipe](https://schema.org/Recipe) structured data (JSON-LD) and a rendered recipe card below the page body. This provides SEO benefits — search engines can display rich recipe results with cook times, ingredients, and more.
 
 ### Setup
 

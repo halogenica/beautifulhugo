@@ -1,5 +1,5 @@
 {{- $r := .Params.recipe -}}
-{{- if not $r }}{{ errorf "recipe.html partial called on a page with no .Params.recipe: %s" .File.Path }}{{ end -}}
+{{- if not $r }}{{ errorf "seo/structured/recipe.html partial called on a page with no .Params.recipe: %s" (or .File.Path .Path) }}{{ end -}}
 
 {{- $description := "" -}}
 {{- if .Description -}}
@@ -10,14 +10,14 @@
 
 {{- $ingredients := slice -}}
 {{- range $r.ingredients -}}
-  {{- $ingredients = $ingredients | append . -}}
+  {{- $ingredients = $ingredients | append (. | plainify) -}}
 {{- end -}}
 
 {{- $instructions := slice -}}
 {{- range $i, $step := $r.instructions -}}
   {{- $s := dict "@type" "HowToStep" "position" (add $i 1) -}}
   {{- if reflect.IsMap $step -}}
-    {{- $s = merge $s (dict "text" ($step.text | plainify)) -}}
+    {{- with $step.text }}{{ $s = merge $s (dict "text" (. | plainify)) }}{{ end -}}
     {{- with $step.name }}{{ $s = merge $s (dict "name" .) }}{{ end -}}
     {{- with $step.url }}{{ $s = merge $s (dict "url" .) }}{{ end -}}
     {{- with $step.image }}{{ $s = merge $s (dict "image" .) }}{{ end -}}

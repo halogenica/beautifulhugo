@@ -117,6 +117,6 @@
 - id: recipeCalories
   translation: "Kalorioj"
 - id: recipeIngredients
-  translation: "Sastojkringrediencoj"
+  translation: "Ingrediencoj"
 - id: recipeInstructions
   translation: "Instrukcioj"
