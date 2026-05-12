@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "Kaynağı görüntüle"
+# Recipe / Tarif
+- id: recipePrepTime
+  translation: "Hazırlık süresi"
+- id: recipeCookTime
+  translation: "Pişirme süresi"
+- id: recipeTotalTime
+  translation: "Toplam süre"
+- id: recipeYield
+  translation: "Porsiyon"
+- id: recipeCategory
+  translation: "Kategori"
+- id: recipeCuisine
+  translation: "Mutfak"
+- id: recipeCalories
+  translation: "Kalori"
+- id: recipeIngredients
+  translation: "Malzemeler"
+- id: recipeInstructions
+  translation: "Talimatlar"

@@ -3,5 +3,9 @@
 {{- if .IsPage }}
 {{- partial "seo/structured/webpage.html" . }}
 {{- partial "seo/structured/breadcrumb" . }}
+{{- if and (eq .Type "recipe") .Params.recipe }}
+{{- partial "seo/structured/recipe.html" . }}
+{{- else }}
 {{- partial "seo/structured/article" . }}
+{{- end }}
 {{ end }}

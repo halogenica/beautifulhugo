@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "Voir la source"
+# Recipe / Recette
+- id: recipePrepTime
+  translation: "Préparation"
+- id: recipeCookTime
+  translation: "Cuisson"
+- id: recipeTotalTime
+  translation: "Temps total"
+- id: recipeYield
+  translation: "Portions"
+- id: recipeCategory
+  translation: "Catégorie"
+- id: recipeCuisine
+  translation: "Cuisine"
+- id: recipeCalories
+  translation: "Calories"
+- id: recipeIngredients
+  translation: "Ingrédients"
+- id: recipeInstructions
+  translation: "Instructions"

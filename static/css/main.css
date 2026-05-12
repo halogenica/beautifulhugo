@@ -1675,3 +1675,113 @@ h4.see-also {
   color: #fff;
   text-decoration: none;
 }
+
+/* --- Recipe Card --- */
+
+.recipe-card {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.recipe-meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-meta-label {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+}
+
+.recipe-meta-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #404040;
+}
+
+.recipe-section {
+  margin-bottom: 1.5rem;
+}
+
+.recipe-section:last-child {
+  margin-bottom: 0;
+}
+
+.recipe-section-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #404040;
+}
+
+.recipe-ingredients {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-ingredients li {
+  padding: 0.35rem 0;
+  border-bottom: 1px dotted #ddd;
+}
+
+.recipe-ingredients li:last-child {
+  border-bottom: none;
+}
+
+.recipe-instructions {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.recipe-instructions li {
+  padding: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.recipe-instructions li strong {
+  display: block;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+/* Dark mode */
+[data-theme="dark"] .recipe-card {
+  border-color: #444;
+  background: #2a2a2a;
+}
+
+[data-theme="dark"] .recipe-meta {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .recipe-meta-label {
+  color: #888;
+}
+
+[data-theme="dark"] .recipe-meta-value,
+[data-theme="dark"] .recipe-section-title {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .recipe-ingredients li {
+  border-bottom-color: #444;
+}

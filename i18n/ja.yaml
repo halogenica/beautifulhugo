@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "ソースを見る"
+# Recipe / レシピ
+- id: recipePrepTime
+  translation: "準備時間"
+- id: recipeCookTime
+  translation: "調理時間"
+- id: recipeTotalTime
+  translation: "合計時間"
+- id: recipeYield
+  translation: "分量"
+- id: recipeCategory
+  translation: "カテゴリ"
+- id: recipeCuisine
+  translation: "料理"
+- id: recipeCalories
+  translation: "カロリー"
+- id: recipeIngredients
+  translation: "材料"
+- id: recipeInstructions
+  translation: "作り方"

@@ -1,0 +1,78 @@
+{{- $r := .Params.recipe -}}
+{{- if not $r }}{{ return }}{{ end -}}
+
+<div class="recipe-card">
+  <div class="recipe-meta">
+    {{- with $r.prepTime -}}
+      <span class="recipe-meta-item">
+        <span class="recipe-meta-label">{{ i18n "recipePrepTime" }}</span>
+        <span class="recipe-meta-value">{{ . }}</span>
+      </span>
+    {{- end -}}
+    {{- with $r.cookTime -}}
+      <span class="recipe-meta-item">
+        <span class="recipe-meta-label">{{ i18n "recipeCookTime" }}</span>
+        <span class="recipe-meta-value">{{ . }}</span>
+      </span>
+    {{- end -}}
+    {{- with $r.totalTime -}}
+      <span class="recipe-meta-item">
+        <span class="recipe-meta-label">{{ i18n "recipeTotalTime" }}</span>
+        <span class="recipe-meta-value">{{ . }}</span>
+      </span>
+    {{- end -}}
+    {{- with $r.yield -}}
+      <span class="recipe-meta-item">
+        <span class="recipe-meta-label">{{ i18n "recipeYield" }}</span>
+        <span class="recipe-meta-value">{{ . }}</span>
+      </span>
+    {{- end -}}
+    {{- with $r.category -}}
+      <span class="recipe-meta-item">
+        <span class="recipe-meta-label">{{ i18n "recipeCategory" }}</span>
+        <span class="recipe-meta-value">{{ . }}</span>
+      </span>
+    {{- end -}}
+    {{- with $r.cuisine -}}
+      <span class="recipe-meta-item">
+        <span class="recipe-meta-label">{{ i18n "recipeCuisine" }}</span>
+        <span class="recipe-meta-value">{{ . }}</span>
+      </span>
+    {{- end -}}
+    {{- with $r.calories -}}
+      <span class="recipe-meta-item">
+        <span class="recipe-meta-label">{{ i18n "recipeCalories" }}</span>
+        <span class="recipe-meta-value">{{ . }}</span>
+      </span>
+    {{- end -}}
+  </div>
+
+  {{- with $r.ingredients -}}
+    <div class="recipe-section">
+      <h3 class="recipe-section-title">{{ i18n "recipeIngredients" }}</h3>
+      <ul class="recipe-ingredients">
+        {{- range . -}}
+          <li>{{ . | markdownify }}</li>
+        {{- end -}}
+      </ul>
+    </div>
+  {{- end -}}
+
+  {{- with $r.instructions -}}
+    <div class="recipe-section">
+      <h3 class="recipe-section-title">{{ i18n "recipeInstructions" }}</h3>
+      <ol class="recipe-instructions">
+        {{- range . -}}
+          <li>
+            {{- if reflect.IsMap . -}}
+              {{- with .name }}<strong>{{ . }}</strong>{{ end -}}
+              {{- with .text }}{{ . | markdownify }}{{ end -}}
+            {{- else -}}
+              {{- . | markdownify -}}
+            {{- end -}}
+          </li>
+        {{- end -}}
+      </ol>
+    </div>
+  {{- end -}}
+</div>

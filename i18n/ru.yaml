@@ -101,3 +101,22 @@
 # View source
 - id: viewSource
   translation: "Посмотреть исходник"
+# Recipe / Рецепт
+- id: recipePrepTime
+  translation: "Время подготовки"
+- id: recipeCookTime
+  translation: "Время приготовления"
+- id: recipeTotalTime
+  translation: "Общее время"
+- id: recipeYield
+  translation: "Порции"
+- id: recipeCategory
+  translation: "Категория"
+- id: recipeCuisine
+  translation: "Кухня"
+- id: recipeCalories
+  translation: "Калории"
+- id: recipeIngredients
+  translation: "Ингредиенты"
+- id: recipeInstructions
+  translation: "Инструкции"

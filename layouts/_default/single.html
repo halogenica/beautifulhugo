@@ -6,6 +6,9 @@
           {{ partial "github-buttons" . }}
           {{ partial "before_content.html" . }}
           {{ .Content }}
+          {{ if and (eq .Type "recipe") .Params.recipe }}
+            {{ partial "recipe.html" . }}
+          {{ end }}
           {{ partial "after_content.html" . }}
           {{ partial "show-source" . }}
 

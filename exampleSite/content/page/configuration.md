@@ -371,3 +371,70 @@ These options can be set in the front matter of any page or post:
 | `navShort` | bool | Make navbar short on this page |
 | `toc` | bool | Show/hide table of contents for this page (overrides site-level `toc`) |
 | `showSource` | bool | Override site-level `showSource` for this page |
+
+## Recipe Pages
+
+Beautiful Hugo supports recipe content with automatic [schema.org/Recipe](https://schema.org/Recipe) structured data (JSON-LD) and a rendered recipe card below the page body. This provides SEO benefits — search engines can display rich recipe results with cook times, ingredients, and more.
+
+### Setup
+
+Create content files with `type: recipe` and a `recipe` front matter map:
+
+```yaml
+---
+title: "Classic Chocolate Chip Cookies"
+type: recipe
+date: 2026-05-12
+tags: ["baking", "dessert"]
+recipe:
+  prepTime: "PT15M"
+  cookTime: "PT12M"
+  totalTime: "PT27M"
+  yield: "24 cookies"
+  category: "Dessert"
+  cuisine: "American"
+  calories: "180 kcal"
+  ingredients:
+    - "2¼ cups all-purpose flour"
+    - "1 tsp baking soda"
+    - "1 cup unsalted butter, softened"
+  instructions:
+    - name: "Preheat oven"
+      text: "Preheat oven to 375°F."
+    - name: "Mix"
+      text: "Combine flour, baking soda, and salt."
+---
+```
+
+### Recipe front matter reference
+
+| Key | Type | Required | Description |
+|-----|------|----------|-------------|
+| `recipe.ingredients` | list | **yes** | List of ingredient strings (supports Markdown) |
+| `recipe.instructions` | list | **yes** | List of step strings **or** maps with `name` and `text` keys |
+| `recipe.prepTime` | string | no | ISO 8601 duration (e.g. `"PT15M"` = 15 minutes) |
+| `recipe.cookTime` | string | no | ISO 8601 duration |
+| `recipe.totalTime` | string | no | ISO 8601 duration |
+| `recipe.yield` | string | no | Recipe yield (e.g. `"4 servings"`, `"24 cookies"`) |
+| `recipe.category` | string | no | Recipe category (e.g. `"Dessert"`, `"Main Course"`) |
+| `recipe.cuisine` | string | no | Cuisine type (e.g. `"Italian"`, `"Japanese"`) |
+| `recipe.calories` | string | no | Calories per serving (e.g. `"250 kcal"`) |
+
+### How it works
+
+- **Structured data**: Pages with `type: recipe` and a `recipe` param emit a combined `Article` + `Recipe` JSON-LD block (as recommended by Google for recipe blog posts). Other pages continue to emit the standard `Article` schema.
+- **Visual rendering**: A recipe card is automatically rendered below the page body content, displaying metadata (prep time, cook time, yield, etc.), an ingredients list, and numbered instructions.
+- **Archetype**: Use `hugo new recipe/my-recipe.md` to get a pre-filled recipe front matter scaffold.
+- **Page behavior**: Recipe pages behave like blog posts (showing post meta, pager, and comments) since they are not `type: page`.
+
+### ISO 8601 duration format
+
+Time values use the ISO 8601 duration format:
+
+| Example | Meaning |
+|---------|---------|
+| `PT15M` | 15 minutes |
+| `PT1H30M` | 1 hour 30 minutes |
+| `PT2H` | 2 hours |
+
+`P` marks the start, `T` separates date from time components, and `H`/`M`/`S` are hours, minutes, seconds.
