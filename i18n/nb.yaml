@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "02.01.2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Postet {{ . }}"
 - id: lastModified
@@ -25,7 +25,8 @@
   translation: "minutter"
 - id: words
   translation: "ord"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: 'Kjører på <a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a>&nbsp;&bull;&nbsp; Tema fra <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> tilpasset fra <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: 'Kjører på <a href="https://gohugo.io">Hugo v{{ .Version }}</a>&nbsp;&bull;&nbsp; Tema fra <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> tilpasset fra <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
@@ -62,12 +63,26 @@
   translation: "Din e-postadresse"
 - id: yourWebsite
   translation: "Din webside"
+- id: submit
+  translation: "Send"
+- id: close
+  translation: "Lukk"
 
 # Delayed Disqus
 - id: show
   translation: "Vis"
 - id: comments
   translation: "kommentarer" 
+
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Tema"
+- id: themeTooltipAuto
+  translation: "Auto (følger systemet)"
+- id: themeTooltipLight
+  translation: "Lys modus"
+- id: themeTooltipDark
+  translation: "Mørk modus"
 
 # Related posts
 - id: seeAlso

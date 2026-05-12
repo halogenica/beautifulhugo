@@ -1,32 +1,20 @@
 {{ define "main" }}
-  <div class="container" role="main">
+  <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}" role="main">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
         {{ with .Content }}
-          <div class="well">
+          <div class="content-section">
             {{.}}
           </div>
         {{ end }}
         <div class="posts-list">
-          {{ range .Paginator.Pages }}
+          {{ range where .Paginator.Pages "Params.hidden" "!=" true }}
             {{ partial "post_preview.html" .}}
           {{ end }}
         </div>
-        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-          <ul class="pager main-pager">
-            {{ if .Paginator.HasPrev }}
-              <li class="previous">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
-              </li>
-            {{ end }}
-            {{ if .Paginator.HasNext }}
-              <li class="next">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
-              </li>
-            {{ end }}
-          </ul>
-        {{ end }}
+        {{ partial "paginator.html" . }}
       </div>
     </div>
+    {{ partial "toc.html" . }}
   </div>
 {{ end }}

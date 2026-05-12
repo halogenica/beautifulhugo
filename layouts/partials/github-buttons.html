@@ -1,0 +1,40 @@
+{{- /*
+  Renders GitHub buttons (star, watch, fork, follow) from ghbtns.com.
+
+  Usage in front matter:
+    ghRepo: "user/repo"
+    ghBadge: ["star", "watch", "fork"]
+    ghCount: true   # optional (default true)
+
+  Only the specified badges will be rendered.
+*/ -}}
+
+{{ if and .Params.ghRepo (or .Params.ghBadge (and .Site.Params.ghBadge)) }}
+  {{ $repo := .Params.ghRepo }}
+  {{ $badges := .Params.ghBadge | default .Site.Params.ghBadge }}
+  {{ $count := .Params.ghCount | default .Site.Params.ghCount | default true }}
+  {{ $user := index (split $repo "/") 0 }}
+  {{ $repoName := index (split $repo "/") 1 }}
+  {{ if $badges }}
+    <div class="gh-buttons" style="margin-bottom: 20px;">
+      {{ range $badges }}
+        {{ $type := . }}
+        {{ $width := "170" }}
+        {{ $height := "30" }}
+        {{ $extra := "" }}
+        {{ if eq $type "follow" }}
+          {{ $width = "230" }}
+        {{ end }}
+        {{ if and $count (eq $type "watch") }}
+          {{ $extra = "&v=2" }}
+        {{ end }}
+        {{ $countParam := cond $count "&count=true" "" }}
+        {{ $iframeSrc := printf "https://ghbtns.com/github-btn.html?user=%s&type=%s&size=large%s%s" $user $type $countParam $extra }}
+        {{ if ne $type "follow" }}
+          {{ $iframeSrc = printf "https://ghbtns.com/github-btn.html?user=%s&repo=%s&type=%s&size=large%s%s" $user $repoName $type $countParam $extra }}
+        {{ end }}
+        <iframe src="{{ $iframeSrc }}" frameborder="0" scrolling="0" width="{{ $width }}" height="{{ $height }}" title="GitHub"></iframe>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

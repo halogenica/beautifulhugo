@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "2·01·2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2·01·2006 - 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Publié le {{ . }}"
 - id: lastModified
@@ -25,7 +25,8 @@
   translation: "minutes"
 - id: words
   translation: "mots"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: 'Carbure avec <a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: 'Carbure avec <a href="https://gohugo.io">Hugo v{{ .Version }}</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
@@ -62,14 +63,26 @@
   translation: "Votre adresse mail"
 - id: yourWebsite
   translation: "Votre site web"
-- id: sendComment
+- id: submit
   translation: "Envoyer"
+- id: close
+  translation: "Fermer"
 
 # Delayed Disqus
 - id: show
   translation: "Afficher"
 - id: comments
   translation: "commentaires" 
+
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Thème"
+- id: themeTooltipAuto
+  translation: "Auto (suit le système)"
+- id: themeTooltipLight
+  translation: "Mode clair"
+- id: themeTooltipDark
+  translation: "Mode sombre"
 
 # Related posts
 - id: seeAlso

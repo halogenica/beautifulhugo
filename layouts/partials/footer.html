@@ -1,9 +1,12 @@
-  {{ if eq .Type "page" }}
-    {{ partial "page_meta.html" . }}
-  {{ end }}
-  {{- if and (not (isset .Site.Params "author")) (isset .Site "author") -}}
-     {{ errorf "Please move [author] to [params.author]; Hugo has deprecated the former." }}
-  {{- end -}}
+{{- $data := dict -}}
+{{- if ge hugo.Version "0.156.0" -}}
+  {{- $data = hugo.Data -}}
+{{- else -}}
+  {{- $data = .Site.Data -}}
+{{- end -}}
+{{ if eq .Type "page" }}
+  {{ partial "page_meta.html" . }}
+{{ end }}
 <footer>
   <div class="container">
     {{ if .Site.Params.disclaimerText }}
@@ -14,27 +17,29 @@
     </div>
     {{ end }}
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         <ul class="list-inline text-center footer-links">
-          {{ range .Site.Data.beautifulhugo.social.social_icons }}
-            {{- if isset $.Site.Params.author .id }}
-              <li>
-		{{ if or ( hasPrefix ( index $.Site.Params.author .id ) "http://" ) ( hasPrefix ( index $.Site.Params.author .id ) "https://" ) }}
-		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Params.author .id) }}" title="{{ .title }}">
+          {{ range $data.beautifulhugo.social.social_icons }}
+            {{- $social := . -}}
+            {{- with index $.Site.Params.author $social.id }}
+              <li class="list-inline-item" >
+		{{- $authorValue := . -}}
+		{{ if or ( hasPrefix $authorValue "http://" ) ( hasPrefix $authorValue "https://" ) }}
+		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer" {{ else }}rel="noopener noreferrer" {{ end }}href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
 		{{ else }}
-		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Params.author .id) }}" title="{{ .title }}">
+		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer" {{ else }}rel="noopener noreferrer" {{ end }}href="{{ printf $social.url $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
 		{{ end }}
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                    <i class="{{ $social.icon }} fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>
                 </a>
               </li>
-            {{- end -}}
+            {{- end }}
           {{ end }}
           {{ if .Site.Params.rss }}
           {{ with .OutputFormats.Get "RSS" }}
-          <li>
+          <li class="list-inline-item">
             <a href="{{ .RelPermalink }}" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
@@ -52,122 +57,28 @@
             {{ else }}
               {{ .Site.Params.author.name }}
             {{ end }}
+            &nbsp;&bull;&nbsp;
           {{ end }}
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           {{ if .Site.Params.since }}
             {{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}
           {{ else }}
             {{ .Site.Lastmod.Format "2006" }}
           {{ end }}
 
-          {{ if .Site.Title }}
+          {{ if and .Site.Params.author.name .Site.Title }}
             &nbsp;&bull;&nbsp;
+          {{ end }}
+          {{ if .Site.Title }}
             <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
           {{ end }}
         </p>
         <!-- Please don't remove this, keep my open source work credited :) -->
         <p class="credits theme-by text-muted">
-          {{ i18n "poweredBy" . | safeHTML }}
+          {{ i18n "poweredBy" (dict "Version" hugo.Version) | safeHTML }}
           {{ if $.GitInfo }}&nbsp;&bull;&nbsp;[<a href="{{ .Site.Params.commit }}{{ .GitInfo.Hash }}">{{ substr .GitInfo.Hash 0 8 }}</a>]{{ end }}
         </p>
       </div>
     </div>
   </div>
 </footer>
-
-{{- if .Site.Params.selfHosted -}}
-<script defer src="{{ "js/katex.min.js" | absURL }}"></script>
-<script defer src="{{ "js/auto-render.min.js" | absURL }}" onload="renderMathInElement(document.body);"></script>
-<script src="{{ "js/jquery-3.7.0.slim.min.js" | absURL }}"></script>
-<script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
-{{- else -}}
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-{{- end }}
-
-<script src="{{ "js/main.js" | absURL }}"></script>
-{{- if .Site.Params.staticman }}
-<script src="{{ "js/staticman.js" | absURL }}"></script>
-{{- end }}
-{{- if  .Site.Params.useHLJS }}
-<script src="{{ "js/highlight.min.js" | absURL }}"></script>
-<script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script>
-{{- end -}}
-
-{{- if .Site.Params.selfHosted -}}
-<script src="{{ "js/photoswipe.min.js" | absURL }}"></script>
-<script src="{{ "js/photoswipe-ui-default.min.js" | absURL }}"></script>
-{{- else -}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
-{{- end -}}
-<script src="{{ "js/load-photoswipe.js" | absURL }}"></script>
-
-<!-- Google Custom Search Engine -->
-{{ if .Site.Params.gcse }}
-<script>
-  (function() {
-    var cx = '{{ .Site.Params.gcse }}';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-{{ end }}
-
-{{ if .Site.Params.piwik }}
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["trackPageView"]);
-  _paq.push(["enableLinkTracking"]);
-
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://{{ .Site.Params.piwik.server }}/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "{{ .Site.Params.piwik.id }}"]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript>
-<!-- Piwik Image Tracker -->
-<img src="http://{{ .Site.Params.piwik.server }}/piwik.php?idsite={{ .Site.Params.piwik.id }}&amp;rec=1" style="border:0" alt="" />
-<!-- End Piwik -->
-</noscript>
-<!-- End Piwik Code -->
-{{ end }}
-
-
-{{ if and .Site.Params.delayDisqus .Site.Config.Services.Disqus.Shortname }}
-<!-- Delayed Disqus -->
-<script type="text/javascript">
-$(function(){
-  $('#show-comments').on('click', function(){
-    var disqus_shortname = '{{ .Site.Config.Services.Disqus.Shortname }}';
-      
-    (function() {
-      var disqus = document.createElement('script'); 
-      disqus.type = 'text/javascript'; 
-      disqus.async = true;
-      disqus.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
-    })();
-      
-    $(this).hide(); 
-    });
-  });
-      
-</script>
-<script id="dsq-count-scr" src="//{{ .Site.Config.Services.Disqus.Shortname }}.disqus.com/count.js" async></script>
-<!-- End Delayed Disqus -->
-{{ end }}
-
-{{- partial "footer_custom.html" . }}

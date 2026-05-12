@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "2006년 1월 2일"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2006. 1. 2. 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "{{ . }}에 게시됨"
 - id: lastModified
@@ -25,7 +25,8 @@
   translation: "분"
 - id: words
   translation: "단어"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> 을 사용함 &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> 를 개조한 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 테마'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a> 을 사용함 &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> 를 개조한 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 테마'
 
 # Navigation
 - id: toggleNavigation
@@ -62,12 +63,26 @@
   translation: "이메일"
 - id: yourWebsite
   translation: "웹사이트"
+- id: submit
+  translation: "제출"
+- id: close
+  translation: "닫기"
 
 # Delayed Disqus
 - id: show
   translation: "표시"
 - id: comments
   translation: "댓글"
+
+# Theme toggle
+- id: themeToggleLabel
+  translation: "테마"
+- id: themeTooltipAuto
+  translation: "자동 (시스템 따름)"
+- id: themeTooltipLight
+  translation: "라이트 모드"
+- id: themeTooltipDark
+  translation: "다크 모드"
 
 # Related posts
 - id: seeAlso

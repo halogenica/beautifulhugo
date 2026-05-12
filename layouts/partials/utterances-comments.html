@@ -1,0 +1,13 @@
+{{ with .Site.Params.utterances }}
+  {{ $utterances := . }}
+  {{ with .repo }}
+    <script src="https://utteranc.es/client.js"
+      repo="{{ . }}"
+      issue-term="{{ $utterances.issueTerm | default "pathname" }}"
+      {{ with $utterances.label }}label="{{ . }}"{{ end }}
+      theme="{{ $utterances.theme | default "preferred-color-scheme" }}"
+      crossorigin="anonymous"
+      async>
+    </script>
+  {{ end }}
+{{ end }}

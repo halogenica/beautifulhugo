@@ -1,7 +1,22 @@
 <span class="post-meta">
+  {{- $data := dict -}}
+  {{- if ge hugo.Version "0.156.0" -}}
+    {{- $data = hugo.Data -}}
+  {{- else -}}
+    {{- $data = .Site.Data -}}
+  {{- end -}}
   {{ $format := default (i18n "dateFormat") .Site.Params.dateformat }}
-  {{ $datestr := .Date.Format $format }}
-  {{ $lastmodstr := .Lastmod.Format $format }}
+  {{ if and .Site.Params.dateformat (not (strings.HasPrefix $format ":")) }}
+    {{- $nowFmt := now.Format $format -}}
+    {{- $yearOK := or (not (findRE `2006` $format)) (findRE (now.Format "2006") $nowFmt) -}}
+    {{- $monthOK := or (findRE (now.Format "01") $nowFmt) (findRE (now.Format "January") $nowFmt) -}}
+    {{- $dayOK := or (findRE (now.Format "02") $nowFmt) (findRE (now.Format "2") $nowFmt) -}}
+    {{ if or (not $yearOK) (not $monthOK) (not $dayOK) }}
+      {{ errorf "beautifulhugo: Params.dateformat %q is not a valid Go time layout. Go uses the reference time Mon Jan 2 15:04:05 MST 2006 — use e.g. \"2006-01-02\" instead of \"2023-10-15\", or use a Hugo locale token like \":date_long\". See https://go.dev/src/time/format.go" .Site.Params.dateformat }}
+    {{ end }}
+  {{ end }}
+  {{ $datestr := time.Format $format .Date }}
+  {{ $lastmodstr := time.Format $format .Lastmod }}
   <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
   {{ if ne $datestr $lastmodstr }}
     &nbsp;({{ $lastmodstr | i18n "lastModified"  }})
@@ -28,8 +43,8 @@
   {{- if .Site.Params.staticman -}}
     &nbsp;|&nbsp;<i class="fas fa-comment"></i>&nbsp;
     {{ $slug := replace .RelPermalink "/" "" }}
-    {{ if .Site.Data.comments }}
-      {{ $comments := index $.Site.Data.comments $slug }}
+    {{ with $data.comments }}
+      {{ $comments := index . $slug }}
       {{ if $comments }}
         {{ if gt (len $comments) 1  }}
           {{ len $comments  }} {{ i18n "moreComment" }}
@@ -49,4 +64,3 @@
     &nbsp;&bull;&nbsp;{{ i18n "translationsLabel" }}{{ $linksOutput | safeHTML }}
   {{- end }}
 </span>
-

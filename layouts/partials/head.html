@@ -1,26 +1,22 @@
-{{- if eq .Kind "taxonomyTerm" }}
+{{- $title := "" }}
+{{- $description := "" }}
+{{- if eq .Kind "taxonomy" }}
+  {{- $most_used := slice }}
   {{- range $key, $value := .Data.Terms.ByCount }}
-    {{- $.Scratch.Add "most_used" (slice $value.Name) }}
+    {{- $most_used = $most_used | append $value.Name }}
   {{- end }}
-  {{- if not ($.Scratch.Get "most_used") }}
-    {{- $description := printf "A full overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular | truncate 180 }}
-    {{- $.Scratch.Set "Description" $description }}
+  {{- if not $most_used }}
+    {{- $description = printf "A full overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular | truncate 180 }}
   {{- else }}
-    {{- $description := printf "A full overview of all pages with %s, ordered by %s, such as: %s" .Data.Plural .Data.Singular ( delimit ( $.Scratch.Get "most_used" ) ", " ", and " ) | truncate 180 }}
-    {{- $.Scratch.Set "Description" $description }}
+    {{- $description = printf "A full overview of all pages with %s, ordered by %s, such as: %s" .Data.Plural .Data.Singular (delimit $most_used ", " ", and ") | truncate 180 }}
   {{- end }}
-
-  {{- $title := printf "Overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular }}
-  {{- $.Scratch.Set "Title" $title }}
-{{- else if eq .Kind "taxonomy" }}
-  {{- $description := printf "Overview of all pages with the %s #%s, such as: %s" .Data.Singular $.Title ( index .Pages 0).Title | truncate 160 }}
-  {{- $.Scratch.Set "Description" $description }}
-
-  {{- $title := printf "Overview of all pages with the %s #%s" .Data.Singular $.Title }}
-  {{- $.Scratch.Set "Title" $title }}
+  {{- $title = printf "Overview of all pages with %s, ordered by %s" .Data.Plural .Data.Singular }}
+{{- else if eq .Kind "term" }}
+  {{- $description = printf "Overview of all pages with the %s #%s, such as: %s" .Data.Singular $.Title (index .Pages 0).Title | truncate 160 }}
+  {{- $title = printf "Overview of all pages with the %s #%s" .Data.Singular $.Title }}
 {{- else }}
-  {{- $.Scratch.Set "Description" ( .Description | default .Params.subtitle | default .Summary ) }}
-  {{- $.Scratch.Set "Title" ( .Title | default .Site.Title ) }}
+  {{- $description = .Description | default .Params.subtitle | default .Summary }}
+  {{- $title = .Title | default .Site.Title }}
 {{- end }}
 
   <meta charset="utf-8" />
@@ -30,16 +26,12 @@
  <!-- Site Title, Description, Author, and Favicon -->
 
 {{ if .IsHome }}
-    {{- with .Site.Params.homeTitle }}
-      <title>{{ . }}</title>
-    {{- end }}
+    <title>{{ .Site.Params.homeTitle | default .Site.Title }}</title>
   {{ else }}
-    {{- with ($.Scratch.Get "Title") }}
-      <title>{{ . }} - {{ $.Site.Params.homeTitle }}</title>
-    {{- end }}
+    <title>{{ $title }}{{ with .Site.Params.homeTitle }} - {{ . }}{{ end }}</title>
 {{ end }}
 
-{{- with ($.Scratch.Get "Description") }}
+{{- with $description }}
   <meta name="description" content="{{ . }}">
 {{- end }}
 {{- with .Site.Params.author.name }}
@@ -67,20 +59,23 @@
   <link rel="stylesheet" href="{{ "fontawesome/css/v5-font-face.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/brands.css" integrity="sha384-+eXGm6TmVoCZR1gX03US+L++L2mJIfOvp2X0+luTuEktXaF5F+e3zn0sO0HBvOyT" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/fontawesome.css" integrity="sha384-B5nyPZa7e84uCJEYHtevCdVYtQosWsbDSRtq3cy/jeSVtQW05GL8CKXO7waXsjPK" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/regular.css" integrity="sha384-V71z/A/p/DGaZAryHhiSXRQj8HdQmK2nBgL2bX23MGD+h6ZKpyxOO76f5eSXmIaj" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/solid.css" integrity="sha384-1IIShlrK5iYgvS7OAgIH3prz4RAFP7hHZ2MaLIb9l3+trFwwnw/NdCWcUHlymZDU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg.css" integrity="sha384-iBa7uugTOHXqQ2ngvDYJyKrPPQbd9n2P3EQe+o/0+HZe5TNvV+LO5X0lLLUrXLHP" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/svg-with-js.css" integrity="sha384-STWnS5AGz6M2YxsnGAd536EqcE2y+ktGovMMuhtXLsCBtl7lujeQj2eN4eDxa57x" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-font-face.css" integrity="sha384-fH83IkgQi7kturzlxpXfNdsR8aUOcqj5HUORRVnSvJgObZkIw6aqKAaQx20IWyB/" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v4-shims.css" integrity="sha384-cCODJHSivNBsaHei/8LC0HUD58kToSbDU+xT7Rs51BO1v/IvgT/uM0W6xMoUqKfn" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.0.1/css/v5-font-face.css" integrity="sha384-atSdF89mIn15dv+o2LKkDM6mCh3hwh6A7mwZ6F2it/kenqZbMu+QW/ye1OG4XSWV" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/brands.css" integrity="sha384-+PvcAGLOWIanfjuRoscHUyZB100N7wP779T8D3ao0FniyFFKMw9MIJpgtJO3+pdF" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/fontawesome.css" integrity="sha384-mj4mLShEAyWi4Bui9LmFkAjPYWof6WrG8DfS8ebHhjm4/MClMqMMHpQzehNk5HeM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/regular.css" integrity="sha384-eS8Ja07iO8AOH11Hzegc5aZyN8CpY+oFwClH6MIlOKUOA3J4Oqjt8Xia9VUSU0GB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/solid.css" integrity="sha384-LpGibDKKReBRP3epUOaN9WBgkrQ1pJIvrrTugkYxVQgDvYuMCRaXk6YkrZ/h3aWk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/svg.css" integrity="sha384-V18zH+yIEosaHAByV0h4dqHHMPzBxZ7CYz9GQ1YsLTE9QIkEme0jAw9Qir7aIFT+" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/svg-with-js.css" integrity="sha384-K25UPiwKhSAcEPQskU+UjXpz4iScCTNX5tcEpAGp1hQFNkOoIIwZiV69SfEfaRjK" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/v4-font-face.css" integrity="sha384-YFnAdl87B7pW+Vhp7w9pvA8ZdBL8DQni4/++wrZ0f7o/Sc0pyThczmxZk9xLyc0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css" integrity="sha384-FnTDI00psVcN3KkfAip/6yRCeN17N3R7HZoAj+2+nttp8n1/vHfYUWvlscoUUhGJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/v5-font-face.css" integrity="sha384-FUMXkSpZU/e6Ua2owr0Mktp/gtxxiK1OgCS1vDr8Lsz+gbyDFMSiKeHBRa07EjDn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   {{- end -}}
 
   <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
+  {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
+  <link rel="stylesheet" href="{{ "css/dark.css" | absURL }}" />
+  {{- end -}}
 
   {{- if .Site.Params.staticman -}}
   <link rel="stylesheet" href="{{ "css/staticman.css" | absURL }}" />
@@ -89,27 +84,42 @@
   {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/fonts.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
   {{- end -}}
 
   {{- if .Site.Params.useHLJS }}
+  {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
+  {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
+  <link id="hljs-dark" rel="stylesheet" href="{{ "css/highlight-dark.min.css" | absURL }}"{{ if eq .Site.Params.colorScheme "light" }} disabled{{ end }} />
+  {{- end -}}
+  {{- else -}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css" integrity="sha384-eFTL69TLRZTkNfYZOLM+G04821K1qZao/4QLJbet1pP4tcF+fdXq/9CdqAbWRl/L" crossorigin="anonymous">
+  {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
+  <link id="hljs-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous">
+  {{- end -}}
+  {{- end -}}
   {{- else -}}
   <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
+  {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
+  <link id="hljs-dark" rel="stylesheet" href="{{ "css/syntax-dark.css" | absURL }}" />
+  {{- end -}}
   {{- end -}}
   <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
+
+  {{- if ne ($.Param "toc") false -}}
+  <link rel="stylesheet" href="{{ "css/toc.css" | absURL }}" />
+  {{- end -}}
   
   {{- if .Site.Params.staticman.recaptcha -}}
   <script src='https://www.google.com/recaptcha/api.js'></script>
   {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/photoswipe.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "css/photoswipe.default-skin.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/photoswipe.css" | absURL }}" />
   {{- else -}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
   {{- end -}}
 
   {{- with .Page.ExpiryDate -}}
@@ -120,5 +130,5 @@
 
   {{- partial "head_custom.html" . }}
 {{- if not hugo.IsServer -}}
-  {{ template "_internal/google_analytics.html" . }}
+  {{ partial "google_analytics.html" . }}
 {{- end -}}

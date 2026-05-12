@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "2 Ocak 2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Oca 2006 15.04.05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "{{ . }} tarihinde paylaşıldı"
 - id: lastModified
@@ -25,7 +25,8 @@
   translation: "dakika"
 - id: words
   translation: "kelime"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> altyapısı &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> temasından uyarlanan <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> teması kullanılmaktadır.'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a> altyapısı &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> temasından uyarlanan <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> teması kullanılmaktadır.'
 
 # Navigation
 - id: toggleNavigation
@@ -53,7 +54,7 @@
 - id: oneComment
   translation: "yorum"
 - id: moreComment
-  translation: "yorum"
+  translation: "yorumlar"
 - id: useMarkdown
   translation: "Markdown söz dizimini kullanabilirsiniz"
 - id: yourName
@@ -62,12 +63,26 @@
   translation: "E-posta adresiniz"
 - id: yourWebsite
   translation: "Web siteniz"
+- id: submit
+  translation: "Gönder"
+- id: close
+  translation: "Kapat"
 
 # Delayed Disqus
 - id: show
   translation: "Göster"
 - id: comments
   translation: "yorumlar" 
+
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Tema"
+- id: themeTooltipAuto
+  translation: "Otomatik (sistemi takip eder)"
+- id: themeTooltipLight
+  translation: "Açık mod"
+- id: themeTooltipDark
+  translation: "Koyu mod"
 
 # Related posts
 - id: seeAlso

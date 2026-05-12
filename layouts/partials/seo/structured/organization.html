@@ -1,13 +1,30 @@
+{{- $data := dict -}}
+{{- if ge hugo.Version "0.156.0" -}}
+  {{- $data = hugo.Data -}}
+{{- else -}}
+  {{- $data = .Site.Data -}}
+{{- end -}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": {{ .Site.Params.organizationName | default .Site.Params.Author.name }},
-  "@id": {{ printf "%s#organization" .Site.BaseURL }},
-  {{- with .Site.Params.socialProfiles }}, "sameAs": {{ . }}{{ end }}
-  {{- with .Site.Params.organizationLogo }}, "logo": {{ . }}{{ end }}
-  {{- with .Site.Params.organizationAddress }}, "address": {{ . }}{{ end }}
-  {{- with .Site.Data.organization.contacts.contactPoint }}, "contactPoint": {{ . }}{{ end }}
-  "url": {{ .Site.BaseURL }}
-}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "Organization"
+  "name" (.Site.Params.organizationName | default .Site.Params.author.name)
+  "@id" (printf "%s#organization" .Site.BaseURL)
+  "url" .Site.BaseURL
+-}}
+{{- with .Site.Params.socialProfiles -}}
+  {{- $schema = merge $schema (dict "sameAs" .) -}}
+{{- end -}}
+{{- with .Site.Params.organizationLogo -}}
+  {{- $schema = merge $schema (dict "logo" .) -}}
+{{- end -}}
+{{- with .Site.Params.organizationAddress -}}
+  {{- $schema = merge $schema (dict "address" .) -}}
+{{- end -}}
+{{- with index $data "organization" -}}
+  {{- with .contacts.contactPoint -}}
+    {{- $schema = merge $schema (dict "contactPoint" .) -}}
+  {{- end -}}
+{{- end -}}
+{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
 </script>

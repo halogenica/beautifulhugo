@@ -1,8 +1,8 @@
 # Content
 - id: dateFormat
-  translation: "2006年1月2日"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "{{ . }}に投稿"
 - id: lastModified
@@ -25,7 +25,8 @@
   translation: "分間"
 - id: words
   translation: "言葉"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '起動力に<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> &nbsp;&bull;&nbsp; テーマに<a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>に基づいている<a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '起動力に<a href="https://gohugo.io">Hugo v{{ .Version }}</a> &nbsp;&bull;&nbsp; テーマに<a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>に基づいている<a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
@@ -62,12 +63,26 @@
   translation: "メールアドレス"
 - id: yourWebsite
   translation: "ウェブサイト"
+- id: submit
+  translation: "送信"
+- id: close
+  translation: "閉じる"
 
 # Delayed Disqus
 - id: show
-  translation: "ショー"
+  translation: "表示"
 - id: comments
   translation: "コメント" 
+
+# Theme toggle
+- id: themeToggleLabel
+  translation: "テーマ"
+- id: themeTooltipAuto
+  translation: "自動（システムに従う）"
+- id: themeTooltipLight
+  translation: "ライトモード"
+- id: themeTooltipDark
+  translation: "ダークモード"
 
 # Related posts
 - id: seeAlso

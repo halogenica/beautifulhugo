@@ -1,0 +1,219 @@
+.toc-wrapper {
+  display: none;
+}
+
+body.toc-visible .toc-wrapper {
+  display: block;
+}
+
+.toc-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.toc-panel.toc-open {
+  transform: translateX(0);
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.toc-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #404040;
+}
+
+.toc-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.toc-close:hover {
+  color: #404040;
+}
+
+.toc-close:focus-visible {
+  outline: 2px solid #0085a1;
+  outline-offset: 2px;
+}
+
+.toc-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.toc-body #TableOfContents ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc-body #TableOfContents ul ul {
+  padding-left: 1.25rem;
+}
+
+.toc-body #TableOfContents li {
+  margin: 0;
+}
+
+.toc-body #TableOfContents a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: #666;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.toc-body #TableOfContents a:hover {
+  color: #0085a1;
+  border-left-color: #0085a1;
+  background: rgba(0, 133, 161, 0.04);
+}
+
+.toc-body #TableOfContents a.toc-active {
+  color: #0085a1;
+  font-weight: 600;
+  border-left-color: #0085a1;
+  background: rgba(0, 133, 161, 0.08);
+}
+
+.toc-post-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc-post-list li {
+  margin: 0;
+}
+
+.toc-post-list a {
+  display: block;
+  padding: 0.5rem 0.5rem;
+  color: #666;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.toc-post-list a:hover {
+  color: #0085a1;
+  border-left-color: #0085a1;
+  background: rgba(0, 133, 161, 0.04);
+}
+
+.toc-post-list a.toc-active {
+  color: #0085a1;
+  font-weight: 600;
+  border-left-color: #0085a1;
+  background: rgba(0, 133, 161, 0.08);
+}
+
+.toc-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1035;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.toc-backdrop.toc-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+[data-theme="dark"] .toc-panel {
+  background: #222;
+  border-right-color: #444;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .toc-header {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .toc-title {
+  color: #eee;
+}
+
+[data-theme="dark"] .toc-close {
+  color: #888;
+}
+
+[data-theme="dark"] .toc-close:hover {
+  color: #eee;
+}
+
+[data-theme="dark"] .toc-body #TableOfContents a {
+  color: #aaa;
+}
+
+[data-theme="dark"] .toc-body #TableOfContents a:hover {
+  color: #66bfff;
+  border-left-color: #66bfff;
+  background: rgba(102, 191, 255, 0.06);
+}
+
+[data-theme="dark"] .toc-body #TableOfContents a.toc-active {
+  color: #66bfff;
+  border-left-color: #66bfff;
+  background: rgba(102, 191, 255, 0.1);
+}
+
+[data-theme="dark"] .toc-post-list a {
+  color: #aaa;
+}
+
+[data-theme="dark"] .toc-post-list a:hover {
+  color: #66bfff;
+  border-left-color: #66bfff;
+  background: rgba(102, 191, 255, 0.06);
+}
+
+[data-theme="dark"] .toc-post-list a.toc-active {
+  color: #66bfff;
+  border-left-color: #66bfff;
+  background: rgba(102, 191, 255, 0.1);
+}
