@@ -19,6 +19,7 @@
   --syn-name-builtin: #e36209;
   --syn-name-variable: #005cc5;
   --syn-name-function: #6f42c1;
+  --syn-name-other: #6f42c1;
   --syn-string: #032f62;
   --syn-string-interpol: #032f62;
   --syn-string-other: #032f62;
@@ -115,3 +116,8 @@
 /* GenericTraceback */ .chroma .gt { color:var(--syn-traceback) }
 /* GenericUnderline */ .chroma .gl { text-decoration:underline }
 /* TextWhitespace */ .chroma .w { color:var(--syn-whitespace) }
+/* Error */ .chroma .err { color:var(--syn-error) }
+/* NameOther */ .chroma .nx { color:var(--syn-name-other) }
+/* NameProperty */ .chroma .py { color:var(--syn-name-attr) }
+/* Punctuation */ .chroma .p { color:var(--syn-fg) }
+/* OperatorReserved */ .chroma .or { color:var(--syn-operator) }

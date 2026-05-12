@@ -81,7 +81,7 @@ def fibonacci(n):
 ```
 
 ```go
-# go
+// go
 package main
 
 import "fmt"
