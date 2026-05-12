@@ -71,57 +71,63 @@ title = "Beautiful Hugo"
 
 [[menu.main]]
     parent = "features"
+    name = "Pages & Layouts"
+    url = "page/pages-and-layouts/"
+    weight = 1
+
+[[menu.main]]
+    parent = "features"
     name = "Configuration"
     url = "page/configuration/"
-    weight = 1
+    weight = 2
 
 [[menu.main]]
     parent = "features"
     name = "Shortcodes"
     url = "page/shortcodes/"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     parent = "features"
     name = "Code Blocks"
     url = "page/code-blocks/"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     parent = "features"
     name = "Markdown Extensions"
     url = "page/markdown-extensions/"
-    weight = 4
+    weight = 5
 
 [[menu.main]]
     parent = "features"
     name = "Figures & Galleries"
     url = "page/figures-and-galleries/"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     parent = "features"
     name = "Math & Diagrams"
     url = "page/math-and-diagrams/"
-    weight = 6
+    weight = 7
 
 [[menu.main]]
     parent = "features"
     name = "Layout Options"
     url = "page/layout-options/"
-    weight = 7
+    weight = 8
 
 [[menu.main]]
     parent = "features"
     name = "Comments & Social"
     url = "page/comments-and-social/"
-    weight = 8
+    weight = 9
 
 [[menu.main]]
     parent = "features"
     name = "SEO & i18n"
     url = "page/seo-and-i18n/"
-    weight = 9
+    weight = 10
 
 [[menu.main]]
     identifier = "blog"
