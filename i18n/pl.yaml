@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "02.01.2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Opublikowany {{ . }}"
 - id: lastModified
-  translation: "(Ostatnia modyfikacja {{ . }})"
+  translation: "Ostatnia modyfikacja {{ . }}"
 - id: translationsLabel
   translation: "Inne języki: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "minuty"
 - id: words
   translation: "słowa"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> napędzany &nbsp;&bull;&nbsp; Motyw <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> przystosowany od <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a> napędzany &nbsp;&bull;&nbsp; Motyw <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> przystosowany od <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
@@ -62,6 +63,10 @@
   translation: "Twój adres email"
 - id: yourWebsite
   translation: "Twoja strona internetowa"
+- id: submit
+  translation: "Wyślij"
+- id: close
+  translation: "Zamknij"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +74,22 @@
 - id: comments
   translation: "komentarzy" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Motyw"
+- id: themeTooltipAuto
+  translation: "Auto (zgodnie z systemem)"
+- id: themeTooltipLight
+  translation: "Tryb jasny"
+- id: themeTooltipDark
+  translation: "Tryb ciemny"
+
 # Related posts
 - id: seeAlso
   translation: "Zobacz też"
+
+# Archive
+- id: all
+  translation: "Wszystkie"
+- id: archiveYearFilter
+  translation: "Filtruj według roku"

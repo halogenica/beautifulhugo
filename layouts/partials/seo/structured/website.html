@@ -1,9 +1,13 @@
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" .Site.Title
+  "url" .Site.BaseURL
+  "@id" (printf "%s#website" .Site.BaseURL)
+-}}
+{{- with .Site.Params.alternatePageName -}}
+  {{- $schema = merge $schema (dict "alternateName" .) -}}
+{{- end -}}
 <script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "{{ .Site.Title }}",
-    {{ with .Site.Params.alternatePageName }}"alternateName": "{{ . }}",{{ end }}
-    "url": "{{ .Site.BaseURL }}"
-}
+{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
 </script>

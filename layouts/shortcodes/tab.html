@@ -1,0 +1,47 @@
+{{- if .Parent -}}
+  {{- $groupId := .Parent.Get "groupId" -}}
+  {{- if not $groupId -}}
+    {{- $autoKey := "tabs-auto-group" -}}
+    {{- $groupId = .Page.Store.Get $autoKey -}}
+    {{- if not $groupId -}}
+      {{- $groupId = printf "tabs-auto-%d" (add 1 (default 0 (.Page.Store.Get "tabsAutoCounter"))) -}}
+      {{- .Page.Store.Set "tabsAutoCounter" (add 1 (default 0 (.Page.Store.Get "tabsAutoCounter"))) -}}
+      {{- .Page.Store.Set $autoKey $groupId -}}
+      {{- .Page.Store.Set "tabs-last-auto-group" $groupId -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $name := trim (.Get 0) " " -}}
+  {{- if eq $name "" -}}
+    {{- errorf "%q: tab shortcode missing a tab name" .Page.Path -}}
+  {{- end -}}
+  {{- $ordinalKey := printf "tabs-ordinal-%s" $groupId -}}
+  {{- $ordinal := add 1 (default 0 (.Page.Store.Get $ordinalKey)) -}}
+  {{- .Page.Store.Set $ordinalKey $ordinal -}}
+  {{- $instanceKey := printf "tabs-instance-%s" $groupId -}}
+  {{- $instanceId := .Page.Store.Get $instanceKey -}}
+  {{- if not $instanceId -}}
+    {{- $instanceId = $groupId -}}
+  {{- end -}}
+  {{- $paneId := printf "%s-pane-%d" $instanceId $ordinal -}}
+  {{- $buttonId := printf "%s-tab" $paneId -}}
+  {{- $key := printf "%s-%d" ($name | anchorize) $ordinal -}}
+  {{- $tabsKey := printf "tabs-data-%s" $groupId -}}
+  {{- $tabs := default (slice) (.Page.Store.Get $tabsKey) -}}
+  {{- .Page.Store.Set $tabsKey ($tabs | append (dict
+    "active" (eq $ordinal 1)
+    "buttonId" $buttonId
+    "key" $key
+    "paneId" $paneId
+    "title" $name
+  )) -}}
+  {{- with .Inner -}}
+    <div
+      class="tab-pane fade{{ if eq $ordinal 1 }} show active{{ end }}"
+      id="{{ $paneId }}"
+      role="tabpanel"
+      aria-labelledby="{{ $buttonId }}"
+      tabindex="0">{{ . | markdownify }}</div>
+  {{- end -}}
+{{- else -}}
+  {{- errorf "%q: tab shortcode missing its parent" .Page.Path -}}
+{{- end -}}

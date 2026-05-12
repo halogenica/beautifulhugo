@@ -1,33 +1,85 @@
 /* --- Code blocks --- */
 
-.chroma .ln {
-  margin-right: 0.8em;
-  padding: 0 0.4em 0 0.4em;
+.highlight {
+  box-sizing: border-box;
+  margin: 0.5rem 0;
+  position: relative;
 }
-pre code.hljs {
+
+pre:not(.chroma) {
+  margin: 0.5rem 0;
+}
+
+pre:not(.chroma) > code:not(.hljs) {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-size: 13px;
+  overflow-x: auto;
   padding: 9.5px;
 }
 
-.highlight tr, .highlight pre {
+.highlight tr,
+.highlight pre {
   border: none;
 }
 
-.highlight div:first-child {
+.highlight pre,
+.highlight .chroma {
   border-radius: 4px;
+  font-size: 13px;
+  margin: 0;
+  overflow-x: auto;
 }
 
-.highlight td:first-child pre, .highlight pre {
-  border-top-left-radius: 4px;
-  border-top-right-radius: unset;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: unset;
-  overflow-y: hidden;
+.highlight > pre,
+.highlight > .chroma {
+  padding: 9.5px;
 }
 
-.highlight td:last-child pre, .highlight pre {
-  border-radius: unset;
+.highlight .lntable {
+  border-spacing: 0;
+  display: block;
+  margin: 0;
+  width: 100%;
 }
 
-.highlight td:last-child pre code, .highlight pre code {
+.highlight .lntd {
+  padding: 0;
+  vertical-align: top;
+}
+
+.highlight .lntd pre {
+  padding: 9.5px;
+}
+
+.highlight .lntd:first-child pre {
+  border-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 0;
+}
+
+.highlight .lntd:last-child pre {
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 0;
+}
+
+.highlight .lnt,
+.highlight .ln {
+  margin-right: 0.8em;
+  padding: 0 0.4em;
+}
+
+.highlight td:last-child pre code,
+.highlight pre code {
   white-space: pre;
+}
+
+pre code.hljs {
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 9.5px;
 }

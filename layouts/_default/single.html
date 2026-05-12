@@ -1,18 +1,20 @@
 {{ define "main" }}
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        {{ .Content }}
+  <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}" role="main">
+    <div class="row">
+      <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
+        <article role="main" class="blog-post">
+          {{ partial "github-buttons" . }}
+          {{ partial "before_content.html" . }}
+          {{ .Content }}
+          {{ partial "after_content.html" . }}
 
         {{ if .Params.tags }}
           <div class="blog-tags">
             {{ range .Params.tags }}
-              <!-- Fix for "https://github.com/halogenica/beautifulhugo/issues/349".
-              Inspired by "https://github.com/dovidio/personalwebsite/commit/34762e94c29fd2c26c16c45f8ae2de21bdf9b46d".
-              <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-              -->
-              <a href="{{"tags" | absLangURL}}/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+              {{- $tagName := . -}}
+              {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}
+              <a href="{{ .Permalink }}">{{ $tagName }}</a>&nbsp;
+              {{- end -}}
             {{ end }}
           </div>
         {{ end }}
@@ -20,48 +22,54 @@
         {{ if $.Param "socialShare" }}
             <hr/>
             <section id="social-share">
-              <div class="list-inline footer-links">
+              <div class="footer-links">
                 {{ partial "share-links" . }}
               </div>
             </section>
         {{ end }}
 
         {{ if .Site.Params.showRelatedPosts }}
-          {{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
-            {{ $.Scratch.Set "has_related" true }}
-          {{ end }}
-
-          {{ if $.Scratch.Get "has_related" }}
-                  <h4 class="see-also">{{ i18n "seeAlso" }}</h4>
-                  <ul>
-                {{ $num_to_show := .Site.Params.related_content_limit | default 5 }}
-                {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                {{ end }}
-              </ul>
-
+          {{- $related := where (where .Site.RegularPages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink }}
+          {{- $num_to_show := .Site.Params.related_content_limit | default 5 }}
+          {{- with first $num_to_show $related }}
+            <h4 class="see-also">{{ i18n "seeAlso" }}</h4>
+            <div class="see-also-list">
+              {{ range . }}
+                <a href="{{ .RelPermalink }}" class="see-also-item">
+                  <span class="see-also-item-title">{{ .Title }}</span>
+                  {{ with .Params.subtitle }}<span class="see-also-item-subtitle">{{ . }}</span>{{ end }}
+                </a>
+              {{ end }}
+            </div>
           {{ end }}
         {{ end }}
       </article>
 
       {{ if ne .Type "page" }}
-        <ul class="pager blog-pager">
+        <ul class="post-pager blog-post-pager">
           {{ if .PrevInSection }}
-            <li class="previous">
-              <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
+            <li class="pager-prev">
+              <a href="{{ .PrevInSection.Permalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
             </li>
           {{ end }}
           {{ if .NextInSection }}
-            <li class="next">
-              <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
+            <li class="pager-next">
+              <a href="{{ .NextInSection.Permalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
             </li>
           {{ end }}
         </ul>
       {{ end }}
 
 
-      {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
-      
+      {{ if and (ne .Type "page") (.Param "comments") }}
+      {{ if .Site.Params.giscus }}
+        {{ partial "giscus-comments.html" . }}
+      {{ end }}
+
+      {{ if .Site.Params.utterances }}
+        {{ partial "utterances-comments.html" . }}
+      {{ end }}
+
       {{ if .Site.Params.cusdisID }}
 
         <div id="cusdis_thread"
@@ -79,7 +87,7 @@
       {{ if .Site.Config.Services.Disqus.Shortname }}
           {{ if .Site.Params.delayDisqus }}
           <div class="disqus-comments">                  
-            <button id="show-comments" class="btn btn-default" type="button">{{ i18n "show" }} <span class="disqus-comment-count" data-disqus-url="{{ trim .Permalink "/" }}">{{ i18n "comments" }}</span></button>
+            <button id="show-comments" class="btn btn-secondary" type="button">{{ i18n "show" }} <span class="disqus-comment-count" data-disqus-url="{{ trim .Permalink "/" }}">{{ i18n "comments" }}</span></button>
             <div id="disqus_thread"></div>
 
             <script type="text/javascript">
@@ -101,6 +109,8 @@
           </div>
         {{ end }}
       {{ end }}
+
+      {{ partial "toc.html" . }}
 
     </div>
   </div>

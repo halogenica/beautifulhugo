@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "January 2, 2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "发表于 {{ . }}"
 - id: lastModified
-  translation: "(上次修改时间 {{ . }})"
+  translation: "上次修改时间 {{ . }}"
 - id: translationsLabel
   translation: "其它语言: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "分钟"
 - id: words
   translation: "个字"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '由 <a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '由 <a href="https://gohugo.io">Hugo v{{ .Version }}</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
@@ -62,6 +63,10 @@
   translation: "您的电子邮件地址"
 - id: yourWebsite
   translation: "你的网页"
+- id: submit
+  translation: "提交"
+- id: close
+  translation: "关闭"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +74,22 @@
 - id: comments
   translation: "则评论"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "主题"
+- id: themeTooltipAuto
+  translation: "自动（跟随系统）"
+- id: themeTooltipLight
+  translation: "浅色模式"
+- id: themeTooltipDark
+  translation: "深色模式"
+
 # Related posts
 - id: seeAlso
   translation: "也可以看看"
+
+# Archive
+- id: all
+  translation: "全部"
+- id: archiveYearFilter
+  translation: "按年份筛选"

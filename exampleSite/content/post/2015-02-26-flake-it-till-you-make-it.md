@@ -2,6 +2,8 @@
 title: Flake it till you make it
 subtitle: Excerpt from Soulshaping by Jeff Brown
 date: 2015-02-26
+categories: ["personal"]
+tags: ["literature", "personal"]
 bigimg: [{src: "/img/path.jpg", desc: "Path"}]
 ---
 

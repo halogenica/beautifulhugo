@@ -1,16 +1,13 @@
-baseurl = "https://username.github.io"
+# This gets overridden when building for production
+baseurl = "http://localhost:1313/"
 DefaultContentLanguage = "en"
 title = "Beautiful Hugo"
-# Using theme as git submodule
-theme = "beautifulhugo"
-# Or when using theme as hugo module
-# theme = "github.com/halogenica/beautifulhugo"
-pygmentsStyle = "trac"
-pygmentsUseClasses = true
-pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
-#pygmentsUseClassic = true
-#pygmentOptions = "linenos=inline"
+
+[[module.imports]]
+   path = "github.com/halogenica/beautifulhugo"
+
+[pagination]
+  pagerSize = 5
 
 [Services]
   [Services.Disqus]
@@ -18,48 +15,49 @@ pygmentsCodefencesGuessSyntax = true
   [Services.googleAnalytics]
     # id = "XXX"
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
 [Params]
-#  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
   subtitle = "Build a beautiful and simple website in minutes"
-  mainSections = ["post","posts"]
-  logo = "img/avatar-icon.png" # Expecting square dimensions
-  favicon = "img/favicon.ico"
-  dateFormat = "January 2, 2006"
+  mainSections = ["post", "posts"]
+  logo = "/img/avatar-icon.png" # Expecting square dimensions
+  favicon = "/img/favicon.ico"
+  dateFormat = ":date_long"
   commit = false
   rss = true
-  comments = true
   readingTime = true
   wordCount = true
-  useHLJS = true
+  colorScheme = "auto"
   socialShare = true
   delayDisqus = true
   showRelatedPosts = true
-#  cusdisID = "XXX" # Get your App id from cusdis.com
-#  hideAuthor = true
-#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
-#  disclaimerText = "The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way."
+  disableFigureOverride = true
+  headerImgStyle = "narrow"
 
-#[[Params.bigimg]]
-#  src = "img/triangle.jpg"
-#  desc = "Triangle"
-#[[Params.bigimg]]
-#  src = "img/sphere.jpg"
-#  desc = "Sphere"
-#  # position: see values of CSS background-position.
-#  position = "center top"
-#[[Params.bigimg]]
-#  src = "img/hexagon.jpg"
-#  desc = "Hexagon"
+[[Params.bigimg]]
+  src = "/img/triangle.jpg"
+  desc = "Triangle"
+[[Params.bigimg]]
+  src = "/img/sphere.jpg"
+  desc = "Sphere"
+  position = "center top"
+[[Params.bigimg]]
+  src = "/img/hexagon.jpg"
+  desc = "Hexagon"
+
+#[Params.AISearchSummary.Googlebot]
+#summaryLimit = 150
+#[Params.AISearchSummary.robots]
+#summaryLimit = 300
+
 
 [Params.author]
-  # Set only your "username" for default hosts and full URLs otherwise (e.g., "https://MyGitLab.org/username")
   name = "Some Person"
   website = "yourwebsite.com"
   email = "youremail@domain.com"
-  facebook = "username"
   github = "username"
-  gitlab = "username"
-  bitbucket = "username"
   twitter = "username"
   reddit = "username"
   linkedin = "in/username" # or company/username
@@ -87,40 +85,121 @@ pygmentsCodefencesGuessSyntax = true
   lastfm = "username"
   bluesky = "username"
 
+[markup.highlight]
+  noClasses = false
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
 [[menu.main]]
-    name = "Blog"
-    url = ""
+    identifier = "setup"
+    name = "Setup"
     weight = 1
+
+[[menu.main]]
+    parent = "setup"
+    name = "Configuration"
+    url = "page/configuration/"
+    weight = 1
+
+[[menu.main]]
+    parent = "setup"
+    name = "Layout Options"
+    url = "page/layout-options/"
+    weight = 2
+
+[[menu.main]]
+    parent = "setup"
+    name = "Theming"
+    url = "page/theming/"
+    weight = 3
+
+[[menu.main]]
+    parent = "setup"
+    name = "SEO & i18n"
+    url = "page/seo-and-i18n/"
+    weight = 4
+
+[[menu.main]]
+    parent = "setup"
+    name = "Comments & Social"
+    url = "page/comments-and-social/"
+    weight = 5
+
+[[menu.main]]
+    identifier = "features"
+    name = "Features"
+    weight = 2
+
+[[menu.main]]
+    parent = "features"
+    name = "Pages & Layouts"
+    url = "page/pages-and-layouts/"
+    weight = 1
+
+[[menu.main]]
+    parent = "features"
+    name = "Shortcodes"
+    url = "page/shortcodes/"
+    weight = 2
+
+[[menu.main]]
+    parent = "features"
+    name = "Code Blocks"
+    url = "page/code-blocks/"
+    weight = 3
+
+[[menu.main]]
+    parent = "features"
+    name = "Markdown Extensions"
+    url = "page/markdown-extensions/"
+    weight = 4
+
+[[menu.main]]
+    parent = "features"
+    name = "Figures & Galleries"
+    url = "page/figures-and-galleries/"
+    weight = 5
+
+[[menu.main]]
+    parent = "features"
+    name = "Math & Diagrams"
+    url = "page/math-and-diagrams/"
+    weight = 6
+
+[[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    weight = 3
+
+[[menu.main]]
+    parent = "blog"
+    name = "Posts"
+    url = "post/"
+    weight = 1
+
+[[menu.main]]
+    parent = "blog"
+    name = "Tags"
+    url = "tags/"
+    weight = 2
+
+[[menu.main]]
+    parent = "blog"
+    name = "Categories"
+    url = "categories/"
+    weight = 3
+
+[[menu.main]]
+    parent = "blog"
+    name = "Archives"
+    url = "archives/"
+    weight = 4
 
 [[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 3
-
-[[menu.main]]
-    identifier = "samples"
-    name = "Samples"
-    weight = 2
-
-[[menu.main]]
-    parent = "samples"
-    name = "Big Image Sample"
-    url = "post/2017-03-07-bigimg-sample"
-    weight = 1
-
-[[menu.main]]
-    parent = "samples"
-    name = "Math Sample"
-    url = "post/2017-03-05-math-sample"
-    weight = 2
-
-[[menu.main]]
-    parent = "samples"
-    name = "Code Sample"
-    url = "post/2016-03-08-code-sample"
-    weight = 3
-
-[[menu.main]]
-    name = "Tags"
-    url = "tags"
-    weight = 3
+    weight = 4

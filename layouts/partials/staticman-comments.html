@@ -1,9 +1,15 @@
 <section class="js-comments staticman-comments">
+  {{- $data := dict -}}
+  {{- if ge hugo.Version "0.156.0" -}}
+    {{- $data = hugo.Data -}}
+  {{- else -}}
+    {{- $data = .Site.Data -}}
+  {{- end -}}
 
   {{ $slug := replace .RelPermalink "/" "" }}
 
-  {{ if .Site.Data.comments }}
-    {{ $comments := index $.Site.Data.comments $slug }}
+  {{ with $data.comments }}
+    {{ $comments := index . $slug }}
     {{ if $comments }}
       {{ if gt (len $comments) 1  }}
         <h3>{{ len $comments  }} {{ i18n "moreComment" }}</h3>
@@ -15,18 +21,18 @@
     {{ end }}
 
 
-    {{ $.Scratch.Set "hasComments" 0 }}
-    {{ range $index, $comments := (index $.Site.Data.comments $slug ) }}
+    {{ $.Store.Set "hasComments" 0 }}
+    {{ range $index, $comments := $comments }}
       {{ if not .parent }}
-        {{ $.Scratch.Add "hasComments" 1 }}
-        <article id="comment-{{ $.Scratch.Get "hasComments" }}" class="static-comment">
-          <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=48">
+        {{ $.Store.Set "hasComments" (add ($.Store.Get "hasComments") 1) }}
+        <article id="comment-{{ $.Store.Get "hasComments" }}" class="static-comment">
+          <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ md5 .email }}?s=48">
           {{ if .website }}
-          <h4 class="comment-author"><a rel="external nofollow" href="{{ .website }}">{{ .name }}</a></h4>
+          <h4 class="comment-author"><a rel="external nofollow noopener noreferrer" href="{{ .website }}">{{ .name }}</a></h4>
           {{ else }}
           <h4 class="comment-author">{{ .name }}</h4>
           {{ end }}
-          <div class="comment-timestamp"><a href="#comment-{{ $.Scratch.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ dateFormat (default (i18n "shortdateFormat") .Site.Params.dateformat) .date}}</time></a></div>
+          <div class="comment-timestamp"><a href="#comment-{{ $.Store.Get "hasComments" }}" title="Permalink to this comment"><time datetime="{{ .date }}">{{ time.Format (default (i18n "shortdateFormat") .Site.Params.dateformat) .date }}</time></a></div>
           <div class="comment-content"><p>{{ .comment | markdownify }}</p></div>
         </article>
       {{ end }}
@@ -76,18 +82,18 @@
 
   <fieldset>
     <button class="button">
-      Submit
+      {{ i18n "submit" }}
     </button>
   </fieldset>
 </form>
 </section>
 
-<article class="modal">
+<article class="modal" role="dialog" aria-modal="true" aria-labelledby="staticman-modal-title" tabindex="-1">
   <div class="title">
-    <h2 class="js-modal-title"></h2>
+    <h2 class="js-modal-title" id="staticman-modal-title"></h2>
   </div>
   <div class="js-modal-text"></div>
   <div>
-    <button class="js-close-modal">Close</button>
+    <button class="js-close-modal">{{ i18n "close" }}</button>
   </div>
 </article>

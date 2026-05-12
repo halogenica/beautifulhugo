@@ -1,35 +1,24 @@
 {{ define "main" }}
   <div role="main" class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         {{ with .Content }}
-          <div class="well">
+          <div class="content-section">
             {{.}}
           </div>
         {{ end }}
 
         <div class="posts-list">
-          {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+          {{ $mainSections := default (slice "post" "posts") site.Params.mainSections }}
+          {{ $pag := .Paginate (where (where site.RegularPages "Type" "in" $mainSections) "Params.hidden" "!=" true) }}
           {{ range $pag.Pages }}
             {{ partial "post_preview" . }}
           {{ end }}
         </div>
 
-        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-          <ul class="pager main-pager">
-            {{ if .Paginator.HasPrev }}
-              <li class="previous">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
-              </li>
-            {{ end }}
-            {{ if .Paginator.HasNext }}
-              <li class="next">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
-              </li>
-            {{ end }}
-          </ul>
-        {{ end }}
+        {{ partial "paginator.html" . }}
       </div>
     </div>
+    {{ partial "toc.html" . }}
   </div>
 {{ end }}

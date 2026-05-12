@@ -4,11 +4,11 @@
 
 - id: dateFormat
 
-  translation: "2 January 2006"
+  translation: ":date_long"
 
 - id: shortdateFormat
 
-  translation: "2 Jan 2006 15:04:05"
+  translation: ":date_medium"
 
 - id: postedOnDate
 
@@ -16,7 +16,7 @@
 
 - id: lastModified
 
-  translation: "(Darrera modifega ell {{ . }})"
+  translation: "Darrera modifega ell {{ . }}"
 
 - id: translationsLabel
 
@@ -54,9 +54,9 @@
 
   translation: "paroll"
 
+- id: readingTime
 
-
-
+  translation: ""
 
 # 404 page
 
@@ -70,7 +70,7 @@
 
 - id: poweredBy # Accepts HTML
 
-  translation: '<a href="https://gohugo.io">Desviluppaa con Hugo v{{ .Site.Hugo.Version }}</a> &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adattaa de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '<a href="https://gohugo.io">Desviluppaa con Hugo v{{ .Version }}</a> &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adattaa de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 
 
@@ -128,100 +128,16 @@
 
   translation: "El tò sitt web"
 
+- id: submit
 
+  translation: "Spedì"
 
-# Delayed Disqus
-
-- id: show
-
-  translation: "Mostra"
-
-- id: comments
-
-  translation: "comment" 
-
-
-
-# Related posts
-
-- id: seeAlso
-
-  translation: "Varda anca"
-
-
-
-# 404 page
-
-- id: pageNotFound
-
-  translation: "Ocio, quella pagina chi la esist no. (errore 404)"
-
-
-
-# Footer
-
-- id: poweredBy # Accepts HTML
-
-  translation: '<a href="https://gohugo.io">Desviluppaa con Hugo v{{ .Site.Hugo.Version }}</a> &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adattaa de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
-
-
-
-# Navigation
-
-- id: toggleNavigation
-
-  translation: "Attiva/disattiva la navigazion"
-
-- id: languageSwitcherLabel
-
-  translation: "Lengua"
-
-- id: gcseLabelShort
-
-  translation: "Cerca"
-
-- id: gcseLabelLong
-
-  translation: "Cerca {{ .Site.Title }}"
-
-- id: gcseClose
+- id: close
 
   translation: "Sara su"
 
 
 
-# Staticman
-
-- id: noComment
-
-  translation: "Nissub comment"
-
-- id: oneComment
-
-  translation: "comment"
-
-- id: moreComment
-
-  translation: "comment"
-
-- id: useMarkdown
-
-  translation: "Te pòdet doperà la sintassi Markdown"
-
-- id: yourName
-
-  translation: "El tò nomm"
-
-- id: yourEmail
-
-  translation: "La toa adressa e-mail"
-
-- id: yourWebsite
-
-  translation: "El tò sitt web"
-
-
-
 # Delayed Disqus
 
 - id: show
@@ -230,7 +146,27 @@
 
 - id: comments
 
-  translation: "comment" 
+  translation: "comment"
+
+
+
+# Theme toggle
+
+- id: themeToggleLabel
+
+  translation: "Temma"
+
+- id: themeTooltipAuto
+
+  translation: "Auto (segonda el sistema)"
+
+- id: themeTooltipLight
+
+  translation: "Mod ciar"
+
+- id: themeTooltipDark
+
+  translation: "Mod scür"
 
 
 
@@ -239,3 +175,15 @@
 - id: seeAlso
 
   translation: "Varda anca"
+
+
+
+# Archive
+
+- id: all
+
+  translation: "Tucc"
+
+- id: archiveYearFilter
+
+  translation: "Filtra per ann"

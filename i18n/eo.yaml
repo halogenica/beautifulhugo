@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "2006-01-02"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Afiŝiĝis je {{ . }}"
 - id: lastModified
-  translation: "(Laste aliiĝis je {{ . }})"
+  translation: "Laste aliiĝis je {{ . }}"
 - id: translationsLabel
   translation: "Aliaj lingvoj: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "minutoj"
 - id: words
   translation: "vortoj"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,7 +34,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a>-povigita &nbsp;&bull;&nbsp; Haŭto de <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptiĝis de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a>-povigita &nbsp;&bull;&nbsp; Haŭto de <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptiĝis de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
@@ -62,6 +63,10 @@
   translation: "Via retpoŝtadreso"
 - id: yourWebsite
   translation: "Via retpaĝaro"
+- id: submit
+  translation: "Sendi"
+- id: close
+  translation: "Fermi"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +74,22 @@
 - id: comments
   translation: "komentoj" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Temo"
+- id: themeTooltipAuto
+  translation: "Aŭto (sekvas sistemon)"
+- id: themeTooltipLight
+  translation: "Hela reĝimo"
+- id: themeTooltipDark
+  translation: "Malhela reĝimo"
+
 # Related posts
 - id: seeAlso
   translation: "Vidu ankaŭ"
+
+# Archive
+- id: all
+  translation: "Ĉiuj"
+- id: archiveYearFilter
+  translation: "Filtri laŭ jaro"

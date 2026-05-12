@@ -1,4 +1,4 @@
-{{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (.Site.Params.comments)) }}
+{{ if .Param "comments" }}
   {{ if .Site.Config.Services.Disqus.Shortname }}
     <div class="comments">
       {{ partial "disqus.html" . }}

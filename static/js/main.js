@@ -24,15 +24,26 @@ var main = {
     });
 
     // On mobile, when clicking on a multi-level navbar menu, show the child links
-    $('#main-navbar').on("click", ".navlinks-parent", function(e) {
+    // Also handles keyboard (Enter and Space) for accessibility
+    $('#main-navbar').on("click keydown", ".navlinks-parent", function(e) {
+      if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
+        return;
+      }
+      if (e.type === 'keydown') {
+        e.preventDefault();
+      }
       var target = e.target;
+      var isExpanded = false;
       $.each($(".navlinks-parent"), function(key, value) {
         if (value == target) {
-          $(value).parent().toggleClass("show-children");
+          var showing = $(value).parent().toggleClass("show-children").hasClass("show-children");
+          isExpanded = showing;
         } else {
           $(value).parent().removeClass("show-children");
+          $(value).attr("aria-expanded", "false");
         }
       });
+      $(target).attr("aria-expanded", isExpanded ? "true" : "false");
     });
 
     // Ensure nested navbar menus are not longer than the menu header
@@ -64,6 +75,85 @@ var main = {
 
     // show the big header image
     main.initImgs();
+
+    // Initialize Bootstrap 5 tooltips
+    var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    [...tooltipTriggerList].map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // Theme toggle
+    var themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      var themeStates = ['auto', 'light', 'dark'];
+      var themeIcons = {
+        auto: document.getElementById('theme-icon-auto'),
+        light: document.getElementById('theme-icon-light'),
+        dark: document.getElementById('theme-icon-dark')
+      };
+
+      function updateThemeTooltip(state) {
+        var tooltipText = themeToggle.getAttribute('data-tooltip-' + state) || '';
+        themeToggle.setAttribute('title', tooltipText);
+        themeToggle.setAttribute('data-bs-original-title', tooltipText);
+        var bsTooltip = bootstrap.Tooltip.getInstance(themeToggle);
+        if (bsTooltip) {
+          bsTooltip.dispose();
+          new bootstrap.Tooltip(themeToggle);
+          if (themeToggle.matches(':hover')) {
+            bootstrap.Tooltip.getOrCreateInstance(themeToggle).show();
+          }
+        }
+      }
+
+      function updateThemeUI(state) {
+        for (var key in themeIcons) {
+          if (themeIcons[key]) {
+            themeIcons[key].style.display = (key === state) ? '' : 'none';
+          }
+        }
+        if (state === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (state === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = (state === 'light');
+        }
+        updateThemeTooltip(state);
+      }
+
+      // Initialize from localStorage
+      var savedTheme = localStorage.getItem('theme');
+      if (themeStates.indexOf(savedTheme) !== -1) {
+        updateThemeUI(savedTheme);
+      }
+
+      // Listen for system color-scheme changes
+      var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      if (darkModeQuery.addEventListener) {
+        darkModeQuery.addEventListener('change', function() {
+          var current = localStorage.getItem('theme') || 'auto';
+          if (current === 'auto') {
+            updateThemeUI('auto');
+          }
+        });
+      }
+
+      themeToggle.addEventListener('click', function() {
+        var current = localStorage.getItem('theme') || 'auto';
+        var next = themeStates[(themeStates.indexOf(current) + 1) % themeStates.length];
+        updateThemeUI(next);
+        localStorage.setItem('theme', next);
+      });
+    }
   },
 
   initImgs : function() {
@@ -79,6 +169,11 @@ var main = {
     var desc = imgInfo.desc;
     var position = imgInfo.position;
       main.setImg(src, desc, position);
+
+    // If the user prefers reduced motion, skip the cycling animation
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
 
     // For better UX, prefetch the next image so that it will already be loaded when we want to show it
       var getNextImg = function() {

@@ -1,0 +1,11 @@
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "WebPage"
+  "name" .Title
+  "@id" .Permalink
+  "url" .Permalink
+  "breadcrumb" (dict "@id" (printf "%s#breadcrumb" .Permalink))
+-}}
+<script type="application/ld+json">
+{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
+</script>

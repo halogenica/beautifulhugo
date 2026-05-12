@@ -1,21 +1,47 @@
+{{- $items := slice -}}
+{{- $position := 1 -}}
+
+{{/* Home */}}
+{{- $items = $items | append (dict
+  "@type" "ListItem"
+  "position" $position
+  "name" "Home"
+  "item" .Site.BaseURL
+) -}}
+
+{{/* Ancestors */}}
+{{- range where .Ancestors.Reverse "IsHome" false -}}
+  {{- $position = add $position 1 -}}
+
+  {{/* Get Directory name .Title is not set */}}
+  {{- $segments := split (trim .Path "/") "/" -}}
+  {{- $last := index $segments (sub (len $segments) 1) -}}
+  {{- $title := .Title | default $last -}}
+
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" $title
+    "item" .Permalink
+  ) -}}
+{{- end -}}
+
+{{/* Current page */}}
+{{- if not .IsHome -}}
+  {{- $position = add $position 1 -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" .Title
+    "item" .Permalink
+  ) -}}
+{{- end -}}
+{{- $id := printf "%s#breadcrumb" .Permalink -}}
 <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "{{ .Site.BaseURL }}",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "{{ .Permalink }}",
-          "name": "{{ .Title | humanize }}"
-        }
-    }]
-}
+{{ dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "@id" $id
+  "itemListElement" $items
+| jsonify (dict "indent" "  ") | safeJS }}
 </script>

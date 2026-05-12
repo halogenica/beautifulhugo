@@ -1,0 +1,9 @@
+{{- $subtitle := .Subtitle }}
+{{- $ctx := .Context }}
+{{ if $subtitle }}
+  {{ if eq $ctx.Type "page" }}
+    <span class="{{ $ctx.Type }}-subheading">{{ $subtitle }}</span>
+  {{ else }}
+    <h2 class="{{ $ctx.Type }}-subheading">{{ $subtitle }}</h2>
+  {{ end }}
+{{ end }}
