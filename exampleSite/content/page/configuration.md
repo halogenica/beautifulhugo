@@ -56,9 +56,22 @@ If a social value starts with `http://` or `https://`, it is used as-is. Otherwi
 | Param | Type | Default | Description |
 |-------|------|---------|-------------|
 | `colorScheme` | string | `"auto"` | `"auto"`, `"dark"`, or `"light"` |
-| `selfHosted` | bool | `false` | Serve all assets from `/static/` instead of CDNs |
 
-When `colorScheme = "auto"`, a theme toggle button appears in the navbar that cycles between auto, light, and dark. The user's choice persists via `localStorage`.
+### How it works
+
+The theme uses the `data-theme` attribute on `<html>` to control dark mode:
+
+- **`"auto"`** — Follows the system preference (`prefers-color-scheme`). A toggle button appears in the navbar so users can override it. The toggle cycles through **auto → light → dark → auto**.
+- **`"dark"`** — Always dark. No toggle button is shown.
+- **`"light"`** — Always light. No toggle button is shown; dark CSS is not loaded at all.
+
+When `colorScheme = "auto"`, the theme reacts to OS-level dark mode changes in real time via a `matchMedia` listener. If a user changes their system appearance while the site is open, the page updates immediately (unless they have explicitly chosen light or dark via the toggle).
+
+The user's toggle preference persists across pages via `localStorage` (key: `theme`). An inline script in `<head>` restores it before the first paint to prevent a flash of the wrong theme.
+
+For customizing dark mode colors, theme-dependent content, and other appearance overrides, see [Theming](../theming/).
+
+### selfHosted assets
 
 When `selfHosted = true`, the following assets are served from `static/` instead of CDNs:
 
