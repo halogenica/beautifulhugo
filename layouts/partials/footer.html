@@ -57,9 +57,9 @@
             {{ else }}
               {{ .Site.Params.author.name }}
             {{ end }}
+            &nbsp;&bull;&nbsp;
           {{ end }}
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           {{ if .Site.Params.since }}
             {{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}
           {{ else }}
