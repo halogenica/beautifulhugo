@@ -8,11 +8,11 @@ Beautiful Hugo ships with several shortcodes for common patterns like collapsibl
 
 ## callout
 
-The `callout` shortcode renders a Bootstrap alert-based callout box. It supports multiple paragraphs and an optional title. Five styles are available: `info` (default), `warning`, `danger`, `success`, and `note`.
+The `callout` shortcode renders a Bootstrap alert-based callout box. It supports multiple paragraphs and an optional title. Nine styles are available, matching Bootstrap 5's alert classes: `primary`, `secondary`, `info` (default), `warning`, `danger`, `success`, `light`, `dark`, and `note` (a custom grey style).
 
 | Parameter | Position | Required | Description |
 |-----------|----------|----------|-------------|
-| type | 1 | no | Callout style: `info` (default), `warning`, `danger`, `success`, `note` |
+| type | 1 | no | Callout style: `primary`, `secondary`, `info` (default), `warning`, `danger`, `success`, `light`, `dark`, `note` |
 | title | 2 | no | Optional heading text (supports Markdown) |
 | (inner) | — | yes | The body content (supports Markdown, multiple paragraphs) |
 
@@ -22,6 +22,14 @@ The `callout` shortcode renders a Bootstrap alert-based callout box. It supports
 This is an **info** callout — the default style. Use it for helpful tips or informational asides.
 
 You can include multiple paragraphs, **formatted text**, and even code: `console.log("hello")`.
+{{< /callout >}}
+
+{{< callout primary "Primary" >}}
+This is a **primary** callout. Use it for key points or branded highlights.
+{{< /callout >}}
+
+{{< callout secondary "Secondary" >}}
+This is a **secondary** callout. Use it for less prominent asides.
 {{< /callout >}}
 
 {{< callout warning "Caution" >}}
@@ -34,6 +42,14 @@ This is a **danger** callout. Use it for critical errors or destructive actions.
 
 {{< callout success "All good" >}}
 This is a **success** callout. Use it for confirmation messages or completed actions.
+{{< /callout >}}
+
+{{< callout light "Light" >}}
+This is a **light** callout. Use it for subtle, low-emphasis notes. It adapts its palette in dark mode.
+{{< /callout >}}
+
+{{< callout dark "Dark" >}}
+This is a **dark** callout. Use it for high-contrast, bold asides. It adapts its palette in dark mode.
 {{< /callout >}}
 
 {{< callout note >}}
@@ -49,6 +65,14 @@ This is an **info** callout — the default style.
 You can include multiple paragraphs.
 {{</* /callout */>}}
 
+{{</* callout primary "Primary" */>}}
+This is a **primary** callout.
+{{</* /callout */>}}
+
+{{</* callout secondary "Secondary" */>}}
+This is a **secondary** callout.
+{{</* /callout */>}}
+
 {{</* callout warning "Caution" */>}}
 This is a **warning** callout.
 {{</* /callout */>}}
@@ -59,6 +83,14 @@ This is a **danger** callout.
 
 {{</* callout success "All good" */>}}
 This is a **success** callout.
+{{</* /callout */>}}
+
+{{</* callout light "Light" */>}}
+This is a **light** callout.
+{{</* /callout */>}}
+
+{{</* callout dark "Dark" */>}}
+This is a **dark** callout.
 {{</* /callout */>}}
 
 {{</* callout note */>}}

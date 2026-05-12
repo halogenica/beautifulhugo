@@ -292,6 +292,26 @@
   color: #ced4da;
 }
 
+[data-theme="dark"] .alert-light {
+  background-color: #343a40;
+  border-color: #495057;
+  color: #dee2e6;
+}
+
+[data-theme="dark"] .alert-light .alert-heading {
+  color: #f8f9fa;
+}
+
+[data-theme="dark"] .alert-dark {
+  background-color: #1a1d20;
+  border-color: #343a40;
+  color: #adb5bd;
+}
+
+[data-theme="dark"] .alert-dark .alert-heading {
+  color: #ced4da;
+}
+
 /* Backward-compatible box-* dark aliases */
 [data-theme="dark"] .box-note,
 [data-theme="dark"] .box-warning,
