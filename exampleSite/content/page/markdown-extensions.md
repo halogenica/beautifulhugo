@@ -1,10 +1,10 @@
 ---
 title: Markdown Extensions
-subtitle: Callout boxes, utility classes, and theme-dependent content
+subtitle: Utility classes and theme-dependent content
 comments: false
 ---
 
-Beautiful Hugo provides several CSS classes that extend standard Markdown with callout boxes, theme-dependent visibility, and layout utilities. There are two ways to use them:
+Beautiful Hugo provides several CSS classes that extend standard Markdown with theme-dependent visibility and layout utilities. There are two ways to use them:
 
 {{< tabs groupId="syntax" >}}
 {{< tab "Raw HTML" >}}
@@ -33,97 +33,9 @@ Both options can be enabled together. The examples below show each approach — 
 
 ## Callout Boxes
 
-Four callout box styles are available. Each has a colored left border and a distinct background.
+Callout boxes are now available as a `callout` shortcode supporting multiple paragraphs and an optional title. See [Shortcodes](../shortcodes/#callout) for full documentation and live examples.
 
-### box-note
-
-<div class="box-note">
-This is a <strong>note</strong> callout. Use it for informational asides, tips, or helpful context.
-</div>
-
-{{< tabs groupId="syntax" >}}
-{{< tab "Raw HTML" >}}
-```html
-<div class="box-note">
-This is a <strong>note</strong> callout. Use it for informational asides.
-</div>
-```
-{{< /tab >}}
-{{< tab "Block Attributes" >}}
-```markdown
-This is a **note** callout. Use it for informational asides.
-{.box-note}
-```
-{{< /tab >}}
-{{< /tabs >}}
-
-### box-warning
-
-<div class="box-warning">
-This is a <strong>warning</strong> callout. Use it to flag potential issues or important caveats.
-</div>
-
-{{< tabs groupId="syntax" >}}
-{{< tab "Raw HTML" >}}
-```html
-<div class="box-warning">
-This is a <strong>warning</strong> callout. Use it to flag potential issues.
-</div>
-```
-{{< /tab >}}
-{{< tab "Block Attributes" >}}
-```markdown
-This is a **warning** callout. Use it to flag potential issues.
-{.box-warning}
-```
-{{< /tab >}}
-{{< /tabs >}}
-
-### box-error
-
-<div class="box-error">
-This is an <strong>error</strong> callout. Use it for critical errors or dangerous actions.
-</div>
-
-{{< tabs groupId="syntax" >}}
-{{< tab "Raw HTML" >}}
-```html
-<div class="box-error">
-This is an <strong>error</strong> callout. Use it for critical errors.
-</div>
-```
-{{< /tab >}}
-{{< tab "Block Attributes" >}}
-```markdown
-This is an **error** callout. Use it for critical errors.
-{.box-error}
-```
-{{< /tab >}}
-{{< /tabs >}}
-
-### box-success
-
-<div class="box-success">
-This is a <strong>success</strong> callout. Use it for confirmation messages or completed actions.
-</div>
-
-{{< tabs groupId="syntax" >}}
-{{< tab "Raw HTML" >}}
-```html
-<div class="box-success">
-This is a <strong>success</strong> callout. Use it for confirmation messages.
-</div>
-```
-{{< /tab >}}
-{{< tab "Block Attributes" >}}
-```markdown
-This is a **success** callout. Use it for confirmation messages.
-{.box-success}
-```
-{{< /tab >}}
-{{< /tabs >}}
-
-All four boxes adapt automatically to dark mode — their backgrounds and borders shift to appropriate dark-mode colors.
+For backward compatibility, the legacy CSS classes (`.box-note`, `.box-warning`, `.box-error`, `.box-success`) still work with raw HTML or block attributes, but the shortcode is recommended.
 
 ## Content Section
 

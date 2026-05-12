@@ -1064,47 +1064,76 @@ table tr td :last-child {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* --- Notification Boxes --- */
+/* --- Callout Boxes (Bootstrap alert-based) --- */
 
+.alert.callout {
+  border-left-width: 5px;
+  border-radius: 5px 3px 3px 5px;
+  margin: 20px 0;
+}
+
+.alert.callout .alert-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.alert-note {
+  color: #383d41;
+  background-color: #e2e3e5;
+  border-color: #d6d8db;
+}
+
+.alert-note .alert-heading {
+  color: #2b2f32;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alert.callout {
+    /* No animation/transition */
+  }
+}
+
+/* Backward-compatible box-* aliases */
 .box-note,
 .box-warning,
 .box-error,
 .box-success {
-  padding: 15px 20px;
+  padding: 1rem 1.25rem;
   margin: 20px 0;
-  border: 1px solid #eee;
+  border: 1px solid transparent;
   border-left-width: 5px;
   border-radius: 5px 3px 3px 5px;
 }
 
 .box-note {
-  background-color: #eee;
-  border-left-color: #2980b9;
+  color: #383d41;
+  background-color: #e2e3e5;
+  border-color: #d6d8db;
+  border-left-color: #6c757d;
 }
 
 .box-warning {
-  background-color: #fdf5d4;
-  border-left-color: #f1c40f;
+  color: #664d03;
+  background-color: #fff3cd;
+  border-color: #ffc107;
+  border-left-color: #ffc107;
 }
 
 .box-error {
-  background-color: #f4dddb;
-  border-left-color: #c0392b;
+  color: #58151c;
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  border-left-color: #dc3545;
 }
 
 .box-success {
-  background-color: #98FB98;
-  border-left-color: #3CB371;
+  color: #0a3622;
+  background-color: #d1e7dd;
+  border-color: #198754;
+  border-left-color: #198754;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .box-note,
-  .box-warning,
-  .box-error,
-  .box-success {
-    /* No animation/transition */
-  }
-}
+.box-success { composes: alert alert-success callout; }
 
 /* --- Card / Accordion --- */
 

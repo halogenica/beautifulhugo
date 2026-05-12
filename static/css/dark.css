@@ -277,7 +277,22 @@
   background-color: var(--dark-list-bg);
 }
 
-/* --- Notification Boxes --- */
+/* --- Callout Boxes (dark mode) --- */
+[data-theme="dark"] .alert.callout {
+  border-color: var(--dark-surface);
+}
+
+[data-theme="dark"] .alert-note {
+  background-color: #2d2f31;
+  border-color: #495057;
+  color: #adb5bd;
+}
+
+[data-theme="dark"] .alert-note .alert-heading {
+  color: #ced4da;
+}
+
+/* Backward-compatible box-* dark aliases */
 [data-theme="dark"] .box-note,
 [data-theme="dark"] .box-warning,
 [data-theme="dark"] .box-error,
@@ -286,23 +301,27 @@
 }
 
 [data-theme="dark"] .box-note {
-  background-color: #152535;
-  border-left-color: #2980b9;
+  background-color: #2d2f31;
+  border-left-color: #6c757d;
+  color: #adb5bd;
 }
 
 [data-theme="dark"] .box-warning {
   background-color: #2d2515;
-  border-left-color: #f1c40f;
+  border-left-color: #ffc107;
+  color: #ffc107;
 }
 
 [data-theme="dark"] .box-error {
   background-color: #2d1515;
-  border-left-color: #c0392b;
+  border-left-color: #dc3545;
+  color: #f1aeb5;
 }
 
 [data-theme="dark"] .box-success {
   background-color: #142d14;
-  border-left-color: #3CB371;
+  border-left-color: #198754;
+  color: #a3cfbb;
 }
 
 /* Theme-dependent visibility (usable for mermaid diagrams, image pairs, etc.) */
