@@ -1,6 +1,6 @@
 /* Chroma syntax highlighting — colors matched to highlight.js GitHub Dark theme (github-dark) */
 
-:root {
+[data-theme="dark"] {
   --syn-bg: #0d1117;
   --syn-fg: #c9d1d9;
   --syn-hl: #1c2128;

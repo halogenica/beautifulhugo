@@ -92,7 +92,7 @@
   {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
   {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
-  <link id="hljs-dark" rel="stylesheet" href="{{ "css/highlight-dark.min.css" | absURL }}"{{ if eq .Site.Params.colorScheme "light" }} disabled{{ end }} />
+  <link id="hljs-dark" rel="stylesheet" href="{{ "css/highlight-dark.min.css" | absURL }}" />
   {{- end -}}
   {{- else -}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css" integrity="sha384-eFTL69TLRZTkNfYZOLM+G04821K1qZao/4QLJbet1pP4tcF+fdXq/9CdqAbWRl/L" crossorigin="anonymous">
