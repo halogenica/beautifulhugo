@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        {{ with .Content }}
+          <div class="content-section">
+            {{ . }}
+          </div>
+        {{ end }}
+        <div class="archive-list">
+          {{ range where site.RegularPages.ByDate.Reverse "Params.hidden" "!=" true }}
+            <a href="{{ .Permalink }}" class="archive-item">
+              <span class="archive-item-title">{{ .Title }}</span>
+              {{ if .Params.subtitle }}
+                <span class="archive-item-subtitle">{{ .Params.subtitle }}</span>
+              {{ end }}
+              <span class="archive-item-date">
+                {{ $format := default (i18n "dateFormat") site.Params.dateformat }}
+                {{ time.Format $format .Date }}
+              </span>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

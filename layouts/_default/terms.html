@@ -1,40 +1,51 @@
 {{ define "main" }}
 
 {{ $data := .Data }}
+{{ $terms := .Data.Terms }}
 
 <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}" role="main">
   <div class="row">
     <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
-    <article class="post-preview">
-      <div class="accordion" id="accordion">
-        {{ range $key, $value := .Data.Terms.ByCount }}
-          <div class="card">
-            <div class="card-header" id="header{{ $value.Name | anchorize }}">
-              <h2 class="mb-0">
-                <button class="btn btn-link w-100 text-start collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $value.Name | anchorize }}" aria-expanded="false" aria-controls="collapse{{ $value.Name | anchorize }}">
-                  {{ $value.Name }}
-                  <span class="badge text-bg-secondary float-end">{{ $value.Count }}</span>
-                </button>
-              </h2>
+      {{ with .Content }}
+        <div class="content-section">
+          {{ . }}
+        </div>
+      {{ end }}
+      <div class="terms-list">
+        {{ range $key, $value := $terms.Alphabetical }}
+          <div class="terms-item">
+            <div class="terms-item-header">
+              <a href="{{ $data.Plural | absLangURL }}/{{ $value.Name | urlize }}/">
+                {{ $value.Name }}
+              </a>
+              <span class="terms-item-count">{{ $value.Count }}</span>
             </div>
-            <div id="collapse{{ $value.Name | anchorize }}" class="collapse" aria-labelledby="header{{ $value.Name | anchorize }}" data-bs-parent="#accordion">
-              <div class="card-body">
-                <a href="{{ $data.Plural | absLangURL }}/{{ $value.Name | urlize }}/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  {{ range $item := $value.WeightedPages }}
-                    <a href="{{$item.Permalink}}" class="list-group-item">{{ $item.Title }}</a>
-                  {{ end }}
-                </div>
-              </div>
+            <div class="terms-item-pages">
+              {{ range $item := $value.Pages }}
+                <a href="{{ $item.Permalink }}" class="terms-item-page">{{ $item.Title }}</a>
+              {{ end }}
             </div>
           </div>
+        {{ else }}
+          {{ range .Pages }}
+            <div class="terms-item">
+              <div class="terms-item-header">
+                <a href="{{ .Permalink }}">
+                  {{ .Title }}
+                </a>
+                <span class="terms-item-count">{{ len .Pages }}</span>
+              </div>
+              <div class="terms-item-pages">
+                {{ range .Pages }}
+                  <a href="{{ .Permalink }}" class="terms-item-page">{{ .Title }}</a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
         {{ end }}
       </div>
-    </article>
     </div>
   </div>
 </div>
-
 
 {{ end }}

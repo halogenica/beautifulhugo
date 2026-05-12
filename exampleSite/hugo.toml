@@ -15,6 +15,10 @@ title = "Beautiful Hugo"
   [Services.googleAnalytics]
     # id = "XXX"
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
 [Params]
   subtitle = "Build a beautiful and simple website in minutes"
   mainSections = ["post","posts"]
@@ -61,14 +65,9 @@ title = "Beautiful Hugo"
   unsafe = true
 
 [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-
-[[menu.main]]
     identifier = "features"
     name = "Features"
-    weight = 2
+    weight = 1
 
 [[menu.main]]
     parent = "features"
@@ -125,11 +124,35 @@ title = "Beautiful Hugo"
     weight = 9
 
 [[menu.main]]
+    identifier = "blog"
     name = "Blog"
+    weight = 2
+
+[[menu.main]]
+    parent = "blog"
+    name = "Posts"
     url = "post/"
+    weight = 1
+
+[[menu.main]]
+    parent = "blog"
+    name = "Tags"
+    url = "tags/"
+    weight = 2
+
+[[menu.main]]
+    parent = "blog"
+    name = "Categories"
+    url = "categories/"
     weight = 3
+
+[[menu.main]]
+    parent = "blog"
+    name = "Archives"
+    url = "archives/"
+    weight = 4
 
 [[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 4
+    weight = 3

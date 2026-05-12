@@ -1347,3 +1347,148 @@ h4.see-also {
 .see-also-item:focus .see-also-item-subtitle {
   color: #006680;
 }
+
+/* --- Archive list --- */
+
+.archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.archive-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 12px;
+  padding: 12px 18px;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-left: 3px solid #0085a1;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #404040;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.archive-item:hover,
+.archive-item:focus {
+  background: #f0f8fa;
+  border-color: #0085a1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #0085a1;
+}
+
+.archive-item-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.archive-item-subtitle {
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 14px;
+  color: #888;
+  line-height: 1.4;
+}
+
+.archive-item:hover .archive-item-subtitle,
+.archive-item:focus .archive-item-subtitle {
+  color: #006680;
+}
+
+.archive-item-date {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #999;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.archive-item:hover .archive-item-date,
+.archive-item:focus .archive-item-date {
+  color: #006680;
+}
+
+/* --- Terms list (tags, categories, authors) --- */
+
+.terms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.terms-item {
+  padding: 14px 18px;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-left: 3px solid #0085a1;
+  border-radius: 4px;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.terms-item:hover {
+  background: #f0f8fa;
+  border-color: #0085a1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.terms-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.terms-item-header a {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #404040;
+  text-decoration: none;
+}
+
+.terms-item-header a:hover,
+.terms-item-header a:focus {
+  color: #0085a1;
+}
+
+.terms-item-count {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #0085a1;
+  border-radius: 12px;
+  padding: 2px 10px;
+  line-height: 1.4;
+}
+
+.terms-item-pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.terms-item-page {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0066CC;
+  background: #eee;
+  border-radius: 3px;
+  padding: 3px 10px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.terms-item-page:hover,
+.terms-item-page:focus {
+  background: #0085a1;
+  color: #fff;
+  text-decoration: none;
+}
