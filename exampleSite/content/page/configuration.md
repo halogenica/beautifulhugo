@@ -188,6 +188,26 @@ When `useHLJS = true`, Highlight.js is loaded from CDN (or `static/js/highlight.
 
 See [Code Blocks](../code-blocks/) for details and examples.
 
+### Including External Files
+
+The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. It works with both Chroma and Highlight.js.
+
+```
+{{</* include-code file="content/scripts/example.py" */>}}
+{{</* include-code file="config.toml" language="toml" */>}}
+{{</* include-code file="src/main.go" linenos="table" hl_lines="2 5-8" */>}}
+```
+
+| Param | Required | Description |
+|-------|----------|-------------|
+| `file` | yes | Path relative to the Hugo project root |
+| `language` | no | Highlighting language (auto-detected from file extension if omitted; falls back to plain text) |
+| `linenos` | no | `"table"` or `"inline"` — Chroma only; ignored with a warning when `useHLJS = true` |
+| `hl_lines` | no | Lines to highlight, e.g. `"2 5-8"` — Chroma only |
+| `linenostart` | no | Starting line number — Chroma only |
+
+**Supported auto-detect extensions:** `.bash`, `.c`, `.cpp`, `.css`, `.go`, `.html`, `.java`, `.js`, `.json`, `.jsx`, `.lua`, `.md`, `.php`, `.pl`, `.py`, `.r`, `.rb`, `.rs`, `.scss`, `.sh`, `.sql`, `.svg`, `.toml`, `.ts`, `.tsx`, `.xml`, `.yaml`, `.yml`, `.zig`
+
 ## Comment Systems
 
 Beautiful Hugo supports five comment systems. Each is enabled per-page with `comments: true` in front matter.

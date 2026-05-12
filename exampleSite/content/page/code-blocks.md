@@ -177,6 +177,32 @@ def process(data):
 
 Every code block automatically gets a **copy-to-clipboard** button in the top-right corner. Hover over any code block on this page to see it. The button strips line numbers before copying.
 
+## Including External Files
+
+The `include-code` shortcode reads a source file from your project and renders it with syntax highlighting. It respects the same Chroma/HLJS setting as fenced code blocks.
+
+```
+{{</* include-code file="hugo.toml" */>}}
+```
+
+With explicit language and line options (Chroma only):
+
+```
+{{</* include-code file="hugo.toml" language="toml" linenos="table" hl_lines="3-5" */>}}
+```
+
+### Live example
+
+This page includes the example site's own `hugo.toml`:
+
+{{< include-code file="hugo.toml" >}}
+
+With line numbers and highlighted lines:
+
+{{< include-code file="hugo.toml" linenos="table" hl_lines="7 23-28" >}}
+
+The `file` path is relative to the Hugo project root. If `language` is omitted, it is auto-detected from the file extension. See [Configuration](../configuration/#including-external-files) for the full parameter reference.
+
 ## Inline Code
 
 Use backticks for inline code: `hugo serve -D` or `console.log("hello")`.
