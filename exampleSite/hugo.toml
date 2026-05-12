@@ -59,7 +59,7 @@ title = "Beautiful Hugo"
   email = "youremail@domain.com"
   github = "username"
   twitter = "username"
-  linkedin = "username"
+  linkedin = "in/username" # or company/username
 
 [markup.highlight]
   noClasses = false

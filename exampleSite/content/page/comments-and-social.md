@@ -151,7 +151,7 @@ Add social links under `[Params.author]` and they appear as icons in the footer.
 | `twitter` | Twitter / X | `https://twitter.com/%s` |
 | `slack` | Slack | `https://%s.slack.com/` |
 | `reddit` | Reddit | `https://reddit.com/u/%s` |
-| `linkedin` | LinkedIn | `https://linkedin.com/in/%s` |
+| `linkedin` | LinkedIn | `https://linkedin.com/%s` |
 | `xing` | Xing | `https://www.xing.com/profile/%s` |
 | `stackoverflow` | Stack Overflow | `https://stackoverflow.com/%s` |
 | `snapchat` | Snapchat | `https://www.snapchat.com/add/%s` |
@@ -187,9 +187,12 @@ Add social links under `[Params.author]` and they appear as icons in the footer.
 
 If a value starts with `http://` or `https://`, it is used directly as the URL. Otherwise, it is interpolated into the default URL pattern.
 
+For **LinkedIn**, the value should include the path prefix (e.g. `in/username` for a personal profile or `company/username` for a company page). If you provide a bare username with no `/`, the theme automatically prepends `in/` for backward compatibility.
+
 ```toml
 [Params.author]
   name = "Some Person"
   github = "username"
+  linkedin = "in/username"
   mastodon = "https://mastodon.social/@username"
 ```
