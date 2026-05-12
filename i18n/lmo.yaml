@@ -193,3 +193,7 @@
 - id: categoriesLabel
 
   translation: "Categurij: "
+
+# View source
+- id: viewSource
+  translation: "Varda surgaent"

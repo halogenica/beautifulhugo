@@ -2,6 +2,7 @@
 baseurl = "http://localhost:1313/"
 DefaultContentLanguage = "en"
 title = "Beautiful Hugo"
+enableGitInfo = true
 
 [[module.imports]]
    path = "github.com/halogenica/beautifulhugo"
@@ -35,6 +36,8 @@ title = "Beautiful Hugo"
   showRelatedPosts = true
   disableFigureOverride = true
   headerImgStyle = "narrow"
+  showSource = true
+  sourceRepo = "https://github.com/henryiii/beautifulhugo/blob/master/exampleSite/"
 
 [[Params.bigimg]]
   src = "/img/triangle.jpg"

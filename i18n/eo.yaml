@@ -97,3 +97,7 @@
 # Categories
 - id: categoriesLabel
   translation: "Kategorioj: "
+
+# View source
+- id: viewSource
+  translation: "Vidi fonton"

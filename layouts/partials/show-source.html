@@ -1,0 +1,14 @@
+{{- if and .Site.Params.sourceRepo (or .Params.showSource (and .Site.Params.showSource (ne .Params.showSource false))) }}
+  {{- with .File.Path }}
+    {{- $url := printf "%s%s" $.Site.Params.sourceRepo . }}
+    {{- if and $.GitInfo }}
+      {{- $hash := $.GitInfo.Hash }}
+      {{- $url = replaceRE `/blob/[^/]+/` (printf "/blob/%s/" $hash) $url }}
+    {{- end }}
+    <div class="view-source">
+      <a href="{{ $url }}" class="btn btn-view-source" target="_blank" rel="noopener">
+        <i class="fas fa-code-branch"></i> {{ i18n "viewSource" }}
+      </a>
+    </div>
+  {{- end }}
+{{- end }}

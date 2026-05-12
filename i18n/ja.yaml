@@ -97,3 +97,7 @@
 # Categories
 - id: categoriesLabel
   translation: "カテゴリー: "
+
+# View source
+- id: viewSource
+  translation: "ソースを見る"

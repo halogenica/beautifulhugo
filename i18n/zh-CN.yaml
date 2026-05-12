@@ -97,3 +97,7 @@
 # Categories
 - id: categoriesLabel
   translation: "分类: "
+
+# View source
+- id: viewSource
+  translation: "查看源文件"

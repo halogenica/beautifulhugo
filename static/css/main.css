@@ -1389,6 +1389,42 @@ div.splitbox div.right {
   border: 1px solid #0085a1;
 }
 
+/* --- View source --- */
+
+.view-source {
+  margin-top: 20px;
+}
+
+.btn-view-source {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 10px 5px;
+  background: #FFF;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  color: #404040;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+@media only screen and (min-width: 768px) {
+  .btn-view-source {
+    padding: 15px 25px;
+  }
+}
+
+.btn-view-source:hover,
+.btn-view-source:focus {
+  color: #FFF;
+  background: #0085a1;
+  border-color: #0085a1;
+  text-decoration: none;
+}
+
 /* --- Related posts --- */
 
 h4.see-also {

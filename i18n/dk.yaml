@@ -97,3 +97,7 @@
 # Categories
 - id: categoriesLabel
   translation: "Kategorier: "
+
+# View source
+- id: viewSource
+  translation: "Vis kilde"
