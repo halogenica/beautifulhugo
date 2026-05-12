@@ -6,6 +6,68 @@ comments: false
 
 Beautiful Hugo ships with several shortcodes for common patterns like collapsible sections, multi-column layouts, tabbed content, image galleries, and diagrams.
 
+## callout
+
+The `callout` shortcode renders a Bootstrap alert-based callout box. It supports multiple paragraphs and an optional title. Five styles are available: `info` (default), `warning`, `danger`, `success`, and `note`.
+
+| Parameter | Position | Required | Description |
+|-----------|----------|----------|-------------|
+| type | 1 | no | Callout style: `info` (default), `warning`, `danger`, `success`, `note` |
+| title | 2 | no | Optional heading text (supports Markdown) |
+| (inner) | — | yes | The body content (supports Markdown, multiple paragraphs) |
+
+**Live examples:**
+
+{{< callout info "Information" >}}
+This is an **info** callout — the default style. Use it for helpful tips or informational asides.
+
+You can include multiple paragraphs, **formatted text**, and even code: `console.log("hello")`.
+{{< /callout >}}
+
+{{< callout warning "Caution" >}}
+This is a **warning** callout. Use it to flag potential issues or important caveats.
+{{< /callout >}}
+
+{{< callout danger "Critical" >}}
+This is a **danger** callout. Use it for critical errors or destructive actions.
+{{< /callout >}}
+
+{{< callout success "All good" >}}
+This is a **success** callout. Use it for confirmation messages or completed actions.
+{{< /callout >}}
+
+{{< callout note >}}
+This is a **note** callout — a neutral grey style for side remarks that don't fit the other categories.
+{{< /callout >}}
+
+**Source:**
+
+```markdown
+{{</* callout info "Information" */>}}
+This is an **info** callout — the default style.
+
+You can include multiple paragraphs.
+{{</* /callout */>}}
+
+{{</* callout warning "Caution" */>}}
+This is a **warning** callout.
+{{</* /callout */>}}
+
+{{</* callout danger "Critical" */>}}
+This is a **danger** callout.
+{{</* /callout */>}}
+
+{{</* callout success "All good" */>}}
+This is a **success** callout.
+{{</* /callout */>}}
+
+{{</* callout note */>}}
+This is a **note** callout (no title).
+{{</* /callout */>}}
+```
+
+The `type` parameter defaults to `info`, so `{{</* callout */>}}` is equivalent to `{{</* callout info */>}}`. The title parameter is optional — omit it for a title-less callout.
+
 ## details
 
 The `details` shortcode renders a collapsible `<details>` element. The first positional parameter is the summary text; the inner content is the body.
@@ -47,7 +109,9 @@ The `columns` and `column` shortcodes create a two-column layout using the `spli
 For historical reasons, you can also use
 `{{</* columns /*/>}} ... {{</* endcolumns */>}}`
 (note the required self-closing tag) as a backward compatibility shim.
-{.box-warning}
+{{< callout warning "Backward compatibility" >}}
+The `columns`/`endcolumns` self-closing syntax is deprecated and may be removed in a future release.
+{{< /callout >}}
 
 **Live example:**
 
