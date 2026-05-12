@@ -187,9 +187,14 @@ Add social links under `[Params.author]` and they appear as icons in the footer.
 
 If a value starts with `http://` or `https://`, it is used directly as the URL. Otherwise, it is interpolated into the default URL pattern.
 
+For **LinkedIn**, the value should include the path prefix (e.g. `in/username` for a personal profile or `company/username` for a company page). If you provide a bare username with no `/`, the theme automatically prepends `in/` for backward compatibility.
+
 ```toml
 [Params.author]
   name = "Some Person"
   github = "username"
+  linkedin = "in/username"     # personal profile
+  # linkedin = "company/acme"  # company page
+  # linkedin = "username"      # bare username — "in/" is added automatically
   mastodon = "https://mastodon.social/@username"
 ```
