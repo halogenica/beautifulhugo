@@ -8,7 +8,8 @@
 
 {{- $site_seo := dict -}}
 {{/* Only get this value is the pae is part of a mainSection */}}
-{{- if in site.Params.mainSections .Section -}}
+{{- $mainSections := default (slice "post" "posts") site.Params.mainSections -}}
+{{- if in $mainSections .Section -}}
   {{- $site_seo = site.Params.seo -}}
 {{- end -}}
 
