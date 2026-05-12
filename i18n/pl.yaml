@@ -97,3 +97,7 @@
 # Categories
 - id: categoriesLabel
   translation: "Kategorie: "
+
+# View source
+- id: viewSource
+  translation: "Pokaż źródło"

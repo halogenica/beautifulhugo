@@ -97,3 +97,7 @@
 # Categories
 - id: categoriesLabel
   translation: "Categorieën: "
+
+# View source
+- id: viewSource
+  translation: "Bron bekijken"

@@ -412,3 +412,17 @@
   background-color: var(--dark-surface-active);
   color: #fff;
 }
+
+/* --- View source --- */
+[data-theme="dark"] .btn-view-source {
+  background: var(--dark-surface);
+  border-color: var(--dark-surface-active);
+  color: var(--dark-fg);
+}
+
+[data-theme="dark"] .btn-view-source:hover,
+[data-theme="dark"] .btn-view-source:focus {
+  background: var(--dark-accent);
+  border-color: var(--dark-accent);
+  color: #fff;
+}

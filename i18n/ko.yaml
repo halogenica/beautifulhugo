@@ -97,3 +97,7 @@
 # Categories
 - id: categoriesLabel
   translation: "카테고리: "
+
+# View source
+- id: viewSource
+  translation: "소스 보기"
