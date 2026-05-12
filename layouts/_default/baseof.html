@@ -16,8 +16,8 @@
           document.documentElement.setAttribute('data-theme', 'dark');
         } else if (saved === 'light') {
           document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
         }
       })();
     </script>

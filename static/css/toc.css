@@ -164,62 +164,6 @@ body.toc-visible .toc-wrapper {
   pointer-events: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .toc-panel {
-    background: #222;
-    border-right-color: #444;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
-  }
-
-  :root:not([data-theme="light"]) .toc-header {
-    border-bottom-color: #444;
-  }
-
-  :root:not([data-theme="light"]) .toc-title {
-    color: #eee;
-  }
-
-  :root:not([data-theme="light"]) .toc-close {
-    color: #888;
-  }
-
-  :root:not([data-theme="light"]) .toc-close:hover {
-    color: #eee;
-  }
-
-  :root:not([data-theme="light"]) .toc-body #TableOfContents a {
-    color: #aaa;
-  }
-
-  :root:not([data-theme="light"]) .toc-body #TableOfContents a:hover {
-    color: #66bfff;
-    border-left-color: #66bfff;
-    background: rgba(102, 191, 255, 0.06);
-  }
-
-  :root:not([data-theme="light"]) .toc-body #TableOfContents a.toc-active {
-    color: #66bfff;
-    border-left-color: #66bfff;
-    background: rgba(102, 191, 255, 0.1);
-  }
-
-  :root:not([data-theme="light"]) .toc-post-list a {
-    color: #aaa;
-  }
-
-  :root:not([data-theme="light"]) .toc-post-list a:hover {
-    color: #66bfff;
-    border-left-color: #66bfff;
-    background: rgba(102, 191, 255, 0.06);
-  }
-
-  :root:not([data-theme="light"]) .toc-post-list a.toc-active {
-    color: #66bfff;
-    border-left-color: #66bfff;
-    background: rgba(102, 191, 255, 0.1);
-  }
-}
-
 [data-theme="dark"] .toc-panel {
   background: #222;
   border-right-color: #444;
