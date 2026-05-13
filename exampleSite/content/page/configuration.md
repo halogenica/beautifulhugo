@@ -407,6 +407,14 @@ These options can be set in the front matter of any page or post:
 | `navShort` | bool | Make navbar short on this page |
 | `toc` | bool | Show/hide table of contents for this page (overrides site-level `toc`) |
 | `showSource` | bool | Override site-level `showSource` for this page |
+| `mathEngine` | string | Override site-level `mathEngine` for this page (`"katex"`, `"mathjax"`, or `"none"`) |
+| `colorScheme` | string | Override site-level `colorScheme` for this page (`"auto"`, `"dark"`, or `"light"`) |
+| `useHLJS` | bool | Override site-level `useHLJS` for this page |
+| `readingTime` | bool | Override site-level `readingTime` for this page |
+| `wordCount` | bool | Override site-level `wordCount` for this page |
+| `hideAuthor` | bool | Override site-level `hideAuthor` for this page |
+| `showRelatedPosts` | bool | Override site-level `showRelatedPosts` for this page |
+| `related_content_limit` | int | Override site-level `related_content_limit` for this page |
 
 ## Recipe Pages
 

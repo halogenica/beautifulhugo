@@ -1,4 +1,4 @@
-{{ $mathEngine := .Site.Params.mathEngine | default "katex" }}
+{{ $mathEngine := $.Param "mathEngine" | default "katex" }}
 {{- if .Site.Params.selfHosted -}}
 {{- if eq $mathEngine "katex" }}
 <script defer src="{{ "js/katex.min.js" | relURL }}"></script>
@@ -24,7 +24,7 @@
 {{- if .Site.Params.staticman }}
 <script src="{{ "js/staticman.js" | relURL }}"></script>
 {{- end }}
-{{- if .Site.Params.useHLJS }}
+{{- if $.Param "useHLJS" }}
 {{- if .Site.Params.selfHosted -}}
 <script src="{{ "js/highlight.min.js" | relURL }}"></script>
 {{- else -}}

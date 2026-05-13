@@ -1,4 +1,4 @@
-{{- $colorScheme := .Page.Site.Params.colorScheme | default "auto" -}}
+{{- $colorScheme := .Page.Param "colorScheme" | default "auto" -}}
 <script defer src="{{"js/mermaid.js" | relURL}}"></script>
 <script defer src="{{"js/mermaid-render.js" | relURL}}"></script>
 <div class="mermaid-container" {{ with .Get "align" }}style="text-align:{{ . }}"{{ end }}>
