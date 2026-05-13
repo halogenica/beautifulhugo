@@ -27,6 +27,7 @@
            data-img-src-{{add $i 1}}="{{$img.src | relURL }}"
          {{end}}
          {{ if $img.desc}}data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}
+         {{ if $img.position}}data-img-position-{{add $i 1}}="{{$img.position}}"{{end}}
       {{end}}></div>
   {{ end }}
 
