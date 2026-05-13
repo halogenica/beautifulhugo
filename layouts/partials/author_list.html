@@ -2,7 +2,7 @@
 {{- if .Params.author -}}
   {{- if reflect.IsSlice .Params.author -}}
     {{- range .Params.author -}}
-      {{- $name := . | markdownify | plainify -}}
+      {{- $name := . | markdownify | plainify | htmlUnescape -}}
       {{- $url := "" -}}
       {{- with findRE `href="([^"]+)"` (. | markdownify) -}}
         {{- $url = replaceRE `href="([^"]+)"` "$1" (index . 0) -}}
@@ -10,7 +10,7 @@
       {{- $authors = $authors | append (dict "name" $name "url" $url) -}}
     {{- end -}}
   {{- else -}}
-    {{- $name := .Params.author | markdownify | plainify -}}
+    {{- $name := .Params.author | markdownify | plainify | htmlUnescape -}}
     {{- $url := "" -}}
     {{- with findRE `href="([^"]+)"` (.Params.author | markdownify) -}}
       {{- $url = replaceRE `href="([^"]+)"` "$1" (index . 0) -}}
@@ -19,6 +19,6 @@
   {{- end -}}
 {{- else if .Site.Params.author.name -}}
   {{- $url := .Site.Params.author.website | default "" -}}
-  {{- $authors = $authors | append (dict "name" (.Site.Params.author.name | markdownify | plainify) "url" $url) -}}
+  {{- $authors = $authors | append (dict "name" (.Site.Params.author.name | markdownify | plainify | htmlUnescape) "url" $url) -}}
 {{- end -}}
 {{- return $authors -}}

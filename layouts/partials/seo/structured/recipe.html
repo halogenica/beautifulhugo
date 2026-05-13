@@ -3,26 +3,26 @@
 
 {{- $description := "" -}}
 {{- if .Description -}}
-  {{- $description = .Description | plainify -}}
+  {{- $description = .Description | plainify | htmlUnescape -}}
 {{- else -}}
-  {{- $description = .Summary | plainify -}}
+  {{- $description = .Summary | plainify | htmlUnescape -}}
 {{- end -}}
 
 {{- $ingredients := slice -}}
 {{- range $r.ingredients -}}
-  {{- $ingredients = $ingredients | append (. | plainify) -}}
+  {{- $ingredients = $ingredients | append (. | plainify | htmlUnescape) -}}
 {{- end -}}
 
 {{- $instructions := slice -}}
 {{- range $i, $step := $r.instructions -}}
   {{- $s := dict "@type" "HowToStep" "position" (add $i 1) -}}
   {{- if reflect.IsMap $step -}}
-    {{- with $step.text }}{{ $s = merge $s (dict "text" (. | plainify)) }}{{ end -}}
+    {{- with $step.text }}{{ $s = merge $s (dict "text" (. | plainify | htmlUnescape)) }}{{ end -}}
     {{- with $step.name }}{{ $s = merge $s (dict "name" .) }}{{ end -}}
     {{- with $step.url }}{{ $s = merge $s (dict "url" (. | absURL)) }}{{ end -}}
     {{- with $step.image }}{{ $s = merge $s (dict "image" (. | absURL)) }}{{ end -}}
   {{- else -}}
-    {{- $s = merge $s (dict "text" ($step | plainify)) -}}
+    {{- $s = merge $s (dict "text" ($step | plainify | htmlUnescape)) -}}
   {{- end -}}
   {{- $instructions = $instructions | append $s -}}
 {{- end -}}
