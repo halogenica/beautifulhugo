@@ -8,7 +8,7 @@ Beautiful Hugo includes built-in support for **KaTeX**, **MathJax**, and **Merma
 
 ## Math Rendering
 
-You can choose the math rendering engine via `mathEngine` in your config. Use `$...$` for inline math and `$$...$$` for display math.
+You can choose the math rendering engine via `mathEngine` in your config. Use `\(...\)` (KaTeX) / `$...$` (MathJax) for inline math and `$$...$$` for display math.
 
 | Engine | Value | Behavior |
 |--------|-------|----------|
