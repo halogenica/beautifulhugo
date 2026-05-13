@@ -1785,3 +1785,24 @@ h4.see-also {
 [data-theme="dark"] .recipe-ingredients li {
   border-bottom-color: #444;
 }
+
+/* MathJax overflow handling for mobile */
+.MathJax_Display,
+mjx-container {
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+.MathJax_Display > mjx-container {
+  overflow-x: auto;
+}
+
+mjx-container mjx-wrap {
+  overflow-x: auto;
+}
+
+.MathJax_Display mjx-math {
+  display: block !important;
+  max-width: max-content;
+}
