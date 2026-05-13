@@ -7,11 +7,11 @@
         </h3>
         {{ end }}
         {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
+        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-title" />
         {{ end }}
         {{ if .Params.video }}
         <video loop autoplay muted playsinline class="img-title">
-            <source src="{{ .Params.video }}">
+            <source src="{{ .Params.video | relURL }}">
         </video>
         {{ end }}
     </a>

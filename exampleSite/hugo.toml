@@ -37,7 +37,7 @@ enableGitInfo = true
   disableFigureOverride = true
   headerImgStyle = "narrow"
   showSource = true
-  sourceRepo = "https://github.com/henryiii/beautifulhugo/blob/master/exampleSite/"
+  sourceRepo = "https://github.com/halogenica/beautifulhugo/blob/master/exampleSite/"
 
 [[Params.bigimg]]
   src = "/img/triangle.jpg"
