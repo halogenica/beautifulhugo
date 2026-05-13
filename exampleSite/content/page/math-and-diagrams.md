@@ -54,6 +54,14 @@ $$
 \prod_{i=1}^n x_i = \exp\left(\sum_{i=1}^n \ln x_i\right)
 $$
 
+### Long equation test (mobile scroll behavior)
+
+This very long equation tests horizontal scrolling on mobile devices:
+
+$$
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots = \int_a^x \int_a^{t_1} \int_a^{t_2} \cdots \int_a^{t_n} f^{(n+1)}(t_{n+1}) \, dt_{n+1} \, dt_n \cdots \, dt_2 \, dt_1 + \text{remainder terms}
+$$
+
 ### Source
 
 ```markdown
