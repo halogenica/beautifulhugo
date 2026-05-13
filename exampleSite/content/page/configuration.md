@@ -28,6 +28,21 @@ This page is a complete reference for every configuration option in Beautiful Hu
   since = 2015
 ```
 
+## Math Engine
+
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `mathEngine` | string | `"katex"` | `"katex"`, `"mathjax"`, or `"none"` |
+
+- **`"katex"`** — Loads [KaTeX](https://katex.org/) (CSS + JS) for math rendering. This is the current behavior and the default for backward compatibility.
+- **`"mathjax"`** — Loads [MathJax 3](https://www.mathjax.org/) from CDN instead of KaTeX. MathJax is always loaded from CDN regardless of `selfHosted` since it is much larger than KaTeX.
+- **`"none"`** — Disables math rendering entirely; no math assets are loaded.
+
+```toml
+[Params]
+  mathEngine = "mathjax"
+```
+
 ## Author
 
 `[Params.author]` is **required**. The old top-level `[author]` key is deprecated and will produce a build error.
@@ -80,6 +95,7 @@ When `selfHosted = true`, the following assets are served from `static/` instead
 | Bootstrap 5.3.5 CSS | `cdn.jsdelivr.net` | `css/bootstrap.min.css` |
 | Font Awesome 7 | `use.fontawesome.com` | `fontawesome/css/*.min.css` |
 | KaTeX CSS | `cdn.jsdelivr.net` | `css/katex.min.css` |
+| KaTeX JS | `cdn.jsdelivr.net` | `js/katex.min.js` + `js/auto-render.min.js` |
 | Google Fonts (Lora, Open Sans) | `fonts.googleapis.com` | `css/fonts.css` + `fonts/` |
 | jQuery 4.0.0 | `code.jquery.com` | `js/jquery-4.0.0.slim.min.js` |
 | Bootstrap 5.3.5 JS | `cdn.jsdelivr.net` | `js/bootstrap.min.js` |
