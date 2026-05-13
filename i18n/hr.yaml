@@ -101,6 +101,46 @@
 # View source
 - id: viewSource
   translation: "Prikaži izvor"
+# Menu items / Stavke izbornika
+- id: menu_setup
+  translation: "Postavljanje"
+- id: menu_configuration
+  translation: "Konfiguracija"
+- id: menu_layout-options
+  translation: "Opcije izgleda"
+- id: menu_theming
+  translation: "Teme"
+- id: menu_seo-and-i18n
+  translation: "SEO i i18n"
+- id: menu_comments-and-social
+  translation: "Komentari i društvene mreže"
+- id: menu_features
+  translation: "Značajke"
+- id: menu_pages-and-layouts
+  translation: "Stranice i izgledi"
+- id: menu_shortcodes
+  translation: "Shortcodeovi"
+- id: menu_code-blocks
+  translation: "Blokovi koda"
+- id: menu_markdown-extensions
+  translation: "Markdown proširenja"
+- id: menu_figures-and-galleries
+  translation: "Slike i galerije"
+- id: menu_math-and-diagrams
+  translation: "Matematika i dijagrami"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Objave"
+- id: menu_tags
+  translation: "Oznake"
+- id: menu_categories
+  translation: "Kategorije"
+- id: menu_archives
+  translation: "Arhiva"
+- id: menu_about
+  translation: "O nama"
+
 # Recipe / Recept
 - id: recipePrepTime
   translation: "Vrijeme pripreme"

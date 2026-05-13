@@ -172,7 +172,7 @@ A language switcher appears in the navbar:
 
 ### Supported Languages
 
-Beautiful Hugo ships with translations for 19 languages:
+Beautiful Hugo ships with translations for 20 languages:
 
 | Code | Language |
 |------|----------|
@@ -191,6 +191,8 @@ Beautiful Hugo ships with translations for 19 languages:
 | `nb` | Norwegian Bokmål |
 | `nl` | Dutch |
 | `pl` | Polish |
+| `pt` | Portuguese |
+| `pt-br` | Portuguese (Brazil) |
 | `ru` | Russian |
 | `tr` | Turkish |
 | `zh-CN` | Chinese (Simplified) |
@@ -214,6 +216,37 @@ The i18n files provide translations for common UI strings:
 | `seeAlso` | "See also" related posts heading |
 
 To add a new language, create a new file in `i18n/` (e.g. `i18n/pt.yaml` for Portuguese) with translations for these keys.
+
+### Navbar Menu Translations
+
+Navbar menu items are automatically translated when the menu entry has an `identifier` that matches an i18n key with the `menu_` prefix. If no matching translation key exists, the menu `name` from `hugo.toml` is used as a fallback.
+
+For example, given this menu config:
+
+```toml
+[[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    weight = 1
+
+[[menu.main]]
+    parent = "blog"
+    name = "Posts"
+    identifier = "post"
+    url = "post/"
+    weight = 1
+```
+
+The theme looks up `menu_blog` and `menu_post` in the current language's i18n file. In French (`i18n/fr.yaml`):
+
+```yaml
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Articles"
+```
+
+The theme ships with pre-built translations for common menu items (blog, posts, tags, categories, archives, about, and the example-site section names). You can add your own `menu_*` keys to your site's i18n overrides to translate custom menu items.
 
 ## RSS
 

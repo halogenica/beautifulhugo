@@ -101,6 +101,46 @@
 # View source
 - id: viewSource
   translation: "Посмотреть исходник"
+# Menu items / Пункты меню
+- id: menu_setup
+  translation: "Настройка"
+- id: menu_configuration
+  translation: "Конфигурация"
+- id: menu_layout-options
+  translation: "Параметры макета"
+- id: menu_theming
+  translation: "Темы"
+- id: menu_seo-and-i18n
+  translation: "SEO и i18n"
+- id: menu_comments-and-social
+  translation: "Комментарии и соцсети"
+- id: menu_features
+  translation: "Возможности"
+- id: menu_pages-and-layouts
+  translation: "Страницы и макеты"
+- id: menu_shortcodes
+  translation: "Шорткоды"
+- id: menu_code-blocks
+  translation: "Блоки кода"
+- id: menu_markdown-extensions
+  translation: "Расширения Markdown"
+- id: menu_figures-and-galleries
+  translation: "Иллюстрации и галереи"
+- id: menu_math-and-diagrams
+  translation: "Математика и диаграммы"
+- id: menu_blog
+  translation: "Блог"
+- id: menu_post
+  translation: "Записи"
+- id: menu_tags
+  translation: "Теги"
+- id: menu_categories
+  translation: "Категории"
+- id: menu_archives
+  translation: "Архив"
+- id: menu_about
+  translation: "О сайте"
+
 # Recipe / Рецепт
 - id: recipePrepTime
   translation: "Время подготовки"

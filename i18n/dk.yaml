@@ -101,6 +101,47 @@
 # View source
 - id: viewSource
   translation: "Vis kilde"
+
+# Menu items / Menupunkter
+- id: menu_setup
+  translation: "Opsætning"
+- id: menu_configuration
+  translation: "Konfiguration"
+- id: menu_layout-options
+  translation: "Layoutindstillinger"
+- id: menu_theming
+  translation: "Temaer"
+- id: menu_seo-and-i18n
+  translation: "SEO og i18n"
+- id: menu_comments-and-social
+  translation: "Kommentarer og sociale"
+- id: menu_features
+  translation: "Funktioner"
+- id: menu_pages-and-layouts
+  translation: "Sider og layout"
+- id: menu_shortcodes
+  translation: "Shortcodes"
+- id: menu_code-blocks
+  translation: "Kodeblokke"
+- id: menu_markdown-extensions
+  translation: "Markdown-udvidelser"
+- id: menu_figures-and-galleries
+  translation: "Figurer og gallerier"
+- id: menu_math-and-diagrams
+  translation: "Matematik og diagrammer"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Indlæg"
+- id: menu_tags
+  translation: "Tags"
+- id: menu_categories
+  translation: "Kategorier"
+- id: menu_archives
+  translation: "Arkiv"
+- id: menu_about
+  translation: "Om"
+
 # Recipe / Opskrift
 - id: recipePrepTime
   translation: "Forberedelsestid"

@@ -36,20 +36,36 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="navbar-nav ms-auto">
         {{ range .Site.Menus.main.ByWeight }}
+          {{ $name := .Name }}
+          {{ with .Identifier }}
+            {{ $key := printf "menu_%s" . }}
+            {{ $translated := i18n $key }}
+            {{ if ne $translated $key }}
+              {{ $name = $translated }}
+            {{ end }}
+          {{ end }}
           {{ if .HasChildren }}
             <li class="nav-item dropdown" >
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ .Name }}
+                {{ $name }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
                 {{ range .Children }}
-                  <li><a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+                  {{ $childName := .Name }}
+                  {{ with .Identifier }}
+                    {{ $key := printf "menu_%s" . }}
+                    {{ $translated := i18n $key }}
+                    {{ if ne $translated $key }}
+                      {{ $childName = $translated }}
+                    {{ end }}
+                  {{ end }}
+                  <li><a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ $childName }}</a></li>
                 {{ end }}
               </ul>
             </li>
           {{ else }}
             <li class="nav-item" >
-              <a class="nav-link" title="{{ .Name }}" href="{{ .URL  | relLangURL }}">{{ .Name }}</a>
+              <a class="nav-link" title="{{ $name }}" href="{{ .URL  | relLangURL }}">{{ $name }}</a>
             </li>
           {{ end }}
         {{ end }}
