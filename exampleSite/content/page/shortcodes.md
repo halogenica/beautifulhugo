@@ -420,3 +420,37 @@ This text is wrapped in `data-nosnippet` and should not appear in search engine 
 ```
 
 See [SEO & i18n](../seo-and-i18n/) for the full robot meta tags and AI summary limit configuration.
+
+## include-code
+
+The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. It works with both Chroma (default) and Highlight.js.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `file` | string | yes | Path relative to the Hugo project root |
+| `language` | string | no | Highlighting language (auto-detected from file extension if omitted) |
+| `linenos` | string | no | `"table"` or `"inline"` — Chroma only |
+| `hl_lines` | string | no | Lines to highlight, e.g. `"2 5-8"` — Chroma only |
+| `linenostart` | string | no | Starting line number — Chroma only |
+
+**Live example — auto-detected TOML:**
+
+{{< include-code file="hugo.toml" >}}
+
+**Live example — with line numbers and highlighted lines:**
+
+{{< include-code file="hugo.toml" linenos="table" hl_lines="7 23-28" >}}
+
+**Source:**
+
+```markdown
+{{</* include-code file="hugo.toml" */>}}
+
+{{</* include-code file="hugo.toml" linenos="table" hl_lines="7 23-28" */>}}
+```
+
+When `useHLJS = true`, the shortcode emits `<pre><code class="language-xxx">` for client-side highlighting; `linenos`, `hl_lines`, and `linenostart` are ignored with a build warning.
+
+**Supported auto-detect extensions:** `.bash`, `.c`, `.cpp`, `.css`, `.go`, `.html`, `.java`, `.js`, `.json`, `.jsx`, `.lua`, `.md`, `.php`, `.pl`, `.py`, `.r`, `.rb`, `.rs`, `.scss`, `.sh`, `.sql`, `.svg`, `.toml`, `.ts`, `.tsx`, `.xml`, `.yaml`, `.yml`, `.zig`
+
+See [Code Blocks](../code-blocks/) for more syntax highlighting examples.
