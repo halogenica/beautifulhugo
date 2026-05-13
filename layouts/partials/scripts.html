@@ -1,11 +1,18 @@
+{{ $mathEngine := .Site.Params.mathEngine | default "katex" }}
 {{- if .Site.Params.selfHosted -}}
+{{- if eq $mathEngine "katex" }}
 <script defer src="{{ "js/katex.min.js" | relURL }}"></script>
 <script defer src="{{ "js/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body);"></script>
+{{- end }}
 <script src="{{ "js/jquery-4.0.0.slim.min.js" | relURL }}"></script>
 <script src="{{ "js/bootstrap.min.js" | relURL }}"></script>
 {{- else -}}
+{{- if eq $mathEngine "katex" }}
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+{{- else if eq $mathEngine "mathjax" }}
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
+{{- end }}
 <script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha384-tcspKDb5tWvyRCOWzevlAeQgHeEzYdUHJpcgnIhcP9w4CnfD7DLAcS+k9QzLbRJO" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 {{- end }}

@@ -1,14 +1,25 @@
 ---
 title: Math & Diagrams
-subtitle: KaTeX for mathematics and Mermaid for diagrams
+subtitle: KaTeX, MathJax, and Mermaid for math and diagrams
 comments: false
 ---
 
-Beautiful Hugo includes built-in support for **KaTeX** (mathematical typesetting) and **Mermaid** (diagrams and flowcharts). Both are loaded automatically — no extra configuration needed.
+Beautiful Hugo includes built-in support for **KaTeX**, **MathJax**, and **Mermaid** (diagrams and flowcharts). All are loaded automatically — no extra configuration needed.
 
-## KaTeX
+## Math Rendering
 
-KaTeX renders LaTeX math expressions. Use `$...$` for inline math and `$$...$$` for display math.
+You can choose the math rendering engine via `mathEngine` in your config. Use `\(...\)` (KaTeX) / `$...$` (MathJax) for inline math and `$$...$$` for display math.
+
+| Engine | Value | Behavior |
+|--------|-------|----------|
+| **KaTeX** | `"katex"` | The default. Fast, lightweight, self-hostable with `selfHosted = true`. |
+| **MathJax** | `"mathjax"` | More complete LaTeX support. Always loaded from CDN regardless of `selfHosted`. |
+| **None** | `"none"` | Disables math rendering entirely (no assets loaded). |
+
+```toml
+[Params]
+  mathEngine = "katex"
+```
 
 ### Inline math
 
@@ -40,21 +51,9 @@ The golden ratio is $\varphi = \frac{1+\sqrt{5}}{2}$.
 $$
 \varphi = \frac{1+\sqrt{5}}{2}
 $$
-
-$$
-\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x)\, e^{-2\pi i x \xi}\, dx
-$$
-
-$$
-\mathbf{A} = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}, \quad \det(\mathbf{A}) = a_{11}a_{22} - a_{12}a_{21}
-$$
-
-$$
-\prod_{i=1}^n x_i = \exp\left(\sum_{i=1}^n \ln x_i\right)
-$$
 ```
 
-KaTeX is loaded both from CDN and via self-hosted files (when `selfHosted = true`). No additional configuration is required.
+KaTeX is loaded both from CDN and via self-hosted files (when `selfHosted = true`). MathJax is loaded from CDN even when `selfHosted = true`.
 
 ## Mermaid
 

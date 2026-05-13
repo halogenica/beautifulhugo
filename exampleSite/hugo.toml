@@ -31,6 +31,7 @@ enableGitInfo = true
   readingTime = true
   wordCount = true
   colorScheme = "auto"
+  # mathEngine = "katex"  # "katex" (default), "mathjax" (CDN only), or "none"
   socialShare = true
   delayDisqus = true
   showRelatedPosts = true

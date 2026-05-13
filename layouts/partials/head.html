@@ -26,9 +26,9 @@
  <!-- Site Title, Description, Author, and Favicon -->
 
 {{ if .IsHome }}
-    <title>{{ .Site.Params.homeTitle | default .Site.Title }}</title>
-  {{ else }}
-    <title>{{ $title }}{{ with .Site.Params.homeTitle }} - {{ . }}{{ end }}</title>
+  <title>{{ .Site.Params.homeTitle | default .Site.Title }}</title>
+{{ else }}
+  <title>{{ $title }}{{ with .Site.Params.homeTitle }} - {{ . }}{{ end }}</title>
 {{ end }}
 
 {{- with $description }}
@@ -42,12 +42,15 @@
   <link href='{{ . | relURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
 <!-- Hugo Version number -->
-  {{ hugo.Generator -}}
+{{ hugo.Generator -}}
 <!-- Links and stylesheets -->
-  <link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
+<link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
 
-  {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/katex.min.css" | relURL }}" />
+{{ $mathEngine := .Site.Params.mathEngine | default "katex" }}
+{{- if .Site.Params.selfHosted -}}
+  {{- if eq $mathEngine "katex" }}
+    <link rel="stylesheet" href="{{ "css/katex.min.css" | relURL }}" />
+  {{- end }}
   <link rel="stylesheet" href="{{ "fontawesome/css/brands.min.css" | relURL }}" />
   <link rel="stylesheet" href="{{ "fontawesome/css/fontawesome.min.css" | relURL }}" />
   <link rel="stylesheet" href="{{ "fontawesome/css/regular.min.css" | relURL }}" />
@@ -58,8 +61,10 @@
   <link rel="stylesheet" href="{{ "fontawesome/css/v4-shims.min.css" | relURL }}" />
   <link rel="stylesheet" href="{{ "fontawesome/css/v5-font-face.min.css" | relURL }}" />
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}" />
-  {{- else -}}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
+{{- else -}}
+  {{- if eq $mathEngine "katex" }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
+  {{- end }}
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/brands.css" integrity="sha384-+PvcAGLOWIanfjuRoscHUyZB100N7wP779T8D3ao0FniyFFKMw9MIJpgtJO3+pdF" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/fontawesome.css" integrity="sha384-mj4mLShEAyWi4Bui9LmFkAjPYWof6WrG8DfS8ebHhjm4/MClMqMMHpQzehNk5HeM" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/regular.css" integrity="sha384-eS8Ja07iO8AOH11Hzegc5aZyN8CpY+oFwClH6MIlOKUOA3J4Oqjt8Xia9VUSU0GB" crossorigin="anonymous">
@@ -70,7 +75,22 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css" integrity="sha384-FnTDI00psVcN3KkfAip/6yRCeN17N3R7HZoAj+2+nttp8n1/vHfYUWvlscoUUhGJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/v5-font-face.css" integrity="sha384-FUMXkSpZU/e6Ua2owr0Mktp/gtxxiK1OgCS1vDr8Lsz+gbyDFMSiKeHBRa07EjDn" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  {{- end -}}
+{{- end }}
+{{- if eq $mathEngine "mathjax" }}
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+{{- end }}
 
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}" />
   {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
