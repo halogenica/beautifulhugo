@@ -56,7 +56,7 @@ hugo serve
 | **Responsive design** | Looks great on desktop and mobile |
 | **Light/dark/auto color scheme** | Navbar toggle with `localStorage` persistence |
 | **Syntax highlighting** | Chroma (server-side, default) or Highlight.js (client-side) |
-| **KaTeX math** | Inline `$...$` and display `$$...$$` — no config needed |
+| **KaTeX math** | Inline `//(...//)` and display `$$...$$` — no config needed |
 | **Mermaid diagrams** | Flowcharts, sequence diagrams, Gantt charts via shortcode |
 | **PhotoSwipe galleries** | `beautifulfigure` and `gallery` shortcodes with lightbox |
 | **Shortcodes** | `details`, `columns`/`column`, `tabs`/`tab`, `mermaid`, `gallery`, `beautifulfigure` |
