@@ -45,7 +45,7 @@
   {{- errorf "include-code: file '%s' not found or empty" $file -}}
 {{- end -}}
 
-{{- $useHLJS := .Page.Site.Params.useHLJS | default false -}}
+{{- $useHLJS := .Page.Param "useHLJS" | default false -}}
 
 {{- if $useHLJS -}}
   {{- with .Get "linenos" -}}
