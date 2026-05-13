@@ -22,7 +22,7 @@
     <div id="header-big-imgs" data-num-img={{len $bigimg}}
       {{range $i, $img := $bigimg}}
          {{ if (fileExists $img.src)}}
-          data-img-src-{{add $i 1}}="{{$img.src | absURL }}"
+          data-img-src-{{add $i 1}}="{{$img.src | relURL }}"
          {{else}}
           data-img-src-{{add $i 1}}="{{$img.src}}"
          {{end}}
