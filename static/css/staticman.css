@@ -7,7 +7,7 @@
   padding: 4px 0px 30px 0px;
 }
 
-.staticman-comments .comment-content p {
+.staticman-comments .comment-content * {
   padding: 5px 0px 5px 0px;
   margin: 5px 58px 0px 58px;
 }
