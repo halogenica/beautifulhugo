@@ -8,7 +8,7 @@ Beautiful Hugo includes built-in support for **KaTeX**, **MathJax**, and **Merma
 
 ## Math Rendering
 
-You can choose the math rendering engine via `mathEngine` in your config. Use `\(...\)` (KaTeX) / `$...$` (MathJax) for inline math and `$$...$$` for display math.
+You can choose the math rendering engine via `mathEngine` in your config. Use `\\(...\\)` (KaTeX) / `$...$` (MathJax) for inline math and `$$...$$` for display math.
 
 | Engine | Value | Behavior |
 |--------|-------|----------|
@@ -21,9 +21,20 @@ You can choose the math rendering engine via `mathEngine` in your config. Use `\
   mathEngine = "katex"
 ```
 
+You can also override the math engine per-page in front matter:
+
+```yaml
+---
+title: My Post
+mathEngine: "none"
+---
+```
+
+This is useful, for example, on pages that don't contain any math expressions — setting `mathEngine: "none"` prevents loading KaTeX or MathJax assets for that page.
+
 ### Inline math
 
-The golden ratio is $\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618$. Euler's identity states that $e^{i\pi} + 1 = 0$.
+The golden ratio is \\(\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618\\). Euler's identity states that \\(e^{i\pi} + 1 = 0\\).
 
 ### Display math
 
