@@ -3,7 +3,7 @@ Beautiful figure shortcode implementation for Beautiful Hugo theme.
 Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-gallery/
 -->
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
-{{- if not ($.Page.Store.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | absURL}}" />{{ end }}
+{{- if not ($.Page.Store.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | relURL }}" />{{ end }}
 {{- $.Page.Store.Set "figurecount" (add ($.Page.Store.Get "figurecount" | default 0) 1) -}}
 <!-- use either src or link-thumb for thumbnail image -->
 {{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
@@ -11,7 +11,7 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 {{- $size := .Get "size" }}
 <div class="box fancy-figure caption-position-{{ .Get "caption-position" | default "bottom" }}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}{{ with .Get "class" }} {{ . }}{{ end }}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
   <figure {{- with .Get "class" }} class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | absURL }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
+    <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | relURL }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
       <img itemprop="thumbnail" src="{{ $thumb }}" {{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
     </div>
     {{- with $src }}

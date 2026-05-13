@@ -39,7 +39,7 @@
 {{- end }}
 {{- partial "seo/main.html" . }}  
 {{- with .Site.Params.favicon }}
-  <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
+  <link href='{{ . | relURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
 <!-- Hugo Version number -->
   {{ hugo.Generator -}}
@@ -47,17 +47,17 @@
   <link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
 
   {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/katex.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/brands.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/fontawesome.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/regular.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/solid.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/svg.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/svg-with-js.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/v4-font-face.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/v4-shims.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "fontawesome/css/v5-font-face.min.css" | absURL }}" />
-  <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/katex.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/brands.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/fontawesome.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/regular.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/solid.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/svg.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/svg-with-js.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/v4-font-face.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/v4-shims.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "fontawesome/css/v5-font-face.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}" />
   {{- else -}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/brands.css" integrity="sha384-+PvcAGLOWIanfjuRoscHUyZB100N7wP779T8D3ao0FniyFFKMw9MIJpgtJO3+pdF" crossorigin="anonymous">
@@ -72,17 +72,17 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   {{- end -}}
 
-  <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}" />
   {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
-  <link rel="stylesheet" href="{{ "css/dark.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/dark.css" | relURL }}" />
   {{- end -}}
 
   {{- if .Site.Params.staticman -}}
-  <link rel="stylesheet" href="{{ "css/staticman.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/staticman.css" | relURL }}" />
   {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/fonts.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" />
   {{- else -}}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
@@ -90,9 +90,9 @@
 
   {{- if .Site.Params.useHLJS }}
   {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/highlight.min.css" | relURL }}" />
   {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
-  <link id="hljs-dark" rel="stylesheet" href="{{ "css/highlight-dark.min.css" | absURL }}" />
+  <link id="hljs-dark" rel="stylesheet" href="{{ "css/highlight-dark.min.css" | relURL }}" />
   {{- end -}}
   {{- else -}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css" integrity="sha384-eFTL69TLRZTkNfYZOLM+G04821K1qZao/4QLJbet1pP4tcF+fdXq/9CdqAbWRl/L" crossorigin="anonymous">
@@ -101,15 +101,15 @@
   {{- end -}}
   {{- end -}}
   {{- else -}}
-  <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}" />
   {{- if ne (.Site.Params.colorScheme | default "auto") "light" -}}
-  <link id="hljs-dark" rel="stylesheet" href="{{ "css/syntax-dark.css" | absURL }}" />
+  <link id="hljs-dark" rel="stylesheet" href="{{ "css/syntax-dark.css" | relURL }}" />
   {{- end -}}
   {{- end -}}
-  <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/codeblock.css" | relURL }}" />
 
   {{- if ne ($.Param "toc") false -}}
-  <link rel="stylesheet" href="{{ "css/toc.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/toc.css" | relURL }}" />
   {{- end -}}
   
   {{- if .Site.Params.staticman.recaptcha -}}
@@ -117,7 +117,7 @@
   {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
-  <link rel="stylesheet" href="{{ "css/photoswipe.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/photoswipe.css" | relURL }}" />
   {{- else -}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
   {{- end -}}
