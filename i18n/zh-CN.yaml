@@ -101,6 +101,46 @@
 # View source
 - id: viewSource
   translation: "查看源文件"
+
+# Menu items / 菜单项
+- id: menu_setup
+  translation: "设置"
+- id: menu_configuration
+  translation: "配置"
+- id: menu_layout-options
+  translation: "布局选项"
+- id: menu_theming
+  translation: "主题"
+- id: menu_seo-and-i18n
+  translation: "SEO 与国际化"
+- id: menu_comments-and-social
+  translation: "评论与社交"
+- id: menu_features
+  translation: "功能"
+- id: menu_pages-and-layouts
+  translation: "页面与布局"
+- id: menu_shortcodes
+  translation: "短代码"
+- id: menu_code-blocks
+  translation: "代码块"
+- id: menu_markdown-extensions
+  translation: "Markdown 扩展"
+- id: menu_figures-and-galleries
+  translation: "图片与画廊"
+- id: menu_math-and-diagrams
+  translation: "数学与图表"
+- id: menu_blog
+  translation: "博客"
+- id: menu_post
+  translation: "文章"
+- id: menu_tags
+  translation: "标签"
+- id: menu_categories
+  translation: "分类"
+- id: menu_archives
+  translation: "归档"
+- id: menu_about
+  translation: "关于"
 # Recipe / 食谱
 - id: recipePrepTime
   translation: "准备时间"

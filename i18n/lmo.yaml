@@ -197,6 +197,84 @@
 # View source
 - id: viewSource
   translation: "Varda surgaent"
+# Menu items / Vos del menu
+
+- id: menu_setup
+
+  translation: "Configurazion"
+
+- id: menu_configuration
+
+  translation: "Impostazion"
+
+- id: menu_layout-options
+
+  translation: "Opzion de layout"
+
+- id: menu_theming
+
+  translation: "Temi"
+
+- id: menu_seo-and-i18n
+
+  translation: "SEO e i18n"
+
+- id: menu_comments-and-social
+
+  translation: "Comment e sociai"
+
+- id: menu_features
+
+  translation: "Funzion"
+
+- id: menu_pages-and-layouts
+
+  translation: "Pagine e layout"
+
+- id: menu_shortcodes
+
+  translation: "Shortcode"
+
+- id: menu_code-blocks
+
+  translation: "Bloch de codes"
+
+- id: menu_markdown-extensions
+
+  translation: "Estension Markdown"
+
+- id: menu_figures-and-galleries
+
+  translation: "Figure e gallerij"
+
+- id: menu_math-and-diagrams
+
+  translation: "Matematega e diagram"
+
+- id: menu_blog
+
+  translation: "Blog"
+
+- id: menu_post
+
+  translation: "Articoi"
+
+- id: menu_tags
+
+  translation: "Tag"
+
+- id: menu_categories
+
+  translation: "Categurij"
+
+- id: menu_archives
+
+  translation: "Archivi"
+
+- id: menu_about
+
+  translation: "Informazion"
+
 # Recipe / Ricetta
 - id: recipePrepTime
   translation: "Temp de preparazzion"

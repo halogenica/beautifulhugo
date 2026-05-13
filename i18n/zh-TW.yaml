@@ -101,6 +101,47 @@
 # View source
 - id: viewSource
   translation: "檢視原始檔案"
+
+# Menu items / 選單項目
+- id: menu_setup
+  translation: "設定"
+- id: menu_configuration
+  translation: "配置"
+- id: menu_layout-options
+  translation: "版面選項"
+- id: menu_theming
+  translation: "主題"
+- id: menu_seo-and-i18n
+  translation: "SEO 與國際化"
+- id: menu_comments-and-social
+  translation: "留言與社交"
+- id: menu_features
+  translation: "功能"
+- id: menu_pages-and-layouts
+  translation: "頁面與版面"
+- id: menu_shortcodes
+  translation: "短代碼"
+- id: menu_code-blocks
+  translation: "程式碼區塊"
+- id: menu_markdown-extensions
+  translation: "Markdown 擴展"
+- id: menu_figures-and-galleries
+  translation: "圖片與畫廊"
+- id: menu_math-and-diagrams
+  translation: "數學與圖表"
+- id: menu_blog
+  translation: "部落格"
+- id: menu_post
+  translation: "文章"
+- id: menu_tags
+  translation: "標籤"
+- id: menu_categories
+  translation: "分類"
+- id: menu_archives
+  translation: "歸檔"
+- id: menu_about
+  translation: "關於"
+
 # Recipe / 食譜
 - id: recipePrepTime
   translation: "準備時間"

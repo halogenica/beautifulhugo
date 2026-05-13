@@ -101,6 +101,47 @@
 # View source
 - id: viewSource
   translation: "소스 보기"
+
+# Menu items / 메뉴 항목
+- id: menu_setup
+  translation: "설정"
+- id: menu_configuration
+  translation: "구성"
+- id: menu_layout-options
+  translation: "레이아웃 옵션"
+- id: menu_theming
+  translation: "테마 설정"
+- id: menu_seo-and-i18n
+  translation: "SEO & i18n"
+- id: menu_comments-and-social
+  translation: "댓글 & 소셜"
+- id: menu_features
+  translation: "기능"
+- id: menu_pages-and-layouts
+  translation: "페이지 & 레이아웃"
+- id: menu_shortcodes
+  translation: "숏코드"
+- id: menu_code-blocks
+  translation: "코드 블록"
+- id: menu_markdown-extensions
+  translation: "마크다운 확장"
+- id: menu_figures-and-galleries
+  translation: "그림 & 갤러리"
+- id: menu_math-and-diagrams
+  translation: "수식 & 다이어그램"
+- id: menu_blog
+  translation: "블로그"
+- id: menu_post
+  translation: "게시물"
+- id: menu_tags
+  translation: "태그"
+- id: menu_categories
+  translation: "카테고리"
+- id: menu_archives
+  translation: "아카이브"
+- id: menu_about
+  translation: "소개"
+
 # Recipe / 레시피
 - id: recipePrepTime
   translation: "준비 시간"

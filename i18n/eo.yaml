@@ -101,6 +101,46 @@
 # View source
 - id: viewSource
   translation: "Vidi fonton"
+# Menu items / Menueroj
+- id: menu_setup
+  translation: "Agordo"
+- id: menu_configuration
+  translation: "Konfiguracio"
+- id: menu_layout-options
+  translation: "Aranĝaj opcioj"
+- id: menu_theming
+  translation: "Temoj"
+- id: menu_seo-and-i18n
+  translation: "SEO kaj i18n"
+- id: menu_comments-and-social
+  translation: "Komentoj kaj sociaj"
+- id: menu_features
+  translation: "Funkcioj"
+- id: menu_pages-and-layouts
+  translation: "Paĝoj kaj aranĝoj"
+- id: menu_shortcodes
+  translation: "Mallongaj kodoj"
+- id: menu_code-blocks
+  translation: "Kodblokoj"
+- id: menu_markdown-extensions
+  translation: "Markdown-kromaĵoj"
+- id: menu_figures-and-galleries
+  translation: "Figuroj kaj galerioj"
+- id: menu_math-and-diagrams
+  translation: "Matematiko kaj diagramoj"
+- id: menu_blog
+  translation: "Blogo"
+- id: menu_post
+  translation: "Afiŝoj"
+- id: menu_tags
+  translation: "Etikedoj"
+- id: menu_categories
+  translation: "Kategorioj"
+- id: menu_archives
+  translation: "Arĥivo"
+- id: menu_about
+  translation: "Pri"
+
 # Recipe / Recepto
 - id: recipePrepTime
   translation: "Prepara tempo"

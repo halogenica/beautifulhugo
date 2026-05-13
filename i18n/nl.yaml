@@ -101,6 +101,47 @@
 # View source
 - id: viewSource
   translation: "Bron bekijken"
+
+# Menu items / Menu-items
+- id: menu_setup
+  translation: "Installatie"
+- id: menu_configuration
+  translation: "Configuratie"
+- id: menu_layout-options
+  translation: "Indelingsopties"
+- id: menu_theming
+  translation: "Thema's"
+- id: menu_seo-and-i18n
+  translation: "SEO en i18n"
+- id: menu_comments-and-social
+  translation: "Reacties en sociaal"
+- id: menu_features
+  translation: "Functies"
+- id: menu_pages-and-layouts
+  translation: "Pagina's en indelingen"
+- id: menu_shortcodes
+  translation: "Shortcodes"
+- id: menu_code-blocks
+  translation: "Codeblokken"
+- id: menu_markdown-extensions
+  translation: "Markdown-extensies"
+- id: menu_figures-and-galleries
+  translation: "Afbeeldingen en galerijen"
+- id: menu_math-and-diagrams
+  translation: "Wiskunde en diagrammen"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Berichten"
+- id: menu_tags
+  translation: "Tags"
+- id: menu_categories
+  translation: "Categorieën"
+- id: menu_archives
+  translation: "Archief"
+- id: menu_about
+  translation: "Over"
+
 # Recipe / Recept
 - id: recipePrepTime
   translation: "Voorbereidingstijd"

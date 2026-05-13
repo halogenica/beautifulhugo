@@ -101,6 +101,46 @@
 # View source
 - id: viewSource
   translation: "View source"
+# Menu items
+- id: menu_setup
+  translation: "Setup"
+- id: menu_configuration
+  translation: "Configuration"
+- id: menu_layout-options
+  translation: "Layout Options"
+- id: menu_theming
+  translation: "Theming"
+- id: menu_seo-and-i18n
+  translation: "SEO & i18n"
+- id: menu_comments-and-social
+  translation: "Comments & Social"
+- id: menu_features
+  translation: "Features"
+- id: menu_pages-and-layouts
+  translation: "Pages & Layouts"
+- id: menu_shortcodes
+  translation: "Shortcodes"
+- id: menu_code-blocks
+  translation: "Code Blocks"
+- id: menu_markdown-extensions
+  translation: "Markdown Extensions"
+- id: menu_figures-and-galleries
+  translation: "Figures & Galleries"
+- id: menu_math-and-diagrams
+  translation: "Math & Diagrams"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Posts"
+- id: menu_tags
+  translation: "Tags"
+- id: menu_categories
+  translation: "Categories"
+- id: menu_archives
+  translation: "Archives"
+- id: menu_about
+  translation: "About"
+
 # Recipe
 - id: recipePrepTime
   translation: "Prep Time"
