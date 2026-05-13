@@ -40,7 +40,7 @@
           {{ with .Identifier }}
             {{ $key := printf "menu_%s" . }}
             {{ $translated := i18n $key }}
-            {{ if ne $translated $key }}
+            {{ if and $translated (ne $translated $key) }}
               {{ $name = $translated }}
             {{ end }}
           {{ end }}
@@ -55,7 +55,7 @@
                   {{ with .Identifier }}
                     {{ $key := printf "menu_%s" . }}
                     {{ $translated := i18n $key }}
-                    {{ if ne $translated $key }}
+                    {{ if and $translated (ne $translated $key) }}
                       {{ $childName = $translated }}
                     {{ end }}
                   {{ end }}
