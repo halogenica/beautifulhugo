@@ -19,8 +19,8 @@
   {{- if reflect.IsMap $step -}}
     {{- with $step.text }}{{ $s = merge $s (dict "text" (. | plainify)) }}{{ end -}}
     {{- with $step.name }}{{ $s = merge $s (dict "name" .) }}{{ end -}}
-    {{- with $step.url }}{{ $s = merge $s (dict "url" .) }}{{ end -}}
-    {{- with $step.image }}{{ $s = merge $s (dict "image" .) }}{{ end -}}
+    {{- with $step.url }}{{ $s = merge $s (dict "url" (. | absURL)) }}{{ end -}}
+    {{- with $step.image }}{{ $s = merge $s (dict "image" (. | absURL)) }}{{ end -}}
   {{- else -}}
     {{- $s = merge $s (dict "text" ($step | plainify)) -}}
   {{- end -}}

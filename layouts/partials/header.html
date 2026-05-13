@@ -24,7 +24,7 @@
          {{ if (fileExists $img.src)}}
           data-img-src-{{add $i 1}}="{{$img.src | relURL }}"
          {{else}}
-          data-img-src-{{add $i 1}}="{{$img.src}}"
+           data-img-src-{{add $i 1}}="{{$img.src | relURL }}"
          {{end}}
          {{ if $img.desc}}data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}
       {{end}}></div>
@@ -33,7 +33,7 @@
   <header class="header-section {{ if $bigimg }}has-img{{ end }}">
     {{ if $bigimg }}
       {{- $firstimg := index $bigimg 0 }}
-    <div class="intro-header big-img{{ if eq $headerImgStyle "narrow" }} narrow-img{{ end }}" style="background-image: url('{{$firstimg.src}}');">
+    <div class="intro-header big-img{{ if eq $headerImgStyle "narrow" }} narrow-img{{ end }}" style="background-image: url('{{$firstimg.src | relURL}}');">
         <div class="container">
           <div class="row">
             <div class="{{$contentColClass}}">

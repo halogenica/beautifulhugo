@@ -2,7 +2,7 @@
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
   {{- $src := .Get "src" }}
   {{- $thumb := .Get "link" | default $src }}
-  <img src="{{ $thumb }}"
+  <img src="{{ $thumb | relURL }}"
        {{- with .Get "alt" }} alt="{{ . }}"{{ end }}
        {{- with .Get "title" }} title="{{ . }}"{{ end }}
        {{- with .Get "width" }} width="{{ . }}"{{ end }}

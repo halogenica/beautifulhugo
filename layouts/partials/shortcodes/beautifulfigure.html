@@ -12,7 +12,7 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 <div class="box fancy-figure caption-position-{{ .Get "caption-position" | default "bottom" }}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}{{ with .Get "class" }} {{ . }}{{ end }}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
   <figure {{- with .Get "class" }} class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | relURL }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
-      <img itemprop="thumbnail" src="{{ $thumb }}" {{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
+      <img itemprop="thumbnail" src="{{ $thumb | relURL }}" {{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
     </div>
     {{- with $src }}
     {{- $width := "" }}
@@ -22,7 +22,7 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
       {{- $width = index $sizes 0 }}
       {{- $height = index $sizes 1 }}
     {{- end }}
-    <a href="{{ . }}" itemprop="contentUrl" target="_blank"
+    <a href="{{ . | relURL }}" itemprop="contentUrl" target="_blank"
       {{- if $size }} data-pswp-width="{{ $width }}" data-pswp-height="{{ $height }}"{{ end }}></a>
     {{- end }}
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
