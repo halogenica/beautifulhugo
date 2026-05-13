@@ -1,8 +1,8 @@
 {{- $description := "" -}}
 {{- if .Description -}}
-  {{- $description = .Description | plainify -}}
+  {{- $description = .Description | plainify | htmlUnescape -}}
 {{- else if .IsPage -}}
-  {{- $description = .Summary | plainify -}}
+  {{- $description = .Summary | plainify | htmlUnescape -}}
 {{- end -}}
 
 {{- $keywords := slice -}}
