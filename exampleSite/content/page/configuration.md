@@ -125,6 +125,7 @@ When `selfHosted = true`, the following assets are served from `static/` instead
 | `showPageDates` | bool | `false` | Show dates on "page" type pages |
 | `toc` | bool | `true` | Show a floating table-of-contents button on pages with headings |
 | `showSource` | bool | `false` | Show a "View source" button linking to the page's source file in the repository |
+| `showPostNav` | bool | `true` | Show previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens) |
 | `sourceRepo` | string | — | Base URL for the repository source browser (e.g. `https://github.com/user/repo/blob/main/`). The page's `.File.Path` is appended automatically. When `enableGitInfo = true` is set, the branch in the URL is replaced with the current commit hash, so the link always points to the exact version of the file |
 
 ```toml
@@ -135,6 +136,7 @@ When `selfHosted = true`, the following assets are served from `static/` instead
   showRelatedPosts = true
   disableFigureOverride = true
   showSource = true
+  showPostNav = true
   sourceRepo = "https://github.com/user/repo/blob/main/"
 ```
 
@@ -419,6 +421,7 @@ These options can be set in the front matter of any page or post:
 | `navShort` | bool | Make navbar short on this page |
 | `toc` | bool | Show/hide table of contents for this page (overrides site-level `toc`) |
 | `showSource` | bool | Override site-level `showSource` for this page |
+| `showPostNav` | bool | Override site-level `showPostNav` for this page |
 | `mathEngine` | string | Override site-level `mathEngine` for this page (`"katex"`, `"mathjax"`, or `"none"`) |
 | `colorScheme` | string | Override site-level `colorScheme` for this page (`"auto"`, `"dark"`, or `"light"`) |
 | `useHLJS` | bool | Override site-level `useHLJS` for this page |
@@ -481,7 +484,7 @@ recipe:
 - **Structured data**: Pages with `type: recipe` and a `recipe` param emit a combined `Article` + `Recipe` JSON-LD block (as recommended by Google for recipe blog posts). Other pages continue to emit the standard `Article` schema.
 - **Visual rendering**: A recipe card is automatically rendered below the page body content, displaying metadata (prep time, cook time, yield, etc.), an ingredients list, and numbered instructions.
 - **Archetype**: Use `hugo new recipe/my-recipe.md` to get a pre-filled recipe front matter scaffold.
-- **Page behavior**: Recipe pages behave like blog posts (showing post meta, pager, and comments) since they are not `type: page`.
+- **Page behavior**: Recipe pages behave like blog posts (showing post meta, post navigation, and comments) since they are not `type: page`.
 
 ### ISO 8601 duration format
 
