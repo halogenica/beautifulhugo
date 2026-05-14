@@ -18,7 +18,25 @@ The theme automatically generates JSON-LD structured data for every page:
 | `Article` | Blog posts | Headline, author, datePublished, dateModified, publisher, wordCount, timeRequired |
 | `BreadcrumbList` | All pages | Navigation hierarchy |
 
-No configuration is required — the structured data is generated from your existing `hugo.toml` settings and page front matter.
+No configuration is required — the structured data is generated from your existing `hugo.toml` settings and page front matter. You can optionally customize the structured data output with the following params:
+
+### Custom Structured Data Params
+
+| Param | Schema Type | Description |
+|-------|------------|-------------|
+| `organizationName` | `Organization` | Organization name (defaults to `Params.author.name`) |
+| `organizationLogo` | `Organization` | URL of the organization logo |
+| `organizationAddress` | `Organization` | Organization address (string or structured value) |
+| `socialProfiles` | `Organization` | List of social profile URLs for the `sameAs` field |
+| `alternatePageName` | `WebSite` | Alternate name for the site (used as `alternateName`) |
+
+```toml
+[Params]
+  organizationName = "My Company"
+  organizationLogo = "https://example.com/logo.png"
+  socialProfiles = ["https://twitter.com/example", "https://github.com/example"]
+  alternatePageName = "My Company Blog"
+```
 
 ## Open Graph
 
@@ -177,7 +195,6 @@ Beautiful Hugo ships with translations for 20 languages:
 | Code | Language |
 |------|----------|
 | `en` | English |
-| `br` | Breton |
 | `de` | German |
 | `dk` | Danish |
 | `eo` | Esperanto |

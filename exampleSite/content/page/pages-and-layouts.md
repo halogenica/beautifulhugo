@@ -173,6 +173,19 @@ The `layout` key in front matter selects an alternative template from `layouts/_
 | `list` | `list.html` — force the list template on a page |
 | `terms` | `terms.html` — force the taxonomy terms template |
 
+## Archetypes
+
+Beautiful Hugo ships with archetypes (content templates) that pre-fill front matter when you create new content with `hugo new`:
+
+| Command | Archetype | Front Matter Included |
+|---------|-----------|-----------------------|
+| `hugo new post/my-post.md` | `post.md` | `title`, `subtitle`, `date`, `draft`, `author`, `description`, `categories`, `tags`, `bigimg`, `comments` |
+| `hugo new page/my-page.md` | `page.md` | `title`, `subtitle`, `date`, `draft`, `description`, `comments`, `fullWidth` |
+| `hugo new recipe/my-recipe.md` | `recipe.md` | `title`, `type: recipe`, `date`, `subtitle`, `image`, `tags`, `recipe` map |
+| `hugo new <section>/foo.md` | `default.md` | `title`, `date`, `draft` |
+
+Hugo selects the archetype based on the content section. If the section directory matches an archetype name (e.g. `post/`, `page/`, `recipe/`), that archetype is used. Otherwise the `default.md` archetype is used.
+
 ## Layout Options
 
 Several front matter options affect how a page looks regardless of its kind. See [Layout Options](../layout-options/) for the full reference.

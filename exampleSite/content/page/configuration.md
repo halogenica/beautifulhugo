@@ -13,9 +13,9 @@ This page is a complete reference for every configuration option in Beautiful Hu
 | `homeTitle` | string | site title | Separate title for the home page header |
 | `subtitle` | string | `""` | Site subtitle shown under the home page title |
 | `mainSections` | list | `["post", "posts"]` | Content sections treated as "posts" on the home page and archive page |
-| `logo` | string | — | Path to a square avatar/logo image |
+| `logo` | string | — | Path to a square avatar/logo image. When the file is found via Hugo's asset pipeline (`resources.Get`), it is automatically processed into WebP format (300×300, quality 100) for optimal loading. If the file is not found as a resource, the raw path is used as-is. |
 | `favicon` | string | — | Path to favicon |
-| `dateFormat` | string | i18n default | Date format string. Accepts Hugo locale tokens (e.g. `":date_long"`, `":date_medium"`, `":date_short"`) for automatic localization, or a Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. Locale tokens are recommended for multilingual sites. |
+| `dateFormat` | string | i18n default | Date format string. Accepts Hugo locale tokens (e.g. `":date_long"`, `":date_medium"`, `":date_short"`) for automatic localization, or a Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. Locale tokens are recommended for multilingual sites. The theme validates `dateFormat` at build time and will emit a build error if it detects an invalid format (e.g. a date that doesn't use Go's reference time). |
 | `since` | int | — | Start year for copyright range (e.g. `2015 - 2026`) |
 
 ```toml
@@ -137,6 +137,16 @@ When `selfHosted = true`, the following assets are served from `static/` instead
   showSource = true
   sourceRepo = "https://github.com/user/repo/blob/main/"
 ```
+
+### Table of Contents Panel
+
+When `toc = true` (the default), a list-style button appears in the navbar on pages that have headings or list pages that have posts. Clicking it opens a slide-out panel on the left side of the viewport.
+
+**On single pages** (posts, regular pages), the panel shows the page's heading hierarchy extracted from the Table of Contents. An `IntersectionObserver` tracks which heading is currently in view and highlights the corresponding link in the panel.
+
+**On list and home pages**, the panel shows a list of post titles instead of headings. Scrolling through the post previews automatically highlights the currently visible post in the panel.
+
+The panel can be closed by clicking the close button, clicking the backdrop overlay, or pressing `Escape`.
 
 ## Big Image Header
 
@@ -394,7 +404,9 @@ These options can be set in the front matter of any page or post:
 | `image` | string | Post preview image (circular, shown in list pages) |
 | `video` | string | Post preview video (loop, autoplay, muted) |
 | `summary` | string | Custom summary text |
-| `author` | string/list | Per-page author(s) (string or list of strings) |
+| `description` | string | Page description for meta tags and structured data (see [SEO & i18n — Description Cascade](../seo-and-i18n/#description-cascade)) |
+| `type` | string | Content type that determines template behavior: `"page"`, `"post"`, or `"recipe"` (see [Pages & Layouts](../pages-and-layouts/)) |
+| `author` | string/list | Per-page author(s) (string or list of strings; supports Markdown links, e.g. `"[Jane Doe](https://example.com)"`) |
 | `tags` | list | Tags for categorization |
 | `categories` | list | Categories for grouping posts |
 | `share_img` | string | Social sharing image (falls back to `image` then `logo`) |

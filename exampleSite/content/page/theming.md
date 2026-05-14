@@ -152,3 +152,40 @@ Because your custom partial loads last, its rules win on equal specificity. For 
 ### Overriding dark.css entirely
 
 If you want complete control over dark mode styles, you can copy `static/css/dark.css` into your site's `static/` directory and modify it. Hugo will use your version instead of the theme's.
+
+## Print Stylesheet
+
+Beautiful Hugo includes a print stylesheet (`static/css/print.css`) that is automatically applied when a user prints a page (or uses the browser's "Save as PDF" feature). It provides a clean, printer-friendly layout:
+
+- **Hidden elements**: navbar, TOC panel, comments, social share buttons, GitHub buttons, copy-code buttons, search modal, theme toggle, and big image transition animations are all hidden.
+- **Link URLs shown inline**: non-anchor, non-JavaScript links display their URL in parentheses after the link text (e.g. "Visit Hugo \[https://gohugo.io\]").
+- **Full-width layout**: container and column constraints are removed so content uses the full page width.
+- **Typography**: body text is set to 12pt with 1.5 line height; headings and paragraphs respect orphans/widows rules.
+- **Page breaks**: images, blockquotes, code blocks, and headings avoid being split across pages.
+- **Code blocks**: overflow is made visible and text wraps to avoid clipping.
+- **Dark mode reset**: dark mode backgrounds and colors are overridden to black-on-white for printing.
+- **Tab content**: tab navigation is hidden; all tab panes are displayed in sequence.
+
+No configuration is needed — the print stylesheet is loaded automatically.
+
+## Accessibility: Reduced Motion
+
+Beautiful Hugo respects the `prefers-reduced-motion` media query. When a user has enabled "Reduce motion" in their operating system settings:
+
+- **Big image cycling** is disabled — the first header image is shown without animation.
+- **CSS transitions** (fade effects, hover transitions, slide animations) are disabled.
+- **Hover effects** that rely on motion are suppressed.
+
+This behavior is automatic and requires no configuration. The theme checks `prefers-reduced-motion: reduce` in both CSS and JavaScript to provide a comfortable experience for users who are sensitive to motion.
+
+## Bootstrap Tooltips
+
+Beautiful Hugo initializes Bootstrap 5 tooltips on any element with the `data-bs-toggle="tooltip"` attribute. The theme uses tooltips internally on the navbar TOC toggle and theme toggle buttons. You can add tooltips to your own custom HTML in content or partials:
+
+```html
+<button data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip text">
+  Hover me
+</button>
+```
+
+Supported `data-bs-placement` values: `top`, `bottom`, `left`, `right`.
