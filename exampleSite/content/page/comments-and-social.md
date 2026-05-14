@@ -130,11 +130,19 @@ ghCount: true
 
 | Param | Type | Default | Description |
 |-------|------|---------|-------------|
-| `ghRepo` | string | — | GitHub repo in `owner/repo` format |
-| `ghBadge` | list | — | Which buttons to show: `star`, `watch`, `fork`, `follow` |
-| `ghCount` | bool | `true` | Show count numbers on buttons |
+| `ghRepo` | string | — | GitHub repo in `owner/repo` format (per-page front matter only) |
+| `ghBadge` | list | — | Which buttons to show: `star`, `watch`, `fork`, `follow`. Can be set per-page or site-wide via `Params.ghBadge` |
+| `ghCount` | bool | `true` | Show count numbers on buttons. Can be set per-page or site-wide via `Params.ghCount` |
 
 The buttons are loaded from [ghbtns.com](https://ghbtns.com) via lightweight iframes.
+
+You can also set `ghBadge` and `ghCount` site-wide so they apply to every page that has a `ghRepo`:
+
+```toml
+[Params]
+  ghBadge = ["star", "fork"]
+  ghCount = true
+```
 
 ## Footer Social Icons
 

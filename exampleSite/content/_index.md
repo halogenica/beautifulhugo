@@ -36,7 +36,7 @@ title: Beautiful Hugo
 - 42 social icon links
 - GitHub buttons
 - SEO (schema.org, Open Graph, Twitter Cards)
-- 19 languages
+- 20 languages
 {{< /columns >}}
 
 Browse the **Features** menu above for detailed documentation with live examples!
