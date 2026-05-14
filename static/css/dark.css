@@ -95,6 +95,16 @@
 }
 
 /* --- Pager --- */
+[data-theme="dark"] .nav-side-arrow {
+  color: var(--dark-muted);
+}
+
+[data-theme="dark"] .nav-side-arrow:hover,
+[data-theme="dark"] .nav-side-arrow:focus {
+  color: var(--dark-fg);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
 [data-theme="dark"] .post-pager li a {
   background: var(--dark-surface);
   color: var(--dark-fg);
