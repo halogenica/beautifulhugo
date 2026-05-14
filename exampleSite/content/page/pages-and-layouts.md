@@ -79,6 +79,28 @@ comments: false
 ---
 ```
 
+## Recipe Pages
+
+Pages with `type: recipe` behave like blog posts (showing post meta, pager, and comments) but additionally emit [schema.org/Recipe](https://schema.org/Recipe) JSON-LD structured data and render a recipe card below the page body. Create them with a `recipe` front matter map:
+
+```yaml
+---
+title: "Classic Chocolate Chip Cookies"
+type: recipe
+date: 2026-05-12
+recipe:
+  prepTime: "PT15M"
+  cookTime: "PT12M"
+  yield: "24 cookies"
+  ingredients:
+    - "2¼ cups all-purpose flour"
+  instructions:
+    - text: "Preheat oven to 375°F."
+---
+```
+
+See [Configuration — Recipe Pages](../configuration/#recipe-pages) for the full `recipe` front matter reference and the archetype scaffold.
+
 ## Section Listings
 
 A section listing page (e.g. `/post/`) shows a paginated list of post previews. It uses `layouts/_default/list.html`. To add content above the post list, create a `_index.md` in the section directory:
