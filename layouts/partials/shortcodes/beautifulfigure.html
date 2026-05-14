@@ -9,6 +9,9 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 {{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
 {{- $src := .Get "link" | default (.Get "src") }}
 {{- $size := .Get "size" }}
+{{- $pageRel := .Page.RelPermalink }}
+{{- $thumb = cond (or (strings.HasPrefix $thumb "/") (strings.HasPrefix $thumb "http")) $thumb (print $pageRel $thumb) }}
+{{- $src = cond (or (strings.HasPrefix $src "/") (strings.HasPrefix $src "http")) $src (print $pageRel $src) }}
 <div class="box fancy-figure caption-position-{{ .Get "caption-position" | default "bottom" }}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}{{ with .Get "class" }} {{ . }}{{ end }}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
   <figure {{- with .Get "class" }} class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | relURL }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
