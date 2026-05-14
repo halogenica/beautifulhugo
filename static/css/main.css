@@ -145,6 +145,10 @@ img::selection {
   }
 }
 
+[role="main"] {
+  padding-bottom: 2rem;
+}
+
 .main-explain-area {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 15px inherit;
@@ -802,7 +806,6 @@ img::selection {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .post-pager li {
