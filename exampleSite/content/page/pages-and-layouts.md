@@ -44,7 +44,7 @@ Blog posts live under `content/post/` (or any directory listed in `mainSections`
 
 - Post metadata in the header (date, reading time, word count, author)
 - Subtitle rendered as an `<h2>`
-- Previous/next post pager
+- Previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens; disable with `showPostNav = false`)
 - Comments (if `comments: true`)
 - Social sharing buttons
 - Related posts section
@@ -67,7 +67,7 @@ Pages under `content/page/` have type `page`. They use the same `single.html` te
 
 - No post metadata in the header
 - Subtitle rendered as a `<span>` (not a heading)
-- No previous/next pager
+- No previous/next post navigation
 - No comments (even if `comments: true`, unless the type is not `page`)
 - Dates hidden unless `showPageDates: true`
 
