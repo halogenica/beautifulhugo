@@ -2,6 +2,8 @@
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
   {{- $src := .Get "src" }}
   {{- $thumb := .Get "link" | default $src }}
+  {{- $pageRel := .Page.RelPermalink }}
+  {{- $thumb = cond (or (strings.HasPrefix $thumb "/") (strings.HasPrefix $thumb "http")) $thumb (print $pageRel $thumb) }}
   <img src="{{ $thumb | relURL }}"
        {{- with .Get "alt" }} alt="{{ . }}"{{ end }}
        {{- with .Get "title" }} title="{{ . }}"{{ end }}
