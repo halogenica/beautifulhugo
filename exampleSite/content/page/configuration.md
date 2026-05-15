@@ -335,6 +335,40 @@ Staticman adds comments as static data files via pull requests, with optional re
 
 When `gcse` is set, a search icon appears in the navbar that opens a search modal.
 
+### Search Outputs
+
+The integrated client-side search requires JSON output to function. Ensure your `hugo.toml` includes the following `outputs` configuration:
+
+```toml
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+```
+
+### Search Labels
+
+You can customize the text used on the search page:
+
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `[Params.search] back_label` | string | `"Back"` | Label for the back button |
+| `[Params.search] placeholder` | string | `"Search..."` | Placeholder text for the search input |
+| `[Params.search] search_label` | string | `"Search"` | Aria-label for the search input |
+| `[Params.search] search_button` | string | `"Search"` | Text for the search button |
+| `[Params.search] lucky_button` | string | `"I'm Feeling Lucky"` | Text for the "I'm Feeling Lucky" button |
+| `[Params.search] results_label` | string | `"Search results"` | Aria-label for the results container |
+
+```toml
+[Params.search]
+  back_label = "Back"
+  placeholder = "Search..."
+  search_label = "Search"
+  search_button = "Search"
+  lucky_button = "I'm Feeling Lucky"
+  results_label = "Search results"
+```
+
 ## SEO Robot Meta Tags
 
 Control `<meta name="robots">` tags from `hugo.toml`. These settings only apply to pages in `mainSections`; other pages can set tags via front matter.

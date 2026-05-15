@@ -1,0 +1,42 @@
+{{ define "main" }}
+  <link rel="stylesheet" href="{{ "/css/search.css" | absURL }}">
+  <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}" role="main">
+    <div class="row">
+      <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
+
+        <div class="search-header text-center mb-5 pt-4">
+          <a href="/" class="search-logo" aria-label="{{ .Params.search.back_label | default "Back" }}">
+            {{ $title := .Site.Title }}
+            {{ $chars := split $title "" }}
+            {{ range $i, $char := $chars }}
+              {{ if eq (trim $char " ") "" }}
+                <span>&nbsp;</span>
+              {{ else }}
+                <span>{{ $char }}</span>
+              {{ end }}
+            {{ end }}
+          </a>
+
+          <div class="search-box-container mx-auto">
+            <div class="search-input-group position-relative mb-3">
+              <input type="search" class="search-input" id="searchInput" placeholder="{{ .Params.search.placeholder | default "Search..." }}" aria-label="{{ .Params.search.search_label | default "Search" }}" autocomplete="off">
+            </div>
+            <div class="search-buttons text-center mb-4">
+              <button class="search-btn" id="searchBtn" type="button">{{ .Params.search.search_button | default "Search" }}</button>
+              <button class="search-btn" id="luckyBtn" type="button">{{ .Params.search.lucky_button | default "I'm Feeling Lucky" }}</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="resultsContainer" class="mt-4" role="region" aria-live="polite" aria-label="{{ .Params.search.results_label | default "Search results" }}"></div>
+
+        <div id="search-pagination" class="post-pager"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>window.searchIndexURL = "{{ "/index.json" | absURL }}";</script>
+  <script src="{{ "/js/fuse.js" | absURL }}"></script>
+  <script src="{{ "/js/search.js" | absURL }}"></script>
+{{ end }}
