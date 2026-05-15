@@ -4,7 +4,7 @@ let searchIndex = [];
 let cachedResults = [];
 let cachedQuery = '';
 
-// Utilitaire : échapper le HTML pour éviter les XSS
+// Utility: escape HTML to prevent XSS
 function escapeHtml(text) {
   if (!text) return '';
   const div = document.createElement('div');
@@ -12,7 +12,7 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// Utilitaire : mettre à jour l'URL sans recharger
+// Utility: update URL without reloading
 function updateUrl(query, page) {
   const newUrl = new URL(window.location);
   if (query) {
@@ -29,7 +29,7 @@ function updateUrl(query, page) {
   window.history.pushState({}, '', newUrl);
 }
 
-// Gérer l'état des boutons (activation/désactivation)
+// Manage button state (enabled/disabled)
 function setButtonsLoading(loading) {
   const searchBtn = document.getElementById('searchBtn');
   const luckyBtn = document.getElementById('luckyBtn');
@@ -37,7 +37,7 @@ function setButtonsLoading(loading) {
   if (luckyBtn) luckyBtn.disabled = loading;
 }
 
-// Initialiser Fuse.js
+// Initialize Fuse.js
 async function initSearch() {
   setButtonsLoading(true);
   try {
@@ -122,7 +122,7 @@ function renderResults(query, page) {
   const resultText = totalResults > 1
     ? (window.searchConfig ? window.searchConfig.resultPlural : '')
     : (window.searchConfig ? window.searchConfig.resultSingular : '');
-  let html = '<div class="results-info"> ' + totalResults + ' ' + resultText + ' pour <strong>' + escapeHtml(query) + '</strong></div>';
+  let html = '<div class="results-info"> ' + totalResults + ' ' + resultText + '<strong>' + escapeHtml(query) + '</strong></div>';
 
     pageResults.forEach(function(data) {
       html += '<div class="result">';
@@ -192,7 +192,7 @@ function autoSearchFromUrl() {
   }
 }
 
-// Initialisation au chargement
+// Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
     initSearch();
 
