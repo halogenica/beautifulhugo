@@ -69,11 +69,12 @@
             {{ .Site.Lastmod.Format "2006" }}
           {{ end }}
 
-          {{ if and .Site.Params.author.name .Site.Title }}
+          {{ if and .Site.Params.author.name .Site.Params.homeTitle | default .Site.Title }}
             &nbsp;&bull;&nbsp;
           {{ end }}
           {{ if .Site.Title }}
-            <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
+            <a href="{{ "" | absLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}
+</a>
           {{ end }}
         </p>
         <!-- Please don't remove this, keep my open source work credited :) -->
