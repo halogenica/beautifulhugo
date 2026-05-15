@@ -173,7 +173,7 @@ window.feelingLucky = function() {
   if (!fuse) return;
 
   const results = fuse.search(input.value.trim());
-  if (results && results.length > 0) {
+  if (results && results.length > 0 && results[0].item && results[0].item.url) {
     window.location.href = results[0].item.url;
   }
 };
