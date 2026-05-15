@@ -5,7 +5,7 @@
       <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
 
         <div class="search-header text-center mb-5 pt-4">
-          <a href="/" class="search-logo" aria-label="{{ .Params.search.back_label | default "Back" }}">
+          <a href="/" class="search-logo" aria-label="{{ .Site.Params.search.back_label | default "Back" }}">
             {{ $title := .Site.Title }}
             {{ $chars := split $title "" }}
             {{ range $i, $char := $chars }}
@@ -19,16 +19,16 @@
 
           <div class="search-box-container mx-auto">
             <div class="search-input-group position-relative mb-3">
-              <input type="search" class="search-input" id="searchInput" placeholder="{{ .Params.search.placeholder | default "Search..." }}" aria-label="{{ .Params.search.search_label | default "Search" }}" autocomplete="off">
+              <input type="search" class="search-input" id="searchInput" placeholder="{{ .Site.Params.search.placeholder | default "Search..." }}" aria-label="{{ .Site.Params.search.search_label | default "Search" }}" autocomplete="off">
             </div>
             <div class="search-buttons text-center mb-4">
-              <button class="search-btn" id="searchBtn" type="button">{{ .Params.search.search_button | default "Search" }}</button>
-              <button class="search-btn" id="luckyBtn" type="button">{{ .Params.search.lucky_button | default "I'm Feeling Lucky" }}</button>
+              <button class="search-btn" id="searchBtn" type="button">{{ .Site.Params.search.search_button | default "Search" }}</button>
+              <button class="search-btn" id="luckyBtn" type="button">{{ .Site.Params.search.lucky_button | default "I'm Feeling Lucky" }}</button>
             </div>
           </div>
         </div>
 
-        <div id="resultsContainer" class="mt-4" role="region" aria-live="polite" aria-label="{{ .Params.search.results_label | default "Search results" }}"></div>
+        <div id="resultsContainer" class="mt-4" role="region" aria-live="polite" aria-label="{{ .Site.Params.search.results_label | default "Search results" }}"></div>
 
         <div id="search-pagination" class="post-pager"></div>
 
@@ -36,7 +36,21 @@
     </div>
   </div>
 
-  <script>window.searchIndexURL = "{{ "/index.json" | absURL }}";</script>
+  <script>
+    window.searchIndexURL = "{{ "/index.json" | absURL }}";
+    window.searchConfig = {
+      resultsLabel: "{{ .Site.Params.search.results_label | default "Search results" }}",
+      loadingText: "{{ .Site.Params.search.loading_text | default "Searching..." }}",
+      noResultsText: "{{ .Site.Params.search.no_results_text | default "No results found for " }}",
+      resultSingular: "{{ .Site.Params.search.result_singular | default "result" }}",
+      resultPlural: "{{ .Site.Params.search.result_plural | default "results" }}",
+      errorIndexLoad: "{{ .Site.Params.search.error_index_load | default "Error loading search index." }}",
+      errorIndexLoading: "{{ .Site.Params.search.error_index_loading | default "Search index is still loading." }}",
+      prevText: "{{ .Site.Params.search.prev_text | default "Previous" }}",
+      nextText: "{{ .Site.Params.search.next_text | default "Next" }}",
+      untitledText: "{{ .Site.Params.search.untitled_text | default "Untitled" }}"
+    };
+  </script>
   <script src="{{ "/js/fuse.js" | absURL }}"></script>
   <script src="{{ "/js/search.js" | absURL }}"></script>
 {{ end }}

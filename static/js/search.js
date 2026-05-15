@@ -4,7 +4,7 @@ let searchIndex = [];
 let cachedResults = [];
 let cachedQuery = '';
 
-// Utility: escape HTML to prevent XSS
+// Utilitaire : échapper le HTML pour éviter les XSS
 function escapeHtml(text) {
   if (!text) return '';
   const div = document.createElement('div');
@@ -12,7 +12,7 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// Utility: update URL without reloading
+// Utilitaire : mettre à jour l'URL sans recharger
 function updateUrl(query, page) {
   const newUrl = new URL(window.location);
   if (query) {
@@ -29,7 +29,7 @@ function updateUrl(query, page) {
   window.history.pushState({}, '', newUrl);
 }
 
-// Handle button state (enabled/disabled)
+// Gérer l'état des boutons (activation/désactivation)
 function setButtonsLoading(loading) {
   const searchBtn = document.getElementById('searchBtn');
   const luckyBtn = document.getElementById('luckyBtn');
@@ -37,7 +37,7 @@ function setButtonsLoading(loading) {
   if (luckyBtn) luckyBtn.disabled = loading;
 }
 
-// Initialize Fuse.js
+// Initialiser Fuse.js
 async function initSearch() {
   setButtonsLoading(true);
   try {
@@ -61,11 +61,11 @@ async function initSearch() {
 
     setButtonsLoading(false);
     autoSearchFromUrl();
-  } catch (e) {
+    } catch (e) {
     console.error('Failed to load search index:', e);
     const container = document.getElementById('resultsContainer');
     if (container) {
-        container.innerHTML = '<div class="no-results">Error loading search index.</div>';
+        container.innerHTML = '<div class="no-results">' + (window.searchConfig ? window.searchConfig.errorIndexLoad : '') + '</div>';
     }
     setButtonsLoading(false);
   }
@@ -88,12 +88,12 @@ window.doSearch = function(page) {
 
   const container = document.getElementById('resultsContainer');
   if (container) {
-    container.innerHTML = '<div class="results-info">Searching...</div>';
+    container.innerHTML = '<div class="results-info">' + (window.searchConfig ? window.searchConfig.loadingText : '') + '</div>';
   }
 
   if (!fuse) {
     if (container) {
-        container.innerHTML = '<div class="no-results">Search index is still loading.</div>';
+        container.innerHTML = '<div class="no-results">' + (window.searchConfig ? window.searchConfig.errorIndexLoading : '') + '</div>';
     }
     return;
   }
@@ -110,7 +110,8 @@ function renderResults(query, page) {
   const totalResults = cachedResults.length;
 
   if (totalResults === 0) {
-    container.innerHTML = '<div class="no-results">No results found for <strong>' + escapeHtml(query) + '</strong></div>';
+    const noResultsText = window.searchConfig ? window.searchConfig.noResultsText : '';
+    container.innerHTML = '<div class="no-results">' + noResultsText + '<strong>' + escapeHtml(query) + '</strong></div>';
     return;
   }
 
@@ -118,13 +119,15 @@ function renderResults(query, page) {
   const end = Math.min(start + resultsPerPage, totalResults);
   const pageResults = cachedResults.slice(start, end);
 
-  let html = '<div class="results-info">About ' + totalResults + ' result' +
-    (totalResults > 1 ? 's' : '') + ' for <strong>' + escapeHtml(query) + '</strong></div>';
+  const resultText = totalResults > 1
+    ? (window.searchConfig ? window.searchConfig.resultPlural : '')
+    : (window.searchConfig ? window.searchConfig.resultSingular : '');
+  let html = '<div class="results-info"> ' + totalResults + ' ' + resultText + ' pour <strong>' + escapeHtml(query) + '</strong></div>';
 
     pageResults.forEach(function(data) {
       html += '<div class="result">';
       html += '<a class="result-title" href="' + escapeHtml(data.url) + '">' +
-      escapeHtml(data.title || 'Untitled') + '</a>';
+      escapeHtml(data.title || (window.searchConfig ? window.searchConfig.untitledText : '')) + '</a>';
     if (data.excerpt) {
       html += '<div class="result-excerpt">' + escapeHtml(data.excerpt) + '</div>';
     }
@@ -146,14 +149,16 @@ function renderPagination(currentPage, totalResults) {
   let html = '<ul class="post-pager">';
 
   if (currentPage > 1) {
+    const prevText = window.searchConfig ? window.searchConfig.prevText : '';
     html += '<li class="pager-prev">';
-    html += '<a href="javascript:void(0)" onclick="window.doSearch(' + (currentPage - 1) + ')">&larr; Previous</a>';
+    html += '<a href="javascript:void(0)" onclick="window.doSearch(' + (currentPage - 1) + ')">&larr; ' + prevText + '</a>';
     html += '</li>';
   }
 
   if (currentPage < totalPages) {
+    const nextText = window.searchConfig ? window.searchConfig.nextText : '';
     html += '<li class="pager-next">';
-    html += '<a href="javascript:void(0)" onclick="window.doSearch(' + (currentPage + 1) + ')">Next &rarr;</a>';
+    html += '<a href="javascript:void(0)" onclick="window.doSearch(' + (currentPage + 1) + ')">' + nextText + ' &rarr;</a>';
     html += '</li>';
   }
 
@@ -187,7 +192,7 @@ function autoSearchFromUrl() {
   }
 }
 
-// Initialize on load
+// Initialisation au chargement
 document.addEventListener('DOMContentLoaded', () => {
     initSearch();
 
