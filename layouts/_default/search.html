@@ -6,7 +6,7 @@
 
         <div class="search-header text-center mb-5 pt-4">
           <a href="/" class="search-logo" aria-label="{{ .Site.Params.search.back_label | default "Back" }}">
-            {{ $title := .Site.Title }}
+            {{ $title := .Site.Params.homeTitle | default .Site.Title }}
             {{ $chars := split $title "" }}
             {{ range $i, $char := $chars }}
               {{ if eq (trim $char " ") "" }}
