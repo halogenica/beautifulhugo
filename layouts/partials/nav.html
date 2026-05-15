@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-custom fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
+    <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
     <div class="d-flex align-items-center">
       {{ if ne ($.Param "toc") false }}
       {{ $hasToc := and .TableOfContents (findRE `<li>` .TableOfContents) }}
