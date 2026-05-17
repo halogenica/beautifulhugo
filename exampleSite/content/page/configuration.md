@@ -415,6 +415,12 @@ your-site/
 | `disclaimerText` | string | Disclaimer text shown in footer with a yellow-bordered box |
 | `commit` | string | Base URL for Git commit links (appended with `.GitInfo.Hash`) |
 
+Git features (`commit`) require `enableGitInfo = true` at the top level of your config (not under `[Params]`) so Hugo populates `.GitInfo`. Example:
+
+```toml
+commit = "https://github.com/user/repo/commit/"
+```
+
 ## Per-Page Front Matter
 
 These options can be set in the front matter of any page or post:
