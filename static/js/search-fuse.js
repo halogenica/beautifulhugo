@@ -7,28 +7,6 @@
 
   // --- fuse provider ---
 
-  var fuseScriptPromise = null;
-
-  function loadFuseScript(url) {
-    if (typeof Fuse !== 'undefined') {
-      return Promise.resolve();
-    }
-
-    if (!fuseScriptPromise) {
-      fuseScriptPromise = new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
-        script.src = url || '/js/fuse.js';
-        script.onload = resolve;
-        script.onerror = function () {
-          reject(new Error('Failed to load Fuse.js'));
-        };
-        document.head.appendChild(script);
-      });
-    }
-
-    return fuseScriptPromise;
-  }
-
   function fetchSearchIndex(url) {
     return fetch(url || '/index.json')
       .then(function (response) {
@@ -82,10 +60,7 @@
     getEngine: function () {
       if (!cachedEnginePromise) {
         var config = getProviderConfig();
-        cachedEnginePromise = loadFuseScript(config.fuseJsURL)
-          .then(function () {
-            return fetchSearchIndex(config.searchIndexURL);
-          })
+        cachedEnginePromise = fetchSearchIndex(config.searchIndexURL)
           .then(createFuseEngine);
       }
 
