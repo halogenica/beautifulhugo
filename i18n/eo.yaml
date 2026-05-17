@@ -41,6 +41,34 @@
   translation: "Navigacio"
 - id: languageSwitcherLabel
   translation: "Lingvo"
+- id: searchToggleLabel
+  translation: "Serĉi"
+- id: searchCloseLabel
+  translation: "Fermi serĉon"
+- id: searchPlaceholder
+  translation: "Serĉi afiŝojn kaj paĝojn…"
+- id: searchResultsLabel
+  translation: "Serĉrezultoj"
+- id: searchLoadingText
+  translation: "Serĉante…"
+- id: searchNoResultsText
+  translation: "Neniuj rezultoj por "
+- id: searchResultSingular
+  translation: "rezulto por "
+- id: searchResultPlural
+  translation: "rezultoj por "
+- id: searchErrorIndexLoad
+  translation: "Eraro dum ŝargado de serĉindekso."
+- id: searchErrorIndexLoading
+  translation: "Serĉindekso ankoraŭ ŝargiĝas."
+- id: searchPrevText
+  translation: "Antaŭa"
+- id: searchNextText
+  translation: "Sekva"
+- id: searchUntitledText
+  translation: "Sen titolo"
+- id: searchDisabledText
+  translation: "Serĉo estas malaktiva."
 - id: gcseLabelShort
   translation: "Serĉi"
 - id: gcseLabelLong

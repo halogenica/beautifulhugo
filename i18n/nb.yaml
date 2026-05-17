@@ -41,6 +41,34 @@
   translation: "Navigasjon på/av"
 - id: languageSwitcherLabel
   translation: "Språk"
+- id: searchToggleLabel
+  translation: "Søk"
+- id: searchCloseLabel
+  translation: "Lukk søk"
+- id: searchPlaceholder
+  translation: "Søk i innlegg og sider…"
+- id: searchResultsLabel
+  translation: "Søkeresultater"
+- id: searchLoadingText
+  translation: "Søker…"
+- id: searchNoResultsText
+  translation: "Ingen resultater for "
+- id: searchResultSingular
+  translation: "resultat for "
+- id: searchResultPlural
+  translation: "resultater for "
+- id: searchErrorIndexLoad
+  translation: "Feil ved innlasting av søkeindeks."
+- id: searchErrorIndexLoading
+  translation: "Søkeindeks lastes fortsatt."
+- id: searchPrevText
+  translation: "Forrige"
+- id: searchNextText
+  translation: "Neste"
+- id: searchUntitledText
+  translation: "Uten tittel"
+- id: searchDisabledText
+  translation: "Søk er deaktivert."
 - id: gcseLabelShort
   translation: "Søk"
 - id: gcseLabelLong

@@ -1,0 +1,59 @@
+{{ define "main" }}
+  {{- $searchProvider := partial "search-provider.html" . -}}
+  {{- $search := .Site.Params.search | default (dict) -}}
+  <link rel="stylesheet" href="{{ "/css/search.css" | absURL }}">
+  <div class="search-page-container" role="main">
+    {{- if eq $searchProvider "none" }}
+    <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}">
+      <div class="row">
+        <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
+          <p>{{ i18n "searchDisabledText" | default "Search is disabled." }}</p>
+        </div>
+      </div>
+    </div>
+    {{- else }}
+
+    <div class="search-field-wrapper">
+      <span class="fas fa-search search-field-icon" aria-hidden="true"></span>
+      <input type="search" class="search-field-input" id="searchInput"
+             placeholder="{{ $search.placeholder | default (i18n "searchPlaceholder" | default "Search posts and pages…" ) }}"
+             aria-label="{{ $search.search_label | default (i18n "searchToggleLabel" | default "Search" ) }}"
+             autocomplete="off" autofocus>
+    </div>
+
+    <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}">
+      <div class="row">
+        <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
+          <div id="resultsContainer" role="region" aria-live="polite"
+             aria-label="{{ $search.results_label | default (i18n "searchResultsLabel" | default "Search results" ) }}"></div>
+          <div id="search-pagination" class="post-pager"></div>
+        </div>
+      </div>
+    </div>
+
+    {{- end }}
+  </div>
+
+  {{- if ne $searchProvider "none" }}
+  <script>
+    window.searchProviderConfig = {
+     provider: "{{ $searchProvider }}",
+     searchIndexURL: "{{ "/index.json" | absURL }}",
+     searchPageURL: "{{ "/search" | absLangURL }}"
+    };
+    window.searchConfig = {
+     resultsLabel: "{{ $search.results_label | default (i18n "searchResultsLabel" | default "Search results" ) }}",
+     loadingText: "{{ $search.loading_text | default (i18n "searchLoadingText" | default "Searching…" ) }}",
+     noResultsText: "{{ $search.no_results_text | default (i18n "searchNoResultsText" | default "No results found for " ) }}",
+     resultSingular: "{{ $search.result_singular | default (i18n "searchResultSingular" | default "result for " ) }}",
+     resultPlural: "{{ $search.result_plural | default (i18n "searchResultPlural" | default "results for " ) }}",
+     errorIndexLoad: "{{ $search.error_index_load | default (i18n "searchErrorIndexLoad" | default "Error loading search index." ) }}",
+     errorIndexLoading: "{{ $search.error_index_loading | default (i18n "searchErrorIndexLoading" | default "Search index is still loading." ) }}",
+     prevText: "{{ $search.prev_text | default (i18n "searchPrevText" | default "Previous" ) }}",
+     nextText: "{{ $search.next_text | default (i18n "searchNextText" | default "Next" ) }}",
+     untitledText: "{{ $search.untitled_text | default (i18n "searchUntitledText" | default "Untitled" ) }}"
+    };
+  </script>
+  <script src="{{ "/js/search.js" | absURL }}"></script>
+  {{- end }}
+{{ end }}

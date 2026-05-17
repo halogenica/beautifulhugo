@@ -41,6 +41,34 @@
   translation: "네비게이션 토글"
 - id: languageSwitcherLabel
   translation: "언어"
+- id: searchToggleLabel
+  translation: "검색"
+- id: searchCloseLabel
+  translation: "검색 닫기"
+- id: searchPlaceholder
+  translation: "게시물과 페이지 검색…"
+- id: searchResultsLabel
+  translation: "검색 결과"
+- id: searchLoadingText
+  translation: "검색 중…"
+- id: searchNoResultsText
+  translation: "결과 없음: "
+- id: searchResultSingular
+  translation: "개 결과: "
+- id: searchResultPlural
+  translation: "개 결과: "
+- id: searchErrorIndexLoad
+  translation: "검색 인덱스 로드 오류."
+- id: searchErrorIndexLoading
+  translation: "검색 인덱스가 아직 로드 중입니다."
+- id: searchPrevText
+  translation: "이전"
+- id: searchNextText
+  translation: "다음"
+- id: searchUntitledText
+  translation: "제목 없음"
+- id: searchDisabledText
+  translation: "검색이 비활성화되었습니다."
 - id: gcseLabelShort
   translation: "검색"
 - id: gcseLabelLong

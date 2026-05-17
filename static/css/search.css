@@ -1,0 +1,118 @@
+/* Search Page */
+
+.search-page-container {
+  padding-top: 2rem;
+}
+
+.search-field-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 2px solid #404040;
+}
+
+.search-field-icon {
+  font-size: 1.1rem;
+  color: #888;
+  flex-shrink: 0;
+}
+
+.search-field-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  color: #404040;
+}
+
+.search-field-input::placeholder {
+  color: #bbb;
+  font-weight: 400;
+}
+
+/* Results */
+
+.results-info {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+
+.result {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.result:last-child {
+  border-bottom: none;
+}
+
+.result-title {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #0066CC;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.result-title:hover,
+.result-title:focus {
+  color: #0085a1;
+  text-decoration: underline;
+}
+
+.result-excerpt {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.no-results {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #888;
+  padding: 1rem 0;
+}
+
+/* Dark mode */
+[data-theme="dark"] .search-field-wrapper {
+  border-bottom-color: var(--dark-muted, #AAA);
+}
+
+[data-theme="dark"] .search-field-icon {
+  color: var(--dark-muted, #AAA);
+}
+
+[data-theme="dark"] .search-field-input {
+  color: var(--dark-fg, #fff);
+}
+
+[data-theme="dark"] .search-field-input::placeholder {
+  color: var(--dark-muted, #AAA);
+}
+
+[data-theme="dark"] .result-title {
+  color: var(--dark-link, #66bfff);
+}
+
+[data-theme="dark"] .result-title:hover,
+[data-theme="dark"] .result-title:focus {
+  color: var(--dark-navbar-hover, #b0e0ff);
+}
+
+[data-theme="dark"] .result-excerpt {
+  color: var(--dark-muted, #AAA);
+}
+
+[data-theme="dark"] .result {
+  border-bottom-color: var(--dark-surface, #444);
+}

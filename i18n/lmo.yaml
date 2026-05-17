@@ -84,6 +84,35 @@
 
   translation: "Lengua"
 
+- id: searchToggleLabel
+  translation: "Cerca"
+- id: searchCloseLabel
+  translation: "Sara su ricerca"
+- id: searchPlaceholder
+  translation: "Cerca articoi e pagine…"
+- id: searchResultsLabel
+  translation: "Risultaa de la ricerca"
+- id: searchLoadingText
+  translation: "Se cerchen…"
+- id: searchNoResultsText
+  translation: "Nissub resultat per "
+- id: searchResultSingular
+  translation: "resultat per "
+- id: searchResultPlural
+  translation: "resultaa per "
+- id: searchErrorIndexLoad
+  translation: "Errur in del caregà l'indes de ricerca."
+- id: searchErrorIndexLoading
+  translation: "L'indes de ricerca el sta anmò caregand."
+- id: searchPrevText
+  translation: "Prima"
+- id: searchNextText
+  translation: "Dopo"
+- id: searchUntitledText
+  translation: "Senza titol"
+- id: searchDisabledText
+  translation: "La ricerca l'è desativada."
+
 - id: gcseLabelShort
 
   translation: "Cerca"

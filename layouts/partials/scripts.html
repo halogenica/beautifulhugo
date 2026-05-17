@@ -43,6 +43,15 @@
 {{- end -}}
 <script src="{{ "js/load-photoswipe.js" | relURL }}"></script>
 
+{{ if eq (partial "search-provider.html" .) "fuse" }}
+{{- if .Site.Params.selfHosted }}
+<script src="{{ "js/fuse.js" | relURL }}"></script>
+{{- else }}
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" integrity="sha384-PCSoOZTpbkikBEtd/+uV3WNdc676i9KUf01KOA8CnJotvlx8rRrETbDuwdjqTYvt" crossorigin="anonymous"></script>
+{{- end }}
+<script src="{{ "js/search-fuse.js" | relURL }}"></script>
+{{ end }}
+
 {{ if .Site.Params.gcse }}
 <script>
   (function() {

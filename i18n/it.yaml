@@ -41,6 +41,34 @@
   translation: "Menu"
 - id: languageSwitcherLabel
   translation: "Lingua"
+- id: searchToggleLabel
+  translation: "Cerca"
+- id: searchCloseLabel
+  translation: "Chiudi ricerca"
+- id: searchPlaceholder
+  translation: "Cerca articoli e pagine…"
+- id: searchResultsLabel
+  translation: "Risultati della ricerca"
+- id: searchLoadingText
+  translation: "Ricerca in corso…"
+- id: searchNoResultsText
+  translation: "Nessun risultato per "
+- id: searchResultSingular
+  translation: "risultato per "
+- id: searchResultPlural
+  translation: "risultati per "
+- id: searchErrorIndexLoad
+  translation: "Errore nel caricamento dell'indice di ricerca."
+- id: searchErrorIndexLoading
+  translation: "L'indice di ricerca sta ancora caricando."
+- id: searchPrevText
+  translation: "Precedente"
+- id: searchNextText
+  translation: "Successivo"
+- id: searchUntitledText
+  translation: "Senza titolo"
+- id: searchDisabledText
+  translation: "La ricerca è disattivata."
 - id: gcseLabelShort
   translation: "Cerca"
 - id: gcseLabelLong

@@ -70,6 +70,7 @@ hugo serve
 | **Social sharing** | Share buttons on posts (Twitter, Facebook, Reddit, LinkedIn, etc.) |
 | **GitHub buttons** | Star/watch/fork badges via front matter |
 | **Google Analytics** | Standard Hugo integration (production only) |
+| **Integrated search** | Fast client-side search with Fuse.js |
 | **RSS** | Built-in, enabled with `rss = true` |
 
 For complete configuration reference, shortcode documentation, and live examples, see the [example site feature pages](https://halogenica.net/beautifulhugo/page/configuration/):
@@ -101,6 +102,9 @@ title = "My Site"
   socialShare = true
   showRelatedPosts = true
   rss = true
+
+  [Params.search]
+    provider = "fuse"
 
 [Params.author]
   name = "Your Name"

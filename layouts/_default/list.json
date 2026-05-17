@@ -1,0 +1,1 @@
+{{ partial "search_index.json.html" . }}

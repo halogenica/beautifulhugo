@@ -41,6 +41,34 @@
   translation: "Ver navegação"
 - id: languageSwitcherLabel
   translation: "Idioma"
+- id: searchToggleLabel
+  translation: "Pesquisar"
+- id: searchCloseLabel
+  translation: "Fechar pesquisa"
+- id: searchPlaceholder
+  translation: "Pesquisar artigos e páginas…"
+- id: searchResultsLabel
+  translation: "Resultados da pesquisa"
+- id: searchLoadingText
+  translation: "A pesquisar…"
+- id: searchNoResultsText
+  translation: "Sem resultados para "
+- id: searchResultSingular
+  translation: "resultado para "
+- id: searchResultPlural
+  translation: "resultados para "
+- id: searchErrorIndexLoad
+  translation: "Erro ao carregar o índice de pesquisa."
+- id: searchErrorIndexLoading
+  translation: "O índice de pesquisa ainda está a carregar."
+- id: searchPrevText
+  translation: "Anterior"
+- id: searchNextText
+  translation: "Seguinte"
+- id: searchUntitledText
+  translation: "Sem título"
+- id: searchDisabledText
+  translation: "A pesquisa está desativada."
 - id: gcseLabelShort
   translation: "Pesquisar"
 - id: gcseLabelLong

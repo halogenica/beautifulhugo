@@ -40,6 +40,9 @@ enableGitInfo = true
   showSource = true
   sourceRepo = "https://github.com/halogenica/beautifulhugo/blob/master/exampleSite/"
 
+  [Params.search]
+    provider = "fuse"
+
 [[Params.bigimg]]
   src = "/img/triangle.jpg"
   desc = "Triangle"
@@ -63,7 +66,7 @@ enableGitInfo = true
   email = "youremail@domain.com"
   github = "username"
   twitter = "username"
-  linkedin = "in/username" # or company/username
+  linkedin = "in/username" # company/username
 
 [markup.highlight]
   noClasses = false
@@ -183,3 +186,8 @@ enableGitInfo = true
     name = "About"
     url = "page/about/"
     weight = 4
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+section = ["HTML", "RSS", "JSON"]
+page = ["HTML"]

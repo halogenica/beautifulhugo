@@ -41,6 +41,34 @@
   translation: "Nawigacja"
 - id: languageSwitcherLabel
   translation: "Język"
+- id: searchToggleLabel
+  translation: "Szukaj"
+- id: searchCloseLabel
+  translation: "Zamknij wyszukiwanie"
+- id: searchPlaceholder
+  translation: "Szukaj wpisów i stron…"
+- id: searchResultsLabel
+  translation: "Wyniki wyszukiwania"
+- id: searchLoadingText
+  translation: "Wyszukiwanie…"
+- id: searchNoResultsText
+  translation: "Brak wyników dla "
+- id: searchResultSingular
+  translation: "wynik dla "
+- id: searchResultPlural
+  translation: "wyników dla "
+- id: searchErrorIndexLoad
+  translation: "Błąd ładowania indeksu wyszukiwania."
+- id: searchErrorIndexLoading
+  translation: "Indeks wyszukiwania nadal się ładuje."
+- id: searchPrevText
+  translation: "Poprzedni"
+- id: searchNextText
+  translation: "Następny"
+- id: searchUntitledText
+  translation: "Bez tytułu"
+- id: searchDisabledText
+  translation: "Wyszukiwanie jest wyłączone."
 - id: gcseLabelShort
   translation: "Szukaj"
 - id: gcseLabelLong

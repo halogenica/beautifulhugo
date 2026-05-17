@@ -335,6 +335,32 @@ Staticman adds comments as static data files via pull requests, with optional re
 
 When `gcse` is set, a search icon appears in the navbar that opens a search modal.
 
+### Search Outputs
+
+The integrated client-side search requires JSON output to function. Ensure your `hugo.toml` includes the following `outputs` configuration:
+
+```toml
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+```
+
+### Search Provider
+
+Enable the built-in search UI by configuring a provider:
+
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `[Params.search] provider` | string | `"fuse"` | Search provider to use. Set to `"none"` to disable the built-in search UI. |
+
+```toml
+[Params.search]
+  provider = "fuse"
+```
+
+Search labels come from the theme's i18n files. To localize or customize labels, override the relevant translation keys in your site, such as `searchPlaceholder`, `searchResultsLabel`, `searchNoResultsText`, `searchPrevText`, and `searchNextText`.
+
 ## SEO Robot Meta Tags
 
 Control `<meta name="robots">` tags from `hugo.toml`. These settings only apply to pages in `mainSections`; other pages can set tags via front matter.

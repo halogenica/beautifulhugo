@@ -41,6 +41,34 @@
   translation: "開關導覽"
 - id: languageSwitcherLabel
   translation: "語言"
+- id: searchToggleLabel
+  translation: "搜尋"
+- id: searchCloseLabel
+  translation: "關閉搜尋"
+- id: searchPlaceholder
+  translation: "搜尋文章和頁面…"
+- id: searchResultsLabel
+  translation: "搜尋結果"
+- id: searchLoadingText
+  translation: "搜尋中…"
+- id: searchNoResultsText
+  translation: "未找到結果："
+- id: searchResultSingular
+  translation: "個結果："
+- id: searchResultPlural
+  translation: "個結果："
+- id: searchErrorIndexLoad
+  translation: "載入搜尋索引時發生錯誤。"
+- id: searchErrorIndexLoading
+  translation: "搜尋索引仍在載入中。"
+- id: searchPrevText
+  translation: "上一頁"
+- id: searchNextText
+  translation: "下一頁"
+- id: searchUntitledText
+  translation: "無標題"
+- id: searchDisabledText
+  translation: "搜尋已停用。"
 - id: gcseLabelShort
   translation: "搜尋"
 - id: gcseLabelLong

@@ -41,6 +41,34 @@
   translation: "Navigation"
 - id: languageSwitcherLabel
   translation: "Sprache"
+- id: searchToggleLabel
+  translation: "Suche"
+- id: searchCloseLabel
+  translation: "Suche schließen"
+- id: searchPlaceholder
+  translation: "Beiträge und Seiten suchen…"
+- id: searchResultsLabel
+  translation: "Suchergebnisse"
+- id: searchLoadingText
+  translation: "Suche läuft…"
+- id: searchNoResultsText
+  translation: "Keine Ergebnisse für "
+- id: searchResultSingular
+  translation: "Ergebnis für "
+- id: searchResultPlural
+  translation: "Ergebnisse für "
+- id: searchErrorIndexLoad
+  translation: "Fehler beim Laden des Suchindex."
+- id: searchErrorIndexLoading
+  translation: "Suchindex wird noch geladen."
+- id: searchPrevText
+  translation: "Zurück"
+- id: searchNextText
+  translation: "Weiter"
+- id: searchUntitledText
+  translation: "Ohne Titel"
+- id: searchDisabledText
+  translation: "Suche ist deaktiviert."
 - id: gcseLabelShort
   translation: "Suche"
 - id: gcseLabelLong

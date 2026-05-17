@@ -1,3 +1,5 @@
+{{- $searchProvider := partial "search-provider.html" . -}}
+{{- $search := site.Params.search | default (dict) -}}
 <nav class="navbar navbar-expand-md navbar-light navbar-custom fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
@@ -26,6 +28,11 @@
         <span class="fas fa-adjust" id="theme-icon-auto"></span>
         <span class="fas fa-sun" id="theme-icon-light" style="display: none;"></span>
         <span class="fas fa-moon" id="theme-icon-dark" style="display: none;"></span>
+      </button>
+      {{ end }}
+      {{ if ne $searchProvider "none" }}
+      <button class="theme-toggle" id="search-toggle" aria-label="{{ i18n "searchToggleLabel" | default "Search" }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ i18n "searchToggleLabel" | default "Search" }}">
+        <span class="fas fa-search"></span>
       </button>
       {{ end }}
       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="{{ i18n "toggleNavigation" }}">
@@ -130,6 +137,34 @@
 
   </div>
 </nav>
+
+<!-- Navbar Search Overlay -->
+{{ if ne $searchProvider "none" }}
+<div id="navbar-search-overlay" class="navbar-search-overlay" aria-hidden="true" role="search">
+  <div class="navbar-search-inner container-fluid">
+    <span class="fas fa-search navbar-search-icon" aria-hidden="true"></span>
+    <input type="search" id="navbar-search-input" class="navbar-search-input"
+           placeholder="{{ $search.placeholder | default (i18n "searchPlaceholder" | default "Search posts and pages..." ) }}"
+           aria-label="{{ i18n "searchToggleLabel" | default "Search" }}"
+           autocomplete="off">
+    <button id="navbar-search-close" class="theme-toggle" aria-label="{{ i18n "searchCloseLabel" | default "Close search" }}">
+      <span class="fas fa-times"></span>
+    </button>
+  </div>
+  <div id="navbar-search-results" class="navbar-search-results container-fluid" aria-live="polite"></div>
+</div>
+<script>
+  window.searchProviderConfig = {
+    provider: "{{ $searchProvider }}",
+    searchIndexURL: "{{ "/index.json" | absURL }}",
+    searchPageURL: "{{ "/search" | absLangURL }}"
+  };
+  window.searchConfig = {
+    noResultsText: "{{ $search.no_results_text | default (i18n "searchNoResultsText" | default "No results found for " ) }}",
+    untitledText: "{{ $search.untitled_text | default (i18n "searchUntitledText" | default "Untitled" ) }}"
+  };
+</script>
+{{ end }}
 
 <!-- Search Modal -->
 {{ $page := . }}
