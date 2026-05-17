@@ -41,6 +41,34 @@
   translation: "Навигация"
 - id: languageSwitcherLabel
   translation: "Язык"
+- id: searchToggleLabel
+  translation: "Поиск"
+- id: searchCloseLabel
+  translation: "Закрыть поиск"
+- id: searchPlaceholder
+  translation: "Поиск по записям и страницам…"
+- id: searchResultsLabel
+  translation: "Результаты поиска"
+- id: searchLoadingText
+  translation: "Поиск…"
+- id: searchNoResultsText
+  translation: "Нет результатов для "
+- id: searchResultSingular
+  translation: "результат для "
+- id: searchResultPlural
+  translation: "результатов для "
+- id: searchErrorIndexLoad
+  translation: "Ошибка загрузки поискового индекса."
+- id: searchErrorIndexLoading
+  translation: "Поисковый индекс ещё загружается."
+- id: searchPrevText
+  translation: "Предыдущий"
+- id: searchNextText
+  translation: "Следующий"
+- id: searchUntitledText
+  translation: "Без названия"
+- id: searchDisabledText
+  translation: "Поиск отключён."
 - id: gcseLabelShort
   translation: "Поиск"
 - id: gcseLabelLong

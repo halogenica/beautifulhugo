@@ -41,6 +41,34 @@
   translation: "切换导航"
 - id: languageSwitcherLabel
   translation: "语言"
+- id: searchToggleLabel
+  translation: "搜索"
+- id: searchCloseLabel
+  translation: "关闭搜索"
+- id: searchPlaceholder
+  translation: "搜索文章和页面…"
+- id: searchResultsLabel
+  translation: "搜索结果"
+- id: searchLoadingText
+  translation: "搜索中…"
+- id: searchNoResultsText
+  translation: "未找到结果："
+- id: searchResultSingular
+  translation: "个结果："
+- id: searchResultPlural
+  translation: "个结果："
+- id: searchErrorIndexLoad
+  translation: "加载搜索索引出错。"
+- id: searchErrorIndexLoading
+  translation: "搜索索引仍在加载中。"
+- id: searchPrevText
+  translation: "上一页"
+- id: searchNextText
+  translation: "下一页"
+- id: searchUntitledText
+  translation: "无标题"
+- id: searchDisabledText
+  translation: "搜索已禁用。"
 - id: gcseLabelShort
   translation: "搜索"
 - id: gcseLabelLong

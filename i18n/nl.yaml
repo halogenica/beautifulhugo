@@ -41,6 +41,34 @@
   translation: "Navigatie"
 - id: languageSwitcherLabel
   translation: "Taal"
+- id: searchToggleLabel
+  translation: "Zoeken"
+- id: searchCloseLabel
+  translation: "Zoeken sluiten"
+- id: searchPlaceholder
+  translation: "Berichten en pagina's zoeken…"
+- id: searchResultsLabel
+  translation: "Zoekresultaten"
+- id: searchLoadingText
+  translation: "Zoeken…"
+- id: searchNoResultsText
+  translation: "Geen resultaten voor "
+- id: searchResultSingular
+  translation: "resultaat voor "
+- id: searchResultPlural
+  translation: "resultaten voor "
+- id: searchErrorIndexLoad
+  translation: "Fout bij laden van zoekindex."
+- id: searchErrorIndexLoading
+  translation: "Zoekindex is nog aan het laden."
+- id: searchPrevText
+  translation: "Vorige"
+- id: searchNextText
+  translation: "Volgende"
+- id: searchUntitledText
+  translation: "Zonder titel"
+- id: searchDisabledText
+  translation: "Zoeken is uitgeschakeld."
 - id: gcseLabelShort
   translation: "Zoeken"
 - id: gcseLabelLong

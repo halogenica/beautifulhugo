@@ -41,6 +41,34 @@
   translation: "Navigation"
 - id: languageSwitcherLabel
   translation: "Sprog"
+- id: searchToggleLabel
+  translation: "Søg"
+- id: searchCloseLabel
+  translation: "Luk søgning"
+- id: searchPlaceholder
+  translation: "Søg i opslag og sider…"
+- id: searchResultsLabel
+  translation: "Søgeresultater"
+- id: searchLoadingText
+  translation: "Søger…"
+- id: searchNoResultsText
+  translation: "Ingen resultater for "
+- id: searchResultSingular
+  translation: "resultat for "
+- id: searchResultPlural
+  translation: "resultater for "
+- id: searchErrorIndexLoad
+  translation: "Fejl ved indlæsning af søgeindeks."
+- id: searchErrorIndexLoading
+  translation: "Søgeindeks indlæses stadig."
+- id: searchPrevText
+  translation: "Forrige"
+- id: searchNextText
+  translation: "Næste"
+- id: searchUntitledText
+  translation: "Uden titel"
+- id: searchDisabledText
+  translation: "Søgning er deaktiveret."
 - id: gcseLabelShort
   translation: "Søg"
 - id: gcseLabelLong

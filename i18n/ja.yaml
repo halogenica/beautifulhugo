@@ -41,6 +41,34 @@
   translation: "メニューを切り替え"
 - id: languageSwitcherLabel
   translation: "言語"
+- id: searchToggleLabel
+  translation: "検索"
+- id: searchCloseLabel
+  translation: "検索を閉じる"
+- id: searchPlaceholder
+  translation: "投稿とページを検索…"
+- id: searchResultsLabel
+  translation: "検索結果"
+- id: searchLoadingText
+  translation: "検索中…"
+- id: searchNoResultsText
+  translation: "結果なし："
+- id: searchResultSingular
+  translation: "件の結果："
+- id: searchResultPlural
+  translation: "件の結果："
+- id: searchErrorIndexLoad
+  translation: "検索インデックスの読み込みエラー。"
+- id: searchErrorIndexLoading
+  translation: "検索インデックスはまだ読み込み中です。"
+- id: searchPrevText
+  translation: "前へ"
+- id: searchNextText
+  translation: "次へ"
+- id: searchUntitledText
+  translation: "無題"
+- id: searchDisabledText
+  translation: "検索は無効です。"
 - id: gcseLabelShort
   translation: "検索"
 - id: gcseLabelLong

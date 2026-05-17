@@ -41,6 +41,34 @@
   translation: "Activer la navigation"
 - id: languageSwitcherLabel
   translation: "Langue"
+- id: searchToggleLabel
+  translation: "Rechercher"
+- id: searchCloseLabel
+  translation: "Fermer la recherche"
+- id: searchPlaceholder
+  translation: "Rechercher des articles et pages…"
+- id: searchResultsLabel
+  translation: "Résultats de recherche"
+- id: searchLoadingText
+  translation: "Recherche en cours…"
+- id: searchNoResultsText
+  translation: "Aucun résultat pour "
+- id: searchResultSingular
+  translation: "résultat pour "
+- id: searchResultPlural
+  translation: "résultats pour "
+- id: searchErrorIndexLoad
+  translation: "Erreur lors du chargement de l'index de recherche."
+- id: searchErrorIndexLoading
+  translation: "L'index de recherche est encore en cours de chargement."
+- id: searchPrevText
+  translation: "Précédent"
+- id: searchNextText
+  translation: "Suivant"
+- id: searchUntitledText
+  translation: "Sans titre"
+- id: searchDisabledText
+  translation: "La recherche est désactivée."
 - id: gcseLabelShort
   translation: "Rechercher"
 - id: gcseLabelLong

@@ -41,6 +41,34 @@
   translation: "Uključi/isključi navigaciju"
 - id: languageSwitcherLabel
   translation: "Jezik"
+- id: searchToggleLabel
+  translation: "Traži"
+- id: searchCloseLabel
+  translation: "Zatvori pretragu"
+- id: searchPlaceholder
+  translation: "Pretraži objave i stranice…"
+- id: searchResultsLabel
+  translation: "Rezultati pretrage"
+- id: searchLoadingText
+  translation: "Pretraživanje…"
+- id: searchNoResultsText
+  translation: "Nema rezultata za "
+- id: searchResultSingular
+  translation: "rezultat za "
+- id: searchResultPlural
+  translation: "rezultata za "
+- id: searchErrorIndexLoad
+  translation: "Greška pri učitavanju indeksa pretrage."
+- id: searchErrorIndexLoading
+  translation: "Indeks pretrage se još učitava."
+- id: searchPrevText
+  translation: "Prethodno"
+- id: searchNextText
+  translation: "Sljedeće"
+- id: searchUntitledText
+  translation: "Bez naslova"
+- id: searchDisabledText
+  translation: "Pretraga je onemogućena."
 - id: gcseLabelShort
   translation: "Traži"
 - id: gcseLabelLong
