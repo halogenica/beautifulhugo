@@ -10,7 +10,7 @@ This page is a complete reference for every configuration option in Beautiful Hu
 
 | Param | Type | Default | Description |
 |-------|------|---------|-------------|
-| `homeTitle` | string | site title | Separate title for the home page header |
+| `homeTitle` | string | site title | Brand name shown in the navbar, home page header, and footer link. Falls back to the site title when unset |
 | `subtitle` | string | `""` | Site subtitle shown under the home page title |
 | `mainSections` | list | `["post", "posts"]` | Content sections treated as "posts" on the home page and archive page |
 | `logo` | string | — | Path to a square avatar/logo image. When the file is found via Hugo's asset pipeline (`resources.Get`), it is automatically processed into WebP format (300×300, quality 100) for optimal loading. If the file is not found as a resource, the raw path is used as-is. |
