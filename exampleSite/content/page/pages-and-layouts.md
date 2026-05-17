@@ -25,7 +25,7 @@ Additionally, the **`archive`** layout is available via front matter for any con
 
 The home page is defined by `content/_index.md` and rendered by `layouts/index.html`. It shows the site content at the top, followed by a paginated list of posts from `mainSections`.
 
-Title comes from `homeTitle` (or the site title). Subtitle comes from `Params.subtitle`. Big images from `[[Params.bigimg]]` cycle in the header.
+Title comes from `homeTitle` (or the site title); `homeTitle` also controls the navbar brand text and footer link. Subtitle comes from `Params.subtitle`. Big images from `[[Params.bigimg]]` cycle in the header.
 
 ```toml
 [Params]
