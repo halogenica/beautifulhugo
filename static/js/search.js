@@ -31,10 +31,7 @@ function updateUrl(query, page) {
 
 // Manage button state (enabled/disabled)
 function setButtonsLoading(loading) {
-  const searchBtn = document.getElementById('searchBtn');
-  const luckyBtn = document.getElementById('luckyBtn');
-  if (searchBtn) searchBtn.disabled = loading;
-  if (luckyBtn) luckyBtn.disabled = loading;
+  // no-op: search is now triggered via input events
 }
 
 // Initialize Fuse.js
@@ -196,13 +193,14 @@ function autoSearchFromUrl() {
 document.addEventListener('DOMContentLoaded', () => {
     initSearch();
 
-    const searchBtn = document.getElementById('searchBtn');
-    const luckyBtn = document.getElementById('luckyBtn');
     const searchInput = document.getElementById('searchInput');
 
-    if (searchBtn) searchBtn.addEventListener('click', function() { window.doSearch(); });
-    if (luckyBtn) luckyBtn.addEventListener('click', function() { window.feelingLucky(); });
     if (searchInput) {
+      let debounceTimer;
+      searchInput.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function() { window.doSearch(); }, 200);
+      });
       searchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') window.doSearch();
       });

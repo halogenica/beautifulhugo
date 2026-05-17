@@ -201,11 +201,6 @@ enableGitInfo = true
     url = "page/about/"
     weight = 4
 
-[[menu.main]]
-    name = "Search"
-    url = "search"
-    weight = 5
-
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 section = ["HTML", "RSS", "JSON"]

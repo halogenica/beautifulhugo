@@ -41,6 +41,10 @@
   translation: "Toggle navigation"
 - id: languageSwitcherLabel
   translation: "Language"
+- id: searchToggleLabel
+  translation: "Search"
+- id: searchCloseLabel
+  translation: "Close search"
 - id: gcseLabelShort
   translation: "Search"
 - id: gcseLabelLong

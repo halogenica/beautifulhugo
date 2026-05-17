@@ -1,46 +1,32 @@
 {{ define "main" }}
   <link rel="stylesheet" href="{{ "/css/search.css" | absURL }}">
-  <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}" role="main">
-    <div class="row">
-      <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
+  <div class="search-page-container" role="main">
 
-        <div class="search-header text-center mb-5 pt-4">
-          <a href="/" class="search-logo" aria-label="{{ .Site.Params.search.back_label | default "Back" }}">
-            {{ $title := .Site.Params.homeTitle | default .Site.Title }}
-            {{ $chars := split $title "" }}
-            {{ range $i, $char := $chars }}
-              {{ if eq (trim $char " ") "" }}
-                <span>&nbsp;</span>
-              {{ else }}
-                <span>{{ $char }}</span>
-              {{ end }}
-            {{ end }}
-          </a>
+    <div class="search-field-wrapper">
+      <span class="fas fa-search search-field-icon" aria-hidden="true"></span>
+      <input type="search" class="search-field-input" id="searchInput"
+             placeholder="{{ .Site.Params.search.placeholder | default "Search posts and pages…" }}"
+             aria-label="{{ .Site.Params.search.search_label | default "Search" }}"
+             autocomplete="off" autofocus>
+    </div>
 
-          <div class="search-box-container mx-auto">
-            <div class="search-input-group position-relative mb-3">
-              <input type="search" class="search-input" id="searchInput" placeholder="{{ .Site.Params.search.placeholder | default "Search..." }}" aria-label="{{ .Site.Params.search.search_label | default "Search" }}" autocomplete="off">
-            </div>
-            <div class="search-buttons text-center mb-4">
-              <button class="search-btn" id="searchBtn" type="button">{{ .Site.Params.search.search_button | default "Search" }}</button>
-              <button class="search-btn" id="luckyBtn" type="button">{{ .Site.Params.search.lucky_button | default "I'm Feeling Lucky" }}</button>
-            </div>
-          </div>
+    <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}">
+      <div class="row">
+        <div class="{{ cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}">
+          <div id="resultsContainer" role="region" aria-live="polite"
+               aria-label="{{ .Site.Params.search.results_label | default "Search results" }}"></div>
+          <div id="search-pagination" class="post-pager"></div>
         </div>
-
-        <div id="resultsContainer" class="mt-4" role="region" aria-live="polite" aria-label="{{ .Site.Params.search.results_label | default "Search results" }}"></div>
-
-        <div id="search-pagination" class="post-pager"></div>
-
       </div>
     </div>
+
   </div>
 
   <script>
     window.searchIndexURL = "{{ "/index.json" | absURL }}";
     window.searchConfig = {
       resultsLabel: "{{ .Site.Params.search.results_label | default "Search results" }}",
-      loadingText: "{{ .Site.Params.search.loading_text | default "Searching..." }}",
+      loadingText: "{{ .Site.Params.search.loading_text | default "Searching…" }}",
       noResultsText: "{{ .Site.Params.search.no_results_text | default "No results found for " }}",
       resultSingular: "{{ .Site.Params.search.result_singular | default "result" }}",
       resultPlural: "{{ .Site.Params.search.result_plural | default "results" }}",

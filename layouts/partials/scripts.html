@@ -43,6 +43,10 @@
 {{- end -}}
 <script src="{{ "js/load-photoswipe.js" | relURL }}"></script>
 
+{{ if site.Params.search }}
+<script src="{{ "js/navbar-search.js" | relURL }}"></script>
+{{ end }}
+
 {{ if .Site.Params.gcse }}
 <script>
   (function() {
