@@ -359,7 +359,7 @@ Enable the built-in search UI by configuring a provider:
   provider = "fuse"
 ```
 
-Search copy now comes from the theme's i18n files by default. To localize or customize labels, override the relevant translation keys in your site, such as `searchPlaceholder`, `searchResultsLabel`, `searchNoResultsText`, `searchPrevText`, and `searchNextText`.
+Search labels come from the theme's i18n files. To localize or customize labels, override the relevant translation keys in your site, such as `searchPlaceholder`, `searchResultsLabel`, `searchNoResultsText`, `searchPrevText`, and `searchNextText`.
 
 ## SEO Robot Meta Tags
 
