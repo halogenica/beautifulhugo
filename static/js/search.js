@@ -1,6 +1,5 @@
 const resultsPerPage = 10;
-let fuse = null;
-let searchIndex = [];
+let searchEngine = null;
 let cachedResults = [];
 let cachedQuery = '';
 
@@ -34,35 +33,17 @@ function setButtonsLoading(loading) {
   // no-op: search is now triggered via input events
 }
 
-// Initialize Fuse.js
 async function initSearch() {
   setButtonsLoading(true);
   try {
-    const response = await fetch(window.searchIndexURL || '/index.json');
-    if (!response.ok) throw new Error('Network response was not ok: ' + response.statusText);
-
-    const text = await response.text();
-    try {
-      searchIndex = JSON.parse(text);
-    } catch (parseError) {
-      console.error('JSON parse error. Content start:', text.substring(0, 100));
-      throw parseError;
-    }
-
-    fuse = new Fuse(searchIndex, {
-      keys: ['title', 'excerpt', 'content'],
-      threshold: 0.3,
-      includeScore: true,
-      ignoreLocaleCase: true
-    });
-
+    searchEngine = await window.BeautifulHugoSearch.getEngine();
     setButtonsLoading(false);
     autoSearchFromUrl();
-    } catch (e) {
+  } catch (e) {
     console.error('Failed to load search index:', e);
     const container = document.getElementById('resultsContainer');
     if (container) {
-        container.innerHTML = '<div class="no-results">' + (window.searchConfig ? window.searchConfig.errorIndexLoad : '') + '</div>';
+      container.innerHTML = '<div class="no-results">' + (window.searchConfig ? window.searchConfig.errorIndexLoad : '') + '</div>';
     }
     setButtonsLoading(false);
   }
@@ -88,15 +69,15 @@ window.doSearch = function(page) {
     container.innerHTML = '<div class="results-info">' + (window.searchConfig ? window.searchConfig.loadingText : '') + '</div>';
   }
 
-  if (!fuse) {
+  if (!searchEngine) {
     if (container) {
-        container.innerHTML = '<div class="no-results">' + (window.searchConfig ? window.searchConfig.errorIndexLoading : '') + '</div>';
+      container.innerHTML = '<div class="no-results">' + (window.searchConfig ? window.searchConfig.errorIndexLoading : '') + '</div>';
     }
     return;
   }
 
-  const results = fuse.search(query);
-  cachedResults = results.map(r => r.item);
+  const results = searchEngine.search(query);
+  cachedResults = results;
   cachedQuery = query;
   renderResults(query, page);
 };
@@ -167,11 +148,11 @@ window.feelingLucky = function() {
   const input = document.getElementById('searchInput');
   if (!input || !input.value.trim()) return;
 
-  if (!fuse) return;
+  if (!searchEngine) return;
 
-  const results = fuse.search(input.value.trim());
-  if (results && results.length > 0 && results[0].item && results[0].item.url) {
-    window.location.href = results[0].item.url;
+  const result = searchEngine.lucky(input.value.trim());
+  if (result && result.url) {
+    window.location.href = result.url;
   }
 };
 

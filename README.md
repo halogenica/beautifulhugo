@@ -104,8 +104,7 @@ title = "My Site"
   rss = true
 
   [Params.search]
-    placeholder = "Search..."
-    search_button = "Search"
+    provider = "fuse"
 
 [Params.author]
   name = "Your Name"

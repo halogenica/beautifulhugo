@@ -45,6 +45,30 @@
   translation: "Search"
 - id: searchCloseLabel
   translation: "Close search"
+- id: searchPlaceholder
+  translation: "Search posts and pages…"
+- id: searchResultsLabel
+  translation: "Search results"
+- id: searchLoadingText
+  translation: "Searching…"
+- id: searchNoResultsText
+  translation: "No results found for "
+- id: searchResultSingular
+  translation: "result for "
+- id: searchResultPlural
+  translation: "results for "
+- id: searchErrorIndexLoad
+  translation: "Error loading search index."
+- id: searchErrorIndexLoading
+  translation: "Search index is still loading."
+- id: searchPrevText
+  translation: "Previous"
+- id: searchNextText
+  translation: "Next"
+- id: searchUntitledText
+  translation: "Untitled"
+- id: searchDisabledText
+  translation: "Search is disabled."
 - id: gcseLabelShort
   translation: "Search"
 - id: gcseLabelLong

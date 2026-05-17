@@ -346,46 +346,20 @@ The integrated client-side search requires JSON output to function. Ensure your 
   page = ["HTML"]
 ```
 
-### Search Labels
+### Search Provider
 
-You can customize the text used on the search page:
+Enable the built-in search UI by configuring a provider:
 
 | Param | Type | Default | Description |
 |-------|------|---------|-------------|
-| `[Params.search] back_label` | string | `"Back"` | Label for the back button |
-| `[Params.search] placeholder` | string | `"Search..."` | Placeholder text for the search input |
-| `[Params.search] search_label` | string | `"Search"` | Aria-label for the search input |
-| `[Params.search] search_button` | string | `"Search"` | Text for the search button |
-| `[Params.search] lucky_button` | string | `"I'm Feeling Lucky"` | Text for the "I'm Feeling Lucky" button |
-| `[Params.search] results_label` | string | `"Search results"` | Aria-label for the results container |
-| `[Params.search] loading_text` | string | `"Searching..."` | Text shown while searching |
-| `[Params.search] no_results_text` | string | `"No results found for "` | Text shown when no results are found |
-| `[Params.search] result_singular` | string | `"result"` | Singular form of "result" |
-| `[Params.search] result_plural` | string | `"results"` | Plural form of "result" |
-| `[Params.search] error_index_load` | string | `"Error loading search index."` | Error message when index fails to load |
-| `[Params.search] error_index_loading` | string | `"Search index is still loading."` | Message when index is loading |
-| `[Params.search] prev_text` | string | `"Previous"` | Label for previous page |
-| `[Params.search] next_text` | string | `"Next"` | Label for next page |
-| `[Params.search] untitled_text` | string | `"Untitled"` | Fallback text for pages without a title |
+| `[Params.search] provider` | string | `"fuse"` | Search provider to use. Set to `"none"` to disable the built-in search UI. |
 
 ```toml
 [Params.search]
-  back_label = "Back"
-  placeholder = "Search..."
-  search_label = "Search"
-  search_button = "Search"
-  lucky_button = "I'm Feeling Lucky"
-  results_label = "Search results"
-  loading_text = "Searching..."
-  no_results_text = "No results found for "
-  result_singular = "result"
-  result_plural = "results"
-  error_index_load = "Error loading search index."
-  error_index_loading = "Search index is still loading."
-  prev_text = "Previous"
-  next_text = "Next"
-  untitled_text = "Untitled"
+  provider = "fuse"
 ```
+
+Search copy now comes from the theme's i18n files by default. To localize or customize labels, override the relevant translation keys in your site, such as `searchPlaceholder`, `searchResultsLabel`, `searchNoResultsText`, `searchPrevText`, and `searchNextText`.
 
 ## SEO Robot Meta Tags
 

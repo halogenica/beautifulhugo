@@ -43,7 +43,12 @@
 {{- end -}}
 <script src="{{ "js/load-photoswipe.js" | relURL }}"></script>
 
-{{ if site.Params.search }}
+{{ $searchProvider := partial "search-provider.html" . }}
+{{ if ne $searchProvider "none" }}
+<script src="{{ "js/search-core.js" | relURL }}"></script>
+{{ if eq $searchProvider "fuse" }}
+<script src="{{ "js/search-provider-fuse.js" | relURL }}"></script>
+{{ end }}
 <script src="{{ "js/navbar-search.js" | relURL }}"></script>
 {{ end }}
 

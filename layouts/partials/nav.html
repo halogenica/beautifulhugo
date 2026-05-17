@@ -1,3 +1,5 @@
+{{- $searchProvider := partial "search-provider.html" . -}}
+{{- $search := site.Params.search | default (dict) -}}
 <nav class="navbar navbar-expand-md navbar-light navbar-custom fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
@@ -28,7 +30,7 @@
         <span class="fas fa-moon" id="theme-icon-dark" style="display: none;"></span>
       </button>
       {{ end }}
-      {{ if site.Params.search }}
+      {{ if ne $searchProvider "none" }}
       <button class="theme-toggle" id="search-toggle" aria-label="{{ i18n "searchToggleLabel" | default "Search" }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ i18n "searchToggleLabel" | default "Search" }}">
         <span class="fas fa-search"></span>
       </button>
@@ -137,12 +139,12 @@
 </nav>
 
 <!-- Navbar Search Overlay -->
-{{ with site.Params.search }}
+{{ if ne $searchProvider "none" }}
 <div id="navbar-search-overlay" class="navbar-search-overlay" aria-hidden="true" role="search">
   <div class="navbar-search-inner container-fluid">
     <span class="fas fa-search navbar-search-icon" aria-hidden="true"></span>
     <input type="search" id="navbar-search-input" class="navbar-search-input"
-           placeholder="{{ .placeholder | default "Search..." }}"
+           placeholder="{{ $search.placeholder | default (i18n "searchPlaceholder" | default "Search posts and pages..." ) }}"
            aria-label="{{ i18n "searchToggleLabel" | default "Search" }}"
            autocomplete="off">
     <button id="navbar-search-close" class="theme-toggle" aria-label="{{ i18n "searchCloseLabel" | default "Close search" }}">
@@ -152,12 +154,15 @@
   <div id="navbar-search-results" class="navbar-search-results container-fluid" aria-live="polite"></div>
 </div>
 <script>
-  window.searchIndexURL = "{{ "/index.json" | absURL }}";
-  window.fuseJsURL = "{{ "/js/fuse.js" | absURL }}";
-  window.searchPageURL = "{{ "/search" | absLangURL }}";
+  window.searchProviderConfig = {
+    provider: "{{ $searchProvider }}",
+    searchIndexURL: "{{ "/index.json" | absURL }}",
+    fuseJsURL: "{{ "/js/fuse.js" | absURL }}",
+    searchPageURL: "{{ "/search" | absLangURL }}"
+  };
   window.searchConfig = {
-    noResultsText: "{{ .no_results_text | default "No results for " }}",
-    untitledText: "{{ .untitled_text | default "Untitled" }}"
+    noResultsText: "{{ $search.no_results_text | default (i18n "searchNoResultsText" | default "No results found for " ) }}",
+    untitledText: "{{ $search.untitled_text | default (i18n "searchUntitledText" | default "Untitled" ) }}"
   };
 </script>
 {{ end }}

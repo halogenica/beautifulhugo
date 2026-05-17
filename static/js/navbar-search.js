@@ -1,48 +1,28 @@
 (function () {
   'use strict';
 
-  var fuse = null;
-  var searchLoading = false;
+  var searchEngine = null;
+  var searchLoadingPromise = null;
   var debounceTimer = null;
 
   function loadSearch(callback) {
-    if (fuse) { callback(); return; }
-    if (searchLoading) {
-      var iv = setInterval(function () { if (fuse) { clearInterval(iv); callback(); } }, 100);
+    if (searchEngine) { callback(); return; }
+    if (searchLoadingPromise) {
+      searchLoadingPromise.then(callback).catch(function () {});
       return;
     }
-    searchLoading = true;
 
-    function initFuse(data) {
-      fuse = new Fuse(data, {
-        keys: ['title', 'excerpt', 'content'],
-        threshold: 0.3,
-        includeScore: true,
-        ignoreLocaleCase: true
+    searchLoadingPromise = window.BeautifulHugoSearch.getEngine()
+      .then(function (engine) {
+        searchEngine = engine;
+        callback();
+      })
+      .catch(function (e) {
+        console.error('navbar-search: failed to load index', e);
+      })
+      .finally(function () {
+        searchLoadingPromise = null;
       });
-      searchLoading = false;
-      callback();
-    }
-
-    function fetchIndex() {
-      var url = (window.searchIndexURL || '/index.json');
-      fetch(url)
-        .then(function (r) { return r.json(); })
-        .then(initFuse)
-        .catch(function (e) {
-          console.error('navbar-search: failed to load index', e);
-          searchLoading = false;
-        });
-    }
-
-    if (typeof Fuse !== 'undefined') {
-      fetchIndex();
-    } else {
-      var s = document.createElement('script');
-      s.src = window.fuseJsURL || '/js/fuse.js';
-      s.onload = fetchIndex;
-      document.head.appendChild(s);
-    }
   }
 
   function openSearch() {
@@ -123,9 +103,9 @@
     var results = document.getElementById('navbar-search-results');
     if (!results) return;
     if (!query || query.length < 2) { results.innerHTML = ''; return; }
-    if (!fuse) { loadSearch(function () { doSearch(query); }); return; }
+    if (!searchEngine) { loadSearch(function () { doSearch(query); }); return; }
 
-    var hits = fuse.search(query, { limit: 8 });
+    var hits = searchEngine.search(query, { limit: 8 });
     var cfg = window.searchConfig || {};
 
     if (hits.length === 0) {
@@ -137,7 +117,7 @@
 
     var html = '';
     hits.forEach(function (hit) {
-      var item = hit.item;
+      var item = hit;
       var title = item.title || cfg.untitledText || 'Untitled';
       html += '<a class="navbar-search-result-item" href="' + escapeHtml(item.url) + '">';
       html += '<span class="navbar-search-result-title">' + escapeHtml(title) + '</span>';
@@ -183,7 +163,7 @@
             if (first) { first.click(); return; }
           }
           // Fall back to search page if configured
-          var searchPageURL = window.searchPageURL;
+          var searchPageURL = window.searchProviderConfig && window.searchProviderConfig.searchPageURL;
           if (searchPageURL && this.value.trim()) {
             window.location.href = searchPageURL + '?q=' + encodeURIComponent(this.value.trim());
           }

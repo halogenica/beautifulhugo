@@ -41,21 +41,7 @@ enableGitInfo = true
   sourceRepo = "https://github.com/halogenica/beautifulhugo/blob/master/exampleSite/"
 
   [Params.search]
-    back_label = "Back"
-    placeholder = "Search..."
-    search_label = "Search"
-    search_button = "Search"
-    lucky_button = "I'm Feeling Lucky"
-    results_label = "Search results"
-    loading_text = "Searching..."
-    no_results_text = "No results found for "
-    result_singular = "result for "
-    result_plural = "results for "
-    error_index_load = "Error loading search index."
-    error_index_loading = "Search index is still loading."
-    prev_text = "Previous"
-    next_text = "Next"
-    untitled_text = "Untitled"
+    provider = "fuse"
 
 [[Params.bigimg]]
   src = "/img/triangle.jpg"

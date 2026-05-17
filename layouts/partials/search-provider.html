@@ -1,0 +1,12 @@
+{{- $provider := "none" -}}
+
+{{- with site.Params.search -}}
+  {{- $provider = lower (.provider | default (.providor | default "fuse")) -}}
+{{- end -}}
+
+{{- if or (eq $provider "fuse") (eq $provider "none") -}}
+  {{- return $provider -}}
+{{- else -}}
+  {{- errorf "search.provider must be one of \"fuse\" or \"none\" (got %q)" $provider -}}
+  {{- return "none" -}}
+{{- end -}}
