@@ -22,7 +22,7 @@ enableGitInfo = true
 
 [Params]
   subtitle = "Build a beautiful and simple website in minutes"
-  mainSections = ["post", "posts"]
+  mainSections = ["post", "recipe"]
   logo = "/img/avatar-icon.png" # Expecting square dimensions
   favicon = "/img/favicon.ico"
   dateFormat = ":date_long"
