@@ -1,6 +1,6 @@
 ---
 title: Pages & Layouts
-subtitle: Page kinds, templates, and how to create each type of page
+subtitle: Page kinds, templates, layout options, and how to create each type of page
 comments: false
 ---
 
@@ -210,14 +210,156 @@ Hugo selects the archetype based on the content section. If the section director
 
 ## Layout Options
 
-Several front matter options affect how a page looks regardless of its kind. See [Layout Options](../layout-options/) for the full reference.
+Several front matter options affect how a page looks regardless of its kind.
 
-| Option | Type | Effect |
-|--------|------|--------|
-| `fullWidth` | bool | Full container width (no offset) |
-| `navShort` | bool | Permanently compact navbar |
-| `bigimg` | list | Full-width header image(s) |
-| `headerImgStyle` | string | `"big"` or `"narrow"` header crop |
-| `hidden` | bool | Exclude from post listings |
-| `showAvatar` | bool | Show/hide navbar avatar |
-| `showPageDates` | bool | Show dates on `page` type |
+### Big Image Headers
+
+Big images appear as full-width background images in the page header. They can be set at the site level (for the home page) or per-page. See [Configuration — Big Image Header](../configuration/#big-image-header) for site-level config.
+
+#### Per-page
+
+Set `bigimg` in front matter:
+
+```yaml
+---
+title: My Post
+bigimg:
+  - src: /img/sphere.jpg
+    desc: "A sphere"
+---
+```
+
+Or a single image:
+
+```yaml
+---
+title: My Post
+bigimg: [{src: "/img/path.jpg", desc: "A path"}]
+---
+```
+
+### Full-Width Pages
+
+Add `fullWidth: true` to front matter to use the full container width without the standard sidebar offset:
+
+```yaml
+---
+title: My Page
+fullWidth: true
+---
+```
+
+### Navbar Short Mode
+
+Set `navShort: true` to make the navbar permanently short (the compact style that normally appears after scrolling):
+
+```yaml
+---
+title: My Page
+navShort: true
+---
+```
+
+Or set it globally:
+
+```toml
+[Params]
+  navShort = true
+```
+
+### Avatar Visibility
+
+Control whether the avatar/logo appears in the navbar on a per-page basis:
+
+```yaml
+---
+title: My Page
+showAvatar: false
+---
+```
+
+### Hidden Pages
+
+Add `hidden: true` to front matter to create a page that exists at its URL but does not appear in post listings:
+
+```yaml
+---
+title: Secret Page
+hidden: true
+---
+```
+
+The page is still accessible via its direct URL and appears in navigation menus if you add a menu entry, but it won't show up in list pages or RSS feeds.
+
+### Post Preview Images
+
+On list pages, posts can show a circular preview image or video:
+
+```yaml
+---
+title: My Post
+image: /img/avatar-icon.png
+---
+```
+
+For a video preview (loop, autoplay, muted):
+
+```yaml
+---
+title: My Post
+video: clip.mp4
+---
+```
+
+### Custom Summaries
+
+Override the auto-generated summary with `summary`:
+
+```yaml
+---
+title: My Post
+summary: "A custom summary that appears on list pages instead of the auto-truncated text."
+---
+```
+
+### Per-Page Social Sharing
+
+Override the site-level `socialShare` setting per page:
+
+```yaml
+---
+title: My Post
+socialShare: false
+---
+```
+
+### Per-Page Comments
+
+Enable or disable comments on individual pages:
+
+```yaml
+---
+title: My Post
+comments: true
+---
+```
+
+This works with all comment systems (Disqus, Giscus, Utterances, Cusdis, Staticman). See [Comments & Social](../comments-and-social/) for comment system configuration.
+
+### Show Page Dates
+
+By default, "page" type pages don't show dates. Enable with:
+
+```yaml
+---
+title: My Page
+showPageDates: true
+---
+```
+
+Or globally:
+
+```toml
+[Params]
+  showPageDates = true
+```

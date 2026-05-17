@@ -40,4 +40,4 @@ hugo serve -s exampleSite --disableFastRender
 - **`disableFigureOverride` flag.** Set `Params.disableFigureOverride = true` to restore Hugo's native `<figure>` shortcode (the PhotoSwipe-enhanced version remains available as `beautifulfigure`).
 - **Multilingual** is supported via the standard Hugo `languages` config with per-language `contentDir`.
 - **No unit tests exist.** The CI only confirms the example site builds cleanly across the Hugo version matrix. Run the build command above before opening a PR.
-- **Features must be documented in the example site.** When adding or changing a feature, update the relevant page under `exampleSite/content/page/` (especially `configuration.md` and `layout-options.md`).
+- **Features must be documented in the example site.** When adding or changing a feature, update the relevant page under `exampleSite/content/page/` (especially `configuration.md` and `pages-and-layouts.md`).

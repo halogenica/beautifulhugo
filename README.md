@@ -81,7 +81,7 @@ For complete configuration reference, shortcode documentation, and live examples
 - [Markdown Extensions](https://halogenica.net/beautifulhugo/page/markdown-extensions/) — callout boxes, theme-dependent content
 - [Figures & Galleries](https://halogenica.net/beautifulhugo/page/figures-and-galleries/) — PhotoSwipe integration
 - [Math & Diagrams](https://halogenica.net/beautifulhugo/page/math-and-diagrams/) — KaTeX and Mermaid examples
-- [Layout Options](https://halogenica.net/beautifulhugo/page/layout-options/) — big images, full-width, hidden pages
+- [Layout Options](https://halogenica.net/beautifulhugo/page/pages-and-layouts/#layout-options) — big images, full-width, hidden pages (part of Pages & Layouts)
 - [Comments & Social](https://halogenica.net/beautifulhugo/page/comments-and-social/) — comment systems, social sharing, footer icons
 - [SEO & i18n](https://halogenica.net/beautifulhugo/page/seo-and-i18n/) — structured data, Open Graph, multilingual
 

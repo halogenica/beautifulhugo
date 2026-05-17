@@ -275,3 +275,62 @@ When `rss = true`, an RSS icon appears in the footer and alternate feed links ar
 ```
 
 Hugo auto-generates RSS feeds at `/index.xml` (site-wide) and `/post/index.xml` (section-specific).
+
+## Analytics & Search
+
+### Google Analytics
+
+Set the tracking ID in your config (loaded only in production):
+
+```toml
+[Services]
+  [Services.googleAnalytics]
+    id = "G-XXXXXXXXXX"
+```
+
+### Piwik / Matomo
+
+```toml
+[Params]
+  [Params.piwik]
+    server = "analytics.example.com"
+    id = 1
+```
+
+| Param | Type | Description |
+|-------|------|-------------|
+| `piwik.server` | string | Piwik/Matomo server hostname |
+| `piwik.id` | string | Piwik/Matomo site ID |
+
+### Google Custom Search Engine
+
+When `gcse` is set, a search icon appears in the navbar that opens a search modal:
+
+```toml
+[Params]
+  gcse = "012345678901234567890:abcdefghijk"
+```
+
+### Built-in Client-Side Search
+
+The integrated client-side search requires JSON output to function. Ensure your `hugo.toml` includes the following `outputs` configuration:
+
+```toml
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+```
+
+Enable the built-in search UI by configuring a provider:
+
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `[Params.search] provider` | string | `"fuse"` | Search provider to use. Set to `"none"` to disable the built-in search UI. |
+
+```toml
+[Params.search]
+  provider = "fuse"
+```
+
+Search labels come from the theme's i18n files. To localize or customize labels, override the relevant translation keys in your site, such as `searchPlaceholder`, `searchResultsLabel`, `searchNoResultsText`, `searchPrevText`, and `searchNextText`.

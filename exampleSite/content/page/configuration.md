@@ -180,7 +180,7 @@ Add one or more full-width header images to the home page. Multiple images cycle
   headerImgStyle = "narrow"
 ```
 
-See [Layout Options](../layout-options/) for per-page big image headers.
+See [Pages & Layouts](../pages-and-layouts/#big-image-headers) for per-page big image headers and visual examples.
 
 ## Syntax Highlighting
 
@@ -218,169 +218,21 @@ See [Code Blocks](../code-blocks/) for details and examples.
 
 ### Including External Files
 
-The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. It works with both Chroma and Highlight.js.
-
-```
-{{</* include-code file="content/scripts/example.py" */>}}
-{{</* include-code file="config.toml" language="toml" */>}}
-{{</* include-code file="src/main.go" linenos="table" hl_lines="2 5-8" */>}}
-```
-
-| Param | Required | Description |
-|-------|----------|-------------|
-| `file` | yes | Path relative to the Hugo project root |
-| `language` | no | Highlighting language (auto-detected from file extension if omitted; falls back to plain text) |
-| `linenos` | no | `"table"` or `"inline"` — Chroma only; ignored with a warning when `useHLJS = true` |
-| `hl_lines` | no | Lines to highlight, e.g. `"2 5-8"` — Chroma only |
-| `linenostart` | no | Starting line number — Chroma only |
-
-**Supported auto-detect extensions:** `.bash`, `.c`, `.cpp`, `.css`, `.go`, `.html`, `.java`, `.js`, `.json`, `.jsx`, `.lua`, `.md`, `.php`, `.pl`, `.py`, `.r`, `.rb`, `.rs`, `.scss`, `.sh`, `.sql`, `.svg`, `.toml`, `.ts`, `.tsx`, `.xml`, `.yaml`, `.yml`, `.zig`
+The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. See [Code Blocks](../code-blocks/#including-external-files) for the full parameter reference and live examples.
 
 ## Comment Systems
 
-Beautiful Hugo supports five comment systems. Each is enabled per-page with `comments: true` in front matter.
-
-{{< details "Disqus" >}}
-Standard Hugo Disqus integration. Set the shortname in your config:
-
-```toml
-[Services]
-  [Services.Disqus]
-    Shortname = "your-disqus-shortname"
-
-[Params]
-  delayDisqus = true
-```
-
-`delayDisqus = true` shows a "Show comments" button instead of loading Disqus immediately.
-{{< /details >}}
-
-{{< details "Giscus" >}}
-Giscus uses GitHub Discussions as a comment backend.
-
-```toml
-[Params.giscus]
-  repo = "owner/repo"
-  repoId = "R_kgDO..."
-  category = "Announcements"
-  categoryId = "DIC_kwDO..."
-  mapping = "pathname"
-  strict = "0"
-  reactionsEnabled = "1"
-  emitMetadata = "0"
-  inputPosition = "top"
-  theme = "preferred_color_scheme"
-  lang = "en"
-  lazyLoading = true
-```
-
-Get your values from [giscus.app](https://giscus.app).
-{{< /details >}}
-
-{{< details "Utterances" >}}
-Utterances uses GitHub Issues as a comment backend.
-
-```toml
-[Params.utterances]
-  repo = "owner/repo"
-  issueTerm = "pathname"
-  theme = "preferred-color-scheme"
-  label = "comment"
-```
-
-Get your values from [utteranc.es](https://utteranc.es).
-{{< /details >}}
-
-{{< details "Cusdis" >}}
-Cusdis is a lightweight, privacy-friendly comment system.
-
-```toml
-[Params]
-  cusdisID = "your-app-id"
-```
-
-Get your App ID from [cusdis.com](https://cusdis.com).
-{{< /details >}}
-
-{{< details "Staticman" >}}
-Staticman adds comments as static data files via pull requests, with optional reCAPTCHA.
-
-```toml
-[Params.staticman]
-  api = "https://staticman-url.herokuapp.com/v3/entry/github/owner/repo/main/comments"
-
-  [Params.staticman.recaptcha]
-    sitekey = "your-site-key"
-    secret = "your-secret"
-```
-{{< /details >}}
+Beautiful Hugo supports five comment systems (Disqus, Giscus, Utterances, Cusdis, Staticman). Each is enabled per-page with `comments: true` in front matter. See [Comments & Social](../comments-and-social/) for configuration details.
 
 ## Analytics & Search
 
-| Param | Type | Description |
-|-------|------|-------------|
-| `[Services.googleAnalytics] id` | string | Google Analytics tracking ID (loaded only in production) |
-| `piwik.server` | string | Piwik/Matomo server hostname |
-| `piwik.id` | string | Piwik/Matomo site ID |
-| `gcse` | string | Google Custom Search Engine code (adds search modal to navbar) |
-
-```toml
-[Services]
-  [Services.googleAnalytics]
-    id = "G-XXXXXXXXXX"
-
-[Params]
-  gcse = "012345678901234567890:abcdefghijk"
-```
-
-When `gcse` is set, a search icon appears in the navbar that opens a search modal.
-
-### Search Outputs
-
-The integrated client-side search requires JSON output to function. Ensure your `hugo.toml` includes the following `outputs` configuration:
-
-```toml
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-  section = ["HTML", "RSS", "JSON"]
-  page = ["HTML"]
-```
-
-### Search Provider
-
-Enable the built-in search UI by configuring a provider:
-
-| Param | Type | Default | Description |
-|-------|------|---------|-------------|
-| `[Params.search] provider` | string | `"fuse"` | Search provider to use. Set to `"none"` to disable the built-in search UI. |
-
-```toml
-[Params.search]
-  provider = "fuse"
-```
-
-Search labels come from the theme's i18n files. To localize or customize labels, override the relevant translation keys in your site, such as `searchPlaceholder`, `searchResultsLabel`, `searchNoResultsText`, `searchPrevText`, and `searchNextText`.
+Google Analytics, Piwik/Matomo, and search (GCSE or built-in Fuse) are covered in [SEO & i18n](../seo-and-i18n/#analytics-and-search).
 
 ## SEO Robot Meta Tags
 
-Control `<meta name="robots">` tags from `hugo.toml`. These settings only apply to pages in `mainSections`; other pages can set tags via front matter.
+Site-wide `<meta name="robots">` tags can be set from `hugo.toml`. These settings only apply to pages in `mainSections`; other pages can set tags via front matter.
 
-```toml
-[Params.seo.robots]
-  ai-summary-limit = "nosnippet"
-  noindex = true
-  nofollow = true
-
-[Params.seo.GoogleBot]
-  noindex = true
-  ai-summary-limit = 50
-```
-
-Supported boolean tags: `noindex`, `nofollow`, `none`, `nosnippet`, `notranslate`, `noimageindex`, `noarchive`, `nocache`, `noai`, `noimageai`.
-
-Supported `ai-summary-limit` values: `none` (no limit), `nosnippet` (block all), or a positive integer (character limit, e.g. `50`, `150`, `300`).
-
-See [SEO & i18n](../seo-and-i18n/) for the full reference including per-page overrides.
+See [SEO & i18n](../seo-and-i18n/) for the full reference including per-page overrides, AI summary limits, and all supported tags.
 
 ## Custom HTML Hooks
 
@@ -396,17 +248,7 @@ Beautiful Hugo provides partial "hooks" that let you inject custom HTML at speci
 | `footer_custom.html` | After `</footer>`, before scripts | Custom analytics, chat widget |
 | `scripts_custom.html` | After all theme JS, before `</body>` | Custom JS that depends on jQuery/Bootstrap |
 
-```text
-your-site/
-├── layouts/
-│   └── partials/
-│       ├── head_custom.html      ← your override
-│       ├── nav_custom.html       ← your override
-│       ├── header_custom.html    ← your override
-│       ├── before_content.html   ← your override
-│       ├── after_content.html    ← your override
-│       └── footer_custom.html    ← your override
-```
+See [Theming](../theming/#custom-stylesheets) for details on using these hooks for CSS and script customization.
 
 ## Miscellaneous
 
