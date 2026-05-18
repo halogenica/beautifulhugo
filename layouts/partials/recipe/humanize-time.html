@@ -1,0 +1,46 @@
+{{ $time := . }} <!-- Example: "PT1H30M" or "PT45M" -->
+
+{{ $hours := "" }}
+{{ $minutes := "" }}
+{{ $displayTime := "" }}
+
+{{/* Extract hours and minutes using regex submatches */}}
+{{ $match := findRESubmatch `PT(?:(\d+)H)?(?:(\d+)M)?` $time }}
+
+{{ if $match }}
+    {{ $hours = index (index $match 0) 1 }}
+    {{ $minutes = index (index $match 0) 2 }}
+{{ end }}
+
+{{/* Format hours string */}}
+{{ $hoursStr := "" }}
+{{ if $hours }}
+    {{ $hNum := int $hours }}
+    {{ if gt $hNum 0 }}
+        {{ $hoursStr = printf "%d Hr%s" $hNum (cond (gt $hNum 1) "s" "") }}
+    {{ end }}
+{{ end }}
+
+{{/* Format minutes string */}}
+{{ $minutesStr := "" }}
+{{ if $minutes }}
+    {{ $mNum := int $minutes }}
+    {{ if gt $mNum 0 }}
+        {{ $minutesStr = printf "%d Min%s" $mNum (cond (gt $mNum 1) "s" "") }}
+    {{ end }}
+{{ end }}
+
+{{/* Combine results */}}
+{{ if and $hoursStr $minutesStr }}
+    {{ $displayTime = printf "%s %s" $hoursStr $minutesStr }}
+{{ else if $hoursStr }}
+    {{ $displayTime = $hoursStr }}
+{{ else if $minutesStr }}
+    {{ $displayTime = $minutesStr }}
+{{ else }}
+    {{ $displayTime = "0 minutes" }}
+{{ end }}
+
+<!-- Output to Page -->
+{{ return $displayTime }}
+
