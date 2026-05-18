@@ -6,19 +6,19 @@
     {{- with $r.prepTime -}}
       <span class="recipe-meta-item">
         <span class="recipe-meta-label">{{ i18n "recipePrepTime" }}</span>
-        <span class="recipe-meta-value">{{ . }}</span>
+        <span class="recipe-meta-value">{{ partial "recipe/humanize-time.html" . }}</span>
       </span>
     {{- end -}}
     {{- with $r.cookTime -}}
       <span class="recipe-meta-item">
         <span class="recipe-meta-label">{{ i18n "recipeCookTime" }}</span>
-        <span class="recipe-meta-value">{{ . }}</span>
+        <span class="recipe-meta-value">{{ partial "recipe/humanize-time.html" . }}</span>
       </span>
     {{- end -}}
     {{- with $r.totalTime -}}
       <span class="recipe-meta-item">
         <span class="recipe-meta-label">{{ i18n "recipeTotalTime" }}</span>
-        <span class="recipe-meta-value">{{ . }}</span>
+        <span class="recipe-meta-value">{{ partial "recipe/humanize-time.html" . }}</span>
       </span>
     {{- end -}}
     {{- with $r.yield -}}
