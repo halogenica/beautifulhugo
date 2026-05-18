@@ -39,6 +39,7 @@ enableGitInfo = true
   headerImgStyle = "narrow"
   showSource = true
   sourceRepo = "https://github.com/halogenica/beautifulhugo/blob/master/exampleSite/"
+  comment = "https://github.com/halogenica/beautifulhugo/commit/"
 
   [Params.search]
     provider = "fuse"

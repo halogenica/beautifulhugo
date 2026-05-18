@@ -38,8 +38,8 @@
   <script>
     window.searchProviderConfig = {
      provider: "{{ $searchProvider }}",
-     searchIndexURL: "{{ "/index.json" | relURL }}",
-     searchPageURL: "{{ "/search" | relLangURL }}"
+     searchIndexURL: {{ "index.json" | relURL }},
+     searchPageURL: {{ "search" | relLangURL }}
     };
     window.searchConfig = {
      resultsLabel: "{{ $search.results_label | default (i18n "searchResultsLabel" | default "Search results" ) }}",

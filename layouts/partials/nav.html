@@ -156,8 +156,8 @@
 <script>
   window.searchProviderConfig = {
     provider: "{{ $searchProvider }}",
-    searchIndexURL: "{{ "/index.json" | relURL }}",
-    searchPageURL: "{{ "/search" | relLangURL }}"
+    searchIndexURL: {{ "index.json" | relURL }},
+    searchPageURL: {{ "search" | relLangURL }}
   };
   window.searchConfig = {
     noResultsText: "{{ $search.no_results_text | default (i18n "searchNoResultsText" | default "No results found for " ) }}",
