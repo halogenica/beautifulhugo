@@ -8,7 +8,7 @@
   // --- fuse provider ---
 
   function fetchSearchIndex(url) {
-    return fetch(url || '/index.json')
+    return fetch(url)
       .then(function (response) {
         if (!response.ok) {
           throw new Error('Network response was not ok: ' + response.status + ' ' + response.statusText);
