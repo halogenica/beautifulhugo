@@ -16,7 +16,6 @@ body.toc-visible .toc-wrapper {
   height: 100vh;
   background: #fff;
   border-right: 1px solid #e0e0e0;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
   transform: translateX(-100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -26,6 +25,11 @@ body.toc-visible .toc-wrapper {
 
 .toc-panel.toc-open {
   transform: translateX(0);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .toc-panel.toc-open {
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .toc-header {
@@ -167,7 +171,6 @@ body.toc-visible .toc-wrapper {
 [data-theme="dark"] .toc-panel {
   background: #222;
   border-right-color: #444;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .toc-header {
