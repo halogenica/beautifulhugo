@@ -95,7 +95,8 @@
   .intro-header .page-heading h1,
   .intro-header .page-heading .h1,
   .intro-header .tags-heading h1,
-  .intro-header .categories-heading h1 {
+  .intro-header .categories-heading h1,
+  .intro-header .search-heading h1 {
     color: #000 !important;
   }
 
