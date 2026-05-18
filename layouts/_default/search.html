@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{- $searchProvider := partial "search-provider.html" . -}}
   {{- $search := .Site.Params.search | default (dict) -}}
-  <link rel="stylesheet" href="{{ "/css/search.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/search.css" | relURL }}">
   <div class="search-page-container" role="main">
     {{- if eq $searchProvider "none" }}
     <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}">
@@ -54,6 +54,6 @@
      untitledText: "{{ $search.untitled_text | default (i18n "searchUntitledText" | default "Untitled" ) }}"
     };
   </script>
-  <script src="{{ "/js/search.js" | relURL }}"></script>
+  <script src="{{ "js/search.js" | relURL }}"></script>
   {{- end }}
 {{ end }}
