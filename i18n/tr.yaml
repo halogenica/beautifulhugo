@@ -188,3 +188,19 @@
   translation: "Malzemeler"
 - id: recipeInstructions
   translation: "Talimatlar"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} gün"
+    other: "{{ .Count }} gün"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} saat"
+    other: "{{ .Count }} saat"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} dakika"
+    other: "{{ .Count }} dakika"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} saniye"
+    other: "{{ .Count }} saniye"

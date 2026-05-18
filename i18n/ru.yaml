@@ -188,3 +188,27 @@
   translation: "Ингредиенты"
 - id: recipeInstructions
   translation: "Инструкции"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} день"
+    few: "{{ .Count }} дня"
+    many: "{{ .Count }} дней"
+    other: "{{ .Count }} дня"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} час"
+    few: "{{ .Count }} часа"
+    many: "{{ .Count }} часов"
+    other: "{{ .Count }} часа"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} минута"
+    few: "{{ .Count }} минуты"
+    many: "{{ .Count }} минут"
+    other: "{{ .Count }} минуты"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} секунда"
+    few: "{{ .Count }} секунды"
+    many: "{{ .Count }} секунд"
+    other: "{{ .Count }} секунды"
