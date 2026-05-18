@@ -189,3 +189,19 @@
   translation: "Ingredienser"
 - id: recipeInstructions
   translation: "Fremgangsmåde"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} dag"
+    other: "{{ .Count }} dage"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} time"
+    other: "{{ .Count }} timer"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} min."
+    other: "{{ .Count }} min."
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} sek."
+    other: "{{ .Count }} sek."

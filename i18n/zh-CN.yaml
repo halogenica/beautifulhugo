@@ -188,3 +188,15 @@
   translation: "食材"
 - id: recipeInstructions
   translation: "做法"
+- id: recipeDay
+  translation:
+    other: "{{ .Count }}天"
+- id: recipeHour
+  translation:
+    other: "{{ .Count }}小时"
+- id: recipeMinute
+  translation:
+    other: "{{ .Count }}分钟"
+- id: recipeSecond
+  translation:
+    other: "{{ .Count }}秒"

@@ -188,3 +188,19 @@
   translation: "Sastojci"
 - id: recipeInstructions
   translation: "Upute"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} dan"
+    other: "{{ .Count }} dana"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} sat"
+    other: "{{ .Count }} sati"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} min"
+    other: "{{ .Count }} min"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} sek"
+    other: "{{ .Count }} sek"

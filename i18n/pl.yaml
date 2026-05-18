@@ -189,3 +189,27 @@
   translation: "Składniki"
 - id: recipeInstructions
   translation: "Instrukcje"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} dzień"
+    few: "{{ .Count }} dni"
+    many: "{{ .Count }} dni"
+    other: "{{ .Count }} dnia"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} godzina"
+    few: "{{ .Count }} godziny"
+    many: "{{ .Count }} godzin"
+    other: "{{ .Count }} godziny"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} minuta"
+    few: "{{ .Count }} minuty"
+    many: "{{ .Count }} minut"
+    other: "{{ .Count }} minuty"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} sekunda"
+    few: "{{ .Count }} sekundy"
+    many: "{{ .Count }} sekund"
+    other: "{{ .Count }} sekundy"
