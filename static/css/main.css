@@ -1986,3 +1986,8 @@ mjx-container mjx-wrap {
   display: block !important;
   max-width: max-content;
 }
+
+/* Dark grey tooltip background instead of black */
+.tooltip {
+  --bs-tooltip-bg: #343a40;
+}
