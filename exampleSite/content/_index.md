@@ -12,14 +12,18 @@ title: Beautiful Hugo
 - Bootstrap 5 responsive design
 - Full-width page option
 - Big image headers
-- Home page callout
+- Slide-out TOC panel
 
 {{< column >}}
 **Content Features**
-- KaTeX math rendering
+- KaTeX & MathJax math rendering
 - Mermaid diagrams
 - PhotoSwipe image lightbox
 - Select Chroma or Highlight.js syntax highlighting
+- Recipe content type (schema.org Recipe + recipe card)
+- Robot meta tags & AI summary limits
+- "View source" button
+- 7 custom HTML hook partials
 {{< /columns >}}
 
 {{< columns >}}
@@ -29,6 +33,9 @@ title: Beautiful Hugo
 - `columns` — two-column layout
 - `gallery` / `beautifulfigure` — images
 - `mermaid` — diagrams
+- `callout` — Bootstrap alert boxes
+- `include-code` — external source files
+- `no-ai-summary` — exclude from AI summaries
 
 {{< column >}}
 **Integrations**
