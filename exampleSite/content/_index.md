@@ -14,19 +14,6 @@ title: Beautiful Hugo
 - Big image headers
 - Slide-out TOC panel
 
-{{< column >}}
-**Content Features**
-- KaTeX & MathJax math rendering
-- Mermaid diagrams
-- PhotoSwipe image lightbox
-- Select Chroma or Highlight.js syntax highlighting
-- Recipe content type (schema.org Recipe + recipe card)
-- Robot meta tags & AI summary limits
-- "View source" button
-- 7 custom HTML hook partials
-{{< /columns >}}
-
-{{< columns >}}
 **Shortcodes**
 - `details` — collapsible sections
 - `tabs` / `tab` — tabbed content
@@ -38,12 +25,23 @@ title: Beautiful Hugo
 - `no-ai-summary` — exclude from AI summaries
 
 {{< column >}}
+
+**Content Features**
+- KaTeX & MathJax math rendering
+- Mermaid diagrams
+- PhotoSwipe image lightbox
+- Select Chroma or Highlight.js syntax highlighting
+- Recipe content type (schema.org Recipe + recipe card)
+- Robot meta tags & AI summary limits
+- "View source" button
+
 **Integrations**
 - 5 comment systems (Disqus, Giscus, Utterances, Cusdis, Staticman)
 - 42 social icon links
 - GitHub buttons
 - SEO (schema.org, Open Graph, Twitter Cards)
 - 20 languages
+
 {{< /columns >}}
 
 Browse the **Features** menu above for detailed documentation with live examples!
