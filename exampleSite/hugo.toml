@@ -90,8 +90,8 @@ enableGitInfo = true
 
 [[menu.main]]
     parent = "setup"
-    name = "Layout Options"
-    url = "page/layout-options/"
+    name = "Pages & Layouts"
+    url = "page/pages-and-layouts/"
     weight = 2
 
 [[menu.main]]
@@ -119,39 +119,33 @@ enableGitInfo = true
 
 [[menu.main]]
     parent = "features"
-    name = "Pages & Layouts"
-    url = "page/pages-and-layouts/"
-    weight = 1
-
-[[menu.main]]
-    parent = "features"
     name = "Shortcodes"
     url = "page/shortcodes/"
-    weight = 2
+    weight = 1
 
 [[menu.main]]
     parent = "features"
     name = "Code Blocks"
     url = "page/code-blocks/"
-    weight = 3
+    weight = 2
 
 [[menu.main]]
     parent = "features"
     name = "Markdown Extensions"
     url = "page/markdown-extensions/"
-    weight = 4
+    weight = 3
 
 [[menu.main]]
     parent = "features"
     name = "Figures & Galleries"
     url = "page/figures-and-galleries/"
-    weight = 5
+    weight = 4
 
 [[menu.main]]
     parent = "features"
     name = "Math & Diagrams"
     url = "page/math-and-diagrams/"
-    weight = 6
+    weight = 5
 
 [[menu.main]]
     identifier = "blog"

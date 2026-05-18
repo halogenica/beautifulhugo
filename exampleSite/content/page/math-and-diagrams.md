@@ -8,29 +8,7 @@ Beautiful Hugo includes built-in support for **KaTeX**, **MathJax**, and **Merma
 
 ## Math Rendering
 
-You can choose the math rendering engine via `mathEngine` in your config. Use `\\(...\\)` (KaTeX) / `$...$` (MathJax) for inline math and `$$...$$` for display math.
-
-| Engine | Value | Behavior |
-|--------|-------|----------|
-| **KaTeX** | `"katex"` | The default. Fast, lightweight, self-hostable with `selfHosted = true`. |
-| **MathJax** | `"mathjax"` | More complete LaTeX support. Always loaded from CDN regardless of `selfHosted`. |
-| **None** | `"none"` | Disables math rendering entirely (no assets loaded). |
-
-```toml
-[Params]
-  mathEngine = "katex"
-```
-
-You can also override the math engine per-page in front matter:
-
-```yaml
----
-title: My Post
-mathEngine: "none"
----
-```
-
-This is useful, for example, on pages that don't contain any math expressions — setting `mathEngine: "none"` prevents loading KaTeX or MathJax assets for that page.
+Choose the math rendering engine via `mathEngine` in your config. See [Configuration — Math Engine](../configuration/#math-engine) for the full option reference and `selfHosted` behavior.
 
 ### Inline math
 

@@ -77,54 +77,13 @@ The custom properties cascade normally — you only need to override the ones yo
 
 ## Theme-Dependent Content
 
-Use the `.theme-light` and `.theme-dark` classes to show elements only in a specific color scheme. Try toggling the theme with the button in the navbar — the blocks below will swap.
+Use the `.theme-light` and `.theme-dark` CSS classes to show elements only in a specific color scheme. Mermaid diagrams use this mechanism internally for dual-rendering.
 
-<div class="theme-light">
-This text is visible only in <strong>light mode</strong>.
-</div>
-
-<div class="theme-dark">
-This text is visible only in <strong>dark mode</strong>.
-</div>
-
-```html
-<div class="theme-light">
-  Visible only in light mode.
-</div>
-
-<div class="theme-dark">
-  Visible only in dark mode.
-</div>
-```
-
-With Hugo's Markdown attribute syntax:
-
-```markdown
-Visible only in light mode.
-{.theme-light}
-
-Visible only in dark mode.
-{.theme-dark}
-```
-
-This is particularly useful for images or diagrams that need different versions for light and dark backgrounds. Mermaid diagrams use this mechanism internally for dual-rendering.
+For usage examples with both raw HTML and Markdown block-attribute syntax, see [Markdown Extensions — Theme-Dependent Content](../markdown-extensions/#theme-dependent-content).
 
 ## Images with Transparent Backgrounds
 
-Transparent images can look poor on a dark background. Add the `white` class to give them a white background in dark mode:
-
-```markdown
-![Diagram](/img/diagram.png)
-{.white}
-```
-
-Or in HTML:
-
-```html
-<figure class="white">
-  <img src="/img/diagram.png" alt="Diagram" />
-</figure>
-```
+Add the `white` class to give transparent images a white background in dark mode. For usage with both raw HTML and Markdown block-attribute syntax, see [Markdown Extensions — White Background for Dark Mode](../markdown-extensions/#white-background-for-dark-mode).
 
 ## Mermaid Diagrams in Dark Mode
 
