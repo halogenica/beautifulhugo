@@ -1,4 +1,4 @@
-{{- $provider := "none" -}}
+{{- $provider := "fuse" -}}
 
 {{- with site.Params.search -}}
   {{- $provider = lower (.provider | default (.providor | default "fuse")) -}}
