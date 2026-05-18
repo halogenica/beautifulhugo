@@ -543,7 +543,8 @@ img::selection {
 
 .intro-header .page-heading,
 .intro-header .tags-heading,
-.intro-header .categories-heading {
+.intro-header .categories-heading,
+.intro-header .search-heading {
   text-align: center;
 }
 
@@ -567,7 +568,8 @@ img::selection {
 .intro-header .page-heading h1,
 .intro-header .page-heading .h1,
 .intro-header .tags-heading h1,
-.intro-header .categories-heading h1 {
+.intro-header .categories-heading h1,
+.intro-header .search-heading h1 {
   margin-top: 0;
   font-size: 50px;
 }
@@ -637,7 +639,8 @@ img::selection {
   .intro-header .page-heading h1,
   .intro-header .page-heading .h1,
   .intro-header .tags-heading h1,
-  .intro-header .categories-heading h1 {
+  .intro-header .categories-heading h1,
+  .intro-header .search-heading h1 {
     font-size: 72px;
   }
 .intro-header .post-heading h1,
