@@ -161,6 +161,13 @@
     }
   }
 
+  function decodeHtml(text) {
+    if (!text) return '';
+    var div = document.createElement('div');
+    div.innerHTML = text;
+    return div.textContent || div.innerText;
+  }
+
   function escapeHtml(text) {
     if (!text) return '';
     var div = document.createElement('div');
@@ -188,9 +195,9 @@
     hits.forEach(function (hit) {
       var title = hit.title || cfg.untitledText || 'Untitled';
       html += '<a class="navbar-search-result-item" href="' + escapeHtml(hit.url) + '">';
-      html += '<span class="navbar-search-result-title">' + escapeHtml(title) + '</span>';
+      html += '<span class="navbar-search-result-title">' + escapeHtml(decodeHtml(title)) + '</span>';
       if (hit.excerpt) {
-        html += '<span class="navbar-search-result-excerpt">' + escapeHtml(hit.excerpt) + '</span>';
+        html += '<span class="navbar-search-result-excerpt">' + escapeHtml(decodeHtml(hit.excerpt)) + '</span>';
       }
       html += '</a>';
     });
