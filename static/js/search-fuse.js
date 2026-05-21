@@ -163,9 +163,7 @@
 
   function decodeHtml(text) {
     if (!text) return '';
-    var div = document.createElement('div');
-    div.innerHTML = text;
-    return div.textContent || div.innerText;
+    return new DOMParser().parseFromString(text, 'text/html').body.textContent || '';
   }
 
   function escapeHtml(text) {
