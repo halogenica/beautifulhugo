@@ -458,8 +458,8 @@ img::selection {
 
 .post-image img {
   border-radius: 8px;
-  width: 200px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
 }
 
@@ -489,8 +489,8 @@ img::selection {
   }
 
   .post-image img {
-    height: 100px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
   }
 }
 
