@@ -453,13 +453,13 @@ img::selection {
 
 .post-image {
   float: right;
-  margin: 0 0 10px 15px;
+  margin: 5px 0 10px 15px;
 }
 
 .post-image img {
   border-radius: 8px;
-  height: 150px;
-  width: 150px;
+  width: 200px;
+  height: 130px;
   object-fit: cover;
 }
 
@@ -489,8 +489,8 @@ img::selection {
   }
 
   .post-image img {
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 150px;
   }
 }
 
