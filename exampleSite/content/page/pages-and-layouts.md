@@ -293,12 +293,12 @@ The page is still accessible via its direct URL and appears in navigation menus 
 
 ### Post Preview Images
 
-On list pages, posts can show a circular preview image or video:
+On list pages, posts can show a full-width preview image or video:
 
 ```yaml
 ---
 title: My Post
-image: /img/avatar-icon.png
+image: /img/my-post-image.jpg
 ---
 ```
 
@@ -310,6 +310,26 @@ title: My Post
 video: clip.mp4
 ---
 ```
+
+### Post Thumbnails
+
+Posts can display a thumbnail image beside the summary on list pages:
+
+```yaml
+---
+title: My Post
+thumbnail: /img/my-thumb.jpg
+---
+```
+
+If `thumbnail` is not set but `image` is, the `image` will be used as the thumbnail automatically. Set both to use different images for the full-width banner and the thumbnail:
+
+```yaml
+---
+title: My Post
+image: /img/my-post-image.jpg
+thumbnail: /img/my-thumb.jpg
+---
 
 ### Custom Summaries
 

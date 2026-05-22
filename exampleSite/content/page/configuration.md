@@ -277,8 +277,9 @@ These options can be set in the front matter of any page or post:
 | `showAvatar` | bool | Show/hide navbar avatar (default: `true`) |
 | `comments` | bool | Enable comments on this page |
 | `hidden` | bool | Hide from list pages |
-| `image` | string | Post preview image (circular, shown in list pages) |
+| `image` | string | Post preview image (full-width banner on list pages; also used for SEO/social sharing) |
 | `video` | string | Post preview video (loop, autoplay, muted) |
+| `thumbnail` | string | Post thumbnail image (rounded rectangle, shown beside summary on list pages; falls back to `image`) |
 | `summary` | string | Custom summary text |
 | `description` | string | Page description for meta tags and structured data (see [SEO & i18n — Description Cascade](../seo-and-i18n/#description-cascade)) |
 | `type` | string | Content type that determines template behavior: `"page"`, `"post"`, or `"recipe"` (see [Pages & Layouts](../pages-and-layouts/)) |

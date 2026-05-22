@@ -19,6 +19,14 @@
     <p class="post-meta">
         {{ partial "post_meta.html" . }}
     </p>
+    {{ $thumbnail := .Params.thumbnail | default .Params.image }}
+    {{ if $thumbnail }}
+    <div class="post-image">
+        <a href="{{ .Permalink }}">
+            <img src="{{ $thumbnail | relURL }}" alt="{{ .Title }}" />
+        </a>
+    </div>
+    {{ end }}
     <div class="post-entry">
         {{ if or (.Truncated) (.Params.summary) (eq .Type "recipe") }}
         {{ .Summary }}

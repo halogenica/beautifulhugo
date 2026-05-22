@@ -453,26 +453,21 @@ img::selection {
 
 .post-image {
   float: right;
-  height: 192px;
-  width: 192px;
-  margin-top: -35px;
-  filter: grayscale(90%);
-}
-
-.post-image:hover {
-  filter: grayscale(0%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .post-image:hover {
-    filter: grayscale(90%);
-  }
+  margin: 0 0 10px 15px;
 }
 
 .post-image img {
-  border-radius: 100px;
-  height: 192px;
-  width: 192px;
+  border-radius: 8px;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+}
+
+.img-title {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 8px;
 }
 
 .post-preview .post-read-more {
@@ -487,16 +482,15 @@ img::selection {
 }
 
 @media only screen and (max-width: 500px) {
-  .post-image, .post-image img {
-    height: 100px;
-    width: 100px;
+  .post-image {
+    float: none;
+    text-align: center;
+    margin: 10px 0;
   }
 
-  .post-image {
-    width: 100%;
-    text-align: center;
-    margin-top: 0;
-    float: left;
+  .post-image img {
+    height: 120px;
+    width: 120px;
   }
 }
 
