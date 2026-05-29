@@ -1,4 +1,11 @@
 {{- partial "seo/schema" . }}
 {{- partial "opengraph.html" . }}
-<link rel="canonical" href="{{ .Permalink }}" />
 {{- partial "seo/twitter" . }}
+{{/* Handle Single Pages vs List/Homepage Pagination */}}
+{{- if .IsNode }}
+  {{/* If it's a list page (home, section, taxonomy), trigger the paginator to get the correct URL */}}
+  <link rel="canonical" href="{{ .Paginator.URL | absURL }}">
+{{- else }}
+  {{/* If it's a regular single post/page */}}
+  <link rel="canonical" href="{{ .Permalink }}">
+{{- end }}
