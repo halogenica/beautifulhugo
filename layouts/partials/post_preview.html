@@ -6,26 +6,36 @@
             {{ .Params.subtitle }}
         </h3>
         {{ end }}
-        {{ if .Params.image }}
-        <img src="{{ strings.TrimPrefix "/" .Params.image | relURL }}" alt="{{ .Title }}" class="img-title" />
-        {{ end }}
-        {{ if .Params.video }}
-        <video loop autoplay muted playsinline class="img-title">
-            <source src="{{ strings.TrimPrefix "/" .Params.video | relURL }}">
-        </video>
-        {{ end }}
     </a>
 
     <p class="post-meta">
         {{ partial "post_meta.html" . }}
     </p>
-    <div class="post-entry">
-        {{ if or (.Truncated) (.Params.summary) (eq .Type "recipe") }}
-        {{ .Summary }}
-        <a href="{{ .RelPermalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
-        {{ else }}
-        {{ .Content }}
+    <div class="post-entry-container">
+        {{ $thumbnail := .Params.thumbnail | default .Params.image }}
+        {{ if $thumbnail }}
+        <div class="post-image">
+            <a href="{{ .RelPermalink }}">
+                <img src="{{ strings.TrimPrefix "/" $thumbnail | relURL }}" alt="{{ .Title }}" />
+            </a>
+        </div>
+        {{ else if .Params.video }}
+        <div class="post-image">
+            <a href="{{ .RelPermalink }}">
+                <video loop autoplay muted playsinline>
+                    <source src="{{ strings.TrimPrefix "/" .Params.video | relURL }}">
+                </video>
+            </a>
+        </div>
         {{ end }}
+        <div class="post-entry">
+            {{ if or (.Truncated) (.Params.summary) (eq .Type "recipe") }}
+            {{ .Summary }}
+            <a href="{{ .RelPermalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
+            {{ else }}
+            {{ .Content }}
+            {{ end }}
+        </div>
     </div>
 
     {{ if or .Params.categories .Params.tags }}

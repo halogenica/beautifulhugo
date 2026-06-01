@@ -330,7 +330,7 @@ The page is still accessible via its direct URL and appears in navigation menus 
 
 ### Post Preview Images
 
-On list pages, posts can show a circular preview image or video:
+On list pages, posts can show a rounded thumbnail floated beside the snippet (Medium-style). It is grayscale by default and turns to full color on hover:
 
 ```yaml
 ---
@@ -339,7 +339,17 @@ image: /img/avatar-icon.png
 ---
 ```
 
-For a video preview (loop, autoplay, muted):
+Use `thumbnail` to set a dedicated list-view image. It falls back to `image` when unset, so you can crop a separate, square-friendly version just for previews while keeping `image` for sharing/SEO:
+
+```yaml
+---
+title: My Post
+thumbnail: /img/my-post-thumb.png
+image: /img/my-post.png
+---
+```
+
+For a video preview (loop, autoplay, muted) — shown only when no `thumbnail`/`image` is set:
 
 ```yaml
 ---

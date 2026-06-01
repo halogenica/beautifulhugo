@@ -455,7 +455,7 @@ img::selection {
   float: right;
   height: 192px;
   width: 192px;
-  margin-top: -35px;
+  margin-left: 20px;
   filter: grayscale(90%);
 }
 
@@ -469,10 +469,12 @@ img::selection {
   }
 }
 
-.post-image img {
-  border-radius: 100px;
+.post-image img,
+.post-image video {
+  border-radius: 8px;
   height: 192px;
   width: 192px;
+  object-fit: cover;
 }
 
 .post-preview .post-read-more {
@@ -487,7 +489,7 @@ img::selection {
 }
 
 @media only screen and (max-width: 500px) {
-  .post-image, .post-image img {
+  .post-image, .post-image img, .post-image video {
     height: 100px;
     width: 100px;
   }
