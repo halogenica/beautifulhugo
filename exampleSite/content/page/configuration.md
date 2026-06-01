@@ -256,6 +256,7 @@ See [Theming](../theming/#custom-stylesheets) for details on using these hooks f
 |-------|------|-------------|
 | `disclaimerText` | string | Disclaimer text shown in footer with a yellow-bordered box |
 | `commit` | string | Base URL for Git commit links (appended with `.GitInfo.Hash`) |
+| `disableCanonical` | bool | Suppress the `<link rel="canonical">` tag site-wide (see [SEO & i18n — Canonical URLs](../seo-and-i18n/#canonical-urls)) |
 
 Git features (`commit`) require `enableGitInfo = true` at the top level of your config (not under `[Params]`) so Hugo populates `.GitInfo`. Example:
 
@@ -288,6 +289,8 @@ These options can be set in the front matter of any page or post:
 | `share_img` | string | Social sharing image (falls back to `image` then `logo`) |
 | `ExpiryDate` | date | Adds `<meta name="robots" content="unavailable_after: ...">` |
 | `seo` | map | Per-page robot meta tag overrides (see [SEO & i18n](../seo-and-i18n/)) |
+| `canonicalURL` | string | Override the canonical link for this page (absolute or relative; see [SEO & i18n — Canonical URLs](../seo-and-i18n/#canonical-urls)) |
+| `disableCanonical` | bool | Suppress the canonical link tag for this page |
 | `ghRepo` | string | GitHub repo for buttons (`"user/repo"`) |
 | `ghBadge` | list | Which badges to show: `["star","watch","fork","follow"]` |
 | `ghCount` | bool | Show count on GitHub buttons (default: `true`) |

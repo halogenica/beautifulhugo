@@ -8,7 +8,8 @@
           </div>
         {{ end }}
         <div class="posts-list">
-          {{ range where .Paginator.Pages "Params.hidden" "!=" true }}
+          {{ $pag := .Paginate (partial "func/list-pages.html" .) }}
+          {{ range $pag.Pages }}
             {{ partial "post_preview.html" .}}
           {{ end }}
         </div>
