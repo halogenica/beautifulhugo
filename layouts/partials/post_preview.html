@@ -12,14 +12,15 @@
         {{ partial "post_meta.html" . }}
     </p>
     <div class="post-entry-container">
-        {{ $thumbnail := cond (isset .Params "thumbnail") .Params.thumbnail .Params.image }}
+        {{ $hasThumbnail := isset .Params "thumbnail" }}
+        {{ $thumbnail := cond $hasThumbnail .Params.thumbnail .Params.image }}
         {{ if $thumbnail }}
         <div class="post-image">
             <a href="{{ .RelPermalink }}">
                 <img src="{{ strings.TrimPrefix "/" $thumbnail | relURL }}" alt="{{ .Title }}" />
             </a>
         </div>
-        {{ else if .Params.video }}
+        {{ else if and (not $hasThumbnail) .Params.video }}
         <div class="post-image">
             <a href="{{ .RelPermalink }}">
                 <video loop autoplay muted playsinline>
