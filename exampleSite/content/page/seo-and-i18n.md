@@ -166,8 +166,10 @@ Every page emits a `<link rel="canonical">` tag so search engines know the
 preferred URL for the content. The URL is resolved in this order:
 
 1. **Front matter `canonicalURL`** — if set, it always wins. Relative values
-   are resolved against your `baseURL`. Use this when a page intentionally
-   duplicates another and should point search engines at the original:
+   are resolved against the current language's base URL (so they stay
+   language-correct on multilingual sites); absolute URLs are emitted as-is.
+   Use this when a page intentionally duplicates another and should point
+   search engines at the original:
 
    ```yaml
    ---

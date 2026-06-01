@@ -4,7 +4,8 @@
   Resolution order:
     1. A `canonicalURL` in the page front matter wins — useful when a page
        intentionally duplicates another and should point search engines at
-       the original. Relative values are resolved against the site baseURL.
+       the original. Relative values are resolved against the current
+       language's base URL; absolute URLs are emitted unchanged.
     2. Paginated nodes (home, section, term) use the paginator URL so that
        each page of a sequence (…/page/2/) self-canonicalizes instead of all
        pointing at page 1, which is what Google now recommends. The collection
@@ -18,11 +19,11 @@
 */ -}}
 {{- if not ($.Param "disableCanonical") -}}
   {{- with .Params.canonicalURL -}}
-<link rel="canonical" href="{{ . | absURL }}" />
+<link rel="canonical" href="{{ . | absLangURL }}" />
   {{- else -}}
     {{- if or .IsHome (eq .Kind "section") (eq .Kind "term") -}}
       {{- $paginator := .Paginate (partial "func/list-pages.html" .) -}}
-<link rel="canonical" href="{{ $paginator.URL | absURL }}" />
+<link rel="canonical" href="{{ $paginator.URL | absLangURL }}" />
     {{- else -}}
 <link rel="canonical" href="{{ .Permalink }}" />
     {{- end -}}
