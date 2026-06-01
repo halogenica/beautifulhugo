@@ -12,7 +12,7 @@
         {{ partial "post_meta.html" . }}
     </p>
     <div class="post-entry-container">
-        {{ $thumbnail := .Params.thumbnail | default .Params.image }}
+        {{ $thumbnail := cond (isset .Params "thumbnail") .Params.thumbnail .Params.image }}
         {{ if $thumbnail }}
         <div class="post-image">
             <a href="{{ .RelPermalink }}">

@@ -349,6 +349,16 @@ image: /img/my-post.png
 ---
 ```
 
+Setting `thumbnail` to an empty string explicitly suppresses the preview image, even when `image` is set (useful for keeping `image` for sharing/SEO without showing a thumbnail in the list):
+
+```yaml
+---
+title: My Post
+thumbnail: ""
+image: /img/my-post.png
+---
+```
+
 For a video preview (loop, autoplay, muted) — shown only when no `thumbnail`/`image` is set:
 
 ```yaml
