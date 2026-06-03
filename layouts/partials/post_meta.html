@@ -17,7 +17,7 @@
   {{ end }}
   {{ $datestr := time.Format $format .Date }}
   {{ $lastmodstr := time.Format $format .Lastmod }}
-  {{ $show := default .Site.Params.showPageDates .Params.showPageDates }}
+  {{ $show := default .Site.Params.showPostDates .Params.showPostDates }}
   {{ if $show }}
     <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
     {{ if ne $datestr $lastmodstr }}

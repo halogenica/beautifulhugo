@@ -5,6 +5,7 @@ author:
   - "[Michael Henderson](https://example.com)"
   - "[Jane Doe](https://example.com)"
 date: 2015-02-20
+showPostDates: true
 categories: ["tutorial"]
 tags: ["example", "markdown", "tutorial"]
 ---
@@ -16,14 +17,14 @@ You can write regular [markdown](https://markdowntutorial.com/) here and [Hugo](
 ## Here is a secondary heading
 
 Here's a useless table:
- 
+
 | Number | Next number | Previous number |
 | :------ |:--- | :--- |
 | Five | Six | Four |
 | Ten | Eleven | Nine |
 | Seven | Eight | Six |
 | Two | Three | One |
- 
+
 
 How about a yummy crepe?
 

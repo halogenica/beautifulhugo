@@ -1,6 +1,7 @@
 ---
 title: Manage robot meta tags an limit AI Overview from using page contents
 date: 2026-05-10
+showPostDates: true
 description: "This feature adds the ability to apply robot meta data on page
 through using custom page paramaters."
 tags: ["example", "summary", "limits", "search", "robots", "meta tags"]
@@ -9,7 +10,7 @@ tags: ["example", "summary", "limits", "search", "robots", "meta tags"]
 ## Purpose
 
 This feature provides two main improvements.
-  
+
 - Allows the management of `<meta name="robots"....>` tags using front matter.
 - Allows the management of the meta tags related to SEO AI Summary creation.
 
@@ -24,7 +25,7 @@ end of this post.
 
 There are three areas where configuration is obtained.
 
-- hugo.toml  
+- hugo.toml
   Only loaded if the page is part of the `mainSection`
 - The page's parent if there is a `_index.md`
 - The page it self
@@ -102,7 +103,7 @@ With the above settings:
 - nocache
 - noai
 - noimageai
-- ai-summary-limit  
+- ai-summary-limit
   Values: none, nosnippet, 0~300
 
 ### Selective application of nosnippet around selected test

@@ -55,6 +55,7 @@ Blog posts live under `content/post/` (or any directory listed in `mainSections`
 title: "My Blog Post"
 subtitle: "A short description"
 date: 2026-05-11
+showPostDates: true
 categories: ["tutorial"]
 tags: ["hugo", "theme"]
 comments: true
