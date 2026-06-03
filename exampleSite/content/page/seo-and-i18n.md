@@ -160,6 +160,42 @@ The page description (used in meta tags and structured data) follows this cascad
 2. `.Params.subtitle` (the subtitle)
 3. `.Summary` (auto-generated from content)
 
+## Canonical URLs
+
+Every page emits a `<link rel="canonical">` tag so search engines know the
+preferred URL for the content. The URL is resolved in this order:
+
+1. **Front matter `canonicalURL`** — if set, it always wins. Relative values
+   are resolved against the current language's base URL (so they stay
+   language-correct on multilingual sites); absolute URLs are emitted as-is.
+   Use this when a page intentionally duplicates another and should point
+   search engines at the original:
+
+   ```yaml
+   ---
+   title: Reposted Article
+   canonicalURL: https://example.com/the-original/
+   ---
+   ```
+
+2. **Paginated list pages** (home, sections, taxonomy terms) self-canonicalize.
+   Page two of a sequence points at itself (`…/page/2/`) rather than at page
+   one, which is [Google's current recommendation](https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading)
+   for paginated content.
+
+3. **Everything else** uses the page's own permalink.
+
+### Disabling the tag
+
+Set `disableCanonical = true` in your site `[Params]` to drop the tag
+site-wide, or in a single page's front matter to drop it for that page only —
+for example if you provide canonical links through your own `head_custom.html`:
+
+```toml
+[Params]
+  disableCanonical = true
+```
+
 ## Multilingual Support
 
 Beautiful Hugo supports Hugo's standard multilingual configuration with per-language content directories.
