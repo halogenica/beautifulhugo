@@ -43,7 +43,6 @@
 {{- end -}}
 
 {{- $schema := dict
-  "@context" "https://schema.org"
   "@type" (slice "Article" "Recipe")
   "@id" (printf "%s#recipe" .Permalink)
   "isPartOf" (dict "@id" .Permalink)
@@ -88,6 +87,4 @@
 {{- with .Params.share_img }}{{ $image = . }}{{ else with .Params.image }}{{ $image = . }}{{ else with .Site.Params.logo }}{{ $image = . }}{{ end -}}
 {{- with $image }}{{ $schema = merge $schema (dict "image" (absURL .)) }}{{ end -}}
 
-<script type="application/ld+json">
-{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
-</script>
+{{- return $schema }}
