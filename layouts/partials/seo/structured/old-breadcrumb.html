@@ -13,7 +13,7 @@
 {{- range where .Ancestors.Reverse "IsHome" false -}}
   {{- $position = add $position 1 -}}
 
-  {{/* Get Directory name if .Title is not set */}}
+  {{/* Get Directory name .Title is not set */}}
   {{- $segments := split (trim .Path "/") "/" -}}
   {{- $last := index $segments (sub (len $segments) 1) -}}
   {{- $title := .Title | default $last -}}
@@ -36,12 +36,8 @@
     "item" .Permalink
   ) -}}
 {{- end -}}
-{{- $id := printf "%s#breadcrumb" .Permalink -}}
-<script type="application/ld+json">
-{{ dict
-  "@context" "https://schema.org"
+{{- return (dict
   "@type" "BreadcrumbList"
-  "@id" $id
-  "itemListElement" $items
-| jsonify (dict "indent" "  ") | safeJS }}
-</script>
+  "@id" (printf "%s#breadcrumb" .Permalink)
+  "itemListElement" $items)
+-}}
