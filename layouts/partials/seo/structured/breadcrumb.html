@@ -1,6 +1,14 @@
 {{- $items := slice -}}
 {{- $position := 1 -}}
+{{- $schema := dict }}
 
+{{/* 1. Retrieve the Paginator data from the .Store */}}
+{{- $paginator := .Store.Get "paginator" }}
+{{- $currentPageUrl := .Store.Get "currentPageUrl" | default .Permalink }}
+
+{{- $isAbsoluteHome := .Store.Get "isAbsoluteHome" -}}
+
+{{- if not $isAbsoluteHome }}
 {{/* Home */}}
 {{- $items = $items | append (dict
   "@type" "ListItem"
@@ -36,12 +44,38 @@
     "item" .Permalink
   ) -}}
 {{- end -}}
-{{- $id := printf "%s#breadcrumb" .Permalink -}}
-<script type="application/ld+json">
-{{ dict
-  "@context" "https://schema.org"
+
+{{/* 2. FIX: Handle Paginator Deep Pages (Page 2, 3, etc.) */}}
+{{- if and $paginator (gt $paginator.PageNumber 1) }}
+  {{/* Only append the group title if we are NOT on the homepage to avoid duplicate URLs */}}
+  {{- if not .IsHome }}
+    {{- $position = add $position 1 -}}
+    {{- $items = $items | append (dict
+      "@type" "ListItem"
+      "position" $position
+      "name" .Title
+      "item" .Permalink
+    ) -}}
+  {{- end }}
+
+  {{/* Append the final virtual page indicator */}}
+  {{- $position = add $position 1 -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" (print "Page " $paginator.PageNumber)
+    "item" $currentPageUrl
+  ) -}}
+{{- end -}}
+
+{{/* 3. FIX: Construct the strict @id using the accurate current page URL */}}
+{{- $id := printf "%s#breadcrumb" $currentPageUrl -}}
+
+{{- $schema = (dict
   "@type" "BreadcrumbList"
   "@id" $id
-  "itemListElement" $items
-| jsonify (dict "indent" "  ") | safeJS }}
-</script>
+  "itemListElement" $items)
+-}}
+{{- end }}
+
+{{- return $schema }}
