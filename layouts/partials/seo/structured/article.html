@@ -12,24 +12,24 @@
 
 {{- $authors := partial "author_list.html" . -}}
 {{- $authorSchema := slice -}}
+{{- $authorIds := slice -}}
 {{- range $authors -}}
+  {{- $authorId := (print $.Site.BaseURL (print "#author-" (urlize .name))) }}
+  {{- $authorIds = $authorIds | append (dict "@id" $authorId) }}
   {{- $a := dict
     "@type" "Person"
     "name" .name
     "url" (or .url $.Site.BaseURL)
-    "@id" (printf "%s#author" $.Site.BaseURL)
+    "@id" $authorId
   -}}
   {{- $authorSchema = $authorSchema | append $a -}}
-{{- end -}}
-{{- if eq (len $authorSchema) 1 -}}
-  {{- $authorSchema = index $authorSchema 0 -}}
 {{- end -}}
 
 {{- $schema := dict
   "@type" "Article"
   "@id" (printf "%s#article" .Permalink)
   "mainEntityOfPage" (dict "@id" (print .Permalink "#webpage"))
-  "author" $authorSchema
+  "author" $authorIds
   "headline" .Title
   "description" $description
   "inLanguage" .Lang
@@ -55,4 +55,4 @@
 {{- if .Site.Params.logo -}}
   {{- $schema = merge $schema (dict "image" (.Site.Params.logo | absURL)) -}}
 {{- end -}}
-{{- return $schema }}
+{{- return ($authorSchema = $authorSchema | append (slice $schema)) }}
