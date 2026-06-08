@@ -18,9 +18,6 @@
   {{/* 1. Direct the data source based on what kind of page we are on */}}
   {{- if eq .Kind "home" -}}
     {{/* Homepage: grab articles from your main configured sections */}}
-    {{- $isAbsoluteHome := and .IsHome (or (not $paginator) (eq $paginator.PageNumber 1)) -}}
-    {{- /* Safely commit to this specific page instance's memory bank */ -}}
-    {{- .Store.Set "isAbsoluteHome" $isAbsoluteHome -}}
     {{- $pagesToPaginate = where .Site.RegularPages "Section" "in" .Site.MainSections -}}
   {{- else -}}
     {{/* Section, Taxonomy, or Term: dynamically inherit THIS specific page's list context */}}
@@ -29,6 +26,9 @@
 
   {{/* 2. Pass that collection directly to the standard Hugo paginator */}}
   {{- $paginator = .Paginate $pagesToPaginate -}}
+  {{- $isAbsoluteHome := and .IsHome (or (not $paginator) (eq $paginator.PageNumber 1)) -}}
+  {{- /* Safely commit to this specific page instance's memory bank */ -}}
+  {{- .Store.Set "isAbsoluteHome" $isAbsoluteHome -}}
 
   {{/* 3. Cache the results in your .Store */}}
   {{- .Store.Set "paginator" $paginator -}}
