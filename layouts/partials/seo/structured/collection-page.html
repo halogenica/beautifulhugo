@@ -1,13 +1,10 @@
 {{- $schema := dict }}
 {{- if .IsNode }}
 
-  {{/* This makes a bit of an assumption that blog posts are in the /post/ directory
-       If this is not true this pagination configuration might need to be changed.
-  */}}
-  {{- $posts := where .Site.RegularPages "Section" "post" }}
-  {{/* Paginate that specific filtered collection */}}
-  {{- $paginator := .Paginate $posts }}
-  
+  {{/* Reuse the paginator already initialized in seo/schema.html (cached in
+       .Store) so the collection here matches the head canonical link and the
+       body listing. Hugo allows only one paginator per page. */}}
+  {{- $paginator := .Store.Get "paginator" }}
 
   {{/* Build an array of ListItems from the Node's pages */}}
   {{- $listItems := slice }}
