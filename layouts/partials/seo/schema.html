@@ -18,7 +18,7 @@
   {{/* 1. Direct the data source based on what kind of page we are on */}}
   {{- if eq .Kind "home" -}}
     {{/* Homepage: grab articles from your main configured sections */}}
-    {{- $pagesToPaginate = where .Site.RegularPages "Section" "in" .Site.MainSections -}}
+    {{- $pagesToPaginate = partial "func/list-pages" . -}}
   {{- else -}}
     {{/* Section, Taxonomy, or Term: dynamically inherit THIS specific page's list context */}}
     {{- $pagesToPaginate = .Pages -}}
