@@ -8,6 +8,11 @@
   {{- $description = .Summary | plainify | htmlUnescape -}}
 {{- end -}}
 
+{{- $keywords := slice -}}
+{{- range .Params.tags -}}
+  {{- $keywords = $keywords | append . -}}
+{{- end -}}
+
 {{- $ingredients := slice -}}
 {{- range $r.ingredients -}}
   {{- $ingredients = $ingredients | append (. | plainify | htmlUnescape) -}}
@@ -29,25 +34,24 @@
 
 {{- $authors := partial "author_list.html" . -}}
 {{- $authorSchema := slice -}}
+{{- $authorIds := slice -}}
 {{- range $authors -}}
+  {{- $authorId := (print $.Site.BaseURL (print "#author-" (urlize .name))) }}
+  {{- $authorIds = $authorIds | append (dict "@id" $authorId) }}
   {{- $a := dict
     "@type" "Person"
     "name" .name
     "url" (or .url $.Site.BaseURL)
-    "@id" (printf "%s#author" $.Site.BaseURL)
+    "@id" $authorId
   -}}
   {{- $authorSchema = $authorSchema | append $a -}}
 {{- end -}}
-{{- if eq (len $authorSchema) 1 -}}
-  {{- $authorSchema = index $authorSchema 0 -}}
-{{- end -}}
 
 {{- $schema := dict
-  "@context" "https://schema.org"
   "@type" (slice "Article" "Recipe")
   "@id" (printf "%s#recipe" .Permalink)
-  "isPartOf" (dict "@id" .Permalink)
-  "author" $authorSchema
+  "mainEntityOfPage" (dict "@id" (print .Permalink "#webpage"))
+  "author" $authorIds
   "headline" .Title
   "description" $description
   "inLanguage" .Lang
@@ -55,18 +59,8 @@
   "dateCreated" (.PublishDate.Format "2006-01-02T15:04:05-07:00")
   "datePublished" (.PublishDate.Format "2006-01-02T15:04:05-07:00")
   "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00")
-  "keywords" (.Params.tags | default slice)
-  "mainEntityOfPage" (dict "@id" .Permalink)
-  "publisher" (dict
-    "@type" "Organization"
-    "name" .Site.Title
-    "logo" (dict
-      "@type" "ImageObject"
-      "url" (.Site.Params.logo | absURL)
-      "height" 60
-      "width" 60
-    )
-  )
+  "keywords" $keywords
+  "publisher" (dict "@id" (print .Site.BaseURL "#organization"))
   "name" .Title
   "recipeIngredient" $ingredients
   "recipeInstructions" $instructions
@@ -88,6 +82,4 @@
 {{- with .Params.share_img }}{{ $image = . }}{{ else with .Params.image }}{{ $image = . }}{{ else with .Site.Params.logo }}{{ $image = . }}{{ end -}}
 {{- with $image }}{{ $schema = merge $schema (dict "image" (absURL .)) }}{{ end -}}
 
-<script type="application/ld+json">
-{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
-</script>
+{{- return ($authorSchema = $authorSchema | append (slice $schema)) }}

@@ -4,9 +4,7 @@
 {{- else -}}
   {{- $data = .Site.Data -}}
 {{- end -}}
-<script type="application/ld+json">
 {{- $schema := dict
-  "@context" "https://schema.org"
   "@type" "Organization"
   "name" (.Site.Params.organizationName | default .Site.Params.author.name)
   "@id" (printf "%s#organization" .Site.BaseURL)
@@ -26,5 +24,4 @@
     {{- $schema = merge $schema (dict "contactPoint" .) -}}
   {{- end -}}
 {{- end -}}
-{{ $schema | jsonify (dict "indent" "  ") | safeJS }}
-</script>
+{{- return $schema -}}
