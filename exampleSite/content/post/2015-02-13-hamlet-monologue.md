@@ -3,7 +3,6 @@ title: To be
 subtitle: ... or not to be?
 author: "William Shakespeare"
 date: 2015-02-13
-showPostDates: true
 categories: ["literature"]
 tags: ["literature", "history"]
 ---

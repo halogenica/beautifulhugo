@@ -123,6 +123,7 @@ When `selfHosted = true`, the following assets are served from `static/` instead
 | `disableFigureOverride` | bool | `false` | When `true`, use Hugo's native `<figure>` shortcode; `beautifulfigure` remains available |
 | `navShort` | bool | `false` | Make navbar permanently short (collapsed style) |
 | `showPageDates` | bool | `false` | Show dates on "page" type pages |
+| `hidePostDates` | bool | `false` | If true, hides dates on "post" type pages |
 | `toc` | bool | `true` | Show a floating table-of-contents button on pages with headings |
 | `showSource` | bool | `false` | Show a "View source" button linking to the page's source file in the repository |
 | `showPostNav` | bool | `true` | Show previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens) |
@@ -295,6 +296,7 @@ These options can be set in the front matter of any page or post:
 | `ghBadge` | list | Which badges to show: `["star","watch","fork","follow"]` |
 | `ghCount` | bool | Show count on GitHub buttons (default: `true`) |
 | `showPageDates` | bool | Show dates on page-type pages |
+| `hidePostDates` | bool | `false` | If true, hides dates on "post" type pages |
 | `navShort` | bool | Make navbar short on this page |
 | `toc` | bool | Show/hide table of contents for this page (overrides site-level `toc`) |
 | `showSource` | bool | Override site-level `showSource` for this page |

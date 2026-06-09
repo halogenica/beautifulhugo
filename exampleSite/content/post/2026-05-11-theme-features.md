@@ -2,7 +2,6 @@
 title: Welcome to Beautiful Hugo
 subtitle: An overview of the theme's features
 date: 2026-05-11
-showPostDates: true
 categories: ["announcement"]
 tags: ["announcement", "hugo", "theme"]
 comments: false

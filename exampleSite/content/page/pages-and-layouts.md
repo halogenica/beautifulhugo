@@ -55,7 +55,7 @@ Blog posts live under `content/post/` (or any directory listed in `mainSections`
 title: "My Blog Post"
 subtitle: "A short description"
 date: 2026-05-11
-showPostDates: true
+hidePostDates: true
 categories: ["tutorial"]
 tags: ["hugo", "theme"]
 comments: true
@@ -363,4 +363,22 @@ Or globally:
 ```toml
 [Params]
   showPageDates = true
+```
+
+### Show Post Dates
+
+By default, "post" type pages show dates. These can be disabled with:
+
+```yaml
+---
+title: My Page
+hidePostDates: true
+---
+```
+
+Or globally:
+
+```toml
+[Params]
+  hidePostDates = true
 ```

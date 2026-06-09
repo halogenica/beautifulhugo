@@ -5,7 +5,6 @@ author:
   - "[Michael Henderson](https://example.com)"
   - "[Jane Doe](https://example.com)"
 date: 2015-02-20
-showPostDates: true
 categories: ["tutorial"]
 tags: ["example", "markdown", "tutorial"]
 ---

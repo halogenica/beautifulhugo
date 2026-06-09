@@ -1,7 +1,6 @@
 ---
 title: "MathJax per-page override"
 date: 2026-05-12T10:00:00+02:00
-showPostDates: true
 type: post
 mathEngine: "mathjax"
 tags: ["math", "demo"]

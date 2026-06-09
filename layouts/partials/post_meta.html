@@ -17,15 +17,16 @@
   {{ end }}
   {{ $datestr := time.Format $format .Date }}
   {{ $lastmodstr := time.Format $format .Lastmod }}
-  {{ $show := default .Site.Params.showPostDates .Params.showPostDates }}
-  {{ if $show }}
+  {{ $show := default .Site.Params.hidePostDates .Params.hidePostDate }}
+  {{ if not ($show) }}
     <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
     {{ if ne $datestr $lastmodstr }}
       &nbsp;({{ $lastmodstr | i18n "lastModified"  }})
     {{ end }}
+     &nbsp;|
   {{ end }}
   {{ if $.Param "readingTime" }}
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
+   &nbsp;<i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
   {{ end }}
   {{ if $.Param "wordCount" }}
     &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
