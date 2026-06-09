@@ -43,6 +43,7 @@ Title comes from `homeTitle` (or the site title); `homeTitle` also controls the 
 Blog posts live under `content/post/` (or any directory listed in `mainSections`). They use `layouts/_default/single.html` with type `post`, which enables:
 
 - Post metadata in the header (date, reading time, word count, author)
+- Dates are shown unless `hidePostDates: true`
 - Subtitle rendered as an `<h2>`
 - Previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens; disable with `showPostNav = false`)
 - Comments (if `comments: true`)
@@ -55,7 +56,6 @@ Blog posts live under `content/post/` (or any directory listed in `mainSections`
 title: "My Blog Post"
 subtitle: "A short description"
 date: 2026-05-11
-hidePostDates: true
 categories: ["tutorial"]
 tags: ["hugo", "theme"]
 comments: true
