@@ -6,7 +6,7 @@
 {{- else if eq $value "none" -}}
   {{/* None means no limit so return an empty string value. */}}
 {{- else if findRE `^\d+$` $value -}}
-  {{- $tag = printf "max-snippet:%d" $value -}}
+  {{- $tag = printf "max-snippet:%d" (int $value) -}}
 {{- else -}}
   {{- errorf "ai-summary-limit has an invalid value." -}}
 {{- end -}}
