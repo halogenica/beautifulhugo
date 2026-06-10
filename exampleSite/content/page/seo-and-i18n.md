@@ -354,7 +354,7 @@ The integrated client-side search requires JSON output to function. Ensure your 
 ```toml
 [outputs]
   home = ["HTML", "RSS", "JSON"]
-  section = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
   page = ["HTML"]
 ```
 

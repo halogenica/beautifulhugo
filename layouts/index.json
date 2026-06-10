@@ -1,7 +1,0 @@
-{{- $index := slice -}}
-{{- range site.RegularPages -}}
-    {{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) -}}
-        {{- $index = $index | append (dict "title" .Title "content" (.Plain | plainify) "url" .Permalink "excerpt" (.Summary | plainify)) -}}
-    {{- end -}}
-{{- end -}}
-{{- $index | jsonify -}}

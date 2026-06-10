@@ -21,11 +21,7 @@
   {{ if $bigimg }}
     <div id="header-big-imgs" data-num-img={{len $bigimg}}
       {{range $i, $img := $bigimg}}
-         {{ if (fileExists $img.src)}}
-          data-img-src-{{add $i 1}}="{{ strings.TrimPrefix "/" $img.src | relURL }}"
-         {{else}}
-           data-img-src-{{add $i 1}}="{{ strings.TrimPrefix "/" $img.src | relURL }}"
-         {{end}}
+         data-img-src-{{add $i 1}}="{{ strings.TrimPrefix "/" $img.src | relURL }}"
          {{ if $img.desc}}data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}
          {{ if $img.position}}data-img-position-{{add $i 1}}="{{$img.position}}"{{end}}
       {{end}}></div>

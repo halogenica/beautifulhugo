@@ -26,22 +26,6 @@
               {{ end }}
             </div>
           </div>
-        {{ else }}
-          {{ range .Pages }}
-            <div class="terms-item">
-              <div class="terms-item-header">
-                <a href="{{ .Permalink }}">
-                  {{ .Title }}
-                </a>
-                <span class="terms-item-count">{{ len .Pages }}</span>
-              </div>
-              <div class="terms-item-pages">
-                {{ range .Pages }}
-                  <a href="{{ .Permalink }}" class="terms-item-page">{{ .Title }}</a>
-                {{ end }}
-              </div>
-            </div>
-          {{ end }}
         {{ end }}
       </div>
     </div>

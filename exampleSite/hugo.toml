@@ -179,5 +179,5 @@ enableGitInfo = true
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
-section = ["HTML", "RSS", "JSON"]
+section = ["HTML", "RSS"]
 page = ["HTML"]
