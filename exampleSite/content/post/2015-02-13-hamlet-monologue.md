@@ -1,7 +1,10 @@
 ---
 title: To be
 subtitle: ... or not to be?
+author: "William Shakespeare"
 date: 2015-02-13
+categories: ["literature"]
+tags: ["literature", "history"]
 ---
 
 To be, or not to be--that is the question:

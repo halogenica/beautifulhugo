@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "January 2, 2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "发表于 {{ . }}"
 - id: lastModified
-  translation: "(上次修改时间 {{ . }})"
+  translation: "上次修改时间 {{ . }}"
 - id: translationsLabel
   translation: "其它语言: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "分钟"
 - id: words
   translation: "个字"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,13 +34,41 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '由 <a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '由 <a href="https://gohugo.io">Hugo v{{ .Version }}</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
   translation: "切换导航"
 - id: languageSwitcherLabel
   translation: "语言"
+- id: searchToggleLabel
+  translation: "搜索"
+- id: searchCloseLabel
+  translation: "关闭搜索"
+- id: searchPlaceholder
+  translation: "搜索文章和页面…"
+- id: searchResultsLabel
+  translation: "搜索结果"
+- id: searchLoadingText
+  translation: "搜索中…"
+- id: searchNoResultsText
+  translation: "未找到结果："
+- id: searchResultSingular
+  translation: "个结果："
+- id: searchResultPlural
+  translation: "个结果："
+- id: searchErrorIndexLoad
+  translation: "加载搜索索引出错。"
+- id: searchErrorIndexLoading
+  translation: "搜索索引仍在加载中。"
+- id: searchPrevText
+  translation: "上一页"
+- id: searchNextText
+  translation: "下一页"
+- id: searchUntitledText
+  translation: "无标题"
+- id: searchDisabledText
+  translation: "搜索已禁用。"
 - id: gcseLabelShort
   translation: "搜索"
 - id: gcseLabelLong
@@ -62,6 +91,10 @@
   translation: "您的电子邮件地址"
 - id: yourWebsite
   translation: "你的网页"
+- id: submit
+  translation: "提交"
+- id: close
+  translation: "关闭"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +102,101 @@
 - id: comments
   translation: "则评论"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "主题"
+- id: themeTooltipAuto
+  translation: "自动（跟随系统）"
+- id: themeTooltipLight
+  translation: "浅色模式"
+- id: themeTooltipDark
+  translation: "深色模式"
+
 # Related posts
 - id: seeAlso
   translation: "也可以看看"
+
+# Archive
+- id: all
+  translation: "全部"
+- id: archiveYearFilter
+  translation: "按年份筛选"
+
+# Categories
+- id: categoriesLabel
+  translation: "分类: "
+
+# View source
+- id: viewSource
+  translation: "查看源文件"
+
+# Menu items / 菜单项
+- id: menu_setup
+  translation: "设置"
+- id: menu_configuration
+  translation: "配置"
+- id: menu_layout-options
+  translation: "布局选项"
+- id: menu_theming
+  translation: "主题"
+- id: menu_seo-and-i18n
+  translation: "SEO 与国际化"
+- id: menu_comments-and-social
+  translation: "评论与社交"
+- id: menu_features
+  translation: "功能"
+- id: menu_pages-and-layouts
+  translation: "页面与布局"
+- id: menu_shortcodes
+  translation: "短代码"
+- id: menu_code-blocks
+  translation: "代码块"
+- id: menu_markdown-extensions
+  translation: "Markdown 扩展"
+- id: menu_figures-and-galleries
+  translation: "图片与画廊"
+- id: menu_math-and-diagrams
+  translation: "数学与图表"
+- id: menu_blog
+  translation: "博客"
+- id: menu_post
+  translation: "文章"
+- id: menu_tags
+  translation: "标签"
+- id: menu_categories
+  translation: "分类"
+- id: menu_archives
+  translation: "归档"
+- id: menu_about
+  translation: "关于"
+# Recipe / 食谱
+- id: recipePrepTime
+  translation: "准备时间"
+- id: recipeCookTime
+  translation: "烹饪时间"
+- id: recipeTotalTime
+  translation: "总计时间"
+- id: recipeYield
+  translation: "份量"
+- id: recipeCategory
+  translation: "分类"
+- id: recipeCuisine
+  translation: "菜系"
+- id: recipeCalories
+  translation: "热量"
+- id: recipeIngredients
+  translation: "食材"
+- id: recipeInstructions
+  translation: "做法"
+- id: recipeDay
+  translation:
+    other: "{{ .Count }}天"
+- id: recipeHour
+  translation:
+    other: "{{ .Count }}小时"
+- id: recipeMinute
+  translation:
+    other: "{{ .Count }}分钟"
+- id: recipeSecond
+  translation:
+    other: "{{ .Count }}秒"

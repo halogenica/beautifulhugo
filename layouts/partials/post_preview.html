@@ -7,11 +7,11 @@
         </h3>
         {{ end }}
         {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
+        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-title" />
         {{ end }}
         {{ if .Params.video }}
         <video loop autoplay muted playsinline class="img-title">
-            <source src="{{ .Params.video }}">
+            <source src="{{ .Params.video | relURL }}">
         </video>
         {{ end }}
     </a>
@@ -20,7 +20,7 @@
         {{ partial "post_meta.html" . }}
     </p>
     <div class="post-entry">
-        {{ if or (.Truncated) (.Params.summary) }}
+        {{ if or (.Truncated) (.Params.summary) (eq .Type "recipe") }}
         {{ .Summary }}
         <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
         {{ else }}
@@ -28,15 +28,26 @@
         {{ end }}
     </div>
 
-    {{ if .Params.tags }}
+    {{ if or .Params.categories .Params.tags }}
     <div class="blog-tags">
+        {{ if .Params.categories }}
+        <span class="blog-tags-label">{{ i18n "categoriesLabel" }}</span>
+        {{ range .Params.categories }}
+        {{- $catName := . -}}
+        {{- with $.Site.GetPage (printf "/%s/%s" "categories" ($catName | urlize)) -}}
+        <a href="{{ .Permalink }}" class="blog-tags-category">{{ $catName }}</a>&nbsp;
+        {{- end -}}
+        {{ end }}
+        {{ end }}
+        {{ if .Params.tags }}
+        <span class="blog-tags-label">Tags: </span>
         {{ range .Params.tags }}
-       <!-- Fix for "https://github.com/halogenica/beautifulhugo/issues/349".
-       From "https://github.com/dovidio/personalwebsite/commit/34762e94c29fd2c26c16c45f8ae2de21bdf9b46d".
-       <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-       -->
-       <a href="{{"tags" | absLangURL}}/{{ . | urlize }}/">{{ . }}</a>&nbsp;
-        {{ end }} 
+        {{- $tagName := . -}}
+        {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}
+        <a href="{{ .Permalink }}">{{ $tagName }}</a>&nbsp;
+        {{- end -}}
+        {{ end }}
+        {{ end }}
     </div>
     {{ end }}
 

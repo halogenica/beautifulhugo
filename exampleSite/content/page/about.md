@@ -1,16 +1,13 @@
 ---
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: About
+subtitle: Theme credits and information
 comments: false
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+Beautiful Hugo is a Hugo theme adapted from [Beautiful Jekyll](https://deanattali.com/beautiful-jekyll/) by [Dean Attali](https://deanattali.com).
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+It builds on [Bootstrap 5](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/), [KaTeX](https://katex.org/), [PhotoSwipe](https://photoswipe.com/), [Highlight.js](https://highlightjs.org/), and [Mermaid](https://mermaid.js.org/).
 
-What else do you need?
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+- **Source code**: [github.com/halogenica/beautifulhugo](https://github.com/halogenica/beautifulhugo)
+- **License**: [MIT](https://github.com/halogenica/beautifulhugo/blob/master/LICENSE)
+- **Minimum Hugo version**: 0.146.2

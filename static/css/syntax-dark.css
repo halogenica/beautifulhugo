@@ -1,0 +1,41 @@
+/* Chroma syntax highlighting — colors matched to highlight.js GitHub Dark theme (github-dark) */
+
+[data-theme="dark"] {
+  --syn-bg: #0d1117;
+  --syn-fg: #c9d1d9;
+  --syn-hl: #1c2128;
+  --syn-linenumber: #8b949e;
+  --syn-keyword: #ff7b72;
+  --syn-keyword-type: #ff7b72;
+  --syn-name-attr: #79c0ff;
+  --syn-name-class: #d2a8ff;
+  --syn-name-const: #79c0ff;
+  --syn-name-decorator: #d2a8ff;
+  --syn-name-entity: #7ee787;
+  --syn-name-exception: #ff7b72;
+  --syn-name-label: #d2a8ff;
+  --syn-name-namespace: #d2a8ff;
+  --syn-name-tag: #7ee787;
+  --syn-name-builtin: #ffa657;
+  --syn-name-variable: #79c0ff;
+  --syn-name-function: #d2a8ff;
+  --syn-name-other: #d2a8ff;
+  --syn-string: #a5d6ff;
+  --syn-string-interpol: #a5d6ff;
+  --syn-string-other: #a5d6ff;
+  --syn-string-regex: #a5d6ff;
+  --syn-number: #79c0ff;
+  --syn-operator: #79c0ff;
+  --syn-comment: #8b949e;
+  --syn-preproc: #ff7b72;
+  --syn-deleted: #ffdcd7;
+  --syn-error: #f85149;
+  --syn-heading: #1f6feb;
+  --syn-inserted: #aff5b4;
+  --syn-output: #8b949e;
+  --syn-prompt: #8b949e;
+  --syn-traceback: #79c0ff;
+  --syn-whitespace: #484f58;
+  --syn-deleted-bg: #67060c;
+  --syn-inserted-bg: #033a16;
+}
