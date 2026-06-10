@@ -27,11 +27,8 @@
 		{{- if and (eq $social.id "linkedin") (not (findRE "/" $authorValue)) -}}
 		  {{- $authorValue = printf "in/%s" $authorValue -}}
 		{{- end -}}
-		{{ if or ( hasPrefix $authorValue "http://" ) ( hasPrefix $authorValue "https://" ) }}
-		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer" {{ else }}rel="noopener noreferrer" {{ end }}href="{{ printf "%s" $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
-		{{ else }}
-		  <a {{ if $social.rel }}rel="{{ $social.rel }} noopener noreferrer" {{ else }}rel="noopener noreferrer" {{ end }}href="{{ printf $social.url $authorValue }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
-		{{ end }}
+		{{- $href := or (and (or (hasPrefix $authorValue "http://") (hasPrefix $authorValue "https://")) $authorValue) (printf $social.url $authorValue) -}}
+		  <a rel="{{ with $social.rel }}{{ . }} {{ end }}noopener noreferrer" href="{{ $href }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="{{ $social.icon }} fa-stack-1x fa-inverse" aria-hidden="true"></i>

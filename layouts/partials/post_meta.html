@@ -21,35 +21,40 @@
   {{ if not (isset .Params "hidePostDates") }}
      {{ $show = not .Params.hidePostDates }}
   {{ end }}
+  {{ $sep := false }}
   {{ if $show }}
     <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
     {{ if ne $datestr $lastmodstr }}
       &nbsp;({{ $lastmodstr | i18n "lastModified"  }})
     {{ end }}
+    {{ $sep = true }}
   {{ end }}
   {{ if $.Param "readingTime" }}
-    {{ if $show }}
+    {{ if $sep }}
       &nbsp;|&nbsp;
     {{ end }}
     <i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
+    {{ $sep = true }}
   {{ end }}
   {{ if $.Param "wordCount" }}
-    {{ if $.Param "readingTime" }}
+    {{ if $sep }}
       &nbsp;|&nbsp;
     {{ end }}
     <i class="fas fa-book"></i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
+    {{ $sep = true }}
   {{ end }}
   {{ if not ($.Param "hideAuthor") }}
-    {{ if $.Param "wordCount" }}
+    {{ if $sep }}
       &nbsp;|&nbsp;
     {{ end }}
     {{- $authors := partial "author_list.html" . -}}
     {{- range $authors -}}
       <i class="fas fa-user"></i>&nbsp;{{ if .url }}<a href="{{ .url }}" class="text-reset">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
     {{- end -}}
+    {{ $sep = true }}
   {{ end }}
   {{- if .Site.Params.staticman -}}
-    {{ if not ($.Param "hideAuthor") }}
+    {{ if $sep }}
       &nbsp;|&nbsp;
     {{ end }}
     <i class="fas fa-comment"></i>&nbsp;
@@ -66,6 +71,7 @@
         0 {{ i18n "oneComment" }}
       {{ end }}
     {{ end }}
+    {{ $sep = true }}
   {{ end }}
   {{ if .IsTranslated -}}
     {{- $sortedTranslations := sort .Translations "Site.Language.Weight" -}}

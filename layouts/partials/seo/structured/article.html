@@ -46,4 +46,4 @@
 {{- if .Site.Params.logo -}}
   {{- $schema = merge $schema (dict "image" (strings.TrimPrefix "/" .Site.Params.logo | absURL)) -}}
 {{- end -}}
-{{- return ($authorSchema = $authorSchema | append (slice $schema)) }}
+{{- return ($authorSchema | append $schema) }}

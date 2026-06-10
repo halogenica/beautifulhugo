@@ -82,4 +82,4 @@
 {{- with .Params.share_img }}{{ $image = . }}{{ else with .Params.image }}{{ $image = . }}{{ else with .Site.Params.logo }}{{ $image = . }}{{ end -}}
 {{- with $image }}{{ $schema = merge $schema (dict "image" (absURL (strings.TrimPrefix "/" .))) }}{{ end -}}
 
-{{- return ($authorSchema = $authorSchema | append (slice $schema)) }}
+{{- return ($authorSchema | append $schema) }}

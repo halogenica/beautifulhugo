@@ -9,13 +9,12 @@
   Only the specified badges will be rendered.
 */ -}}
 
-{{ if and .Params.ghRepo (or .Params.ghBadge (and .Site.Params.ghBadge)) }}
+{{ $badges := .Params.ghBadge | default .Site.Params.ghBadge }}
+{{ if and .Params.ghRepo $badges }}
   {{ $repo := .Params.ghRepo }}
-  {{ $badges := .Params.ghBadge | default .Site.Params.ghBadge }}
   {{ $count := .Params.ghCount | default .Site.Params.ghCount | default true }}
   {{ $user := index (split $repo "/") 0 }}
   {{ $repoName := index (split $repo "/") 1 }}
-  {{ if $badges }}
     <div class="gh-buttons" style="margin-bottom: 20px;">
       {{ range $badges }}
         {{ $type := . }}
@@ -36,5 +35,4 @@
         <iframe src="{{ $iframeSrc }}" frameborder="0" scrolling="0" width="{{ $width }}" height="{{ $height }}" title="GitHub"></iframe>
       {{ end }}
     </div>
-  {{ end }}
 {{ end }}
