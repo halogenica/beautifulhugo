@@ -39,7 +39,6 @@ enableGitInfo = true
   headerImgStyle = "narrow"
   showSource = true
   sourceRepo = "https://github.com/halogenica/beautifulhugo/blob/master/exampleSite/"
-  comment = "https://github.com/halogenica/beautifulhugo/commit/"
 
   [Params.search]
     provider = "fuse"
@@ -55,11 +54,7 @@ enableGitInfo = true
   src = "/img/hexagon.jpg"
   desc = "Hexagon"
 
-#[Params.AISearchSummary.Googlebot]
-#summaryLimit = 150
-#[Params.AISearchSummary.robots]
-#summaryLimit = 300
-
+# For AI search summary limits, see [Params.seo] in the SEO & i18n docs.
 
 [Params.author]
   name = "Some Person"
