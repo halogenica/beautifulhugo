@@ -1,5 +1,5 @@
 <article class="post-preview">
-    <a href="{{ .Permalink }}">
+    <a href="{{ .RelPermalink }}">
         <h2 class="post-title">{{ .Title }}</h2>
         {{ if .Params.subtitle }}
         <h3 class="post-subtitle">
@@ -22,7 +22,7 @@
     <div class="post-entry">
         {{ if or (.Truncated) (.Params.summary) (eq .Type "recipe") }}
         {{ .Summary }}
-        <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
+        <a href="{{ .RelPermalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
         {{ else }}
         {{ .Content }}
         {{ end }}
@@ -35,7 +35,7 @@
         {{ range .Params.categories }}
         {{- $catName := . -}}
         {{- with $.Site.GetPage (printf "/%s/%s" "categories" ($catName | urlize)) -}}
-        <a href="{{ .Permalink }}" class="blog-tags-category">{{ $catName }}</a>&nbsp;
+        <a href="{{ .RelPermalink }}" class="blog-tags-category">{{ $catName }}</a>&nbsp;
         {{- end -}}
         {{ end }}
         {{ end }}
@@ -44,7 +44,7 @@
         {{ range .Params.tags }}
         {{- $tagName := . -}}
         {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}
-        <a href="{{ .Permalink }}">{{ $tagName }}</a>&nbsp;
+        <a href="{{ .RelPermalink }}">{{ $tagName }}</a>&nbsp;
         {{- end -}}
         {{ end }}
         {{ end }}

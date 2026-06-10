@@ -9,7 +9,7 @@
         {{ end }}
 
 {{ $mainSections := default (slice "post" "posts") site.Params.mainSections }}
-{{ $pages := where (where site.RegularPages.ByDate.Reverse "Section" "in" $mainSections) "Params.hidden" "!=" true }}
+{{ $pages := where (where site.RegularPages.ByDate.Reverse "Type" "in" $mainSections) "Params.hidden" "!=" true }}
 {{ $groups := $pages.GroupByDate "2006" }}
         {{ $years := slice }}
         {{ range $groups }}
@@ -28,7 +28,7 @@
             <h2 class="archive-year-heading">{{ .Key }}</h2>
             <div class="archive-list">
               {{ range .Pages }}
-                <a href="{{ .Permalink }}" class="archive-item">
+                <a href="{{ .RelPermalink }}" class="archive-item">
                   <span class="archive-item-title">{{ .Title }}</span>
                   {{ if .Params.subtitle }}
                     <span class="archive-item-subtitle">{{ .Params.subtitle }}</span>

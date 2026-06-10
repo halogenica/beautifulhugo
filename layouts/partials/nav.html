@@ -2,7 +2,7 @@
 {{- $search := site.Params.search | default (dict) -}}
 <nav class="navbar navbar-expand-md navbar-light navbar-custom fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
+    <a class="navbar-brand" href="{{ "" | relLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
     <div class="d-flex align-items-center">
       {{ if ne ($.Param "toc") false }}
       {{ $tocState := partial "func/toc-state.html" . }}
@@ -97,10 +97,10 @@
       {{ with .Site.Params.logo }}
         <div class="avatar-container">
           <div class="avatar-img-border">
-            <a title="{{ $page.Site.Title }}" href="{{ "" | absLangURL }}">
+            <a title="{{ $page.Site.Title }}" href="{{ "" | relLangURL }}">
             {{- $image := resources.Get . -}}
             {{ if $image }}
-              <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").Permalink }}" alt="{{ $page.Site.Title }}" />
+              <img class="avatar-img" src="{{ ($image.Fit "300x300 webp q100").RelPermalink }}" alt="{{ $page.Site.Title }}" />
             {{else}}
               <img class="avatar-img" src="{{ strings.TrimPrefix "/" . | relURL }}" alt="{{ $page.Site.Title }}" />
              {{end}}

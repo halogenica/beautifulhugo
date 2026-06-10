@@ -15,14 +15,14 @@
         {{ range $key, $value := $terms.Alphabetical }}
           <div class="terms-item">
             <div class="terms-item-header">
-              <a href="{{ with $.Site.GetPage (printf "/%s/%s" $data.Plural ($value.Name | urlize)) }}{{ .Permalink }}{{ end }}">
+              <a href="{{ with $.Site.GetPage (printf "/%s/%s" $data.Plural ($value.Name | urlize)) }}{{ .RelPermalink }}{{ end }}">
                 {{ $value.Name }}
               </a>
               <span class="terms-item-count">{{ $value.Count }}</span>
             </div>
             <div class="terms-item-pages">
               {{ range $item := $value.Pages }}
-                <a href="{{ $item.Permalink }}" class="terms-item-page">{{ $item.Title }}</a>
+                <a href="{{ $item.RelPermalink }}" class="terms-item-page">{{ $item.Title }}</a>
               {{ end }}
             </div>
           </div>

@@ -17,7 +17,7 @@
             {{ range .Params.categories }}
               {{- $catName := . -}}
               {{- with $.Site.GetPage (printf "/%s/%s" "categories" ($catName | urlize)) -}}
-              <a href="{{ .Permalink }}">{{ $catName }}</a>&nbsp;
+              <a href="{{ .RelPermalink }}">{{ $catName }}</a>&nbsp;
               {{- end -}}
             {{ end }}
           </div>
@@ -28,7 +28,7 @@
             {{ range .Params.tags }}
               {{- $tagName := . -}}
               {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}
-              <a href="{{ .Permalink }}">{{ $tagName }}</a>&nbsp;
+              <a href="{{ .RelPermalink }}">{{ $tagName }}</a>&nbsp;
               {{- end -}}
             {{ end }}
           </div>
@@ -62,19 +62,19 @@
 
       {{ if and (ne .Type "page") (default true ($.Param "showPostNav")) }}
         {{ if .PrevInSection }}
-          <a href="{{ .PrevInSection.Permalink }}" class="nav-side-arrow nav-side-prev" title="{{ .PrevInSection.Title }}" aria-label="{{ i18n "previousPost" }}: {{ .PrevInSection.Title }}">
+          <a href="{{ .PrevInSection.RelPermalink }}" class="nav-side-arrow nav-side-prev" title="{{ .PrevInSection.Title }}" aria-label="{{ i18n "previousPost" }}: {{ .PrevInSection.Title }}">
             <i class="fas fa-chevron-left"></i>
           </a>
         {{ end }}
         {{ if .NextInSection }}
-          <a href="{{ .NextInSection.Permalink }}" class="nav-side-arrow nav-side-next" title="{{ .NextInSection.Title }}" aria-label="{{ i18n "nextPost" }}: {{ .NextInSection.Title }}">
+          <a href="{{ .NextInSection.RelPermalink }}" class="nav-side-arrow nav-side-next" title="{{ .NextInSection.Title }}" aria-label="{{ i18n "nextPost" }}: {{ .NextInSection.Title }}">
             <i class="fas fa-chevron-right"></i>
           </a>
         {{ end }}
         <ul class="post-pager blog-post-pager">
           {{ if .PrevInSection }}
             <li class="pager-prev">
-              <a href="{{ .PrevInSection.Permalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .PrevInSection.Title }}"><i class="fas fa-chevron-left"></i> {{ i18n "previousPost" }}</a>
+              <a href="{{ .PrevInSection.RelPermalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .PrevInSection.Title }}"><i class="fas fa-chevron-left"></i> {{ i18n "previousPost" }}</a>
             </li>
           {{ else }}
             <li class="pager-prev"></li>
@@ -84,7 +84,7 @@
           </li>
           {{ if .NextInSection }}
             <li class="pager-next">
-              <a href="{{ .NextInSection.Permalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} <i class="fas fa-chevron-right"></i></a>
+              <a href="{{ .NextInSection.RelPermalink }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} <i class="fas fa-chevron-right"></i></a>
             </li>
           {{ else }}
             <li class="pager-next"></li>

@@ -70,7 +70,7 @@
             &nbsp;&bull;&nbsp;
           {{ end }}
           {{ if or .Site.Params.homeTitle .Site.Title }}
-            <a href="{{ "" | absLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
+            <a href="{{ "" | relLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
           {{ end }}
         </p>
         <!-- Please don't remove this, keep my open source work credited :) -->
