@@ -14,14 +14,8 @@
 {{- if .IsNode -}}
   {{- $pagesToPaginate := slice -}}
 
-  {{/* 1. Direct the data source based on what kind of page we are on */}}
-  {{- if eq .Kind "home" -}}
-    {{/* Homepage: grab articles from your main configured sections */}}
-    {{- $pagesToPaginate = partial "func/list-pages" . -}}
-  {{- else -}}
-    {{/* Section, Taxonomy, or Term: dynamically inherit THIS specific page's list context */}}
-    {{- $pagesToPaginate = .Pages -}}
-  {{- end -}}
+  {{/* 1. Get the filtered page collection (hidden pages excluded) for this node */}}
+  {{- $pagesToPaginate = partial "func/list-pages" . -}}
 
   {{/* 2. Pass that collection directly to the standard Hugo paginator */}}
   {{- $paginator = .Paginate $pagesToPaginate -}}
