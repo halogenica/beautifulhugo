@@ -53,3 +53,7 @@ Temporary Items
 .hugo_build.lock
 exampleSite/public/
 /public/
+
+# Claude requires a symlink to AGENTS.md, all other harnesses support the std
+CLAUDE.md
+.claude/

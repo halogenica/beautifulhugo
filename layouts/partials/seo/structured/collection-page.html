@@ -1,0 +1,60 @@
+{{- $schema := dict }}
+{{- if .IsNode }}
+
+  {{/* Reuse the paginator already initialized in seo/schema.html (cached in
+       .Store) so the collection here matches the head canonical link and the
+       body listing. Hugo allows only one paginator per page. */}}
+  {{- $paginator := .Store.Get "paginator" }}
+
+  {{/* Build an array of ListItems from the Node's pages */}}
+  {{- $listItems := slice }}
+  {{- range $index, $page := $paginator.Pages }}
+    {{- $listItems = $listItems | append (dict 
+      "@type" "ListItem"
+      "position" (add $index 1)
+      "url" $page.Permalink
+      "name" $page.Title
+    ) }}
+  {{- end }}
+
+  {{/* Dynamic Names and Descriptions */}}
+  {{- $schemaTitle := .Title }}
+  {{- $schemaDescription := .Description | default .Summary }}
+  {{/* Clean up the description is .Summary happened to be used */}}
+  {{- $schemaDescription = $schemaDescription | plainify | htmlUnescape | replaceRE "\n+" " " | chomp }}
+  {{- if or (eq .Kind "taxonomy") (eq .Kind "term") }}
+    {{- if eq .Kind "term" }}
+      {{- $schemaTitle = printf "Articles tagged with '%s'" .Title }}
+      {{- $schemaDescription = printf "Explore all posts and thoughts related to %s" .Title }}
+    {{- else if eq .Kind "taxonomy" }}
+      {{- $schemaTitle = printf "Browse Content by %s" .Title }}
+      {{- $schemaDescription = printf "A complete index of %s used to organize topics." (lower .Title) }}
+    {{- end }}
+  {{- end }}
+
+  {{- if gt $paginator.PageNumber 1 }}
+    {{- $schemaTitle = printf "%s (Page %d)" $schemaTitle $paginator.PageNumber }}
+  {{- end }}
+
+  {{/* Assemble the entire Schema Object */}}
+  {{- $schema = dict
+    "@type" "CollectionPage"
+    "@id" (print ($paginator.URL | absURL) "#collectionpage")
+    "isPartOf" (dict "@id" (print .Site.BaseURL "#website"))
+    "name" $schemaTitle 
+    "description" ($schemaDescription | plainify | chomp)
+    "url" ($paginator.URL | absURL)
+    "mainEntity" (dict
+      "@type" "ItemList"
+      "numberOfItems" (len $paginator.Pages)
+      "itemListElement" $listItems
+    )
+  -}}
+
+  {{/* Add the breadcrumb if the page is NOT "/" */}}
+  {{- $isAbsoluteHome := .Store.Get "isAbsoluteHome" -}}
+  {{- if not $isAbsoluteHome }}
+    {{- $schema = merge $schema (dict "breadcrumb" (dict "@id" (print ($paginator.URL | absURL) "#breadcrumb"))) }}
+  {{- end }}
+{{- end }}
+{{- return $schema -}}

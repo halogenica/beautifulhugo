@@ -41,6 +41,34 @@
   translation: "Navigacio"
 - id: languageSwitcherLabel
   translation: "Lingvo"
+- id: searchToggleLabel
+  translation: "Serĉi"
+- id: searchCloseLabel
+  translation: "Fermi serĉon"
+- id: searchPlaceholder
+  translation: "Serĉi afiŝojn kaj paĝojn…"
+- id: searchResultsLabel
+  translation: "Serĉrezultoj"
+- id: searchLoadingText
+  translation: "Serĉante…"
+- id: searchNoResultsText
+  translation: "Neniuj rezultoj por "
+- id: searchResultSingular
+  translation: "rezulto por "
+- id: searchResultPlural
+  translation: "rezultoj por "
+- id: searchErrorIndexLoad
+  translation: "Eraro dum ŝargado de serĉindekso."
+- id: searchErrorIndexLoading
+  translation: "Serĉindekso ankoraŭ ŝargiĝas."
+- id: searchPrevText
+  translation: "Antaŭa"
+- id: searchNextText
+  translation: "Sekva"
+- id: searchUntitledText
+  translation: "Sen titolo"
+- id: searchDisabledText
+  translation: "Serĉo estas malaktiva."
 - id: gcseLabelShort
   translation: "Serĉi"
 - id: gcseLabelLong
@@ -101,6 +129,46 @@
 # View source
 - id: viewSource
   translation: "Vidi fonton"
+# Menu items / Menueroj
+- id: menu_setup
+  translation: "Agordo"
+- id: menu_configuration
+  translation: "Konfiguracio"
+- id: menu_layout-options
+  translation: "Aranĝaj opcioj"
+- id: menu_theming
+  translation: "Temoj"
+- id: menu_seo-and-i18n
+  translation: "SEO kaj i18n"
+- id: menu_comments-and-social
+  translation: "Komentoj kaj sociaj"
+- id: menu_features
+  translation: "Funkcioj"
+- id: menu_pages-and-layouts
+  translation: "Paĝoj kaj aranĝoj"
+- id: menu_shortcodes
+  translation: "Mallongaj kodoj"
+- id: menu_code-blocks
+  translation: "Kodblokoj"
+- id: menu_markdown-extensions
+  translation: "Markdown-kromaĵoj"
+- id: menu_figures-and-galleries
+  translation: "Figuroj kaj galerioj"
+- id: menu_math-and-diagrams
+  translation: "Matematiko kaj diagramoj"
+- id: menu_blog
+  translation: "Blogo"
+- id: menu_post
+  translation: "Afiŝoj"
+- id: menu_tags
+  translation: "Etikedoj"
+- id: menu_categories
+  translation: "Kategorioj"
+- id: menu_archives
+  translation: "Arĥivo"
+- id: menu_about
+  translation: "Pri"
+
 # Recipe / Recepto
 - id: recipePrepTime
   translation: "Prepara tempo"
@@ -120,3 +188,19 @@
   translation: "Ingrediencoj"
 - id: recipeInstructions
   translation: "Instrukcioj"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} tago"
+    other: "{{ .Count }} tagoj"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} horo"
+    other: "{{ .Count }} horoj"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} minuto"
+    other: "{{ .Count }} minutoj"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} sekundo"
+    other: "{{ .Count }} sekundoj"

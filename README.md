@@ -56,7 +56,7 @@ hugo serve
 | **Responsive design** | Looks great on desktop and mobile |
 | **Light/dark/auto color scheme** | Navbar toggle with `localStorage` persistence |
 | **Syntax highlighting** | Chroma (server-side, default) or Highlight.js (client-side) |
-| **KaTeX math** | Inline `$...$` and display `$$...$$` — no config needed |
+| **KaTeX math** | Inline `//(...//)` and display `$$...$$` — no config needed |
 | **Mermaid diagrams** | Flowcharts, sequence diagrams, Gantt charts via shortcode |
 | **PhotoSwipe galleries** | `beautifulfigure` and `gallery` shortcodes with lightbox |
 | **Shortcodes** | `details`, `columns`/`column`, `tabs`/`tab`, `mermaid`, `gallery`, `beautifulfigure` |
@@ -70,6 +70,7 @@ hugo serve
 | **Social sharing** | Share buttons on posts (Twitter, Facebook, Reddit, LinkedIn, etc.) |
 | **GitHub buttons** | Star/watch/fork badges via front matter |
 | **Google Analytics** | Standard Hugo integration (production only) |
+| **Integrated search** | Fast client-side search with Fuse.js |
 | **RSS** | Built-in, enabled with `rss = true` |
 
 For complete configuration reference, shortcode documentation, and live examples, see the [example site feature pages](https://halogenica.net/beautifulhugo/page/configuration/):
@@ -80,7 +81,7 @@ For complete configuration reference, shortcode documentation, and live examples
 - [Markdown Extensions](https://halogenica.net/beautifulhugo/page/markdown-extensions/) — callout boxes, theme-dependent content
 - [Figures & Galleries](https://halogenica.net/beautifulhugo/page/figures-and-galleries/) — PhotoSwipe integration
 - [Math & Diagrams](https://halogenica.net/beautifulhugo/page/math-and-diagrams/) — KaTeX and Mermaid examples
-- [Layout Options](https://halogenica.net/beautifulhugo/page/layout-options/) — big images, full-width, hidden pages
+- [Layout Options](https://halogenica.net/beautifulhugo/page/pages-and-layouts/#layout-options) — big images, full-width, hidden pages (part of Pages & Layouts)
 - [Comments & Social](https://halogenica.net/beautifulhugo/page/comments-and-social/) — comment systems, social sharing, footer icons
 - [SEO & i18n](https://halogenica.net/beautifulhugo/page/seo-and-i18n/) — structured data, Open Graph, multilingual
 
@@ -101,6 +102,9 @@ title = "My Site"
   socialShare = true
   showRelatedPosts = true
   rss = true
+
+  [Params.search]
+    provider = "fuse"
 
 [Params.author]
   name = "Your Name"

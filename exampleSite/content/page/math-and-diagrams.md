@@ -8,29 +8,7 @@ Beautiful Hugo includes built-in support for **KaTeX**, **MathJax**, and **Merma
 
 ## Math Rendering
 
-You can choose the math rendering engine via `mathEngine` in your config. Use `\\(...\\)` (KaTeX) / `$...$` (MathJax) for inline math and `$$...$$` for display math.
-
-| Engine | Value | Behavior |
-|--------|-------|----------|
-| **KaTeX** | `"katex"` | The default. Fast, lightweight, self-hostable with `selfHosted = true`. |
-| **MathJax** | `"mathjax"` | More complete LaTeX support. Always loaded from CDN regardless of `selfHosted`. |
-| **None** | `"none"` | Disables math rendering entirely (no assets loaded). |
-
-```toml
-[Params]
-  mathEngine = "katex"
-```
-
-You can also override the math engine per-page in front matter:
-
-```yaml
----
-title: My Post
-mathEngine: "none"
----
-```
-
-This is useful, for example, on pages that don't contain any math expressions — setting `mathEngine: "none"` prevents loading KaTeX or MathJax assets for that page.
+Choose the math rendering engine via `mathEngine` in your config. See [Configuration — Math Engine](../configuration/#math-engine) for the full option reference and `selfHosted` behavior.
 
 ### Inline math
 
@@ -52,6 +30,14 @@ $$
 
 $$
 \prod_{i=1}^n x_i = \exp\left(\sum_{i=1}^n \ln x_i\right)
+$$
+
+### Long equation test (mobile scroll behavior)
+
+This very long equation tests horizontal scrolling on mobile devices:
+
+$$
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots = \int_a^x \int_a^{t_1} \int_a^{t_2} \cdots \int_a^{t_n} f^{(n+1)}(t_{n+1}) \, dt_{n+1} \, dt_n \cdots \, dt_2 \, dt_1 + \text{remainder terms}
 $$
 
 ### Source

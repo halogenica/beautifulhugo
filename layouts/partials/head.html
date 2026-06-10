@@ -93,6 +93,7 @@
 {{- end }}
 
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "css/print.css" | relURL }}" media="print" />
   {{- if ne ($.Param "colorScheme" | default "auto") "light" -}}
   <link rel="stylesheet" href="{{ "css/dark.css" | relURL }}" />
   {{- end -}}

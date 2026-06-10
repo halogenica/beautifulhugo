@@ -17,24 +17,42 @@
   {{ end }}
   {{ $datestr := time.Format $format .Date }}
   {{ $lastmodstr := time.Format $format .Lastmod }}
-  <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
-  {{ if ne $datestr $lastmodstr }}
-    &nbsp;({{ $lastmodstr | i18n "lastModified"  }})
+  {{ $show := not ( .Site.Params.hidePostDates ) }}
+  {{ if not (isset .Params "hidePostDates") }}
+     {{ $show = not .Params.hidePostDates }}
+  {{ end }}
+  {{ if $show }}
+    <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
+    {{ if ne $datestr $lastmodstr }}
+      &nbsp;({{ $lastmodstr | i18n "lastModified"  }})
+    {{ end }}
   {{ end }}
   {{ if $.Param "readingTime" }}
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
+    {{ if $show }}
+      &nbsp;|&nbsp;
+    {{ end }}
+    <i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
   {{ end }}
   {{ if $.Param "wordCount" }}
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
+    {{ if $.Param "readingTime" }}
+      &nbsp;|&nbsp;
+    {{ end }}
+    <i class="fas fa-book"></i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
   {{ end }}
   {{ if not ($.Param "hideAuthor") }}
+    {{ if $.Param "wordCount" }}
+      &nbsp;|&nbsp;
+    {{ end }}
     {{- $authors := partial "author_list.html" . -}}
     {{- range $authors -}}
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
+      <i class="fas fa-user"></i>&nbsp;{{ if .url }}<a href="{{ .url }}" class="text-reset">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
     {{- end -}}
   {{ end }}
   {{- if .Site.Params.staticman -}}
-    &nbsp;|&nbsp;<i class="fas fa-comment"></i>&nbsp;
+    {{ if not ($.Param "hideAuthor") }}
+      &nbsp;|&nbsp;
+    {{ end }}
+    <i class="fas fa-comment"></i>&nbsp;
     {{ $slug := replace .RelPermalink "/" "" }}
     {{ with $data.comments }}
       {{ $comments := index . $slug }}

@@ -69,17 +69,17 @@
             {{ .Site.Lastmod.Format "2006" }}
           {{ end }}
 
-          {{ if and .Site.Params.author.name .Site.Title }}
+          {{ if and .Site.Params.author.name (or .Site.Params.homeTitle .Site.Title) }}
             &nbsp;&bull;&nbsp;
           {{ end }}
-          {{ if .Site.Title }}
-            <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
+          {{ if or .Site.Params.homeTitle .Site.Title }}
+            <a href="{{ "" | absLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
           {{ end }}
         </p>
         <!-- Please don't remove this, keep my open source work credited :) -->
         <p class="credits theme-by text-muted">
           {{ i18n "poweredBy" (dict "Version" hugo.Version) | safeHTML }}
-          {{ if $.GitInfo }}&nbsp;&bull;&nbsp;[<a href="{{ .Site.Params.commit }}{{ .GitInfo.Hash }}">{{ substr .GitInfo.Hash 0 8 }}</a>]{{ end }}
+          {{ if and $.GitInfo .Site.Params.commit }}&nbsp;&bull;&nbsp;[<a href="{{ .Site.Params.commit }}{{ .GitInfo.Hash }}">{{ substr .GitInfo.Hash 0 8 }}</a>]{{ end }}
         </p>
       </div>
     </div>

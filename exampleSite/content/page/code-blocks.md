@@ -8,38 +8,7 @@ Beautiful Hugo supports two syntax highlighting engines: Hugo's built-in **Chrom
 
 ## Required Config
 
-{{< tabs >}} {{< tab "Chroma" >}}
-
-```toml
-[markup.highlight]
-  noClasses = false
-```
-
-`noClasses = false` tells Chroma to avoid injecting inline styles, giving us (and you) full control over colors.
-
-If you want code language guessing on, you can:
-
-```toml
-[markup.highlight]
-  guessSyntax = true
-```
-
-In general, though, Chroma doesn't guess very many languages, so it's better to always include the language in the code blocks.
-
-{{< /tab >}} {{< tab "Highlight.js" >}}
-
-
-```toml
-[Params]
-  useHLJS = true
-[markup.highlight]
-  codeFences = false
-```
-
-This loads Highlight.js from CDN (or `static/js/highlight.min.js` if `selfHosted = true`) with a default light theme and a dark theme that activates automatically. When using HLJS, you do not need chroma highlighting code fences — Highlight.js applies styles via JavaScript. Note that the code language guesser for Highlight.js is much smarter than the Chroma one.
-
-
-{{< /tab >}} {{< /tabs >}}
+Beautiful Hugo supports two syntax highlighting engines: Hugo's built-in **Chroma** (default) and client-side **Highlight.js**. See [Configuration — Syntax Highlighting](../configuration/#syntax-highlighting) for the required `hugo.toml` settings for each engine.
 
 
 ## Fenced Code Blocks

@@ -18,7 +18,25 @@ The theme automatically generates JSON-LD structured data for every page:
 | `Article` | Blog posts | Headline, author, datePublished, dateModified, publisher, wordCount, timeRequired |
 | `BreadcrumbList` | All pages | Navigation hierarchy |
 
-No configuration is required — the structured data is generated from your existing `hugo.toml` settings and page front matter.
+No configuration is required — the structured data is generated from your existing `hugo.toml` settings and page front matter. You can optionally customize the structured data output with the following params:
+
+### Custom Structured Data Params
+
+| Param | Schema Type | Description |
+|-------|------------|-------------|
+| `organizationName` | `Organization` | Organization name (defaults to `Params.author.name`) |
+| `organizationLogo` | `Organization` | URL of the organization logo |
+| `organizationAddress` | `Organization` | Organization address (string or structured value) |
+| `socialProfiles` | `Organization` | List of social profile URLs for the `sameAs` field |
+| `alternatePageName` | `WebSite` | Alternate name for the site (used as `alternateName`) |
+
+```toml
+[Params]
+  organizationName = "My Company"
+  organizationLogo = "https://example.com/logo.png"
+  socialProfiles = ["https://twitter.com/example", "https://github.com/example"]
+  alternatePageName = "My Company Blog"
+```
 
 ## Open Graph
 
@@ -142,6 +160,42 @@ The page description (used in meta tags and structured data) follows this cascad
 2. `.Params.subtitle` (the subtitle)
 3. `.Summary` (auto-generated from content)
 
+## Canonical URLs
+
+Every page emits a `<link rel="canonical">` tag so search engines know the
+preferred URL for the content. The URL is resolved in this order:
+
+1. **Front matter `canonicalURL`** — if set, it always wins. Relative values
+   are resolved against the current language's base URL (so they stay
+   language-correct on multilingual sites); absolute URLs are emitted as-is.
+   Use this when a page intentionally duplicates another and should point
+   search engines at the original:
+
+   ```yaml
+   ---
+   title: Reposted Article
+   canonicalURL: https://example.com/the-original/
+   ---
+   ```
+
+2. **Paginated list pages** (home, sections, taxonomy terms) self-canonicalize.
+   Page two of a sequence points at itself (`…/page/2/`) rather than at page
+   one, which is [Google's current recommendation](https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading)
+   for paginated content.
+
+3. **Everything else** uses the page's own permalink.
+
+### Disabling the tag
+
+Set `disableCanonical = true` in your site `[Params]` to drop the tag
+site-wide, or in a single page's front matter to drop it for that page only —
+for example if you provide canonical links through your own `head_custom.html`:
+
+```toml
+[Params]
+  disableCanonical = true
+```
+
 ## Multilingual Support
 
 Beautiful Hugo supports Hugo's standard multilingual configuration with per-language content directories.
@@ -172,12 +226,11 @@ A language switcher appears in the navbar:
 
 ### Supported Languages
 
-Beautiful Hugo ships with translations for 19 languages:
+Beautiful Hugo ships with translations for 20 languages:
 
 | Code | Language |
 |------|----------|
 | `en` | English |
-| `br` | Breton |
 | `de` | German |
 | `dk` | Danish |
 | `eo` | Esperanto |
@@ -191,6 +244,8 @@ Beautiful Hugo ships with translations for 19 languages:
 | `nb` | Norwegian Bokmål |
 | `nl` | Dutch |
 | `pl` | Polish |
+| `pt` | Portuguese |
+| `pt-br` | Portuguese (Brazil) |
 | `ru` | Russian |
 | `tr` | Turkish |
 | `zh-CN` | Chinese (Simplified) |
@@ -215,6 +270,37 @@ The i18n files provide translations for common UI strings:
 
 To add a new language, create a new file in `i18n/` (e.g. `i18n/pt.yaml` for Portuguese) with translations for these keys.
 
+### Navbar Menu Translations
+
+Navbar menu items are automatically translated when the menu entry has an `identifier` that matches an i18n key with the `menu_` prefix. If no matching translation key exists, the menu `name` from `hugo.toml` is used as a fallback.
+
+For example, given this menu config:
+
+```toml
+[[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    weight = 1
+
+[[menu.main]]
+    parent = "blog"
+    name = "Posts"
+    identifier = "post"
+    url = "post/"
+    weight = 1
+```
+
+The theme looks up `menu_blog` and `menu_post` in the current language's i18n file. In French (`i18n/fr.yaml`):
+
+```yaml
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Articles"
+```
+
+The theme ships with pre-built translations for common menu items (blog, posts, tags, categories, archives, about, and the example-site section names). You can add your own `menu_*` keys to your site's i18n overrides to translate custom menu items.
+
 ## RSS
 
 When `rss = true`, an RSS icon appears in the footer and alternate feed links are included in `<head>`:
@@ -225,3 +311,62 @@ When `rss = true`, an RSS icon appears in the footer and alternate feed links ar
 ```
 
 Hugo auto-generates RSS feeds at `/index.xml` (site-wide) and `/post/index.xml` (section-specific).
+
+## Analytics & Search
+
+### Google Analytics
+
+Set the tracking ID in your config (loaded only in production):
+
+```toml
+[Services]
+  [Services.googleAnalytics]
+    id = "G-XXXXXXXXXX"
+```
+
+### Piwik / Matomo
+
+```toml
+[Params]
+  [Params.piwik]
+    server = "analytics.example.com"
+    id = 1
+```
+
+| Param | Type | Description |
+|-------|------|-------------|
+| `piwik.server` | string | Piwik/Matomo server hostname |
+| `piwik.id` | string | Piwik/Matomo site ID |
+
+### Google Custom Search Engine
+
+When `gcse` is set, a search icon appears in the navbar that opens a search modal:
+
+```toml
+[Params]
+  gcse = "012345678901234567890:abcdefghijk"
+```
+
+### Built-in Client-Side Search
+
+The integrated client-side search requires JSON output to function. Ensure your `hugo.toml` includes the following `outputs` configuration:
+
+```toml
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+```
+
+Enable the built-in search UI by configuring a provider:
+
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `[Params.search] provider` | string | `"fuse"` | Search provider to use. Set to `"none"` to disable the built-in search UI. |
+
+```toml
+[Params.search]
+  provider = "fuse"
+```
+
+Search labels come from the theme's i18n files. To localize or customize labels, override the relevant translation keys in your site, such as `searchPlaceholder`, `searchResultsLabel`, `searchNoResultsText`, `searchPrevText`, and `searchNextText`.

@@ -1,11 +1,69 @@
-{{- partialCached "seo/structured/website" . }}
-{{- partialCached "seo/structured/organization" . }}
+{{- $paginator := "" -}}
+
+{{/* WebSite and Organization are always present and never change */}}
+{{- $website := partialCached "seo/structured/website" . -}}
+{{- $organization := partialCached "seo/structured/organization" . }}
+
+{{/* Setup dictionaries for inclusing in @graph */}}
+{{- $webpage := dict }}
+{{- $breadcrumb := dict }}
+{{- $article := dict }}
+{{- $recipe := dict }}
+{{- $collectionOfPosts := dict }}
+
+{{- if .IsNode -}}
+  {{- $pagesToPaginate := slice -}}
+
+  {{/* 1. Direct the data source based on what kind of page we are on */}}
+  {{- if eq .Kind "home" -}}
+    {{/* Homepage: grab articles from your main configured sections */}}
+    {{- $pagesToPaginate = partial "func/list-pages" . -}}
+  {{- else -}}
+    {{/* Section, Taxonomy, or Term: dynamically inherit THIS specific page's list context */}}
+    {{- $pagesToPaginate = .Pages -}}
+  {{- end -}}
+
+  {{/* 2. Pass that collection directly to the standard Hugo paginator */}}
+  {{- $paginator = .Paginate $pagesToPaginate -}}
+  {{- $isAbsoluteHome := and .IsHome (or (not $paginator) (eq $paginator.PageNumber 1)) -}}
+  {{- /* Safely commit to this specific page instance's memory bank */ -}}
+  {{- .Store.Set "isAbsoluteHome" $isAbsoluteHome -}}
+
+  {{/* 3. Cache the results in your .Store */}}
+  {{- .Store.Set "paginator" $paginator -}}
+  {{- .Store.Set "currentPageUrl" ($paginator.URL | absURL) -}}
+
+  {{ $collectionOfPosts = partial "seo/structured/collection-page" . }}
+{{- end -}}
+
 {{- if .IsPage }}
-{{- partial "seo/structured/webpage.html" . }}
-{{- partial "seo/structured/breadcrumb" . }}
-{{- if and (eq .Type "recipe") .Params.recipe }}
-{{- partial "seo/structured/recipe.html" . }}
-{{- else }}
-{{- partial "seo/structured/article" . }}
-{{- end }}
+  {{- $webpage = partial "seo/structured/webpage.html" . }}
+  {{- if and (eq .Type "recipe") .Params.recipe }}
+    {{- $recipe = partial "seo/structured/recipe.html" . }}
+  {{- else }}
+    {{- $article = partial "seo/structured/article" . }}
+  {{- end }}
 {{ end }}
+
+{{- $schemaContext := dict "@context" "https://schema.org" -}}
+{{- $breadcrumb = partial "seo/structured/breadcrumb" . }}
+{{- $graph := slice $website $organization -}}
+{{- if $breadcrumb }}
+  {{- $graph = $graph | append $breadcrumb }}
+{{- end }}
+
+{{- if $collectionOfPosts }}
+  {{- $graph = $graph | append $collectionOfPosts }}
+{{- else if $webpage }}
+  {{- $graph = $graph | append $webpage }}
+  {{- if $recipe }}
+    {{- $graph = $graph | append $recipe }}
+  {{- else }}
+    {{- $graph = $graph | append $article }}
+  {{- end }}
+{{- end }}
+
+<script type="application/ld+json">
+{{- $schemaContext = merge $schemaContext (dict "@graph" $graph) }}
+{{ $schemaContext | jsonify (dict "indent" "  ") | safeJS }}
+</script>

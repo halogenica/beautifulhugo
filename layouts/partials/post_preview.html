@@ -7,11 +7,11 @@
         </h3>
         {{ end }}
         {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="img-title" />
+        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-title" />
         {{ end }}
         {{ if .Params.video }}
         <video loop autoplay muted playsinline class="img-title">
-            <source src="{{ .Params.video }}">
+            <source src="{{ .Params.video | relURL }}">
         </video>
         {{ end }}
     </a>
@@ -20,7 +20,7 @@
         {{ partial "post_meta.html" . }}
     </p>
     <div class="post-entry">
-        {{ if or (.Truncated) (.Params.summary) }}
+        {{ if or (.Truncated) (.Params.summary) (eq .Type "recipe") }}
         {{ .Summary }}
         <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
         {{ else }}

@@ -10,12 +10,12 @@ This page is a complete reference for every configuration option in Beautiful Hu
 
 | Param | Type | Default | Description |
 |-------|------|---------|-------------|
-| `homeTitle` | string | site title | Separate title for the home page header |
+| `homeTitle` | string | site title | Brand name shown in the navbar, home page header, and footer link. Falls back to the site title when unset |
 | `subtitle` | string | `""` | Site subtitle shown under the home page title |
 | `mainSections` | list | `["post", "posts"]` | Content sections treated as "posts" on the home page and archive page |
-| `logo` | string | — | Path to a square avatar/logo image |
+| `logo` | string | — | Path to a square avatar/logo image. When the file is found via Hugo's asset pipeline (`resources.Get`), it is automatically processed into WebP format (300×300, quality 100) for optimal loading. If the file is not found as a resource, the raw path is used as-is. |
 | `favicon` | string | — | Path to favicon |
-| `dateFormat` | string | i18n default | Date format string. Accepts Hugo locale tokens (e.g. `":date_long"`, `":date_medium"`, `":date_short"`) for automatic localization, or a Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. Locale tokens are recommended for multilingual sites. |
+| `dateFormat` | string | i18n default | Date format string. Accepts Hugo locale tokens (e.g. `":date_long"`, `":date_medium"`, `":date_short"`) for automatic localization, or a Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. Locale tokens are recommended for multilingual sites. The theme validates `dateFormat` at build time and will emit a build error if it detects an invalid format (e.g. a date that doesn't use Go's reference time). |
 | `since` | int | — | Start year for copyright range (e.g. `2015 - 2026`) |
 
 ```toml
@@ -123,8 +123,10 @@ When `selfHosted = true`, the following assets are served from `static/` instead
 | `disableFigureOverride` | bool | `false` | When `true`, use Hugo's native `<figure>` shortcode; `beautifulfigure` remains available |
 | `navShort` | bool | `false` | Make navbar permanently short (collapsed style) |
 | `showPageDates` | bool | `false` | Show dates on "page" type pages |
+| `hidePostDates` | bool | `false` | If true, hides dates on "post" type pages |
 | `toc` | bool | `true` | Show a floating table-of-contents button on pages with headings |
 | `showSource` | bool | `false` | Show a "View source" button linking to the page's source file in the repository |
+| `showPostNav` | bool | `true` | Show previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens) |
 | `sourceRepo` | string | — | Base URL for the repository source browser (e.g. `https://github.com/user/repo/blob/main/`). The page's `.File.Path` is appended automatically. When `enableGitInfo = true` is set, the branch in the URL is replaced with the current commit hash, so the link always points to the exact version of the file |
 
 ```toml
@@ -135,8 +137,19 @@ When `selfHosted = true`, the following assets are served from `static/` instead
   showRelatedPosts = true
   disableFigureOverride = true
   showSource = true
+  showPostNav = true
   sourceRepo = "https://github.com/user/repo/blob/main/"
 ```
+
+### Table of Contents Panel
+
+When `toc = true` (the default), a list-style button appears in the navbar on pages that have headings or list pages that have posts. Clicking it opens a slide-out panel on the left side of the viewport.
+
+**On single pages** (posts, regular pages), the panel shows the page's heading hierarchy extracted from the Table of Contents. An `IntersectionObserver` tracks which heading is currently in view and highlights the corresponding link in the panel.
+
+**On list and home pages**, the panel shows a list of post titles instead of headings. Scrolling through the post previews automatically highlights the currently visible post in the panel.
+
+The panel can be closed by clicking the close button, clicking the backdrop overlay, or pressing `Escape`.
 
 ## Big Image Header
 
@@ -168,7 +181,7 @@ Add one or more full-width header images to the home page. Multiple images cycle
   headerImgStyle = "narrow"
 ```
 
-See [Layout Options](../layout-options/) for per-page big image headers.
+See [Pages & Layouts](../pages-and-layouts/#big-image-headers) for per-page big image headers and visual examples.
 
 ## Syntax Highlighting
 
@@ -206,143 +219,21 @@ See [Code Blocks](../code-blocks/) for details and examples.
 
 ### Including External Files
 
-The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. It works with both Chroma and Highlight.js.
-
-```
-{{</* include-code file="content/scripts/example.py" */>}}
-{{</* include-code file="config.toml" language="toml" */>}}
-{{</* include-code file="src/main.go" linenos="table" hl_lines="2 5-8" */>}}
-```
-
-| Param | Required | Description |
-|-------|----------|-------------|
-| `file` | yes | Path relative to the Hugo project root |
-| `language` | no | Highlighting language (auto-detected from file extension if omitted; falls back to plain text) |
-| `linenos` | no | `"table"` or `"inline"` — Chroma only; ignored with a warning when `useHLJS = true` |
-| `hl_lines` | no | Lines to highlight, e.g. `"2 5-8"` — Chroma only |
-| `linenostart` | no | Starting line number — Chroma only |
-
-**Supported auto-detect extensions:** `.bash`, `.c`, `.cpp`, `.css`, `.go`, `.html`, `.java`, `.js`, `.json`, `.jsx`, `.lua`, `.md`, `.php`, `.pl`, `.py`, `.r`, `.rb`, `.rs`, `.scss`, `.sh`, `.sql`, `.svg`, `.toml`, `.ts`, `.tsx`, `.xml`, `.yaml`, `.yml`, `.zig`
+The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. See [Code Blocks](../code-blocks/#including-external-files) for the full parameter reference and live examples.
 
 ## Comment Systems
 
-Beautiful Hugo supports five comment systems. Each is enabled per-page with `comments: true` in front matter.
-
-{{< details "Disqus" >}}
-Standard Hugo Disqus integration. Set the shortname in your config:
-
-```toml
-[Services]
-  [Services.Disqus]
-    Shortname = "your-disqus-shortname"
-
-[Params]
-  delayDisqus = true
-```
-
-`delayDisqus = true` shows a "Show comments" button instead of loading Disqus immediately.
-{{< /details >}}
-
-{{< details "Giscus" >}}
-Giscus uses GitHub Discussions as a comment backend.
-
-```toml
-[Params.giscus]
-  repo = "owner/repo"
-  repoId = "R_kgDO..."
-  category = "Announcements"
-  categoryId = "DIC_kwDO..."
-  mapping = "pathname"
-  strict = "0"
-  reactionsEnabled = "1"
-  emitMetadata = "0"
-  inputPosition = "top"
-  theme = "preferred_color_scheme"
-  lang = "en"
-  lazyLoading = true
-```
-
-Get your values from [giscus.app](https://giscus.app).
-{{< /details >}}
-
-{{< details "Utterances" >}}
-Utterances uses GitHub Issues as a comment backend.
-
-```toml
-[Params.utterances]
-  repo = "owner/repo"
-  issueTerm = "pathname"
-  theme = "preferred-color-scheme"
-  label = "comment"
-```
-
-Get your values from [utteranc.es](https://utteranc.es).
-{{< /details >}}
-
-{{< details "Cusdis" >}}
-Cusdis is a lightweight, privacy-friendly comment system.
-
-```toml
-[Params]
-  cusdisID = "your-app-id"
-```
-
-Get your App ID from [cusdis.com](https://cusdis.com).
-{{< /details >}}
-
-{{< details "Staticman" >}}
-Staticman adds comments as static data files via pull requests, with optional reCAPTCHA.
-
-```toml
-[Params.staticman]
-  api = "https://staticman-url.herokuapp.com/v3/entry/github/owner/repo/main/comments"
-
-  [Params.staticman.recaptcha]
-    sitekey = "your-site-key"
-    secret = "your-secret"
-```
-{{< /details >}}
+Beautiful Hugo supports five comment systems (Disqus, Giscus, Utterances, Cusdis, Staticman). Each is enabled per-page with `comments: true` in front matter. See [Comments & Social](../comments-and-social/) for configuration details.
 
 ## Analytics & Search
 
-| Param | Type | Description |
-|-------|------|-------------|
-| `[Services.googleAnalytics] id` | string | Google Analytics tracking ID (loaded only in production) |
-| `piwik.server` | string | Piwik/Matomo server hostname |
-| `piwik.id` | string | Piwik/Matomo site ID |
-| `gcse` | string | Google Custom Search Engine code (adds search modal to navbar) |
-
-```toml
-[Services]
-  [Services.googleAnalytics]
-    id = "G-XXXXXXXXXX"
-
-[Params]
-  gcse = "012345678901234567890:abcdefghijk"
-```
-
-When `gcse` is set, a search icon appears in the navbar that opens a search modal.
+Google Analytics, Piwik/Matomo, and search (GCSE or built-in Fuse) are covered in [SEO & i18n](../seo-and-i18n/#analytics-and-search).
 
 ## SEO Robot Meta Tags
 
-Control `<meta name="robots">` tags from `hugo.toml`. These settings only apply to pages in `mainSections`; other pages can set tags via front matter.
+Site-wide `<meta name="robots">` tags can be set from `hugo.toml`. These settings only apply to pages in `mainSections`; other pages can set tags via front matter.
 
-```toml
-[Params.seo.robots]
-  ai-summary-limit = "nosnippet"
-  noindex = true
-  nofollow = true
-
-[Params.seo.GoogleBot]
-  noindex = true
-  ai-summary-limit = 50
-```
-
-Supported boolean tags: `noindex`, `nofollow`, `none`, `nosnippet`, `notranslate`, `noimageindex`, `noarchive`, `nocache`, `noai`, `noimageai`.
-
-Supported `ai-summary-limit` values: `none` (no limit), `nosnippet` (block all), or a positive integer (character limit, e.g. `50`, `150`, `300`).
-
-See [SEO & i18n](../seo-and-i18n/) for the full reference including per-page overrides.
+See [SEO & i18n](../seo-and-i18n/) for the full reference including per-page overrides, AI summary limits, and all supported tags.
 
 ## Custom HTML Hooks
 
@@ -358,17 +249,7 @@ Beautiful Hugo provides partial "hooks" that let you inject custom HTML at speci
 | `footer_custom.html` | After `</footer>`, before scripts | Custom analytics, chat widget |
 | `scripts_custom.html` | After all theme JS, before `</body>` | Custom JS that depends on jQuery/Bootstrap |
 
-```text
-your-site/
-├── layouts/
-│   └── partials/
-│       ├── head_custom.html      ← your override
-│       ├── nav_custom.html       ← your override
-│       ├── header_custom.html    ← your override
-│       ├── before_content.html   ← your override
-│       ├── after_content.html    ← your override
-│       └── footer_custom.html    ← your override
-```
+See [Theming](../theming/#custom-stylesheets) for details on using these hooks for CSS and script customization.
 
 ## Miscellaneous
 
@@ -376,6 +257,13 @@ your-site/
 |-------|------|-------------|
 | `disclaimerText` | string | Disclaimer text shown in footer with a yellow-bordered box |
 | `commit` | string | Base URL for Git commit links (appended with `.GitInfo.Hash`) |
+| `disableCanonical` | bool | Suppress the `<link rel="canonical">` tag site-wide (see [SEO & i18n — Canonical URLs](../seo-and-i18n/#canonical-urls)) |
+
+Git features (`commit`) require `enableGitInfo = true` at the top level of your config (not under `[Params]`) so Hugo populates `.GitInfo`. Example:
+
+```toml
+commit = "https://github.com/user/repo/commit/"
+```
 
 ## Per-Page Front Matter
 
@@ -394,19 +282,25 @@ These options can be set in the front matter of any page or post:
 | `image` | string | Post preview image (circular, shown in list pages) |
 | `video` | string | Post preview video (loop, autoplay, muted) |
 | `summary` | string | Custom summary text |
-| `author` | string/list | Per-page author(s) (string or list of strings) |
+| `description` | string | Page description for meta tags and structured data (see [SEO & i18n — Description Cascade](../seo-and-i18n/#description-cascade)) |
+| `type` | string | Content type that determines template behavior: `"page"`, `"post"`, or `"recipe"` (see [Pages & Layouts](../pages-and-layouts/)) |
+| `author` | string/list | Per-page author(s) (string or list of strings; supports Markdown links, e.g. `"[Jane Doe](https://example.com)"`) |
 | `tags` | list | Tags for categorization |
 | `categories` | list | Categories for grouping posts |
 | `share_img` | string | Social sharing image (falls back to `image` then `logo`) |
 | `ExpiryDate` | date | Adds `<meta name="robots" content="unavailable_after: ...">` |
 | `seo` | map | Per-page robot meta tag overrides (see [SEO & i18n](../seo-and-i18n/)) |
+| `canonicalURL` | string | Override the canonical link for this page (absolute or relative; see [SEO & i18n — Canonical URLs](../seo-and-i18n/#canonical-urls)) |
+| `disableCanonical` | bool | Suppress the canonical link tag for this page |
 | `ghRepo` | string | GitHub repo for buttons (`"user/repo"`) |
 | `ghBadge` | list | Which badges to show: `["star","watch","fork","follow"]` |
 | `ghCount` | bool | Show count on GitHub buttons (default: `true`) |
 | `showPageDates` | bool | Show dates on page-type pages |
+| `hidePostDates` | bool | `false` | If true, hides dates on "post" type pages |
 | `navShort` | bool | Make navbar short on this page |
 | `toc` | bool | Show/hide table of contents for this page (overrides site-level `toc`) |
 | `showSource` | bool | Override site-level `showSource` for this page |
+| `showPostNav` | bool | Override site-level `showPostNav` for this page |
 | `mathEngine` | string | Override site-level `mathEngine` for this page (`"katex"`, `"mathjax"`, or `"none"`) |
 | `colorScheme` | string | Override site-level `colorScheme` for this page (`"auto"`, `"dark"`, or `"light"`) |
 | `useHLJS` | bool | Override site-level `useHLJS` for this page |
@@ -469,7 +363,7 @@ recipe:
 - **Structured data**: Pages with `type: recipe` and a `recipe` param emit a combined `Article` + `Recipe` JSON-LD block (as recommended by Google for recipe blog posts). Other pages continue to emit the standard `Article` schema.
 - **Visual rendering**: A recipe card is automatically rendered below the page body content, displaying metadata (prep time, cook time, yield, etc.), an ingredients list, and numbered instructions.
 - **Archetype**: Use `hugo new recipe/my-recipe.md` to get a pre-filled recipe front matter scaffold.
-- **Page behavior**: Recipe pages behave like blog posts (showing post meta, pager, and comments) since they are not `type: page`.
+- **Page behavior**: Recipe pages behave like blog posts (showing post meta, post navigation, and comments) since they are not `type: page`.
 
 ### ISO 8601 duration format
 

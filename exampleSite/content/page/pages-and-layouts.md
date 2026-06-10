@@ -1,6 +1,6 @@
 ---
 title: Pages & Layouts
-subtitle: Page kinds, templates, and how to create each type of page
+subtitle: Page kinds, templates, layout options, and how to create each type of page
 comments: false
 ---
 
@@ -25,7 +25,7 @@ Additionally, the **`archive`** layout is available via front matter for any con
 
 The home page is defined by `content/_index.md` and rendered by `layouts/index.html`. It shows the site content at the top, followed by a paginated list of posts from `mainSections`.
 
-Title comes from `homeTitle` (or the site title). Subtitle comes from `Params.subtitle`. Big images from `[[Params.bigimg]]` cycle in the header.
+Title comes from `homeTitle` (or the site title); `homeTitle` also controls the navbar brand text and footer link. Subtitle comes from `Params.subtitle`. Big images from `[[Params.bigimg]]` cycle in the header.
 
 ```toml
 [Params]
@@ -43,8 +43,9 @@ Title comes from `homeTitle` (or the site title). Subtitle comes from `Params.su
 Blog posts live under `content/post/` (or any directory listed in `mainSections`). They use `layouts/_default/single.html` with type `post`, which enables:
 
 - Post metadata in the header (date, reading time, word count, author)
+- Dates are shown unless `hidePostDates: true`
 - Subtitle rendered as an `<h2>`
-- Previous/next post pager
+- Previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens; disable with `showPostNav = false`)
 - Comments (if `comments: true`)
 - Social sharing buttons
 - Related posts section
@@ -67,7 +68,7 @@ Pages under `content/page/` have type `page`. They use the same `single.html` te
 
 - No post metadata in the header
 - Subtitle rendered as a `<span>` (not a heading)
-- No previous/next pager
+- No previous/next post navigation
 - No comments (even if `comments: true`, unless the type is not `page`)
 - Dates hidden unless `showPageDates: true`
 
@@ -78,6 +79,28 @@ subtitle: "About this site"
 comments: false
 ---
 ```
+
+## Recipe Pages
+
+Pages with `type: recipe` behave like blog posts (showing post meta, pager, and comments) but additionally emit [schema.org/Recipe](https://schema.org/Recipe) JSON-LD structured data and render a recipe card below the page body. Create them with a `recipe` front matter map:
+
+```yaml
+---
+title: "Classic Chocolate Chip Cookies"
+type: recipe
+date: 2026-05-12
+recipe:
+  prepTime: "PT15M"
+  cookTime: "PT12M"
+  yield: "24 cookies"
+  ingredients:
+    - "2¼ cups all-purpose flour"
+  instructions:
+    - text: "Preheat oven to 375°F."
+---
+```
+
+See [Configuration — Recipe Pages](../configuration/#recipe-pages) for the full `recipe` front matter reference and the archetype scaffold.
 
 ## Section Listings
 
@@ -173,16 +196,189 @@ The `layout` key in front matter selects an alternative template from `layouts/_
 | `list` | `list.html` — force the list template on a page |
 | `terms` | `terms.html` — force the taxonomy terms template |
 
+## Archetypes
+
+Beautiful Hugo ships with archetypes (content templates) that pre-fill front matter when you create new content with `hugo new`:
+
+| Command | Archetype | Front Matter Included |
+|---------|-----------|-----------------------|
+| `hugo new post/my-post.md` | `post.md` | `title`, `subtitle`, `date`, `draft`, `author`, `description`, `categories`, `tags`, `bigimg`, `comments` |
+| `hugo new page/my-page.md` | `page.md` | `title`, `subtitle`, `date`, `draft`, `description`, `comments`, `fullWidth` |
+| `hugo new recipe/my-recipe.md` | `recipe.md` | `title`, `type: recipe`, `date`, `subtitle`, `image`, `tags`, `recipe` map |
+| `hugo new <section>/foo.md` | `default.md` | `title`, `date`, `draft` |
+
+Hugo selects the archetype based on the content section. If the section directory matches an archetype name (e.g. `post/`, `page/`, `recipe/`), that archetype is used. Otherwise the `default.md` archetype is used.
+
 ## Layout Options
 
-Several front matter options affect how a page looks regardless of its kind. See [Layout Options](../layout-options/) for the full reference.
+Several front matter options affect how a page looks regardless of its kind.
 
-| Option | Type | Effect |
-|--------|------|--------|
-| `fullWidth` | bool | Full container width (no offset) |
-| `navShort` | bool | Permanently compact navbar |
-| `bigimg` | list | Full-width header image(s) |
-| `headerImgStyle` | string | `"big"` or `"narrow"` header crop |
-| `hidden` | bool | Exclude from post listings |
-| `showAvatar` | bool | Show/hide navbar avatar |
-| `showPageDates` | bool | Show dates on `page` type |
+### Big Image Headers
+
+Big images appear as full-width background images in the page header. They can be set at the site level (for the home page) or per-page. See [Configuration — Big Image Header](../configuration/#big-image-header) for site-level config.
+
+#### Per-page
+
+Set `bigimg` in front matter:
+
+```yaml
+---
+title: My Post
+bigimg:
+  - src: /img/sphere.jpg
+    desc: "A sphere"
+---
+```
+
+Or a single image:
+
+```yaml
+---
+title: My Post
+bigimg: [{src: "/img/path.jpg", desc: "A path"}]
+---
+```
+
+### Full-Width Pages
+
+Add `fullWidth: true` to front matter to use the full container width without the standard sidebar offset:
+
+```yaml
+---
+title: My Page
+fullWidth: true
+---
+```
+
+### Navbar Short Mode
+
+Set `navShort: true` to make the navbar permanently short (the compact style that normally appears after scrolling):
+
+```yaml
+---
+title: My Page
+navShort: true
+---
+```
+
+Or set it globally:
+
+```toml
+[Params]
+  navShort = true
+```
+
+### Avatar Visibility
+
+Control whether the avatar/logo appears in the navbar on a per-page basis:
+
+```yaml
+---
+title: My Page
+showAvatar: false
+---
+```
+
+### Hidden Pages
+
+Add `hidden: true` to front matter to create a page that exists at its URL but does not appear in post listings:
+
+```yaml
+---
+title: Secret Page
+hidden: true
+---
+```
+
+The page is still accessible via its direct URL and appears in navigation menus if you add a menu entry, but it won't show up in list pages or RSS feeds.
+
+### Post Preview Images
+
+On list pages, posts can show a circular preview image or video:
+
+```yaml
+---
+title: My Post
+image: /img/avatar-icon.png
+---
+```
+
+For a video preview (loop, autoplay, muted):
+
+```yaml
+---
+title: My Post
+video: clip.mp4
+---
+```
+
+### Custom Summaries
+
+Override the auto-generated summary with `summary`:
+
+```yaml
+---
+title: My Post
+summary: "A custom summary that appears on list pages instead of the auto-truncated text."
+---
+```
+
+### Per-Page Social Sharing
+
+Override the site-level `socialShare` setting per page:
+
+```yaml
+---
+title: My Post
+socialShare: false
+---
+```
+
+### Per-Page Comments
+
+Enable or disable comments on individual pages:
+
+```yaml
+---
+title: My Post
+comments: true
+---
+```
+
+This works with all comment systems (Disqus, Giscus, Utterances, Cusdis, Staticman). See [Comments & Social](../comments-and-social/) for comment system configuration.
+
+### Show Page Dates
+
+By default, "page" type pages don't show dates. Enable with:
+
+```yaml
+---
+title: My Page
+showPageDates: true
+---
+```
+
+Or globally:
+
+```toml
+[Params]
+  showPageDates = true
+```
+
+### Show Post Dates
+
+By default, "post" type pages show dates. These can be disabled with:
+
+```yaml
+---
+title: My Page
+hidePostDates: true
+---
+```
+
+Or globally:
+
+```toml
+[Params]
+  hidePostDates = true
+```

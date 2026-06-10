@@ -41,6 +41,34 @@
   translation: "Ver navegação"
 - id: languageSwitcherLabel
   translation: "Idioma"
+- id: searchToggleLabel
+  translation: "Buscar"
+- id: searchCloseLabel
+  translation: "Fechar busca"
+- id: searchPlaceholder
+  translation: "Buscar posts e páginas…"
+- id: searchResultsLabel
+  translation: "Resultados da busca"
+- id: searchLoadingText
+  translation: "Buscando…"
+- id: searchNoResultsText
+  translation: "Nenhum resultado para "
+- id: searchResultSingular
+  translation: "resultado para "
+- id: searchResultPlural
+  translation: "resultados para "
+- id: searchErrorIndexLoad
+  translation: "Erro ao carregar o índice de busca."
+- id: searchErrorIndexLoading
+  translation: "O índice de busca ainda está carregando."
+- id: searchPrevText
+  translation: "Anterior"
+- id: searchNextText
+  translation: "Próximo"
+- id: searchUntitledText
+  translation: "Sem título"
+- id: searchDisabledText
+  translation: "A busca está desativada."
 - id: gcseLabelShort
   translation: "Buscar"
 - id: gcseLabelLong
@@ -101,6 +129,46 @@
 # View source
 - id: viewSource
   translation: "Ver fonte"
+# Menu items / Itens do menu
+- id: menu_setup
+  translation: "Configuração"
+- id: menu_configuration
+  translation: "Configuração do site"
+- id: menu_layout-options
+  translation: "Opções de layout"
+- id: menu_theming
+  translation: "Temas"
+- id: menu_seo-and-i18n
+  translation: "SEO e i18n"
+- id: menu_comments-and-social
+  translation: "Comentários e social"
+- id: menu_features
+  translation: "Funcionalidades"
+- id: menu_pages-and-layouts
+  translation: "Páginas e layouts"
+- id: menu_shortcodes
+  translation: "Shortcodes"
+- id: menu_code-blocks
+  translation: "Blocos de código"
+- id: menu_markdown-extensions
+  translation: "Extensões Markdown"
+- id: menu_figures-and-galleries
+  translation: "Figuras e galerias"
+- id: menu_math-and-diagrams
+  translation: "Matemática e diagramas"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Postagens"
+- id: menu_tags
+  translation: "Tags"
+- id: menu_categories
+  translation: "Categorias"
+- id: menu_archives
+  translation: "Arquivo"
+- id: menu_about
+  translation: "Sobre"
+
 # Recipe / Receita
 - id: recipePrepTime
   translation: "Tempo de preparo"
@@ -120,3 +188,19 @@
   translation: "Ingredientes"
 - id: recipeInstructions
   translation: "Modo de preparo"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} dia"
+    other: "{{ .Count }} dias"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} hora"
+    other: "{{ .Count }} horas"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} minuto"
+    other: "{{ .Count }} minutos"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} segundo"
+    other: "{{ .Count }} segundos"

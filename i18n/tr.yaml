@@ -41,6 +41,34 @@
   translation: "Gezinmeyi aktifleştirin"
 - id: languageSwitcherLabel
   translation: "Dil"
+- id: searchToggleLabel
+  translation: "Arama"
+- id: searchCloseLabel
+  translation: "Aramayı kapat"
+- id: searchPlaceholder
+  translation: "Yazı ve sayfalarda ara…"
+- id: searchResultsLabel
+  translation: "Arama sonuçları"
+- id: searchLoadingText
+  translation: "Aranıyor…"
+- id: searchNoResultsText
+  translation: "Sonuç bulunamadı: "
+- id: searchResultSingular
+  translation: "sonuç için "
+- id: searchResultPlural
+  translation: "sonuç için "
+- id: searchErrorIndexLoad
+  translation: "Arama indeksi yüklenirken hata oluştu."
+- id: searchErrorIndexLoading
+  translation: "Arama indeksi hâlâ yükleniyor."
+- id: searchPrevText
+  translation: "Önceki"
+- id: searchNextText
+  translation: "Sonraki"
+- id: searchUntitledText
+  translation: "Başlıksız"
+- id: searchDisabledText
+  translation: "Arama devre dışı."
 - id: gcseLabelShort
   translation: "Arama"
 - id: gcseLabelLong
@@ -101,6 +129,46 @@
 # View source
 - id: viewSource
   translation: "Kaynağı görüntüle"
+# Menu items / Menü öğeleri
+- id: menu_setup
+  translation: "Kurulum"
+- id: menu_configuration
+  translation: "Yapılandırma"
+- id: menu_layout-options
+  translation: "Düzen seçenekleri"
+- id: menu_theming
+  translation: "Temalar"
+- id: menu_seo-and-i18n
+  translation: "SEO ve i18n"
+- id: menu_comments-and-social
+  translation: "Yorumlar ve sosyal"
+- id: menu_features
+  translation: "Özellikler"
+- id: menu_pages-and-layouts
+  translation: "Sayfalar ve düzenler"
+- id: menu_shortcodes
+  translation: "Kısa kodlar"
+- id: menu_code-blocks
+  translation: "Kod blokları"
+- id: menu_markdown-extensions
+  translation: "Markdown uzantıları"
+- id: menu_figures-and-galleries
+  translation: "Şekiller ve galeriler"
+- id: menu_math-and-diagrams
+  translation: "Matematik ve diyagramlar"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Yazılar"
+- id: menu_tags
+  translation: "Etiketler"
+- id: menu_categories
+  translation: "Kategoriler"
+- id: menu_archives
+  translation: "Arşiv"
+- id: menu_about
+  translation: "Hakkında"
+
 # Recipe / Tarif
 - id: recipePrepTime
   translation: "Hazırlık süresi"
@@ -120,3 +188,19 @@
   translation: "Malzemeler"
 - id: recipeInstructions
   translation: "Talimatlar"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} gün"
+    other: "{{ .Count }} gün"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} saat"
+    other: "{{ .Count }} saat"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} dakika"
+    other: "{{ .Count }} dakika"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} saniye"
+    other: "{{ .Count }} saniye"

@@ -1,0 +1,50 @@
+{{ $time := . }}
+{{ $days := "" }}
+{{ $hours := "" }}
+{{ $minutes := "" }}
+{{ $seconds := "" }}
+
+{{ $match := findRESubmatch `P(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?` $time }}
+
+{{ if $match }}
+  {{ $days = index (index $match 0) 1 }}
+  {{ $hours = index (index $match 0) 2 }}
+  {{ $minutes = index (index $match 0) 3 }}
+  {{ $seconds = index (index $match 0) 4 }}
+{{ end }}
+
+{{ $parts := slice }}
+
+{{ with $days }}
+  {{ $d := int . }}
+  {{ if gt $d 0 }}
+    {{ $parts = $parts | append (i18n "recipeDay" (dict "Count" $d)) }}
+  {{ end }}
+{{ end }}
+
+{{ with $hours }}
+  {{ $h := int . }}
+  {{ if gt $h 0 }}
+    {{ $parts = $parts | append (i18n "recipeHour" (dict "Count" $h)) }}
+  {{ end }}
+{{ end }}
+
+{{ with $minutes }}
+  {{ $m := int . }}
+  {{ if gt $m 0 }}
+    {{ $parts = $parts | append (i18n "recipeMinute" (dict "Count" $m)) }}
+  {{ end }}
+{{ end }}
+
+{{ with $seconds }}
+  {{ $s := int . }}
+  {{ if gt $s 0 }}
+    {{ $parts = $parts | append (i18n "recipeSecond" (dict "Count" $s)) }}
+  {{ end }}
+{{ end }}
+
+{{ if $parts }}
+  {{ return delimit $parts " " }}
+{{ else }}
+  {{ return $time }}
+{{ end }}

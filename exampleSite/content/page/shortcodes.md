@@ -257,39 +257,7 @@ To synchronize tabs across multiple blocks, give them the same `groupId`:
 
 ## beautifulfigure
 
-The `beautifulfigure` shortcode renders a PhotoSwipe-enhanced figure. Clicking the image opens a full-screen lightbox.
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `src` | string | — | URL of the image |
-| `link` | string | value of `src` | URL of the full-size image (for lightbox) |
-| `thumb` | string | — | Thumbnail URL (alternative to `src`) |
-| `alt` | string | `caption` or `src` | Alt text for the `<img>` |
-| `caption` | string | — | Caption text below the image |
-| `title` | string | — | Title heading in the figcaption |
-| `attr` | string | — | Attribution text |
-| `attrlink` | string | — | URL for the attribution |
-| `class` | string | — | CSS class on the `<figure>` element |
-| `size` | string | — | Dimensions for PhotoSwipe: `WIDTHxHEIGHT` (e.g. `1024x768`) |
-| `width` | string | — | CSS `max-width` on the wrapper div |
-| `caption-position` | string | — | Position class for the caption |
-| `caption-effect` | string | — | Effect class for the caption (e.g. `slide`, `fade`) |
-
-**Live example:**
-
-{{< beautifulfigure src="/img/global-ike.png" caption="A globe with transparency" attr="PurePNG" attrlink="https://purepng.com/photo/30733/clipart-cartoon-globe" caption-effect="slide" width="25%" class="center" >}}
-
-**Source:**
-
-```markdown
-{{</* beautifulfigure src="/img/global-ike.png"
-  caption="A globe with transparency"
-  attr="PurePNG"
-  attrlink="https://purepng.com/photo/30733/clipart-cartoon-globe"
-  caption-effect="slide"
-  width="25%"
-  class="center" */>}}
-```
+The `beautifulfigure` shortcode renders a PhotoSwipe-enhanced figure with lightbox support, captions, attribution, and effects. See [Figures & Galleries](../figures-and-galleries/#beautifulfigure) for the full parameter reference and live examples.
 
 ## figure
 
@@ -299,107 +267,13 @@ See [Figures & Galleries](../figures-and-galleries/) for details on the routing 
 
 ## gallery
 
-The `gallery` shortcode renders an image gallery grid with PhotoSwipe support. It has two modes: **manual** (place `beautifulfigure` shortcodes inside) and **directory** (auto-populate from a directory).
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `dir` | string | — | Path relative to `/static/` to auto-populate images |
-| `thumb` | string | `-thumb` | Suffix that identifies thumbnail files in directory mode |
-| `caption-position` | string | `bottom` | Caption position: `bottom`, `center`, `none` |
-| `caption-effect` | string | `slide` | Caption animation: `slide`, `fade`, `appear` |
-| `hover-effect` | string | `zoom` | Hover effect: `zoom`, `grow`, `shrink`, `slidedown`, `slideup` |
-| `hover-transition` | string | — | Set to `none` to disable hover transition |
-
-**Manual mode example:**
-
-{{< gallery caption-effect="fade" >}}
-{{< beautifulfigure src="/img/gallery/sunset.jpg" caption="Sunset" >}}
-{{< beautifulfigure src="/img/gallery/forest.jpg" caption="Forest" >}}
-{{< beautifulfigure src="/img/gallery/mountain.jpg" caption="Mountain" >}}
-{{< /gallery >}}
-
-**Directory mode example:**
-
-{{< gallery dir="/img/gallery/" caption-effect="fade" />}}
-
-In directory mode, filenames are humanized into captions. Files containing the thumb suffix (e.g. `lake-thumb.jpg`) are used as thumbnails for the matching full-size image (`lake.jpg`).
-
-**Source (manual):**
-
-```markdown
-{{</* gallery caption-effect="fade" */>}}
-{{</* beautifulfigure src="/img/gallery/sunset.jpg" caption="Sunset" */>}}
-{{</* beautifulfigure src="/img/gallery/forest.jpg" caption="Forest" */>}}
-{{</* /gallery */>}}
-```
-
-**Source (directory):**
-
-```markdown
-{{</* gallery dir="/img/gallery/" caption-effect="fade" */>}}
-```
+The `gallery` shortcode renders an image gallery grid with PhotoSwipe support. It supports manual mode (place `beautifulfigure` shortcodes inside) and directory mode (auto-populate from a directory). See [Figures & Galleries](../figures-and-galleries/#gallery) for the full parameter reference and live examples.
 
 ## mermaid
 
-The `mermaid` shortcode renders Mermaid diagrams. It automatically handles light/dark mode by dual-rendering.
+The `mermaid` shortcode renders Mermaid diagrams (flowcharts, sequence diagrams, Gantt charts, etc.) with automatic light/dark mode handling via dual-rendering. It accepts an optional `align` parameter (`center`, `left`, or `right`).
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `align` | string | — | CSS text alignment: `center`, `left`, `right` |
-
-**Flowchart example:**
-
-{{< mermaid align="center" >}}
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Action 1]
-    B -->|No| D[Action 2]
-    C --> E[End]
-    D --> E
-{{< /mermaid >}}
-
-**Sequence diagram example:**
-
-{{< mermaid align="center" >}}
-sequenceDiagram
-    participant User
-    participant Browser
-    participant Server
-    User->>Browser: Click link
-    Browser->>Server: HTTP request
-    Server-->>Browser: HTML response
-    Browser-->>User: Rendered page
-{{< /mermaid >}}
-
-**Source — Flowchart:**
-
-```markdown
-{{</* mermaid align="center" */>}}
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Action 1]
-    B -->|No| D[Action 2]
-    C --> E[End]
-    D --> E
-{{</* /mermaid */>}}
-```
-
-**Source — Sequence Diagram:**
-
-```markdown
-{{</* mermaid align="center" */>}}
-sequenceDiagram
-    participant User
-    participant Browser
-    participant Server
-    User->>Browser: Click link
-    Browser->>Server: HTTP request
-    Server-->>Browser: HTML response
-    Browser-->>User: Rendered page
-{{</* /mermaid */>}}
-```
-
-See [Math & Diagrams](../math-and-diagrams/) for more Mermaid and KaTeX examples.
+See [Math & Diagrams](../math-and-diagrams/) for live examples and source code.
 
 ## no-ai-summary
 
@@ -423,34 +297,6 @@ See [SEO & i18n](../seo-and-i18n/) for the full robot meta tags and AI summary l
 
 ## include-code
 
-The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. It works with both Chroma (default) and Highlight.js.
+The `include-code` shortcode reads a source file from disk and renders it with syntax highlighting. It supports auto-detection of the language from the file extension, line numbers, and line highlighting (Chroma only).
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `file` | string | yes | Path relative to the Hugo project root |
-| `language` | string | no | Highlighting language (auto-detected from file extension if omitted) |
-| `linenos` | string | no | `"table"` or `"inline"` — Chroma only |
-| `hl_lines` | string | no | Lines to highlight, e.g. `"2 5-8"` — Chroma only |
-| `linenostart` | string | no | Starting line number — Chroma only |
-
-**Live example — auto-detected TOML:**
-
-{{< include-code file="hugo.toml" >}}
-
-**Live example — with line numbers and highlighted lines:**
-
-{{< include-code file="hugo.toml" linenos="table" hl_lines="7 23-28" >}}
-
-**Source:**
-
-```markdown
-{{</* include-code file="hugo.toml" */>}}
-
-{{</* include-code file="hugo.toml" linenos="table" hl_lines="7 23-28" */>}}
-```
-
-When `useHLJS = true`, the shortcode emits `<pre><code class="language-xxx">` for client-side highlighting; `linenos`, `hl_lines`, and `linenostart` are ignored with a build warning.
-
-**Supported auto-detect extensions:** `.bash`, `.c`, `.cpp`, `.css`, `.go`, `.html`, `.java`, `.js`, `.json`, `.jsx`, `.lua`, `.md`, `.php`, `.pl`, `.py`, `.r`, `.rb`, `.rs`, `.scss`, `.sh`, `.sql`, `.svg`, `.toml`, `.ts`, `.tsx`, `.xml`, `.yaml`, `.yml`, `.zig`
-
-See [Code Blocks](../code-blocks/) for more syntax highlighting examples.
+See [Code Blocks — Including External Files](../code-blocks/#including-external-files) for the full parameter reference and live examples.

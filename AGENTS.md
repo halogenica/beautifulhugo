@@ -19,7 +19,7 @@ hugo serve -s exampleSite --disableFastRender
 ## Hugo Version
 
 - **Minimum Hugo version**: `0.146.2` (enforced at runtime in `layouts/_default/baseof.html`).
-- **CI matrix** tests against `0.146.2`, `0.147.2`, and `0.155.2`.
+- **CI matrix** tests against `0.146.2`, `0.155.2`, and `0.163.0`.
 - The deploy workflow pins `0.146.2`.
 - CI uses the **extended** Hugo binary.
 
@@ -40,4 +40,5 @@ hugo serve -s exampleSite --disableFastRender
 - **`disableFigureOverride` flag.** Set `Params.disableFigureOverride = true` to restore Hugo's native `<figure>` shortcode (the PhotoSwipe-enhanced version remains available as `beautifulfigure`).
 - **Multilingual** is supported via the standard Hugo `languages` config with per-language `contentDir`.
 - **No unit tests exist.** The CI only confirms the example site builds cleanly across the Hugo version matrix. Run the build command above before opening a PR.
-- **Features must be documented in the example site.** When adding or changing a feature, update the relevant page under `exampleSite/content/page/` (especially `configuration.md` and `layout-options.md`).
+- **Use `relURL` instead of `absURL` for all asset and page URLs in templates.** `absURL` produces absolute URLs that break when the site is deployed under a subpath (e.g. `example.com/blog/`). `relURL` generates relative URLs that work correctly regardless of the `baseURL` configuration. Similarly, prefer `relLangURL` over `absLangURL`. Note: `absURL` is still acceptable in structured-data JSON-LD and Open Graph / Twitter meta tags where absolute URLs are required by the spec.
+- **Features must be documented in the example site.** When adding or changing a feature, update the relevant page under `exampleSite/content/page/` (especially `configuration.md` and `pages-and-layouts.md`).

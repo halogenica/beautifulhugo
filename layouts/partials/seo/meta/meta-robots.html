@@ -4,7 +4,7 @@
       For tags which take values, a seperate partial will need to be created
 */}}
 {{- $robots_boolean_tags := slice "noindex" "nofollow" "none" "nosnippet" "notranslate" -}}
-{{- $robots_boolean_tags = $robots_boolean_tags | append "noimageinde" "noarchive" "nocache" "noai" "noimageai" -}}
+{{- $robots_boolean_tags = $robots_boolean_tags | append "noimageindex" "noarchive" "nocache" "noai" "noimageai" -}}
 
 {{- $site_seo := dict -}}
 {{/* Only get this value is the pae is part of a mainSection */}}
