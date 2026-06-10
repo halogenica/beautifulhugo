@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "2006-01-02"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Gepost op {{ . }}"
 - id: lastModified
-  translation: "(Laatst gewijzigd op {{ . }})"
+  translation: "Laatst gewijzigd op {{ . }}"
 - id: translationsLabel
   translation: "Andere talen: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "minuten"
 - id: words
   translation: "woorden"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,13 +34,41 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a>-aangedreven &nbsp;&bull;&nbsp; Thema door <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> aangepast van <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a>-aangedreven &nbsp;&bull;&nbsp; Thema door <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> aangepast van <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
   translation: "Navigatie"
 - id: languageSwitcherLabel
   translation: "Taal"
+- id: searchToggleLabel
+  translation: "Zoeken"
+- id: searchCloseLabel
+  translation: "Zoeken sluiten"
+- id: searchPlaceholder
+  translation: "Berichten en pagina's zoeken…"
+- id: searchResultsLabel
+  translation: "Zoekresultaten"
+- id: searchLoadingText
+  translation: "Zoeken…"
+- id: searchNoResultsText
+  translation: "Geen resultaten voor "
+- id: searchResultSingular
+  translation: "resultaat voor "
+- id: searchResultPlural
+  translation: "resultaten voor "
+- id: searchErrorIndexLoad
+  translation: "Fout bij laden van zoekindex."
+- id: searchErrorIndexLoading
+  translation: "Zoekindex is nog aan het laden."
+- id: searchPrevText
+  translation: "Vorige"
+- id: searchNextText
+  translation: "Volgende"
+- id: searchUntitledText
+  translation: "Zonder titel"
+- id: searchDisabledText
+  translation: "Zoeken is uitgeschakeld."
 - id: gcseLabelShort
   translation: "Zoeken"
 - id: gcseLabelLong
@@ -62,6 +91,10 @@
   translation: "Jouw e-mailadres"
 - id: yourWebsite
   translation: "Jouw website"
+- id: submit
+  translation: "Verzenden"
+- id: close
+  translation: "Sluiten"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +102,106 @@
 - id: comments
   translation: "reacties"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Thema"
+- id: themeTooltipAuto
+  translation: "Auto (volgt systeem)"
+- id: themeTooltipLight
+  translation: "Lichte modus"
+- id: themeTooltipDark
+  translation: "Donkere modus"
+
 # Related posts
 - id: seeAlso
   translation: "Zie ook"
+
+# Archive
+- id: all
+  translation: "Alles"
+- id: archiveYearFilter
+  translation: "Filter op jaar"
+
+# Categories
+- id: categoriesLabel
+  translation: "Categorieën: "
+
+# View source
+- id: viewSource
+  translation: "Bron bekijken"
+
+# Menu items / Menu-items
+- id: menu_setup
+  translation: "Installatie"
+- id: menu_configuration
+  translation: "Configuratie"
+- id: menu_layout-options
+  translation: "Indelingsopties"
+- id: menu_theming
+  translation: "Thema's"
+- id: menu_seo-and-i18n
+  translation: "SEO en i18n"
+- id: menu_comments-and-social
+  translation: "Reacties en sociaal"
+- id: menu_features
+  translation: "Functies"
+- id: menu_pages-and-layouts
+  translation: "Pagina's en indelingen"
+- id: menu_shortcodes
+  translation: "Shortcodes"
+- id: menu_code-blocks
+  translation: "Codeblokken"
+- id: menu_markdown-extensions
+  translation: "Markdown-extensies"
+- id: menu_figures-and-galleries
+  translation: "Afbeeldingen en galerijen"
+- id: menu_math-and-diagrams
+  translation: "Wiskunde en diagrammen"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Berichten"
+- id: menu_tags
+  translation: "Tags"
+- id: menu_categories
+  translation: "Categorieën"
+- id: menu_archives
+  translation: "Archief"
+- id: menu_about
+  translation: "Over"
+
+# Recipe / Recept
+- id: recipePrepTime
+  translation: "Voorbereidingstijd"
+- id: recipeCookTime
+  translation: "Kooktijd"
+- id: recipeTotalTime
+  translation: "Totale tijd"
+- id: recipeYield
+  translation: "Porties"
+- id: recipeCategory
+  translation: "Categorie"
+- id: recipeCuisine
+  translation: "Keuken"
+- id: recipeCalories
+  translation: "Calorieën"
+- id: recipeIngredients
+  translation: "Ingrediënten"
+- id: recipeInstructions
+  translation: "Instructies"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} dag"
+    other: "{{ .Count }} dagen"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} uur"
+    other: "{{ .Count }} uur"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} minuut"
+    other: "{{ .Count }} minuten"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} seconde"
+    other: "{{ .Count }} seconden"

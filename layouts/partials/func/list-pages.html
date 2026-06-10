@@ -1,0 +1,26 @@
+{{- /*
+  Returns the page collection that a list node (home, section, or taxonomy
+  term) displays and paginates.
+
+  This is the single source of truth for that collection so that the
+  canonical link built in <head> (see partials/seo/canonical.html) and the
+  listing built later in <body> paginate the *exact same* set. Hugo caches
+  one paginator per page: whichever `.Paginate`/`.Paginator` call runs first
+  wins, and a later call with a different collection is silently ignored. By
+  routing every caller through this partial, the head and body always agree.
+
+  - Home: regular pages whose type is in `mainSections`, matching the
+    historical home-page listing.
+  - Section / term: the node's own `.Pages` (Hugo's default paginator set).
+
+  In every case pages flagged `hidden` in front matter are dropped before
+  pagination, so they neither appear nor leave gaps in the page numbering.
+
+  Returns: a page collection (slice of pages).
+*/ -}}
+{{- $pages := .Pages -}}
+{{- if .IsHome -}}
+  {{- $mainSections := default (slice "post" "posts") site.Params.mainSections -}}
+  {{- $pages = where site.RegularPages "Type" "in" $mainSections -}}
+{{- end -}}
+{{- return (where $pages "Params.hidden" "!=" true) -}}

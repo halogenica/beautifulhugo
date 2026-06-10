@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "January 2, 2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "Jan 2, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Slået op den {{ . }}"
 - id: lastModified
-  translation: "(Senest redigeret den {{ . }})"
+  translation: "Senest redigeret den {{ . }}"
 - id: translationsLabel
   translation: "Andre sprog: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "Minutter"
 - id: words
   translation: "Ord"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,13 +34,41 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> drevet &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> tilpasset fra <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a> drevet &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> tilpasset fra <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
   translation: "Navigation"
 - id: languageSwitcherLabel
   translation: "Sprog"
+- id: searchToggleLabel
+  translation: "Søg"
+- id: searchCloseLabel
+  translation: "Luk søgning"
+- id: searchPlaceholder
+  translation: "Søg i opslag og sider…"
+- id: searchResultsLabel
+  translation: "Søgeresultater"
+- id: searchLoadingText
+  translation: "Søger…"
+- id: searchNoResultsText
+  translation: "Ingen resultater for "
+- id: searchResultSingular
+  translation: "resultat for "
+- id: searchResultPlural
+  translation: "resultater for "
+- id: searchErrorIndexLoad
+  translation: "Fejl ved indlæsning af søgeindeks."
+- id: searchErrorIndexLoading
+  translation: "Søgeindeks indlæses stadig."
+- id: searchPrevText
+  translation: "Forrige"
+- id: searchNextText
+  translation: "Næste"
+- id: searchUntitledText
+  translation: "Uden titel"
+- id: searchDisabledText
+  translation: "Søgning er deaktiveret."
 - id: gcseLabelShort
   translation: "Søg"
 - id: gcseLabelLong
@@ -62,6 +91,10 @@
   translation: "Din emailadresse"
 - id: yourWebsite
   translation: "Din hjemmeside"
+- id: submit
+  translation: "Send"
+- id: close
+  translation: "Luk"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +102,106 @@
 - id: comments
   translation: "Kommentarer" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Tema"
+- id: themeTooltipAuto
+  translation: "Auto (følger systemet)"
+- id: themeTooltipLight
+  translation: "Lys tilstand"
+- id: themeTooltipDark
+  translation: "Mørk tilstand"
+
 # Related posts
 - id: seeAlso
   translation: "Se også"
+
+# Archive
+- id: all
+  translation: "Alle"
+- id: archiveYearFilter
+  translation: "Filtrer efter år"
+
+# Categories
+- id: categoriesLabel
+  translation: "Kategorier: "
+
+# View source
+- id: viewSource
+  translation: "Vis kilde"
+
+# Menu items / Menupunkter
+- id: menu_setup
+  translation: "Opsætning"
+- id: menu_configuration
+  translation: "Konfiguration"
+- id: menu_layout-options
+  translation: "Layoutindstillinger"
+- id: menu_theming
+  translation: "Temaer"
+- id: menu_seo-and-i18n
+  translation: "SEO og i18n"
+- id: menu_comments-and-social
+  translation: "Kommentarer og sociale"
+- id: menu_features
+  translation: "Funktioner"
+- id: menu_pages-and-layouts
+  translation: "Sider og layout"
+- id: menu_shortcodes
+  translation: "Shortcodes"
+- id: menu_code-blocks
+  translation: "Kodeblokke"
+- id: menu_markdown-extensions
+  translation: "Markdown-udvidelser"
+- id: menu_figures-and-galleries
+  translation: "Figurer og gallerier"
+- id: menu_math-and-diagrams
+  translation: "Matematik og diagrammer"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Indlæg"
+- id: menu_tags
+  translation: "Tags"
+- id: menu_categories
+  translation: "Kategorier"
+- id: menu_archives
+  translation: "Arkiv"
+- id: menu_about
+  translation: "Om"
+
+# Recipe / Opskrift
+- id: recipePrepTime
+  translation: "Forberedelsestid"
+- id: recipeCookTime
+  translation: "Tilberedningstid"
+- id: recipeTotalTime
+  translation: "Total tid"
+- id: recipeYield
+  translation: "Portioner"
+- id: recipeCategory
+  translation: "Kategori"
+- id: recipeCuisine
+  translation: "Køkken"
+- id: recipeCalories
+  translation: "Kalorier"
+- id: recipeIngredients
+  translation: "Ingredienser"
+- id: recipeInstructions
+  translation: "Fremgangsmåde"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} dag"
+    other: "{{ .Count }} dage"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} time"
+    other: "{{ .Count }} timer"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} min."
+    other: "{{ .Count }} min."
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} sek."
+    other: "{{ .Count }} sek."

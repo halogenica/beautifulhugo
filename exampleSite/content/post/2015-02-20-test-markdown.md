@@ -1,8 +1,12 @@
 ---
 title: Test markdown
 subtitle: Each post also has a subtitle
+author:
+  - "[Michael Henderson](https://example.com)"
+  - "[Jane Doe](https://example.com)"
 date: 2015-02-20
-tags: ["example", "markdown"]
+categories: ["tutorial"]
+tags: ["example", "markdown", "tutorial"]
 ---
 
 You can write regular [markdown](https://markdowntutorial.com/) here and [Hugo](https://gohugo.io) will automatically convert it to a nice webpage.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
@@ -12,14 +16,14 @@ You can write regular [markdown](https://markdowntutorial.com/) here and [Hugo](
 ## Here is a secondary heading
 
 Here's a useless table:
- 
+
 | Number | Next number | Previous number |
 | :------ |:--- | :--- |
 | Five | Six | Four |
 | Ten | Eleven | Nine |
 | Seven | Eight | Six |
 | Two | Three | One |
- 
+
 
 How about a yummy crepe?
 

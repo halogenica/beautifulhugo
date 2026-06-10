@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "January 2, 2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "Jan 2, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Posted on {{ . }}"
 - id: lastModified
-  translation: "(Last modified on {{ . }})"
+  translation: "Last modified on {{ . }}"
 - id: translationsLabel
   translation: "Other languages: "
 - id: translationsSeparator
@@ -22,10 +22,11 @@
 - id: nextPost
   translation: "Next Post"
 - id: readTime
-  translation: "minutes"
+  translation: "min"
 - id: words
   translation: "words"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,13 +34,41 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
   translation: "Toggle navigation"
 - id: languageSwitcherLabel
   translation: "Language"
+- id: searchToggleLabel
+  translation: "Search"
+- id: searchCloseLabel
+  translation: "Close search"
+- id: searchPlaceholder
+  translation: "Search posts and pages…"
+- id: searchResultsLabel
+  translation: "Search results"
+- id: searchLoadingText
+  translation: "Searching…"
+- id: searchNoResultsText
+  translation: "No results found for "
+- id: searchResultSingular
+  translation: "result for "
+- id: searchResultPlural
+  translation: "results for "
+- id: searchErrorIndexLoad
+  translation: "Error loading search index."
+- id: searchErrorIndexLoading
+  translation: "Search index is still loading."
+- id: searchPrevText
+  translation: "Previous"
+- id: searchNextText
+  translation: "Next"
+- id: searchUntitledText
+  translation: "Untitled"
+- id: searchDisabledText
+  translation: "Search is disabled."
 - id: gcseLabelShort
   translation: "Search"
 - id: gcseLabelLong
@@ -62,6 +91,20 @@
   translation: "Your email address"
 - id: yourWebsite
   translation: "Your website"
+- id: submit
+  translation: "Submit"
+- id: close
+  translation: "Close"
+
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Theme"
+- id: themeTooltipAuto
+  translation: "Auto (follows system)"
+- id: themeTooltipLight
+  translation: "Light mode"
+- id: themeTooltipDark
+  translation: "Dark mode"
 
 # Delayed Disqus
 - id: show
@@ -72,3 +115,92 @@
 # Related posts
 - id: seeAlso
   translation: "See also"
+
+# Archive
+- id: all
+  translation: "All"
+- id: archiveYearFilter
+  translation: "Filter by year"
+
+# Categories
+- id: categoriesLabel
+  translation: "Categories: "
+
+# View source
+- id: viewSource
+  translation: "View source"
+# Menu items
+- id: menu_setup
+  translation: "Setup"
+- id: menu_configuration
+  translation: "Configuration"
+- id: menu_layout-options
+  translation: "Layout Options"
+- id: menu_theming
+  translation: "Theming"
+- id: menu_seo-and-i18n
+  translation: "SEO & i18n"
+- id: menu_comments-and-social
+  translation: "Comments & Social"
+- id: menu_features
+  translation: "Features"
+- id: menu_pages-and-layouts
+  translation: "Pages & Layouts"
+- id: menu_shortcodes
+  translation: "Shortcodes"
+- id: menu_code-blocks
+  translation: "Code Blocks"
+- id: menu_markdown-extensions
+  translation: "Markdown Extensions"
+- id: menu_figures-and-galleries
+  translation: "Figures & Galleries"
+- id: menu_math-and-diagrams
+  translation: "Math & Diagrams"
+- id: menu_blog
+  translation: "Blog"
+- id: menu_post
+  translation: "Posts"
+- id: menu_tags
+  translation: "Tags"
+- id: menu_categories
+  translation: "Categories"
+- id: menu_archives
+  translation: "Archives"
+- id: menu_about
+  translation: "About"
+
+# Recipe
+- id: recipePrepTime
+  translation: "Prep Time"
+- id: recipeCookTime
+  translation: "Cook Time"
+- id: recipeTotalTime
+  translation: "Total Time"
+- id: recipeYield
+  translation: "Yield"
+- id: recipeCategory
+  translation: "Category"
+- id: recipeCuisine
+  translation: "Cuisine"
+- id: recipeCalories
+  translation: "Calories"
+- id: recipeIngredients
+  translation: "Ingredients"
+- id: recipeInstructions
+  translation: "Instructions"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} Day"
+    other: "{{ .Count }} Days"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} Hr"
+    other: "{{ .Count }} Hrs"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} Min"
+    other: "{{ .Count }} Mins"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} Sec"
+    other: "{{ .Count }} Secs"

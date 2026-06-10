@@ -1,0 +1,9 @@
+{{- $schema := dict
+  "@type" "WebPage"
+  "name" .Title
+  "@id" (print .Permalink "#webpage")
+  "url" .Permalink
+  "breadcrumb" (dict "@id" (printf "%s#breadcrumb" .Permalink))
+  "isPartOf" (dict "@id" (print .Site.BaseURL "#website"))
+-}}
+{{- return $schema }}

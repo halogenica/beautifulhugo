@@ -234,6 +234,18 @@ title = "Bluesky"
 icon = "fab fa-bluesky"
 
 [[social_icons]]
+id = "orcid"
+url = "https://orcid.org/%s"
+title = "ORCID"
+icon = "fab fa-orcid"
+
+[[social_icons]]
+id = "googlescholar"
+url = "https://scholar.google.com/citations?user=%s"
+title = "Google Scholar"
+icon = "fas fa-graduation-cap"
+
+[[social_icons]]
 id = "goodreads"
 url = "https://goodreads.com/%s"
 title = "Goodreads"

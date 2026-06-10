@@ -1,0 +1,31 @@
+{{- /*
+  Emits the <link rel="canonical"> tag for the current page.
+
+  Resolution order:
+    1. A `canonicalURL` in the page front matter wins — useful when a page
+       intentionally duplicates another and should point search engines at
+       the original. Relative values are resolved against the current
+       language's base URL; absolute URLs are emitted unchanged.
+    2. Paginated nodes (home, section, term) use the paginator URL so that
+       each page of a sequence (…/page/2/) self-canonicalizes instead of all
+       pointing at page 1, which is what Google now recommends. The collection
+       comes from `func/list-pages` so the URL built here in <head> matches
+       the listing rendered later in <body> (see that partial for why).
+    3. Everything else (single pages, the taxonomy index, etc.) uses the
+       page permalink.
+
+  Set `disableCanonical = true` in site params to drop the tag site-wide, or
+  in a page's front matter to drop it for that page only.
+*/ -}}
+{{- if not ($.Param "disableCanonical") -}}
+  {{- with .Params.canonicalURL -}}
+<link rel="canonical" href="{{ . | absLangURL }}" />
+  {{- else -}}
+    {{- if or .IsHome (eq .Kind "section") (eq .Kind "term") -}}
+      {{- $paginator := .Paginate (partial "func/list-pages.html" .) -}}
+<link rel="canonical" href="{{ $paginator.URL | absLangURL }}" />
+    {{- else -}}
+<link rel="canonical" href="{{ .Permalink }}" />
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

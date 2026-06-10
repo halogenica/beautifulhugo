@@ -1,0 +1,73 @@
+{{- $file := .Get "file" -}}
+{{- if not $file -}}
+  {{- errorf "include-code: missing required 'file' parameter" -}}
+{{- end -}}
+
+{{- $lang := .Get "language" -}}
+{{- if not $lang -}}
+  {{- $ext := path.Ext $file -}}
+  {{- $extMap := dict
+    ".bash" "bash"
+    ".c" "c"
+    ".cpp" "cpp"
+    ".css" "css"
+    ".go" "go"
+    ".html" "html"
+    ".java" "java"
+    ".js" "javascript"
+    ".json" "json"
+    ".jsx" "jsx"
+    ".lua" "lua"
+    ".md" "markdown"
+    ".php" "php"
+    ".pl" "perl"
+    ".py" "python"
+    ".r" "r"
+    ".rb" "ruby"
+    ".rs" "rust"
+    ".scss" "scss"
+    ".sh" "bash"
+    ".sql" "sql"
+    ".svg" "xml"
+    ".toml" "toml"
+    ".ts" "typescript"
+    ".tsx" "tsx"
+    ".xml" "xml"
+    ".yaml" "yaml"
+    ".yml" "yaml"
+    ".zig" "zig"
+  -}}
+  {{- $lang = index $extMap $ext | default "" -}}
+{{- end -}}
+
+{{- $content := readFile $file -}}
+{{- if not $content -}}
+  {{- errorf "include-code: file '%s' not found or empty" $file -}}
+{{- end -}}
+
+{{- $useHLJS := .Page.Param "useHLJS" | default false -}}
+
+{{- if $useHLJS -}}
+  {{- with .Get "linenos" -}}
+    {{- warnf "include-code: 'linenos' is not supported when useHLJS=true (file: %s)" $file -}}
+  {{- end -}}
+  {{- with .Get "hl_lines" -}}
+    {{- warnf "include-code: 'hl_lines' is not supported when useHLJS=true (file: %s)" $file -}}
+  {{- end -}}
+  {{- with .Get "linenostart" -}}
+    {{- warnf "include-code: 'linenostart' is not supported when useHLJS=true (file: %s)" $file -}}
+  {{- end -}}
+  <pre><code{{ with $lang }} class="language-{{ . }}"{{ end }}>{{ $content }}</code></pre>
+{{- else -}}
+  {{- $opts := dict -}}
+  {{- with .Get "linenos" -}}
+    {{- $opts = merge $opts (dict "linenos" .) -}}
+  {{- end -}}
+  {{- with .Get "hl_lines" -}}
+    {{- $opts = merge $opts (dict "hl_lines" .) -}}
+  {{- end -}}
+  {{- with .Get "linenostart" -}}
+    {{- $opts = merge $opts (dict "linenostart" (int .)) -}}
+  {{- end -}}
+  {{- highlight $content $lang $opts -}}
+{{- end -}}
