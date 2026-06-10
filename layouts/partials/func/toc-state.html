@@ -1,0 +1,31 @@
+{{- /*
+  Computes the availability state for the TOC / posts side panel, shared
+  by the navbar toggle button (nav.html) and the panel itself (toc.html).
+
+  - `isListPage`: the node is a section or the home page, so the panel
+    shows a posts list rather than a table of contents.
+  - `hasToc`: the rendered TableOfContents contains at least one item.
+  - `listPages`: on the home page, the mainSections-filtered non-hidden
+    regular pages; on a section, the paginator's pages. Empty otherwise.
+  - `hasListPages`: whether `listPages` is non-empty.
+
+  Note: this touches `.Paginator`, but only relocates logic the callers
+  already ran, so the cached paginator selection is unchanged.
+
+  Takes: the page context (.).
+  Returns: dict with "isListPage", "hasToc", "hasListPages", "listPages".
+*/ -}}
+{{- $isListPage := or .IsSection .IsHome -}}
+{{- $hasToc := and .TableOfContents (findRE `<li>` .TableOfContents) -}}
+{{- $hasListPages := false -}}
+{{- $listPages := slice -}}
+{{- if $isListPage -}}
+  {{- if .IsHome -}}
+    {{- $mainSections := default (slice "post" "posts") site.Params.mainSections -}}
+    {{- $listPages = where (where site.RegularPages "Type" "in" $mainSections) "Params.hidden" "!=" true -}}
+  {{- else -}}
+    {{- $listPages = .Paginator.Pages -}}
+  {{- end -}}
+  {{- $hasListPages = gt (len $listPages) 0 -}}
+{{- end -}}
+{{- return (dict "isListPage" $isListPage "hasToc" $hasToc "hasListPages" $hasListPages "listPages" $listPages) -}}

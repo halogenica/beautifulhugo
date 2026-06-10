@@ -1,0 +1,28 @@
+{{- /*
+  Builds the author JSON-LD fragments shared by the Article and Recipe
+  structured-data schemas.
+
+  For each author returned by `author_list.html` it produces a full
+  schema.org Person dict (with a stable `@id`) plus a lightweight
+  `{ "@id": ... }` reference used in the parent schema's `author` field.
+
+  Takes: the page context (.).
+  Returns: dict with
+    - "schema": slice of Person dicts.
+    - "ids": slice of @id reference dicts.
+*/ -}}
+{{- $authors := partial "author_list.html" . -}}
+{{- $authorSchema := slice -}}
+{{- $authorIds := slice -}}
+{{- range $authors -}}
+  {{- $authorId := (print $.Site.BaseURL (print "#author-" (urlize .name))) -}}
+  {{- $authorIds = $authorIds | append (dict "@id" $authorId) -}}
+  {{- $a := dict
+    "@type" "Person"
+    "name" .name
+    "url" (or .url $.Site.BaseURL)
+    "@id" $authorId
+  -}}
+  {{- $authorSchema = $authorSchema | append $a -}}
+{{- end -}}
+{{- return (dict "schema" $authorSchema "ids" $authorIds) -}}

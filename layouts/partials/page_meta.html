@@ -1,16 +1,7 @@
 <div class="page-meta">
   {{ $show := default .Site.Params.showPageDates .Params.showPageDates }}
   {{ if $show }}
-    {{ $format := default (i18n "dateFormat") .Site.Params.dateformat }}
-    {{ if and .Site.Params.dateformat (not (strings.HasPrefix $format ":")) }}
-      {{- $nowFmt := now.Format $format -}}
-      {{- $yearOK := or (not (findRE `2006` $format)) (findRE (now.Format "2006") $nowFmt) -}}
-      {{- $monthOK := or (findRE (now.Format "01") $nowFmt) (findRE (now.Format "Jan") $nowFmt) (findRE (now.Format "January") $nowFmt) -}}
-      {{- $dayOK := or (findRE (now.Format "02") $nowFmt) (findRE (now.Format "2") $nowFmt) -}}
-      {{ if or (not $yearOK) (not $monthOK) (not $dayOK) }}
-        {{ errorf "beautifulhugo: Params.dateformat %q is not a valid Go time layout. Go uses the reference time Mon Jan 2 15:04:05 MST 2006 — use e.g. \"2006-01-02\" instead of \"2023-10-15\", or use a Hugo locale token like \":date_long\". See https://go.dev/src/time/format.go" .Site.Params.dateformat }}
-      {{ end }}
-    {{ end }}
+    {{ $format := partial "func/date-format.html" . }}
     {{ $datestr := time.Format $format .Date }}
     {{ $lastmodstr := time.Format $format .Lastmod }}
     {{ if ne $datestr $lastmodstr }}

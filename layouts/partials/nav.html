@@ -5,19 +5,8 @@
     <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Params.homeTitle | default .Site.Title }}</a>
     <div class="d-flex align-items-center">
       {{ if ne ($.Param "toc") false }}
-      {{ $hasToc := and .TableOfContents (findRE `<li>` .TableOfContents) }}
-      {{ $isListPage := or .IsSection .IsHome }}
-      {{ $hasListPages := false }}
-      {{ if $isListPage }}
-        {{ if .IsHome }}
-          {{ $mainSections := default (slice "post" "posts") site.Params.mainSections }}
-          {{ $filtered := where (where site.RegularPages "Type" "in" $mainSections) "Params.hidden" "!=" true }}
-          {{ $hasListPages = gt (len $filtered) 0 }}
-        {{ else }}
-          {{ $hasListPages = gt (len .Paginator.Pages) 0 }}
-        {{ end }}
-      {{ end }}
-      {{ if or $hasToc $hasListPages }}
+      {{ $tocState := partial "func/toc-state.html" . }}
+      {{ if or $tocState.hasToc $tocState.hasListPages }}
       <button class="theme-toggle" id="toc-toggle" aria-label="Table of contents" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Table of contents">
         <span class="fas fa-list"></span>
       </button>
@@ -43,14 +32,7 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="navbar-nav ms-auto">
         {{ range .Site.Menus.main.ByWeight }}
-          {{ $name := .Name }}
-          {{ with .Identifier }}
-            {{ $key := printf "menu_%s" . }}
-            {{ $translated := i18n $key }}
-            {{ if and $translated (ne $translated $key) }}
-              {{ $name = $translated }}
-            {{ end }}
-          {{ end }}
+          {{ $name := partial "func/menu-name.html" . }}
           {{ if .HasChildren }}
             <li class="nav-item dropdown" >
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,14 +40,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
                 {{ range .Children }}
-                  {{ $childName := .Name }}
-                  {{ with .Identifier }}
-                    {{ $key := printf "menu_%s" . }}
-                    {{ $translated := i18n $key }}
-                    {{ if and $translated (ne $translated $key) }}
-                      {{ $childName = $translated }}
-                    {{ end }}
-                  {{ end }}
+                  {{ $childName := partial "func/menu-name.html" . }}
                   <li><a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ $childName }}</a></li>
                 {{ end }}
               </ul>

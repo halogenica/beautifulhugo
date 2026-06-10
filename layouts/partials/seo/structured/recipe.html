@@ -32,20 +32,9 @@
   {{- $instructions = $instructions | append $s -}}
 {{- end -}}
 
-{{- $authors := partial "author_list.html" . -}}
-{{- $authorSchema := slice -}}
-{{- $authorIds := slice -}}
-{{- range $authors -}}
-  {{- $authorId := (print $.Site.BaseURL (print "#author-" (urlize .name))) }}
-  {{- $authorIds = $authorIds | append (dict "@id" $authorId) }}
-  {{- $a := dict
-    "@type" "Person"
-    "name" .name
-    "url" (or .url $.Site.BaseURL)
-    "@id" $authorId
-  -}}
-  {{- $authorSchema = $authorSchema | append $a -}}
-{{- end -}}
+{{- $authorData := partial "seo/structured/author-schema.html" . -}}
+{{- $authorSchema := $authorData.schema -}}
+{{- $authorIds := $authorData.ids -}}
 
 {{- $schema := dict
   "@type" (slice "Article" "Recipe")

@@ -1,0 +1,20 @@
+{{- /*
+  Resolves the display name for a navbar menu entry.
+
+  Defaults to the entry's `.Name`. If the entry declares an
+  `.Identifier`, it looks up an i18n string keyed `menu_<identifier>`
+  and uses the translation when one exists (i.e. differs from the key),
+  allowing menu labels to be localized without renaming the menu entry.
+
+  Takes: a menu entry.
+  Returns: the display name string.
+*/ -}}
+{{- $name := .Name -}}
+{{- with .Identifier -}}
+  {{- $key := printf "menu_%s" . -}}
+  {{- $translated := i18n $key -}}
+  {{- if and $translated (ne $translated $key) -}}
+    {{- $name = $translated -}}
+  {{- end -}}
+{{- end -}}
+{{- return $name -}}

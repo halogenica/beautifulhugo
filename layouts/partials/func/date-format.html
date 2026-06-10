@@ -1,0 +1,28 @@
+{{- /*
+  Resolves the date format string used to render page/post dates and
+  validates a user-supplied `Params.dateformat` against Go's reference
+  time layout.
+
+  Go's `time` package formats dates against the reference time
+  Mon Jan 2 15:04:05 MST 2006, so a string like "2023-10-15" silently
+  produces garbage. This partial heuristically checks that the resolved
+  format round-trips year/month/day and emits an `errorf` if it does not,
+  so misconfiguration fails the build instead of shipping wrong dates.
+
+  Locale tokens (formats beginning with ":", e.g. ":date_long") are
+  passed through untouched.
+
+  Takes: the page context (.).
+  Returns: the resolved format string.
+*/ -}}
+{{- $format := default (i18n "dateFormat") .Site.Params.dateformat -}}
+{{- if and .Site.Params.dateformat (not (strings.HasPrefix $format ":")) -}}
+  {{- $nowFmt := now.Format $format -}}
+  {{- $yearOK := or (not (findRE `2006` $format)) (findRE (now.Format "2006") $nowFmt) -}}
+  {{- $monthOK := or (findRE (now.Format "01") $nowFmt) (findRE (now.Format "Jan") $nowFmt) (findRE (now.Format "January") $nowFmt) -}}
+  {{- $dayOK := or (findRE (now.Format "02") $nowFmt) (findRE (now.Format "2") $nowFmt) -}}
+  {{- if or (not $yearOK) (not $monthOK) (not $dayOK) -}}
+    {{- errorf "beautifulhugo: Params.dateformat %q is not a valid Go time layout. Go uses the reference time Mon Jan 2 15:04:05 MST 2006 — use e.g. \"2006-01-02\" instead of \"2023-10-15\", or use a Hugo locale token like \":date_long\". See https://go.dev/src/time/format.go" .Site.Params.dateformat -}}
+  {{- end -}}
+{{- end -}}
+{{- return $format -}}
