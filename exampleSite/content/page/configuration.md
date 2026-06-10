@@ -117,7 +117,7 @@ When `selfHosted = true`, the following assets are served from `static/` instead
 | `wordCount` | bool | `false` | Show word count in post meta |
 | `hideAuthor` | bool | `false` | Hide author from post meta |
 | `socialShare` | bool | `false` | Enable social sharing buttons on posts |
-| `showRelatedPosts` | bool | `false` | Show related posts (by tag intersection) |
+| `showRelatedPosts` | bool | `false` | Show related posts, ranked by relevance via Hugo's [related-content engine](#related-posts) |
 | `related_content_limit` | int | `5` | Max number of related posts to display |
 | `rss` | bool | `false` | Show RSS icon in footer |
 | `disableFigureOverride` | bool | `false` | When `true`, use Hugo's native `<figure>` shortcode; `beautifulfigure` remains available |
@@ -140,6 +140,35 @@ When `selfHosted = true`, the following assets are served from `static/` instead
   showPostNav = true
   sourceRepo = "https://github.com/user/repo/blob/main/"
 ```
+
+### Related Posts
+
+When `showRelatedPosts = true`, each post displays a "See also" list of related content. This uses Hugo's built-in [related-content engine](https://gohugo.io/content-management/related/) (`.Site.RegularPages.Related`), which is index-backed and ranks suggestions by **relevance** rather than site order. The number of items shown is capped by `related_content_limit` (default `5`).
+
+> **Heads up:** Without a `[related]` configuration block, Hugo's defaults rank by the front-matter `keywords` and `date` indices — **not** by `tags`. If your posts rely on `tags` (as the theme historically did), add the `[related]` block below so tag overlap drives the ranking.
+
+The recommended setup preserves and improves on the old tag-based behavior by indexing `tags` (highest weight), then `keywords`, then `date`:
+
+```toml
+# Ranking configuration for showRelatedPosts (Hugo's related-content engine)
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "keywords"
+    weight = 80
+  [[related.indices]]
+    name = "date"
+    weight = 10
+```
+
+- `threshold` (0–100) controls how strong a match must be before a post is suggested; posts with no qualifying matches show no "See also" section.
+- `includeNewer = true` allows newer posts to be suggested (Hugo excludes them by default).
+- Each `[[related.indices]]` `weight` controls how much that field contributes to the relevance score.
 
 ### Table of Contents Panel
 

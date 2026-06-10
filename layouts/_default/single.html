@@ -44,7 +44,7 @@
         {{ end }}
 
         {{ if $.Param "showRelatedPosts" }}
-          {{- $related := where (where .Site.RegularPages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink }}
+          {{- $related := .Site.RegularPages.Related . }}
           {{- $num_to_show := $.Param "related_content_limit" | default 5 }}
           {{- with first $num_to_show $related }}
             <h4 class="see-also">{{ i18n "seeAlso" }}</h4>
