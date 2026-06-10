@@ -13,7 +13,7 @@
 {{- $items = $items | append (dict
   "@type" "ListItem"
   "position" $position
-  "name" "Home"
+  "name" (i18n "breadcrumbHomeLabel" | default "Home")
   "item" .Site.BaseURL
 ) -}}
 
@@ -56,7 +56,7 @@
   {{- $items = $items | append (dict
     "@type" "ListItem"
     "position" $position
-    "name" (print "Page " $paginator.PageNumber)
+    "name" (i18n "paginationPageLabel" $paginator.PageNumber | default (print "Page " $paginator.PageNumber))
     "item" $currentPageUrl
   ) -}}
 {{- end -}}

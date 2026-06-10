@@ -6,10 +6,10 @@
 {{- $listPages := $tocState.listPages -}}
 {{- if or $hasToc $hasListPages -}}
 <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="{{ if $isListPage }}posts{{ else }}headings{{ end }}">
-  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="{{ i18n "tocLabel" | default "Table of Contents" }}">
     <div class="toc-header">
-      <span class="toc-title">{{ if $isListPage }}Posts{{ else }}Table of Contents{{ end }}</span>
-      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+      <span class="toc-title">{{ if $isListPage }}{{ i18n "tocPostsLabel" | default "Posts" }}{{ else }}{{ i18n "tocLabel" | default "Table of Contents" }}{{ end }}</span>
+      <button class="toc-close" id="toc-close" aria-label="{{ i18n "tocCloseLabel" | default "Close table of contents" }}">&times;</button>
     </div>
     <nav class="toc-body">
       {{- if $isListPage -}}
