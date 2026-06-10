@@ -1,0 +1,10 @@
+{{- $type := .Get 0 | default "info" -}}
+{{- $title := .Get 1 -}}
+{{- $validTypes := slice "primary" "secondary" "info" "warning" "danger" "success" "light" "dark" "note" -}}
+{{- if not (in $validTypes $type) -}}
+  {{- $type = "info" -}}
+{{- end -}}
+<div class="alert alert-{{ $type }} callout" role="alert">
+{{- with $title }}<h5 class="alert-heading">{{ . | markdownify }}</h5>{{ end -}}
+{{ .Inner | markdownify }}
+</div>

@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "02.01.2006"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "Опубликовано {{ . }}"
 - id: lastModified
-  translation: "(Последнее изменение {{ . }})"
+  translation: "Последнее изменение {{ . }}"
 - id: translationsLabel
   translation: "Другие языки: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "минут"
 - id: words
   translation: "слова"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,13 +34,41 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: 'На базе <a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: 'На базе <a href="https://gohugo.io">Hugo v{{ .Version }}</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
   translation: "Навигация"
 - id: languageSwitcherLabel
   translation: "Язык"
+- id: searchToggleLabel
+  translation: "Поиск"
+- id: searchCloseLabel
+  translation: "Закрыть поиск"
+- id: searchPlaceholder
+  translation: "Поиск по записям и страницам…"
+- id: searchResultsLabel
+  translation: "Результаты поиска"
+- id: searchLoadingText
+  translation: "Поиск…"
+- id: searchNoResultsText
+  translation: "Нет результатов для "
+- id: searchResultSingular
+  translation: "результат для "
+- id: searchResultPlural
+  translation: "результатов для "
+- id: searchErrorIndexLoad
+  translation: "Ошибка загрузки поискового индекса."
+- id: searchErrorIndexLoading
+  translation: "Поисковый индекс ещё загружается."
+- id: searchPrevText
+  translation: "Предыдущий"
+- id: searchNextText
+  translation: "Следующий"
+- id: searchUntitledText
+  translation: "Без названия"
+- id: searchDisabledText
+  translation: "Поиск отключён."
 - id: gcseLabelShort
   translation: "Поиск"
 - id: gcseLabelLong
@@ -62,6 +91,10 @@
   translation: "Ваш адрес электронной почты"
 - id: yourWebsite
   translation: "Ваш сайт"
+- id: submit
+  translation: "Отправить"
+- id: close
+  translation: "Закрыть"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +102,113 @@
 - id: comments
   translation: "комментариев" 
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "Тема"
+- id: themeTooltipAuto
+  translation: "Авто (по системе)"
+- id: themeTooltipLight
+  translation: "Светлый режим"
+- id: themeTooltipDark
+  translation: "Тёмный режим"
+
 # Related posts
 - id: seeAlso
   translation: "Смотрите также"
+
+# Archive
+- id: all
+  translation: "Все"
+- id: archiveYearFilter
+  translation: "Фильтр по году"
+
+# Categories
+- id: categoriesLabel
+  translation: "Категории: "
+
+# View source
+- id: viewSource
+  translation: "Посмотреть исходник"
+# Menu items / Пункты меню
+- id: menu_setup
+  translation: "Настройка"
+- id: menu_configuration
+  translation: "Конфигурация"
+- id: menu_layout-options
+  translation: "Параметры макета"
+- id: menu_theming
+  translation: "Темы"
+- id: menu_seo-and-i18n
+  translation: "SEO и i18n"
+- id: menu_comments-and-social
+  translation: "Комментарии и соцсети"
+- id: menu_features
+  translation: "Возможности"
+- id: menu_pages-and-layouts
+  translation: "Страницы и макеты"
+- id: menu_shortcodes
+  translation: "Шорткоды"
+- id: menu_code-blocks
+  translation: "Блоки кода"
+- id: menu_markdown-extensions
+  translation: "Расширения Markdown"
+- id: menu_figures-and-galleries
+  translation: "Иллюстрации и галереи"
+- id: menu_math-and-diagrams
+  translation: "Математика и диаграммы"
+- id: menu_blog
+  translation: "Блог"
+- id: menu_post
+  translation: "Записи"
+- id: menu_tags
+  translation: "Теги"
+- id: menu_categories
+  translation: "Категории"
+- id: menu_archives
+  translation: "Архив"
+- id: menu_about
+  translation: "О сайте"
+
+# Recipe / Рецепт
+- id: recipePrepTime
+  translation: "Время подготовки"
+- id: recipeCookTime
+  translation: "Время приготовления"
+- id: recipeTotalTime
+  translation: "Общее время"
+- id: recipeYield
+  translation: "Порции"
+- id: recipeCategory
+  translation: "Категория"
+- id: recipeCuisine
+  translation: "Кухня"
+- id: recipeCalories
+  translation: "Калории"
+- id: recipeIngredients
+  translation: "Ингредиенты"
+- id: recipeInstructions
+  translation: "Инструкции"
+- id: recipeDay
+  translation:
+    one: "{{ .Count }} день"
+    few: "{{ .Count }} дня"
+    many: "{{ .Count }} дней"
+    other: "{{ .Count }} дня"
+- id: recipeHour
+  translation:
+    one: "{{ .Count }} час"
+    few: "{{ .Count }} часа"
+    many: "{{ .Count }} часов"
+    other: "{{ .Count }} часа"
+- id: recipeMinute
+  translation:
+    one: "{{ .Count }} минута"
+    few: "{{ .Count }} минуты"
+    many: "{{ .Count }} минут"
+    other: "{{ .Count }} минуты"
+- id: recipeSecond
+  translation:
+    one: "{{ .Count }} секунда"
+    few: "{{ .Count }} секунды"
+    many: "{{ .Count }} секунд"
+    other: "{{ .Count }} секунды"

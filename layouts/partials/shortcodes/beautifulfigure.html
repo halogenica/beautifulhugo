@@ -1,0 +1,39 @@
+<!--
+Beautiful figure shortcode implementation for Beautiful Hugo theme.
+Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-gallery/
+-->
+<!-- count how many times we've called this shortcode; load the css if it's the first time -->
+{{- if not ($.Page.Store.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | relURL }}" />{{ end }}
+{{- $.Page.Store.Set "figurecount" (add ($.Page.Store.Get "figurecount" | default 0) 1) -}}
+<!-- use either src or link-thumb for thumbnail image -->
+{{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
+{{- $src := .Get "link" | default (.Get "src") }}
+{{- $size := .Get "size" }}
+{{- $pageRel := .Page.RelPermalink }}
+{{- $thumb = cond (or (strings.HasPrefix $thumb "/") (strings.HasPrefix $thumb "http")) $thumb (print $pageRel $thumb) }}
+{{- $src = cond (or (strings.HasPrefix $src "/") (strings.HasPrefix $src "http")) $src (print $pageRel $src) }}
+<div class="box fancy-figure caption-position-{{ .Get "caption-position" | default "bottom" }}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}{{ with .Get "class" }} {{ . }}{{ end }}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
+  <figure {{- with .Get "class" }} class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | relURL }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
+      <img itemprop="thumbnail" src="{{ $thumb | relURL }}" {{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
+    </div>
+    {{- with $src }}
+    {{- $width := "" }}
+    {{- $height := "" }}
+    {{- if $size }}
+      {{- $sizes := split $size "x" }}
+      {{- $width = index $sizes 0 }}
+      {{- $height = index $sizes 1 }}
+    {{- end }}
+    <a href="{{ . | relURL }}" itemprop="contentUrl" target="_blank"
+      {{- if $size }} data-pswp-width="{{ $width }}" data-pswp-height="{{ $height }}"{{ end }}></a>
+    {{- end }}
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
+      <figcaption>
+        {{- with .Get "title" }}<h4>{{.}}</h4>{{ end }}
+        {{- with .Get "caption" }}<p>{{.}}</p>{{ end }}
+        {{- with .Get "attr" }}<p class="attr">{{- with $.Get "attrlink" }}<a href="{{.}}">{{ $.Get "attr" }}</a>{{ else }}{{.}}{{ end }}</p>{{ end }}
+      </figcaption>
+    {{- end }}
+  </figure>
+</div>

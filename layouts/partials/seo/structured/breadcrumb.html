@@ -1,21 +1,74 @@
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "{{ .Site.BaseURL }}",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "{{ .Permalink }}",
-          "name": "{{ .Title | humanize }}"
-        }
-    }]
-}
-</script>
+{{- $items := slice -}}
+{{- $position := 1 -}}
+{{- $schema := dict }}
+
+{{/* 1. Retrieve the Paginator data from the .Store */}}
+{{- $paginator := .Store.Get "paginator" }}
+{{- $currentPageUrl := .Store.Get "currentPageUrl" | default .Permalink }}
+
+{{- $isAbsoluteHome := .Store.Get "isAbsoluteHome" -}}
+
+{{- if not $isAbsoluteHome }}
+{{/* Home */}}
+{{- $items = $items | append (dict
+  "@type" "ListItem"
+  "position" $position
+  "name" "Home"
+  "item" .Site.BaseURL
+) -}}
+
+{{/* Ancestors */}}
+{{- range where .Ancestors.Reverse "IsHome" false -}}
+  {{- $position = add $position 1 -}}
+
+  {{/* Get Directory name if .Title is not set */}}
+  {{- $segments := split (trim .Path "/") "/" -}}
+  {{- $last := index $segments (sub (len $segments) 1) -}}
+  {{- $title := .Title | default $last -}}
+
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" $title
+    "item" .Permalink
+  ) -}}
+{{- end -}}
+
+{{/* Current page (e.g., "Posts" section or an individual post) */}}
+{{- if not .IsHome -}}
+  {{- $position = add $position 1 -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" .Title
+    "item" .Permalink
+  ) -}}
+{{- end -}}
+
+{{/* 2. FIXED: Handle Paginator Deep Pages (Page 2, 3, etc.) */}}
+{{- if and $paginator (gt $paginator.PageNumber 1) }}
+  {{/* REMOVED the "if not .IsHome" block that was re-adding the section title.
+     The code block directly above already handled adding the section. 
+  */}}
+
+  {{/* Append ONLY the final virtual page indicator */}}
+  {{- $position = add $position 1 -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" (print "Page " $paginator.PageNumber)
+    "item" $currentPageUrl
+  ) -}}
+{{- end -}}
+
+{{/* 3. FIX: Construct the strict @id using the accurate current page URL */}}
+{{- $id := printf "%s#breadcrumb" $currentPageUrl -}}
+
+{{- $schema = (dict
+  "@type" "BreadcrumbList"
+  "@id" $id
+  "itemListElement" $items)
+-}}
+{{- end }}
+
+{{- return $schema }}

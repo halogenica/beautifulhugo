@@ -1,0 +1,92 @@
+{{ define "main" }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        {{ with .Content }}
+          <div class="content-section">
+            {{ . }}
+          </div>
+        {{ end }}
+
+{{ $mainSections := default (slice "post" "posts") site.Params.mainSections }}
+{{ $pages := where (where site.RegularPages.ByDate.Reverse "Section" "in" $mainSections) "Params.hidden" "!=" true }}
+{{ $groups := $pages.GroupByDate "2006" }}
+        {{ $years := slice }}
+        {{ range $groups }}
+          {{ $years = $years | append .Key }}
+        {{ end }}
+
+        <nav class="archive-year-nav" aria-label="{{ i18n "archiveYearFilter" }}">
+          <button class="archive-year-btn active" data-year="all">{{ i18n "all" }}</button>
+          {{ range $years }}
+            <button class="archive-year-btn" data-year="{{ . }}">{{ . }}</button>
+          {{ end }}
+        </nav>
+
+        {{ range $groups }}
+          <section class="archive-group" data-year="{{ .Key }}">
+            <h2 class="archive-year-heading">{{ .Key }}</h2>
+            <div class="archive-list">
+              {{ range .Pages }}
+                <a href="{{ .Permalink }}" class="archive-item">
+                  <span class="archive-item-title">{{ .Title }}</span>
+                  {{ if .Params.subtitle }}
+                    <span class="archive-item-subtitle">{{ .Params.subtitle }}</span>
+                  {{ end }}
+                  <span class="archive-item-date">
+                    {{ $format := default (i18n "dateFormat") site.Params.dateformat }}
+                    {{ time.Format $format .Date }}
+                  </span>
+                </a>
+              {{ end }}
+            </div>
+          </section>
+        {{ end }}
+
+        <script>
+        (function() {
+          var nav = document.querySelector('.archive-year-nav');
+          if (!nav) return;
+          var buttons = nav.querySelectorAll('.archive-year-btn');
+          var groups = document.querySelectorAll('.archive-group');
+
+          function showYear(year) {
+            buttons.forEach(function(btn) {
+              btn.classList.toggle('active', btn.getAttribute('data-year') === year);
+            });
+            groups.forEach(function(group) {
+              var gy = group.getAttribute('data-year');
+              var show = year === 'all' || gy === year;
+              group.style.display = show ? '' : 'none';
+              var heading = group.querySelector('.archive-year-heading');
+              if (heading) heading.style.display = year === 'all' ? '' : 'none';
+            });
+            if (year !== 'all' && history.replaceState) {
+              history.replaceState(null, '', '#' + year);
+            } else if (history.replaceState) {
+              history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+          }
+
+          nav.addEventListener('click', function(e) {
+            var btn = e.target.closest('.archive-year-btn');
+            if (!btn) return;
+            showYear(btn.getAttribute('data-year'));
+          });
+
+          var hash = window.location.hash.replace('#', '');
+          if (hash) {
+            var match = false;
+            buttons.forEach(function(btn) {
+              if (btn.getAttribute('data-year') === hash) match = true;
+            });
+            if (match) showYear(hash);
+          } else {
+            showYear('all');
+          }
+        })();
+        </script>
+      </div>
+    </div>
+  </div>
+{{ end }}

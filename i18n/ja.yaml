@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "2006年1月2日"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2 Jan, 2006 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "{{ . }}に投稿"
 - id: lastModified
-  translation: "(最終更新日時{{ . }})"
+  translation: "最終更新日時{{ . }}"
 - id: translationsLabel
   translation: "翻訳："
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "分間"
 - id: words
   translation: "言葉"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,13 +34,41 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '起動力に<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> &nbsp;&bull;&nbsp; テーマに<a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>に基づいている<a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '起動力に<a href="https://gohugo.io">Hugo v{{ .Version }}</a> &nbsp;&bull;&nbsp; テーマに<a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>に基づいている<a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
   translation: "メニューを切り替え"
 - id: languageSwitcherLabel
   translation: "言語"
+- id: searchToggleLabel
+  translation: "検索"
+- id: searchCloseLabel
+  translation: "検索を閉じる"
+- id: searchPlaceholder
+  translation: "投稿とページを検索…"
+- id: searchResultsLabel
+  translation: "検索結果"
+- id: searchLoadingText
+  translation: "検索中…"
+- id: searchNoResultsText
+  translation: "結果なし："
+- id: searchResultSingular
+  translation: "件の結果："
+- id: searchResultPlural
+  translation: "件の結果："
+- id: searchErrorIndexLoad
+  translation: "検索インデックスの読み込みエラー。"
+- id: searchErrorIndexLoading
+  translation: "検索インデックスはまだ読み込み中です。"
+- id: searchPrevText
+  translation: "前へ"
+- id: searchNextText
+  translation: "次へ"
+- id: searchUntitledText
+  translation: "無題"
+- id: searchDisabledText
+  translation: "検索は無効です。"
 - id: gcseLabelShort
   translation: "検索"
 - id: gcseLabelLong
@@ -62,13 +91,112 @@
   translation: "メールアドレス"
 - id: yourWebsite
   translation: "ウェブサイト"
+- id: submit
+  translation: "送信"
+- id: close
+  translation: "閉じる"
 
 # Delayed Disqus
 - id: show
-  translation: "ショー"
+  translation: "表示"
 - id: comments
   translation: "コメント" 
+
+# Theme toggle
+- id: themeToggleLabel
+  translation: "テーマ"
+- id: themeTooltipAuto
+  translation: "自動（システムに従う）"
+- id: themeTooltipLight
+  translation: "ライトモード"
+- id: themeTooltipDark
+  translation: "ダークモード"
 
 # Related posts
 - id: seeAlso
   translation: "も参照してください"
+
+# Archive
+- id: all
+  translation: "すべて"
+- id: archiveYearFilter
+  translation: "年で絞り込む"
+
+# Categories
+- id: categoriesLabel
+  translation: "カテゴリー: "
+
+# View source
+- id: viewSource
+  translation: "ソースを見る"
+# Menu items / メニュー項目
+- id: menu_setup
+  translation: "セットアップ"
+- id: menu_configuration
+  translation: "設定"
+- id: menu_layout-options
+  translation: "レイアウトオプション"
+- id: menu_theming
+  translation: "テーマ設定"
+- id: menu_seo-and-i18n
+  translation: "SEO & i18n"
+- id: menu_comments-and-social
+  translation: "コメント & ソーシャル"
+- id: menu_features
+  translation: "機能"
+- id: menu_pages-and-layouts
+  translation: "ページ & レイアウト"
+- id: menu_shortcodes
+  translation: "ショートコード"
+- id: menu_code-blocks
+  translation: "コードブロック"
+- id: menu_markdown-extensions
+  translation: "Markdown拡張"
+- id: menu_figures-and-galleries
+  translation: "図表 & ギャラリー"
+- id: menu_math-and-diagrams
+  translation: "数式 & 図解"
+- id: menu_blog
+  translation: "ブログ"
+- id: menu_post
+  translation: "投稿"
+- id: menu_tags
+  translation: "タグ"
+- id: menu_categories
+  translation: "カテゴリー"
+- id: menu_archives
+  translation: "アーカイブ"
+- id: menu_about
+  translation: "概要"
+
+# Recipe / レシピ
+- id: recipePrepTime
+  translation: "準備時間"
+- id: recipeCookTime
+  translation: "調理時間"
+- id: recipeTotalTime
+  translation: "合計時間"
+- id: recipeYield
+  translation: "分量"
+- id: recipeCategory
+  translation: "カテゴリ"
+- id: recipeCuisine
+  translation: "料理"
+- id: recipeCalories
+  translation: "カロリー"
+- id: recipeIngredients
+  translation: "材料"
+- id: recipeInstructions
+  translation: "作り方"
+- id: recipeDay
+  translation:
+    other: "{{ .Count }}日"
+- id: recipeHour
+  translation:
+    other: "{{ .Count }}時間"
+- id: recipeMinute
+  translation:
+    other: "{{ .Count }}分"
+- id: recipeSecond
+  translation:
+    other: "{{ .Count }}秒"

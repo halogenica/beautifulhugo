@@ -1,12 +1,12 @@
 # Content
 - id: dateFormat
-  translation: "2006년 1월 2일"
+  translation: ":date_long"
 - id: shortdateFormat
-  translation: "2006. 1. 2. 15:04:05"
+  translation: ":date_medium"
 - id: postedOnDate
   translation: "{{ . }}에 게시됨"
 - id: lastModified
-  translation: "({{ . }}에 마지막으로 수정됨)"
+  translation: "{{ . }}에 마지막으로 수정됨"
 - id: translationsLabel
   translation: "다른 언어: "
 - id: translationsSeparator
@@ -25,7 +25,8 @@
   translation: "분"
 - id: words
   translation: "단어"
-
+- id: readingTime
+  translation: ""
 
 # 404 page
 - id: pageNotFound
@@ -33,13 +34,41 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '<a href="https://gohugo.io">Hugo v{{ .Site.Hugo.Version }}</a> 을 사용함 &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> 를 개조한 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 테마'
+  translation: '<a href="https://gohugo.io">Hugo v{{ .Version }}</a> 을 사용함 &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> 를 개조한 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 테마'
 
 # Navigation
 - id: toggleNavigation
   translation: "네비게이션 토글"
 - id: languageSwitcherLabel
   translation: "언어"
+- id: searchToggleLabel
+  translation: "검색"
+- id: searchCloseLabel
+  translation: "검색 닫기"
+- id: searchPlaceholder
+  translation: "게시물과 페이지 검색…"
+- id: searchResultsLabel
+  translation: "검색 결과"
+- id: searchLoadingText
+  translation: "검색 중…"
+- id: searchNoResultsText
+  translation: "결과 없음: "
+- id: searchResultSingular
+  translation: "개 결과: "
+- id: searchResultPlural
+  translation: "개 결과: "
+- id: searchErrorIndexLoad
+  translation: "검색 인덱스 로드 오류."
+- id: searchErrorIndexLoading
+  translation: "검색 인덱스가 아직 로드 중입니다."
+- id: searchPrevText
+  translation: "이전"
+- id: searchNextText
+  translation: "다음"
+- id: searchUntitledText
+  translation: "제목 없음"
+- id: searchDisabledText
+  translation: "검색이 비활성화되었습니다."
 - id: gcseLabelShort
   translation: "검색"
 - id: gcseLabelLong
@@ -62,6 +91,10 @@
   translation: "이메일"
 - id: yourWebsite
   translation: "웹사이트"
+- id: submit
+  translation: "제출"
+- id: close
+  translation: "닫기"
 
 # Delayed Disqus
 - id: show
@@ -69,6 +102,102 @@
 - id: comments
   translation: "댓글"
 
+# Theme toggle
+- id: themeToggleLabel
+  translation: "테마"
+- id: themeTooltipAuto
+  translation: "자동 (시스템 따름)"
+- id: themeTooltipLight
+  translation: "라이트 모드"
+- id: themeTooltipDark
+  translation: "다크 모드"
+
 # Related posts
 - id: seeAlso
   translation: "더 보기"
+
+# Archive
+- id: all
+  translation: "전체"
+- id: archiveYearFilter
+  translation: "연도별 필터"
+
+# Categories
+- id: categoriesLabel
+  translation: "카테고리: "
+
+# View source
+- id: viewSource
+  translation: "소스 보기"
+
+# Menu items / 메뉴 항목
+- id: menu_setup
+  translation: "설정"
+- id: menu_configuration
+  translation: "구성"
+- id: menu_layout-options
+  translation: "레이아웃 옵션"
+- id: menu_theming
+  translation: "테마 설정"
+- id: menu_seo-and-i18n
+  translation: "SEO & i18n"
+- id: menu_comments-and-social
+  translation: "댓글 & 소셜"
+- id: menu_features
+  translation: "기능"
+- id: menu_pages-and-layouts
+  translation: "페이지 & 레이아웃"
+- id: menu_shortcodes
+  translation: "숏코드"
+- id: menu_code-blocks
+  translation: "코드 블록"
+- id: menu_markdown-extensions
+  translation: "마크다운 확장"
+- id: menu_figures-and-galleries
+  translation: "그림 & 갤러리"
+- id: menu_math-and-diagrams
+  translation: "수식 & 다이어그램"
+- id: menu_blog
+  translation: "블로그"
+- id: menu_post
+  translation: "게시물"
+- id: menu_tags
+  translation: "태그"
+- id: menu_categories
+  translation: "카테고리"
+- id: menu_archives
+  translation: "아카이브"
+- id: menu_about
+  translation: "소개"
+
+# Recipe / 레시피
+- id: recipePrepTime
+  translation: "준비 시간"
+- id: recipeCookTime
+  translation: "조리 시간"
+- id: recipeTotalTime
+  translation: "총 시간"
+- id: recipeYield
+  translation: "분량"
+- id: recipeCategory
+  translation: "카테고리"
+- id: recipeCuisine
+  translation: "요리"
+- id: recipeCalories
+  translation: "칼로리"
+- id: recipeIngredients
+  translation: "재료"
+- id: recipeInstructions
+  translation: "조리법"
+- id: recipeDay
+  translation:
+    other: "{{ .Count }}일"
+- id: recipeHour
+  translation:
+    other: "{{ .Count }}시간"
+- id: recipeMinute
+  translation:
+    other: "{{ .Count }}분"
+- id: recipeSecond
+  translation:
+    other: "{{ .Count }}초"

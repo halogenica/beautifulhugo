@@ -1,74 +1,128 @@
 /*
-Put this file in /static/js/load-photoswipe.js
-Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
+  Put this file in /static/js/load-photoswipe.js
+  Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 */
 
-/* TODO: Make the share function work */
-$( document ).ready(function() {
-	/*
-	Initialise Photoswipe
-	*/
-	var items = []; // array of slide objects that will be passed to PhotoSwipe()
-	// for every figure element on the page:
-	$('figure').each( function() {
-		if ($(this).attr('class') == 'no-photoswipe') return true; // ignore any figures where class="no-photoswipe"
-		// get properties from child a/img/figcaption elements,
-		var $figure = $(this),
-			$a 		= $figure.find('a'),
-			$img 	= $figure.find('img'),
-			$title  = $img.attr('alt'),
-			$msrc	= $img.attr('src');
-		// if data-size on <a> tag is set, read it and create an item
-		if ($a.data('size')) {
-			$src	= $a.attr('href');
-			var $size 	= $a.data('size').split('x');
-			var item = {
-				src		: $src,
-				w		: $size[0],
-				h 		: $size[1],
-				title 	: $title,
-				msrc	: $msrc
-			};
-			//console.log("Using pre-defined dimensions for " + $src);
-		// if not, set temp default size then load the image to check actual size
-		} else {
-			var item = {
-				src		: $msrc,
-				w		: 800, // temp default size
-				h 		: 600, // temp default size
-				title 	: $title,
-				msrc	: $msrc
-			};
-			//console.log("Using default dimensions for " + $msrc);
-			// load the image to check its dimensions
-			// update the item as soon as w and h are known (check every 30ms)
-			var img = new Image(); 
-			img.src = $msrc;
-			var wait = setInterval(function() {
-				var w = img.naturalWidth,
-					h = img.naturalHeight;
-				if (w && h) {
-					clearInterval(wait);
-					item.w = w;
-					item.h = h;
-					//console.log("Got actual dimensions for " + img.src);
-				}
-			}, 30);
-	   	}
-		// Save the index of this image then add it to the array
-		var index = items.length;
-		items.push(item);
-		// Event handler for click on a figure
-		$figure.on('click', function(event) {
-			event.preventDefault(); // prevent the normal behaviour i.e. load the <a> hyperlink
-			// Get the PSWP element and initialise it with the desired options
-			var $pswp = $('.pswp')[0];
-			var options = {
-				index: index, 
-				bgOpacity: 0.8,
-				showHideOpacity: true
-			}
-			new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options).init();
-		});	
-	});
+/* PhotoSwipe 5 integration for Beautiful Hugo */
+$(document).ready(function () {
+    var items = [];
+    var figureEls = [];
+
+    // Scan all <figure> elements and build the slide data array.
+    $('figure').each(function () {
+        if ($(this).attr('class') === 'no-photoswipe') return true;
+
+        var $figure = $(this);
+        var $a = $figure.find('a');
+        if (!$a.length) return true;
+
+        var src = $a.attr('href');
+        var sizeAttr = $a.data('size');
+        var width = sizeAttr ? parseInt(sizeAttr.split('x')[0], 10) : 0;
+        var height = sizeAttr ? parseInt(sizeAttr.split('x')[1], 10) : 0;
+
+        var $figcaption = $figure.find('figcaption');
+        var captionHtml = '';
+        if ($figcaption.length) {
+            captionHtml = $figcaption.html();
+        }
+
+        items.push({
+            src: src,
+            width: width,
+            height: height,
+            alt: $figure.find('img').attr('alt') || '',
+            caption: captionHtml
+        });
+        figureEls.push($figure[0]);
+    });
+
+    if (!items.length) return;
+
+    // Resolve all missing dimensions, pre-caching images in the process.
+    Promise.all(items.map(function (item) {
+        if (item.width > 0 && item.height > 0) {
+            return Promise.resolve(item);
+        }
+        return new Promise(function (resolve) {
+            var img = new Image();
+            img.onload = function () {
+                item.width = img.naturalWidth;
+                item.height = img.naturalHeight;
+                resolve(item);
+            };
+            img.onerror = function () {
+                item.width = 800;
+                item.height = 600;
+                resolve(item);
+            };
+            // Start loading without blocking UI
+            img.src = item.src;
+        });
+    })).then(function () {
+        // Lightbox options kept minimal – rely on PhotoSwipe 5 defaults
+        var lightbox = new PhotoSwipeLightbox({
+            dataSource: items,
+            pswpModule: PhotoSwipe,
+            bgOpacity: 1,
+            showHideAnimationType: 'fade',
+            padding: { top: 40, bottom: 40, left: 40, right: 40 }
+        });
+
+        lightbox.on('uiRegister', function () {
+            lightbox.pswp.ui.registerElement({
+                name: 'default-caption',
+                order: 9,
+                isButton: false,
+                appendTo: 'root',
+                onInit: function (el) {
+                    el.style.position = 'absolute';
+                    el.style.bottom = '15px';
+                    el.style.left = '0';
+                    el.style.right = '0';
+                    el.style.padding = '0 20px';
+                    el.style.color = 'rgba(255, 255, 255, 0.7)';
+                    el.style.fontSize = '14px';
+                    el.style.textAlign = 'center';
+                    el.style.pointerEvents = 'none';
+
+                    lightbox.pswp.on('change', function () {
+                        var slide = lightbox.pswp.currSlide;
+                        if (slide && slide.data && slide.data.caption) {
+                            el.innerHTML = slide.data.caption;
+                            var $attrLink = el.querySelector('a');
+                            if ($attrLink) {
+                                $attrLink.style.pointerEvents = 'auto';
+                                $attrLink.style.color = 'rgba(255, 255, 255, 0.8)';
+                            }
+                            var $attr = el.querySelector('p.attr');
+                            if ($attr) {
+                                $attr.style.fontSize = '0.9em';
+                                $attr.style.opacity = '0.8';
+                            }
+                        } else {
+                            el.innerHTML = '';
+                        }
+                    });
+                }
+            });
+        });
+
+        lightbox.init();
+
+        // Wire up click handlers.
+        $('figure').each(function () {
+            if ($(this).attr('class') === 'no-photoswipe') return true;
+            if (!$(this).find('a').length) return true;
+
+            $(this).on('click', function (event) {
+                if ($(event.target).closest('figcaption a').length) return;
+                event.preventDefault();
+                var idx = figureEls.indexOf(this);
+                if (idx >= 0) {
+                    lightbox.loadAndOpen(idx);
+                }
+            });
+        });
+    });
 });

@@ -1,9 +1,11 @@
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "{{ .Site.Title }}",
-    {{ with .Site.Params.alternatePageName }}"alternateName": "{{ . }}",{{ end }}
-    "url": "{{ .Site.BaseURL }}"
-}
-</script>
+{{- $schema := dict
+  "@type" "WebSite"
+  "@id" (printf "%s#website" .Site.BaseURL)
+  "name" .Site.Title
+  "url" .Site.BaseURL
+  "publisher" (dict "@id" (print .Site.BaseURL "#organization"))
+-}}
+{{- with .Site.Params.alternatePageName -}}
+  {{- $schema = merge $schema (dict "alternateName" .) -}}
+{{- end -}}
+{{- return $schema -}}

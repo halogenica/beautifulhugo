@@ -1,0 +1,39 @@
+{{- if ne ($.Param "toc") false -}}
+{{- $isListPage := or .IsSection .IsHome -}}
+{{- $hasToc := and .TableOfContents (findRE `<li>` .TableOfContents) -}}
+{{- $hasListPages := false -}}
+{{- $listPages := slice -}}
+{{- if $isListPage -}}
+  {{- if .IsHome -}}
+    {{- $mainSections := default (slice "post" "posts") site.Params.mainSections -}}
+    {{- $listPages = where (where site.RegularPages "Type" "in" $mainSections) "Params.hidden" "!=" true -}}
+  {{- else -}}
+    {{- $listPages = .Paginator.Pages -}}
+  {{- end -}}
+  {{- $hasListPages = gt (len $listPages) 0 -}}
+{{- end -}}
+{{- if or $hasToc $hasListPages -}}
+<div class="toc-wrapper" id="toc-wrapper" data-toc-mode="{{ if $isListPage }}posts{{ else }}headings{{ end }}">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">{{ if $isListPage }}Posts{{ else }}Table of Contents{{ end }}</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body">
+      {{- if $isListPage -}}
+      <ul class="toc-post-list">
+        {{- range $listPages -}}
+        {{- if ne .Params.hidden true -}}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{- end -}}
+        {{- end -}}
+      </ul>
+      {{- else -}}
+      {{ .TableOfContents }}
+      {{- end -}}
+    </nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
+{{- end -}}
+{{- end -}}

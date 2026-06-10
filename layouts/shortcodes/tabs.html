@@ -1,0 +1,65 @@
+{{- $tabsIndex := add (default 0 (.Page.Store.Get "tabsCounter")) 1 -}}
+{{- .Page.Store.Set "tabsCounter" $tabsIndex -}}
+{{- $instanceId := printf "tabs-%d" $tabsIndex -}}
+{{- $explicitGroup := .Get "groupId" -}}
+{{- $content := .Inner -}}
+{{- $groupId := $explicitGroup -}}
+{{- if not $groupId -}}
+  {{- $groupId = .Page.Store.Get "tabs-last-auto-group" -}}
+  {{- .Page.Store.Delete "tabs-last-auto-group" -}}
+{{- end -}}
+{{- if not $groupId -}}
+  {{- $groupId = $instanceId -}}
+{{- end -}}
+{{- $tabsKey := printf "tabs-data-%s" $groupId -}}
+{{- $tabs := .Page.Store.Get $tabsKey -}}
+{{- .Page.Store.Delete $tabsKey -}}
+{{- .Page.Store.Delete (printf "tabs-ordinal-%s" $groupId) -}}
+
+<div class="tabs-shortcode" id="{{ $instanceId }}" data-tabs-group="{{ $groupId }}">
+  <ul class="nav nav-tabs" id="{{ $instanceId }}-tablist" role="tablist">
+    {{- range $tabs -}}
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link{{ if .active }} active{{ end }}"
+          id="{{ .buttonId }}"
+          type="button"
+          role="tab"
+          data-bs-toggle="tab"
+          data-bs-target="#{{ .paneId }}"
+          {{- if $explicitGroup }}
+          data-tab-group="{{ $groupId }}"
+          data-tab-key="{{ .key }}"
+          {{- end }}
+          aria-controls="{{ .paneId }}"
+          aria-selected="{{ if .active }}true{{ else }}false{{ end }}">{{ .title }}</button>
+      </li>
+    {{- end -}}
+  </ul>
+
+  <div class="tab-content" id="{{ $instanceId }}-content">
+    {{ $content }}
+  </div>
+</div>
+
+{{- if $explicitGroup -}}
+  {{- $syncKey := printf "tabs-sync-%s" $explicitGroup -}}
+  {{- if not (.Page.Store.Get $syncKey) -}}
+    {{- .Page.Store.Set $syncKey true -}}
+    <script>
+      document.addEventListener('shown.bs.tab', (event) => {
+        const button = event.target;
+        const syncGroup = button?.dataset?.tabGroup;
+        const syncKey = button?.dataset?.tabKey;
+        if (!syncGroup || !syncKey) return;
+
+        document.querySelectorAll('.tabs-shortcode .nav-link').forEach((candidate) => {
+          if (candidate === button) return;
+          if (candidate.dataset.tabGroup !== syncGroup || candidate.dataset.tabKey !== syncKey) return;
+          if (candidate.classList.contains('active')) return;
+          bootstrap.Tab.getOrCreateInstance(candidate).show();
+        });
+      });
+    </script>
+  {{- end -}}
+{{- end -}}

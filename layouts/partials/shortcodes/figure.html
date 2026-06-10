@@ -1,0 +1,23 @@
+{{/* Appoxamate the built-in figure shortcode, since we override it */}}
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{- $src := .Get "src" }}
+  {{- $thumb := .Get "link" | default $src }}
+  {{- $pageRel := .Page.RelPermalink }}
+  {{- $thumb = cond (or (strings.HasPrefix $thumb "/") (strings.HasPrefix $thumb "http")) $thumb (print $pageRel $thumb) }}
+  <img src="{{ $thumb | relURL }}"
+       {{- with .Get "alt" }} alt="{{ . }}"{{ end }}
+       {{- with .Get "title" }} title="{{ . }}"{{ end }}
+       {{- with .Get "width" }} width="{{ . }}"{{ end }}
+       {{- with .Get "height" }} height="{{ . }}"{{ end }} />
+  {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") }}
+    <figcaption>
+      {{- with .Get "title" }}<h4>{{ . }}</h4>{{ end }}
+      {{- if or (.Get "caption") (.Get "attr") }}
+        <p>
+          {{- .Get "caption" -}}
+          {{- with .Get "attrlink"}}<a href="{{.}}">{{ .Get "attr" }}</a>{{ else }}{{ .Get "attr" }}{{ end -}}
+        </p>
+      {{- end }}
+    </figcaption>
+  {{- end }}
+</figure>
