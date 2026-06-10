@@ -3,6 +3,8 @@
 {{- if eq $mathEngine "katex" }}
 <script defer src="{{ "js/katex.min.js" | relURL }}"></script>
 <script defer src="{{ "js/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body);"></script>
+{{- else if eq $mathEngine "mathjax" }}
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.min.js" crossorigin="anonymous"></script>
 {{- end }}
 <script src="{{ "js/jquery-4.0.0.slim.min.js" | relURL }}"></script>
 <script src="{{ "js/bootstrap.min.js" | relURL }}"></script>
