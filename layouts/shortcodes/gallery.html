@@ -5,7 +5,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
 {{- if not ($.Page.Store.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | relURL }}" />{{ end }}
 {{- $.Page.Store.Set "figurecount" (add ($.Page.Store.Get "figurecount" | default 0) 1) }}
-<div class="gallery caption-position-{{ with .Get "caption-position" | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}} hover-effect-{{ with .Get "hover-effect" | default "zoom" }}{{.}}{{end}} {{ if ne (.Get "hover-transition") "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">
+<div class="gallery caption-position-{{ with .Get "caption-position" | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}} hover-effect-{{ with .Get "hover-effect" | default "zoom" }}{{.}}{{end}} {{ if ne (.Get "hover-transition") "none" }}hover-transition{{end}}" itemscope itemtype="https://schema.org/ImageGallery">
 	{{- with (.Get "dir") -}}
 		{{- $files := readDir (print "/static/" .) }}
 		{{- range $files -}}
@@ -19,7 +19,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 				{{- $thumbexists := where $files "Name" $thumb }}
 				{{- $thumbURL := relURL (strings.TrimPrefix "/" (print ($.Get "dir") "/" $thumb)) }}
 				<div class="box">
-				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				  <figure itemprop="associatedMedia" itemscope itemtype="https://schema.org/ImageObject">
 				    <div class="img" style="background-image: url('{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}');" >
 				      <img itemprop="thumbnail" src="{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}" alt="{{ $caption }}" /><!-- <img> hidden if in .gallery -->
 				    </div>

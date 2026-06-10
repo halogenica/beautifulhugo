@@ -6,7 +6,7 @@
 {{- $themeAttr := "" -}}
 {{- if eq $themeMode "dark" -}}{{ $themeAttr = ` data-theme="dark"` }}{{ else if eq $themeMode "light" -}}{{ $themeAttr = ` data-theme="light"` }}{{ end -}}
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage"{{ $themeAttr | safeHTMLAttr }}>
+<html lang="{{ .Lang }}" itemscope itemtype="https://schema.org/WebPage"{{ $themeAttr | safeHTMLAttr }}>
   <head>
     {{- if eq $themeMode "auto" -}}
     <script>
