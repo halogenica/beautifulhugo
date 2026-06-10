@@ -38,7 +38,7 @@
   <script>
     window.searchProviderConfig = {
      provider: "{{ $searchProvider }}",
-     searchIndexURL: {{ "index.json" | relURL }},
+     searchIndexURL: {{ "index.json" | relLangURL }},
      searchPageURL: {{ "search" | relLangURL }}
     };
     window.searchConfig = {
