@@ -47,7 +47,7 @@
 {{- end }}
 {{- partial "seo/main.html" . }}  
 {{- with .Site.Params.favicon }}
-  <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
+  <link href='{{ strings.TrimPrefix "/" . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
 <!-- Hugo Version number -->
   {{ hugo.Generator -}}

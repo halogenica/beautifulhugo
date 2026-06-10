@@ -5,7 +5,7 @@
 <meta property="og:description" content="{{ . }}">
 {{- end }}
 {{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
-<meta property="og:image" content="{{ . | absURL }}" />
+<meta property="og:image" content="{{ strings.TrimPrefix "/" . | absURL }}" />
 {{- end }}
 {{- with .Site.Params.fb_app_id }}
 <meta property="fb:app_id" content="{{ . }}" />

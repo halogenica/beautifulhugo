@@ -5,7 +5,7 @@
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
 {{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
-  <meta name="twitter:image" content="{{ . | absURL }}" />
+  <meta name="twitter:image" content="{{ strings.TrimPrefix "/" . | absURL }}" />
 {{- end }}
   <meta name="twitter:card" content="summary_large_image" />
 {{- with .Site.Params.author.twitter }}
