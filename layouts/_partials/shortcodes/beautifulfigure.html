@@ -8,6 +8,14 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 {{- $src := .Get "link" | default (.Get "src") }}
 {{- $size := .Get "size" }}
 {{- $pageRel := .Page.RelPermalink }}
+{{- /* An explicit background colour applies in both light and dark mode, unlike the
+       dark-mode-only "white" class. Validated so the value cannot escape the style attribute. */ -}}
+{{- $background := .Get "background-color" }}
+{{- with $background }}
+  {{- if not (findRE `^(#[0-9A-Fa-f]{3,8}|[A-Za-z]+|(rgba?|hsla?)\([0-9A-Za-z.,%/+\- ]+\)|var\(--[A-Za-z0-9_-]+\))$` .) }}
+    {{- errorf "beautifulfigure: background-color %q is not a plain CSS colour at %s" . $.Position }}
+  {{- end }}
+{{- end }}
 {{- /* Page-bundle and assets/ images get resized variants and known dimensions. */ -}}
 {{- $srcset := "" }}
 {{- with partial "func/image-resource.html" (dict "Page" .Page "Src" $thumb) }}
@@ -33,7 +41,10 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 {{- end }}
 <div class="box fancy-figure caption-position-{{ .Get "caption-position" | default "bottom" }}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}{{ with .Get "class" }} {{ . }}{{ end }}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
   <figure {{- with .Get "class" }} class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="https://schema.org/ImageObject">
-    <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
+    {{- $imgStyle := slice }}
+    {{- if .Parent }}{{ $imgStyle = $imgStyle | append (printf "background-image: url('%s');" $thumb) }}{{ end }}
+    {{- with $background }}{{ $imgStyle = $imgStyle | append (printf "background-color: %s;" .) }}{{ end }}
+    <div class="img"{{ with $imgStyle }} style="{{ delimit . " " | safeCSS }}"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
       <img itemprop="thumbnail" src="{{ $thumb }}" {{ with $srcset }}srcset="{{ . }}" sizes="(max-width: 768px) 100vw, 768px" {{ end }}{{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
     </div>
     {{- with $src }}

@@ -75,6 +75,18 @@ Add `class="white"` to give the figure a white background, which helps images wi
 {{</* beautifulfigure src="/img/global-ike.png" caption="White background for dark mode" class="white center" width="25%" */>}}
 ```
 
+### With a custom background color
+
+`class="white"` only applies in dark mode. Use `background-color` to set an explicit color that applies in both light and dark mode. This is useful when pure white is too bright:
+
+{{< beautifulfigure src="/img/global-ike.png" caption="Custom background color" background-color="#ffffff5b" class="center" width="25%" >}}
+
+```markdown
+{{</* beautifulfigure src="/img/global-ike.png" caption="Custom background color" background-color="#ffffff5b" class="center" width="25%" */>}}
+```
+
+The value must be a plain CSS color: a hex code, a color keyword, an `rgb()`/`rgba()`/`hsl()`/`hsla()` function, or a `var(--token)` reference. Other values stop the build.
+
 ### All parameters
 
 | Parameter | Type | Default | Description |
@@ -92,6 +104,7 @@ Add `class="white"` to give the figure a white background, which helps images wi
 | `width` | string | — | CSS `max-width` on the wrapper div |
 | `caption-position` | string | — | Position class for the caption |
 | `caption-effect` | string | — | Effect class: `slide`, `fade`, `appear` |
+| `background-color` | string | — | CSS background color behind the image, in both light and dark mode |
 
 ## Gallery — Manual Mode
 
