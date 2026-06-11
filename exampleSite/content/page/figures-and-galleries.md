@@ -75,6 +75,16 @@ Add `class="white"` to give the figure a white background, which helps images wi
 {{</* beautifulfigure src="/img/global-ike.png" caption="White background for dark mode" class="white center" width="25%" */>}}
 ```
 
+### With arbitrary background color (for dark mode and images with transparent backgrounds)
+
+Add `background-color` to give the figure a custom background color:
+
+{{< beautifulfigure src="/img/global-ike.png" caption="White background for dark mode" background-color="#ffffff5b" width="25%" >}}
+
+```markdown
+{{</* beautifulfigure src="/img/global-ike.png" caption="White background for dark mode" background-color="#ffffff5b" width="25%" */>}}
+```
+
 ### All parameters
 
 | Parameter | Type | Default | Description |
