@@ -7,6 +7,8 @@
 {{- if not $groupId -}}
   {{- $groupId = .Page.Store.Get "tabs-last-auto-group" -}}
   {{- .Page.Store.Delete "tabs-last-auto-group" -}}
+  {{/* Reset the auto-group so the next tabs block starts a fresh group. */}}
+  {{- .Page.Store.Delete "tabs-auto-group" -}}
 {{- end -}}
 {{- if not $groupId -}}
   {{- $groupId = $instanceId -}}
