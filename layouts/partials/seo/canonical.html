@@ -22,7 +22,7 @@
 <link rel="canonical" href="{{ . | absLangURL }}" />
   {{- else -}}
     {{- if or .IsHome (eq .Kind "section") (eq .Kind "term") -}}
-      {{- $paginator := .Paginate (partial "func/list-pages.html" .) -}}
+      {{- $paginator := partial "func/paginate.html" . -}}
 <link rel="canonical" href="{{ $paginator.URL | absLangURL }}" />
     {{- else -}}
 <link rel="canonical" href="{{ .Permalink }}" />

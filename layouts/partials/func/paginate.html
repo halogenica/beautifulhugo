@@ -1,0 +1,24 @@
+{{- /*
+  Creates (or retrieves) the paginator for a list node.
+
+  Hugo caches one paginator per page: whichever `.Paginate` call runs first
+  wins, and later calls silently return the same paginator. Because the SEO
+  partials in <head> paginate before the body templates do, every call site
+  must agree on both the collection and the page size. The collection comes
+  from `func/list-pages`; the size is resolved here:
+
+  - `pagerSize` in the page front matter (or site params) overrides the
+    global `pagination.pagerSize` for that node.
+  - Otherwise Hugo's configured default applies.
+
+  Takes: the page context (.).
+  Returns: the paginator.
+*/ -}}
+{{- $pages := partial "func/list-pages.html" . -}}
+{{- $paginator := "" -}}
+{{- with .Param "pagerSize" -}}
+  {{- $paginator = $.Paginate $pages (int .) -}}
+{{- else -}}
+  {{- $paginator = .Paginate $pages -}}
+{{- end -}}
+{{- return $paginator -}}

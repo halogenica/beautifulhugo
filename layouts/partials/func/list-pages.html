@@ -2,12 +2,9 @@
   Returns the page collection that a list node (home, section, or taxonomy
   term) displays and paginates.
 
-  This is the single source of truth for that collection so that the
-  canonical link built in <head> (see partials/seo/canonical.html) and the
-  listing built later in <body> paginate the *exact same* set. Hugo caches
-  one paginator per page: whichever `.Paginate`/`.Paginator` call runs first
-  wins, and a later call with a different collection is silently ignored. By
-  routing every caller through this partial, the head and body always agree.
+  This is the single source of truth for that collection. All `.Paginate`
+  calls go through `func/paginate.html`, which pairs this collection with a
+  consistent page size — see that partial for why head and body must agree.
 
   - Home: regular pages whose type is in `mainSections`, matching the
     historical home-page listing.
