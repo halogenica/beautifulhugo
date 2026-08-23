@@ -21,7 +21,7 @@
   {{ if $bigimg }}
     <div id="header-big-imgs" data-num-img={{len $bigimg}}
       {{range $i, $img := $bigimg}}
-         data-img-src-{{add $i 1}}="{{ strings.TrimPrefix "/" $img.src | relURL }}"
+         data-img-src-{{add $i 1}}="{{ partial "bigimg-src.html" (dict "Page" $ "Src" $img.src) }}"
          {{ if $img.desc}}data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}
          {{ if $img.position}}data-img-position-{{add $i 1}}="{{$img.position}}"{{end}}
       {{end}}></div>
@@ -30,7 +30,7 @@
   <header class="header-section {{ if $bigimg }}has-img{{ end }}">
     {{ if $bigimg }}
       {{- $firstimg := index $bigimg 0 }}
-    <div class="intro-header big-img{{ if eq $headerImgStyle "narrow" }} narrow-img{{ end }}" style="background-image: url('{{ strings.TrimPrefix "/" $firstimg.src | relURL }}');">
+    <div class="intro-header big-img{{ if eq $headerImgStyle "narrow" }} narrow-img{{ end }}" style="background-image: url('{{ partial "bigimg-src.html" (dict "Page" . "Src" $firstimg.src) }}');">
         <div class="container">
           <div class="row">
             <div class="{{$contentColClass}}">

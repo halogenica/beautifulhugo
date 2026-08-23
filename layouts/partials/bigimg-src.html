@@ -1,0 +1,8 @@
+{{- /* Resolve a bigimg src: a page resource (bundle-relative) first, then a site path. */ -}}
+{{- $src := .Src }}
+{{- with .Page.Resources.GetMatch $src }}
+  {{- $src = .RelPermalink }}
+{{- else }}
+  {{- $src = strings.TrimPrefix "/" $src | relURL }}
+{{- end }}
+{{- $src -}}
