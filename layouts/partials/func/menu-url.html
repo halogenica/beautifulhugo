@@ -1,0 +1,2 @@
+{{- /* Menu entries with a resolved page already carry the full relative URL; only bare `url` entries need the language prefix. */ -}}
+{{- if .Page }}{{ .URL }}{{ else }}{{ .URL | relLangURL }}{{ end -}}

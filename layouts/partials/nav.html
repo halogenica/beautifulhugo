@@ -41,13 +41,13 @@
               <ul class="dropdown-menu dropdown-menu-end">
                 {{ range .Children }}
                   {{ $childName := partial "func/menu-name.html" . }}
-                  <li><a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ $childName }}</a></li>
+                  <li><a class="dropdown-item" href="{{ partial "func/menu-url.html" . }}">{{ $childName }}</a></li>
                 {{ end }}
               </ul>
             </li>
           {{ else }}
             <li class="nav-item" >
-              <a class="nav-link" title="{{ $name }}" href="{{ .URL  | relLangURL }}">{{ $name }}</a>
+              <a class="nav-link" title="{{ $name }}" href="{{ partial "func/menu-url.html" . }}">{{ $name }}</a>
             </li>
           {{ end }}
         {{ end }}
