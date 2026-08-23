@@ -239,6 +239,15 @@ bigimg: [{src: "/img/path.jpg", desc: "A path"}]
 ---
 ```
 
+In a [page bundle](https://gohugo.io/content-management/page-bundles/), `src` can name a page resource next to `index.md`. Page resources are checked first, then the path is used relative to the site root:
+
+```yaml
+---
+title: My Post
+bigimg: [{src: "header.jpg", desc: "A page resource"}]
+---
+```
+
 ### Full-Width Pages
 
 Add `fullWidth: true` to front matter to use the full container width without the standard sidebar offset:
