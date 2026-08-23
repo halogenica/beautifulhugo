@@ -12,7 +12,7 @@ Hugo assigns a **kind** to every page based on where it lives in the content dir
 
 | Kind | URL example | Template | Description |
 |------|-------------|----------|-------------|
-| `home` | `/` | `layouts/index.html` | Site home page |
+| `home` | `/` | `layouts/_default/list.html` | Site home page |
 | `page` | `/page/about/` | `layouts/_default/single.html` | Standalone content page |
 | `section` | `/post/` | `layouts/_default/list.html` | Section listing (paginated post previews) |
 | `taxonomy` | `/tags/`, `/categories/` | `layouts/_default/terms.html` | All terms in a taxonomy |
@@ -23,7 +23,25 @@ Additionally, the **`archive`** layout is available via front matter for any con
 
 ## Home Page
 
-The home page is defined by `content/_index.md` and rendered by `layouts/index.html`. It shows the site content at the top, followed by a paginated list of posts from `mainSections`.
+The home page is rendered by `layouts/_default/list.html`. It shows the content of `content/_index.md` at the top (this file is optional), followed by a paginated list of all regular pages whose type is in `mainSections` (default: `["post", "posts"]`).
+
+`mainSections` filters on page **type**, not on directory, so you can list any kind of content on the home page. To include standalone pages alongside posts:
+
+```toml
+[Params]
+  mainSections = ["post", "page"]
+```
+
+Pages keep their own layout when listed this way; only the home list and the archive page change.
+
+To hide the list entirely and show only the `_index.md` content, set `mainSections` to a list that matches no type. An empty list falls back to the default, so use an empty string instead:
+
+```toml
+[Params]
+  mainSections = [""]
+```
+
+To paginate pages from within their own section instead, add a blank `_index.md` to that directory (for example `content/page/_index.md`); the section list at `/page/` then shows them.
 
 Title comes from `homeTitle` (or the site title); `homeTitle` also controls the navbar brand text and footer link. Subtitle comes from `Params.subtitle`. Big images from `[[Params.bigimg]]` cycle in the header.
 
