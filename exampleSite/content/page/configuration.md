@@ -127,6 +127,7 @@ When `selfHosted = true`, the following assets are served from `static/` instead
 | `toc` | bool | `true` | Show a floating table-of-contents button on pages with headings |
 | `showSource` | bool | `false` | Show a "View source" button linking to the page's source file in the repository |
 | `showPostNav` | bool | `true` | Show previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens) |
+| `pagerSize` | int | — | Posts per page on a list page. Set it in the front matter of the home page, a section, or a term to override the global `pagination.pagerSize` for that node |
 | `sourceRepo` | string | — | Base URL for the repository source browser (e.g. `https://github.com/user/repo/blob/main/`). The page's `.File.Path` is appended automatically. When `enableGitInfo = true` is set, the branch in the URL is replaced with the current commit hash, so the link always points to the exact version of the file |
 
 ```toml

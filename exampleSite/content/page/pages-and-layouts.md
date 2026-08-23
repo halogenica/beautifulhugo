@@ -131,6 +131,15 @@ title: "Blog"
 Welcome to the blog. Below are all posts in chronological order.
 ```
 
+The number of posts per page defaults to the global `pagination.pagerSize` site setting. To override it for one list page (the home page, a section, or a taxonomy term), set `pagerSize` in that page's front matter:
+
+```yaml
+---
+title: "Blog"
+pagerSize: 10
+---
+```
+
 ## Taxonomy Pages
 
 Taxonomies group content by terms. Beautiful Hugo includes two by default:

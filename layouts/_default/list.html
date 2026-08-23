@@ -8,7 +8,7 @@
           </div>
         {{ end }}
         <div class="posts-list">
-          {{ $pag := .Paginate (partial "func/list-pages.html" .) }}
+          {{ $pag := partial "func/paginate.html" . }}
           {{ range $pag.Pages }}
             {{ partial "post_preview.html" .}}
           {{ end }}

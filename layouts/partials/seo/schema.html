@@ -12,13 +12,8 @@
 {{- $collectionOfPosts := dict }}
 
 {{- if .IsNode -}}
-  {{- $pagesToPaginate := slice -}}
-
-  {{/* 1. Get the filtered page collection (hidden pages excluded) for this node */}}
-  {{- $pagesToPaginate = partial "func/list-pages" . -}}
-
-  {{/* 2. Pass that collection directly to the standard Hugo paginator */}}
-  {{- $paginator = .Paginate $pagesToPaginate -}}
+  {{/* Shared partial so head and body paginate the same collection and size */}}
+  {{- $paginator = partial "func/paginate.html" . -}}
   {{- $isAbsoluteHome := and .IsHome (or (not $paginator) (eq $paginator.PageNumber 1)) -}}
   {{- /* Safely commit to this specific page instance's memory bank */ -}}
   {{- .Store.Set "isAbsoluteHome" $isAbsoluteHome -}}
