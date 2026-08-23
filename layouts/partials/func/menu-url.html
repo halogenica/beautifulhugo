@@ -1,0 +1,14 @@
+{{- /*
+  Resolves the href for a navbar menu entry.
+
+  Entries resolved to a page (`pageRef`) already carry the full relative
+  URL, including the language prefix and any baseURL subpath. Applying
+  `relLangURL` again would double the prefix (e.g. `/en/foo/en/about/`),
+  so only bare `url` entries get it.
+
+  Takes: a menu entry.
+  Returns: the relative URL string.
+*/ -}}
+{{- $url := .URL -}}
+{{- if not .Page -}}{{- $url = relLangURL $url -}}{{- end -}}
+{{- return $url -}}
