@@ -17,7 +17,6 @@
 */ -}}
 {{- $pages := .Pages -}}
 {{- if .IsHome -}}
-  {{- $mainSections := default (slice "post" "posts") site.Params.mainSections -}}
-  {{- $pages = where site.RegularPages "Type" "in" $mainSections -}}
+  {{- $pages = where site.RegularPages "Type" "in" (partial "func/main-sections.html" .) -}}
 {{- end -}}
 {{- return (where $pages "Params.hidden" "!=" true) -}}

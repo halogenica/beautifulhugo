@@ -1,0 +1,9 @@
+{{- /*
+  Returns the list of content types treated as "posts": `Params.mainSections`
+  from the site config, or `["post", "posts"]` when unset. Callers compare
+  it against `.Type` so a front-matter `type` override is honored.
+
+  Takes: any context (unused).
+  Returns: a slice of strings.
+*/ -}}
+{{- return (default (slice "post" "posts") site.Params.mainSections) -}}

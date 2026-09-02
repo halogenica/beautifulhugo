@@ -21,8 +21,7 @@
 {{- $listPages := slice -}}
 {{- if $isListPage -}}
   {{- if .IsHome -}}
-    {{- $mainSections := default (slice "post" "posts") site.Params.mainSections -}}
-    {{- $listPages = where (where site.RegularPages "Type" "in" $mainSections) "Params.hidden" "!=" true -}}
+    {{- $listPages = partial "func/list-pages.html" . -}}
   {{- else -}}
     {{- $listPages = .Paginator.Pages -}}
   {{- end -}}
