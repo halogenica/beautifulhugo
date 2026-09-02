@@ -18,8 +18,8 @@ $(document).ready(function () {
 
         var src = $a.attr('href');
         var sizeAttr = $a.data('size');
-        var width = sizeAttr ? parseInt(sizeAttr.split('x')[0], 10) : 0;
-        var height = sizeAttr ? parseInt(sizeAttr.split('x')[1], 10) : 0;
+        var width = parseInt($a.data('pswp-width'), 10) || (sizeAttr ? parseInt(sizeAttr.split('x')[0], 10) : 0);
+        var height = parseInt($a.data('pswp-height'), 10) || (sizeAttr ? parseInt(sizeAttr.split('x')[1], 10) : 0);
 
         var $figcaption = $figure.find('figcaption');
         var captionHtml = '';
