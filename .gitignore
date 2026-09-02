@@ -57,3 +57,4 @@ exampleSite/public/
 # Claude requires a symlink to AGENTS.md, all other harnesses support the std
 CLAUDE.md
 .claude/
+exampleSite/resources/

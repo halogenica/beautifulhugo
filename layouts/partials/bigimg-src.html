@@ -1,8 +1,16 @@
-{{- /* Resolve a bigimg src: a page resource (bundle-relative) first, then a site path. */ -}}
+{{- /* Resolve a bigimg src: a page or assets/ resource first (resized to at
+       most Params.bigimgWidth, default 1920, wide), then a site path. */ -}}
 {{- $src := .Src }}
-{{- with .Page.Resources.GetMatch $src }}
-  {{- $src = .RelPermalink }}
+{{- with partial "func/image-resource.html" . }}
+  {{- $max := site.Params.bigimgWidth | default 1920 }}
+  {{- $img := . }}
+  {{- if gt .Width $max }}{{ $img = .Resize (printf "%dx" $max) }}{{ end }}
+  {{- $src = $img.RelPermalink }}
 {{- else }}
-  {{- $src = strings.TrimPrefix "/" $src | relURL }}
+  {{- with .Page.Resources.GetMatch $src }}
+    {{- $src = .RelPermalink }}
+  {{- else }}
+    {{- $src = strings.TrimPrefix "/" $src | relURL }}
+  {{- end }}
 {{- end }}
 {{- $src -}}
