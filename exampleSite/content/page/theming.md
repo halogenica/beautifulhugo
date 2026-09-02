@@ -34,7 +34,7 @@ If you only need to add extra scripts (analytics, custom widgets, etc.) and are 
 
 ## Dark Mode Color Variables
 
-Dark mode colors are defined as CSS custom properties on `[data-theme="dark"]` in `static/css/dark.css`:
+Dark mode colors are defined as CSS custom properties on `[data-theme="dark"]` in `assets/css/dark.css`:
 
 | Variable | Default | Controls |
 |----------|---------|----------|
@@ -108,13 +108,15 @@ For more extensive customization, you can override any of the theme's stylesheet
 
 Because your custom partial loads last, its rules win on equal specificity. For higher-specificity theme rules, increase your selector specificity or use `!important`.
 
+The theme's own stylesheets and scripts live in `assets/` and are processed with Hugo Pipes: each file is minified, fingerprinted for cache busting, and linked with a Subresource Integrity `integrity` attribute. To replace one, put a file with the same path in your site's `assets/` directory (for example `assets/css/main.css`). Hugo uses your copy instead of the theme's and the pipeline applies unchanged.
+
 ### Overriding dark.css entirely
 
-If you want complete control over dark mode styles, you can copy `static/css/dark.css` into your site's `static/` directory and modify it. Hugo will use your version instead of the theme's.
+If you want complete control over dark mode styles, you can copy `assets/css/dark.css` into your site's `assets/css/` directory and modify it. Hugo will use your version instead of the theme's.
 
 ## Print Stylesheet
 
-Beautiful Hugo includes a print stylesheet (`static/css/print.css`) that is automatically applied when a user prints a page (or uses the browser's "Save as PDF" feature). It provides a clean, printer-friendly layout:
+Beautiful Hugo includes a print stylesheet (`assets/css/print.css`) that is automatically applied when a user prints a page (or uses the browser's "Save as PDF" feature). It provides a clean, printer-friendly layout:
 
 - **Hidden elements**: navbar, TOC panel, comments, social share buttons, GitHub buttons, copy-code buttons, search modal, theme toggle, and big image transition animations are all hidden.
 - **Link URLs shown inline**: non-anchor, non-JavaScript links display their URL in parentheses after the link text (e.g. "Visit Hugo \[https://gohugo.io\]").

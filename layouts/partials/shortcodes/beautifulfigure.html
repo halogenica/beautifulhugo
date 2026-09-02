@@ -3,7 +3,7 @@ Beautiful figure shortcode implementation for Beautiful Hugo theme.
 Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-gallery/
 -->
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
-{{- if not ($.Page.Store.Get "figurecount") }}<link rel="stylesheet" href="{{ "css/hugo-easy-gallery.css" | relURL }}" />{{ end }}
+{{- if not ($.Page.Store.Get "figurecount") }}{{ partial "css.html" "css/hugo-easy-gallery.css" }}{{ end }}
 {{- $.Page.Store.Set "figurecount" (add ($.Page.Store.Get "figurecount" | default 0) 1) -}}
 <!-- use either src or link-thumb for thumbnail image -->
 {{- $thumb := .Get "src" | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
