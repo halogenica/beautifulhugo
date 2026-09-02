@@ -1,5 +1,5 @@
 {{- $colorScheme := .Page.Param "colorScheme" | default "auto" -}}
-<script defer src="{{"js/mermaid.js" | relURL}}"></script>
+{{ partial "js.html" (dict "path" "js/mermaid.js" "defer" true "minify" false) }}
 {{ partial "js.html" (dict "path" "js/mermaid-render.js" "defer" true) }}
 <div class="mermaid-container" {{ with .Get "align" }}style="text-align:{{ . }}"{{ end }}>
 {{- if eq $colorScheme "dark" -}}

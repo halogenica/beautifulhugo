@@ -1,5 +1,6 @@
 {{- /* Return a processed resource for one or more theme assets.
-       Takes a dict with "paths" (slice of asset paths) and "ext" ("css" or "js").
+       Takes a dict with "paths" (slice of asset paths), "ext" ("css" or "js"),
+       and optional "minify" (default true; set false for pre-minified vendor files).
        Several paths are concatenated into one bundle. The bundle name carries a
        hash of the member list, so pages that need different members (for example
        a page-level toc setting) do not collide. */ -}}
@@ -13,5 +14,5 @@
   {{- $name := printf "%s/beautifulhugo-%s.%s" .ext (delimit .paths "," | md5 | first 8) .ext }}
   {{- $r = $resources | resources.Concat $name }}
 {{- end }}
-{{- if hugo.IsProduction }}{{ $r = $r | minify }}{{ end }}
+{{- if and hugo.IsProduction (ne .minify false) }}{{ $r = $r | minify }}{{ end }}
 {{- return ($r | fingerprint) -}}
