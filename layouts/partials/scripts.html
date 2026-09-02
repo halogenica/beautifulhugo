@@ -19,13 +19,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 {{- end }}
 
-{{ partial "js.html" "js/main.js" }}
-{{- if ne ($.Param "toc") false -}}
-{{ partial "js.html" "js/toc.js" }}
-{{- end -}}
-{{- if .Site.Params.staticman }}
-{{ partial "js.html" "js/staticman.js" }}
-{{- end }}
 {{- if $.Param "useHLJS" }}
 {{- if .Site.Params.selfHosted -}}
 <script src="{{ "js/highlight.min.js" | relURL }}"></script>
@@ -43,7 +36,6 @@
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script>
 {{- end -}}
-{{ partial "js.html" "js/load-photoswipe.js" }}
 
 {{ if eq (partial "search-provider.html" .) "fuse" }}
 {{- if .Site.Params.selfHosted }}
@@ -51,8 +43,15 @@
 {{- else }}
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" integrity="sha384-PCSoOZTpbkikBEtd/+uV3WNdc676i9KUf01KOA8CnJotvlx8rRrETbDuwdjqTYvt" crossorigin="anonymous"></script>
 {{- end }}
-{{ partial "js.html" "js/search-fuse.js" }}
 {{ end }}
+
+{{- /* Theme JS is one bundle, loaded after every library it uses. */ -}}
+{{- $js := slice "js/main.js" }}
+{{- if ne ($.Param "toc") false }}{{ $js = $js | append "js/toc.js" }}{{ end }}
+{{- if .Site.Params.staticman }}{{ $js = $js | append "js/staticman.js" }}{{ end }}
+{{- $js = $js | append "js/load-photoswipe.js" }}
+{{- if eq (partial "search-provider.html" .) "fuse" }}{{ $js = $js | append "js/search-fuse.js" }}{{ end }}
+{{ partial "js.html" (dict "paths" $js) }}
 
 {{ if .Site.Params.gcse }}
 <script>

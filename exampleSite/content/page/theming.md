@@ -98,17 +98,21 @@ For more extensive customization, you can override any of the theme's stylesheet
 1. Bootstrap CSS
 2. Font Awesome CSS
 3. KaTeX CSS
-4. `main.css` — core layout and typography
-5. `dark.css` — dark mode overrides (only loaded when `colorScheme` is not `"light"`)
-6. Syntax highlighting CSS
-7. `codeblock.css` — code block styling
-8. `toc.css` — table of contents panel
-9. PhotoSwipe CSS
-10. `head_custom.html` — your customizations
+4. The theme bundle, one fingerprinted file that concatenates in order:
+   - `main.css` — core layout and typography
+   - `dark.css` — dark mode overrides (only when `colorScheme` is not `"light"`)
+   - `staticman.css` — only when Staticman is enabled
+   - `syntax.css` — Chroma syntax highlighting (only when `useHLJS` is off)
+   - `codeblock.css` — code block styling
+   - `toc.css` — table of contents panel (only when `toc` is not `false`)
+5. `print.css` — print stylesheet, `media="print"`
+6. Highlight.js CSS, or `syntax-dark.css` for Chroma dark mode (kept separate so JS can toggle it)
+7. PhotoSwipe CSS
+8. `head_custom.html` — your customizations
 
 Because your custom partial loads last, its rules win on equal specificity. For higher-specificity theme rules, increase your selector specificity or use `!important`.
 
-The theme's own stylesheets and scripts live in `assets/` and are processed with Hugo Pipes: each file is minified, fingerprinted for cache busting, and linked with a Subresource Integrity `integrity` attribute. To replace one, put a file with the same path in your site's `assets/` directory (for example `assets/css/main.css`). Hugo uses your copy instead of the theme's and the pipeline applies unchanged.
+The theme's own stylesheets and scripts live in `assets/` and are processed with Hugo Pipes: the files are concatenated into one CSS bundle and one JS bundle, minified in production builds (not under `hugo serve`, so the served files stay readable), fingerprinted for cache busting, and linked with a Subresource Integrity `integrity` attribute. To replace one, put a file with the same path in your site's `assets/` directory (for example `assets/css/main.css`). Hugo uses your copy instead of the theme's and the pipeline applies unchanged.
 
 ### Overriding dark.css entirely
 
