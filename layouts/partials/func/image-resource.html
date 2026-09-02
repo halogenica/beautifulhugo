@@ -1,0 +1,25 @@
+{{- /*
+  Resolves an image path to a processable Hugo image resource.
+
+  Looks for a page resource first (paths relative to a page bundle), then
+  a global resource under assets/. Paths under static/ and remote URLs
+  cannot be processed, so they return "" and callers fall back to plain
+  URLs. SVG is skipped because Hugo cannot resize it. Setting
+  `Params.imageProcessing = false` turns the whole feature off.
+
+  Takes: dict with "Page" and "Src".
+  Returns: an image resource, or "" when none applies.
+*/ -}}
+{{- $img := "" -}}
+{{- $src := .Src -}}
+{{- if and $src (ne (printf "%v" site.Params.imageProcessing) "false") (not (strings.HasPrefix $src "http")) (not (strings.HasPrefix $src "//")) -}}
+  {{- with .Page.Resources.GetMatch $src -}}
+    {{- $img = . -}}
+  {{- else -}}
+    {{- with resources.Get (strings.TrimPrefix "/" $src) -}}{{- $img = . -}}{{- end -}}
+  {{- end -}}
+  {{- with $img -}}
+    {{- if or (ne .ResourceType "image") (eq .MediaType.SubType "svg") -}}{{- $img = "" -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $img -}}

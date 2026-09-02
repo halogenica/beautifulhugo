@@ -6,7 +6,38 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- if not ($.Page.Store.Get "figurecount") }}{{ partial "css.html" "css/hugo-easy-gallery.css" }}{{ end }}
 {{- $.Page.Store.Set "figurecount" (add ($.Page.Store.Get "figurecount" | default 0) 1) }}
 <div class="gallery caption-position-{{ with .Get "caption-position" | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}} hover-effect-{{ with .Get "hover-effect" | default "zoom" }}{{.}}{{end}} {{ if ne (.Get "hover-transition") "none" }}hover-transition{{end}}" itemscope itemtype="https://schema.org/ImageGallery">
-	{{- with (.Get "dir") -}}
+	{{- $dir := .Get "dir" }}
+	{{- $bundleImages := slice }}
+	{{- with $dir }}
+		{{- $pattern := printf "%s*" (strings.TrimSuffix "/" (strings.TrimPrefix "/" .)) }}
+		{{- if strings.TrimSuffix "/" . }}{{ $pattern = printf "%s/*" (strings.TrimSuffix "/" (strings.TrimPrefix "/" .)) }}{{ end }}
+		{{- $bundleImages = where ($.Page.Resources.Match $pattern) "ResourceType" "image" }}
+	{{- end }}
+	{{- with $bundleImages -}}
+		{{- /* Page-bundle directory. Processable images get generated thumbnails and
+		       known sizes; SVGs, or every image when imageProcessing is off, are served as-is. */ -}}
+		{{- $processing := ne (printf "%v" site.Params.imageProcessing) "false" }}
+		{{- range . }}
+			{{- $caption := .Name | path.Base | replaceRE "\\..*" "" | humanize }}
+			{{- $thumb := . }}
+			{{- $size := "" }}
+			{{- if and $processing (ne .MediaType.SubType "svg") }}
+				{{- $thumb = .Fill "600x600" }}
+				{{- $size = printf ` data-pswp-width="%d" data-pswp-height="%d"` .Width .Height }}
+			{{- end }}
+			<div class="box">
+			  <figure itemprop="associatedMedia" itemscope itemtype="https://schema.org/ImageObject">
+			    <div class="img" style="background-image: url('{{ $thumb.RelPermalink }}');" >
+			      <img itemprop="thumbnail" src="{{ $thumb.RelPermalink }}" alt="{{ $caption }}" loading="lazy" /><!-- <img> hidden if in .gallery -->
+			    </div>
+		      <figcaption>
+	          <p>{{ $caption }}</p>
+		      </figcaption>
+			    <a href="{{ .RelPermalink }}" itemprop="contentUrl"{{ $size | safeHTMLAttr }}></a><!-- put <a> last so it is stacked on top -->
+			  </figure>
+			</div>
+		{{- end }}
+	{{- else with $dir -}}
 		{{- $files := readDir (print "/static/" .) }}
 		{{- range $files -}}
 			{{- $thumbext := $.Get "thumb" | default "-thumb" }}

@@ -10,20 +10,33 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 {{- $src := .Get "link" | default (.Get "src") }}
 {{- $size := .Get "size" }}
 {{- $pageRel := .Page.RelPermalink }}
-{{- if strings.HasPrefix $thumb "/" }}
-  {{- $thumb = strings.TrimPrefix "/" $thumb | relURL }}
-{{- else if not (strings.HasPrefix $thumb "http") }}
-  {{- $thumb = print $pageRel $thumb }}
+{{- /* Page-bundle and assets/ images get resized variants and known dimensions. */ -}}
+{{- $srcset := "" }}
+{{- with partial "func/image-resource.html" (dict "Page" .Page "Src" $thumb) }}
+  {{- $set := partial "func/image-srcset.html" . }}
+  {{- $thumb = $set.src.RelPermalink }}
+  {{- $srcset = $set.srcset }}
+{{- else }}
+  {{- if strings.HasPrefix $thumb "/" }}
+    {{- $thumb = strings.TrimPrefix "/" $thumb | relURL }}
+  {{- else if not (strings.HasPrefix $thumb "http") }}
+    {{- $thumb = print $pageRel $thumb }}
+  {{- end }}
 {{- end }}
-{{- if strings.HasPrefix $src "/" }}
-  {{- $src = strings.TrimPrefix "/" $src | relURL }}
-{{- else if not (strings.HasPrefix $src "http") }}
-  {{- $src = print $pageRel $src }}
+{{- with partial "func/image-resource.html" (dict "Page" .Page "Src" $src) }}
+  {{- $src = .RelPermalink }}
+  {{- if not $size }}{{ $size = printf "%dx%d" .Width .Height }}{{ end }}
+{{- else }}
+  {{- if strings.HasPrefix $src "/" }}
+    {{- $src = strings.TrimPrefix "/" $src | relURL }}
+  {{- else if not (strings.HasPrefix $src "http") }}
+    {{- $src = print $pageRel $src }}
+  {{- end }}
 {{- end }}
 <div class="box fancy-figure caption-position-{{ .Get "caption-position" | default "bottom" }}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}{{ with .Get "class" }} {{ . }}{{ end }}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
   <figure {{- with .Get "class" }} class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="https://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb }}');"{{ end }}{{ with $size }} data-size="{{.}}"{{ end }}>
-      <img itemprop="thumbnail" src="{{ $thumb }}" {{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
+      <img itemprop="thumbnail" src="{{ $thumb }}" {{ with $srcset }}srcset="{{ . }}" sizes="(max-width: 768px) 100vw, 768px" {{ end }}{{ with .Get "alt" | default (.Get "caption") | default $thumb }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->
     </div>
     {{- with $src }}
     {{- $width := "" }}

@@ -1,0 +1,26 @@
+{{- /*
+  Builds a srcset for an image resource from `Params.imageWidths`
+  (default 480, 800, 1200, 1600). Widths wider than the source are
+  dropped and the source itself is appended, so the image is never
+  upscaled.
+
+  Takes: an image resource.
+  Returns: dict with "srcset" (string) and "src" (the candidate nearest
+  800px wide, for browsers without srcset support).
+*/ -}}
+{{- $img := . -}}
+{{- $widths := site.Params.imageWidths | default (slice 480 800 1200 1600) -}}
+{{- $candidates := slice -}}
+{{- range $widths -}}
+  {{- if lt . $img.Width -}}
+    {{- $candidates = $candidates | append ($img.Resize (printf "%dx" .)) -}}
+  {{- end -}}
+{{- end -}}
+{{- $candidates = $candidates | append $img -}}
+{{- $srcset := slice -}}
+{{- $src := index $candidates 0 -}}
+{{- range $candidates -}}
+  {{- $srcset = $srcset | append (printf "%s %dw" .RelPermalink .Width) -}}
+  {{- if le .Width 800 -}}{{- $src = . -}}{{- end -}}
+{{- end -}}
+{{- return (dict "srcset" (delimit $srcset ", ") "src" $src) -}}
