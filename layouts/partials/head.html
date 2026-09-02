@@ -92,15 +92,16 @@
   </script>
 {{- end }}
 
-  {{ partial "css.html" "css/main.css" }}
+  {{- /* Theme CSS is concatenated into one bundle; syntax-dark and print stay
+         separate because JS toggles the first and the second is media=print. */ -}}
+  {{- $css := slice "css/main.css" }}
+  {{- if ne ($.Param "colorScheme" | default "auto") "light" }}{{ $css = $css | append "css/dark.css" }}{{ end }}
+  {{- if .Site.Params.staticman }}{{ $css = $css | append "css/staticman.css" }}{{ end }}
+  {{- if not ($.Param "useHLJS") }}{{ $css = $css | append "css/syntax.css" }}{{ end }}
+  {{- $css = $css | append "css/codeblock.css" }}
+  {{- if ne ($.Param "toc") false }}{{ $css = $css | append "css/toc.css" }}{{ end }}
+  {{ partial "css.html" (dict "paths" $css) }}
   {{ partial "css.html" (dict "path" "css/print.css" "media" "print") }}
-  {{- if ne ($.Param "colorScheme" | default "auto") "light" -}}
-  {{ partial "css.html" "css/dark.css" }}
-  {{- end -}}
-
-  {{- if .Site.Params.staticman -}}
-  {{ partial "css.html" "css/staticman.css" }}
-  {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
   <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" />
@@ -121,18 +122,10 @@
   <link id="hljs-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous">
   {{- end -}}
   {{- end -}}
-  {{- else -}}
-  {{ partial "css.html" "css/syntax.css" }}
-  {{- if ne ($.Param "colorScheme" | default "auto") "light" -}}
+  {{- else if ne ($.Param "colorScheme" | default "auto") "light" -}}
   {{ partial "css.html" (dict "path" "css/syntax-dark.css" "id" "hljs-dark") }}
-  {{- end -}}
-  {{- end -}}
-  {{ partial "css.html" "css/codeblock.css" }}
+  {{- end }}
 
-  {{- if ne ($.Param "toc") false -}}
-  {{ partial "css.html" "css/toc.css" }}
-  {{- end -}}
-  
   {{- if .Site.Params.staticman.recaptcha -}}
   <script src='https://www.google.com/recaptcha/api.js'></script>
   {{- end -}}

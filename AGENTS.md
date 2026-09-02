@@ -26,7 +26,7 @@ hugo serve -s exampleSite --disableFastRender
 ## Architecture
 
 - `layouts/` — Go HTML templates, partials, shortcodes, and default page layouts.
-- `assets/` — Theme-owned CSS and JS (`main.css`, `dark.css`, `main.js`, and similar). Loaded through the `css.html` and `js.html` partials, which run Hugo Pipes (`minify | fingerprint`) and emit SRI `integrity` attributes. Do not hand-minify these files.
+- `assets/` — Theme-owned CSS and JS (`main.css`, `dark.css`, `main.js`, and similar). Loaded through the `css.html` and `js.html` partials (backed by `asset.html`), which concatenate into one CSS and one JS bundle, minify in production only (`hugo.IsProduction`), fingerprint, and emit SRI `integrity` attributes. Do not hand-minify these files. Theme JS runs after all vendored libraries, so it must not be needed by inline scripts earlier in the page.
 - `static/` — Vendored third-party assets (Bootstrap 5.3.5, jQuery 4.0.0, Font Awesome, KaTeX, PhotoSwipe, Highlight.js, Mermaid) plus self-hosted fonts.
 - `exampleSite/` — Demo content (`content/`, `hugo.toml`, and custom `layouts/partials/head_custom.html` / `footer_custom.html`).
 - `i18n/` — Translation strings in YAML.
