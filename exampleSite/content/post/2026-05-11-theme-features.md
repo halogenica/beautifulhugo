@@ -34,7 +34,7 @@ Use the **Features** dropdown in the navigation bar to browse detailed documenta
 
 ```toml
 [[module.imports]]
-  path = "github.com/halogenica/beautifulhugo"
+  path = "github.com/halogenica/beautifulhugo/v5"
 
 [Params]
   subtitle = "Build a beautiful and simple website in minutes"
