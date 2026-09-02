@@ -3,8 +3,7 @@
 {{- $bigimg := slice }}
 {{- $headerImgStyle := "big" }}
 {{- $contentColClass := cond .Params.fullWidth "col-12" "col-md-10 offset-md-1" }}
-{{- $mainSections := default (slice "post" "posts") site.Params.mainSections }}
-{{- $isMainContent := in $mainSections .Type }}
+{{- $isMainContent := in (partial "func/main-sections.html" .) .Type }}
 {{ if .IsHome }}
   {{- $title = .Site.Params.homeTitle | default .Site.Title }}
   {{- $subtitle = .Site.Params.subtitle }}

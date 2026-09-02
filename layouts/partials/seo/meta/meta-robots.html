@@ -8,8 +8,7 @@
 
 {{- $site_seo := dict -}}
 {{/* Only get this value if the page is part of a mainSection */}}
-{{- $mainSections := default (slice "post" "posts") site.Params.mainSections -}}
-{{- if in $mainSections .Section -}}
+{{- if in (partial "func/main-sections.html" .) .Type -}}
   {{- $site_seo = site.Params.seo -}}
 {{- end -}}
 
