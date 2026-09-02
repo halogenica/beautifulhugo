@@ -92,14 +92,14 @@
   </script>
 {{- end }}
 
-  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}" />
-  <link rel="stylesheet" href="{{ "css/print.css" | relURL }}" media="print" />
+  {{ partial "css.html" "css/main.css" }}
+  {{ partial "css.html" (dict "path" "css/print.css" "media" "print") }}
   {{- if ne ($.Param "colorScheme" | default "auto") "light" -}}
-  <link rel="stylesheet" href="{{ "css/dark.css" | relURL }}" />
+  {{ partial "css.html" "css/dark.css" }}
   {{- end -}}
 
   {{- if .Site.Params.staticman -}}
-  <link rel="stylesheet" href="{{ "css/staticman.css" | relURL }}" />
+  {{ partial "css.html" "css/staticman.css" }}
   {{- end -}}
 
   {{- if .Site.Params.selfHosted -}}
@@ -122,15 +122,15 @@
   {{- end -}}
   {{- end -}}
   {{- else -}}
-  <link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}" />
+  {{ partial "css.html" "css/syntax.css" }}
   {{- if ne ($.Param "colorScheme" | default "auto") "light" -}}
-  <link id="hljs-dark" rel="stylesheet" href="{{ "css/syntax-dark.css" | relURL }}" />
+  {{ partial "css.html" (dict "path" "css/syntax-dark.css" "id" "hljs-dark") }}
   {{- end -}}
   {{- end -}}
-  <link rel="stylesheet" href="{{ "css/codeblock.css" | relURL }}" />
+  {{ partial "css.html" "css/codeblock.css" }}
 
   {{- if ne ($.Param "toc") false -}}
-  <link rel="stylesheet" href="{{ "css/toc.css" | relURL }}" />
+  {{ partial "css.html" "css/toc.css" }}
   {{- end -}}
   
   {{- if .Site.Params.staticman.recaptcha -}}

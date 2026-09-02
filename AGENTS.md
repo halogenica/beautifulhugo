@@ -26,7 +26,8 @@ hugo serve -s exampleSite --disableFastRender
 ## Architecture
 
 - `layouts/` — Go HTML templates, partials, shortcodes, and default page layouts.
-- `static/` — Vendored third-party assets (Bootstrap 5.3.5, jQuery 4.0.0, Font Awesome, KaTeX, PhotoSwipe, Highlight.js, Mermaid) plus `main.css` and `codeblock.css`.
+- `assets/` — Theme-owned CSS and JS (`main.css`, `dark.css`, `main.js`, and similar). Loaded through the `css.html` and `js.html` partials, which run Hugo Pipes (`minify | fingerprint`) and emit SRI `integrity` attributes. Do not hand-minify these files.
+- `static/` — Vendored third-party assets (Bootstrap 5.3.5, jQuery 4.0.0, Font Awesome, KaTeX, PhotoSwipe, Highlight.js, Mermaid) plus self-hosted fonts.
 - `exampleSite/` — Demo content (`content/`, `hugo.toml`, and custom `layouts/partials/head_custom.html` / `footer_custom.html`).
 - `i18n/` — Translation strings in YAML.
 - `data/beautifulhugo/social.toml` — Social icon registry consumed by `layouts/partials/footer.html`.
@@ -35,7 +36,7 @@ hugo serve -s exampleSite --disableFastRender
 
 - **`[Params.author]` is required; `[author]` is deprecated.** `layouts/partials/footer.html` emits an explicit `errorf` if the old top-level `[author]` key is still present.
 - **Asset loading is conditional on `selfHosted`.** When `Params.selfHosted = true`, the theme serves Bootstrap, Font Awesome, KaTeX, Google Fonts, and PhotoSwipe from `static/`. When `false` (default), it loads them from CDNs. If you add or bump a vendored asset, update both the `static/` copy and the CDN conditional in `layouts/partials/head.html` and `layouts/partials/footer.html`.
-- **Syntax highlighting is also conditional.** `useHLJS = true` switches to client-side Highlight.js (`static/js/highlight.min.js` + `static/css/highlight.min.css`). Otherwise it relies on Hugo's built-in Chroma and `static/css/syntax.css`.
+- **Syntax highlighting is also conditional.** `useHLJS = true` switches to client-side Highlight.js (`static/js/highlight.min.js` + `static/css/highlight.min.css`). Otherwise it relies on Hugo's built-in Chroma and `assets/css/syntax.css`.
 - **Shortcodes provided:** `details`, `columns` / `column` / `endcolumns`, `beautifulfigure` (backwards-compatible `figure` alias), `gallery`, `mermaid`.
 - **`disableFigureOverride` flag.** Set `Params.disableFigureOverride = true` to restore Hugo's native `<figure>` shortcode (the PhotoSwipe-enhanced version remains available as `beautifulfigure`).
 - **Multilingual** is supported via the standard Hugo `languages` config with per-language `contentDir`.

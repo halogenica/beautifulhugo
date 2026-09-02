@@ -1,0 +1,7 @@
+{{- /* Emit a <script> for a theme script in assets/js, minified and fingerprinted.
+       Pass a string path, or a dict with "path" and optional "defer" (bool). */ -}}
+{{- $path := . }}{{ $defer := false }}
+{{- if reflect.IsMap . }}{{ $path = .path }}{{ $defer = .defer }}{{ end }}
+{{- with resources.Get $path | minify | fingerprint }}
+<script{{ if $defer }} defer{{ end }} src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- else }}{{ errorf "js partial: asset %q not found" $path }}{{ end -}}
