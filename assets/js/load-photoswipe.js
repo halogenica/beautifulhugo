@@ -1,5 +1,5 @@
 /*
-  Put this file in /static/js/load-photoswipe.js
+  Put this file in /assets/js/load-photoswipe.js
   Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 */
 

@@ -1,0 +1,11 @@
+{{- /* Emit a <link> for a theme stylesheet in assets/css, minified and fingerprinted.
+       Pass a string path, or a dict with "path" and optional "id" / "media". */ -}}
+{{- $path := . }}{{ $attrs := "" }}
+{{- if reflect.IsMap . }}
+  {{- $path = .path }}
+  {{- with .id }}{{ $attrs = printf `%s id="%s"` $attrs . }}{{ end }}
+  {{- with .media }}{{ $attrs = printf `%s media="%s"` $attrs . }}{{ end }}
+{{- end }}
+{{- with resources.Get $path | minify | fingerprint }}
+<link rel="stylesheet"{{ $attrs | safeHTMLAttr }} href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" />
+{{- else }}{{ errorf "css partial: asset %q not found" $path }}{{ end -}}

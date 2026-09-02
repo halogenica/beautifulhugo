@@ -229,7 +229,7 @@ See [Pages & Layouts](../pages-and-layouts/#big-image-headers) for per-page big 
   block = true
 ```
 
-- `noClasses = false` is required for Chroma to use an external CSS file (`static/css/syntax.css`)
+- `noClasses = false` is required for Chroma to use an external CSS file (`assets/css/syntax.css`)
 
 {{< /tab >}} {{< tab "Highlight.js" >}}
 
