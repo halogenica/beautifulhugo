@@ -24,16 +24,16 @@
   {{- $schemaDescription = $schemaDescription | plainify | htmlUnescape | replaceRE "\n+" " " | chomp }}
   {{- if or (eq .Kind "taxonomy") (eq .Kind "term") }}
     {{- if eq .Kind "term" }}
-      {{- $schemaTitle = printf "Articles tagged with '%s'" .Title }}
-      {{- $schemaDescription = printf "Explore all posts and thoughts related to %s" .Title }}
+      {{- $schemaTitle = i18n "termPagesTitle" .Title | default (printf "Articles tagged with '%s'" .Title) }}
+      {{- $schemaDescription = i18n "termPagesDescription" .Title | default (printf "Explore all posts and thoughts related to %s" .Title) }}
     {{- else if eq .Kind "taxonomy" }}
-      {{- $schemaTitle = printf "Browse Content by %s" .Title }}
-      {{- $schemaDescription = printf "A complete index of %s used to organize topics." (lower .Title) }}
+      {{- $schemaTitle = i18n "taxonomyPagesTitle" .Title | default (printf "Browse Content by %s" .Title) }}
+      {{- $schemaDescription = i18n "taxonomyPagesDescription" (lower .Title) | default (printf "A complete index of %s used to organize topics." (lower .Title)) }}
     {{- end }}
   {{- end }}
 
   {{- if gt $paginator.PageNumber 1 }}
-    {{- $schemaTitle = printf "%s (Page %d)" $schemaTitle $paginator.PageNumber }}
+    {{- $schemaTitle = printf "%s (%s)" $schemaTitle (i18n "paginationPageLabel" $paginator.PageNumber | default (print "Page " $paginator.PageNumber)) }}
   {{- end }}
 
   {{/* Assemble the entire Schema Object */}}

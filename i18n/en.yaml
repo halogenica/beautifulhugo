@@ -122,9 +122,35 @@
 - id: archiveYearFilter
   translation: "Filter by year"
 
-# Categories
+# Categories / Tags
 - id: categoriesLabel
   translation: "Categories: "
+- id: tagsLabel
+  translation: "Tags: "
+
+# Table of Contents
+- id: tocLabel
+  translation: "Table of Contents"
+- id: tocPostsLabel
+  translation: "Posts"
+- id: tocCloseLabel
+  translation: "Close table of contents"
+
+# Breadcrumb / Pagination
+- id: breadcrumbHomeLabel
+  translation: "Home"
+- id: paginationPageLabel
+  translation: "Page {{ . }}"
+
+# CollectionPage schema
+- id: termPagesTitle
+  translation: "Articles tagged with '{{ . }}'"
+- id: termPagesDescription
+  translation: "Explore all posts and thoughts related to {{ . }}"
+- id: taxonomyPagesTitle
+  translation: "Browse Content by {{ . }}"
+- id: taxonomyPagesDescription
+  translation: "A complete index of {{ . }} used to organize topics."
 
 # View source
 - id: viewSource

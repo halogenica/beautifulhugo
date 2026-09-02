@@ -24,7 +24,7 @@
         {{ end }}
         {{ if .Params.tags }}
           <div class="blog-tags">
-            <span>Tags: </span>
+            <span>{{ i18n "tagsLabel" | default "Tags: " }}</span>
             {{ range .Params.tags }}
               {{- $tagName := . -}}
               {{- with $.Site.GetPage (printf "/%s/%s" "tags" ($tagName | urlize)) -}}
