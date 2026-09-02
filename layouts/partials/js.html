@@ -1,10 +1,11 @@
 {{- /* Emit a <script> for theme JS from assets/. Pass a path string, or a dict:
        "path"  - one asset path, or
        "paths" - a slice of asset paths to concatenate into one bundle,
-       "defer" - optional bool.
+       "defer" - optional bool,
+       "minify" - optional bool, false for files that are already minified.
        Minified in production builds, always fingerprinted. */ -}}
-{{- $paths := slice }}{{ $defer := false }}
-{{- if reflect.IsMap . }}{{ $paths = .paths | default (slice .path) }}{{ $defer = .defer }}{{ else }}{{ $paths = slice . }}{{ end }}
-{{- with partial "asset.html" (dict "paths" $paths "ext" "js") }}
+{{- $paths := slice }}{{ $defer := false }}{{ $minify := true }}
+{{- if reflect.IsMap . }}{{ $paths = .paths | default (slice .path) }}{{ $defer = .defer }}{{ if eq .minify false }}{{ $minify = false }}{{ end }}{{ else }}{{ $paths = slice . }}{{ end }}
+{{- with partial "asset.html" (dict "paths" $paths "ext" "js" "minify" $minify) }}
 <script{{ if $defer }} defer{{ end }} src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
 {{- end -}}
