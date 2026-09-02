@@ -20,6 +20,21 @@ enableGitInfo = true
   category = "categories"
   tag = "tags"
 
+# Ranking configuration for showRelatedPosts (Hugo's related-content engine)
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "keywords"
+    weight = 80
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
 [Params]
   subtitle = "Build a beautiful and simple website in minutes"
   mainSections = ["post", "recipe"]
