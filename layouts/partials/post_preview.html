@@ -17,7 +17,13 @@
         {{ if $thumbnail }}
         <div class="post-image">
             <a href="{{ .RelPermalink }}">
+                {{- with partial "func/image-resource.html" (dict "Page" . "Src" $thumbnail) }}
+                {{- $small := .Fill "192x192" }}
+                {{- $large := .Fill "384x384" }}
+                <img src="{{ $small.RelPermalink }}" srcset="{{ $small.RelPermalink }} 1x, {{ $large.RelPermalink }} 2x" width="192" height="192" loading="lazy" alt="{{ $.Title }}" />
+                {{- else }}
                 <img src="{{ strings.TrimPrefix "/" $thumbnail | relURL }}" alt="{{ .Title }}" />
+                {{- end }}
             </a>
         </div>
         {{ else if and (not $hasThumbnail) .Params.video }}

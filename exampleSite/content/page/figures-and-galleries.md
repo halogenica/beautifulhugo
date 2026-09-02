@@ -131,12 +131,26 @@ Thumbnail detection works by convention: if an image file contains the thumb suf
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `dir` | string | — | Path relative to `/static/` to auto-populate images |
+| `dir` | string | — | Directory to auto-populate from: a folder inside the page bundle, or a path relative to `/static/` |
 | `thumb` | string | `-thumb` | Suffix that identifies thumbnail files |
 | `caption-position` | string | `bottom` | `bottom`, `center`, or `none` |
 | `caption-effect` | string | `slide` | `slide`, `fade`, or `appear` |
 | `hover-effect` | string | `zoom` | `zoom`, `grow`, `shrink`, `slidedown`, or `slideup` |
 | `hover-transition` | string | — | Set to `none` to disable hover transition |
+
+## Page Bundles and Image Processing
+
+When an image lives in a [page bundle](https://gohugo.io/content-management/page-bundles/) next to `index.md` (or under your site's `assets/` directory), Hugo can process it. `beautifulfigure` and `gallery` then do more work for you:
+
+- `beautifulfigure` emits a `srcset` with resized variants (480, 800, 1200, and 1600 pixels wide by default, never wider than the source) and fills in the PhotoSwipe dimensions, so `size` is not needed.
+- `gallery` in directory mode accepts a folder inside the bundle, for example `dir="photos"`. Square thumbnails are generated automatically, so no `-thumb` files are needed.
+
+```markdown
+{{</* beautifulfigure src="forest.jpg" caption="A page resource" */>}}
+{{</* gallery dir="photos" */>}}
+```
+
+Images under `static/` are served as they are. See [Configuration — Image Processing](../configuration/#image-processing) for the `imageProcessing`, `imageWidths`, and `bigimgWidth` settings.
 
 ## PhotoSwipe Lightbox
 
@@ -164,4 +178,4 @@ For best performance, provide the `size` parameter with the image dimensions:
 {{</* beautifulfigure src="/img/global-ike.png" size="1920x1080" */>}}
 ```
 
-If `size` is not provided, PhotoSwipe will attempt to auto-detect the image dimensions.
+If `size` is not provided, the dimensions come from Hugo when the image is a page resource. Otherwise PhotoSwipe auto-detects them.

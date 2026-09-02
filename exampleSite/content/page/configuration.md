@@ -213,6 +213,24 @@ Add one or more full-width header images to the home page. Multiple images cycle
 
 See [Pages & Layouts](../pages-and-layouts/#big-image-headers) for per-page big image headers and visual examples.
 
+## Image Processing
+
+Images that Hugo can reach as resources (files in a page bundle or under the site's `assets/` directory) are processed at build time: post preview thumbnails are cropped to a square, header images are capped in width, and figures and galleries get resized `srcset` variants. Images under `static/` are never touched.
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `imageProcessing` | bool | `true` | Set to `false` to serve every image unchanged |
+| `imageWidths` | list | `[480, 800, 1200, 1600]` | Widths generated for figure `srcset` variants (widths larger than the source are skipped) |
+| `bigimgWidth` | int | `1920` | Maximum width for page-resource header images |
+
+```toml
+[Params]
+  imageWidths = [640, 1280]
+  bigimgWidth = 2560
+```
+
+See [Figures & Galleries](../figures-and-galleries/#page-bundles-and-image-processing) for shortcode details.
+
 ## Syntax Highlighting
 
 | Param | Type | Default | Description |

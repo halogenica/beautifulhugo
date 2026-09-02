@@ -275,6 +275,8 @@ bigimg: [{src: "header.jpg", desc: "A page resource"}]
 ---
 ```
 
+A page-resource header image wider than `bigimgWidth` (default 1920 pixels) is resized down before it is served.
+
 ### Full-Width Pages
 
 Add `fullWidth: true` to front matter to use the full container width without the standard sidebar offset:
@@ -356,6 +358,15 @@ Setting `thumbnail` to an empty string explicitly suppresses the preview image, 
 title: My Post
 thumbnail: ""
 image: /img/my-post.png
+---
+```
+
+When `thumbnail` or `image` names a page resource (a file in the post's bundle) or a file under `assets/`, Hugo crops it to a square at the two sizes the list view uses, so you do not need to prepare a thumbnail by hand:
+
+```yaml
+---
+title: My Post
+thumbnail: cover.jpg
 ---
 ```
 
