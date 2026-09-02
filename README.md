@@ -24,20 +24,30 @@ Install Hugo and create a new site. See [the Hugo documentation](https://gohugo.
 git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
 ```
 
+A submodule points to a commit, not to a tag. To use a release, check out the
+tag in the submodule and commit the result:
+
+```sh
+git -C themes/beautifulhugo checkout v5.0.0
+git add themes/beautifulhugo
+```
+
 ### Hugo Module
 
 ```sh
 hugo mod init github.com/USERNAME/SITENAME
-hugo mod get github.com/halogenica/beautifulhugo
+hugo mod get github.com/halogenica/beautifulhugo/v5
 ```
 
-Stay up to date with `hugo mod get`.
+The `/v5` suffix is the major version of the theme. Pin an exact release with
+`hugo mod get github.com/halogenica/beautifulhugo/v5@v5.0.0`, or stay up to date
+with `hugo mod get -u`.
 
 If using Hugo modules, add this to your `hugo.toml`:
 
 ```toml
 [[module.imports]]
-  path = "github.com/halogenica/beautifulhugo"
+  path = "github.com/halogenica/beautifulhugo/v5"
 ```
 
 ### Preview
