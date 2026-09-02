@@ -20,15 +20,15 @@
 {{- end }}
 
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
  <!-- Site Title, Description, Author, and Favicon -->
 
 {{ if .IsHome }}
   <title>{{ .Site.Params.homeTitle | default .Site.Title }}</title>
 {{ else }}
-  <title>{{ $title }}{{ with .Site.Params.homeTitle }} - {{ . }}{{ end }}</title>
+  {{ $suffix := .Site.Params.homeTitle | default .Site.Title }}
+  <title>{{ $title }}{{ if and $suffix (ne $title $suffix) }} - {{ $suffix }}{{ end }}</title>
 {{ end }}
 
 {{- with $description }}
@@ -44,7 +44,7 @@
 <!-- Hugo Version number -->
 {{ hugo.Generator -}}
 <!-- Links and stylesheets -->
-<link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
+{{ with .Site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" href="{{ .RelPermalink }}" type="application/rss+xml" title="{{ $.Site.Title }}">{{ end }}
 
 {{ $mathEngine := $.Param "mathEngine" | default "katex" }}
 {{- if .Site.Params.selfHosted -}}
