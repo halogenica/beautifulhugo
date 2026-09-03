@@ -134,7 +134,7 @@
 - id: tocPostsLabel
   translation: "Beiträge"
 - id: tocCloseLabel
-  translation: "Schließe Inhaltsverzeichnis"
+  translation: "Inhaltsverzeichnis schließen"
 
 # Breadcrumb / Pagination
 - id: breadcrumbHomeLabel
