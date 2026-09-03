@@ -4,7 +4,7 @@
 - id: shortdateFormat
   translation: ":date_medium"
 - id: postedOnDate
-  translation: "Gepostet am {{ . }}"
+  translation: "Geschrieben am {{ . }}"
 - id: lastModified
   translation: "Zuletzt geändert am {{ . }}"
 - id: translationsLabel
@@ -106,7 +106,7 @@
 - id: themeToggleLabel
   translation: "Thema"
 - id: themeTooltipAuto
-  translation: "Auto (folgt dem System)"
+  translation: "Auto (wie System)"
 - id: themeTooltipLight
   translation: "Heller Modus"
 - id: themeTooltipDark
@@ -122,9 +122,35 @@
 - id: archiveYearFilter
   translation: "Nach Jahr filtern"
 
-# Categories
+# Categories / Tags
 - id: categoriesLabel
   translation: "Kategorien: "
+- id: tagsLabel
+  translation: "Stichwörter: "
+  
+# Table of Contents
+- id: tocLabel
+  translation: "Inhaltsverzeichnis"
+- id: tocPostsLabel
+  translation: "Beiträge"
+- id: tocCloseLabel
+  translation: "Inhaltsverzeichnis schließen"
+
+# Breadcrumb / Pagination
+- id: breadcrumbHomeLabel
+  translation: "Startseite"
+- id: paginationPageLabel
+  translation: "Seite {{ . }}"
+
+# CollectionPage schema
+- id: termPagesTitle
+  translation: "Artikel mit den Stichwörtern '{{ . }}'"
+- id: termPagesDescription
+  translation: "Erkunde Beiträge und Gedanken bezogen auf {{ . }}"
+- id: taxonomyPagesTitle
+  translation: "Zeige Inhalt mit {{ . }}"
+- id: taxonomyPagesDescription
+  translation: "Ein Verzeichnis von {{ . }}, um Themen zu gruppieren."  
 
 # View source
 - id: viewSource
