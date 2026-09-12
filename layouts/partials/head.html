@@ -47,6 +47,8 @@
 {{ with .Site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" href="{{ .RelPermalink }}" type="application/rss+xml" title="{{ $.Site.Title }}">{{ end }}
 
 {{ $mathEngine := $.Param "mathEngine" | default "katex" }}
+{{- /* Pages without math need no math engine. */ -}}
+{{- if not (partial "func/load-math.html" .) }}{{ $mathEngine = "none" }}{{ end }}
 {{- if .Site.Params.selfHosted -}}
   {{- if eq $mathEngine "katex" }}
     <link rel="stylesheet" href="{{ "css/katex.min.css" | relURL }}" />
@@ -64,8 +66,8 @@
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         processEscapes: true,
         processEnvironments: true
       },

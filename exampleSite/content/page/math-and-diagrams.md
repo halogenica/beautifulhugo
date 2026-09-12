@@ -4,15 +4,31 @@ subtitle: KaTeX, MathJax, and Mermaid for math and diagrams
 comments: false
 ---
 
-Beautiful Hugo includes built-in support for **KaTeX**, **MathJax**, and **Mermaid** (diagrams and flowcharts). All are loaded automatically — no extra configuration needed.
+Beautiful Hugo includes built-in support for **KaTeX**, **MathJax**, and **Mermaid** (diagrams and flowcharts). Mermaid needs no configuration. For math, enable the Goldmark passthrough extension (see below).
 
 ## Math Rendering
 
 Choose the math rendering engine via `mathEngine` in your config. See [Configuration — Math Engine](../configuration/#math-engine) for the full option reference and `selfHosted` behavior.
 
+### Passthrough
+
+Markdown removes backslashes and other characters from LaTeX before the browser sees it. The Goldmark passthrough extension keeps the math unchanged. Hugo does not merge the `[markup]` section of a theme configuration, so put this in your **site** configuration:
+
+```toml
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
+```
+
+Single `$` is not an inline delimiter, because prose often contains a stray `$`. Add `['$', '$']` to `inline` if you want it.
+
+With passthrough enabled, the theme loads the KaTeX or MathJax files only on the pages that contain math. Set `math: true` in the front matter of a page to load them anyway, for example if a shortcode or a partial adds the math. Without passthrough, the theme loads them on every page, and you must escape the delimiters (`\\(` in place of `\(`).
+
 ### Inline math
 
-The golden ratio is \\(\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618\\). Euler's identity states that \\(e^{i\pi} + 1 = 0\\).
+The golden ratio is \(\varphi = \frac{1+\sqrt{5}}{2} \approx 1.618\). Euler's identity states that \(e^{i\pi} + 1 = 0\).
 
 ### Display math
 
@@ -43,7 +59,7 @@ $$
 ### Source
 
 ```markdown
-The golden ratio is $\varphi = \frac{1+\sqrt{5}}{2}$.
+The golden ratio is \(\varphi = \frac{1+\sqrt{5}}{2}\).
 
 $$
 \varphi = \frac{1+\sqrt{5}}{2}

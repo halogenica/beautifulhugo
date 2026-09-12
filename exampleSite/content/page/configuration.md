@@ -60,6 +60,22 @@ Hugo does not merge all sections of a theme configuration into your site configu
   mathEngine = "mathjax"
 ```
 
+### Passthrough
+
+Markdown removes backslashes and other characters from LaTeX. To keep the math unchanged, enable the Goldmark passthrough extension. Hugo does not merge the `[markup]` section of a theme configuration, so this belongs in your **site** configuration, not in the theme:
+
+```toml
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
+```
+
+These are the KaTeX auto-render delimiters. Single `$` is not an inline delimiter, because prose often contains a stray `$`; add `['$', '$']` to `inline` if you want it.
+
+With passthrough enabled, the theme loads the math files only on pages that contain math. Without it, the theme loads them on every page, as before. See [Math & Diagrams](../math-and-diagrams/).
+
 ## Author
 
 `[Params.author]` is **required**. The old top-level `[author]` key is deprecated and will produce a build error.
@@ -365,6 +381,7 @@ These options can be set in the front matter of any page or post:
 | `showSource` | bool | Override site-level `showSource` for this page |
 | `showPostNav` | bool | Override site-level `showPostNav` for this page |
 | `mathEngine` | string | Override site-level `mathEngine` for this page (`"katex"`, `"mathjax"`, or `"none"`) |
+| `math` | bool | Load the math files on this page even if no math is found (needs passthrough) |
 | `colorScheme` | string | Override site-level `colorScheme` for this page (`"auto"`, `"dark"`, or `"light"`) |
 | `useHLJS` | bool | Override site-level `useHLJS` for this page |
 | `readingTime` | bool | Override site-level `readingTime` for this page |

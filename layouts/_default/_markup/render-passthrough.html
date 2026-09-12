@@ -1,0 +1,12 @@
+{{- /* Passes math through unchanged, so KaTeX or MathJax renders it in the
+       browser. Block math is normalized to $$...$$ and inline math to \(...\),
+       the delimiters both engines are configured for. */ -}}
+{{- /* The probe in func/has-passthrough.html must not mark a page as having math. */ -}}
+{{- if not (and (.Page.Store.Get "mathProbe") (eq .Inner "bhMathProbe")) -}}
+  {{- .Page.Store.Set "hasMath" true -}}
+{{- end -}}
+{{- if eq .Type "block" -}}
+  {{- printf "$$%s$$" .Inner | safeHTML -}}
+{{- else -}}
+  {{- printf `\(%s\)` .Inner | safeHTML -}}
+{{- end -}}

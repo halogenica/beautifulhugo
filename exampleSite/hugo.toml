@@ -88,6 +88,16 @@ enableGitInfo = true
 [markup.goldmark.renderer]
   unsafe = true
 
+# Keeps LaTeX out of Goldmark, so the browser gets the delimiters unchanged.
+# Hugo does not merge [markup] from a theme, so this must stay in the site
+# configuration. The delimiters are the KaTeX auto-render defaults; single $
+# is not an inline delimiter, because prose often contains a stray $.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
+
 [[menu.main]]
     identifier = "setup"
     name = "Setup"

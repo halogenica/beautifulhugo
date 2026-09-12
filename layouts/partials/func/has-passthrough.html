@@ -1,0 +1,8 @@
+{{- /* Reports whether the site enables the Goldmark passthrough extension.
+       Hugo does not expose [markup] to templates, so this renders a probe
+       string: without passthrough, Goldmark removes the backslashes. */ -}}
+{{- $page := site.Home -}}
+{{- $page.Store.Set "mathProbe" true -}}
+{{- $out := $page.RenderString `\(bhMathProbe\)` -}}
+{{- $page.Store.Set "mathProbe" false -}}
+{{- return (strings.Contains $out `\(`) -}}
