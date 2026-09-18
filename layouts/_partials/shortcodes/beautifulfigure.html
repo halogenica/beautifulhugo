@@ -8,12 +8,12 @@ Based on hugo-easy-gallery by Li-Wen Yip: https://github.com/liwenyip/hugo-easy-
 {{- $src := .Get "link" | default (.Get "src") }}
 {{- $size := .Get "size" }}
 {{- $pageRel := .Page.RelPermalink }}
-{{- /* An explicit background colour applies in both light and dark mode, unlike the
+{{- /* An explicit background color applies in both light and dark mode, unlike the
        dark-mode-only "white" class. Validated so the value cannot escape the style attribute. */ -}}
 {{- $background := .Get "background-color" }}
 {{- with $background }}
   {{- if not (findRE `^(#[0-9A-Fa-f]{3,8}|[A-Za-z]+|(rgba?|hsla?)\([0-9A-Za-z.,%/+\- ]+\)|var\(--[A-Za-z0-9_-]+\))$` .) }}
-    {{- errorf "beautifulfigure: background-color %q is not a plain CSS colour at %s" . $.Position }}
+    {{- errorf "beautifulfigure: background-color %q is not a plain CSS color at %s" . $.Position }}
   {{- end }}
 {{- end }}
 {{- /* Page-bundle and assets/ images get resized variants and known dimensions. */ -}}
