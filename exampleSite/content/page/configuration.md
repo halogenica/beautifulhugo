@@ -34,6 +34,7 @@ Hugo lowercases all configuration keys, so `[Params.author]` and `[params.author
 | `mainSections` | list | `["post", "posts"]` | Content sections treated as "posts" on the home page and archive page |
 | `logo` | string | — | Path to a square avatar/logo image. When the file is found via Hugo's asset pipeline (`resources.Get`), it is automatically resized (300×300, quality 100) and keeps its source format. If the file is not found as a resource, the raw path is used as-is. |
 | `favicon` | string | — | Path to favicon |
+| `share_img` | string | `logo` | Default social sharing image for pages that set no `share_img` or `image` of their own. A wide image suits Twitter cards better than the square `logo` |
 | `dateFormat` | string | i18n default | Date format string. Accepts Hugo locale tokens (e.g. `":date_long"`, `":date_medium"`, `":date_short"`) for automatic localization, or a Go time layout string based on the reference time `Mon Jan 2 15:04:05 MST 2006` (e.g. `"January 2, 2006"` or `"2006-01-02"`). **Do not use an example date** like `"2023-10-15"` — the year must be `2006`, month `01`, and day `02`. Locale tokens are recommended for multilingual sites. The theme validates `dateFormat` at build time and will emit a build error if it detects an invalid format (e.g. a date that doesn't use Go's reference time). |
 | `since` | int | — | Start year for copyright range (e.g. `2015 - 2026`) |
 
@@ -485,7 +486,7 @@ These options can be set in the front matter of any page or post:
 | `author` | string/list | Per-page author(s) (string or list of strings; supports Markdown links, e.g. `"[Jane Doe](https://example.com)"`) |
 | `tags` | list | Tags for categorization |
 | `categories` | list | Categories for grouping posts |
-| `share_img` | string | Social sharing image (falls back to `image` then `logo`) |
+| `share_img` | string | Social sharing image (falls back to `image`, then the site `share_img`, then `logo`) |
 | `ExpiryDate` | date | Adds `<meta name="robots" content="unavailable_after: ...">` |
 | `seo` | map | Per-page robot meta tag overrides (see [SEO & i18n](../seo-and-i18n/)) |
 | `canonicalURL` | string | Override the canonical link for this page (absolute or relative; see [SEO & i18n — Canonical URLs](../seo-and-i18n/#canonical-urls)) |

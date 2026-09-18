@@ -32,7 +32,7 @@
 {{- if gt .ReadingTime 5 -}}
   {{- $schema = merge $schema (dict "timeRequired" (printf "PT%dM" .ReadingTime)) -}}
 {{- end -}}
-{{- if .Site.Params.logo -}}
-  {{- $schema = merge $schema (dict "image" (strings.TrimPrefix "/" .Site.Params.logo | absURL)) -}}
+{{- with .Site.Params.share_img | default .Site.Params.logo -}}
+  {{- $schema = merge $schema (dict "image" (strings.TrimPrefix "/" . | absURL)) -}}
 {{- end -}}
 {{- return ($authorSchema | append $schema) }}

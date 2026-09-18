@@ -49,7 +49,9 @@ Open Graph meta tags are generated automatically via Hugo's built-in internal te
 <meta property="og:image" content="..." />
 ```
 
-The image is resolved from a cascade: `share_img` → `image` → `logo`.
+The `og:image` tag comes from Hugo's own cascade: the page `images` front matter, then the
+site-wide `params.images`. The theme cascade below applies to Twitter cards and structured
+data.
 
 ## Twitter Cards
 
@@ -62,6 +64,11 @@ Twitter Card meta tags use the `summary_large_image` card type:
 ```
 
 The `@site` and `@creator` values come from `Params.author.twitter`.
+
+The card image is resolved from a cascade: page `share_img` → page `image` → site
+`share_img` → site `logo`. Set `share_img` in `[Params]` to give the whole site a wide
+default image, because `logo` is square and crops badly in a `summary_large_image` card.
+The `Recipe` structured data uses the same cascade; `Article` uses the site values only.
 
 ## Robots Meta Tags
 

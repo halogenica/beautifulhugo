@@ -59,6 +59,7 @@ enableGitInfo = true
   mainSections = ["post", "recipe"]
   logo = "/img/avatar-icon.png" # Expecting square dimensions
   favicon = "/img/favicon.ico"
+  # share_img = "/img/share.jpg" # Default social image, used instead of logo
   dateFormat = ":date_long"
   commit = false
   rss = true
