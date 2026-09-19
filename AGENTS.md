@@ -39,6 +39,7 @@ The theme uses the Hugo 0.146 template layout: `baseof.html`, `page.html`, `list
 - `exampleSite/` — Demo content (`content/`, `hugo.toml`, and custom `layouts/_partials/head_custom.html` / `footer_custom.html`).
 - `i18n/` — Translation strings in YAML.
 - `data/beautifulhugo/social.toml` — Social icon registry consumed by `layouts/_partials/footer.html`.
+- `.agents/skills/upgrade-beautiful-hugo/` — Skill that upgrades a downstream site between theme versions. One guide per version step in `resources/`; add a new one with every release that needs action from site owners.
 
 ## Agent Gotchas
 
