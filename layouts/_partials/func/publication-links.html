@@ -13,6 +13,10 @@
 {{- with $p.arxiv -}}
   {{- $links = $links | append (dict "label" "arXiv" "url" (printf "https://arxiv.org/abs/%s" (print .)) "icon" "fas fa-file-alt") -}}
 {{- end -}}
+{{- with $p.preprint -}}
+  {{- if not (and .server .url) }}{{ errorf "publication.preprint needs both server and url: %s" $.File.Path }}{{ end -}}
+  {{- $links = $links | append (dict "label" .server "url" .url "icon" "fas fa-file-alt") -}}
+{{- end -}}
 {{- with $p.url -}}
   {{- $links = $links | append (dict "label" (i18n "publicationWebsite") "url" . "icon" "fas fa-globe") -}}
 {{- end -}}
@@ -27,5 +31,9 @@
 {{- end -}}
 {{- with $p.video -}}
   {{- $links = $links | append (dict "label" (i18n "publicationVideo") "url" . "icon" "fas fa-video") -}}
+{{- end -}}
+{{- range $p.links -}}
+  {{- if not (and .label .url) }}{{ errorf "each entry in publication.links needs label and url: %s" $.File.Path }}{{ end -}}
+  {{- $links = $links | append (dict "label" .label "url" (partial "func/publication-url.html" (dict "Page" $ "Src" .url)) "icon" (.icon | default "fas fa-link")) -}}
 {{- end -}}
 {{- return $links -}}

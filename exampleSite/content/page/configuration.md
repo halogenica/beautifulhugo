@@ -611,6 +611,20 @@ We steep a static site generator in hot water and measure build times.
 
 Quote `doi` and `arxiv` values, or YAML parses them as numbers. `date` is the publication date; the section list groups by its year. Add a `_index.md` to the section and link it from the navbar.
 
+For a preprint on a server other than arXiv, such as bioRxiv or medRxiv, use `preprint` with the server name and the full URL. Add more link buttons with `links`:
+
+```yaml
+publication:
+  preprint:
+    server: bioRxiv
+    url: https://www.biorxiv.org/content/10.1101/2024.01.01.123456v1
+    id: "10.1101/2024.01.01.123456"
+  links:
+    - label: Dataset
+      url: https://example.com/data
+      icon: fas fa-database
+```
+
 ### Publication front matter reference
 
 | Key | Type | Required | Description |
@@ -624,19 +638,23 @@ Quote `doi` and `arxiv` values, or YAML parses them as numbers. `date` is the pu
 | `publication.publisher` | string | no | Publisher |
 | `publication.doi` | string | no | DOI, without the `https://doi.org/` prefix |
 | `publication.arxiv` | string | no | arXiv identifier (`"0000.00001"`) |
+| `publication.preprint.server` | string | with `preprint` | Preprint server name (`bioRxiv`). Used as the button label and the BibTeX `archivePrefix` |
+| `publication.preprint.url` | string | with `preprint` | Full URL of the preprint |
+| `publication.preprint.id` | string | no | Preprint identifier. Becomes the BibTeX `eprint` when `arxiv` is not set |
 | `publication.pdf` | string | no | PDF: a page-bundle resource, a path under `static/`, or a URL. Becomes `citation_pdf_url` |
 | `publication.url` | string | no | Publisher or project page |
 | `publication.code` | string | no | Source code URL |
 | `publication.slides` | string | no | Slides (resource, static path, or URL) |
 | `publication.poster` | string | no | Poster (resource, static path, or URL) |
 | `publication.video` | string | no | Video URL |
+| `publication.links` | list | no | More link buttons, each with `label`, `url` (resource, static path, or URL), and an optional Font Awesome `icon` (default `fas fa-link`) |
 | `publication.key` | string | no | BibTeX citation key. Defaults to the first author's last name plus the year (`teapot2026`) |
 | `publication.bibtex` | string | no | Hand-written BibTeX entry. Replaces the generated one |
 
 ### How it works
 
 - **Meta tags**: Each publication page emits `citation_title`, `citation_author`, `citation_publication_date`, `citation_journal_title` (or the conference, dissertation, or technical report equivalent), `citation_volume`, `citation_issue`, `citation_firstpage`, `citation_lastpage`, `citation_doi`, `citation_arxiv_id`, `citation_pdf_url`, and `citation_abstract_html_url`. Google Scholar needs one page per paper, so a listing page or a Markdown table is not indexed.
-- **Structured data**: Pages with `type: publication` emit a `ScholarlyArticle` JSON-LD block in place of the `Article` one, with the authors, the periodical, volume, issue, page range, DOI, and PDF.
+- **Structured data**: Pages with `type: publication` emit a `ScholarlyArticle` JSON-LD block in place of the `Article` one, with the authors, the periodical, volume, issue, page range, DOI, and PDF. The DOI, arXiv, preprint, and `url` links go in `sameAs`.
 - **Visual rendering**: The page header shows the authors (site author in bold) and the venue line under the title. Link buttons and a collapsible BibTeX entry are rendered above the page body.
 - **Section list**: A section of publication pages (for example `content/publication/`) is listed grouped by year, newest first, with the authors, venue, and links. It is not paginated. The `publications` shortcode renders the same list on any page.
 - **Archetype**: Use `hugo new publication/my-paper.md` to get a pre-filled front matter scaffold.

@@ -56,6 +56,7 @@
   {{- $schema = merge $schema (dict "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" (print .))) -}}
 {{- end -}}
 {{- with $p.arxiv }}{{ $sameAs = $sameAs | append (printf "https://arxiv.org/abs/%s" (print .)) }}{{ end -}}
+{{- with $p.preprint }}{{ with .url }}{{ $sameAs = $sameAs | append . }}{{ end }}{{ end -}}
 {{- with $p.url }}{{ $sameAs = $sameAs | append . }}{{ end -}}
 {{- with $sameAs }}{{ $schema = merge $schema (dict "sameAs" .) }}{{ end -}}
 {{- with $p.pdf -}}
