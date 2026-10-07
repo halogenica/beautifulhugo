@@ -34,7 +34,13 @@
 {{- with $p.pages }}{{ $fields = $fields | append (dict "k" "pages" "v" (replace (print .) "-" "--")) }}{{ end -}}
 {{- with $p.publisher }}{{ $fields = $fields | append (dict "k" "publisher" "v" .) }}{{ end -}}
 {{- with $p.doi }}{{ $fields = $fields | append (dict "k" "doi" "v" (print .)) }}{{ end -}}
-{{- with $p.arxiv }}{{ $fields = $fields | append (dict "k" "eprint" "v" (print .)) (dict "k" "archivePrefix" "v" "arXiv") }}{{ end -}}
+{{- with $p.arxiv -}}
+  {{- $fields = $fields | append (dict "k" "eprint" "v" (print .)) (dict "k" "archivePrefix" "v" "arXiv") -}}
+{{- else -}}
+  {{- with $p.preprint -}}
+    {{- with .id }}{{ $fields = $fields | append (dict "k" "eprint" "v" (print .)) (dict "k" "archivePrefix" "v" $p.preprint.server) }}{{ end -}}
+  {{- end -}}
+{{- end -}}
 {{- with $p.url }}{{ $fields = $fields | append (dict "k" "url" "v" .) }}{{ end -}}
 {{- $lines := slice -}}
 {{- range $fields -}}
