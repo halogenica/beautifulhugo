@@ -8,13 +8,47 @@ Beautiful Hugo uses CSS custom properties for dark mode and provides several hoo
 
 ## Custom Stylesheets
 
-The theme provides three extension points for custom HTML, CSS, and scripts:
+The theme provides four extension points for custom HTML, CSS, and scripts:
 
+- **`assets/css/custom.css`** — your own stylesheet, loaded after all theme CSS (see [Custom CSS file](#custom-css-file))
 - **`layouts/_partials/head_custom.html`** — loaded in `<head>`, use for `<style>` blocks or `<link>` tags
 - **`layouts/_partials/footer_custom.html`** — loaded after the `<footer>` element and before page scripts, use for additional markup or late-loading styles
 - **`layouts/_partials/footer.html`** — can be overridden to customize the footer content (links, copyright, etc.)
 
 Create these files in your site's `layouts/` directory (not the theme's) to override them.
+
+### Custom CSS file
+
+If your site has an `assets/css/custom.css` file, the theme loads it automatically. No configuration is necessary. The file goes through the same pipeline as the theme CSS: it is minified in production builds, fingerprinted, and linked with an `integrity` attribute.
+
+The file loads after all theme stylesheets, so its rules win on equal specificity. It is a separate file, not part of the theme bundle, so an `@import` at the top of the file works.
+
+```css
+/* assets/css/custom.css */
+a { color: #b5460f; }
+.navbar-custom { background: #fdf6e3; }
+```
+
+Use `head_custom.html` when you need HTML tags, such as `<link rel="preconnect">` or `<meta>`.
+
+### Fonts
+
+The theme loads two web fonts: Lora for body text and Open Sans for headings, the navbar, and interface elements. To use other fonts, set `webFonts = false` so that the theme does not load them, then set your fonts in `assets/css/custom.css`:
+
+```toml
+[Params]
+  webFonts = false
+```
+
+```css
+/* assets/css/custom.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+body { font-family: Georgia, serif; }
+h1, h2, h3, h4, h5, h6, .navbar-custom { font-family: "Inter", sans-serif; }
+```
+
+Many theme rules set Open Sans directly. With `webFonts = false` those rules use the next font in the stack (`'Helvetica Neue', Helvetica, Arial, sans-serif`) unless you override them.
 
 ### Overriding the footer
 
@@ -59,10 +93,9 @@ Dark mode colors are defined as CSS custom properties on `[data-theme="dark"]` i
 | `--dark-table-odd` | `#181818` | Odd table rows |
 | `--dark-table-even` | `#303030` | Even table rows |
 
-To override these, add rules in `layouts/_partials/head_custom.html`:
+To override these, add rules in `assets/css/custom.css`:
 
-```html
-<style>
+```css
 [data-theme="dark"] {
   --dark-bg: #1a1b26;
   --dark-fg: #c0caf5;
@@ -70,7 +103,6 @@ To override these, add rules in `layouts/_partials/head_custom.html`:
   --dark-code-bg: #24283b;
   --dark-code-fg: #f7768e;
 }
-</style>
 ```
 
 The custom properties cascade normally — you only need to override the ones you want to change.
@@ -108,9 +140,10 @@ For more extensive customization, you can override any of the theme's stylesheet
 5. `print.css` — print stylesheet, `media="print"`
 6. Highlight.js CSS, or `syntax-dark.css` for Chroma dark mode (kept separate so JS can toggle it)
 7. PhotoSwipe CSS
-8. `head_custom.html` — your customizations
+8. `custom.css` — your stylesheet, if `assets/css/custom.css` exists
+9. `head_custom.html` — your customizations
 
-Because your custom partial loads last, its rules win on equal specificity. For higher-specificity theme rules, increase your selector specificity or use `!important`.
+Because your stylesheet and custom partial load last, their rules win on equal specificity. For higher-specificity theme rules, increase your selector specificity or use `!important`.
 
 The theme's own stylesheets and scripts live in `assets/` and are processed with Hugo Pipes: the files are concatenated into one CSS bundle and one JS bundle, minified in production builds (not under `hugo serve`, so the served files stay readable), fingerprinted for cache busting, and linked with a Subresource Integrity `integrity` attribute. To replace one, put a file with the same path in your site's `assets/` directory (for example `assets/css/main.css`). Hugo uses your copy instead of the theme's and the pipeline applies unchanged.
 
