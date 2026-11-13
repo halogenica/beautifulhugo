@@ -4,6 +4,8 @@ date: 2026-05-10
 description: "This feature adds the ability to apply robot meta data on page
 through using custom page paramaters."
 tags: ["example", "summary", "limits", "search", "robots", "meta tags"]
+series: ["theme-tour"]
+series_weight: 3
 ---
 
 ## Purpose

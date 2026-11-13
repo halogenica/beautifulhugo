@@ -218,6 +218,11 @@
     page-break-inside: avoid;
   }
 
+  .series-box {
+    page-break-inside: avoid;
+  }
+
+  .series-box,
   .see-also-item {
     border-color: #000 !important;
     background: transparent !important;

@@ -1708,6 +1708,58 @@ h4.see-also {
   color: #006680;
 }
 
+/* --- Series --- */
+
+.series-box {
+  margin: 25px 0;
+  padding: 14px 18px;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-left: 3px solid #0085a1;
+  border-radius: 4px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.series-box-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.series-box-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.series-box-title {
+  font-weight: 800;
+}
+
+.series-box-count {
+  margin-left: auto;
+  font-size: 14px;
+  color: #666;
+}
+
+.series-box-list {
+  margin: 10px 0 0;
+  padding-left: 1.5em;
+}
+
+.series-box-list li {
+  margin: 2px 0;
+  line-height: 1.5;
+}
+
+.series-box-current {
+  font-weight: 600;
+}
+
 /* --- Archive year selector --- */
 
 .archive-year-nav {

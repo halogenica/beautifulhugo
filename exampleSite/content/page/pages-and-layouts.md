@@ -209,6 +209,23 @@ series: ["getting-started"]
 
 This creates `/series/` (taxonomy listing) and `/series/getting-started/` (term listing).
 
+### Series
+
+The `series` taxonomy has extra support. When a site declares it (see above), each post in a series shows a box that links to the series page and lists all parts in order, with the current part marked. See [Welcome to Beautiful Hugo]({{< relref "/post/2026-05-11-theme-features" >}}) for an example.
+
+- **Order:** posts with `series_weight` in the front matter come first, lowest value first. The other posts follow, oldest first.
+- **Position:** `seriesPosition` (site or page parameter) is `"top"` (default), `"bottom"`, `"both"`, or `"none"`.
+- **Series page:** add `content/series/getting-started/_index.md` to give the series a title and an introduction.
+- A series with only one post shows no box.
+
+```yaml
+---
+title: "Part 2"
+series: ["getting-started"]
+series_weight: 2
+---
+```
+
 ## Archive Page
 
 The archive layout shows a chronological list of **all** regular pages (newest first) with title, optional subtitle, and date. It is not paginated. Hidden pages are excluded.

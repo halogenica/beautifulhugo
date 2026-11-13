@@ -146,6 +146,19 @@
   color: var(--dark-link);
 }
 
+/* --- Series --- */
+[data-theme="dark"] .series-box {
+  background: var(--dark-card-bg);
+  border-color: var(--dark-surface-active);
+  border-left-color: var(--dark-accent);
+  color: var(--dark-fg);
+}
+
+[data-theme="dark"] .series-box-label,
+[data-theme="dark"] .series-box-count {
+  color: var(--dark-muted);
+}
+
 /* --- Archive year selector --- */
 
 [data-theme="dark"] .archive-year-btn {
