@@ -1,0 +1,38 @@
+{{- /*
+  Series box: lists the parts of each series that the page belongs to.
+  The site must declare a `series` taxonomy.
+
+  Order: pages with `series_weight` first (ascending), then the rest by date
+  (oldest first).
+
+  Context: dict "page" Page "position" ("top" or "bottom")
+*/ -}}
+{{- $page := .page -}}
+{{- $show := $page.Param "seriesPosition" | default "top" -}}
+{{- if in (slice .position "both") $show -}}
+  {{- range $page.GetTerms "series" -}}
+    {{- $pages := (where .Pages "Params.hidden" "!=" true).ByDate -}}
+    {{- $weighted := sort (where $pages "Params.series_weight" "!=" nil) "Params.series_weight" -}}
+    {{- $parts := $weighted | append (where $pages "Params.series_weight" nil) -}}
+    {{- $part := 0 -}}
+    {{- range $i, $p := $parts }}{{ if eq $p $page }}{{ $part = add $i 1 }}{{ end }}{{ end -}}
+    {{- if and $part (gt (len $parts) 1) }}
+<nav class="series-box" aria-label="{{ i18n "seriesLabel" }}: {{ .LinkTitle }}">
+  <div class="series-box-header">
+    <span class="series-box-label">{{ i18n "seriesLabel" }}</span>
+    <a class="series-box-title" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    <span class="series-box-count">{{ i18n "seriesPart" (dict "Part" $part "Total" (len $parts)) }}</span>
+  </div>
+  <ol class="series-box-list">
+    {{- range $parts }}
+      {{- if eq . $page }}
+    <li class="series-box-current" aria-current="page">{{ .LinkTitle }}</li>
+      {{- else }}
+    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    {{- end }}
+  </ol>
+</nav>
+    {{- end }}
+  {{- end -}}
+{{- end -}}

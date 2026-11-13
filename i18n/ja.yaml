@@ -236,3 +236,9 @@
   translation: "ポスター"
 - id: publicationVideo
   translation: "動画"
+
+# Series
+- id: seriesLabel
+  translation: "シリーズ"
+- id: seriesPart
+  translation: "第{{ .Part }}回(全{{ .Total }}回)"

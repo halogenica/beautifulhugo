@@ -241,3 +241,9 @@
   translation: "Póster"
 - id: publicationVideo
   translation: "Vídeo"
+
+# Series
+- id: seriesLabel
+  translation: "Serie"
+- id: seriesPart
+  translation: "Parte {{ .Part }} de {{ .Total }}"
