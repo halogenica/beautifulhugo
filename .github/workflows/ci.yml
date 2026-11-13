@@ -21,12 +21,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        hugo: [0.146.2, 0.155.2, 0.163.0]
+        hugo: [0.146.2, 0.155.2, 0.163.0, 0.170.0]
     steps:
       - name: Install Hugo CLI
         run: >
           wget -O ${{ runner.temp }}/hugo.deb
-          https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo }}/hugo_extended_${{ matrix.hugo }}_linux-amd64.deb
+          https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo }}/hugo_${{ matrix.hugo }}_linux-amd64.deb
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout

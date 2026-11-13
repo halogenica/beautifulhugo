@@ -14,10 +14,9 @@ The theme ships its own `hugo.toml` with a version constraint:
 [module]
   [module.hugoVersion]
     min = "0.146.2"
-    extended = false
 ```
 
-Use Hugo 0.146.2 or later. The **standard** edition is sufficient; the theme has no SCSS and does not encode WebP images. If your Hugo version is too old, Hugo writes a warning and the theme stops the build with an error message.
+Use Hugo 0.146.2 or later. The **standard** edition is sufficient; the theme has no SCSS. If your Hugo version is too old, Hugo writes a warning and the theme stops the build with an error message.
 
 The same file supplies the theme defaults `colorScheme = "auto"` and `mathEngine = "katex"`. Your site configuration overrides them.
 
