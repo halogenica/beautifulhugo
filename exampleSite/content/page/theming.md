@@ -4,7 +4,7 @@ subtitle: Customizing colors, dark mode overrides, and appearance
 comments: false
 ---
 
-Beautiful Hugo uses CSS custom properties for dark mode and provides several hooks for customizing the appearance without modifying theme files directly.
+Beautiful Hugo uses CSS custom properties for fonts and colors and provides several hooks for customizing the appearance without modifying theme files directly.
 
 ## Custom Stylesheets
 
@@ -25,9 +25,13 @@ The file loads after all theme stylesheets, so its rules win on equal specificit
 
 ```css
 /* assets/css/custom.css */
-a { color: #b5460f; }
-.navbar-custom { background: #fdf6e3; }
+:root {
+  --bh-accent: #b5460f;
+  --bh-navbar-bg: #fdf6e3;
+}
 ```
+
+See [Font and Color Variables](#font-and-color-variables) for the full list.
 
 Use `head_custom.html` when you need HTML tags, such as `<link rel="preconnect">` or `<meta>`.
 
@@ -44,11 +48,11 @@ The theme loads two web fonts: Lora for body text and Open Sans for headings, th
 /* assets/css/custom.css */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
-body { font-family: Georgia, serif; }
-h1, h2, h3, h4, h5, h6, .navbar-custom { font-family: "Inter", sans-serif; }
+:root {
+  --bh-font-body: Georgia, serif;
+  --bh-font-heading: "Inter", sans-serif;
+}
 ```
-
-Many theme rules set Open Sans directly. With `webFonts = false` those rules use the next font in the stack (`'Helvetica Neue', Helvetica, Arial, sans-serif`) unless you override them.
 
 ### Overriding the footer
 
@@ -65,6 +69,44 @@ For advanced use, a content template can `{{ define "footer" }}` to replace the 
 ### Adding scripts without touching the footer
 
 If you only need to add extra scripts (analytics, custom widgets, etc.) and are happy with the default footer, use `footer_custom.html` — your code runs after the footer content but before the theme scripts.
+
+## Font and Color Variables
+
+The fonts and the light-mode colors are CSS custom properties on `:root` in `assets/css/main.css`:
+
+| Variable | Default | Controls |
+|----------|---------|----------|
+| `--bh-font-body` | `'Lora', 'Times New Roman', serif` | Body text |
+| `--bh-font-heading` | `'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif` | Headings, navbar, buttons, metadata |
+| `--bh-bg` | `#fff` | Page background |
+| `--bh-text` | `#404040` | Body text, navbar and footer links |
+| `--bh-muted` | `#666` | Secondary text (post metadata, blockquotes) |
+| `--bh-subtle` | `#888` | Tertiary text (subtitles, search excerpts) |
+| `--bh-link` | `#0066cc` | Links |
+| `--bh-accent` | `#0085a1` | Link hover, selection, active and hover states |
+| `--bh-accent-strong` | `#006680` | Secondary text on a hovered card |
+| `--bh-accent-bg` | `#f0f8fa` | Hovered card background |
+| `--bh-on-accent` | `#fff` | Text on an accent background |
+| `--bh-navbar-bg` | `#f5f5f5` | Navbar, footer, and search background |
+| `--bh-navbar-border` | `#eaeaea` | Navbar and footer border |
+| `--bh-hover-bg` | `#eee` | Hovered menu item background |
+| `--bh-panel-bg` | `#f8f8f8` | Tabs, details, and even table rows |
+| `--bh-card-bg` | `#fafafa` | Card backgrounds (archive, terms, see-also, recipe) |
+| `--bh-card-border` | `#e8e8e8` | Card borders |
+| `--bh-border` | `#e0e0e0` | Other borders |
+
+To change them, set new values in `assets/css/custom.css`:
+
+```css
+:root {
+  --bh-accent: #b5460f;
+  --bh-link: #8a3c00;
+}
+```
+
+Colors that occur only once or twice, such as the alert boxes, are not variables. Override those rules directly.
+
+Dark mode has its own variables, so a change to `--bh-accent` does not change `--dark-accent`. Set both if you want the same color in the two modes.
 
 ## Dark Mode Color Variables
 

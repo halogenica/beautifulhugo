@@ -1,7 +1,7 @@
 .toc-panel {
   --bs-offcanvas-width: 320px;
-  --bs-offcanvas-bg: #fff;
-  --bs-offcanvas-border-color: #e0e0e0;
+  --bs-offcanvas-bg: var(--bh-bg);
+  --bs-offcanvas-border-color: var(--bh-border);
   --bs-offcanvas-padding-x: 1.25rem;
   --bs-offcanvas-padding-y: 1rem;
   max-width: 85vw;
@@ -13,10 +13,10 @@
 }
 
 .toc-title {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--bh-font-heading);
   font-size: 1rem;
   font-weight: 700;
-  color: #404040;
+  color: var(--bh-text);
 }
 
 .toc-body {
@@ -40,8 +40,8 @@
 .toc-body #TableOfContents a {
   display: block;
   padding: 0.35rem 0.5rem;
-  color: #666;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--bh-muted);
+  font-family: var(--bh-font-heading);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.4;
@@ -52,15 +52,15 @@
 }
 
 .toc-body #TableOfContents a:hover {
-  color: #0085a1;
-  border-left-color: #0085a1;
+  color: var(--bh-accent);
+  border-left-color: var(--bh-accent);
   background: rgba(0, 133, 161, 0.04);
 }
 
 .toc-body #TableOfContents a.toc-active {
-  color: #0085a1;
+  color: var(--bh-accent);
   font-weight: 600;
-  border-left-color: #0085a1;
+  border-left-color: var(--bh-accent);
   background: rgba(0, 133, 161, 0.08);
 }
 
@@ -77,8 +77,8 @@
 .toc-post-list a {
   display: block;
   padding: 0.5rem 0.5rem;
-  color: #666;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--bh-muted);
+  font-family: var(--bh-font-heading);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.4;
@@ -89,15 +89,15 @@
 }
 
 .toc-post-list a:hover {
-  color: #0085a1;
-  border-left-color: #0085a1;
+  color: var(--bh-accent);
+  border-left-color: var(--bh-accent);
   background: rgba(0, 133, 161, 0.04);
 }
 
 .toc-post-list a.toc-active {
-  color: #0085a1;
+  color: var(--bh-accent);
   font-weight: 600;
-  border-left-color: #0085a1;
+  border-left-color: var(--bh-accent);
   background: rgba(0, 133, 161, 0.08);
 }
 
