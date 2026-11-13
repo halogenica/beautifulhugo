@@ -16,6 +16,25 @@ If you want to see the site served, you can start a live server with:
 hugo serve -s exampleSite --disableFastRender
 ```
 
+### Test a variant
+
+To test a different parameter, set it in the environment. No file change is necessary:
+
+```bash
+HUGO_PARAMS_SELFHOSTED=true hugo --minify -s exampleSite
+```
+
+To test different content or configuration that is not a parameter (for example `[taxonomies]` or `[markup]`), build a copy of `exampleSite` outside the repository. The copy needs two changes:
+
+- In the `go.mod` of the copy, replace `..` in the `replace` line with the absolute path of the theme checkout.
+- Set `HUGO_ENABLEGITINFO=false`, because the copy is not in a git repository.
+
+```bash
+cp -R exampleSite /tmp/site
+sed -i.bak "s#=> \.\.#=> $PWD#" /tmp/site/go.mod
+HUGO_ENABLEGITINFO=false hugo -s /tmp/site -d /tmp/site-public
+```
+
 ## Hugo Version
 
 - **Minimum Hugo version**: `0.146.2`, declared in `hugo.toml` (`[module.hugoVersion]`) and in `theme.toml` (`min_version`, for the themes gallery).
