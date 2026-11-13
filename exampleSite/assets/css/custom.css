@@ -4,6 +4,8 @@ exists. Put your style changes here, or delete this file.
 
 Example: use system fonts (set Params.webFonts = false to skip the theme fonts)
 
-body { font-family: Georgia, serif; }
-h1, h2, h3, h4, h5, h6, .navbar-custom { font-family: system-ui, sans-serif; }
+:root {
+  --bh-font-body: Georgia, serif;
+  --bh-font-heading: system-ui, sans-serif;
+}
 */
