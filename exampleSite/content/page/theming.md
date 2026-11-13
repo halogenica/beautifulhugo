@@ -4,17 +4,55 @@ subtitle: Customizing colors, dark mode overrides, and appearance
 comments: false
 ---
 
-Beautiful Hugo uses CSS custom properties for dark mode and provides several hooks for customizing the appearance without modifying theme files directly.
+Beautiful Hugo uses CSS custom properties for fonts and colors and provides several hooks for customizing the appearance without modifying theme files directly.
 
 ## Custom Stylesheets
 
-The theme provides three extension points for custom HTML, CSS, and scripts:
+The theme provides four extension points for custom HTML, CSS, and scripts:
 
+- **`assets/css/custom.css`** — your own stylesheet, loaded after all theme CSS (see [Custom CSS file](#custom-css-file))
 - **`layouts/_partials/head_custom.html`** — loaded in `<head>`, use for `<style>` blocks or `<link>` tags
 - **`layouts/_partials/footer_custom.html`** — loaded after the `<footer>` element and before page scripts, use for additional markup or late-loading styles
 - **`layouts/_partials/footer.html`** — can be overridden to customize the footer content (links, copyright, etc.)
 
 Create these files in your site's `layouts/` directory (not the theme's) to override them.
+
+### Custom CSS file
+
+If your site has an `assets/css/custom.css` file, the theme loads it automatically. No configuration is necessary. The file goes through the same pipeline as the theme CSS: it is minified in production builds, fingerprinted, and linked with an `integrity` attribute.
+
+The file loads after all theme stylesheets, so its rules win on equal specificity. It is a separate file, not part of the theme bundle, so an `@import` at the top of the file works.
+
+```css
+/* assets/css/custom.css */
+:root {
+  --bh-accent: #b5460f;
+  --bh-navbar-bg: #fdf6e3;
+}
+```
+
+See [Font and Color Variables](#font-and-color-variables) for the full list.
+
+Use `head_custom.html` when you need HTML tags, such as `<link rel="preconnect">` or `<meta>`.
+
+### Fonts
+
+The theme loads two web fonts: Lora for body text and Open Sans for headings, the navbar, and interface elements. To use other fonts, set `webFonts = false` so that the theme does not load them, then set your fonts in `assets/css/custom.css`:
+
+```toml
+[Params]
+  webFonts = false
+```
+
+```css
+/* assets/css/custom.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+:root {
+  --bh-font-body: Georgia, serif;
+  --bh-font-heading: "Inter", sans-serif;
+}
+```
 
 ### Overriding the footer
 
@@ -31,6 +69,44 @@ For advanced use, a content template can `{{ define "footer" }}` to replace the 
 ### Adding scripts without touching the footer
 
 If you only need to add extra scripts (analytics, custom widgets, etc.) and are happy with the default footer, use `footer_custom.html` — your code runs after the footer content but before the theme scripts.
+
+## Font and Color Variables
+
+The fonts and the light-mode colors are CSS custom properties on `:root` in `assets/css/main.css`:
+
+| Variable | Default | Controls |
+|----------|---------|----------|
+| `--bh-font-body` | `'Lora', 'Times New Roman', serif` | Body text |
+| `--bh-font-heading` | `'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif` | Headings, navbar, buttons, metadata |
+| `--bh-bg` | `#fff` | Page background |
+| `--bh-text` | `#404040` | Body text, navbar and footer links |
+| `--bh-muted` | `#666` | Secondary text (post metadata, blockquotes) |
+| `--bh-subtle` | `#888` | Tertiary text (subtitles, search excerpts) |
+| `--bh-link` | `#0066cc` | Links |
+| `--bh-accent` | `#0085a1` | Link hover, selection, active and hover states |
+| `--bh-accent-strong` | `#006680` | Secondary text on a hovered card |
+| `--bh-accent-bg` | `#f0f8fa` | Hovered card background |
+| `--bh-on-accent` | `#fff` | Text on an accent background |
+| `--bh-navbar-bg` | `#f5f5f5` | Navbar, footer, and search background |
+| `--bh-navbar-border` | `#eaeaea` | Navbar and footer border |
+| `--bh-hover-bg` | `#eee` | Hovered menu item background |
+| `--bh-panel-bg` | `#f8f8f8` | Tabs, details, and even table rows |
+| `--bh-card-bg` | `#fafafa` | Card backgrounds (archive, terms, see-also, recipe) |
+| `--bh-card-border` | `#e8e8e8` | Card borders |
+| `--bh-border` | `#e0e0e0` | Other borders |
+
+To change them, set new values in `assets/css/custom.css`:
+
+```css
+:root {
+  --bh-accent: #b5460f;
+  --bh-link: #8a3c00;
+}
+```
+
+Colors that occur only once or twice, such as the alert boxes, are not variables. Override those rules directly.
+
+Dark mode has its own variables, so a change to `--bh-accent` does not change `--dark-accent`. Set both if you want the same color in the two modes.
 
 ## Dark Mode Color Variables
 
@@ -59,10 +135,9 @@ Dark mode colors are defined as CSS custom properties on `[data-theme="dark"]` i
 | `--dark-table-odd` | `#181818` | Odd table rows |
 | `--dark-table-even` | `#303030` | Even table rows |
 
-To override these, add rules in `layouts/_partials/head_custom.html`:
+To override these, add rules in `assets/css/custom.css`:
 
-```html
-<style>
+```css
 [data-theme="dark"] {
   --dark-bg: #1a1b26;
   --dark-fg: #c0caf5;
@@ -70,7 +145,6 @@ To override these, add rules in `layouts/_partials/head_custom.html`:
   --dark-code-bg: #24283b;
   --dark-code-fg: #f7768e;
 }
-</style>
 ```
 
 The custom properties cascade normally — you only need to override the ones you want to change.
@@ -108,9 +182,10 @@ For more extensive customization, you can override any of the theme's stylesheet
 5. `print.css` — print stylesheet, `media="print"`
 6. Highlight.js CSS, or `syntax-dark.css` for Chroma dark mode (kept separate so JS can toggle it)
 7. PhotoSwipe CSS
-8. `head_custom.html` — your customizations
+8. `custom.css` — your stylesheet, if `assets/css/custom.css` exists
+9. `head_custom.html` — your customizations
 
-Because your custom partial loads last, its rules win on equal specificity. For higher-specificity theme rules, increase your selector specificity or use `!important`.
+Because your stylesheet and custom partial load last, their rules win on equal specificity. For higher-specificity theme rules, increase your selector specificity or use `!important`.
 
 The theme's own stylesheets and scripts live in `assets/` and are processed with Hugo Pipes: the files are concatenated into one CSS bundle and one JS bundle, minified in production builds (not under `hugo serve`, so the served files stay readable), fingerprinted for cache busting, and linked with a Subresource Integrity `integrity` attribute. To replace one, put a file with the same path in your site's `assets/` directory (for example `assets/css/main.css`). Hugo uses your copy instead of the theme's and the pipeline applies unchanged.
 

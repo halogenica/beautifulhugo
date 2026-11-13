@@ -1,0 +1,11 @@
+/*
+The theme loads assets/css/custom.css after all its own CSS, if the file
+exists. Put your style changes here, or delete this file.
+
+Example: use system fonts (set Params.webFonts = false to skip the theme fonts)
+
+:root {
+  --bh-font-body: Georgia, serif;
+  --bh-font-heading: system-ui, sans-serif;
+}
+*/

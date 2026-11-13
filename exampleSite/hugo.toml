@@ -67,6 +67,7 @@ enableGitInfo = true
   readingTime = true
   wordCount = true
   colorScheme = "auto"
+  # webFonts = false  # do not load Lora and Open Sans; set your own fonts in assets/css/custom.css
   # mathEngine = "katex"  # "katex" (default), "mathjax" (always CDN, even with selfHosted), or "none"
   mathRender = "server"  # render KaTeX at build time; "client" (default) renders in the browser
   socialShare = true
