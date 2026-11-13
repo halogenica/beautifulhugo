@@ -20,9 +20,9 @@ hugo serve -s exampleSite --disableFastRender
 
 - **Minimum Hugo version**: `0.146.2`, declared in `hugo.toml` (`[module.hugoVersion]`) and in `theme.toml` (`min_version`, for the themes gallery).
 - Hugo only writes a **warning** if `[module.hugoVersion]` is not satisfied, for modules and for classic `themes/` use. `layouts/baseof.html` keeps an `errorf` to stop the build.
-- **CI matrix** tests against `0.146.2`, `0.155.2`, and `0.163.0`. `--panicOnWarning` makes the module warning a CI failure.
+- **CI matrix** tests against `0.146.2`, `0.155.2`, `0.163.0`, and `0.170.0`. `--panicOnWarning` makes the module warning a CI failure.
 - The deploy workflow pins `0.163.0`.
-- The theme declares `extended = false`: it has no SCSS and no WebP encoding, so the **standard** Hugo edition is sufficient. CI still uses the extended binary.
+- The theme has no SCSS, so the **standard** Hugo edition is sufficient, and CI uses it. Hugo 0.170 removed the extended edition.
 
 ## Theme Configuration (`hugo.toml`)
 

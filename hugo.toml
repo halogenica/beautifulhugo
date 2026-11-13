@@ -6,7 +6,6 @@
 [module]
   [module.hugoVersion]
     min = "0.146.2"
-    extended = false # No SCSS or WebP encoding; the standard edition is sufficient
 
 [params]
   colorScheme = "auto"
