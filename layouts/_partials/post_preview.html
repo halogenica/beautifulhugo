@@ -36,7 +36,14 @@
         </div>
         {{ end }}
         <div class="post-entry">
-            {{ if or (.Truncated) (.Params.summary) (eq .Type "recipe") }}
+            {{/* .RawSummary needs Hugo 0.169, which deprecates .Params.summary. */}}
+            {{ $customSummary := "" }}
+            {{ if ge hugo.Version "0.169.0" }}
+            {{ $customSummary = .RawSummary }}
+            {{ else }}
+            {{ $customSummary = .Params.summary }}
+            {{ end }}
+            {{ if or .Truncated $customSummary (eq .Type "recipe") }}
             {{ .Summary }}
             <a href="{{ .RelPermalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
             {{ else }}
