@@ -240,3 +240,9 @@
   translation: "Poster"
 - id: publicationVideo
   translation: "Video"
+
+# Series
+- id: seriesLabel
+  translation: "Seri"
+- id: seriesPart
+  translation: "Bölüm {{ .Part }} / {{ .Total }}"

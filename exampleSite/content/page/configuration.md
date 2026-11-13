@@ -200,6 +200,7 @@ The first build needs network access. Hugo keeps the downloaded files in its `ge
 | `socialShare` | bool | `false` | Enable social sharing buttons on posts |
 | `showRelatedPosts` | bool | `false` | Show related posts, ranked by relevance via Hugo's [related-content engine](#related-posts) |
 | `related_content_limit` | int | `5` | Max number of related posts to display |
+| `seriesPosition` | string | `"top"` | Where a post shows its [series box]({{< relref "pages-and-layouts.md#series" >}}): `"top"`, `"bottom"`, `"both"`, or `"none"`. Needs a `series` taxonomy |
 | `rss` | bool | `false` | Show RSS icon in footer |
 | `disableFigureOverride` | bool | `false` | When `true`, use Hugo's native `<figure>` shortcode; `beautifulfigure` remains available |
 | `navShort` | bool | `false` | Make navbar permanently short (collapsed style) |
@@ -518,6 +519,8 @@ These options can be set in the front matter of any page or post:
 | `hideAuthor` | bool | Override site-level `hideAuthor` for this page |
 | `showRelatedPosts` | bool | Override site-level `showRelatedPosts` for this page |
 | `related_content_limit` | int | Override site-level `related_content_limit` for this page |
+| `seriesPosition` | string | Override site-level `seriesPosition` for this page |
+| `series_weight` | number | Position of this page in its series (lowest first) |
 
 ## Recipe Pages
 

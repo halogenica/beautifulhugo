@@ -5,6 +5,7 @@
         <article role="main" class="blog-post">
           {{ partial "github-buttons" . }}
           {{ partial "before_content.html" . }}
+          {{ partial "series.html" (dict "page" . "position" "top") }}
           {{ if and (eq .Type "publication") .Params.publication }}
             {{ partial "publication.html" . }}
           {{ end }}
@@ -13,6 +14,7 @@
             {{ partial "recipe.html" . }}
           {{ end }}
           {{ partial "after_content.html" . }}
+          {{ partial "series.html" (dict "page" . "position" "bottom") }}
 
         {{ if .Params.categories }}
           <div class="blog-categories">

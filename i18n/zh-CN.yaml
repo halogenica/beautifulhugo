@@ -236,3 +236,9 @@
   translation: "海报"
 - id: publicationVideo
   translation: "视频"
+
+# Series
+- id: seriesLabel
+  translation: "系列"
+- id: seriesPart
+  translation: "第 {{ .Part }} 篇,共 {{ .Total }} 篇"
