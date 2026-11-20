@@ -214,7 +214,7 @@ This creates `/series/` (taxonomy listing) and `/series/getting-started/` (term 
 The `series` taxonomy has extra support. When a site declares it (see above), each post in a series shows a box that links to the series page and lists all parts in order, with the current part marked. See [Welcome to Beautiful Hugo]({{< relref "/post/2026-05-11-theme-features" >}}) for an example.
 
 - **Order:** posts with `series_weight` in the front matter come first, lowest value first. The other posts follow, oldest first. `series_weight` must be a number. The series page lists the posts in the same order.
-- **Position:** `seriesPosition` (site or page parameter) is `"top"` (default), `"bottom"`, `"both"`, or `"none"`. `false` is the same as `"none"`. Any other value stops the build.
+- **Position:** `seriesPosition` (site or page parameter) is `"top"` (default), `"bottom"`, `"both"`, or `"none"`. `false` is the same as `"none"`. Any other value, `true` and `""` included, stops the build.
 - **Series page:** add `content/series/getting-started/_index.md` to give the series a title and an introduction.
 - A series with only one post shows no box.
 - A post with `hidden: true` is not a part of the series: it shows no box and the other parts do not list it.

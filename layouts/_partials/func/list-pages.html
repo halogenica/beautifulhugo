@@ -19,7 +19,7 @@
 {{- $pages := .Pages -}}
 {{- if .IsHome -}}
   {{- $pages = where site.RegularPages "Type" "in" (partial "func/main-sections.html" .) -}}
-{{- else if and (eq .Kind "term") (eq .Type "series") -}}
+{{- else if and (eq .Kind "term") (eq .Data.Plural "series") -}}
   {{- $pages = partial "func/series-pages.html" . -}}
 {{- end -}}
 {{- return (where $pages "Params.hidden" "!=" true) -}}

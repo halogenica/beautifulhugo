@@ -8,9 +8,9 @@
 */ -}}
 {{- $page := .page -}}
 {{- $show := $page.Param "seriesPosition" -}}
-{{- if ne $show false }}{{ $show = $show | default "top" }}{{ end -}}
+{{- if eq $show nil }}{{ $show = "top" }}{{ end -}}
 {{- $show = lower (string $show) -}}
-{{- $show = index (dict "false" "none" "true" "top") $show | default $show -}}
+{{- if eq $show "false" }}{{ $show = "none" }}{{ end -}}
 {{- if not (in (slice "top" "bottom" "both" "none") $show) -}}
   {{- errorf "seriesPosition must be \"top\", \"bottom\", \"both\", or \"none\", not %q (%s)" $show $page.String -}}
 {{- end -}}
@@ -25,7 +25,8 @@
 {{ if $landmark }}<nav class="series-box" aria-label="{{ i18n "seriesLabel" }}: {{ .LinkTitle }}">{{ else }}<div class="series-box">{{ end }}
   <div class="series-box-header">
     <span class="series-box-label">{{ i18n "seriesLabel" }}</span>
-    <a class="series-box-title" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    {{- /* A term with `build.render: never` has no URL. */}}
+    {{ if .RelPermalink }}<a class="series-box-title" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ else }}<span class="series-box-title">{{ .LinkTitle }}</span>{{ end }}
     <span class="series-box-count">{{ i18n "seriesPart" (dict "Part" $part "Total" (len $parts)) }}</span>
   </div>
   <ol class="series-box-list">
