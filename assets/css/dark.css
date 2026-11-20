@@ -21,6 +21,39 @@
   --dark-list-bg: #333;
   --dark-table-odd: #181818;
   --dark-table-even: #303030;
+  --dark-subtle: #888;
+  --dark-title: #eee;
+  --dark-on-accent: #fff;
+  --dark-overlay-hover: rgba(255, 255, 255, 0.04);
+
+  /* Bootstrap keys its dark values off data-bs-theme, which the theme does not
+     set. These are the Bootstrap 5.3 dark values for <mark> and callouts. */
+  --bs-highlight-bg: #664d03;
+  --bs-highlight-color: #fff3cd;
+  --bs-primary-text-emphasis: #6ea8fe;
+  --bs-primary-bg-subtle: #031633;
+  --bs-primary-border-subtle: #084298;
+  --bs-secondary-text-emphasis: #a7acb1;
+  --bs-secondary-bg-subtle: #161719;
+  --bs-secondary-border-subtle: #41464b;
+  --bs-success-text-emphasis: #75b798;
+  --bs-success-bg-subtle: #051b11;
+  --bs-success-border-subtle: #0f5132;
+  --bs-info-text-emphasis: #6edff6;
+  --bs-info-bg-subtle: #032830;
+  --bs-info-border-subtle: #087990;
+  --bs-warning-text-emphasis: #ffda6a;
+  --bs-warning-bg-subtle: #332701;
+  --bs-warning-border-subtle: #997404;
+  --bs-danger-text-emphasis: #ea868f;
+  --bs-danger-bg-subtle: #2c0b0e;
+  --bs-danger-border-subtle: #842029;
+  --bs-light-text-emphasis: #f8f9fa;
+  --bs-light-bg-subtle: #343a40;
+  --bs-light-border-subtle: #495057;
+  --bs-dark-text-emphasis: #dee2e6;
+  --bs-dark-bg-subtle: #1a1d20;
+  --bs-dark-border-subtle: #343a40;
 }
 
 [data-theme="dark"] body {
@@ -38,13 +71,6 @@
 
 [data-theme="dark"] blockquote {
   border-left: 5px solid var(--dark-surface);
-}
-
-/* Bootstrap styles <mark> for light backgrounds only (it keys off
-   data-bs-theme, which the theme does not set). */
-[data-theme="dark"] mark {
-  background-color: #664d03;
-  color: #fff3cd;
 }
 
 [data-theme="dark"] figure.white img,
@@ -100,7 +126,7 @@
 [data-theme="dark"] .nav-side-arrow:hover,
 [data-theme="dark"] .nav-side-arrow:focus {
   color: var(--dark-fg);
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: var(--dark-overlay-hover);
 }
 
 [data-theme="dark"] .post-pager li a,
@@ -162,7 +188,7 @@
 [data-theme="dark"] .archive-year-btn.active {
   background: var(--dark-accent);
   border-color: var(--dark-accent);
-  color: #fff;
+  color: var(--dark-on-accent);
 }
 
 [data-theme="dark"] .archive-year-btn:focus-visible {
@@ -237,7 +263,7 @@
 [data-theme="dark"] .terms-item-page:hover,
 [data-theme="dark"] .terms-item-page:focus {
   background: var(--dark-accent);
-  color: #fff;
+  color: var(--dark-on-accent);
 }
 
 /* --- Footer --- */
@@ -251,7 +277,7 @@
 }
 
 [data-theme="dark"] footer .text-muted {
-  color: #888 !important;
+  color: var(--dark-subtle) !important;
 }
 
 /* --- Content section --- */
@@ -289,130 +315,14 @@
 }
 
 /* --- Callout Boxes (dark mode) --- */
-[data-theme="dark"] .alert.callout {
-  border-color: var(--dark-surface);
-}
-
-[data-theme="dark"] .alert-note {
-  background-color: #2d2f31;
-  border-color: #495057;
-  color: #adb5bd;
-}
-
-[data-theme="dark"] .alert-note .alert-heading {
-  color: #ced4da;
-}
-
-[data-theme="dark"] .alert-light {
-  background-color: #343a40;
-  border-color: #495057;
-  color: #dee2e6;
-}
-
-[data-theme="dark"] .alert-light .alert-heading {
-  color: #f8f9fa;
-}
-
-[data-theme="dark"] .alert-dark {
-  background-color: #1a1d20;
-  border-color: #343a40;
-  color: #adb5bd;
-}
-
-[data-theme="dark"] .alert-dark .alert-heading {
-  color: #ced4da;
-}
-
-[data-theme="dark"] .alert-primary.callout {
-  background-color: #031633;
-  border-color: #084298;
-  color: #6ea8fe;
-}
-
-[data-theme="dark"] .alert-primary.callout .alert-heading {
-  color: #9ec5fe;
-}
-
-[data-theme="dark"] .alert-secondary.callout {
-  background-color: #161719;
-  border-color: #41464b;
-  color: #a7acb1;
-}
-
-[data-theme="dark"] .alert-secondary.callout .alert-heading {
-  color: #c4c8cb;
-}
-
-[data-theme="dark"] .alert-success.callout {
-  background-color: #051b11;
-  border-color: #0f5132;
-  color: #75b798;
-}
-
-[data-theme="dark"] .alert-success.callout .alert-heading {
-  color: #a3cfbb;
-}
-
-[data-theme="dark"] .alert-info.callout {
-  background-color: #032830;
-  border-color: #087990;
-  color: #6edff6;
-}
-
-[data-theme="dark"] .alert-info.callout .alert-heading {
-  color: #9eeaf9;
-}
-
-[data-theme="dark"] .alert-warning.callout {
-  background-color: #332701;
-  border-color: #997404;
-  color: #ffda6a;
-}
-
-[data-theme="dark"] .alert-warning.callout .alert-heading {
-  color: #ffe69c;
-}
-
-[data-theme="dark"] .alert-danger.callout {
-  background-color: #2c0b0e;
-  border-color: #842029;
-  color: #ea868f;
-}
-
-[data-theme="dark"] .alert-danger.callout .alert-heading {
-  color: #f1aeb5;
-}
-
-/* Backward-compatible box-* dark aliases */
+/* Colors come from the --bs-* variables at the top of this file. */
 [data-theme="dark"] .box-note,
 [data-theme="dark"] .box-warning,
 [data-theme="dark"] .box-error,
 [data-theme="dark"] .box-success {
-  border-color: var(--dark-surface);
-}
-
-[data-theme="dark"] .box-note {
-  background-color: #2d2f31;
-  border-left-color: #6c757d;
-  color: #adb5bd;
-}
-
-[data-theme="dark"] .box-warning {
-  background-color: #2d2515;
-  border-left-color: #ffc107;
-  color: #ffc107;
-}
-
-[data-theme="dark"] .box-error {
-  background-color: #2d1515;
-  border-left-color: #dc3545;
-  color: #f1aeb5;
-}
-
-[data-theme="dark"] .box-success {
-  background-color: #142d14;
-  border-left-color: #198754;
-  color: #a3cfbb;
+  border-top-color: var(--dark-surface);
+  border-right-color: var(--dark-surface);
+  border-bottom-color: var(--dark-surface);
 }
 
 /* Theme-dependent visibility (usable for mermaid diagrams, image pairs, etc.) */
@@ -504,7 +414,7 @@
 [data-theme="dark"] .btn-view-source:focus {
   background: var(--dark-accent);
   border-color: var(--dark-accent);
-  color: #fff;
+  color: var(--dark-on-accent);
 }
 
 /* --- Navbar Search --- */

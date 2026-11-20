@@ -94,6 +94,17 @@ The fonts and the light-mode colors are CSS custom properties on `:root` in `ass
 | `--bh-card-bg` | `#fafafa` | Card backgrounds (archive, terms, see-also, recipe) |
 | `--bh-card-border` | `#e8e8e8` | Card borders |
 | `--bh-border` | `#e0e0e0` | Other borders |
+| `--bh-border-strong` | `#ccc` | Table, archive button, and view-source borders |
+| `--bh-rule` | `#eee` | Post separators, blockquote bar, disclaimer border |
+| `--bh-faint` | `#aaa` | Search placeholder, header image shadow |
+| `--bh-overlay-hover` | `rgba(0, 0, 0, 0.03)` | Focused side arrows |
+| `--bh-shadow` | `rgba(0, 0, 0, 0.08)` | Card and details shadows |
+| `--bh-shadow-strong` | `rgba(0, 0, 0, 0.8)` | Avatar shadow, text shadow on header images |
+| `--bh-img-text` | `#fff` | Text on header images |
+| `--bh-img-desc-bg` | `rgba(30, 30, 30, 0.6)` | Header image description background |
+| `--bh-tag-hover` | `#004c99` | Hovered tag and category text |
+| `--bh-tag-hover-bg` | `#ccc` | Hovered tag and category background |
+| `--bh-share-bg` | `#b5c6ce` | Share button background |
 
 To change them, set new values in `assets/css/custom.css`:
 
@@ -104,7 +115,7 @@ To change them, set new values in `assets/css/custom.css`:
 }
 ```
 
-Colors that occur only once or twice, such as the alert boxes, are not variables. Override those rules directly.
+Callouts (`alert-*` and the legacy `box-*` classes), the footer disclaimer, and `<mark>` use the Bootstrap variables `--bs-<type>-text-emphasis`, `--bs-<type>-bg-subtle`, and `--bs-<type>-border-subtle`, where `<type>` is `primary`, `secondary`, `success`, `info`, `warning`, `danger`, `light`, or `dark`. The `note` callout uses the `secondary` set. `dark.css` sets the Bootstrap dark values on `[data-theme="dark"]`, so set these variables on `:root` for light mode and on `[data-theme="dark"]` for dark mode.
 
 Dark mode has its own variables, so a change to `--bh-accent` does not change `--dark-accent`. Set both if you want the same color in the two modes.
 
@@ -134,6 +145,10 @@ Dark mode colors are defined as CSS custom properties on `[data-theme="dark"]` i
 | `--dark-list-bg` | `#333` | List group backgrounds |
 | `--dark-table-odd` | `#181818` | Odd table rows |
 | `--dark-table-even` | `#303030` | Even table rows |
+| `--dark-subtle` | `#888` | Footer muted text, recipe labels |
+| `--dark-title` | `#eee` | TOC and recipe section titles |
+| `--dark-on-accent` | `#fff` | Text on an accent background |
+| `--dark-overlay-hover` | `rgba(255, 255, 255, 0.04)` | Focused side arrows |
 
 To override these, add rules in `assets/css/custom.css`:
 
