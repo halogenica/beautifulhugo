@@ -114,10 +114,6 @@
   filter: invert(1) grayscale(100%) brightness(200%);
 }
 
-[data-theme="dark"] .toc-body #TableOfContents a {
-  color: var(--dark-muted);
-}
-
 [data-theme="dark"] .toc-body #TableOfContents a:hover {
   color: var(--dark-link);
   border-left-color: var(--dark-link);
@@ -128,10 +124,6 @@
   color: var(--dark-link);
   border-left-color: var(--dark-link);
   background: color-mix(in srgb, var(--dark-link) 10%, transparent);
-}
-
-[data-theme="dark"] .toc-post-list a {
-  color: var(--dark-muted);
 }
 
 [data-theme="dark"] .toc-post-list a:hover {

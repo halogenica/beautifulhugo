@@ -115,9 +115,9 @@ To change them, set new values in `assets/css/custom.css`:
 }
 ```
 
-Callouts (`alert-*` and the legacy `box-*` classes), the footer disclaimer, and `<mark>` use the Bootstrap variables `--bs-<type>-text-emphasis`, `--bs-<type>-bg-subtle`, and `--bs-<type>-border-subtle`, where `<type>` is `primary`, `secondary`, `success`, `info`, `warning`, `danger`, `light`, or `dark`. The `note` callout uses the `secondary` set. `dark.css` sets the Bootstrap dark values on `[data-theme="dark"]`, so set these variables on `:root` for light mode and on `[data-theme="dark"]` for dark mode.
+Callouts (`alert-*` and the legacy `box-*` classes), the footer disclaimer, and `<mark>` use the Bootstrap variables `--bs-<type>-text-emphasis`, `--bs-<type>-bg-subtle`, and `--bs-<type>-border-subtle`, where `<type>` is `primary`, `secondary`, `success`, `info`, `warning`, `danger`, `light`, or `dark`. The `note` callout uses the `secondary` set. `dark.css` sets the Bootstrap dark values on `:root[data-theme="dark"]`, so set these variables on `:root` for light mode and on `:root[data-theme="dark"]` for dark mode.
 
-Dark mode has its own variables, so a change to `--bh-accent` does not change `--dark-accent`. Set both if you want the same color in the two modes.
+In dark mode, the theme points the `--bh-*` color variables at the `--dark-*` variables below. Set the `--dark-*` variables to change dark mode. `--dark-accent` follows `--bh-accent`, so one change to `--bh-accent` sets the accent in the two modes. The variables that have no dark counterpart, such as the shadows, header image colors, and `--bh-tag-hover`, are the same in the two modes.
 
 ## Dark Mode Color Variables
 
@@ -136,7 +136,7 @@ Dark mode colors are defined as CSS custom properties on `[data-theme="dark"]` i
 | `--dark-surface-hover` | `#666` | Surface hover state |
 | `--dark-surface-active` | `#555` | Active/selected surface |
 | `--dark-muted` | `#AAA` | Secondary/muted text |
-| `--dark-accent` | `#0085a1` | Accent highlights |
+| `--dark-accent` | `var(--bh-accent)` | Accent highlights |
 | `--dark-code-bg` | `#222` | Inline code background |
 | `--dark-code-fg` | `#fbb` | Inline code text |
 | `--dark-code-block-bg` | `#0d1117` | Code block background |
