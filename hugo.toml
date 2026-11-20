@@ -10,3 +10,4 @@
 [params]
   colorScheme = "auto"
   mathEngine = "katex"
+  webFonts = true

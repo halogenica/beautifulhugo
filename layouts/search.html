@@ -1,7 +1,6 @@
 {{ define "main" }}
   {{- $searchProvider := partial "search-provider.html" . -}}
   {{- $search := .Site.Params.search | default (dict) -}}
-  {{ partial "css.html" "css/search.css" }}
   <div class="search-page-container" role="main">
     {{- if eq $searchProvider "none" }}
     <div class="container{{ if .Params.fullWidth }}-fluid{{ end }}">

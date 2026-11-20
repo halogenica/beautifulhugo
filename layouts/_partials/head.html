@@ -86,6 +86,7 @@
   {{- if not ($.Param "useHLJS") }}{{ $css = $css | append "css/syntax.css" }}{{ end }}
   {{- $css = $css | append "css/codeblock.css" }}
   {{- if ne ($.Param "toc") false }}{{ $css = $css | append "css/toc.css" }}{{ end }}
+  {{- if eq .Layout "search" }}{{ $css = $css | append "css/search.css" }}{{ end }}
   {{ partial "css.html" (dict "paths" $css) }}
   {{ partial "css.html" (dict "path" "css/print.css" "media" "print") }}
 
@@ -105,10 +106,13 @@
     {{- if $features.tabsSync }}{{ partial "js.html" (dict "path" "js/tabs-sync.js" "defer" true) }}{{ end }}
   {{ end }}
 
-  {{- if .Site.Params.selfHosted -}}
+  {{- /* An environment override arrives as the string "false". */ -}}
+  {{- if not (in (slice false "false") .Site.Params.webFonts) }}
+  {{- if .Site.Params.selfHosted }}
   <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" />
-  {{- else -}}
+  {{- else }}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+  {{- end }}
   {{- end -}}
 
   {{- $colorScheme := $.Param "colorScheme" | default "auto" -}}
@@ -146,6 +150,14 @@
   {{- end }}
 
   {{- partial "seo/meta/meta-robots.html" . }}
+
+  {{- /* Site-owned stylesheet. It is a separate file, loaded after all theme
+         CSS, so its rules win and a leading @import stays valid. */ -}}
+  {{- /* A file with no rules minifies to nothing; Hugo then publishes the
+         source bytes and the integrity hash does not match. */ -}}
+  {{- with resources.Get "css/custom.css" }}{{ if (. | minify).Content }}
+  {{ partial "css.html" "css/custom.css" }}
+  {{- end }}{{ end }}
 
   {{- partial "head_custom.html" . }}
 {{- if not hugo.IsServer -}}

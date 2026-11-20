@@ -18,7 +18,7 @@ The theme ships its own `hugo.toml` with a version constraint:
 
 Use Hugo 0.146.2 or later. The **standard** edition is sufficient; the theme has no SCSS. If your Hugo version is too old, Hugo writes a warning and the theme stops the build with an error message.
 
-The same file supplies the theme defaults `colorScheme = "auto"` and `mathEngine = "katex"`. Your site configuration overrides them.
+The same file supplies the theme defaults `colorScheme = "auto"`, `mathEngine = "katex"`, and `webFonts = true`. Your site configuration overrides them.
 
 Hugo does not merge all sections of a theme configuration into your site configuration. Markup settings (`[markup.highlight]`, `[markup.goldmark]`) and `[frontmatter]` must be in your own site configuration — see [Syntax Highlighting](#syntax-highlighting), [Markdown Extensions](../markdown-extensions/), and [Last Modified Dates](#last-modified-dates).
 
@@ -156,6 +156,14 @@ When `colorScheme = "auto"`, the theme reacts to OS-level dark mode changes in r
 The user's toggle preference persists across pages via `localStorage` (key: `theme`). An inline script in `<head>` restores it before the first paint to prevent a flash of the wrong theme.
 
 For customizing dark mode colors, theme-dependent content, and other appearance overrides, see [Theming](../theming/).
+
+### Fonts and custom CSS
+
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `webFonts` | bool | `true` | Load the theme fonts (Lora and Open Sans). Set to `false` when you supply your own fonts |
+
+The theme also loads `assets/css/custom.css` from your site if the file exists. See [Theming](../theming/#custom-css-file).
 
 ### selfHosted assets
 
@@ -440,7 +448,7 @@ Beautiful Hugo provides partial "hooks" that let you inject custom HTML at speci
 
 | Partial | Injects Near | Example Use |
 |---------|-------------|-------------|
-| `head_custom.html` | End of `<head>`, before `</head>` | Extra CSS, preconnect hints, meta tags |
+| `head_custom.html` | End of `<head>`, before `</head>` | Preconnect hints, meta tags, extra `<link>` tags (for CSS, prefer [`assets/css/custom.css`](../theming/#custom-css-file)) |
 | `nav_custom.html` | Inside the navbar, after menu items | CTA button, search box, custom nav link |
 | `header_custom.html` | Inside the page header, after title/subtitle | Hero CTA button, banner |
 | `before_content.html` | Before `.Content` on single pages | Affiliate disclosure, reading-time banner |
