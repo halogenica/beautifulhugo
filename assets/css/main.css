@@ -1738,6 +1738,58 @@ h4.see-also {
   color: var(--bh-accent-strong);
 }
 
+/* --- Series --- */
+
+.series-box {
+  margin: 25px 0;
+  padding: 14px 18px;
+  background: var(--bh-card-bg);
+  border: 1px solid var(--bh-card-border);
+  border-left: 3px solid var(--bh-accent);
+  border-radius: 4px;
+  font-family: var(--bh-font-heading);
+  font-size: 16px;
+}
+
+.series-box-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.series-box-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--bh-muted);
+}
+
+.series-box-title {
+  font-weight: 800;
+}
+
+.series-box-count {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--bh-muted);
+}
+
+.series-box-list {
+  margin: 10px 0 0;
+  padding-left: 1.5em;
+}
+
+.series-box-list li {
+  margin: 2px 0;
+  line-height: 1.5;
+}
+
+.series-box-current {
+  font-weight: 600;
+}
+
 /* --- Archive year selector --- */
 
 .archive-year-nav {

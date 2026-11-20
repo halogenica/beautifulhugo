@@ -237,3 +237,9 @@
   translation: "포스터"
 - id: publicationVideo
   translation: "영상"
+
+# Series
+- id: seriesLabel
+  translation: "시리즈"
+- id: seriesPart
+  translation: "{{ .Total }}편 중 {{ .Part }}편"

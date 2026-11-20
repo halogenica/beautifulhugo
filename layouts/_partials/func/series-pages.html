@@ -1,0 +1,20 @@
+{{- /*
+  Returns the pages of a `series` term in series order: pages with
+  `series_weight` first (ascending, compared as numbers), then the rest by
+  date (oldest first). Hidden pages are dropped.
+
+  The series box and the series term page both use this order.
+
+  Context: the term page.
+  Returns: a page collection.
+*/ -}}
+{{- $pages := (where .Pages "Params.hidden" "!=" true).ByDate -}}
+{{- $keyed := slice -}}
+{{- range where $pages "Params.series_weight" "!=" nil -}}
+  {{- $keyed = $keyed | append (dict "weight" (float .Params.series_weight) "page" .) -}}
+{{- end -}}
+{{- $parts := first 0 $pages -}}
+{{- range sort $keyed "weight" -}}
+  {{- $parts = $parts | append .page -}}
+{{- end -}}
+{{- return ($parts | append (where $pages "Params.series_weight" nil)) -}}

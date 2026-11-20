@@ -249,3 +249,9 @@
   translation: "Plakat"
 - id: publicationVideo
   translation: "Wideo"
+
+# Series
+- id: seriesLabel
+  translation: "Seria"
+- id: seriesPart
+  translation: "Część {{ .Part }} z {{ .Total }}"

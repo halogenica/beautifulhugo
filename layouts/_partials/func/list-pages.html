@@ -9,6 +9,7 @@
   - Home: regular pages whose type is in `mainSections`, matching the
     historical home-page listing.
   - Section / term: the node's own `.Pages` (Hugo's default paginator set).
+  - `series` term: the same pages in series order (`func/series-pages.html`).
 
   In every case pages flagged `hidden` in front matter are dropped before
   pagination, so they neither appear nor leave gaps in the page numbering.
@@ -18,5 +19,7 @@
 {{- $pages := .Pages -}}
 {{- if .IsHome -}}
   {{- $pages = where site.RegularPages "Type" "in" (partial "func/main-sections.html" .) -}}
+{{- else if and (eq .Kind "term") (eq .Data.Plural "series") -}}
+  {{- $pages = partial "func/series-pages.html" . -}}
 {{- end -}}
 {{- return (where $pages "Params.hidden" "!=" true) -}}
