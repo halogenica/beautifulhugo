@@ -32,6 +32,7 @@ If no version is visible, compare the site's theme copy against the tags of
 | 3.x | 5.0.1 | `resources/v3-to-v5.md` |
 | 5.0.x | 5.1.0 | `resources/v5.0-to-v5.1.md` |
 | 5.1.x | 5.2.0 | `resources/v5.1-to-v5.2.md` |
+| 5.2.x | 5.3.0 | `resources/v5.2-to-v5.3.md` |
 
 Steps are cumulative. A site on 5.0 that goes to 5.2 reads every guide between the
 two versions, in order, oldest first. There is no v4 release; v3 goes straight to

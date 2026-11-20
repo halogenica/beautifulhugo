@@ -15,11 +15,11 @@ The theme provides four extension points for custom HTML, CSS, and scripts:
 - **`layouts/_partials/footer_custom.html`** — loaded after the `<footer>` element and before page scripts, use for additional markup or late-loading styles
 - **`layouts/_partials/footer.html`** — can be overridden to customize the footer content (links, copyright, etc.)
 
-Create these files in your site's `layouts/` directory (not the theme's) to override them.
+Create these files in your site (not in the theme). The stylesheet goes in `assets/css/`, and the partials go in `layouts/_partials/`.
 
 ### Custom CSS file
 
-If your site has an `assets/css/custom.css` file, the theme loads it automatically. No configuration is necessary. The file goes through the same pipeline as the theme CSS: it is minified in production builds, fingerprinted, and linked with an `integrity` attribute.
+If your site has an `assets/css/custom.css` file, the theme loads it automatically. No configuration is necessary. The theme skips a file that has no rules (for example, only comments). The file goes through the same pipeline as the theme CSS: it is minified in production builds, fingerprinted, and linked with an `integrity` attribute.
 
 The file loads after all theme stylesheets, so its rules win on equal specificity. It is a separate file, not part of the theme bundle, so an `@import` at the top of the file works.
 
@@ -137,6 +137,7 @@ For more extensive customization, you can override any of the theme's stylesheet
    - `syntax.css` — Chroma syntax highlighting (only when `useHLJS` is off)
    - `codeblock.css` — code block styling
    - `toc.css` — table of contents panel (only when `toc` is not `false`)
+   - `search.css` — search page styling (only on the search page)
 5. `print.css` — print stylesheet, `media="print"`
 6. Highlight.js CSS, or `syntax-dark.css` for Chroma dark mode (kept separate so JS can toggle it)
 7. PhotoSwipe CSS
