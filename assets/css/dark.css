@@ -12,7 +12,7 @@
   --dark-surface: #444;
   --dark-surface-active: #555;
   --dark-muted: #AAA;
-  --dark-accent: #0085a1;
+  --dark-accent: var(--bh-accent);
   --dark-code-bg: #222;
   --dark-code-fg: #fbb;
   --dark-code-block-bg: #0d1117;
@@ -25,6 +25,31 @@
   --dark-title: #eee;
   --dark-on-accent: #fff;
   --dark-overlay-hover: rgba(255, 255, 255, 0.04);
+}
+
+/* The light-mode rules use the --bh-* variables, so dark mode points them at
+   the --dark-* values. The :root prefix makes these win over a site :root
+   rule in custom.css. */
+:root[data-theme="dark"] {
+  --bh-bg: var(--dark-bg);
+  --bh-text: var(--dark-fg);
+  --bh-muted: var(--dark-muted);
+  --bh-subtle: var(--dark-subtle);
+  --bh-faint: var(--dark-muted);
+  --bh-link: var(--dark-link);
+  --bh-accent-strong: var(--dark-link);
+  --bh-accent-bg: var(--dark-surface-active);
+  --bh-on-accent: var(--dark-on-accent);
+  --bh-navbar-bg: var(--dark-navbar-bg);
+  --bh-navbar-border: var(--dark-navbar-border);
+  --bh-hover-bg: var(--dark-surface-active);
+  --bh-overlay-hover: var(--dark-overlay-hover);
+  --bh-panel-bg: var(--dark-surface);
+  --bh-card-bg: var(--dark-card-bg);
+  --bh-card-border: var(--dark-surface-active);
+  --bh-border: var(--dark-surface-active);
+  --bh-border-strong: var(--dark-surface-active);
+  --bh-rule: var(--dark-surface);
 
   /* Bootstrap keys its dark values off data-bs-theme, which the theme does not
      set. These are the Bootstrap 5.3 dark values for <mark> and callouts. */
@@ -56,11 +81,6 @@
   --bs-dark-border-subtle: #343a40;
 }
 
-[data-theme="dark"] body {
-  background: var(--dark-bg);
-  color: var(--dark-fg);
-}
-
 [data-theme="dark"] p a {
   color: var(--dark-link);
 }
@@ -79,11 +99,6 @@
 }
 
 /* --- Navbar --- */
-[data-theme="dark"] .navbar-custom {
-  background: var(--dark-navbar-bg);
-  border-bottom: 1px solid var(--dark-navbar-border);
-}
-
 [data-theme="dark"] .navbar-custom .navbar-brand,
 [data-theme="dark"] .navbar-custom .nav-link {
   color: var(--dark-navbar-text);
@@ -98,7 +113,6 @@
 
 [data-theme="dark"] .navbar-custom .dropdown-menu {
   background: var(--dark-surface);
-  border: 1px solid var(--dark-navbar-border);
 }
 
 [data-theme="dark"] .navbar-custom .dropdown-item {
@@ -110,7 +124,6 @@
 [data-theme="dark"] .navbar-custom .dropdown-item.active,
 [data-theme="dark"] .navbar-custom .dropdown-item:active {
   color: var(--dark-navbar-hover);
-  background: var(--dark-surface-active);
 }
 
 /* --- Post preview --- */
@@ -123,43 +136,21 @@
   color: var(--dark-muted);
 }
 
-[data-theme="dark"] .nav-side-arrow:hover,
-[data-theme="dark"] .nav-side-arrow:focus {
-  color: var(--dark-fg);
-  background-color: var(--dark-overlay-hover);
-}
-
 [data-theme="dark"] .post-pager li a,
 [data-theme="dark"] .post-pager li button {
   background: var(--dark-surface);
-  color: var(--dark-fg);
   border-color: var(--dark-surface-active);
-}
-
-[data-theme="dark"] .post-pager li a:hover,
-[data-theme="dark"] .post-pager li a:focus,
-[data-theme="dark"] .post-pager li button:hover,
-[data-theme="dark"] .post-pager li button:focus {
-  background: var(--dark-accent);
-  border-color: var(--dark-accent);
 }
 
 /* --- See Also --- */
-[data-theme="dark"] h4.see-also {
-  color: var(--dark-fg);
-}
-
 [data-theme="dark"] .see-also-item {
-  background: var(--dark-card-bg);
+  color: var(--dark-fg);
   border-color: var(--dark-surface-active);
   border-left-color: var(--dark-accent);
-  color: var(--dark-fg);
 }
 
 [data-theme="dark"] .see-also-item:hover,
 [data-theme="dark"] .see-also-item:focus {
-  background: var(--dark-surface-active);
-  border-color: var(--dark-accent);
   color: var(--dark-link);
 }
 
@@ -167,51 +158,30 @@
   color: var(--dark-muted);
 }
 
-[data-theme="dark"] .see-also-item:hover .see-also-item-subtitle,
-[data-theme="dark"] .see-also-item:focus .see-also-item-subtitle {
-  color: var(--dark-link);
-}
-
 /* --- Archive year selector --- */
 
 [data-theme="dark"] .archive-year-btn {
   border-color: var(--dark-surface-active);
-  color: var(--dark-muted);
 }
 
 [data-theme="dark"] .archive-year-btn:hover {
-  background: var(--dark-surface-active);
-  border-color: var(--dark-accent);
   color: var(--dark-link);
-}
-
-[data-theme="dark"] .archive-year-btn.active {
-  background: var(--dark-accent);
-  border-color: var(--dark-accent);
-  color: var(--dark-on-accent);
 }
 
 [data-theme="dark"] .archive-year-btn:focus-visible {
   outline-color: var(--dark-accent);
 }
 
-[data-theme="dark"] .archive-year-heading {
-  color: var(--dark-muted);
-}
-
 /* --- Archive list --- */
 
 [data-theme="dark"] .archive-item {
-  background: var(--dark-card-bg);
+  color: var(--dark-fg);
   border-color: var(--dark-surface-active);
   border-left-color: var(--dark-accent);
-  color: var(--dark-fg);
 }
 
 [data-theme="dark"] .archive-item:hover,
 [data-theme="dark"] .archive-item:focus {
-  background: var(--dark-surface-active);
-  border-color: var(--dark-accent);
   color: var(--dark-link);
 }
 
@@ -219,31 +189,15 @@
   color: var(--dark-muted);
 }
 
-[data-theme="dark"] .archive-item:hover .archive-item-subtitle,
-[data-theme="dark"] .archive-item:focus .archive-item-subtitle {
-  color: var(--dark-link);
-}
-
 [data-theme="dark"] .archive-item-date {
   color: var(--dark-muted);
-}
-
-[data-theme="dark"] .archive-item:hover .archive-item-date,
-[data-theme="dark"] .archive-item:focus .archive-item-date {
-  color: var(--dark-link);
 }
 
 /* --- Terms list --- */
 
 [data-theme="dark"] .terms-item {
-  background: var(--dark-card-bg);
   border-color: var(--dark-surface-active);
   border-left-color: var(--dark-accent);
-}
-
-[data-theme="dark"] .terms-item:hover {
-  background: var(--dark-surface-active);
-  border-color: var(--dark-accent);
 }
 
 [data-theme="dark"] .terms-item-header a {
@@ -253,17 +207,6 @@
 [data-theme="dark"] .terms-item-header a:hover,
 [data-theme="dark"] .terms-item-header a:focus {
   color: var(--dark-link);
-}
-
-[data-theme="dark"] .terms-item-page {
-  color: var(--dark-link);
-  background: var(--dark-surface-active);
-}
-
-[data-theme="dark"] .terms-item-page:hover,
-[data-theme="dark"] .terms-item-page:focus {
-  background: var(--dark-accent);
-  color: var(--dark-on-accent);
 }
 
 /* --- Footer --- */
@@ -278,11 +221,6 @@
 
 [data-theme="dark"] footer .text-muted {
   color: var(--dark-subtle) !important;
-}
-
-/* --- Content section --- */
-[data-theme="dark"] .content-section {
-  background-color: var(--dark-surface);
 }
 
 /* --- Tables --- */
@@ -343,10 +281,6 @@
 }
 
 /* --- Tabs shortcode --- */
-[data-theme="dark"] .tabs-shortcode {
-  background-color: var(--dark-surface);
-}
-
 [data-theme="dark"] .tabs-shortcode .nav-tabs {
   border-bottom-color: var(--dark-surface-active);
 }
@@ -355,22 +289,9 @@
   color: var(--dark-muted);
 }
 
-[data-theme="dark"] .tabs-shortcode .nav-tabs .nav-link.active {
-  background-color: var(--dark-surface-active);
-}
-
 /* --- Details shortcode --- */
 [data-theme="dark"] .details-shortcode {
-  background-color: var(--dark-surface);
   border-color: var(--dark-surface-active);
-}
-
-[data-theme="dark"] .details-shortcode[open] {
-  border-color: var(--dark-accent);
-}
-
-[data-theme="dark"] .details-shortcode > summary {
-  color: var(--dark-fg);
 }
 
 [data-theme="dark"] .details-shortcode > summary::before {
@@ -378,29 +299,25 @@
   border-bottom-color: var(--dark-accent);
 }
 
-[data-theme="dark"] .details-shortcode > summary:hover {
-  background-color: var(--dark-surface-active);
-}
-
 /* --- Copy button --- */
 [data-theme="dark"] .copyCodeButton {
-  --bs-btn-color: #adb5bd;
-  --bs-btn-border-color: #6c757d;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #6c757d;
-  --bs-btn-hover-border-color: #6c757d;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #5c636a;
-  --bs-btn-active-border-color: #565e64;
+  --bs-btn-color: var(--bs-secondary-text-emphasis);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-hover-color: var(--dark-on-accent);
+  --bs-btn-hover-bg: var(--bs-secondary);
+  --bs-btn-hover-border-color: var(--bs-secondary);
+  --bs-btn-active-color: var(--dark-on-accent);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-secondary), black 15%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-secondary), black 20%);
 }
 
 [data-theme="dark"] .copyCodeButton.btn-success {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #198754;
-  --bs-btn-border-color: #198754;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #157347;
-  --bs-btn-hover-border-color: #146c43;
+  --bs-btn-color: var(--dark-on-accent);
+  --bs-btn-bg: var(--bs-success);
+  --bs-btn-border-color: var(--bs-success);
+  --bs-btn-hover-color: var(--dark-on-accent);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-success), black 15%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-success), black 20%);
 }
 
 /* --- View source --- */
@@ -410,19 +327,7 @@
   color: var(--dark-fg);
 }
 
-[data-theme="dark"] .btn-view-source:hover,
-[data-theme="dark"] .btn-view-source:focus {
-  background: var(--dark-accent);
-  border-color: var(--dark-accent);
-  color: var(--dark-on-accent);
-}
-
 /* --- Navbar Search --- */
-
-[data-theme="dark"] .navbar-search-overlay {
-  background: var(--dark-navbar-bg);
-  border-bottom: 1px solid var(--dark-navbar-border);
-}
 
 [data-theme="dark"] .navbar-search-icon {
   color: var(--dark-muted);
@@ -433,12 +338,7 @@
   border-bottom-color: var(--dark-accent);
 }
 
-[data-theme="dark"] .navbar-search-input::placeholder {
-  color: var(--dark-muted);
-}
-
 [data-theme="dark"] .navbar-search-results {
-  background: var(--dark-navbar-bg);
   border-top: 1px solid var(--dark-navbar-border);
 }
 
