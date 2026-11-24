@@ -96,12 +96,12 @@ enableGitInfo = true
 # For AI search summary limits, see [Params.seo] in the SEO & i18n docs.
 
 [Params.author]
-  name = "Some Person"
+  name = "nakai c. callahan"
   website = "yourwebsite.com"
-  email = "youremail@domain.com"
-  github = "halogenica/beautifulhugo"
-  twitter = "username"
-  linkedin = "in/username" # company/username
+  email = "nakaicallahan3@gmail.com"
+  github = "nakaicallahan3"
+  instagram = "journey_out_thamud"
+  spotify = "journey out tha mud" # company/username
 
 # Any platform the built-in registry does not cover. "icon" is a CSS class,
 # so a site can also load its own icon font from head_custom.html.
@@ -157,14 +157,14 @@ enableGitInfo = true
     inline = [['\(', '\)']]
 
 [[menu.main]]
-    identifier = "setup"
-    name = "Setup"
+    identifier = "podcast"
+    name = "podcast"
     weight = 1
 
 [[menu.main]]
-    parent = "setup"
-    name = "Configuration"
-    url = "page/configuration/"
+    parent = "podcast"
+    name = "notes"
+    url = "page/notes/"
     weight = 1
 
 [[menu.main]]
@@ -174,44 +174,39 @@ enableGitInfo = true
     weight = 2
 
 [[menu.main]]
-    parent = "setup"
+    parent = "podcast"
     name = "Theming"
     url = "page/theming/"
     weight = 3
 
-[[menu.main]]
-    parent = "setup"
-    name = "SEO & i18n"
-    url = "page/seo-and-i18n/"
-    weight = 4
 
 [[menu.main]]
-    parent = "setup"
+    parent = "podcast"
     name = "Comments & Social"
     url = "page/comments-and-social/"
     weight = 5
 
 [[menu.main]]
-    identifier = "features"
-    name = "Features"
+    identifier = "bible"
+    name = "bible"
     weight = 2
 
 [[menu.main]]
-    parent = "features"
-    name = "Shortcodes"
-    url = "page/shortcodes/"
+    parent = "bible"
+    name = "bible storys"
+    url = "page/bible story/"
     weight = 1
 
 [[menu.main]]
-    parent = "features"
-    name = "Code Blocks"
-    url = "page/code-blocks/"
+    parent = "bible"
+    name = "bible notes"
+    url = "page/bible notes/"
     weight = 2
 
 [[menu.main]]
-    parent = "features"
-    name = "Markdown Extensions"
-    url = "page/markdown-extensions/"
+    parent = "bible"
+    name = "takeaway notes"
+    url = "page/takeaway notes/"
     weight = 3
 
 [[menu.main]]
