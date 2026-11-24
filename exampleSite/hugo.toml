@@ -206,7 +206,7 @@ enableGitInfo = true
 [[menu.main]]
     parent = "bible"
     name = "takeaway-notes"
-    url = "page/takeaway notes/"
+    url = "page/takeaway-notes/"
     weight = 3
 
 [[menu.main]]
