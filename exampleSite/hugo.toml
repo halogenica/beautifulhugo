@@ -1,7 +1,7 @@
 # This gets overridden when building for production
 baseurl = "http://localhost:1313/"
 DefaultContentLanguage = "en"
-title = "Beautiful Hugo"
+title = "outthamud"
 enableGitInfo = true
 
 [[module.imports]]
@@ -56,7 +56,7 @@ enableGitInfo = true
 #     includes = ["**"]
 
 [Params]
-  subtitle = "Build a beautiful and simple website in minutes"
+  subtitle = " A journey too grow and help those who want a change"
   mainSections = ["post", "recipe"]
   logo = "/img/avatar-icon.png" # Expecting square dimensions
   favicon = "/img/favicon.ico"
