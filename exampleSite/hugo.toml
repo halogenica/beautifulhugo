@@ -194,18 +194,18 @@ enableGitInfo = true
 [[menu.main]]
     parent = "bible"
     name = "bible storys"
-    url = "page/bible story/"
+    url = "page/bible-story/"
     weight = 1
 
 [[menu.main]]
     parent = "bible"
     name = "bible notes"
-    url = "page/bible notes/"
+    url = "page/bible-notes/"
     weight = 2
 
 [[menu.main]]
     parent = "bible"
-    name = "takeaway notes"
+    name = "takeaway-notes"
     url = "page/takeaway notes/"
     weight = 3
 
