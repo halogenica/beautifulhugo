@@ -1,5 +1,5 @@
 ---
-title: Code Blocks
+title: bible
 subtitle: Syntax highlighting, line numbers, and the copy button
 comments: false
 ---
