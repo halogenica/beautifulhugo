@@ -83,14 +83,14 @@ enableGitInfo = true
     provider = "fuse"
 
 [[Params.bigimg]]
-  src = "/img/triangle.jpg"
+  src = "/img/mud.jpeg"
   desc = "Triangle"
 [[Params.bigimg]]
-  src = "/img/sphere.jpg"
+  src = "/img/mud.jpeg"
   desc = "Sphere"
   position = "center top"
 [[Params.bigimg]]
-  src = "/img/hexagon.jpg"
+  src = "/img/mud.jpeg"
   desc = "Hexagon"
 
 # For AI search summary limits, see [Params.seo] in the SEO & i18n docs.
